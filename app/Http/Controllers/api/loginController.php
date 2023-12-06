@@ -77,6 +77,7 @@ class loginController extends Controller
    
         function loginCheck(Request $request)
         {
+            
            
             // $this->validate($request, [
             //     'email'   => 'required|email',

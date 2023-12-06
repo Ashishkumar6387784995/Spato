@@ -37,6 +37,8 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
     ></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!-- Crausel ends -->
   </head>
   <body oncontextmenu="return false" class="snippet-body">
@@ -543,24 +545,64 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="post" action="" id="loginForm">    
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">E-mail*</label>
-            <input type="text" class="form-control" id="recipient-name" require>
+            <input type="text" class="form-control" id="recipient-name" name="email" require>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Password*</label>
-            <input type="password" class="form-control" require>
+            <input type="password" class="form-control" name="password" require>
           </div>
+          <button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Send message</button>
+       
       </div>
     </div>
   </div>
 </div>
     <!--  Login Form ends -->
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#loginBtn').click(function () {
+                // console.log('hello');
+                var formData = $('#loginForm').serialize();
+                console.log(formData);
+                 $.ajax({
+                    type: 'POST',
+                    url: '/api/login', // Adjust the route name
+                    data: $('#loginForm').serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            console.log(response.token);
+                            // Save the token to local storage
+                            localStorage.setItem('authToken', response.token);
+
+                            // Redirect to a protected page or perform other actions
+                            // alert('Login successful. Redirecting...');
+                            window.location.href = 'http://127.0.0.1:8000/api/user'; // Change the URL as needed
+                            
+                        } else {
+                            // alert(response.error);
+                            window.location.href = 'http://127.0.0.1:8000/api/home';
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error:', response.error);
+                       
+                        alert('An error occurred. Please try again.');
+                        
+                    }
+                });
+            });
+        });
+    </script>
   </body>
 
 </html>
