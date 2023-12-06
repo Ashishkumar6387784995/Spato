@@ -44,7 +44,13 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
           ><img src="assets/images/spato-logo.png" alt="" srcset=""
-        /></a>
+        />
+    
+        <a href="#">
+    <img src="{{ asset('assets/style/web/images/spato-logo.png') }}" alt="" srcset="">
+</a>
+
+    </a>
         <button
           class="navbar-toggler"
           type="button"
