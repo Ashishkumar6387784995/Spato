@@ -1,0 +1,206 @@
+:root {
+    --blue: #44e1d5;
+    --black: #54606c;
+    --white: #ffffff;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-family: "Source Sans 3", sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.active {
+    color: var(--blue) !important;
+}
+.navbar-nav {
+    /* height: 20px; */
+}
+.nav-item {
+    border-right: 1px solid #000;
+    height: 20px;
+}
+.nav-item {
+    margin: 0;
+    padding: 0px 15px;
+}
+
+.nav-link {
+    padding: 0 !important;
+    color: var(--black);
+    font-weight: 600;
+}
+
+.navbar-brand {
+    /* width: 40%; */
+}
+.navbar-brand img {
+    width: 55%;
+}
+
+.bg-image {
+    width: 100%;
+    height: 92.2vh;
+    background: url(assets/images/remove.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    margin: 0;
+    padding: 0;
+    border-bottom: 5px solid var(--blue);
+}
+.view {
+    background-color: #f0eeee;
+}
+.view .container .row .col p {
+    color: var(--black);
+    font-weight: 600;
+    font-size: 15px;
+}
+.categories .col {
+    border: 1px solid var(--black) !important;
+    margin: 0px 10px;
+    text-align: center;
+}
+.categories .view-desc {
+    font-size: 15px;
+}
+
+.featured-products {
+    background-color: #54606c;
+    padding-top: 3rem;
+    margin-bottom: -10rem;
+    padding-bottom: 10rem;
+}
+/* Crausel Products */
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.card img {
+    margin: auto;
+    justify-content: center;
+    max-width: 70%;
+    max-height: 100%;
+}
+.card {
+    margin: 0 0.5em;
+    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+    border: none;
+    border-radius: 0;
+}
+.card .card-body .product-price {
+}
+.carousel-inner {
+    padding: 1em;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: var(--blue);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 50% !important;
+    transform: translateY(-50%);
+}
+.carousel-control-next,
+.carousel-control-prev {
+    width: 45px !important;
+    height: 45px !important;
+    opacity: 1 !important;
+}
+@media (min-width: 768px) {
+    .card img {
+        height: 11em;
+    }
+}
+/* Crausel Products */
+footer {
+    background-color: var(--white);
+    /* width: 98%; */
+    height: 400px;
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
+    background-size: contain;
+    color: var(--black);
+}
+footer .footer-container {
+    background-color: var(--white);
+    width: 98%;
+    height: 400px;
+    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
+    background-size: contain;
+    color: var(--white);
+}
+footer .footer-container .footer-desc {
+    text-align: left;
+    color: var(--black);
+}
+
+footer .footer-container .footer-desc img {
+    width: 150px;
+}
+footer .footer-container .footer-desc .footer-brand {
+    width: 200px;
+    margin: auto;
+    justify-content: center;
+}
+footer .footer-container .footer-desc a {
+    margin-left: 4rem;
+    text-align: left;
+    color: var(--black);
+    text-decoration: none;
+}
+footer .footer-container .useless {
+    visibility: hidden;
+}
+footer .footer-container .space-for-phone {
+    display: none;
+}
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+    .navbar-brand {
+        width: 60%;
+    }
+    .navbar-brand img {
+        width: 100%;
+    }
+    .bg-image {
+        width: 100%;
+        height: 167px;
+        background: url(assets/images/remove.png) !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        margin: 0;
+        padding: 0;
+        border-bottom: 5px solid var(--blue);
+    }
+    footer .footer-container .useless {
+        display: none;
+    }
+    footer .footer-container .space-for-phone {
+        display: block;
+    }
+    footer {
+        height: 700px;
+        clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%);
+        background-size: contain;
+        color: var(--black);
+    }
+    footer .footer-container {
+        width: 97%;
+        height: 720px;
+        clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%);
+        background-size: contain;
+        color: var(--white);
+    }
+    footer .footer-container .footer-desc a {
+        margin-left: 1.5rem;
+    }
+    footer .footer-container .footer-desc .footer-brand {
+        display: block;
+        margin-top: 1rem;
+    }
+    footer .footer-container .phone {
+        text-align: center;
+    }
+}
