@@ -42,9 +42,17 @@
   <body oncontextmenu="return false" class="snippet-body">
     <nav class="navbar navbar-expand-lg ps-4 pe-4">
       <div class="container-fluid">
+
+        <!-- <a class="navbar-brand" href="#"
+          ><img src="assets/images/spato-logo.png" alt="" srcset=""
+        /> -->
+    
+    
+
         <a class="navbar-brand" href="#"
           ><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
         />
+
 
     </a>
         <button
@@ -554,4 +562,9 @@
 </div>
     <!--  Login Form ends -->
   </body>
+<<<<<<< HEAD
 </html>
+
+=======
+</html>
+>>>>>>> 95c29161db72c712c1e65d20a0179c926643f224
