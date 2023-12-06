@@ -562,9 +562,8 @@
 </div>
     <!--  Login Form ends -->
   </body>
-<<<<<<< HEAD
+
 </html>
 
-=======
-</html>
->>>>>>> 95c29161db72c712c1e65d20a0179c926643f224
+
+
