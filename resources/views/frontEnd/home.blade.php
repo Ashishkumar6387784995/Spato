@@ -548,18 +548,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="loginForm">    
+        <form id="loginForm">
+        <span id="error-message" style="color:red;"></span>    
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">E-mail*</label>
-            <input type="text" class="form-control" id="recipient-name" name="email" require>
-            <span id="email_err"></span>
+            <input type="text" class="form-control" id="email" name="email" require>
+            <span id="email-err" style="color:red;"></span>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Password*</label>
-            <input type="password" class="form-control" name="password" require>
-            <span id="password_err"></span>
+            <input type="password" class="form-control" id="password" name="password" require>
+            <span id="password_err" style="color:red;"></span>
           </div>
-          <button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
+          <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
         </form>
         <p class="foget-password"><a   type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
         <p class="foget-password">Sie haben kein Konto?<a href="#" > Hier registrieren.</a></p>
@@ -591,7 +592,7 @@
             <!-- <label for="recipient-name" class="col-form-label">E-mail*</label> -->
             <input type="text" class="form-control"  name="forget_email" placeholder="name@xyz.com" require>
           </div>
-          <button type="submit" class="btn btn-primary" id="forgetBtn">Submit</button>
+          <button type="button" class="btn btn-primary" id="forgetBtn">Submit</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -604,43 +605,54 @@
 
 
     <script>
-        $(document).ready(function () {
-            $('#loginBtn').click(function () {
-                // console.log('hello');
-                var formData = $('#loginForm').serialize();
-                console.log(formData);
-                 $.ajax({
-                    type: 'POST',
-                    url: '/api/login', // Adjust the route name
-                    data: $('#loginForm').serialize(),
-                    success: function (response) {
-                        if (response.success) {
-                            console.log(response.token);
-                            // Save the token to local storage
-                            localStorage.setItem('authToken', response.token);
+    $(document).ready(function () {
+        $('#loginBtn').click(function () {
+            // Clear previous error messages
+            $('#error-message').text('');
+            $('#password_err').text('');
 
-                            // Redirect to a protected page or perform other actions
-                            // alert('Login successful. Redirecting...');
-                            window.location.href = 'http://127.0.0.1:8000/api/user'; // Change the URL as needed
-                            
-                        } else {
-                            // alert(response.error);
-                            window.location.href = 'http://127.0.0.1:8000/api/home';
-                        }
-                    },
-                    error: function (error) {
-                        console.error('Error:', response.error);
-                       
-                        alert('An error occurred. Please try again.');
-                        
+            // Get form data
+            var formData = {
+                email: $('#email').val(),
+                password: $('#password').val()
+            };
+            console.log(formData);
+
+            // Client-side validation
+            if (!formData.email) {
+                $('#email-err').text('Please enter your email.');
+                return;
+            }
+
+            if (!formData.password) {
+                $('#password_err').text('Please enter your password.');
+                return;
+            }
+
+            // Perform AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '/api/login', // Adjust the route name
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        // Handle successful login
+                        localStorage.setItem('authToken', response.token);
+                        window.location.href = 'http://127.0.0.1:8000/api/user';
+                    } else {
+                        // Display server-side error message
+                        $('#error-message').text(response.error);
                     }
-                });
+                },
+                error: function (error) {
+                    // Set a generic error message
+                    $('#error-message').text('An error occurred. Please try again.');
+                }
             });
-
-
-            
         });
-    </script>
+    });
+</script>
+
   </body>
 
 </html>
