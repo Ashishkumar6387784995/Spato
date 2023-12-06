@@ -538,11 +538,11 @@
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">E-mail*</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="recipient-name" require>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Password*</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" require>
           </div>
         </form>
       </div>
