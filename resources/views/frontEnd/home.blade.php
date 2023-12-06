@@ -556,6 +556,8 @@
           </div>
           <button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
         </form>
+        <p class="foget-password"><a href="#">Passwort vergessen?</a></p>
+        <p class="foget-password">Sie haben kein Konto?<a href="#"> Hier registrieren.</a></p>
       </div>
       <div class="modal-footer">
        
