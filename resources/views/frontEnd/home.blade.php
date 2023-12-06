@@ -532,7 +532,10 @@
       </div>
     </footer>
 
-    <!-- Login Form starts -->
+    <!-- Login Form Modal starts -->
+
+
+
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -549,10 +552,12 @@
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">E-mail*</label>
             <input type="text" class="form-control" id="recipient-name" name="email" require>
+            <span id="email_err"></span>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Password*</label>
             <input type="password" class="form-control" name="password" require>
+            <span id="password_err"></span>
           </div>
           <button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
         </form>
@@ -565,9 +570,9 @@
     </div>
   </div>
 </div>
-    <!--  Login Form ends -->
+    <!--  Login Form Modal ends -->
 
-    <!-- Forgot Password Form starts -->
+    <!-- Forgot Password Form Modal starts -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -576,16 +581,17 @@
           ><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
         />
 
+    
     </a></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form  id="loginForm">    
+        <form  id="forgetForm">    
           <div class="mb-3">
             <!-- <label for="recipient-name" class="col-form-label">E-mail*</label> -->
-            <input type="text" class="form-control" id="recipient-name" name="email" placeholder="name@xyz.com" require>
+            <input type="text" class="form-control"  name="forget_email" placeholder="name@xyz.com" require>
           </div>
-          <button type="submit" class="btn btn-primary" id="loginBtn">Submit</button>
+          <button type="submit" class="btn btn-primary" id="forgetBtn">Submit</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -594,7 +600,7 @@
     </div>
   </div>
 </div>
-    <!--  Forgot Password Form ends -->
+    <!--  Forgot Password Form Modal ends -->
 
 
     <script>
@@ -630,6 +636,9 @@
                     }
                 });
             });
+
+
+            
         });
     </script>
   </body>
