@@ -545,7 +545,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="" id="loginForm">    
+        <form id="loginForm">    
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">E-mail*</label>
             <input type="text" class="form-control" id="recipient-name" name="email" require>
@@ -556,8 +556,8 @@
           </div>
           <button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
         </form>
-        <p class="foget-password"><a href="#">Passwort vergessen?</a></p>
-        <p class="foget-password">Sie haben kein Konto?<a href="#"> Hier registrieren.</a></p>
+        <p class="foget-password"><a   type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
+        <p class="foget-password">Sie haben kein Konto?<a href="#" > Hier registrieren.</a></p>
       </div>
       <div class="modal-footer">
        
@@ -567,7 +567,34 @@
 </div>
     <!--  Login Form ends -->
 
+    <!-- Forgot Password Form starts -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><a class="navbar-brand" href="#"
+          ><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
+        />
 
+    </a></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form  id="loginForm">    
+          <div class="mb-3">
+            <!-- <label for="recipient-name" class="col-form-label">E-mail*</label> -->
+            <input type="text" class="form-control" id="recipient-name" name="email" placeholder="name@xyz.com" require>
+          </div>
+          <button type="submit" class="btn btn-primary" id="loginBtn">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>
+    <!--  Forgot Password Form ends -->
 
 
     <script>
