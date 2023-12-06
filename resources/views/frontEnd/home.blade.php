@@ -43,12 +43,8 @@
     <nav class="navbar navbar-expand-lg ps-4 pe-4">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
-          ><img src="assets/images/spato-logo.png" alt="" srcset=""
+          ><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
         />
-    
-        <a href="#">
-    <img src="{{ asset('assets/style/web/images/spato-logo.png') }}" alt="" srcset="">
-</a>
 
     </a>
         <button
