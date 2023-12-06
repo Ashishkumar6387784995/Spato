@@ -118,12 +118,12 @@
 
             <li class="nav-item border-0 list-unstyled ps-lg-5 pe-3">
               <a class="nav-link" href="#"
-                ><img src="assets/icons/search.svg" alt="" srcset=""
+                ><img src="{{ asset('assets/frontEnd/web/icons/search.svg') }}" alt="" srcset=""
               /></a>
             </li>
             <li class="nav-item list-unstyled pe-3 ps-5">
               <a class="nav-link" href="#"
-                ><img src="assets/icons/cart.svg" alt="" srcset=""
+                ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
               /></a>
             </li>
             <li class="nav-item list-unstyled pe-3 ps-3">
@@ -131,8 +131,8 @@
             </li>
 
             <li class="nav-item border-0 list-unstyled pe-3 ps-3">
-              <a class="nav-link" href="#"
-                ><img src="assets/icons/profile.svg" alt="" srcset=""
+              <a  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"
+                ><img src="{{ asset('assets/frontEnd/web/icons/profile.svg')}}" alt="" srcset=""
               /></a>
             </li>
           </form>
@@ -521,6 +521,37 @@
         </div>
       </div>
     </footer>
+
+    <!-- Login Form starts -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><a class="navbar-brand" href="#"
+          ><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
+        />
+
+    </a></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">E-mail*</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Password*</label>
+            <input type="password" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--  Login Form ends -->
   </body>
 </html>
->>>>>>> 14319e3ce714b84fd7f8a0135ce9aaa2804b3e92
