@@ -150,20 +150,20 @@
       </div>
     </nav>
 
-    <div class="bg-image"></div>
+    <div class="bg-image" style="background-image:url({{ asset('assets/frontEnd/web/images/remove.png')}}); !important"></div>
 
     <section class="view">
       <div class="container">
         <div class="row text-center p-4">
           <div class="col d-flex m-auto justify-content-center">
             <span class="icon"
-              ><img src="assets/icons/cart.svg" alt="" srcset=""
+              ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
             /></span>
             <p class="view-desc ps-3">Fast, Free Shipping On Order Over 350€</p>
           </div>
           <div class="col d-flex m-auto justify-content-center">
             <span class="icon"
-              ><img src="assets/icons/cart.svg" alt="" srcset=""
+              ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
             /></span>
             <p class="view-desc ps-3">
               Your Trade Partener in Water Technology
@@ -171,7 +171,7 @@
           </div>
           <div class="col d-flex m-auto justify-content-center">
             <span class="icon"
-              ><img src="assets/icons/cart.svg" alt="" srcset=""
+              ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
             /></span>
             <p class="view-desc ps-3">8.3/10 Customer Rating</p>
           </div>
@@ -184,37 +184,37 @@
       <div class="row categories text-center p-4 m-auto justify-content-evenly">
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
@@ -228,37 +228,37 @@
       <div class="row categories text-center p-4 m-auto justify-content-evenly">
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
         <div class="col">
           <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
+            ><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset=""
           /></span>
           <p class="view-desc">Pool Installation & Maintanence</p>
         </div>
@@ -283,7 +283,7 @@
             <div class="cards-wrapper">
               <div class="card">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -301,7 +301,7 @@
               </div>
               <div class="card d-none d-md-block">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -316,7 +316,7 @@
               </div>
               <div class="card d-none d-md-block">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -335,7 +335,7 @@
             <div class="cards-wrapper">
               <div class="card">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -350,7 +350,7 @@
               </div>
               <div class="card d-none d-md-block">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -365,7 +365,7 @@
               </div>
               <div class="card d-none d-md-block">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -384,7 +384,7 @@
             <div class="cards-wrapper">
               <div class="card">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -399,7 +399,7 @@
               </div>
               <div class="card d-none d-md-block">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -414,7 +414,7 @@
               </div>
               <div class="card d-none d-md-block">
                 <img
-                  src="assets/images/product 1.png"
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -501,13 +501,13 @@
             </p>
             <p class="footer-desc">
               <a href="#"
-                ><img src="assets/images/spato-app-store.png" alt="" srcset=""
+                ><img src="{{ asset('assets/frontEnd/web/images/spato-app-store.png')}}" alt="" srcset=""
               /></a>
             </p>
             <p class="footer-desc">
               <a href="#"
                 ><img
-                  src="assets/images/spato-play-store.webp"
+                  src="{{ asset('assets/frontEnd/web/images/spato-play-store.webp')}}"
                   alt=""
                   srcset=""
               /></a>
@@ -517,7 +517,7 @@
             <p class="footer-desc">
               <img
                 class="footer-brand"
-                src="assets/images/spato-logo.png"
+                src="{{ asset('assets/frontEnd/web/images/spato-logo.png')}}"
                 alt=""
                 srcset=""
               />

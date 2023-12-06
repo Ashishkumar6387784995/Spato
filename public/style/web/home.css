@@ -43,7 +43,7 @@ body {
 .bg-image {
     width: 100%;
     height: 92.2vh;
-    background: url(assets/images/remove.png) !important;
+    /* background: url("assets/frontEnd/web/images/remove.png") !important; */
     background-repeat: no-repeat !important;
     background-size: contain !important;
     margin: 0;
