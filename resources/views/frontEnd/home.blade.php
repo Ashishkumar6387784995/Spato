@@ -650,6 +650,54 @@
                 }
             });
         });
+
+
+        $('#loginBtn').click(function () {
+            // Clear previous error messages
+            $('#error-message').text('');
+            $('#password_err').text('');
+
+            // Get form data
+            var formData = {
+                email: $('#email').val(),
+                password: $('#password').val()
+            };
+            console.log(formData);
+
+            // Client-side validation
+            if (!formData.email) {
+                $('#email-err').text('Please enter your email.');
+                return;
+            }
+
+            if (!formData.password) {
+                $('#password_err').text('Please enter your password.');
+                return;
+            }
+
+            // Perform AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '/api/login', // Adjust the route name
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        // Handle successful login
+                        localStorage.setItem('authToken', response.token);
+                        window.location.href = 'http://127.0.0.1:8000/api/user';
+                    } else {
+                        // Display server-side error message
+                        $('#error-message').text(response.error);
+                    }
+                },
+                error: function (error) {
+                    // Set a generic error message
+                    $('#error-message').text('An error occurred. Please try again.');
+                }
+            });
+        });
+
+        
     });
 </script>
 
