@@ -10,6 +10,7 @@ use App\Http\Controllers\api\staticPageController;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\CartController;
 use App\Http\Controllers\api\tryController;
+use App\Http\Controllers\api\frontEnd\webController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::get('/home', [webController::class, 'home']);
+
+
 Route::get('/register', [loginController::class, 'registerForm']);
 Route::post('/register', [loginController::class, 'submitRegistration']);
 Route::get('refresh_captcha', [loginController::class, 'refreshCaptcha']);
 Route::get('login',[loginController::class,'loginform']);
 Route::post('login',[loginController::class,'loginCheck']);
-Route::get('home',[loginController::class,'home']);
+Route::get('home1',[loginController::class,'home']);
 Route::get('logout',[loginController::class,'logout']);
 
 Route::get('dashboard',[dashboardController::class,'dashboard']);
