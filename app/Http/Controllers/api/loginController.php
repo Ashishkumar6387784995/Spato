@@ -34,39 +34,51 @@ class loginController extends Controller
     {
         // dd($request);
 
+
+
         $validator = Validator::make($request->all(), [
-            'fName' => 'required|string',
-            'lName' => 'required|string',
-            'phone' => 'required|integer',
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'phone' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'captcha' => 'required',
+            'password' => 'required|min:8|confirmed',
+          
+            // 'captcha' => 'required',
         ]);
 
+        // return response()->json(['success'=>'errors']);
 
         if ($validator->fails()) {
             // Return validation errors in the response
-            return response()->json($validator->errors());
+            return response()->json(['message'=>$validator->errors()]);
         }
 
         // Create a new user
         $user = User::create([
-            'name' => $request->input('fName') . ' ' . $request->input('lName'),
+            'name' => $request->input('firstName') . ' ' . $request->input('lastName'),
             'mobile' => $request->input('phone'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
 
 
-        $email =  $request->input('email'); // Add more dynamic data as needed
+        // $email =  $request->input('email'); 
 
 
-
-        $message = Mail::to($email)->send(new EmailVerification($email));
+        // $message = Mail::to($email)->send(new EmailVerification($email));
         // dd($message);
 
+        if($user){
+            return response()->json(['success' => 'User registered successfully']);
+ 
+        }
 
-        return response()->json(['message' => 'User registered successfully']);
+        else{
+            return response()->json(['error' => 'User registered Failed due Query']);
+        }
+
+
+
     }
 
 

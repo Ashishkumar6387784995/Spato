@@ -427,16 +427,18 @@
         </p>
 
         <div class="modal-body">
-          <form id="signupForm">
+          <form id="signupForm" method="post">
             <div class="form-col">
               <div class="row">
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">First Name*</label>
                   <input type="text" class="form-control" id="signup_firstname" name="signup_firstname" require>
+                  <span id="signup_firstName_err"></span>
                 </div>
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">Last Name*</label>
                   <input type="text" class="form-control" id="signup_lastname" name="signup_lastname" require>
+                  <span id="signup_lastName_err"></span>
                 </div>
               </div>
             </div>
@@ -445,10 +447,12 @@
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">Phone Number*</label>
                   <input type="text" class="form-control" id="signup_phone" name="signup_phone" require>
+                  <span id="signup_phone_err"></span>
                 </div>
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">E-mail*</label>
                   <input type="text" class="form-control" id="signup_email" name="signup_email" require>
+                  <span id="signup_email_err"></span>
                 </div>
               </div>
             </div>
@@ -457,35 +461,39 @@
                 <div class="col">
                   <label for="message-text" class="col-form-label">Password*</label>
                   <input type="password" class="form-control" id="signup_password" name="signup_password" require>
+                  <span id="signup_password_err"></span>
                 </div>
                 <div class="col">
                   <label for="message-text" class="col-form-label">Confirm Password*</label>
                   <input type="password" class="form-control" id="signup_confirmpassword" name="signup_confirmpassword" require>
+                  <span id="signup_Confirm_password_err"></span>
                 </div>
               </div>
             </div>
             <div class="form-col checkbox">
 
-          <div class="row">
-            <div class="col">
-            <input type="checkbox"  id="btncheck1"> <p class="text">Subscribe our newsletter</p>
+              <div class="row">
+                <div class="col">
+                  <input type="checkbox" id="btncheck1">
+                  <p class="text">Subscribe our newsletter</p>
+                </div>
+                <div class="col">
+                  <input type="checkbox" id="btncheck2">
+                  <p class="text"> Want to become reseller</p>
+                </div>
+              </div>
             </div>
-            <div class="col">
-            <input type="checkbox" id="btncheck2" ><p class="text"> Want to become reseller</p>
-            </div>
-          </div>
-</div>
-<div class="form-col">
+            <div class="form-col">
 
-          <div class="row">
-            <div class="col">
-            <input type="checkbox" id="btncheck3"><span class="text"> Allow remote shopping assistance</span>
+              <div class="row">
+                <div class="col">
+                  <input type="checkbox" id="btncheck3"><span class="text"> Allow remote shopping assistance</span>
+                </div>
+              </div>
             </div>
-          </div>
-</div>
             <button type="button" class="btn btn-style" id="signupBtn">Sign up</button>
           </form>
-          <p class="foget-password mt-3 d-flex">Schon Kunde ?  <a style="color:var(--blue);"  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"> Anmeldung </a></p>
+          <p class="foget-password mt-3 d-flex">Schon Kunde ? <a style="color:var(--blue);" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"> Anmeldung </a></p>
         </div>
         <div class="modal-footer">
 
@@ -528,8 +536,8 @@
             </div>
             <button type="button" class="btn btn-style" id="loginBtn">Login</button>
           </form>
-          <p class="foget-password d-flex"><a   style="text-decoration:underline;" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
-        <p class="foget-password d-flex">Sie haben kein Konto?<span><a  style="text-decoration:underline;" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#" > Hier registrieren.</a></span></p>
+          <p class="foget-password d-flex"><a style="text-decoration:underline;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
+          <p class="foget-password d-flex">Sie haben kein Konto?<span><a style="text-decoration:underline;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#"> Hier registrieren.</a></span></p>
         </div>
         <div class="modal-footer">
 
@@ -556,7 +564,7 @@
             <div class="mb-3">
               <!-- <label for="recipient-name" class="col-form-label">E-mail*</label> -->
               <input type="text" class="form-control" name="forget_email" id="forget_email" placeholder="name@xyz.com" require>
-              
+
               <span id="forget_email_err"></span>
             </div>
             <button type="button" class="btn btn-style" id="forgetBtn">Submit</button>
@@ -570,97 +578,204 @@
   </div>
   <!--  Forgot Password Form Modal ends -->
 
-<script>
-  $(document).ready(function() {
-  $('#loginBtn').click(function() {
-    // Clear previous error messages
-    $('#error-message').text('');
-    $('#email-err').text('');
-    $('#password_err').text('');
+  <script>
+    $(document).ready(function() {
+      $('#loginBtn').click(function() {
+        // Clear previous error messages
+        $('#error-message').text('');
+        $('#email-err').text('');
+        $('#password_err').text('');
 
-    // Get form data
-    var formData = {
-      email: $('#email').val(),
-      password: $('#password').val()
-    };
+        // Get form data
+        var formData = {
+          email: $('#email').val(),
+          password: $('#password').val()
+        };
 
-    // Client-side validation
-    if (!formData.email) {
-      $('#email-err').text('Please enter your email.');
-      return;
-    }
-   
+        // Client-side validation
+        if (!formData.email) {
+          $('#email-err').text('Please enter your email.');
+          return;
+        }
 
-    if (!formData.password) {
-      $('#password_err').text('Please enter your password.');
-      return;
-    }
 
-    // Perform AJAX request
-    $.ajax({
-      type: 'POST',
-      url: '/api/login',
-      dataType: 'json', // Explicitly specify data type
-      data: formData,
-      success: handleLoginResponse,
-      error: handleAjaxError
+        if (!formData.password) {
+          $('#password_err').text('Please enter your password.');
+          return;
+        }
+
+        // Perform AJAX request
+        $.ajax({
+          type: 'POST',
+          url: '/api/login',
+          dataType: 'json', // Explicitly specify data type
+          data: formData,
+          success: handleLoginResponse,
+          error: handleAjaxError
+        });
+      });
+
+      $('#forgetBtn').click(function() {
+        // Clear previous error messages
+        $('#forget_error_message').text('');
+
+        // Get form data
+        var forgetformData = {
+          email: $('#forget_email').val()
+        };
+        console.log(forgetformData);
+
+        // Client-side validation
+        if (!forgetformData.email) {
+          $('#forget_error_message').text('Please enter your email.');
+          return;
+        }
+
+        // Perform AJAX request
+        $.ajax({
+          type: 'POST',
+          url: '/api/forgetPassword',
+          dataType: 'json', // Explicitly specify data type
+          data: forgetformData,
+          success: handleForgetPasswordResponse,
+          error: handleAjaxError
+        });
+      });
+
+      // Common function to handle login response
+      function handleLoginResponse(response) {
+        if (response.success) {
+          console.log(response.token);
+          localStorage.setItem('authToken', response.token);
+          window.location.href = 'http://127.0.0.1:8000/api/user';
+        } else {
+          $('#error-message').text(response.error);
+        }
+      }
+
+      // Common function to handle forget password response
+      function handleForgetPasswordResponse(response) {
+        if (response.success) {
+          $('#forget_error_message').text(response.success);
+        } else {
+          $('#forget_error_message').text(response.error);
+        }
+      }
+
+      // Common function to handle AJAX errors
+      function handleAjaxError(error) {
+        $('#forget_error_message').text('An error occurred. Please try again.');
+      }
     });
-  });
 
-  $('#forgetBtn').click(function() {
-    // Clear previous error messages
-    $('#forget_error_message').text('');
 
-    // Get form data
-    var forgetformData = {
-      email: $('#forget_email').val()
-    };
-    console.log(forgetformData);
 
-    // Client-side validation
-    if (!forgetformData.email) {
-      $('#forget_error_message').text('Please enter your email.');
-      return;
-    }
+    $('#signupBtn').click(function() {
+      // Clear previous error messages
+      $('#signup_firstName_err').text('');
+      $('#signup_lastName_err').text('');
+      $('#signup_phone_err').text('');
+      $('#signup_email_err').text('');
+      $('#signup_password_err').text('');
+      $('#signup_Confirm_password_err').text('');
 
-    // Perform AJAX request
-    $.ajax({
-      type: 'POST',
-      url: '/api/forgetPassword',
-      dataType: 'json', // Explicitly specify data type
-      data: forgetformData,
-      success: handleForgetPasswordResponse,
-      error: handleAjaxError
+      // Get form data
+      var formData = {
+        firstName: $('#signup_firstname').val(),
+        lastName: $('#signup_lastname').val(),
+        phone: $('#signup_phone').val(),
+        email: $('#signup_email').val(),
+        password: $('#signup_password').val(),
+        password_confirmation: $('#signup_confirmpassword').val(),
+      };
+
+
+      // Client-side validation
+      if (!formData.firstName) {
+        $('#signup_firstName_err').text('Please enter your First Name.');
+        return;
+      }
+
+
+      if (!formData.lastName) {
+        $('#signup_lastName_err').text('Please enter your Last Name.');
+        return;
+      }
+
+      if (!formData.phone) {
+        $('#signup_phone_err').text('Please enter your Phone.');
+        return;
+      }
+
+      if (!formData.email) {
+        $('#signup_email_err').text('Please enter your Email.');
+        return;
+      }
+
+      if (!formData.password) {
+        $('#signup_password_err').text('Please enter your Password.');
+        return;
+      }
+
+      if (!formData.password_confirmation) {
+        $('#signup_Confirm_password_err').text('Please enter Confirm Password.');
+        return;
+      }
+
+      console.log(formData);
+
+
+      // Perform AJAX request
+      $.ajax({
+        type: 'POST',
+        url: '/api/register',
+        dataType: 'json', // Explicitly specify data type
+        data: formData,
+        success: function(response) {
+          // Handle success
+          console.log(response);
+
+          if (response.success) {
+            // Do something on successful registration, e.g., redirect to a new page
+            window.location.href = '/success-page';
+          } 
+        },
+        error: function(error) {
+            // Handle error
+            if (error.responseJSON) {
+                // Display validation errors next to the respective form fields
+                displayValidationErrors(error.responseJSON);
+            } else {
+                // Display a generic error message or customize based on the server response
+                alert('An error occurred. Please try again.');
+            }
+        }
+      });
+
+      function displayValidationErrors(errors) {
+        // Display validation errors next to the respective form fields
+        if (errors.firstName) {
+          $('#signup_firstName_err').text(errors.firstName[0]);
+        }
+        if (errors.lastName) {
+          $('#signup_lastName_err').text(errors.lastName[0]);
+        }
+        if (errors.phone) {
+          $('#signup_phone_err').text(errors.phone[0]);
+        }
+        if (errors.email) {
+          $('#signup_email_err').text(errors.email[0]);
+        }
+        if (errors.password) {
+          $('#signup_password_err').text(errors.password[0]);
+        }
+        if (errors.password_confirmation) {
+          $('#signup_Confirm_password_err').text(errors.password_confirmation[0]);
+        }
+      }
+
     });
-  });
-
-  // Common function to handle login response
-  function handleLoginResponse(response) {
-    if (response.success) {
-      console.log(response.token);
-      localStorage.setItem('authToken', response.token);
-      window.location.href = 'http://127.0.0.1:8000/api/user';
-    } else {
-      $('#error-message').text(response.error);
-    }
-  }
-
-  // Common function to handle forget password response
-  function handleForgetPasswordResponse(response) {
-    if (response.success) {
-      $('#forget_error_message').text(response.success);
-    } else {
-      $('#forget_error_message').text(response.error);
-    }
-  }
-
-  // Common function to handle AJAX errors
-  function handleAjaxError(error) {
-    $('#forget_error_message').text('An error occurred. Please try again.');
-  }
-});
-
-</script>
+  </script>
 
 </body>
 
