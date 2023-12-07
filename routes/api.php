@@ -82,3 +82,8 @@ Route::get('/nav', [tryController::class, 'nav']);
 //         // Your protected routes go here
 //     });
 // });
+
+
+
+
+Route::view('/email', 'mail.emailReset');
