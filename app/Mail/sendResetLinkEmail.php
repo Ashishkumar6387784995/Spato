@@ -28,11 +28,7 @@ class sendResetLinkEmail extends Mailable
       
     }
 
-    public function build()
-    {
-        return $this->subject('Reset Your Password')
-                    ->view('mail.emailReset');
-    }
+   
 
     /**
      * Get the message envelope.
