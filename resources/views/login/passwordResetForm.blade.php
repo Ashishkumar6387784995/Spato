@@ -32,7 +32,7 @@
                 <div class="modal-body">
                     <form method="post" id="passwordReset">
                         <div class="form-group">
-                        <span id="err" style="color: red;"></span>
+                        <span id="err text-center" style="color:#44e1d5; font-weight:600; margin-bottom:1rem;"></span>
                             <input type="text" id="token" name="token" class="form-control" placeholder="Password" style="display:none" value="{{$token}}" />
                             <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
                             <span id="password_err" style="color: red;"></span>
