@@ -36,6 +36,7 @@ Route::post('/register', [loginController::class, 'submitRegistration']);
 Route::get('refresh_captcha', [loginController::class, 'refreshCaptcha']);
 Route::get('login',[loginController::class,'loginform']);
 Route::post('login',[loginController::class,'loginCheck']);
+Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('home1',[loginController::class,'home']);
 Route::get('logout',[loginController::class,'logout']);
 

@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
+use App\Mail\sendResetLinkEmail;
 
 
 class loginController extends Controller
@@ -56,14 +57,14 @@ class loginController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
-       
-        $email =  $request->input('email'); // Add more dynamic data as needed
-      
- 
 
-       $message= Mail::to($email)->send(new EmailVerification($email));
+        $email =  $request->input('email'); // Add more dynamic data as needed
+
+
+
+        $message = Mail::to($email)->send(new EmailVerification($email));
         // dd($message);
-       
+
 
         return response()->json(['message' => 'User registered successfully']);
     }
@@ -74,43 +75,75 @@ class loginController extends Controller
 
         return view('login/loginForm');
     }
+
+    function loginCheck(Request $request)
+    {
+
+
+        // $this->validate($request, [
+        //     'email'   => 'required|email',
+        //     'password'  => 'required|alphaNum|min:3'
+        // ]);
+
+        $user_data = array(
+            'email'  => $request->email,
+            'password' => $request->password
+        );
+
+
+
+        if (Auth::attempt($user_data)) {
+            $user = Auth::user();
+
+            $customToken = bin2hex(random_bytes(32));
+
+            return response()->json(['success' => 'Login Successfull', 'token' => $customToken]);
+        } else {
+            return response()->json(['error' => 'User Credential Mis Matched']);
+        }
+    }
+
    
-        function loginCheck(Request $request)
-        {
-            
-           
-            // $this->validate($request, [
-            //     'email'   => 'required|email',
-            //     'password'  => 'required|alphaNum|min:3'
-            // ]);
+
+
+    public function forgetPassword(Request $request)
+    {
+        // $validator = $this->validateEmail($request);
+
+        // if ($validator->fails()) {
+        //     return response()->json(['error' => $validator->errors()], 422);
+        // }
+
+        $email=$request->email;
+        $user = User::where('email', $request->email)->first();
+     
+        // return response()->json(['success' => "hello"], 200);
+        if (!$user) {
+            return response()->json(['error' => 'Email not found'],);
+        }
+
+        // Generate and save a token and set its expiry
+        $token = Str::random(40);
+        //    return response()->json(['success' => "Reset Password Link Set On Your Email"], 200);
+        // $user->update([
+        //     'remember_token' => $token,
+        //     // 'token_expiry' => now()->addMinutes(60),
+        // ]);
     
-            $user_data = array(
-                'email'  => $request->email,
-                'password' => $request->password
-            );
+            $user -> remember_token = $token;
+            $user->save();
+        // mail::to($user->email)->send (new sendResetLinkEmail($user));
+        $message = Mail::to($email)->send(new sendResetLinkEmail($email));
 
-         
-    
-            if (Auth::attempt($user_data)) {
-                $user = Auth::user();
+        // Send email with reset link
+        // $this->sendResetLinkEmail($user);
 
-                $customToken = bin2hex(random_bytes(32)); 
-    
-                return response()->json(['success'=>'Login Successfull','token'=>$customToken]);
-        
-          
-            } else {
-                return response()->json(['error'=>'User Credential Mis Matched']);
-            }
-
-
-           
-        
+        return response()->json(['success' => 'Reset link sent successfully'], 200);
     }
 
     function home()
     {
-        return view('index');   
+        return view('index');
     }
 
     function logout()
@@ -118,7 +151,4 @@ class loginController extends Controller
         Auth::logout();
         return redirect('api/login');
     }
-
-
-
 }

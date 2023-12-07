@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EmailVerification extends Mailable
+class sendResetLinkEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,10 +18,19 @@ class EmailVerification extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $user; // Data to pass to the email template
+
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
+
+    // public function build()
+    // {
+    //     return $this->subject('Subject of the Email')
+    //                 ->view('emails.my_custom_mailer')
+    //                 ->with(['data' => $this->data]);
+    // }
 
     /**
      * Get the message envelope.
@@ -31,7 +40,7 @@ class EmailVerification extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Email Verification',
+            subject: 'Send Reset Link Email',
         );
     }
 
@@ -42,8 +51,15 @@ class EmailVerification extends Mailable
      */
     public function content()
     {
+        // return new Content(
+        //     markdown: 'frontEnd.login.email.emailVerification',
+        //     with: [
+        //         'user' => $this->user,
+        //     ]
+        // );
+
         return new Content(
-            view: 'login.mail.sendResetLinkEmail',
+            view: 'mail.emailReset',
         );
     }
 
