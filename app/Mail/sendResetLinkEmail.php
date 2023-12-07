@@ -28,6 +28,16 @@ class sendResetLinkEmail extends Mailable
       
     }
 
+    public function build()
+    {
+        return $this->subject('Reset Your Password')
+                    ->view('mail.emailReset')
+                    ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
+                        'as' => 'logo.png',
+                        'mime' => 'image/png',
+                    ]);
+    }
+
    
 
     /**

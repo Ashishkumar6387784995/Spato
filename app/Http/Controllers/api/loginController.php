@@ -141,6 +141,23 @@ class loginController extends Controller
         return response()->json(['success' => 'Reset link sent successfully'], 200);
     }
 
+    public function passwordReset($token)
+{
+
+    return view('login/passwordResetForm');
+    // Use where clause to find the user with the given token
+    $user = User::where('remember_token', $token)->first();
+
+    // Check if the user is found
+    if ($user) {
+        // Do something with the user, for example, display user details
+        dd($user);
+    } else {
+        // User not found
+        dd('User not found for the given token.');
+    }
+}
+
     function home()
     {
         return view('index');
