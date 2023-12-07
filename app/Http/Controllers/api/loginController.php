@@ -141,7 +141,7 @@ class loginController extends Controller
         return response()->json(['success' => 'Reset link sent successfully'], 200);
     }
 
-    public function passwordReset($token)
+    public function passwordResetFrom($token)
 {
 
     return view('login/passwordResetForm');
