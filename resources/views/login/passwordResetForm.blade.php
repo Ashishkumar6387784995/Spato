@@ -31,12 +31,12 @@
                 <div class="modal-body">
                     <form method="post" id="passwordReset">
                         <div class="form-group">
-                            <input type="password" id="password" class="password" class="form-control" placeholder="Password" />
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
                             <!-- <i class="bi bi-eye-slash" ></i> -->
                             <i class="fa fa-eye-slash" id="togglePassword" style="font-size: 24px"></i>
                         </div>
                         <div class="form-group">
-                            <input type="password" id="confirmation_password" class="confirmation_password" class="form-control" placeholder="Confirm Password" />
+                            <input type="password" id="confirmation_password" name="confirmation_password" class="form-control" placeholder="Confirm Password" />
                         </div>
                         <button type="submit" class="btn btn-style">Reset</button>
                     </form>
