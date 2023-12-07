@@ -1,0 +1,65 @@
+﻿:root {
+    --blue: #44e1d5;
+    --black: #54606c;
+    --white: #ffffff;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-family: "Source Sans 3", sans-serif;
+    background-color: #e6e6e6;
+}
+.container {
+    margin-top: 2rem;
+}
+.container .brand-logo {
+    margin: 2rem 0rem;
+}
+.container .brand-logo img {
+    margin: auto;
+    justify-content: center;
+    width: 20%;
+    display: block;
+}
+.main-content {
+    background-color: var(--white);
+    width: 40%;
+    height: 50%;
+    padding: 4rem 2rem;
+    margin: auto;
+    display: block;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.main-content p {
+    text-align: center;
+    margin: 2rem 1rem;
+    font-weight: 600;
+    color: var(--black);
+}
+.btn-style {
+    background: rgb(60, 207, 223);
+    background: linear-gradient(
+        90deg,
+        rgba(60, 207, 223, 1) 15%,
+        rgba(69, 227, 212, 1) 63%
+    );
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    display: block;
+    padding: 1.5rem 2.5rem;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+}
+.main-content .contact-btn {
+    color: var(--blue);
+    text-decoration: none;
+}
