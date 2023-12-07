@@ -531,7 +531,77 @@
         </div>
       </div>
     </footer>
+ <!-- Sign up Form Modal starts -->
 
+
+
+ <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header signupform">
+        <a class="" href="#"
+          ><img class="signup-brand-logo" src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
+        />
+
+    </a>
+    
+   
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+      </div>
+      <p class="form-header-content text-center">
+    Bitte melden Sie sich mit den angegebenen Daten an.
+    </p>
+      
+      <div class="modal-body">
+        <form id="signupForm">
+        <div class="form-col">
+          <div class="row">
+            <div class="col">
+            <label for="recipient-name" class="col-form-label">First Name*</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" require>
+            </div>
+            <div class="col">
+            <label for="recipient-name" class="col-form-label">Last Name*</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" require>
+          </div>
+          </div>
+</div>
+          <div class="form-col">
+          <div class="row">
+            <div class="col">
+            <label for="recipient-name" class="col-form-label">Phone Number*</label>
+            <input type="text" class="form-control" id="phone" name="phone" require>
+            </div>
+            <div class="col">
+            <label for="recipient-name" class="col-form-label">E-mail*</label>
+            <input type="text" class="form-control" id="email" name="email" require>
+            </div>
+          </div>
+</div>
+          <div class="form-col">
+          <div class="row">
+            <div class="col">
+            <label for="message-text" class="col-form-label">Password*</label>
+            <input type="password" class="form-control" id="password" name="password" require>
+            </div>
+            <div class="col">
+            <label for="message-text" class="col-form-label">Confirm Password*</label>
+            <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" require>
+            </div>
+          </div>
+</div>
+          <button type="button" class="btn btn-style" id="loginBtn">Sign up</button>
+        </form>
+        <p class="foget-password mt-3"><a   type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#">Anmeldung ?</a></p>
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>
+    <!--  Signup Form Modal ends -->
     <!-- Login Form Modal starts -->
 
 
@@ -540,13 +610,19 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"><a class="navbar-brand" href="#"
-          ><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
+      <a class="" href="#"
+          ><img class="signup-brand-logo" src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""
         />
 
-    </a></h1>
+    </a>
+    
+   
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
       </div>
+      <p class="form-header-content text-center">
+      Wenn Sie ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an
+    </p>
       <div class="modal-body">
         <form id="loginForm">
         <span id="error-message" style="color:red;"></span>    
@@ -560,10 +636,10 @@
             <input type="password" class="form-control" id="password" name="password" require>
             <span id="password_err" style="color:red;"></span>
           </div>
-          <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+          <button type="button" class="btn btn-style" id="loginBtn">Login</button>
         </form>
         <p class="foget-password"><a   type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
-        <p class="foget-password">Sie haben kein Konto?<a href="#" > Hier registrieren.</a></p>
+        <p class="foget-password">Sie haben kein Konto?<span><a  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link" href="#" > Hier registrieren.</a></span></p>
       </div>
       <div class="modal-footer">
        
@@ -592,7 +668,7 @@
             <!-- <label for="recipient-name" class="col-form-label">E-mail*</label> -->
             <input type="text" class="form-control"  name="forget_email" placeholder="name@xyz.com" require>
           </div>
-          <button type="button" class="btn btn-primary" id="forgetBtn">Submit</button>
+          <button type="button" class="btn btn-style" id="forgetBtn">Submit</button>
         </form>
       </div>
       <div class="modal-footer">
