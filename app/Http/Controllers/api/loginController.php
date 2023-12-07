@@ -133,7 +133,7 @@ class loginController extends Controller
             $user -> remember_token = $token;
             $user->save();
         // mail::to($user->email)->send (new sendResetLinkEmail($user));
-        $message = Mail::to($email)->send(new sendResetLinkEmail($email));
+        $message = Mail::to($user)->send(new sendResetLinkEmail($user, $token));
 
         // Send email with reset link
         // $this->sendResetLinkEmail($user);

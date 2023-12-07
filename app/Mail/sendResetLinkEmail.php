@@ -18,19 +18,21 @@ class sendResetLinkEmail extends Mailable
      *
      * @return void
      */
-    public $user; // Data to pass to the email template
+    public $user;
+    public $token;
 
-    public function __construct($user)
+    public function __construct($user, $token)
     {
         $this->user = $user;
+        $this->token = $token;
+      
     }
 
-    // public function build()
-    // {
-    //     return $this->subject('Subject of the Email')
-    //                 ->view('emails.my_custom_mailer')
-    //                 ->with(['data' => $this->data]);
-    // }
+    public function build()
+    {
+        return $this->subject('Reset Your Password')
+                    ->view('mail.emailReset');
+    }
 
     /**
      * Get the message envelope.
@@ -40,7 +42,7 @@ class sendResetLinkEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Send Reset Link Email',
+            subject: 'Email Verification',
         );
     }
 
@@ -51,13 +53,6 @@ class sendResetLinkEmail extends Mailable
      */
     public function content()
     {
-        // return new Content(
-        //     markdown: 'frontEnd.login.email.emailVerification',
-        //     with: [
-        //         'user' => $this->user,
-        //     ]
-        // );
-
         return new Content(
             view: 'mail.emailReset',
         );

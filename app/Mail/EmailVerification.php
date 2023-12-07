@@ -43,7 +43,7 @@ class EmailVerification extends Mailable
     public function content()
     {
         return new Content(
-            view: 'login.mail.sendResetLinkEmail',
+            view: 'mail.emailVerification',
         );
     }
 
