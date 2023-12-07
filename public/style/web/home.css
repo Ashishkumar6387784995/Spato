@@ -61,6 +61,17 @@ form .btn-style {
     color: var(--black);
     font-weight: 600;
 }
+.checkbox .row {
+    width: 100%;
+}
+.checkbox .row .col {
+    width: 50%;
+    display: flex;
+}
+.checkbox .row .col .text {
+    margin: 10px 5px;
+}
+
 /* Signup Form ends */
 
 .bg-image {

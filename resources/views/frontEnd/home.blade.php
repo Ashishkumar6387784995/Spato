@@ -591,9 +591,28 @@
             </div>
           </div>
 </div>
+<div class="form-col checkbox">
+
+          <div class="row">
+            <div class="col">
+            <input type="checkbox"  id="btncheck1"> <p class="text">Subscribe our newsletter</p>
+            </div>
+            <div class="col">
+            <input type="checkbox" id="btncheck2" ><p class="text"> Want to become reseller</p>
+            </div>
+          </div>
+</div>
+<div class="form-col">
+
+          <div class="row">
+            <div class="col">
+            <input type="checkbox" id="btncheck3"><span class="text"> Allow remote shopping assistance</span>
+            </div>
+          </div>
+</div>
           <button type="button" class="btn btn-style" id="loginBtn">Sign up</button>
         </form>
-        <p class="foget-password mt-3"><a   type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#">Anmeldung ?</a></p>
+        <p class="foget-password mt-3 d-flex">Schon Kunde ?  <a style="color:var(--blue);"  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"> Anmeldung </a></p>
       </div>
       <div class="modal-footer">
        
@@ -638,8 +657,8 @@
           </div>
           <button type="button" class="btn btn-style" id="loginBtn">Login</button>
         </form>
-        <p class="foget-password"><a   type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
-        <p class="foget-password">Sie haben kein Konto?<span><a  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link" href="#" > Hier registrieren.</a></span></p>
+        <p class="foget-password d-flex"><a   style="color:var(--blue);" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
+        <p class="foget-password d-flex">Sie haben kein Konto?<span><a  style="color:var(--blue);" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#" > Hier registrieren.</a></span></p>
       </div>
       <div class="modal-footer">
        
