@@ -38,6 +38,7 @@ Route::get('login',[loginController::class,'loginform']);
 Route::post('login',[loginController::class,'loginCheck']);
 Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']);
+Route::post('password/reset',[loginController::class,'passwordReset']);
 
 Route::get('home1',[loginController::class,'home']);
 Route::get('logout',[loginController::class,'logout']);
