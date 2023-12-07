@@ -144,7 +144,7 @@ class loginController extends Controller
     public function passwordResetFrom($token)
 {
 
-    return view('login/passwordResetForm');
+    return view('login/passwordResetForm')->with(compact('token'));
     // Use where clause to find the user with the given token
     $user = User::where('remember_token', $token)->first();
 
