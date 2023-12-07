@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   
-    <link rel="stylesheet" href="{{ asset('assets/frontEnd/resetPassword.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontEnd/login/resetPassword.css') }}">
    </head>
   <body>
     <div id="myModal" class="modal fade">
@@ -64,17 +64,6 @@
   $("#myModal").modal("show");
 });
 
-const togglePassword = document.querySelector("#togglePassword");
-const password = document.querySelector("#password");
-togglePassword.addEventListener("click", () => {
-  // Toggle the type attribute using
-  // getAttribure() method
-  const type =
-    password.getAttribute("type") === "password" ? "text" : "password";
-  password.setAttribute("type", type);
-  // Toggle the eye and bi-eye icon
-  this.classList.toggle("bi-eye");
-});
 
     </script>
   </body>
