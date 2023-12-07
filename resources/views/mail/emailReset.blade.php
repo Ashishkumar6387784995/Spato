@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your have just requested to reset your passwort</title>
-    <link rel="stylesheet" href="email.css" />
-    <link rel="stylesheet" href="{{ asset('style/frontEnd/email/resetEmail.') }}">
+    <link rel="stylesheet" href="{{ asset('style/frontEnd/email/resetEmail.css') }}">
   </head>
   <body>
     <div class="container">
