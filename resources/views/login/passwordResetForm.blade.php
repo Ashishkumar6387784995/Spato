@@ -28,7 +28,7 @@
               &times;
             </button>
           </div>
-          <p class="form-header-content text-center">
+          <p class="form-header-content text-center" >
             Setze dein Passwort zurück
           </p>
           <div class="modal-body">
