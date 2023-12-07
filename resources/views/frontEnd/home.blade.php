@@ -612,7 +612,7 @@
 </div>
           <button type="button" class="btn btn-style" id="loginBtn">Sign up</button>
         </form>
-        <p class="foget-password mt-3 d-flex">Schon Kunde ?  <a style="color:var(--blue);"  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"> Anmeldung </a></p>
+        <p class="foget-password mt-3 d-flex">Schon Kunde ?  <a style="text-decoration:underline;"  type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"> Anmeldung </a></p>
       </div>
       <div class="modal-footer">
        
@@ -657,8 +657,8 @@
           </div>
           <button type="button" class="btn btn-style" id="loginBtn">Login</button>
         </form>
-        <p class="foget-password d-flex"><a   style="color:var(--blue);" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
-        <p class="foget-password d-flex">Sie haben kein Konto?<span><a  style="color:var(--blue);" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#" > Hier registrieren.</a></span></p>
+        <p class="foget-password d-flex"><a   style="text-decoration:underline;" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
+        <p class="foget-password d-flex">Sie haben kein Konto?<span><a  style="text-decoration:underline;" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#" > Hier registrieren.</a></span></p>
       </div>
       <div class="modal-footer">
        
