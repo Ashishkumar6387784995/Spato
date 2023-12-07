@@ -590,7 +590,8 @@
         <form  id="forgetForm">    
           <div class="mb-3">
             <!-- <label for="recipient-name" class="col-form-label">E-mail*</label> -->
-            <input type="text" class="form-control"  name="forget_email" placeholder="name@xyz.com" require>
+            <input type="text" class="form-control"  name="forget_email" id="forget_email" placeholder="name@xyz.com" require>
+            <span id="forget_email_err"></span>
           </div>
           <button type="button" class="btn btn-primary" id="forgetBtn">Submit</button>
         </form>
@@ -652,7 +653,7 @@
         });
 
 
-        $('#loginBtn').click(function () {
+        $('#forgetBtn').click(function () {
             // Clear previous error messages
             $('#error-message').text('');
             $('#password_err').text('');
@@ -697,7 +698,7 @@
             });
         });
 
-        
+
     });
 </script>
 
