@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('mobile');
             $table->rememberToken();
+            $table->string('action')->nullable();
+            $table->string('role')->nullable();
+
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 };

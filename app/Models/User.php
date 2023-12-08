@@ -24,6 +24,7 @@ class User extends Authenticatable
         'remember_token',
         'mobile',
         'action',
+        'role',
     ];
 
     /**

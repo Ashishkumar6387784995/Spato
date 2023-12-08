@@ -10,14 +10,8 @@
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
 
   <!-- Fonts -->
-  <link
-      rel="stylesheet"
-      href="path/to/font-awesome/css/font-awesome.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/e1528f4468.js"
-      crossorigin="anonymous"
-    ></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
   <!-- Fonts -->
 
   <!-- Crausel start -->
@@ -126,14 +120,13 @@
     </div>
   </nav>
 
-  <div class="bg-image" style="background-image:url({{ asset('assets/frontEnd/web/images/remove.png')}}); !important"></div>
+  <div class="bg-image" style="background-image:url({{ asset('assets/frontEnd/web/images/remove.png')}} )  !important"></div>
 
   <section class="view">
     <div class="container">
       <div class="row text-center p-4">
         <div class="col d-flex m-auto justify-content-center">
-          <span class="icon"><i class="fa fa-truck" aria-hidden="true"></i
-            ></span>
+          <span class="icon"><i class="fa fa-truck" aria-hidden="true"></i></span>
           <p class="view-desc ps-3">Fast, Free Shipping On Order Over 350€</p>
         </div>
         <div class="col d-flex m-auto justify-content-center">
@@ -440,7 +433,7 @@
 
         <div class="modal-body">
           <form id="signupForm" method="post">
-          <div class="text-center"><span id="common_err" style="color:var(--blue); font-size:18px; font-weight:600; text-align:center;"></span></div>
+            <div class="text-center"><span id="common_err" style="color:var(--blue); font-size:18px; font-weight:600; text-align:center;"></span></div>
             <div class="form-col">
               <div class="row">
                 <div class="col">
@@ -487,11 +480,11 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="btncheck1" value="Bike">
+                  <input type="checkbox" id="btncheck1" value="Subscribe our newsletter">
                   <p class="text">Subscribe our newsletter</p>
                 </div>
                 <div class="col">
-                  <input type="checkbox" id="btncheck2" value="Car">
+                  <input type="checkbox" id="btncheck2" value="Want to become reseller">
                   <p class="text"> Want to become reseller</p>
                 </div>
               </div>
@@ -500,9 +493,28 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="btncheck3" ><span class="text" value="Boat"> Allow remote shopping assistance</span>
+                  <input type="checkbox" id="btncheck3"><span class="text" value="Allow remote shopping assistance"> Allow remote shopping assistance</span>
                 </div>
               </div>
+            </div>
+<br>
+            <div class="col-md-6 mb-3">
+
+              <div class="captcha">
+
+                <span>{!! captcha_img('math') !!}</span>
+
+
+                <button type="button" class="btn btn-success btn-refresh"><i class="fa fa-refresh"></i></button>
+
+              </div><br>
+
+              <input id="signup_captcha" type="text" class="form-control" placeholder="Enter Captcha" name="signup_captcha">
+              <span id="signup_captcha_err"  style="color:red"></span>
+
+
+
+
             </div>
             <button type="button" class="btn btn-style" id="signupBtn">Sign up</button>
           </form>
@@ -691,6 +703,7 @@
       $('#signup_email_err').text('');
       $('#signup_password_err').text('');
       $('#signup_Confirm_password_err').text('');
+      $('#signup_captcha_err').text('');
 
       // Get form data
       var formData = {
@@ -700,6 +713,7 @@
         email: $('#signup_email').val(),
         password: $('#signup_password').val(),
         password_confirmation: $('#signup_confirmpassword').val(),
+        captcha : $('#signup_captcha').val(),
 
       };
 
@@ -748,6 +762,11 @@
         return;
       }
 
+      if (!formData.captcha) {
+        $('#signup_captcha_err').text('Please enter Capcha Code.');
+        return;
+      }
+
       console.log(formData);
 
 
@@ -765,16 +784,16 @@
             // Do something on successful registration, e.g., redirect to a new page
             // window.location.href = '/success-page';
             $('#common_err').text("Registration Successfull...");
-          } 
+          }
 
 
           if (response.ValidationError) {
-                // Display validation errors next to the respective form fields
-                console.log('eoor');
-                displayValidationErrors(response.ValidationError);
-            } 
+            // Display validation errors next to the respective form fields
+            console.log('eoor');
+            displayValidationErrors(response.ValidationError);
+          }
         },
-       
+
       });
 
       function displayValidationErrors(errors) {
@@ -797,7 +816,28 @@
         if (errors.password_confirmation) {
           $('#signup_Confirm_password_err').text(errors.password_confirmation[0]);
         }
+        if (errors.captcha) {
+          $('#signup_captcha_err').text(errors.captcha[0]);
+        }
       }
+
+    });
+
+    $(".btn-refresh").click(function() {
+
+      $.ajax({
+
+        type: 'GET',
+
+        url: '/api/refresh_captcha',
+
+        success: function(data) {
+
+          $(".captcha span").html(data.captcha);
+
+        }
+
+      });
 
     });
   </script>
