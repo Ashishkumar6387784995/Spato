@@ -428,17 +428,18 @@
 
         <div class="modal-body">
           <form id="signupForm" method="post">
+          <div class="text-center"><span id="common_err" style="color:var(--blue); font-size:18px; font-weight:600; text-align:center;"></span></div>
             <div class="form-col">
               <div class="row">
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">First Name*</label>
                   <input type="text" class="form-control" id="signup_firstname" name="signup_firstname" require>
-                  <span id="signup_firstName_err"></span>
+                  <span id="signup_firstName_err" style="color:red;"></span>
                 </div>
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">Last Name*</label>
                   <input type="text" class="form-control" id="signup_lastname" name="signup_lastname" require>
-                  <span id="signup_lastName_err"></span>
+                  <span id="signup_lastName_err" style="color:red"></span>
                 </div>
               </div>
             </div>
@@ -447,12 +448,12 @@
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">Phone Number*</label>
                   <input type="text" class="form-control" id="signup_phone" name="signup_phone" require>
-                  <span id="signup_phone_err"></span>
+                  <span id="signup_phone_err" style="color:red"></span>
                 </div>
                 <div class="col">
                   <label for="recipient-name" class="col-form-label">E-mail*</label>
                   <input type="text" class="form-control" id="signup_email" name="signup_email" require>
-                  <span id="signup_email_err"></span>
+                  <span id="signup_email_err" style="color:red"></span>
                 </div>
               </div>
             </div>
@@ -461,12 +462,12 @@
                 <div class="col">
                   <label for="message-text" class="col-form-label">Password*</label>
                   <input type="password" class="form-control" id="signup_password" name="signup_password" require>
-                  <span id="signup_password_err"></span>
+                  <span id="signup_password_err" style="color:red"></span>
                 </div>
                 <div class="col">
                   <label for="message-text" class="col-form-label">Confirm Password*</label>
                   <input type="password" class="form-control" id="signup_confirmpassword" name="signup_confirmpassword" require>
-                  <span id="signup_Confirm_password_err"></span>
+                  <span id="signup_Confirm_password_err" style="color:red"></span>
                 </div>
               </div>
             </div>
@@ -737,19 +738,18 @@
 
           if (response.success) {
             // Do something on successful registration, e.g., redirect to a new page
-            window.location.href = '/success-page';
+            // window.location.href = '/success-page';
+            $('#common_err').text("Registration Successfull...");
           } 
-        },
-        error: function(error) {
-            // Handle error
-            if (error.responseJSON) {
+
+
+          if (response.ValidationError) {
                 // Display validation errors next to the respective form fields
-                displayValidationErrors(error.responseJSON);
-            } else {
-                // Display a generic error message or customize based on the server response
-                alert('An error occurred. Please try again.');
-            }
-        }
+                console.log('eoor');
+                displayValidationErrors(response.ValidationError);
+            } 
+        },
+       
       });
 
       function displayValidationErrors(errors) {

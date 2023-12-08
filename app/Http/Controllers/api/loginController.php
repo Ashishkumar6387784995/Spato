@@ -39,7 +39,7 @@ class loginController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string',
             'lastName' => 'required|string',
-            'phone' => 'required|string',
+            'phone' => 'required|integer',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
           
@@ -50,7 +50,7 @@ class loginController extends Controller
 
         if ($validator->fails()) {
             // Return validation errors in the response
-            return response()->json(['message'=>$validator->errors()]);
+            return response()->json(['ValidationError'=>$validator->errors()]);
         }
 
         // Create a new user

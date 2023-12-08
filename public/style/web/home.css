@@ -41,6 +41,10 @@ body {
 }
 
 /* Signup Form starts*/
+.modal-content {
+    width: 130% !important;
+}
+
 .modal-header {
     border: none !important;
 }
