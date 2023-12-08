@@ -9,6 +9,17 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
 
+  <!-- Fonts -->
+  <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/e1528f4468.js"
+      crossorigin="anonymous"
+    ></script>
+  <!-- Fonts -->
+
   <!-- Crausel start -->
 
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet" />
@@ -98,17 +109,17 @@
             </button> -->
 
           <li class="nav-item border-0 list-unstyled ps-lg-5 pe-3">
-            <a class="nav-link" href="#"><img src="{{ asset('assets/frontEnd/web/icons/search.svg') }}" alt="" srcset="" /></a>
+            <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
           </li>
           <li class="nav-item list-unstyled pe-3 ps-5">
-            <a class="nav-link" href="#"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></a>
+            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
           <li class="nav-item list-unstyled pe-3 ps-3">
             <a class="nav-link" href="#">0,00€</a>
           </li>
 
           <li class="nav-item border-0 list-unstyled pe-3 ps-3">
-            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><img src="{{ asset('assets/frontEnd/web/icons/profile.svg')}}" alt="" srcset="" /></a>
+            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
           </li>
         </form>
       </div>
@@ -121,17 +132,18 @@
     <div class="container">
       <div class="row text-center p-4">
         <div class="col d-flex m-auto justify-content-center">
-          <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+          <span class="icon"><i class="fa fa-truck" aria-hidden="true"></i
+            ></span>
           <p class="view-desc ps-3">Fast, Free Shipping On Order Over 350€</p>
         </div>
         <div class="col d-flex m-auto justify-content-center">
-          <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+          <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
           <p class="view-desc ps-3">
             Your Trade Partener in Water Technology
           </p>
         </div>
         <div class="col d-flex m-auto justify-content-center">
-          <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+          <span class="icon"><i class="fa-solid fa-star"></i></span>
           <p class="view-desc ps-3">8.3/10 Customer Rating</p>
         </div>
       </div>
@@ -142,27 +154,27 @@
     <h3 class="text-center">Our Products Categories</h3>
     <div class="row categories text-center p-4 m-auto justify-content-evenly">
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <!-- <div class="col">
@@ -174,27 +186,27 @@
     </div>
     <div class="row categories text-center p-4 m-auto justify-content-evenly">
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
-        <span class="icon"><img src="{{ asset('assets/frontEnd/web/icons/cart.svg')}}" alt="" srcset="" /></span>
+        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <!-- <div class="col">
