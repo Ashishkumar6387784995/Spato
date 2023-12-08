@@ -39,7 +39,7 @@ class loginController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string',
             'lastName' => 'required|string',
-            'phone' => 'required|integer',
+            'phone' => 'required|integer|min:8|',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
           
@@ -53,12 +53,14 @@ class loginController extends Controller
             return response()->json(['ValidationError'=>$validator->errors()]);
         }
 
+        $token = Str::random(40);
         // Create a new user
         $user = User::create([
             'name' => $request->input('firstName') . ' ' . $request->input('lastName'),
             'mobile' => $request->input('phone'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
+            'remember_token' => $token,
         ]);
 
 
@@ -69,7 +71,7 @@ class loginController extends Controller
         // dd($message);
 
         if($user){
-            return response()->json(['success' => 'User registered successfully']);
+            return response()->json(['success' => 'User registered successfully', 'token' => $token]);
  
         }
 
@@ -107,7 +109,10 @@ class loginController extends Controller
         if (Auth::attempt($user_data)) {
             $user = Auth::user();
 
-            $customToken = bin2hex(random_bytes(32));
+            $customToken = Str::random(40);
+
+            $user->remember_token = $customToken;
+            $user->save();
 
             return response()->json(['success' => 'Login Successfull', 'token' => $customToken]);
         } else {
