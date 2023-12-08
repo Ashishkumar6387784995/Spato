@@ -53,9 +53,7 @@ class loginController extends Controller
             return response()->json(['ValidationError'=>$validator->errors()]);
         }
 
-        $action = ($request->input('btncheck1') ? 'action1' : null) .
-          ($request->input('btncheck2') ? 'action2' : null) .
-          ($request->input('btncheck3') ? 'action3' : null);
+        $action = $request->input('checkBox1') .'/'. $request->input('checkBox2').'/'. $request->input('checkBox3');
 
 
         $token = Str::random(40);
@@ -66,7 +64,9 @@ class loginController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'remember_token' => $token,
-            'action' => "$action",
+            'action' => $action,
+            'role' => "Normal",
+
         ]);
 
 

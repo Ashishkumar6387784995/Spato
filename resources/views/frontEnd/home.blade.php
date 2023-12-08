@@ -475,11 +475,11 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="btncheck1" value="Bike">
+                  <input type="checkbox" id="btncheck1" value="Subscribe our newsletter">
                   <p class="text">Subscribe our newsletter</p>
                 </div>
                 <div class="col">
-                  <input type="checkbox" id="btncheck2" value="Car">
+                  <input type="checkbox" id="btncheck2" value="Want to become reseller">
                   <p class="text"> Want to become reseller</p>
                 </div>
               </div>
@@ -488,7 +488,7 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="btncheck3" ><span class="text" value="Boat"> Allow remote shopping assistance</span>
+                  <input type="checkbox" id="btncheck3" ><span class="text" value="Allow remote shopping assistance"> Allow remote shopping assistance</span>
                 </div>
               </div>
             </div>
