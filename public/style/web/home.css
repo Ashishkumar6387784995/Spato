@@ -3,6 +3,23 @@
     --black: #54606c;
     --white: #ffffff;
 }
+
+/* Dark mode */
+.dark-mode {
+    background-color: #050811;
+    /* color: white; */
+}
+#view {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+.dark-mode #view {
+    background-color: #555;
+    color: #fff;
+}
+/* Styles for dark mode */
 body {
     margin: 0;
     padding: 0;
@@ -126,12 +143,32 @@ form .btn-style {
     max-height: 100%;
 }
 .card {
+    width: 400px;
     margin: 0 0.5em;
     box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
     border: none;
     border-radius: 0;
 }
 .card .card-body .product-price {
+    text-align: right !important;
+    color: #050811;
+    font-weight: 600;
+}
+.card .card-body li {
+    color: #050811;
+    font-weight: 600;
+}
+.card .card-body .product-price .price {
+    font-size: 25px;
+    color: var(--blue);
+    font-weight: 800;
+}
+.card .btn {
+    text-align: center;
+    width: 100%;
+    background-color: var(--blue);
+    color: #050811;
+    font-weight: 600;
 }
 .carousel-inner {
     padding: 1em;

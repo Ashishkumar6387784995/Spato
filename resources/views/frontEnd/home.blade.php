@@ -31,94 +31,7 @@
 </head>
 
 <body oncontextmenu="return false" class="snippet-body">
-  <nav class="navbar navbar-expand-lg ps-4 pe-4">
-    <div class="container-fluid">
-
-      <!-- <a class="navbar-brand" href="#"
-          ><img src="assets/images/spato-logo.png" alt="" srcset=""
-        /> -->
-
-
-
-      <a class="navbar-brand" href="#"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
-
-
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
-        <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pools</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Technik</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Attraktionen</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Verrohrung</a>
-          </li>
-
-          <li class="nav-item border-0">
-            <a class="nav-link" href="#">Wasserpflege</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Link
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li> -->
-          <!-- <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Link</a>
-            </li> -->
-        </ul>
-        <form class="d-flex" role="search">
-          <!-- <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button> -->
-
-          <li class="nav-item border-0 list-unstyled ps-lg-5 pe-3">
-            <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-          </li>
-          <li class="nav-item list-unstyled pe-3 ps-5">
-            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-          </li>
-          <li class="nav-item list-unstyled pe-3 ps-3">
-            <a class="nav-link" href="#">0,00€</a>
-          </li>
-
-          <li class="nav-item border-0 list-unstyled pe-3 ps-3">
-            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-          </li>
-        </form>
-      </div>
-    </div>
-  </nav>
+@include('frontEnd/partial/header')
 
   <div class="bg-image" style="background-image:url({{ asset('assets/frontEnd/web/images/remove.png')}} )  !important"></div>
 
@@ -210,122 +123,193 @@
         </div> -->
     </div>
   </div>
-  <section class="featured-products">
-    <h5 class="text-center text-light">Subtitle</h5>
-    <h3 class="text-center text-light">Our Products Categories</h3>
+  <!-- Latest Products starts -->
+  <section class="latest-products">
+    <h5 class="text-center ">Subtitle</h5>
+    <h3 class="text-center ">Latest Products Categories</h3>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="cards-wrapper">
             <div class="card">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  <li>Merkamal 1 - lauft fluffig</li>
-                  <li>Merkamal 2 - fahurt urail... lorem</li>
-                </p>
-                <p class="product-price">
-                  statt - 42,50€ <span class="price">25,30€</span>
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card d-none d-md-block">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card d-none d-md-block">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
           </div>
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
             <div class="card">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card d-none d-md-block">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            
+              <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card d-none d-md-block">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
           </div>
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
             <div class="card">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card d-none d-md-block">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card d-none d-md-block">
-              <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Saugrobroter</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make
-                  up the bulk of the card's content.
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+               <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
           </div>
         </div>
@@ -340,77 +324,210 @@
       </a>
     </div>
   </section>
-  <footer class="footer">
-    <div class="footer-container">
-      <p class="useless">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta veniam
-        tempora, error ipsa deleniti illum labore est officia minima incidunt
-        corporis quibusdam dolore quod. Eaque vel corporis labore
-        necessitatibus adipisci amet ea aliquam obcaecati ratione corrupti
-        nesciunt excepturi aliquid est voluptatem, unde iste possimus minima
-        officiis eius hic sapiente ad eos sint quos. Mollitia enim voluptatem
-        harum error nostrum adipisci dolores iusto deleniti! Recusandae?
-      </p>
-      <p class="useless">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta veniam
-        tempora, error ipsa deleniti illum labore est officia minima incidunt
-        corporis quibusdam dolore quod. Eaque vel corporis labore
-        necessitatibus adipisci amet ea aliquam obcaecati ratione corrupti
-        nesciunt excepturi aliquid est voluptatem,
-      </p>
-      <div class="space-for-phone">
-        <br />
-        <br />
-        <br />
-        <br />
+  <!-- Latest Products ends -->
+  <section class="featured-products">
+    <h5 class="text-center text-light">Subtitle</h5>
+    <h3 class="text-center text-light">Our Products Categories</h3>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="cards-wrapper">
+            <div class="card">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+            <div class="card d-none d-md-block">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+            <div class="card d-none d-md-block">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+            <div class="card d-none d-md-block">
+            
+              <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+            <div class="card d-none d-md-block">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+            <div class="card d-none d-md-block">
+            <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+            <div class="card d-none d-md-block">
+               <img
+                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saugrobroter</h5>
+                  <p class="card-text">
+                    <li>Merkamal 1 - lauft fluffig</li>
+                    <li>Merkamal 2 - fahurt urail... lorem</li>
+                  </p>
+                  <p class="product-price">
+                    statt - 42,50€ <span class="price">25,30€</span>
+                  </p>
+                  
+                </div>
+                <a href="#" class="btn">IN DEN WARENKORB</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="row text-center">
-        <div class="col">
-          <p class="footer-desc"><a href="#">AGB</a></p>
-          <p class="footer-desc"><a href="#">Versand & Lieferung</a></p>
-          <p class="footer-desc"><a href="#">Zahlungsten</a></p>
-          <p class="footer-desc"><a href="#">Widerrufsbelehrung</a></p>
-          <p class="footer-desc"><a href="#">Impressum</a></p>
-        </div>
-        <div class="col">
-          <p class="footer-desc"><a href="#">Pools</a></p>
-          <p class="footer-desc"><a href="#">Technik</a></p>
-          <p class="footer-desc"><a href="#">Attraktionen</a></p>
-          <p class="footer-desc"><a href="#">Heizsysteme</a></p>
-          <p class="footer-desc"><a href="#">Wasserpflege</a></p>
-          <p class="footer-desc"><a href="#">Verrohrung</a></p>
-        </div>
-        <div class="col">
-          <p class="footer-desc"><a href="#">Vendor Login</a></p>
-          <p class="footer-desc"><a href="#">Kontakt</a></p>
-          <p class="footer-desc"><a href="#">Login</a></p>
-        </div>
-        <div class="col">
-          <p class="footer-desc" style="text-align: center">
-            Download Our Mobile App
-          </p>
-          <p class="footer-desc">
-            <a href="#"><img src="{{ asset('assets/frontEnd/web/images/spato-app-store.png')}}" alt="" srcset="" /></a>
-          </p>
-          <p class="footer-desc">
-            <a href="#"><img src="{{ asset('assets/frontEnd/web/images/spato-play-store.webp')}}" alt="" srcset="" /></a>
-          </p>
-        </div>
-        <div class="col">
-          <p class="footer-desc">
-            <img class="footer-brand" src="{{ asset('assets/frontEnd/web/images/spato-logo.png')}}" alt="" srcset="" />
-          </p>
-          <p class="footer-desc phone">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
-            ad recusandae ratione? Maiores, architecto aliquam veniam ducimus
-            esse cum quaerat.
-          </p>
-        </div>
-      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <!-- <span class="sr-only">Previous</span> -->
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-  </footer>
+  </section>
 
 
+  @include('frontEnd/partial/footer')
   <!-- Sign up Form Modal starts -->
 
 
