@@ -53,6 +53,11 @@ class loginController extends Controller
             return response()->json(['ValidationError'=>$validator->errors()]);
         }
 
+        $action = ($request->input('btncheck1') ? 'action1' : null) .
+          ($request->input('btncheck2') ? 'action2' : null) .
+          ($request->input('btncheck3') ? 'action3' : null);
+
+
         $token = Str::random(40);
         // Create a new user
         $user = User::create([
@@ -61,6 +66,7 @@ class loginController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'remember_token' => $token,
+            'action' => "$action",
         ]);
 
 

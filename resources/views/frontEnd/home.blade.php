@@ -475,11 +475,11 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="btncheck1">
+                  <input type="checkbox" id="btncheck1" value="Bike">
                   <p class="text">Subscribe our newsletter</p>
                 </div>
                 <div class="col">
-                  <input type="checkbox" id="btncheck2">
+                  <input type="checkbox" id="btncheck2" value="Car">
                   <p class="text"> Want to become reseller</p>
                 </div>
               </div>
@@ -488,7 +488,7 @@
 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="btncheck3"><span class="text"> Allow remote shopping assistance</span>
+                  <input type="checkbox" id="btncheck3" ><span class="text" value="Boat"> Allow remote shopping assistance</span>
                 </div>
               </div>
             </div>
@@ -688,7 +688,20 @@
         email: $('#signup_email').val(),
         password: $('#signup_password').val(),
         password_confirmation: $('#signup_confirmpassword').val(),
+
       };
+
+      if ($('#btncheck1').is(':checked')) {
+        formData.checkBox1 = $('#btncheck1').val();
+      }
+
+      if ($('#btncheck2').is(':checked')) {
+        formData.checkBox2 = $('#btncheck2').val();
+      }
+
+      if ($('#btncheck3').is(':checked')) {
+        formData.checkBox3 = $('#btncheck3').val();
+      }
 
 
       // Client-side validation
