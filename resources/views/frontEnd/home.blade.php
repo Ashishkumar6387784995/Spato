@@ -497,7 +497,7 @@
                 </div>
               </div>
             </div>
-<br>
+            <br>
             <div class="col-md-6 mb-3">
 
               <div class="captcha">
@@ -510,7 +510,7 @@
               </div><br>
 
               <input id="signup_captcha" type="text" class="form-control" placeholder="Enter Captcha" name="signup_captcha">
-              <span id="signup_captcha_err"  style="color:red"></span>
+              <span id="signup_captcha_err" style="color:red"></span>
 
 
 
@@ -713,7 +713,7 @@
         email: $('#signup_email').val(),
         password: $('#signup_password').val(),
         password_confirmation: $('#signup_confirmpassword').val(),
-        captcha : $('#signup_captcha').val(),
+        captcha: $('#signup_captcha').val(),
 
       };
 
