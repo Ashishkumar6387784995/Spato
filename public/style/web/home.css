@@ -11,6 +11,9 @@ body {
     background-color: var(--white);
     color: var(--black);
 }
+i {
+    color: var(--black);
+}
 
 .active {
     color: var(--blue) !important;
