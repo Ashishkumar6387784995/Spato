@@ -43,7 +43,7 @@ class loginController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
           
-            // 'captcha' => 'required',
+            'captcha' => 'required',
         ]);
 
         // return response()->json(['success'=>'errors']);
