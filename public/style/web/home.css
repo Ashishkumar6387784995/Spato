@@ -7,17 +7,17 @@
 /* Dark mode */
 .dark-mode {
     background-color: #050811;
-    /* color: white; */
+    color: #a5a8ac;
 }
-#view {
+/* #view {
     padding: 10px;
     border: 1px solid #ccc;
     margin: 10px;
-}
+} */
 
 .dark-mode #view {
-    background-color: #555;
-    color: #fff;
+    background-color: #04101a;
+    color: #a5a7a9;
 }
 /* Styles for dark mode */
 body {
@@ -108,14 +108,14 @@ form .btn-style {
     padding: 0;
     border-bottom: 5px solid var(--blue);
 }
-.view {
+/* .view {
     background-color: #f0eeee;
 }
 .view .container .row .col p {
     color: var(--black);
     font-weight: 600;
     font-size: 15px;
-}
+} */
 .categories .col {
     border: 1px solid var(--black) !important;
     margin: 0px 10px;
