@@ -784,6 +784,7 @@
             // Do something on successful registration, e.g., redirect to a new page
             // window.location.href = '/success-page';
             $('#common_err').text("Registration Successfull...");
+            $('#signupForm')[0].reset();
           }
 
 

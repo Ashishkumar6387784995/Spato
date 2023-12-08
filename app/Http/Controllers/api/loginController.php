@@ -42,7 +42,6 @@ class loginController extends Controller
             'phone' => 'required|integer|min:8|',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-          
             'captcha' => 'required',
         ]);
 
