@@ -53,6 +53,18 @@ i {
     font-weight: 600;
 }
 
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-menu{
+    margin-top: 2rem !important;
+}
+.dropdown-menu li{
+    padding: 1rem;
+
+}
+
 .navbar-brand {
     /* width: 40%; */
 }

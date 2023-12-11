@@ -14,8 +14,8 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
-        <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px">
+      <div class="collapse navbar-collapse ms-auto" id="navbarScroll" >
+        <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px; margin-left:10rem !important;">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -68,7 +68,7 @@
             <button class="btn btn-outline-success" type="submit">
               Search
             </button> -->
-            <li class="nav-item border-0 list-unstyled ">
+            <li class="nav-item border-0 list-unstyled list" style="list-style-type:none;">
             <div class="form-check form-switch">
                 <input class="form-check-input m-auto"  onclick="myFunction()" type="checkbox" role="switch" id="darkModeToggle">
               </div>
@@ -76,6 +76,10 @@
           <li class="nav-item border-0 list-unstyled ">
             <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
           </li>
+
+
+          @if(auth()->check())
+
           <li class="nav-item list-unstyled pe-3 ps-5">
             <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
@@ -83,7 +87,38 @@
             <a class="nav-link" href="#">0,00€</a>
           </li>
 
-          <div class="user-info">
+          
+             
+              <li class="nav-item dropdown" style="list-style-type:none;">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+              <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;"/>
+              </a>
+              <ul class="dropdown-menu">
+              
+                <li><a class="dropdown-item">Welcome, <span style="color:red;">{{ auth()->user()->name }}</span></a></li>
+                <li><i class="fa-solid fa-user"></i>Profile</li>
+                <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
+                <li id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
+                <li>
+                @else
+        <li class="nav-item border-0 list-unstyled pe-3 ps-3">
+            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
+          </li>
+        @endif
+                </li>
+              </ul>
+            </li>
+
+            
+
+
+          <!-- <div class="user-info d-flex">
           @if(auth()->check())
             <span>Welcome, {{ auth()->user()->name }}</span>
 
@@ -96,7 +131,7 @@
             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
           </li>
         @endif
-    </div>
+    </div> -->
 
           
         </form>
