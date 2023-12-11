@@ -39,9 +39,10 @@ Route::post('login',[loginController::class,'loginCheck']);
 Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']);
 Route::post('password/reset',[loginController::class,'passwordReset']);
+Route::post('logout',[loginController::class,'logout']);
 
 Route::get('home1',[loginController::class,'home']);
-Route::get('logout',[loginController::class,'logout']);
+
 
 Route::get('dashboard',[dashboardController::class,'dashboard']);
 

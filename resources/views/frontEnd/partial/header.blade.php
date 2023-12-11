@@ -83,10 +83,65 @@
             <a class="nav-link" href="#">0,00€</a>
           </li>
 
-          <li class="nav-item border-0 list-unstyled pe-3 ps-3">
+          <div class="user-info">
+          @if(auth()->check())
+            <span>Welcome, {{ auth()->user()->name }}</span>
+
+            <button id="logoutButton">Logout</button>
+
+
+       
+        @else
+        <li class="nav-item border-0 list-unstyled pe-3 ps-3">
             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
           </li>
+        @endif
+    </div>
+
+          
         </form>
       </div>
     </div>
+
+     
   </nav>
+
+
+  <script>
+
+    // public/js/logout.js
+
+// Function to handle the logout API call
+function logout() {
+    // Retrieve the token from local storage
+    var authToken = localStorage.getItem('authToken');
+   console.log("hello");
+    // Make a POST request to the logout endpoint using jQuery
+    $.ajax({
+        url: 'http://127.0.0.1:8000/api/logout',
+        type: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + authToken,
+            'Content-Type': 'application/json'
+        },
+        success: function (response) {
+            // Clear the authentication token from local storage
+            localStorage.removeItem('authToken');
+            // Redirect or perform any other necessary actions after logout
+            window.location.href = 'http://127.0.0.1:8000/api/home';
+        },
+        error: function (error) {
+            // Handle errors
+            console.error('Error:', error);
+        }
+    });
+}
+
+// Attach the logout function to the click event of the logout button
+
+    $('#logoutButton').on('click', function () {
+        logout();
+    });
+
+
+  </script>

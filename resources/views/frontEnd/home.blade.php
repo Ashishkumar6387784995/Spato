@@ -1000,9 +1000,6 @@
       });
 
 
-     
-
-
 
     });
   </script>
@@ -1038,6 +1035,7 @@
     } else {
       myDiv.style.backgroundImage = "url({{ asset('assets/frontEnd/web/images/dark-bg.png')}} )";
     }
+    
   }
     </script>
   <!-- Darkmode script ends -->

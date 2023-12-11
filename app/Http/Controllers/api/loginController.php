@@ -177,14 +177,14 @@ class loginController extends Controller
         }
     }
 
-    function home()
-    {
-        return view('index');
-    }
+
+  
+
 
     function logout()
     {
         Auth::logout();
-        return redirect('api/login');
+
+        return response()->json(['message' => 'Successfully logged out']);  
     }
 }
