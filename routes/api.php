@@ -44,7 +44,8 @@ Route::post('logout',[loginController::class,'logout']);
 Route::get('home1',[loginController::class,'home']);
 
 
-Route::get('dashboard',[dashboardController::class,'dashboard']);
+// Route::get('dashboard',[dashboardController::class,'dashboard']);
+Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 
 
 // Route::get('login',[authController::class,'loginform']);
