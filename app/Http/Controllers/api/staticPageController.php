@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class staticPageController extends Controller
 {
-    //
+    public function contact(){
+        return view('/frontEnd/Pages/contact');
+    }
+    
 }

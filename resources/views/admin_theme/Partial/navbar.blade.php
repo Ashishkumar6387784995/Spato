@@ -1,9 +1,9 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
     <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}">
-      {{-- <img src="assets/images/logo1.svg" alt="CSP Points" /></a> --}}
+         <!-- <img src="{{asset('theme/assets/images/logo1.svg')}}" alt="CSP Points" /></a>  -->
     <h1 style="color:rgba(130, 63, 240, 0.986)">CSP Points</h1>
-    <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="assets/images/logo-mini1.svg" alt="CSP Points" style="margin-left:50px; "></a>
+    <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="{{asset('theme/assets/images/logo-mini1.svg')}}" alt="CSP Points" style="margin-left:50px; "></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -23,7 +23,7 @@
       <li class="nav-item nav-profile dropdown">
         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="nav-profile-img">
-            <img src=" {{ url('assets/images/faces/face1.jpg') }} " alt="image">
+            <img src=" {{ asset('theme/assets/images/faces/face1.jpg') }} " alt="image">
             <span class="availability-status online"></span>
           </div>
           <div class="nav-profile-text">

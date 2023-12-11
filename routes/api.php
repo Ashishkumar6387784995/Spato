@@ -54,10 +54,16 @@ Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 // Route::get('logout',[authController::class,'logout']); 
 
 
+Route::middleware('api.token')->group(function () {
+    // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);
+    Route::get('contact',[staticPageController::class,'contact']);
+    Route::get('about',[staticPageController::class,'about']);
+});
+
 // staticPages
 
-Route::get('contact',[staticPageController::class,'contact']);
-Route::get('about',[staticPageController::class,'about']);
+// Route::get('contact',[staticPageController::class,'contact']);
+// Route::get('about',[staticPageController::class,'about']);
 
 
 // Products
