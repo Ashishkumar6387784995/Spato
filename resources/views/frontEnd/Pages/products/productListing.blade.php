@@ -131,6 +131,44 @@
     color: #050811;
     font-weight: 600;
 }
+
+
+
+.agb-container {
+  background-color: #eaebef;
+  /* margin-top: -10rem; */
+  padding-top: 5rem;
+  margin-bottom: -10rem;
+  padding-bottom: 10rem;
+
+  clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
+}
+.agb-container nav .home {
+  color: var(--black) !important;
+  text-decoration: none !important;
+}
+
+.agb-container .content h6 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 22px;
+}
+
+.agb-container .content .details {
+  margin: 2rem 0rem;
+  text-align: justify;
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .agb-container {
+    clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  /* footer .footer-container {
+    width: 96%;
+  } */
+}
+
     </style>
   </head>
   <body oncontextmenu="return false" class="snippet-body">
