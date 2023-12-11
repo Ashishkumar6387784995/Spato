@@ -57,4 +57,9 @@ class ProductController extends Controller
 
         }
     }
+
+    public function productListing(){
+     
+        return view('frontEnd/Pages/Products/productListing');
+    }
 }
