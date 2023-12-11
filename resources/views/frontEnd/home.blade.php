@@ -672,7 +672,8 @@
         if (response.success) {
           console.log(response.token);
           localStorage.setItem('authToken', response.token);
-          window.location.href = 'http://127.0.0.1:8000/api/user';
+          window.location.href = 'http://127.0.0.1:8000/api/home';
+          fetchUserProfile();
         } else {
           $('#error-message').text(response.error);
         }
@@ -697,6 +698,7 @@
 
     $('#signupBtn').click(function() {
       // Clear previous error messages
+      $('#common_err').text('');
       $('#signup_firstName_err').text('');
       $('#signup_lastName_err').text('');
       $('#signup_phone_err').text('');
@@ -783,6 +785,8 @@
           if (response.success) {
             // Do something on successful registration, e.g., redirect to a new page
             // window.location.href = '/success-page';
+            console.log(response.token);
+            localStorage.setItem('authToken', response.token);
             $('#common_err').text("Registration Successfull...");
             $('#signupForm')[0].reset();
           }
@@ -824,6 +828,44 @@
 
     });
 
+    function fetchUserProfile() {
+        // Retrieve the token from local storage
+        var authToken = localStorage.getItem('authToken');
+
+        // Make a GET request to the user profile endpoint
+        fetch('http://127.0.0.1:8000/api/home', {
+            method: 'GET',
+            headers: {
+              'Authorization': 'Bearer ' + authToken,
+              'Content-Type': 'application/json'
+            },
+          })
+          .then(response => {
+            // Check if the response is successful (2xx status code)
+            if (response.ok) {
+              // You can access headers using response.headers.get('header-name')
+              var headers = response.headers;
+
+              // Do something with the headers
+              console.log('Response Headers:', headers);
+
+              // Assuming the response is in JSON format, parse it
+              return response.json();
+            } else {
+              // Handle non-successful response
+              throw new Error('User profile request failed');
+            }
+          })
+          .then(data => {
+            // Handle the response data
+            console.log('User Profile Data:', data);
+          })
+          .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+          });
+      }
+
     $(".btn-refresh").click(function() {
 
       $.ajax({
@@ -839,6 +881,11 @@
         }
 
       });
+
+
+     
+
+
 
     });
   </script>

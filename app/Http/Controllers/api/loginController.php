@@ -49,10 +49,10 @@ class loginController extends Controller
 
         if ($validator->fails()) {
             // Return validation errors in the response
-            return response()->json(['ValidationError'=>$validator->errors()]);
+            return response()->json(['ValidationError' => $validator->errors()]);
         }
 
-        $action = $request->input('checkBox1') .'/'. $request->input('checkBox2').'/'. $request->input('checkBox3');
+        $action = $request->input('checkBox1') . '/' . $request->input('checkBox2') . '/' . $request->input('checkBox3');
 
 
         $token = Str::random(40);
@@ -75,17 +75,11 @@ class loginController extends Controller
         // $message = Mail::to($email)->send(new EmailVerification($email));
         // dd($message);
 
-        if($user){
+        if ($user) {
             return response()->json(['success' => 'User registered successfully', 'token' => $token]);
- 
-        }
-
-        else{
+        } else {
             return response()->json(['error' => 'User registered Failed due Query']);
         }
-
-
-
     }
 
 
@@ -97,12 +91,6 @@ class loginController extends Controller
 
     function loginCheck(Request $request)
     {
-
-
-        // $this->validate($request, [
-        //     'email'   => 'required|email',
-        //     'password'  => 'required|alphaNum|min:3'
-        // ]);
 
         $user_data = array(
             'email'  => $request->email,
@@ -168,7 +156,7 @@ class loginController extends Controller
 
         return view('login/passwordResetForm')->with(compact('token'));
         // Use where clause to find the user with the given token
-        
+
     }
 
     public function passwordReset(Request $request)
@@ -179,11 +167,10 @@ class loginController extends Controller
         // Check if the user is found
         if ($user) {
             // Do something with the user, for example, display user details
-            $user->password= Hash::make($request->password);
+            $user->password = Hash::make($request->password);
             $user->save();
 
-            return response()->json(['success' => 'Password Reset successfully'] );
-
+            return response()->json(['success' => 'Password Reset successfully']);
         } else {
             // User not found
             dd('User not found for the given token.');
@@ -200,6 +187,4 @@ class loginController extends Controller
         Auth::logout();
         return redirect('api/login');
     }
-
-   
 }
