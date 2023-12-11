@@ -58,7 +58,7 @@
   </head>
   <body oncontextmenu="return false" class="snippet-body">
 
-@include('frontEnd/partial/header')
+@include('frontEnd/partial/header');
 <section class="agb-container">
       <div class="container">
         <nav aria-label="breadcrumb">
