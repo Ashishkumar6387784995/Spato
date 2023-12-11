@@ -2,7 +2,7 @@
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
     <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}">
          <!-- <img src="{{asset('theme/assets/images/logo1.svg')}}" alt="CSP Points" /></a>  -->
-    <h1 style="color:rgba(130, 63, 240, 0.986)">CSP Points</h1>
+    <h1 style="color:rgba(130, 63, 240, 0.986)">Spato</h1>
     <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="{{asset('theme/assets/images/logo-mini1.svg')}}" alt="CSP Points" style="margin-left:50px; "></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
