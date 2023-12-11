@@ -15,8 +15,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="agb.css" />
+    <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
     <style>
       /* Imports */
       
@@ -307,7 +306,7 @@
  @include('frontEnd/partial/footer')
 
 
- 
+
     <script>
       /*
        *   SIDEBAR V2
