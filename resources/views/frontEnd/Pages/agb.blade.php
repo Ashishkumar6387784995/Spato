@@ -37,7 +37,7 @@
 
 </style>
 
-
+@include('frontEnd/partial/header')
 <section class="agb-container">
       <div class="container">
         <nav aria-label="breadcrumb">
@@ -165,3 +165,6 @@
         </div>
       </div>
     </section>
+
+    
+  @include('frontEnd/partial/footer')

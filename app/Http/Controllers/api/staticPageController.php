@@ -10,5 +10,9 @@ class staticPageController extends Controller
     public function contact(){
         return view('/frontEnd/Pages/contact');
     }
+
+    public function agb(){
+        return view('/frontEnd/Pages/agb');
+    }
     
 }

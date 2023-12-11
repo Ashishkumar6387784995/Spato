@@ -53,11 +53,14 @@ Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 // Route::get('home',[authController::class,'home']);
 // Route::get('logout',[authController::class,'logout']); 
 
+Route::get('contact',[staticPageController::class,'contact']);
+Route::get('about',[staticPageController::class,'about']);
+Route::get('agb',[staticPageController::class,'agb']);
 
 Route::middleware('api.token')->group(function () {
     // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);
-    Route::get('contact',[staticPageController::class,'contact']);
-    Route::get('about',[staticPageController::class,'about']);
+    // Route::get('contact',[staticPageController::class,'contact']);
+    // Route::get('about',[staticPageController::class,'about']);
 });
 
 // staticPages
