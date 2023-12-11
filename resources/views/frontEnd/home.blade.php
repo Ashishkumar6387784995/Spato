@@ -1030,7 +1030,7 @@
     const currentImage = myDiv.style.backgroundImage;
 
     // Toggle between two different background images
-    if (currentImage.includes('default-image.jpg')) {
+    if (currentImage.includes('assets/frontEnd/web/images/remove.png')) {
       myDiv.style.backgroundImage = "url({{ asset('assets/frontEnd/web/images/dark-bg.png')}} )";
     } else {
       myDiv.style.backgroundImage = "url({{ asset('assets/frontEnd/web/images/dark-bg.png')}} )";
