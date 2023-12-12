@@ -22,7 +22,7 @@
     <li class="nav-item">
     <div class="border-top">
       <a class="nav-link" href="{{ url('/dashboard') }}">
-        <span class="menu-title">Dashboard</span>
+        <span class="menu-title">Angebote</span>
       </a>
 </div>
     </li>
@@ -46,22 +46,57 @@
    
     <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">
-        <span class="menu-title">My Team</span>
+        <span class="menu-title">Aufträge</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Lieferscheine</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Rechnungen</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Gutschriften</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Claim Manager</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Kontakte</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Lieferanten</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/mdi.html">
+        <span class="menu-title">Produkte</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="pages/forms/basic_elements.html">
-        <span class="menu-title">Transaction</span>
+        <span class="menu-title">Statistik</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="pages/charts/chartjs.html">
-        <span class="menu-title">Support</span>
+        <span class="menu-title">B2C B2B Connection</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ url('/shop') }}">
-        <span class="menu-title">Shop</span>
+        <span class="menu-title">Newsletter</span>
       </a>
     </li>
     <li class="nav-item">
@@ -81,7 +116,7 @@
     <li class="nav-item sidebar-actions">
       <span class="nav-link">
         <div class="border-bottom">
-          <h6 class="font-weight-normal mb-3">Projects</h6>
+          <h6 class="font-weight-normal mb-3">Einstellungen</h6>
         </div>
         
       </span>

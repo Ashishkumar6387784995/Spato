@@ -19317,7 +19317,7 @@ dl li {
     background: #3e4b5b;
     font-family: "ubuntu-regular", sans-serif;
     padding: 0;
-    width: 200px;
+    width: 250px;
     z-index: 11;
     transition: width 0.25s ease, background 0.25s ease;
     -webkit-transition: width 0.25s ease, background 0.25s ease;
