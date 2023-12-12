@@ -19333,6 +19333,7 @@ dl li {
     -ms-flex-direction: column;
     flex-direction: column;
     margin-bottom: 60px;
+    margin-top: 1.5rem;
 }
 .sidebar .nav .nav-item {
     padding: 0 2.25rem;
@@ -19352,7 +19353,7 @@ dl li {
     -ms-flex-align: center;
     align-items: center;
     white-space: nowrap;
-    padding: 1.125rem 0 1.125rem 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
     color: #ffffff;
     -webkit-transition-duration: 0.45s;
     transition-duration: 0.45s;

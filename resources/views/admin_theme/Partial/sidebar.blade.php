@@ -6,19 +6,19 @@
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item nav-profile">
+    <!-- <li class="nav-item nav-profile">
       <a href="#" class="nav-link">
-        <!-- <div class="nav-profile-image">
+         <div class="nav-profile-image">
           <img src=" {{ asset('theme/assets/images/faces/face1.jpg') }} "  alt="profile">
           <span class="login-status online"></span>
           change to offline or busy as needed
-        </div> -->
+        </div> 
         <div class="nav-profile-text d-flex flex-column">
           <span class="font-weight-bold mb-2">{{Session::get('empCode')}}</span>
           <span class="text-secondary text-small">{{ Session::get('role') }}</span>
         </div>
       </a>
-    </li>
+    </li> -->
     <li class="nav-item">
     <div class="border-top">
       <a class="nav-link" href="{{ url('/dashboard') }}">
@@ -65,22 +65,26 @@
       </a>
     </li>
     <li class="nav-item">
+    <div class="border-bottom ">
       <a class="nav-link" href="pages/icons/mdi.html">
         <span class="menu-title">Claim Manager</span>
       </a>
+      </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link pt-3" href="pages/icons/mdi.html">
         <span class="menu-title">Kontakte</span>
       </a>
     </li>
     <li class="nav-item">
+    <div class="border-bottom ">
       <a class="nav-link" href="pages/icons/mdi.html">
         <span class="menu-title">Lieferanten</span>
       </a>
+</div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link pt-3" href="pages/icons/mdi.html">
         <span class="menu-title">Produkte</span>
       </a>
     </li>
@@ -90,9 +94,11 @@
       </a>
     </li>
     <li class="nav-item">
+    <div class="border-bottom">
       <a class="nav-link" href="pages/charts/chartjs.html">
         <span class="menu-title">B2C B2B Connection</span>
       </a>
+</div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ url('/shop') }}">
@@ -116,7 +122,7 @@
     <li class="nav-item sidebar-actions">
       <span class="nav-link">
         <div class="border-bottom">
-          <h6 class="font-weight-normal mb-3">Einstellungen</h6>
+          <h6 class="font-weight-normal">Einstellungen</h6>
         </div>
         
       </span>
