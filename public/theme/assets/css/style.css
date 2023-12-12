@@ -19426,6 +19426,11 @@ dl li {
 .sidebar .nav .nav-item:hover {
     background: #fcfcfc;
 }
+.sidebar .nav .nav-item:active > .nav-link {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 5px;
+}
 .sidebar .nav .nav-item.nav-profile .nav-link {
     height: auto;
     line-height: 1;
