@@ -43,8 +43,6 @@ Route::post('logout',[loginController::class,'logout']);
 
 Route::get('home1',[loginController::class,'home']);
 
-
-// Route::get('dashboard',[dashboardController::class,'dashboard']);
 Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 
 
@@ -73,6 +71,7 @@ Route::middleware('api.token')->group(function () {
 // Products
 Route::get('/products', [ProductController::class, 'productList']);
 Route::post('/products', [ProductController::class, 'addproductList']);
+Route::get('/addProducts', [ProductController::class, 'addProduct']);
 
 // Cart
 Route::post('/cartProducts', [CartController::class, 'cartProductList']);

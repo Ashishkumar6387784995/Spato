@@ -19,10 +19,10 @@ class ProductController extends Controller
     public function addproductList(Request $request){
         $validator = Validator::make($request->all(), [
             'productName' => 'required',
-            'productQuantity' => 'required',
-            'productRateForNormalUsers' => 'required',
-            'productRateForB2BUsers' => 'required',
-            'productRateForB2CUsers' => 'required',
+            'productQuantity' => 'required|integer',
+            'productRateForNormalUsers' => 'required|numeric', // Allow float values
+            'productRateForB2BUsers' => 'required|numeric', // Allow float values
+            'productRateForB2CUsers' => 'required|numeric', // Allow float values
             'description' => 'required',
             'image' => 'required',
         ]);
@@ -30,7 +30,7 @@ class ProductController extends Controller
 
         if ($validator->fails()) {
             // Return validation errors in the response
-            return response()->json($validator->errors());
+            return response()->json(['errors' => $validator->errors(), 'message'=>'Pls Fill Form Properly']);
         }
 
         // Create a new user
@@ -47,13 +47,13 @@ class ProductController extends Controller
 
         if($Product){
 
-        return response()->json(['message' => 'Product Added successfully']);
+        return response()->json(['success' => 'Product Added successfully']);
 
         }
 
         else{
 
-        return response()->json(['message' => 'Product not Added successfully']);
+        return response()->json(['error' => 'Product not Added successfully']);
 
         }
     }
@@ -61,5 +61,11 @@ class ProductController extends Controller
     public function productListing(){
      
         return view('frontEnd/Pages/Products/productListing');
+    }
+
+
+    public function addProduct(){
+     
+        return view('backEnd/add_products');
     }
 }
