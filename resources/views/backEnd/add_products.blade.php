@@ -2,17 +2,78 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product Form</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spato Admin Panel</title>
+    <!-- plugins:css -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+
+
+
+    <link rel="stylesheet" href="{{ asset('theme/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
+    <style>
+        .transform-hover {
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            /* You can adjust the scale value for the desired zoom effect */
+
+        }
+
+        .transform-hover:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container-scroller">
+        <div class="row p-0 m-0 proBanner" id="proBanner">
+            <div class="col-md-12 p-0 m-0">
+                {{-- <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+            <div class="ps-lg-1">
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
+                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
+              <button id="bannerClose" class="btn border-0 p-0">
+                <i class="mdi mdi-close text-white me-0"></i>
+              </button>
+            </div> --}}
+            </div>
+        </div>
+    </div>
 
-    <div class="container mt-5">
+
+    @include('admin_theme/Partial/navbar')
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+
+
+        @include('admin_theme/Partial/sidebar')
+
+
+
+        <!-- partial -->
+        <div class="main-panel">
+          
+
+            <div class="container mt-5">
         <form id="addProductForm" enctype="multipart/form-data">
 
             <h1 style="text-align:center;">Add Products</h1>
@@ -84,54 +145,103 @@
 
 
 
-    <script>
-        $(document).ready(function() {
-            $("#addProductButton").click(function() {
+            
+            <div class="col-md-5 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-white">Todo</h4>
+                        <div class="add-items d-flex">
+                            <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
+                            <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
+                        </div>
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox"> Meeting with Alisa
+                                        </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked> Call John
+                                        </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox"> Create invoice </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox"> Print Statements </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked> Prepare for
+                                            presentation </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox"> Pick up kids from school
+                                        </label>
+                                    </div>
+                                    <i class="remove mdi mdi-close-circle-outline"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+        <div class="container-fluid d-flex justify-content-between">
+            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
+                bootstrapdash.com 2021</span>
+            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
+                    admin template</a> from Bootstrapdash.com</span>
+        </div>
+    </footer>
+    <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
 
-                $('#success_message').text('');
-                $('#productName_err').text('');
-                $('#productQuantity_err').text('');
-                $('#productRateForNormalUsers_err').text('');
-                $('#productRateForB2BUsers_err').text('');
-                $('#productRateForB2CUsers_err').text('');
-                $('#image_err').text('');
-                $('#signup_captcha_err').text('');
-                // Clear previous error messages
-                // $(".text-danger").text("");
 
-                $.ajax({
-                    url: "/api/products", // Replace with your backend script URL
-                    type: "POST",
-                    dataType: 'json',
-                    data: new FormData($("#addProductForm")[0]),
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        // Handle the response from the server
-                        console.log(response);
-                        $('#success_message').text(response.success);
 
-                        // Check if the response has errors
-                        if (response.errors) {
-                            // Display validation errors next to corresponding form fields
-                            $.each(response.errors, function(field, message) {
-                                $("#" + field + "_err").text(message);
-                            });
-                        } 
-                        // else {
-                        //     // Display success message to the user
-                        //     alert(response.message);
-                        // }
-                    },
-                    error: function(error) {
-                        console.log(error);
-                        // Handle errors here
-                        alert("An error occurred while processing the request.");
-                    }
-                });
-            });
-        });
-    </script>
+    <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
+                <!-- <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> -->
+
+                <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
+
+
+
 </body>
 
 </html>

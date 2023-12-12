@@ -84,7 +84,7 @@
 </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link pt-3" href="pages/icons/mdi.html">
+      <a class="nav-link pt-3" href="{{url('/api/addProducts  ')}}">
         <span class="menu-title">Produkte</span>
       </a>
     </li>
