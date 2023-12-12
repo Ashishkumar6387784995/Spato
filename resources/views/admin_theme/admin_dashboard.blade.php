@@ -437,7 +437,7 @@
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> -->
 
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
