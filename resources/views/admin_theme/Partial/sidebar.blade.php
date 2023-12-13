@@ -19,7 +19,7 @@
     </li> -->
     <li class="nav-item">
     <div class="border-top">
-      <a class="nav-link" href="{{ url('/api/admin_dashboard') }}">
+      <a class="nav-link" href="{{ url('/api/offerListing') }}">
         <span class="menu-title">Angebote</span>
       </a>
 </div>

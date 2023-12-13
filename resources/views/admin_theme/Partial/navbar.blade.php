@@ -1,6 +1,6 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}">
+    <a class="navbar-brand brand-logo" href="{{ url('/api/admin_dashboard') }}">
          <!-- <img src="{{asset('theme/assets/images/logo1.svg')}}" alt="CSP Points" /></a>  -->
     
          <span class="img"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></span>
