@@ -52,7 +52,7 @@
   </head>
   <body oncontextmenu="return false" class="snippet-body">
     <!-- Header -->
-    @include('frontEnd/partial/header');
+    @include('frontEnd/partial/header')
     <!-- Header -->
     <section class="cancellation-page">
       <div class="container">
