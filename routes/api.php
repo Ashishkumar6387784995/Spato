@@ -56,6 +56,8 @@ Route::get('about',[staticPageController::class,'about']);
 Route::get('agb',[staticPageController::class,'agb']);
 Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']);
 Route::get('productListing',[productController::class,'productListing']);
+Route::get('addProduct',[productController::class,'addProduct']);
+Route::get('editProduct',[productController::class,'editProduct']);
 
 Route::middleware('api.token')->group(function () {
     // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);

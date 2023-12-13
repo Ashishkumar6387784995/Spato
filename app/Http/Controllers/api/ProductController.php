@@ -64,8 +64,15 @@ class ProductController extends Controller
     }
 
 
+    public function editProduct(){
+     
+        return view('admin_theme/pages/products/editProduct');
+    }
+
     public function addProduct(){
      
-        return view('backEnd/add_products');
+        return view('admin_theme/pages/products/addProduct');
     }
+
+   
 }
