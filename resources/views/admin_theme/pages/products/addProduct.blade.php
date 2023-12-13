@@ -63,6 +63,28 @@
         .row .col {
             font-size: 14px;
         }
+        .btn{
+            /* background-color: #54606c; */
+            border: 1px solid #54606c;
+            color: #54606c;
+            padding: 10px 14px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+.form-check-input[type="radio"] {
+    margin-left: 2rem;
+}
+
+.add-products-field input{
+    /* height:5px; */
+    padding:5px;
+}
+.border{
+    border-right: 1px solid #44e1d5 !important;
+}
+.row .col .row{
+    padding:5px 0px;
+}
     </style>
 </head>
 
@@ -108,99 +130,136 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        +New Products
+                    <a href="#" class="btn">Save</a>
                     </div>
-                    <div class="col-md-4 stretch-card grid-margin">
-                        Filters
+                    <div class="col-md-2 stretch-card grid-margin">
+                    <a href="#" class="btn">Import CSV</a>
                     </div>
-                </div>
-                <div class="row pt-3">
-
-                    <div class="col-md-4 stretch-card grid-margin">
-                        All Products
+                    <div class="col-md-2 stretch-card grid-margin">
+                    <a href="#" class="btn">Export CSV</a>
                     </div>
-                </div>
-                <div class="row pt-3">
-
-                    <div class="col stretch-card grid-margin">
-                        Manufacturure
-                    </div>
-                    <div class="col stretch-card grid-margin">
-                        Manufacturure no.
-                    </div>
-                    <div class="col stretch-card grid-margin">
-                        Artical no.
-                    </div>
-                    <div class="col stretch-card grid-margin">
-                        Item name
-                    </div>
-                    <div class="col stretch-card grid-margin">
-                        Category 1
-                    </div>
-                    <div class="col stretch-card grid-margin">
-                        Net Price
-                    </div>
-                    <div class="col stretch-card grid-margin invisible">
-                        Edit button
-                    </div>
-                    <div class="col stretch-card grid-margin invisible">
-                        closs button
+                    <div class="col-md-2 stretch-card grid-margin">
+                    <a href="#" class="btn">Price Updater</a>
                     </div>
                 </div>
                 <div class="row pt-3">
+                <div class="form-check">
+                    <div class="col stretch-card grid-margin">
+                    
+                    <label class="form-check-label" for="flexRadioDefault1">Shop Produkt</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    
+                    <label class="form-check-label" for="flexRadioDefault1">APP Produkt</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
 
-                    <div class="col stretch-card ps-5">
-                        Maitic
-                    </div>
-                    <div class="col stretch-card ps-4">
-                        50
-                    </div>
-                    <div class="col stretch-card ">
-                        00200M
-                    </div>
-                    <div class="col stretch-card ">
-                        PE - splash water
-                        Container, 1000 liters
-                    </div>
-                    <div class="col stretch-card ">
-                        Technology
-                    </div>
-                    <div class="col stretch-card ">
-                        €1,164.00
-                    </div>
-                    <div class="col stretch-card">
-                        <a href="#" class="edit">Edit</a>
-                    </div>
-                    <div class="col stretch-card">
-                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
+                    <label class="form-check-label" for="flexRadioDefault1">Produkt intern</label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     </div>
                 </div>
-                <div class="row pt-3">
+                </div>
+                <div class="row pt-3 add-products-field">
 
-                    <div class="col stretch-card ps-5">
-                        Maitic
+                  
+                    <div class="col border">
+                        <div class="row mb-2">
+                            <div class="col-4">Hersteller</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Herst. Nr.</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Lief. Art. Nr</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Hersteller Artikelnummer</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Katalog Art. Nummer</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kategorie 1</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kategorie 2</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kategorie 3</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kategorie 4</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kategorie 5</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kategorie 6</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
                     </div>
-                    <div class="col stretch-card ps-4">
-                        50
+
+                    <div class="col border">
+                        <div class="row mb-2">
+                            <div class="col-4">VE / VPE</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Einheit</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Rabattcode 1</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Rabattcode 2</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Rabattcode 3</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Preis zzgl. MwSt</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Preis inkl. MwSt</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Einkausfpreis zzgl. MwSt</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Einkaufsrabatt %</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
                     </div>
-                    <div class="col stretch-card ">
-                        00200M
-                    </div>
-                    <div class="col stretch-card ">
-                        PE - splash water
-                        Container, 1000 liters
-                    </div>
-                    <div class="col stretch-card ">
-                        Technology
-                    </div>
-                    <div class="col stretch-card ">
-                        €1,164.00
-                    </div>
-                    <div class="col stretch-card">
-                        <a href="#" class="edit">Edit</a>
-                    </div>
-                    <div class="col stretch-card">
-                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
+
+
+                    <div class="col">
+                        <div class="row mb-2">
+                            <div class="col-4">Artikelname</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Beschreibung kurz</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Beschreibung lang</div>
+                            <div class="col-8"><textarea class="form-control" id="exampleFormControlTextarea1" rows="28"></textarea></div>
+                        </div>
                     </div>
                 </div>
 
