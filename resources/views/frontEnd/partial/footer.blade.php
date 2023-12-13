@@ -42,7 +42,8 @@
           <p class="footer-desc"><a href="#">Vendor Login</a></p>
           <p class="footer-desc"><a href="{{url('api/contact')}}">Kontakt</a></p>
           <p class="footer-desc"><a href="{{url('api/cancelationPolicy')}}">Cancellation</a></p>
-          <p class="footer-desc"><a href="#">Login</a></p>
+          <p class="footer-desc" data-bs-toggle="modal" data-bs-target="#exampleModal"><a href="#">Login</a></p>
+         
         </div>
         <div class="col">
           <p class="footer-desc" style="text-align: center">
