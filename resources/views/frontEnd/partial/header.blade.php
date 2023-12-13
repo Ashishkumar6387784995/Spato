@@ -1,3 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
+  <!-- Fonts -->
+
+  <!-- Crausel start -->
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+  <script type="text/javascript" src=""></script>
+  <!-- <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    ></script> -->
+  <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Crausel ends -->
+</head>
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <nav class="navbar navbar-expand-lg ps-4 pe-4">
   <div class="container-fluid">
@@ -657,3 +690,9 @@
 
     });
   </script>
+  
+
+
+  <!-- Darkmode script starts -->
+  <script type="text/javascript" src="{{ asset('/js/web/dark_theme.js') }}"></script>
+  <!-- Darkmode script ends -->

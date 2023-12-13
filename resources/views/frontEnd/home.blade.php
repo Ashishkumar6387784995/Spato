@@ -531,12 +531,6 @@
 
 
 
-
-
-  <!-- Darkmode script starts -->
-  <script type="text/javascript" src="{{ asset('/js/web/dark_theme.js') }}"></script>
-  <!-- Darkmode script ends -->
-
 </body>
 
 </html>
