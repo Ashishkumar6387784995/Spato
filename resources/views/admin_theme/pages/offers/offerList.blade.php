@@ -54,6 +54,15 @@
             color:#54606c;
             border-radius:5px;
         }
+        
+        .btn{
+            /* background-color: #54606c; */
+            border: 1px solid #54606c;
+            color: #54606c;
+            padding: 10px 14px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
         .close{
             color:#54606c;
         }
@@ -105,25 +114,25 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                    + neues Produkt
+                   <a href="#"  class="btn">+ neues Produkt</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
-                    Filter
+                    <a href="#"   class="btn">Filter</a>
                     </div>
                 </div>
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                    Alle Produkte
+                    Alle Angebote
                     </div>
                 </div>
                 <div class="row pt-3">
                     
                     <div class="col stretch-card grid-margin" >
-                    Hersteller
+                    Status
                     </div>
                     <div class="col stretch-card grid-margin" >
-                    Herst. Nr.
+                    Nr.
                     </div>
                     <div class="col stretch-card grid-margin" >
                     Artikel Nr.
