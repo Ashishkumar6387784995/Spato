@@ -84,7 +84,7 @@
 </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link pt-3" href="{{url('/api/addProducts  ')}}">
+      <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
         <span class="menu-title">Produkte</span>
       </a>
     </li>

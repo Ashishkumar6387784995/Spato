@@ -60,7 +60,7 @@ class ProductController extends Controller
 
     public function productListing(){
      
-        return view('frontEnd/Pages/Products/productListing');
+        return view('admin_theme/pages/products/productsList');
     }
 
 
