@@ -58,7 +58,7 @@ Route::get('agb',[staticPageController::class,'agb']);
 Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']);
 
 
-// products for Admin
+// dashboard for Admin
 Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 
 

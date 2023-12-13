@@ -1,6 +1,4 @@
-@if (Session::get('role') == 'Staff')
-    <p> {{ Session::get('role') }} </p>
-@endif
+
 
 
 
@@ -21,28 +19,13 @@
     </li> -->
     <li class="nav-item">
     <div class="border-top">
-      <a class="nav-link" href="{{ url('/dashboard') }}">
+      <a class="nav-link" href="{{ url('/api/admin_dashboard') }}">
         <span class="menu-title">Angebote</span>
       </a>
 </div>
     </li>
 
-    @if (Session::get('role') == 'Admin')
-    {{-- <p> {{ Session::get('role') }} </p> --}}
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <span class="menu-title">Services Status</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-      </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-        </ul>
-      </div>
-    </li>
-    @endif
+ 
    
     <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">
