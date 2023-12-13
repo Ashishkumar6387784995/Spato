@@ -54,6 +54,7 @@ Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 Route::get('contact',[staticPageController::class,'contact']);
 Route::get('about',[staticPageController::class,'about']);
 Route::get('agb',[staticPageController::class,'agb']);
+Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']);
 Route::get('productListing',[productController::class,'productListing']);
 
 Route::middleware('api.token')->group(function () {
