@@ -105,37 +105,37 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                        +New Products
+                    + neues Produkt
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
-                       Filters
+                    Filter
                     </div>
                 </div>
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                        All Products
+                    Alle Produkte
                     </div>
                 </div>
                 <div class="row pt-3">
                     
                     <div class="col stretch-card grid-margin" >
-                        Manufacturure
+                    Hersteller
                     </div>
                     <div class="col stretch-card grid-margin" >
-                        Manufacturure no.
+                    Herst. Nr.
                     </div>
                     <div class="col stretch-card grid-margin" >
-                        Artical no.
+                    Artikel Nr.
                     </div>
                     <div class="col stretch-card grid-margin" >
-                        Item name
+                    Artikel Name
                     </div>
                     <div class="col stretch-card grid-margin" >
-                        Category 1
+                    Kategorie 1
                     </div>
                     <div class="col stretch-card grid-margin" >
-                        Net Price
+                    Preis netto
                     </div>
                     <div class="col stretch-card grid-margin invisible" >
                         Edit button
@@ -156,17 +156,16 @@
                         00200M
                     </div>
                     <div class="col stretch-card "  >
-                    PE - splash water
-Container, 1000 liters
+                    PE – Schwallwasser Behälter, 1000 ltr.
                     </div>
                     <div class="col stretch-card "  >
-                    Technology
+                    Technik
                     </div>
                     <div class="col stretch-card "  >
-                    €1,164.00
+                    1,164.00€
                     </div>
                     <div class="col stretch-card" >
-                        <a href="#" class="edit">Edit</a>
+                        <a href="#" class="edit">bearbeiten</a>
                     </div>
                     <div class="col stretch-card" >
                         <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
@@ -184,17 +183,16 @@ Container, 1000 liters
                         00200M
                     </div>
                     <div class="col stretch-card "  >
-                    PE - splash water
-Container, 1000 liters
+                    PE – Schwallwasser Behälter, 1000 ltr.
                     </div>
                     <div class="col stretch-card "  >
-                    Technology
+                    Technik
                     </div>
                     <div class="col stretch-card "  >
-                    €1,164.00
+                    1,164.00€
                     </div>
                     <div class="col stretch-card" >
-                        <a href="#" class="edit">Edit</a>
+                        <a href="#" class="edit">bearbeiten</a>
                     </div>
                     <div class="col stretch-card" >
                         <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
