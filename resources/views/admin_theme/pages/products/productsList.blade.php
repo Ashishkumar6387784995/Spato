@@ -146,7 +146,7 @@
                 </div>
                 <div class="row pt-3">
                     
-                    <div class="col stretch-card ps-5" >
+                    <div class="col stretch-card ps-4" >
                         Maitic
                     </div>
                     <div class="col stretch-card ps-4"  >
@@ -156,7 +156,7 @@
                         00200M
                     </div>
                     <div class="col stretch-card "  >
-                    PE – Schwallwasser Behälter, 1000 ltr.
+                    PE - Schwallwasser Behälter, 1000 ltr.
                     </div>
                     <div class="col stretch-card "  >
                     Technik
@@ -173,7 +173,7 @@
                 </div>
                 <div class="row pt-3">
                     
-                    <div class="col stretch-card ps-5" >
+                    <div class="col stretch-card ps-4" >
                         Maitic
                     </div>
                     <div class="col stretch-card ps-4"  >
@@ -183,7 +183,7 @@
                         00200M
                     </div>
                     <div class="col stretch-card "  >
-                    PE – Schwallwasser Behälter, 1000 ltr.
+                    PE - Schwallwasser Behälter, 1000 ltr.
                     </div>
                     <div class="col stretch-card "  >
                     Technik
