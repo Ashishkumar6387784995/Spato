@@ -44,7 +44,7 @@ Route::post('logout',[loginController::class,'logout']);
 
 Route::get('home1',[loginController::class,'home']);
 
-Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
+
 
 
 // Route::get('login',[authController::class,'loginform']);
@@ -56,6 +56,11 @@ Route::get('contact',[staticPageController::class,'contact']);
 Route::get('about',[staticPageController::class,'about']);
 Route::get('agb',[staticPageController::class,'agb']);
 Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']);
+
+
+// products for Admin
+Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
+
 
 // products for Admin
 Route::get('productListing',[productController::class,'productListing']);
