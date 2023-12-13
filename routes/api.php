@@ -11,6 +11,7 @@ use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\CartController;
 use App\Http\Controllers\api\tryController;
 use App\Http\Controllers\api\frontEnd\webController;
+use App\Http\Controllers\api\OfferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +56,19 @@ Route::get('contact',[staticPageController::class,'contact']);
 Route::get('about',[staticPageController::class,'about']);
 Route::get('agb',[staticPageController::class,'agb']);
 Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']);
+
+// products for Admin
 Route::get('productListing',[productController::class,'productListing']);
 Route::get('addProduct',[productController::class,'addProduct']);
 Route::get('editProduct',[productController::class,'editProduct']);
+
+
+// Offers for Admin
+Route::get('offerListing',[OfferController::class,'offerListing']);
+Route::get('addOffer',[OfferController::class,'addOffer']);
+Route::get('editOffer',[OfferController::class,'editOffer']);
+
+
 
 Route::middleware('api.token')->group(function () {
     // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);
