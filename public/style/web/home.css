@@ -52,17 +52,19 @@ i {
     color: var(--black);
     font-weight: 600;
 }
+.nav-link:hover {
+    color: var(--blue);
+}
 
 .dropdown-toggle::after {
     display: none !important;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     margin-top: 2rem !important;
 }
-.dropdown-menu li{
+.dropdown-menu li {
     padding: 1rem;
-
 }
 
 .navbar-brand {
