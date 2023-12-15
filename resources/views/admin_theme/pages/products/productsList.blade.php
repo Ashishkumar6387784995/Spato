@@ -14,16 +14,16 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
- 
-<!-- Fonts -->
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
-  <!-- Fonts -->
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
 
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
-     <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
-     <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
     <style>
         .transform-hover {
             height: 150px;
@@ -38,27 +38,30 @@
             cursor: pointer;
         }
 
-        .edit{
-            background-color:#54606c;
-            border:1px solid #54606c;
-            color:#ffff;
+        .edit {
+            background-color: #54606c;
+            border: 1px solid #54606c;
+            color: #ffff;
             padding: 10px 14px;
             height: 42px;
-            text-decoration:none;
-            border-radius:5px;
-            transition:0.5s ease;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.5s ease;
         }
-        .edit:hover{
-            background-color:transparent;
-            border:1px solid #54606c;
-            color:#54606c;
-            border-radius:5px;
+
+        .edit:hover {
+            background-color: transparent;
+            border: 1px solid #54606c;
+            color: #54606c;
+            border-radius: 5px;
         }
-        .close{
-            color:#54606c;
+
+        .close {
+            color: #54606c;
         }
-        .row .col{
-            font-size:14px;
+
+        .row .col {
+            font-size: 14px;
         }
     </style>
 </head>
@@ -99,110 +102,110 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5;">
-                  <h2>Admin Dashboard</h2>
-                  <p>Monday, January 12, 2024</p>
+                    <h2>Admin Dashboard</h2>
+                    <p>Monday, January 12, 2024</p>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    <a href="{{url('/api/addProduct')}}">+ neues Produkt</a>
+
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <a href="{{url('/api/addProduct')}}">+ neues Produkt</a>
                     </div>
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    Filter
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    Alle Produkte
+                    <div class="col-md-4 stretch-card grid-margin">
+                        Filter
                     </div>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col stretch-card grid-margin" >
-                    Hersteller
+
+                    <div class="col-md-4 stretch-card grid-margin">
+                        Alle Produkte
                     </div>
-                    <div class="col stretch-card grid-margin" >
-                    Herst. Nr.
+                </div>
+                <div class="row pt-3">
+
+                    <div class="col stretch-card grid-margin">
+                        Hersteller
                     </div>
-                    <div class="col stretch-card grid-margin" >
-                    Artikel Nr.
+                    <div class="col stretch-card grid-margin">
+                        Herst. Nr.
                     </div>
-                    <div class="col stretch-card grid-margin" >
-                    Artikel Name
+                    <div class="col stretch-card grid-margin">
+                        Artikel Nr.
                     </div>
-                    <div class="col stretch-card grid-margin" >
-                    Kategorie 1
+                    <div class="col stretch-card grid-margin">
+                        Artikel Name
                     </div>
-                    <div class="col stretch-card grid-margin" >
-                    Preis netto
+                    <div class="col stretch-card grid-margin">
+                        Kategorie 1
                     </div>
-                    <div class="col stretch-card grid-margin invisible" >
+                    <div class="col stretch-card grid-margin">
+                        Preis netto
+                    </div>
+                    <div class="col stretch-card grid-margin invisible">
                         Edit button
                     </div>
-                    <div class="col stretch-card grid-margin invisible" >
+                    <div class="col stretch-card grid-margin invisible">
                         closs button
                     </div>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
+
+                    <div class="col stretch-card ps-4">
                         Maitic
                     </div>
-                    <div class="col stretch-card ps-4"  >
+                    <div class="col stretch-card ps-4">
                         50
                     </div>
-                    <div class="col stretch-card "  >
+                    <div class="col stretch-card ">
                         00200M
                     </div>
-                    <div class="col stretch-card "  >
-                    PE - Schwallwasser Behälter, 1000 ltr.
+                    <div class="col stretch-card ">
+                        PE - Schwallwasser Behälter, 1000 ltr.
                     </div>
-                    <div class="col stretch-card "  >
-                    Technik
+                    <div class="col stretch-card ">
+                        Technik
                     </div>
-                    <div class="col stretch-card "  >
-                    1,164.00€
+                    <div class="col stretch-card ">
+                        1,164.00€
                     </div>
-                    <div class="col stretch-card" >
+                    <div class="col stretch-card">
                         <a href="{{url('api/editProduct')}}" class="edit btn">bearbeiten</a>
                     </div>
-                    <div class="col stretch-card" >
+                    <div class="col stretch-card">
                         <a href="{{url('api/deleteProduct')}}"><i class="fa-regular fa-circle-xmark close"></i></a>
                     </div>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
+
+                    <div class="col stretch-card ps-4">
                         Maitic
                     </div>
-                    <div class="col stretch-card ps-4"  >
+                    <div class="col stretch-card ps-4">
                         50
                     </div>
-                    <div class="col stretch-card "  >
+                    <div class="col stretch-card ">
                         00200M
                     </div>
-                    <div class="col stretch-card "  >
-                    PE - Schwallwasser Behälter, 1000 ltr.
+                    <div class="col stretch-card ">
+                        PE - Schwallwasser Behälter, 1000 ltr.
                     </div>
-                    <div class="col stretch-card "  >
-                    Technik
+                    <div class="col stretch-card ">
+                        Technik
                     </div>
-                    <div class="col stretch-card "  >
-                    1,164.00€
+                    <div class="col stretch-card ">
+                        1,164.00€
                     </div>
-                    <div class="col stretch-card" >
+                    <div class="col stretch-card">
                         <a href="#" class="edit">bearbeiten</a>
                     </div>
-                    <div class="col stretch-card" >
+                    <div class="col stretch-card">
                         <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
                     </div>
 
-                  
+
                 </div>
-           
-              
-                </div>
+
+
+            </div>
         </div>
     </div>
     <!-- content-wrapper ends -->
@@ -223,6 +226,32 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Execute the code when the document is ready
+    $(document).ready(function() {
+        // Make a GET request using AJAX
+        $.ajax({
+            url: '/api/productListingApi', // Replace with the actual endpoint URL
+            method: 'GET',
+            success: function(data) {
+                // Handle the successful response
+                if (data.productList) {
+                    console.log('Data received:', data.productList);
+                } else {
+                    console.log('Data received:', data.errors);
+                }
+            }, // Missing comma here
+
+            error: function(error) {
+                // Handle errors
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+
 
 
 
