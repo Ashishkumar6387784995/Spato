@@ -113,7 +113,7 @@ class ProductController extends Controller
 
     public function productListing(){
 
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'desc')->get();
 
         if ($products){
             return response()->json(['productList'=>$products]);
