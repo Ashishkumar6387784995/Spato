@@ -9,19 +9,19 @@ class PoolBuilder extends Controller
 {
     public function poolBuilderRegister(){
 
-        return view('frontEnd/Pages/poolBuilder/pollProfile');
+        return view('frontEnd/Pages/poolBuilder/poolRegistration');
         
     }
 
     public function poolBuilderProfile(){
 
-        return view('frontEnd/Pages/poolBuilder/poolClaim&Request');
+        return view('frontEnd/Pages/poolBuilder/pollProfile');
         
     }
 
     public function poolBuilderClaim(){
 
-        return view('frontEnd/Pages/poolBuilder/poolRegistration');
+        return view('frontEnd/Pages/poolBuilder/poolClaim&Request');
         
     }
 }
