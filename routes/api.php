@@ -67,7 +67,8 @@ Route::get('productListingApi',[productController::class,'productListing']);
 Route::view('productListing', 'admin_theme/pages/products/productsList');
 Route::get('addProduct',[productController::class,'addProduct']);
 Route::post('addProduct',[productController::class,'addproductList']);
-Route::get('editProduct',[productController::class,'editProduct']);
+Route::get('editProduct/{id}',[productController::class,'editProduct']);
+Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
 
 
 // Offers for Admin

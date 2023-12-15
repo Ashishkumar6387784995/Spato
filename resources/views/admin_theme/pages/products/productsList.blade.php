@@ -115,9 +115,9 @@
                     <p>Monday, January 12, 2024</p>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    <a class="edit btn" href="{{url('/api/addProduct')}}">+ neues Produkt</a>
+
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <a class="edit btn" href="{{url('/api/addProduct')}}">+ neues Produkt</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
@@ -132,6 +132,10 @@
 
 
 
+                <span id="success_msg" style="color:green"></span>
+                <br>  <br> 
+
+
                 <table id="dataTable">
                     <tr>
                         <th>Hersteller</th>
@@ -143,7 +147,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                   
+
                 </table>
 
             </div>
@@ -200,8 +204,10 @@
                                 row.append('<td>' + item.Artikelname + '</td>');
                                 row.append('<td>' + item.Kategorie + '</td>');
                                 row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
-                                row.append('<td><a href="{{url("api/editProduct")}}" class="edit btn">bearbeiten</a></td>');
-                                row.append('<td><a href="{{url("api/deleteProduct")}}"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
+                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
+                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
+
+
                                 // Add more columns as needed
 
                                 // Append the row to the table body
@@ -224,7 +230,47 @@
                     console.error('Error:', error);
                 }
             });
+
+
+
+
         });
+
+
+        function deleteOperation(productId) {
+            // Make a DELETE request using AJAX
+            console.log(productId);
+            $.ajax({
+                url: '/api/deleteProduct/' + productId,
+                method: 'get',
+                success: function(data) {
+
+                    if (data.success) {
+
+
+
+                        $('#success_msg').text(data.success);
+
+                        // Delay the page reload for 2 seconds (2000 milliseconds)
+                            setTimeout(function() {
+                                location.reload(true);
+                            }, 1000);
+
+                        
+
+
+                        console.log('Product deleted successfully:', data.success);
+                        // Perform any additional actions after deletion
+                    } else {
+                        console.log('Product not deleted successfully:', data.message);
+                    }
+
+                },
+                error: function(error) {
+                    console.error('Error deleting product:', error.responseJSON.error);
+                }
+            });
+        }
     </script>
 
 

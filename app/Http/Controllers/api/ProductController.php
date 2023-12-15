@@ -10,11 +10,16 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    public function productList(){
-        $products = Product::all();
+    // public function productList(){
+    //     $products = Product::all();
 
-        return response()->json(['Product Details' => $products]);
-    }
+    //     return response()->json(['Product Details' => $products]);
+    // }
+
+   public function addproduct(){
+
+     return view('admin_theme/pages/products/addProduct');
+   }
 
     public function addproductList(Request $request){
 
@@ -110,7 +115,7 @@ class ProductController extends Controller
 
 
 
-
+    
     public function productListing(){
 
         $products = Product::orderBy('created_at', 'desc')->get();
@@ -128,9 +133,20 @@ class ProductController extends Controller
         return view('admin_theme/pages/products/editProduct');
     }
 
-    public function addProduct(){
+    public function deleteProduct($id){
+
+        $deletedProduct = Product::where('id', $id)->delete();
+
+        if ($deletedProduct){
+            return response()->json(['success'=>"Product Deleted Successfully"]);
+        }
      
-        return view('admin_theme/pages/products/addProduct');
+        else{
+            return response()->json(['errors'=>"Products Not Deleted"]);
+        }
+           
+     
+        // return view('admin_theme/pages/products/addProduct');
     }
 
    
