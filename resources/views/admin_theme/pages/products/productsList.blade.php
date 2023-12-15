@@ -64,12 +64,13 @@
             font-size: 14px;
         }
 
-        table tr th{
-            width:200px;
+        table tr th {
+            width: 200px;
         }
-        table tr td{
-            padding:10px 2px;
-            width:200px;
+
+        table tr td {
+            padding: 10px 2px;
+            width: 200px;
         }
     </style>
 </head>
@@ -129,36 +130,27 @@
                     </div>
                 </div>
 
-               
 
-                    <table>
-                        <tr>
-                            <th>Hersteller</th>
-                            <th> Herst. Nr.</th>
-                            <th>Artikel Nr.</th>
-                            <th>Artikel Name</th>
-                            <th> Kategorie 1</th>
-                            <th> Preis netto</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <td>Maitic</td>
-                            <td>50</td>
-                            <td>00200M</td>
-                            <td>PE - Schwallwasser Behälter, 1000 ltr.</td>
-                            <td>Technik</td>
-                            <td>1,164.00€</td>
-                            <td> <a href="{{url('api/editProduct')}}" class="edit btn">bearbeiten</a></td>
-                            <td><a href="{{url('api/deleteProduct')}}"><i class="fa-regular fa-circle-xmark close"></i></a></td>
-                        </tr>
-                    </table>
 
-                </div>
-
+                <table id="dataTable">
+                    <tr>
+                        <th>Hersteller</th>
+                        <th> Herst. Nr.</th>
+                        <th>Artikel Nr.</th>
+                        <th>Artikel Name</th>
+                        <th> Kategorie 1</th>
+                        <th> Preis netto</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                   
+                </table>
 
             </div>
+
+
         </div>
+    </div>
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
@@ -179,30 +171,61 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    // Execute the code when the document is ready
-    $(document).ready(function() {
-        // Make a GET request using AJAX
-        $.ajax({
-            url: '/api/productListingApi', // Replace with the actual endpoint URL
-            method: 'GET',
-            success: function(data) {
-                // Handle the successful response
-                if (data.productList) {
-                    console.log('Data received:', data.productList);
-                } else {
-                    console.log('Data received:', data.errors);
-                }
-            }, // Missing comma here
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Execute the code when the document is ready
+        $(document).ready(function() {
+            // Make a GET request using AJAX
+            $.ajax({
+                url: '/api/productListingApi', // Replace with the actual endpoint URL
+                method: 'GET',
+                success: function(data) {
+                    // Handle the successful response
+                    if (data.productList) {
+                        console.log('Data received:', data.productList);
 
-            error: function(error) {
-                // Handle errors
-                console.error('Error:', error);
-            }
+
+                        function populateTable(data) {
+                            var tableBody = $('#dataTable');
+
+                            // Clear existing table rows
+                            // tableBody.empty();
+
+                            // Iterate through the data and add rows to the table
+                            $.each(data, function(index, item) {
+                                var row = $('<tr>');
+                                row.append('<td>' + item.Hersteller + '</td>');
+                                row.append('<td>' + item.Herst_Nr + '</td>');
+                                row.append('<td>' + item.id + '</td>');
+                                row.append('<td>' + item.Artikelname + '</td>');
+                                row.append('<td>' + item.Kategorie + '</td>');
+                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
+                                row.append('<td><a href="{{url("api/editProduct")}}" class="edit btn">bearbeiten</a></td>');
+                                row.append('<td><a href="{{url("api/deleteProduct")}}"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
+                                // Add more columns as needed
+
+                                // Append the row to the table body
+                                tableBody.append(row);
+                            });
+                        }
+
+                        // Call the function to populate the table with the initial data
+                        populateTable(data.productList);
+
+
+
+                    } else {
+                        console.log('Data received:', data.errors);
+                    }
+                }, // Missing comma here
+
+                error: function(error) {
+                    // Handle errors
+                    console.error('Error:', error);
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 
 

@@ -1,0 +1,26 @@
+
+Below is the Google tag for this account. Copy and paste it in the code of every page of your website, immediately after the <head> element. Don’t add more than one Google tag to each page.
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10899021714"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-10899021714');
+</script>
+
+
+
+-------------------------------------------------------------------
+
+Copy the snippet below and paste it in between the <head></head> tags of the page https://www.smmnclean.com.au/thank-you/, right after the above Google tag
+
+
+<!-- Event snippet for Leads_Thank_You_Page conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-10899021714/hSPRCPPfoPsYEJK_h80o'});
+</script>
