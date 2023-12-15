@@ -615,8 +615,9 @@
 
               <div class="row mb-2">
                 <div class="col-4">Images</div>
-                <input type="file" name="images[]" id="images" multiple>
-                <span id="images_err" style="color:red"></span>
+                <div class="col-8"><input type="file" name="images[]" id="images" placeholder="S" multiple>
+                <span id="images_err" style="color:red"></span></div>
+                
               </div>
 
             </div>

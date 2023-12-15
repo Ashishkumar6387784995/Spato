@@ -67,6 +67,31 @@ i {
     padding: 1rem;
 }
 
+.submenu {
+    display: none;
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    background-color: var(--black);
+}
+.category {
+    padding: 0px 5px;
+    width: 300px;
+    color: var(--white);
+}
+
+.category h5 {
+    border-bottom: 2px solid var(--blue);
+    padding: 5px 0px;
+}
+.category p {
+    line-height: 5px;
+}
+
+.pools:hover .submenu {
+    display: block !important;
+}
+
 .navbar-brand {
     /* width: 40%; */
 }

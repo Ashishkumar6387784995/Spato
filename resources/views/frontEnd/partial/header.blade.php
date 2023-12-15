@@ -55,10 +55,33 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pools</a>
+          <a class="nav-link pools" href="#">Pools</a>
+          <div class="submenu">
+            <div class="category">
+              <h5>EPS Tools</h5>
+              <p>EPS stone P40</p>
+              <p>EPS stone P80</p>
+              <p>EPS stone round arch</p>
+              <p>EPS stone overflow channel P100</p>
+              <p>EPS stone </p>
+
+              <h5>Overflow Channel</h5>
+              
+              <p>EPS stone 40</p>
+              <p>EPS stone 40</p>
+              <p>EPS stone 40</p>
+              <p>EPS stone 40</p>
+              <p>EPS stone 40</p>
+            </div>
+            <div class="category">
+              <h5>EPS Tools</h5>
+              <p>EPS stone 40</p>
+            </div>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Technik</a>
+          
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Attraktionen</a>
