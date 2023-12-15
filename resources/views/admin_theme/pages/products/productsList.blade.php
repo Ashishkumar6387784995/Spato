@@ -14,16 +14,16 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
- 
-<!-- Fonts -->
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
-  <!-- Fonts -->
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
 
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
-     <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
-     <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
     <style>
         .transform-hover {
             height: 150px;
@@ -38,27 +38,30 @@
             cursor: pointer;
         }
 
-        .edit{
-            background-color:#54606c;
-            border:1px solid #54606c;
-            color:#ffff;
+        .edit {
+            background-color: #54606c;
+            border: 1px solid #54606c;
+            color: #ffff;
             padding: 10px 14px;
             height: 42px;
-            text-decoration:none;
-            border-radius:5px;
-            transition:0.5s ease;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.5s ease;
         }
-        .edit:hover{
-            background-color:transparent;
-            border:1px solid #54606c;
-            color:#54606c;
-            border-radius:5px;
+
+        .edit:hover {
+            background-color: transparent;
+            border: 1px solid #54606c;
+            color: #54606c;
+            border-radius: 5px;
         }
-        .close{
-            color:#54606c;
+
+        .close {
+            color: #54606c;
         }
-        .row .col{
-            font-size:14px;
+
+        .row .col {
+            font-size: 14px;
         }
 
         table tr th{
@@ -107,24 +110,27 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5;">
-                  <h2>Admin Dashboard</h2>
-                  <p>Monday, January 12, 2024</p>
+                    <h2>Admin Dashboard</h2>
+                    <p>Monday, January 12, 2024</p>
                 </div>
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                    <a class="edit btn" href="{{url('/api/addProduct')}}">+ neues Produkt</a>
+                    <a href="{{url('/api/addProduct')}}">+ neues Produkt</a>
                     </div>
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    Filter
+                    <div class="col-md-4 stretch-card grid-margin">
+                        Filter
                     </div>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    Alle Produkte
+
+                    <div class="col-md-4 stretch-card grid-margin">
+                        Alle Produkte
                     </div>
                 </div>
+
+               
+
                     <table>
                         <tr>
                             <th>Hersteller</th>
@@ -147,7 +153,11 @@
                             <td><a href="{{url('api/deleteProduct')}}"><i class="fa-regular fa-circle-xmark close"></i></a></td>
                         </tr>
                     </table>
+
                 </div>
+
+
+            </div>
         </div>
     </div>
     <!-- content-wrapper ends -->
@@ -168,6 +178,32 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Execute the code when the document is ready
+    $(document).ready(function() {
+        // Make a GET request using AJAX
+        $.ajax({
+            url: '/api/productListingApi', // Replace with the actual endpoint URL
+            method: 'GET',
+            success: function(data) {
+                // Handle the successful response
+                if (data.productList) {
+                    console.log('Data received:', data.productList);
+                } else {
+                    console.log('Data received:', data.errors);
+                }
+            }, // Missing comma here
+
+            error: function(error) {
+                // Handle errors
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+
 
 
 

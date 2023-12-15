@@ -112,8 +112,14 @@ class ProductController extends Controller
 
 
     public function productListing(){
+
+        $products = Product::all();
+
+        if ($products){
+            return response()->json(['productList'=>$products]);
+        }
      
-        return view('admin_theme/pages/products/productsList');
+            return response()->json(['errors'=>"Products Not Found"]);
     }
 
 
