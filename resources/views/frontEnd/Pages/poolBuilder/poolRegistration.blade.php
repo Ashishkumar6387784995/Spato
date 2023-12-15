@@ -29,6 +29,7 @@
  border-radius:5px;
  font-weight:600;
  transition:1s;
+ color:var(--white);
 }
 .registeren:hover{
  border:1px solid var(--blue);
@@ -42,26 +43,9 @@
 
 
 
-.agb-container nav .home {
-  color: var(--black) !important;
-  text-decoration: none !important;
-}
-
-
-.agb-container .content h6 {
-  font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 22px;
-}
-
-.agb-container .content .details {
-  margin: 2rem 0rem;
-  text-align: justify;
-}
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
-  .agb-container {
+ .registration{
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
   }
   /* footer .footer-container {
