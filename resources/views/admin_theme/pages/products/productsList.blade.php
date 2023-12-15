@@ -60,6 +60,14 @@
         .row .col{
             font-size:14px;
         }
+
+        table tr th{
+            width:200px;
+        }
+        table tr td{
+            padding:10px 2px;
+            width:200px;
+        }
     </style>
 </head>
 
@@ -117,91 +125,28 @@
                     Alle Produkte
                     </div>
                 </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card grid-margin" >
-                    Hersteller
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Herst. Nr.
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Artikel Nr.
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Artikel Name
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Kategorie 1
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Preis netto
-                    </div>
-                    <div class="col stretch-card grid-margin invisible" >
-                        Edit button
-                    </div>
-                    <div class="col stretch-card grid-margin invisible" >
-                        closs button
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                        Maitic
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                        50
-                    </div>
-                    <div class="col stretch-card "  >
-                        00200M
-                    </div>
-                    <div class="col stretch-card "  >
-                    PE - Schwallwasser Behälter, 1000 ltr.
-                    </div>
-                    <div class="col stretch-card "  >
-                    Technik
-                    </div>
-                    <div class="col stretch-card "  >
-                    1,164.00€
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('api/editProduct')}}" class="edit btn">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('api/deleteProduct')}}"><i class="fa-regular fa-circle-xmark close"></i></a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                        Maitic
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                        50
-                    </div>
-                    <div class="col stretch-card "  >
-                        00200M
-                    </div>
-                    <div class="col stretch-card "  >
-                    PE - Schwallwasser Behälter, 1000 ltr.
-                    </div>
-                    <div class="col stretch-card "  >
-                    Technik
-                    </div>
-                    <div class="col stretch-card "  >
-                    1,164.00€
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="#" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
-                    </div>
-
-                  
-                </div>
-           
-              
+                    <table>
+                        <tr>
+                            <th>Hersteller</th>
+                            <th> Herst. Nr.</th>
+                            <th>Artikel Nr.</th>
+                            <th>Artikel Name</th>
+                            <th> Kategorie 1</th>
+                            <th> Preis netto</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Maitic</td>
+                            <td>50</td>
+                            <td>00200M</td>
+                            <td>PE - Schwallwasser Behälter, 1000 ltr.</td>
+                            <td>Technik</td>
+                            <td>1,164.00€</td>
+                            <td> <a href="{{url('api/editProduct')}}" class="edit btn">bearbeiten</a></td>
+                            <td><a href="{{url('api/deleteProduct')}}"><i class="fa-regular fa-circle-xmark close"></i></a></td>
+                        </tr>
+                    </table>
                 </div>
         </div>
     </div>

@@ -33,7 +33,7 @@
 <body oncontextmenu="return false" class="snippet-body">
 @include('frontEnd/partial/header')
 
-  <div class="bg-image" id="hero" style="background-image:url({{ asset('assets/frontEnd/web/images/remove.png')}} ); background-position: center; background-repeat: no-repeat !important;"></div>
+  <div class="bg-image myDiv" id="hero" style="background-image:url({{ asset('assets/frontEnd/web/images/remove.png')}} ); background-position: center; background-repeat: no-repeat !important;"></div>
 
   <section class="dark-view" id="view">
     <div class="container">
