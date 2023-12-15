@@ -65,6 +65,7 @@ Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 // products for Admin
 Route::get('productListing',[productController::class,'productListing']);
 Route::get('addProduct',[productController::class,'addProduct']);
+Route::post('addProduct',[productController::class,'addproductList']);
 Route::get('editProduct',[productController::class,'editProduct']);
 
 

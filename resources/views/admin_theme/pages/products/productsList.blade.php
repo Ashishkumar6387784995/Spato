@@ -105,7 +105,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                    + neues Produkt
+                    <a href="{{url('/api/addProduct')}}">+ neues Produkt</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
                     Filter
@@ -165,10 +165,10 @@
                     1,164.00€
                     </div>
                     <div class="col stretch-card" >
-                        <a href="#" class="edit">bearbeiten</a>
+                        <a href="{{url('api/editProduct')}}" class="edit btn">bearbeiten</a>
                     </div>
                     <div class="col stretch-card" >
-                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
+                        <a href="{{url('api/deleteProduct')}}"><i class="fa-regular fa-circle-xmark close"></i></a>
                     </div>
                 </div>
                 <div class="row pt-3">
@@ -197,6 +197,8 @@
                     <div class="col stretch-card" >
                         <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
                     </div>
+
+                  
                 </div>
            
               
