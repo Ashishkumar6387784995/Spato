@@ -25,7 +25,7 @@ function myFunction() {
     // Toggle between two different background images
     if (currentImage.includes("assets/frontEnd/web/images/remove.png")) {
         myDiv.style.backgroundImage =
-            "url(http://127.0.0.1:8000/assets/frontEnd/web/images/dark-bg.png)";
+            "url(http://127.0.0.1:8000/assets/frontEnd/web/images/dark-background.png)";
     } else {
         myDiv.style.backgroundImage =
             "url(http://127.0.0.1:8000/assets/frontEnd/web/images/remove.png)";
