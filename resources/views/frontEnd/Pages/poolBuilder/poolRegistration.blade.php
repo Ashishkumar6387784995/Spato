@@ -13,14 +13,17 @@
 
 .registration{
   background-color: #eaebef;
-  /* margin-top: -10rem; */
-  padding-top: 5rem;
+  margin-top: -1rem;
+  padding-top: -10rem !important;
   margin-bottom: -10rem;
   padding-bottom: 10rem;
-
   clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
 }
 
+.pool-hero-section{
+   width: 100%; 
+   height:350px;     
+  }
 
 .registeren{
  background-color: var(--blue);
@@ -63,6 +66,13 @@
 
 
  <section class="registration">
+ <div class="pool-hero-section" style="background:url({{ asset('assets/frontEnd/web/images/pool-banner.png')}}); background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+<h1  class="text-center" style="font-weight:900; font-size:55px;   margin: auto;
+  width: 50%;
+  padding-top:10rem;">Pool builders</h1>
+</div>
   <div class="container">
    <h4 class="mb-5">Registeren</h4>
   <form id="poolRegistrationForm">
