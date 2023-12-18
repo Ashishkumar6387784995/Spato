@@ -1,6 +1,15 @@
 
 
-
+<style>
+  .img img{
+    width:200px;
+    margin:auto;
+    justify-content:center;
+    display:block;
+    padding-bottom:2rem;
+    border-bottom:2px solid #44e1d5;
+  }
+</style>
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
@@ -17,12 +26,18 @@
         </div>
       </a>
     </li> -->
+
+    
+    
+      <span class="img"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></span>
+  
+
     <li class="nav-item">
-    <div class="border-top">
+    
       <a class="nav-link" href="{{ url('/api/offerListing') }}">
         <span class="menu-title">Angebote</span>
       </a>
-</div>
+
     </li>
 
  
