@@ -60,11 +60,22 @@ i {
     display: none !important;
 }
 
-.dropdown-menu {
-    margin-top: 2rem !important;
+.dropdown ul {
+    background-color: var(--black);
+    color: var(--white);
 }
-.dropdown-menu li {
-    padding: 1rem;
+.dropdown ul li a {
+    color: var(--white);
+}
+
+.pools-dropdown {
+    width: 600px;
+}
+.pools-dropdown li h6 {
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--blue);
+    padding-bottom: 10px;
 }
 
 .submenu {
