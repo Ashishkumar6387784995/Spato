@@ -312,10 +312,12 @@ footer .footer-container .footer-desc .footer-brand {
     justify-content: center;
 }
 footer .footer-container .footer-desc a {
-    margin-left: 4rem;
+    /* margin-left: 2rem; */
     text-align: left;
     color: var(--black);
+    line-height: 5px;
     text-decoration: none;
+    font-size: 14px;
 }
 footer .footer-container .useless {
     visibility: hidden;

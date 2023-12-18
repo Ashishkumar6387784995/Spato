@@ -46,7 +46,7 @@
          
         </div>
         <div class="col">
-          <p class="footer-desc" style="text-align: center">
+          <p class="footer-desc" style="font-size:14px;">
             Download Our Mobile App
           </p>
           <p class="footer-desc">
