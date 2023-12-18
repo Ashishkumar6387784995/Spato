@@ -455,6 +455,7 @@
             </div>
           </div>
           <div class="row ">
+
             <div class="form-check">
               <div class="col stretch-card grid-margin">
 
@@ -473,8 +474,8 @@
             </div>
           </div>
           <span id="success_message" style="color:green"></span>
+          <h4>Manufacture details</h4>
           <div class="row pt-3 add-products-field">
-
     
             <div class="col border">
               <div class="row mb-2">
@@ -515,7 +516,7 @@
 
               <div class="row mb-2">
                 <div class="col-4">Kategorie </div>
-                <div class="container">
+                <!-- <div class="container">
                   <section>
                     <select multiple="multiple" name="myMulti" id="myMulti">
                       <option value="Item 1">Item 1</option>
@@ -527,7 +528,7 @@
 
                     </select>
                   </section>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -620,28 +621,128 @@
               </div>
 
             </div>
+            
           </div>
+          <div class="row pt-3 add-products-field">
+          <h4 class="pb-3">Manufacture specification</h4>
+            <div class="col border">
+            <div class="row mb-2">
+                            <div class="col-4">m3/h</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Stichmass (mm)</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">kW</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Volt</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Kelvin</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">lm (lumen)</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Druckstufe PN</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Material</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Körnung</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Durchmesser (mm)</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Radius mm</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+            </div>
+
+            <div class="col border">
+            <div class="row mb-2">
+                            <div class="col-4">Gewicht Kg</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Länge (mm)</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Breite (mm)</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Höhe (mm)</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        
+            </div>
+
+
+            <div class="col">
+            <div class="row mb-2">
+                            <div class="col-4">Bild JPG1</div>
+                            <div class="col-8"><input type="text" class="form-control" ></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Bild JPG2</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Bild JPG3</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Bild JPG4</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Anleitung / Tech Info 1 PDF</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Anleitung / Tech Info 2 PDF</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4">Anleitung / Tech Info 3 PDF</div>
+                            <div class="col-8"><input type="text" class="form-control"></div>
+                        </div>
+                    </div>
       </div>
       </form>
+
+
+<!-- Specification starts -->
+
+<!-- Specification ends -->
+
 
 
     </div>
   </div>
   </div>
   <!-- content-wrapper ends -->
-  <!-- partial:partials/_footer.html -->
-  <!-- <footer class="footer">
-    <div class="container-fluid d-flex justify-content-between">
-      <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-        bootstrapdash.com 2021</span>
-      <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-          admin template</a> from Bootstrapdash.com</span>
-    </div>
-  </footer> -->
+
   <!-- partial -->
   </div>
   <!-- main-panel ends -->
   </div>
+  
   <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
