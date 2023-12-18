@@ -57,7 +57,7 @@
           </p>
         </div>
         <div class="col">
-          <p class="footer-desc">
+          <p class="footer-desc" style="margin-top:-3rem;">
             <img class="footer-brand" src="{{ asset('assets/frontEnd/web/images/spato-logo.png')}}" alt="" srcset="" />
           </p>
           <p class="footer-desc phone">
