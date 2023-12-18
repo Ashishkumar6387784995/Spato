@@ -31,6 +31,7 @@
                 </p>
                 <div class="modal-body">
                     <form method="post" id="passwordReset">
+                        <span id="success_msg" style="color:#44e1d5"></span><br>
                         <div class="form-group">
                         <span id="err text-center" style="color:#44e1d5; font-weight:600; margin-bottom:1rem;"></span>
                             <input type="text" id="token" name="token" class="form-control" placeholder="Password" style="display:none" value="{{$token}}" />
@@ -87,8 +88,14 @@
                 data: formData,
                 success: function(response) {
                     // Handle success
+
+                    console.log("hello");
+                    if(response.success){
+                        $('#success_msg').text(response.success);
+                        console.log("hello");
+                    }
                  
-                    $('#err').text(response.success);
+                   
                 },
                 error: function(error) {
                     // Handle error
