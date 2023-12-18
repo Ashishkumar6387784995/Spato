@@ -33,9 +33,9 @@
 <body oncontextmenu="return false" class="snippet-body">
 @include('frontEnd/partial/header')
 
-  <div class="bg-image myDiv" id="hero" style="background-image:url({{ asset('assets/frontEnd/web/images/light-bg.png')}} ); background-position: center center;   background-size: cover !important;
-    background-repeat: no-repeat !important; clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
-    
+  <div class="bg-image myDiv" id="hero" style="clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
+  <div class="bg" style="background-image:url({{ asset('assets/frontEnd/web/images/light-bg.png')}} ); background-position: center center;   background-size: cover !important;
+    background-repeat: no-repeat !important; height:100%;">
     <img class="product" src="{{ asset('assets/frontEnd/web/images/product-2.png')}} " alt="" srcset="">
     <div class="hero-heading-container">
     <h1 class="hero-heading">Specialist</h1>
@@ -46,7 +46,7 @@
 
     <img class="exclusive" src="{{ asset('assets/frontEnd/web/images/exclusive-tag.png')}} " alt="" srcset="">
   
-  
+    </div>
   </div>
 
   <section class="dark-view" id="view" style="background-color:#eeeeee;">
