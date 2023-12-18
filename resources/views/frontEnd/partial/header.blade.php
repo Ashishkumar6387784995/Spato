@@ -54,31 +54,41 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link pools" href="#">Pools</a>
-          <div class="submenu">
-            <div class="category">
-              <h5>EPS Tools</h5>
-              <p>EPS stone P40</p>
-              <p>EPS stone P80</p>
-              <p>EPS stone round arch</p>
-              <p>EPS stone overflow channel P100</p>
-              <p>EPS stone </p>
-
-              <h5>Overflow Channel</h5>
-              
-              <p>EPS stone 40</p>
-              <p>EPS stone 40</p>
-              <p>EPS stone 40</p>
-              <p>EPS stone 40</p>
-              <p>EPS stone 40</p>
-            </div>
-            <div class="category">
-              <h5>EPS Tools</h5>
-              <p>EPS stone 40</p>
-            </div>
-          </div>
-        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link pools" href="#">Pools</a></li> -->
+          <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+              Pools
+              </a>
+              <div class="row">
+                <div class="col">
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+                </div>
+                <div class="col">
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+                </div>
+              </div>
+            </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Technik</a>
           
