@@ -158,7 +158,7 @@
             </button> -->
         <li class="nav-item border-0 list-unstyled list" style="list-style-type:none;">
           <div class="form-check form-switch">
-            <input class="form-check-input m-auto" onclick="myFunction()" type="checkbox" role="switch" id="darkModeToggle">
+            <input class="form-check-input m-auto" onclick="toggleDarkMode()" type="checkbox" role="switch" id="darkModeToggle">
           </div>
         </li>
         <li class="nav-item border-0 list-unstyled ">

@@ -35,7 +35,7 @@
 
   <div class="bg-image myDiv" id="hero" style="clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
 
-    <img src="{{ asset('assets/frontEnd/web/images/light-background.png')}} " style="width:100%; height:100%;" alt="" srcset="">
+    <img myImage src="{{ asset('assets/frontEnd/web/images/light-background.png')}} " style="width:100%; height:100%;" alt="" srcset="">
     <img class="product" src="{{ asset('assets/frontEnd/web/images/product-2.png')}} " alt="" srcset="">
     <div class="hero-heading-container">
     <h1 class="hero-heading">Specialist</h1>
