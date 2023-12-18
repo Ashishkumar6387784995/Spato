@@ -476,7 +476,10 @@
           <span id="success_message" style="color:green"></span>
           <h4>Manufacture details</h4>
           <div class="row pt-3 add-products-field">
-    
+
+
+
+
             <div class="col border">
               <div class="row mb-2">
                 <div class="col-4">Hersteller</div>
@@ -616,8 +619,9 @@
               <div class="row mb-2">
                 <div class="col-4">Images</div>
                 <div class="col-8"><input type="file" name="images[]" id="images" placeholder="S" multiple>
-                <span id="images_err" style="color:red"></span></div>
-                
+                  <span id="images_err" style="color:red"></span>
+                </div>
+
               </div>
 
             </div>
@@ -757,140 +761,140 @@
 
   <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
   <script>
-  jQuery.noConflict();
-  (function($) {
-    $(document).ready(function() {
-      // Event listener for Save button
-      $('#saveBtn').on('click', function() {
-        // Collect form data
+    jQuery.noConflict();
+    (function($) {
+      $(document).ready(function() {
+        // Event listener for Save button
+        $('#saveBtn').on('click', function() {
+          // Collect form data
 
-      $('#Hersteller_err').text('');
-      $('#Herst_Nr_err').text('');
-      $('#Lief_Art_Nr_err').text('');
-      $('#Hersteller_Artikelnummer_err').text('');
-      $('#Katalog_Art_Nummer_err').text('');
-      $('#Kategorie_err').text('');
-      $('#VE_ VPE_err').text('');
-      $('#Einheit_err').text('');
+          $('#Hersteller_err').text('');
+          $('#Herst_Nr_err').text('');
+          $('#Lief_Art_Nr_err').text('');
+          $('#Hersteller_Artikelnummer_err').text('');
+          $('#Katalog_Art_Nummer_err').text('');
+          $('#Kategorie_err').text('');
+          $('#VE_ VPE_err').text('');
+          $('#Einheit_err').text('');
 
-      $('#Rabattcode_1_err').text('');
-      $('#Rabattcode_2_err').text('');
-      $('#Rabattcode_3_err').text('');
-      $('#Preis_zzgl_MwSt_err').text('');
-      $('#Preis_inkl_MwSt_err').text('');
-      $('#Einkausfpreis_zzgl_MwSt_err').text('');
-      $('#Einkaufsrabatt_err').text('');
-      $('#Artikelname_err').text('');
-      $('#Beschreibung_kurz_err').text('');
-      $('#Beschreibung_lang_err').text('');
-
-
-      if (!$('#type').val()) {
-        $('#type_err').text('Please select type.');
-        return;
-      }
+          $('#Rabattcode_1_err').text('');
+          $('#Rabattcode_2_err').text('');
+          $('#Rabattcode_3_err').text('');
+          $('#Preis_zzgl_MwSt_err').text('');
+          $('#Preis_inkl_MwSt_err').text('');
+          $('#Einkausfpreis_zzgl_MwSt_err').text('');
+          $('#Einkaufsrabatt_err').text('');
+          $('#Artikelname_err').text('');
+          $('#Beschreibung_kurz_err').text('');
+          $('#Beschreibung_lang_err').text('');
 
 
-        if (!$('#Hersteller').val()) {
-        $('#Hersteller_err').text('Please enter Hersteller.');
-        return;
-      }
-
-      if (!$('#Artikelname').val()) {
-        $('#Artikelname_err').text('Please enter Artikelname.');
-        return;
-      }
-
-      if (!$('#images').val()) {
-        $('#images_err').text('Please add Some Images.');
-        return;
-      }
-
- 
-
-
-        var formData = collectFormData();
-        
-
-        // Log form data to the console (for testing)
-        console.log('Form Data:', formData);
-
-        // Send the formData to the server using AJAX
-        sendDataToServer(formData);
-      });
-
-      // Function to collect form data
-      function collectFormData() {
-        var formData = new FormData($('#addProductform')[0]);
-
-        return formData;
-      }
-
-      // Function to send data to the server using AJAX
-      function sendDataToServer(formData) {
-
-   
-        $.ajax({
-          type: 'POST', // Use POST or GET depending on your server-side implementation
-          url: 'addProduct', // Replace with your server endpoint
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function(response) {
-            // Handle the success response from the server
-       
-            if (response.success) {
-           
-            $('#success_message').text(response.success);
-            console.log('Server Response:', response);
-          }
-
-          if (response.ValidationError) {
-            // Display validation errors next to the respective form fields
-            console.log(response.ValidationError);
-            displayValidationErrors(response.ValidationError);
+          if (!$('#type').val()) {
+            $('#type_err').text('Please select type.');
+            return;
           }
 
 
-           
-          },
-          error: function(error) {
-            // Handle the error response from the server
-            console.error('Error:', error);
+          if (!$('#Hersteller').val()) {
+            $('#Hersteller_err').text('Please enter Hersteller.');
+            return;
           }
+
+          if (!$('#Artikelname').val()) {
+            $('#Artikelname_err').text('Please enter Artikelname.');
+            return;
+          }
+
+          if (!$('#images').val()) {
+            $('#images_err').text('Please add Some Images.');
+            return;
+          }
+
+
+
+
+          var formData = collectFormData();
+
+
+          // Log form data to the console (for testing)
+          console.log('Form Data:', formData);
+
+          // Send the formData to the server using AJAX
+          sendDataToServer(formData);
         });
 
-        function displayValidationErrors(errors) {
-        // Display validation errors next to the respective form fields
-        if (errors.Hersteller) {
-          $('#Hersteller_err').text(errors.Hersteller[0]);
+        // Function to collect form data
+        function collectFormData() {
+          var formData = new FormData($('#addProductform')[0]);
+
+          return formData;
         }
-        if (errors.Herst_Nr) {
-          $('#Herst_Nr_err').text(errors.Herst_Nr[0]);
-        }
-        if (errors.Hersteller_Artikelnummer) {
-          $('#Hersteller_Artikelnummer_err').text(errors.Hersteller_Artikelnummer[0]);
-        }
-        if (errors.email) {
-          $('#signup_email_err').text(errors.email[0]);
-        }
-        if (errors.password) {
-          $('#signup_password_err').text(errors.password[0]);
-        }
-        if (errors.password_confirmation) {
-          $('#signup_Confirm_password_err').text(errors.password_confirmation[0]);
-        }
-        if (errors.captcha) {
-          $('#signup_captcha_err').text(errors.captcha[0]);
-        }
-      }
+
+        // Function to send data to the server using AJAX
+        function sendDataToServer(formData) {
+
+
+          $.ajax({
+            type: 'POST', // Use POST or GET depending on your server-side implementation
+            url: 'addProduct', // Replace with your server endpoint
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              // Handle the success response from the server
+
+              if (response.success) {
+
+                $('#success_message').text(response.success);
+                console.log('Server Response:', response);
+              }
+
+              if (response.ValidationError) {
+                // Display validation errors next to the respective form fields
+                console.log(response.ValidationError);
+                displayValidationErrors(response.ValidationError);
+              }
 
 
 
-      }
-    });
-  })(jQuery);
-</script>
+            },
+            error: function(error) {
+              // Handle the error response from the server
+              console.error('Error:', error);
+            }
+          });
+
+          function displayValidationErrors(errors) {
+            // Display validation errors next to the respective form fields
+            if (errors.Hersteller) {
+              $('#Hersteller_err').text(errors.Hersteller[0]);
+            }
+            if (errors.Herst_Nr) {
+              $('#Herst_Nr_err').text(errors.Herst_Nr[0]);
+            }
+            if (errors.Hersteller_Artikelnummer) {
+              $('#Hersteller_Artikelnummer_err').text(errors.Hersteller_Artikelnummer[0]);
+            }
+            if (errors.email) {
+              $('#signup_email_err').text(errors.email[0]);
+            }
+            if (errors.password) {
+              $('#signup_password_err').text(errors.password[0]);
+            }
+            if (errors.password_confirmation) {
+              $('#signup_Confirm_password_err').text(errors.password_confirmation[0]);
+            }
+            if (errors.captcha) {
+              $('#signup_captcha_err').text(errors.captcha[0]);
+            }
+          }
+
+
+
+        }
+      });
+    })(jQuery);
+  </script>
 
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>

@@ -63,6 +63,12 @@ Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']
 Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 
 
+// Pool Builder For Front End
+Route::get('poolBuilderRegister',[PoolBuilder::class,'poolBuilderRegister']);
+Route::post('poolBuilderRegister',[PoolBuilder::class,'submitpoolBuilderRegistration']);
+Route::get('poolBuilderProfile',[PoolBuilder::class,'poolBuilderProfile']);
+Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
+
 // products for Admin
 Route::get('productListingApi',[productController::class,'productListing']);
 Route::view('productListing', 'admin_theme/pages/products/productsList');
@@ -70,14 +76,6 @@ Route::get('addProduct',[productController::class,'addProduct']);
 Route::post('addProduct',[productController::class,'addproductList']);
 Route::get('editProduct/{id}',[productController::class,'editProduct']);
 Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
-
-
-// Pool Builder For Front End
-Route::get('poolBuilderRegister',[PoolBuilder::class,'poolBuilderRegister']);
-Route::post('poolBuilderRegister',[PoolBuilder::class,'submitpoolBuilderRegistration']);
-Route::get('poolBuilderProfile',[PoolBuilder::class,'poolBuilderProfile']);
-Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
-
 
 
 // Offers for Admin
