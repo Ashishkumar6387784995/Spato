@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class PoolBuilder extends Controller
 {
@@ -24,11 +26,11 @@ class PoolBuilder extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'address' => 'required|string',
-            'zip_code' => 'required|integer|min:8|',
+            'zipCode' => 'required|integer|min:8|',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|min:8|confirmed',
-            'password' => 'required|min:8',
-            'vat_no' => 'required',
+            'phone' => 'required|min:8|integer',
+            'password' => 'required|min:8|',
+            'vatNo' => 'required',
         ]);
 
         // return response()->json(['success'=>'errors']);
@@ -38,27 +40,32 @@ class PoolBuilder extends Controller
             return response()->json(['ValidationError' => $validator->errors()]);
         }
 
+        $token = Str::random(40);
+        // Create a new user
+        $user = User::create([
+            'name' => $request->input('name'),
+            'address' => $request->input('address'),
+            'zipCode' => $request->input('zipCode'),
+            'email' => $request->input('email'),
 
-        // Create a new PoolBuildersUsers instance and save it to the database
-        $poolBuilder = new User();
-        $poolBuilder->name = $request->input('name');
-        $poolBuilder->address = $request->input('address');
-        $poolBuilder->zip_code = $request->input('zip_code');
-        $poolBuilder->email = $request->input('email');
-        $poolBuilder->contact = $request->input('contact');
-        $poolBuilder->password = bcrypt($request->input('password'));
-        $poolBuilder->vat_no = $request->input('vat_no');
-        // Set other fields
+            'mobile' => $request->input('phone'),
+    
+            'password' => Hash::make($request->input('password')),
+            'remember_token' => $token,
+            'vatNo' => $request->input('vatNo'),
+            'role' => $request->input('role'),
 
-        $poolBuilder->save();
+        ]);
 
-        // Return a response (you can customize this based on your needs)
-        if($poolBuilder){
-            return response()->json(['success' => 'Pool Builder registered successfully']);
+
+        if ($user) {
+            return response()->json(['success' => 'User registered successfully', 'token' => $token]);
+        } else {
+            return response()->json(['error' => 'User registered Failed due Query']);
         }
-        else{
-            return response()->json(['success' => 'Pool Builder not registered successfully']);
-        }
+
+
+      
     
     }
 
