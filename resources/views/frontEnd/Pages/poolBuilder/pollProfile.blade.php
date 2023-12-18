@@ -94,6 +94,10 @@
  <div class="pool-hero-section" style="background:url({{ asset('assets/frontEnd/web/images/pool-banner.png')}}); background-position: center;
     background-repeat: no-repeat;
     background-size: cover;">
+<h1  class="text-center" style="font-weight:900; font-size:55px;   margin: auto;
+  width: 50%;
+  padding-top:10rem;">Pool builders</h1>
+</div>
     <div class="container">
       <h4 class="mb-5">Profile Setting</h4>
       <div class="row">
