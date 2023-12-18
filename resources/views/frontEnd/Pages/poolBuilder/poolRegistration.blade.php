@@ -13,16 +13,20 @@
       --white: #ffffff;
     }
 
-    .registration {
-      background-color: #eaebef;
-      /* margin-top: -10rem; */
-      padding-top: 5rem;
-      margin-bottom: -10rem;
-      padding-bottom: 10rem;
+.registration{
+  background-color: #eaebef;
+  /* margin-top: -10rem; */
+  padding-top: 5rem;
+  margin-bottom: -10rem;
+  padding-bottom: 10rem;
 
-      clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
-    }
+  clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
+}
 
+.pool-hero-section{
+   width: 100%; 
+   height:350px;     
+  }
 
     .registeren {
       background-color: var(--blue);
@@ -66,12 +70,12 @@
 
 
 
-  <section class="registration">
-    <div class="container">
-      <h4 class="mb-5">Registeren</h4>
-      <form id="poolRegistrationForm">
-
-        <span id="success_msg" style="color:#44e1d5"></span>
+ <section class="registration">
+  <div class="container">
+   <h4 class="mb-5">Registeren</h4>
+  <form id="poolRegistrationForm">
+   
+  <span id="success_msg" style="color:#44e1d5"></span>
 
         <div class="row">
           <div class="col-8">

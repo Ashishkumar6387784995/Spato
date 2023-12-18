@@ -14,13 +14,17 @@
 
 .profile{
   background-color: #eaebef;
-  /* margin-top: -10rem; */
-  padding-top: 5rem;
+  margin-top: -1rem;
+  padding-top: -10rem !important;
   margin-bottom: -10rem;
   padding-bottom: 10rem;
-
   clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
 }
+
+.pool-hero-section{
+   width: 100%; 
+   height:350px;     
+  }
 
 
 .registeren{
@@ -87,6 +91,9 @@
  @include('frontEnd/partial/header')
  <!-- Header -->
  <section class="profile">
+ <div class="pool-hero-section" style="background:url({{ asset('assets/frontEnd/web/images/pool-banner.png')}}); background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
     <div class="container">
       <h4 class="mb-5">Profile Setting</h4>
       <div class="row">
