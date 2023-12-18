@@ -243,7 +243,7 @@
 
           if (response.ValidationError) {
             // Display validation errors next to the respective form fields
-            console.log('eoor');
+            console.log('errors');
             displayValidationErrors(response.ValidationError);
           }
         },

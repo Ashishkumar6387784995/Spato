@@ -18,16 +18,7 @@ class PoolBuilder extends Controller
     public function submitpoolBuilderRegistration(Request $request)
     {
         // Validate the request data
-        $request->validate([
-            'name' => 'required|string',
-            'address' => 'required|string',
-            'zipCode' => 'required|string',
-            'email' => 'required|email|unique:poolsBuilders_users,email',
-            'contact' => 'required|string',
-            'password' => 'required|string',
-            'vatNo' => 'nullable|string',
-            // Add validation rules for other fields
-        ]);
+     
 
         
         $validator = Validator::make($request->all(), [
@@ -36,7 +27,7 @@ class PoolBuilder extends Controller
             'zip_code' => 'required|integer|min:8|',
             'email' => 'required|email|unique:users',
             'contact' => 'required|min:8|confirmed',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'vat_no' => 'required',
         ]);
 
