@@ -17,6 +17,7 @@ class PoolBuilders_users extends Model
         'contact',
         'password',
         'vat_no',
+        'condition',
     ];
 
     protected $table = "poolsBuilders_users";

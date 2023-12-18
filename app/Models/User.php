@@ -25,6 +25,9 @@ class User extends Authenticatable
         'mobile',
         'action',
         'role',
+        'address',
+        'zipCode',
+        'vatNo',
     ];
 
     /**

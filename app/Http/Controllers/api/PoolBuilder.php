@@ -4,7 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\FrontEnd\PoolBuilders_users;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class PoolBuilder extends Controller
 {
@@ -20,16 +21,35 @@ class PoolBuilder extends Controller
         $request->validate([
             'name' => 'required|string',
             'address' => 'required|string',
-            'zip_code' => 'required|string',
+            'zipCode' => 'required|string',
             'email' => 'required|email|unique:poolsBuilders_users,email',
             'contact' => 'required|string',
             'password' => 'required|string',
-            'vat_no' => 'nullable|string',
+            'vatNo' => 'nullable|string',
             // Add validation rules for other fields
         ]);
 
+        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'zip_code' => 'required|integer|min:8|',
+            'email' => 'required|email|unique:users',
+            'contact' => 'required|min:8|confirmed',
+            'password' => 'required',
+            'vat_no' => 'required',
+        ]);
+
+        // return response()->json(['success'=>'errors']);
+
+        if ($validator->fails()) {
+            // Return validation errors in the response
+            return response()->json(['ValidationError' => $validator->errors()]);
+        }
+
+
         // Create a new PoolBuildersUsers instance and save it to the database
-        $poolBuilder = new PoolBuilders_users();
+        $poolBuilder = new User();
         $poolBuilder->name = $request->input('name');
         $poolBuilder->address = $request->input('address');
         $poolBuilder->zip_code = $request->input('zip_code');

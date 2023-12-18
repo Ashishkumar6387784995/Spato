@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('contact');
             $table->string('password');
             $table->string('vat_no')->nullable();
+            $table->string('condition')->nullable();
             $table->timestamps();
+         
         });
     }
 
