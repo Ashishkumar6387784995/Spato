@@ -173,7 +173,8 @@ class loginController extends Controller
             return response()->json(['success' => 'Password Reset successfully']);
         } else {
             // User not found
-            dd('User not found for the given token.');
+            // dd('User not found for the given token.');
+            return response()->json(['error' => 'User not found for the given token']);
         }
     }
 
