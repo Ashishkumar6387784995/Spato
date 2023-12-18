@@ -108,7 +108,7 @@
     </div>
 
 
-  
+    @include('admin_theme/Partial/navbar')
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
