@@ -23,6 +23,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('action')->nullable();
             $table->string('role')->nullable();
+            $table->string('address')->nullable();
+            $table->string('zipCode')->nullable();
+            $table->string('vatNo')->nullable();
 
             $table->timestamps();
         });
