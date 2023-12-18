@@ -26,7 +26,7 @@ class PoolBuilder extends Controller
             'address' => 'required|string',
             'zip_code' => 'required|integer|min:8|',
             'email' => 'required|email|unique:users',
-            'contact' => 'required|min:8|confirmed',
+            'phone' => 'required|min:8|confirmed',
             'password' => 'required|min:8',
             'vat_no' => 'required',
         ]);
