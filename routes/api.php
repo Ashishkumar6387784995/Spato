@@ -74,6 +74,7 @@ Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
 
 // Pool Builder For Front End
 Route::get('poolBuilderRegister',[PoolBuilder::class,'poolBuilderRegister']);
+Route::post('poolBuilderRegister',[PoolBuilder::class,'submitpoolBuilderRegistration']);
 Route::get('poolBuilderProfile',[PoolBuilder::class,'poolBuilderProfile']);
 Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 
