@@ -148,7 +148,7 @@
           <div class="cards-wrapper">
             <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -165,9 +165,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -184,9 +184,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -209,7 +209,7 @@
           <div class="cards-wrapper">
             <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -226,10 +226,10 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             
               <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -246,9 +246,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -271,7 +271,7 @@
           <div class="cards-wrapper">
             <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -288,9 +288,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -307,9 +307,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
                <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -349,7 +349,7 @@
           <div class="cards-wrapper">
             <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -366,9 +366,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card ">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -385,9 +385,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card ">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -410,7 +410,7 @@
           <div class="cards-wrapper">
             <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -427,10 +427,10 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             
               <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -447,9 +447,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -472,7 +472,7 @@
           <div class="cards-wrapper">
             <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -489,9 +489,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
             <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
@@ -508,9 +508,9 @@
                 </div>
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
-            <div class="card d-none d-md-block">
+            <div class="card">
                <img
-                  src="{{ asset('assets/frontEnd/web/images/product 1.png')}}"
+                  src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
                 />
