@@ -474,7 +474,7 @@
             </div>
           </div>
           <span id="success_message" style="color:green"></span>
-          <h4>Manufacture details</h4>
+          <h4>Produkt Details</h4>
           <div class="row pt-3 add-products-field">
 
 
@@ -532,6 +532,10 @@
                     </select>
                   </section>
                 </div> -->
+
+                
+
+                
               </div>
             </div>
 
@@ -610,25 +614,19 @@
               </div>
               <div class="row mb-2">
                 <div class="col-4">Beschreibung lang</div>
-                <div class="col-8"><textarea class="form-control" rows="22" name="Beschreibung_lang" id="Beschreibung_lang"></textarea>
+                <div class="col-8"><textarea class="form-control" rows="20" name="Beschreibung_lang" id="Beschreibung_lang"></textarea>
                   <span id="Beschreibung_lang_err" style="color:red"></span>
                 </div>
 
               </div>
 
-              <div class="row mb-2">
-                <div class="col-4">Images</div>
-                <div class="col-8"><input type="file" name="images[]" id="images" placeholder="S" multiple>
-                  <span id="images_err" style="color:red"></span>
-                </div>
-
-              </div>
+             
 
             </div>
             
           </div>
           <div class="row pt-3 add-products-field">
-          <h4 class="pb-3">Manufacture specification</h4>
+          <h4 class="pb-3">Produkt Spezifikation</h4>
             <div class="col border">
             <div class="row mb-2">
                             <div class="col-4">m3/h</div>
