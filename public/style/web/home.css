@@ -184,9 +184,9 @@ form .btn-style {
 .bg-image .exclusive {
     display: block;
     position: absolute;
-    width: 280px;
+    width: 300px;
     left: 75%;
-    top: 12.5%;
+    top: 11%;
 }
 
 /* .view {
@@ -200,6 +200,7 @@ form .btn-style {
 .categories .col {
     border: 1px solid var(--black) !important;
     margin: 0px 10px;
+    padding-top: 16px;
     text-align: center;
 }
 .categories .view-desc {
@@ -207,7 +208,7 @@ form .btn-style {
 }
 
 .featured-products {
-    background-color: #54606c;
+    background-color: #777777;
     padding-top: 3rem;
     margin-bottom: -10rem;
     padding-bottom: 10rem;
@@ -285,11 +286,12 @@ footer {
 }
 footer .footer-container {
     background-color: var(--white);
-    width: 98%;
+    width: 85%;
     height: 400px;
     clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%);
     background-size: contain;
     color: var(--white);
+    margin: auto;
 }
 footer .footer-container .footer-desc {
     text-align: left;

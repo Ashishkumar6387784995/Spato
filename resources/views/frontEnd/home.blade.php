@@ -33,9 +33,8 @@
 <body oncontextmenu="return false" class="snippet-body">
 @include('frontEnd/partial/header')
 
-  <div class="bg-image myDiv" id="hero" style="background-image:url({{ asset('assets/frontEnd/web/images/light-bg.png')}} ); background-position: center center;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;">
+  <div class="bg-image myDiv" id="hero" style="background-image:url({{ asset('assets/frontEnd/web/images/light-bg.png')}} ); background-position: center center;   background-size: cover !important;
+    background-repeat: no-repeat !important; clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
     
     <img class="product" src="{{ asset('assets/frontEnd/web/images/product-2.png')}} " alt="" srcset="">
     <div class="hero-heading-container">
@@ -50,7 +49,7 @@
   
   </div>
 
-  <section class="dark-view" id="view">
+  <section class="dark-view" id="view" style="background-color:#eeeeee;">
     <div class="container">
       <div class="row text-center p-4">
         <div class="col d-flex m-auto justify-content-center">
@@ -70,12 +69,12 @@
       </div>
     </div>
   </section>
-  <div class="container">
+  <div class="container pt-5">
     <h5 class="text-center">Subtitle</h5>
     <h3 class="text-center">Our Products Categories</h3>
     <div class="row categories text-center p-4 m-auto justify-content-evenly">
       <div class="col">
-        <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
+        <span class="icon" style="padding-top:10px;"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
       <div class="col">
@@ -139,7 +138,7 @@
     </div>
   </div>
   <!-- Latest Products starts -->
-  <section class="latest-products">
+  <section class="latest-products pt-5">
     <h5 class="text-center ">Subtitle</h5>
     <h3 class="text-center ">Latest Products Categories</h3>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
