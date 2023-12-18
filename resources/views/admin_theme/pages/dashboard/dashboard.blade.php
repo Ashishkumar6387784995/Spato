@@ -108,7 +108,7 @@
     </div>
 
 
-    @include('admin_theme/Partial/navbar')
+    
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
@@ -121,7 +121,7 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="" style="border-bottom: 2px solid #44e1d5;">
+                <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
                     <p>Monday, January 12, 2024</p>
                 </div>
