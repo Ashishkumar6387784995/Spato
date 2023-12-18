@@ -44,6 +44,14 @@
   display: block;
   border: 3px solid var(--blue);
 }
+
+.accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-active-color);
+    background-color: white !important;
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}
+
+
  </style>
 </head>
 <body>
