@@ -113,7 +113,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                   <a href="#"  class="btn">+ neues Produkt</a>
+                   <a href="{{url('/api/addOffer')}}"  class="btn">+ neues Produkt</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
                     <a href="#"   class="btn">Filter</a>
