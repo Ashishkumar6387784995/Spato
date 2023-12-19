@@ -541,6 +541,18 @@
     </div>
   </section>
 
+  <script>
+    const baseUrl = window.location.origin;
+
+// ... your other JavaScript code ...
+
+if (isDarkMode) {
+    image.src = baseUrl + "/assets/frontEnd/web/images/dark-background.png";
+} else {
+    image.src =
+        baseUrl + "/assets/frontEnd/web/images/light-background.png";
+}
+  </script>
 
   @include('frontEnd/partial/footer')
 </body>
