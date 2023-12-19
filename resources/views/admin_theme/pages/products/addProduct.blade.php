@@ -231,9 +231,15 @@
                 <div class="col-8">
 
 
+
                 <div style="height:100%" style="padding:0">
                   <label>
                   Kategorie
+
+                <div style="height:100%; margin-top: -1.5rem !important;  margin-left: -1rem; margin-right:1rem;" style="padding:0">
+                  <label style="width:100%;">
+                    Select Kategorie
+
                     <input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
                   </label>
                   <select id="demo-multiple-select" name="standardUsed[]" multiple>
