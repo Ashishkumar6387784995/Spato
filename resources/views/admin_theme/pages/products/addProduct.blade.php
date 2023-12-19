@@ -247,6 +247,17 @@
                     <option style="heigh:50px; width:300px;">
                     Kategorie 3
                     </option>
+                    <option style="heigh:50px; width:300px;">
+                    Kategorie 4
+                    </option>
+                    <option style="heigh:50px; width:300px;">
+                    Kategorie 5
+                    </option>
+                    <option style="heigh:50px; width:300px;">
+                    Kategorie 6
+                    </option>
+
+
             
                   </select>
                 </div>
@@ -348,66 +359,66 @@
             <div class="col border">
               <div class="row mb-2">
                 <div class="col-4">m3/h</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="m3/h" name="m3/h"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Stichmass (mm)</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Stichmass" name="Stichmass"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">kW</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="kW" name="kW"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Volt</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Volt" name="Volt"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Kelvin</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Kelvin" name="Kelvin"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">lm (lumen)</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="lm" name="lm"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Druckstufe PN</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Druckstufe_PN" name="Druckstufe_PN"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Material</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Material" name="Material"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Körnung</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Körnung" name="Körnung"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Durchmesser (mm)</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Durchmesser" name="Durchmesser"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Radius mm</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Radius" name="Radius"></div>
               </div>
             </div>
 
             <div class="col border">
               <div class="row mb-2">
                 <div class="col-4">Gewicht Kg</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Gewicht" name="Gewicht"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Länge (mm)</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Länge" name="Länge"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Breite (mm)</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Breite" name="Breite"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Höhe (mm)</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Höhe" name="Höhe"></div>
               </div>
 
             </div>
@@ -416,31 +427,31 @@
             <div class="col">
               <div class="row mb-2">
                 <div class="col-4">Bild JPG1</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Bild_1" name="Bild_1"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Bild JPG2</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Bild_2" name="Bild_2"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Bild JPG3</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Bild_3" name="Bild_3"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Bild JPG4</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Bild_4" name="Bild_4"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Anleitung / Tech Info 1 PDF</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Anleitung_PDF_1" name="Anleitung_PDF_1"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Anleitung / Tech Info 2 PDF</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Anleitung_PDF_2" name="Anleitung_PDF_2"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Anleitung / Tech Info 3 PDF</div>
-                <div class="col-8"><input type="text" class="form-control"></div>
+                <div class="col-8"><input type="text" class="form-control" id="Anleitung_PDF_3" name="Anleitung_PDF_3"></div>
               </div>
             </div>
           </div>
