@@ -1,33 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const darkModeToggle = document.getElementById("darkModeToggle");
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle("body-dark");
 
-    darkModeToggle.addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode", darkModeToggle.checked);
-        toggleDarkModeElements(darkModeToggle.checked);
+    const darkModeSections = document.querySelectorAll(".dark-mode-section1");
+
+    // Toggle dark mode styles for specific sections
+    darkModeSections.forEach((section) => {
+        section.classList.toggle("dark-mode-background1");
     });
 
-    // Function to toggle dark mode for specific elements with different classes and tags
-    function toggleDarkModeElements(isDarkMode) {
-        const elementsToToggle = document.querySelectorAll(".dark-view");
+    const darkModeotherSections = document.querySelectorAll(
+        ".dark-mode-section2"
+    );
 
-        elementsToToggle.forEach(function (element) {
-            element.classList.toggle("dark-mode", isDarkMode);
-        });
-    }
-});
+    // Toggle dark mode styles for specific sections
+    darkModeotherSections.forEach((section) => {
+        section.classList.toggle("dark-mode-background2");
+    });
 
-function myFunction() {
-    const myDiv = document.getElementById("hero");
+    const image = document.getElementById("myImage");
+    // const currentSrc = image.src;
 
-    // Check the current background image
-    const currentImage = myDiv.style.backgroundImage;
-
-    // Toggle between two different background images
-    if (currentImage.includes("assets/frontEnd/web/images/light-bg.png")) {
-        myDiv.style.backgroundImage =
-            "url(http://127.0.0.1:8000/assets/frontEnd/web/images/dark-background.png)";
+    // Replace image source based on dark mode
+    if (body.classList.contains("body-dark")) {
+        image.src =
+            "http://127.0.0.1:8000/assets/frontEnd/web/images/dark-background.png";
     } else {
-        myDiv.style.backgroundImage =
-            "url(http://127.0.0.1:8000/assets/frontEnd/web/images/light-bg.png)";
+        image.src =
+            "http://127.0.0.1:8000/assets/frontEnd/web/images/light-background.png";
     }
 }

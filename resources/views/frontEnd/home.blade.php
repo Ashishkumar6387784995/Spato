@@ -30,14 +30,14 @@
   <!-- Crausel ends -->
 </head>
 
-<body oncontextmenu="return false" class="snippet-body">
+<body>
 @include('frontEnd/partial/header')
 
   <div class="bg-image myDiv" id="hero" style="clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
 
-    <img src="{{ asset('assets/frontEnd/web/images/light-background.png')}} " style="width:100%; height:100%;" alt="" srcset="">
+    <img id="myImage" src="{{ asset('assets/frontEnd/web/images/light-background.png')}} " style="width:100%; height:100%;" alt="" srcset="">
     <img class="product" src="{{ asset('assets/frontEnd/web/images/product-2.png')}} " alt="" srcset="">
-    <div class="hero-heading-container">
+    <div class="hero-heading-container dark-mode-section">
     <h1 class="hero-heading">Specialist</h1>
     <p class="hero-details">Wholesaller for</p>
     <h1 class="hero-heading">Pools</h1>
@@ -48,7 +48,7 @@
   
   </div>
 
-  <section class="dark-view" id="view" style="background-color:#eeeeee;">
+  <section class="dark-mode-section1" id="view">
     <div class="container">
       <div class="row text-center p-4">
         <div class="col d-flex m-auto justify-content-center">
@@ -327,8 +327,8 @@
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
         <!-- <span class="sr-only">Previous</span> -->
       </a>
       <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
@@ -528,8 +528,8 @@
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
         <!-- <span class="sr-only">Previous</span> -->
       </a>
       <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
@@ -540,10 +540,7 @@
   </section>
 
 
-  @include('frontEnd/partial/footer');
-
-
-
+  @include('frontEnd/partial/footer')
 </body>
 
 </html>

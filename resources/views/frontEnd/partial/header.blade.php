@@ -50,7 +50,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
-      <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px; margin-left:10rem !important;">
+      <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px; margin-left: 1rem !important;">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -158,7 +158,7 @@
             </button> -->
         <li class="nav-item border-0 list-unstyled list" style="list-style-type:none;">
           <div class="form-check form-switch">
-            <input class="form-check-input m-auto" onclick="myFunction()" type="checkbox" role="switch" id="darkModeToggle">
+            <input class="form-check-input m-auto" onclick="toggleDarkMode()" type="checkbox" role="switch" id="darkModeToggle">
           </div>
         </li>
         <li class="nav-item border-0 list-unstyled ">
