@@ -27,8 +27,8 @@
   <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
 
           
-  <link href="{{ asset('master/css/mobiscroll.javascript.min.css') }}" rel="stylesheet">
-        <script type="text/javascript" src="{{ asset('master/js/mobiscroll.javascript.min.js') }}"></script>
+  <link href="{{ asset('theme/multiSelector/css/mobiscroll.javascript.min.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('theme/multiSelector/js/mobiscroll.javascript.min.js') }}"></script>
 
   <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 
