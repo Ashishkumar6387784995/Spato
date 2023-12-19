@@ -14,6 +14,7 @@ use App\Http\Controllers\api\frontEnd\webController;
 use App\Http\Controllers\api\OfferController;
 use App\Http\Controllers\api\PoolBuilder;
 use App\Http\Controllers\api\AssignmentController;
+use App\Http\Controllers\api\DeliveryNotesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,12 @@ Route::get('editOffer',[OfferController::class,'editOffer']);
 Route::get('assignmentListing',[AssignmentController::class,'AssignmentListing']);
 Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
 Route::get('editAssignment',[AssignmentController::class,'editAssignment']);
+
+
+// Assignment for Admin
+Route::get('deliveryNotesListing',[DeliveryNotesController::class,'DeliveryNotesListing']);
+Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
+Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNotes']);
 
 
 

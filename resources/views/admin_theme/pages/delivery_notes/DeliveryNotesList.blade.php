@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Spato Admin Panel</title>
+    <title>Assignments Listing</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -39,20 +39,9 @@
         }
 
         .edit{
-            background-color:#54606c;
-            border:1px solid #54606c;
-            color:#ffff;
-            padding: 10px 14px;
-            height: 42px;
-            text-decoration:none;
-            border-radius:5px;
-            transition:0.5s ease;
-        }
-        .edit:hover{
-            background-color:transparent;
-            border:1px solid #54606c;
             color:#54606c;
-            border-radius:5px;
+            padding: 10px 14px;
+            
         }
         
         .btn{
@@ -113,7 +102,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                   <a href="{{url('/api/addOffer')}}"  class="btn">+ neues Angebot</a>
+                   <a href="{{url('/api/addOffer')}}"  class="btn">+ neuer Auftrag</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
                     <a href="#"   class="btn">Filter</a>
@@ -122,7 +111,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4 stretch-card grid-margin" >
-                    Alle Angebote
+                    Alle Aufträge
                     </div>
                 </div>
                 <div class="row pt-3">
@@ -134,19 +123,19 @@
                     Nr.
                     </div>
                     <div class="col stretch-card grid-margin" >
-                    Artikel Nr.
+                    Kunde u. Betreff
                     </div>
                     <div class="col stretch-card grid-margin invisible" >
-                    Artikel Name
+                   
                     </div>
                     <div class="col stretch-card grid-margin" >
-                    Kategorie 1
+                    Datum
                     </div>
                     <div class="col stretch-card grid-margin" >
-                    Preis netto
+                    Betrag netto
                     </div>
                     
-                    <div class="col stretch-card grid-margin " >
+                    <div class="col stretch-card grid-margin invisible" >
                         closs button
                     </div>
                     <div class="col stretch-card grid-margin invisible" >
@@ -156,26 +145,26 @@
                 <div class="row pt-3">
                     
                     <div class="col stretch-card ps-4" >
-                        Maitic
+                    Offen
                     </div>
                     <div class="col stretch-card ps-4"  >
-                        50
+                    AB-2768
                     </div>
-                    <div class="col stretch-card "  >
-                        00200M
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
                     </div>
                     <div class="col stretch-card "  >
                     
                     </div>
                     <div class="col stretch-card "  >
-                    Technik
+                    26.11.23
                     </div>
                     <div class="col stretch-card "  >
-                    1,164.00€
+                    9.678,00 €
                     </div>
                     
                     <div class="col stretch-card" >
-                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
                     </div>
                     <div class="col stretch-card" >
                         <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
@@ -184,31 +173,172 @@
                 <div class="row pt-3">
                     
                     <div class="col stretch-card ps-4" >
-                        Maitic
+                    Offen
                     </div>
                     <div class="col stretch-card ps-4"  >
-                        50
+                    AB-2768
                     </div>
-                    <div class="col stretch-card "  >
-                        00200M
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
                     </div>
                     <div class="col stretch-card "  >
                     
                     </div>
                     <div class="col stretch-card "  >
-                    Technik
+                    26.11.23
                     </div>
                     <div class="col stretch-card "  >
-                    1,164.00€
+                    9.678,00 €
                     </div>
                     
-                    <div class="col stretch-card" >
-                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
-                    </div>
                     <div class="col stretch-card" >
                     <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
                     </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
                 </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                    Offen
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                    AB-2768
+                    </div>
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    26.11.23
+                    </div>
+                    <div class="col stretch-card "  >
+                    9.678,00 €
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                    Offen
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                    AB-2768
+                    </div>
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    26.11.23
+                    </div>
+                    <div class="col stretch-card "  >
+                    9.678,00 €
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                    Offen
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                    AB-2768
+                    </div>
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    26.11.23
+                    </div>
+                    <div class="col stretch-card "  >
+                    9.678,00 €
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                    Offen
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                    AB-2768
+                    </div>
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    26.11.23
+                    </div>
+                    <div class="col stretch-card "  >
+                    9.678,00 €
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                    Offen
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                    AB-2768
+                    </div>
+                    <div class="col-2 stretch-card "  >
+                    Pool Bau Profi BV Meier
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    26.11.23
+                    </div>
+                    <div class="col stretch-card "  >
+                    9.678,00 €
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
+                
            
               
                 </div>
