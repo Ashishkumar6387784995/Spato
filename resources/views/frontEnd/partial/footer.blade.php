@@ -1,5 +1,5 @@
-<footer class="footer dark-view" id="view">
-    <div class="footer-container dark-view" id="view">
+<footer class="footer dark-view dark-mode-section2" id="view">
+    <div class="footer-container dark-view dark-mode-section2" id="view">
       <p class="useless">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta veniam
         tempora, error ipsa deleniti illum labore est officia minima incidunt
