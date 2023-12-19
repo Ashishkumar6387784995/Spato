@@ -15,14 +15,14 @@
 }
 
 .dark-mode-background1 {
-    background-color: #050811;
+    background-color: #050811 !important;
     color: #ffffff;
 }
 .dark-mode-background2 {
-    background-color: #04101a;
+    background-color: #04101a !important;
     color: #ffffff;
 }
-.dark-mode-text {
+.dark-mode-text-dark {
     color: #ffffff;
 }
 
@@ -205,10 +205,10 @@ form .btn-style {
     top: 11%;
 }
 
-/* .view {
-    background-color: #f0eeee;
+.services {
+    background-color: #eeeeee;
 }
-.view .container .row .col p {
+/* .view .container .row .col p {
     color: var(--black);
     font-weight: 600;
     font-size: 15px;

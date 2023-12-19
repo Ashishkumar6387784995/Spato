@@ -37,7 +37,7 @@
 
     <img id="myImage" src="{{ asset('assets/frontEnd/web/images/light-background.png')}} " style="width:100%; height:100%;" alt="" srcset="">
     <img class="product" src="{{ asset('assets/frontEnd/web/images/product-2.png')}} " alt="" srcset="">
-    <div class="hero-heading-container dark-mode-section">
+    <div class="hero-heading-container dark-mode-text">
     <h1 class="hero-heading">Specialist</h1>
     <p class="hero-details">Wholesaller for</p>
     <h1 class="hero-heading">Pools</h1>
@@ -48,7 +48,7 @@
   
   </div>
 
-  <section class="dark-mode-section1" id="view">
+  <section class="services dark-mode-section1" id="view">
     <div class="container">
       <div class="row text-center p-4">
         <div class="col d-flex m-auto justify-content-center">
@@ -68,31 +68,32 @@
       </div>
     </div>
   </section>
-  <div class="container pt-5">
+  <section class="dark-mode-section2">
+  <div class="container pt-5 ">
     <h5 class="text-center">Subtitle</h5>
     <h3 class="text-center">Our Products Categories</h3>
     <div class="row categories text-center p-4 m-auto justify-content-evenly">
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon" style="padding-top:10px;"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
@@ -104,27 +105,27 @@
         </div> -->
     </div>
     <div class="row categories text-center p-4 m-auto justify-content-evenly">
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
-      <div class="col">
+      <div class="col dark-mode-section1">
         <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
         <p class="view-desc">Pool Installation & Maintanence</p>
       </div>
@@ -136,8 +137,9 @@
         </div> -->
     </div>
   </div>
+  </section>
   <!-- Latest Products starts -->
-  <section class="latest-products pt-5">
+  <section class="latest-products pt-5 dark-mode-section2">
     <h5 class="text-center ">Subtitle</h5>
     <h3 class="text-center ">Latest Products Categories</h3>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -338,7 +340,7 @@
     </div>
   </section>
   <!-- Latest Products ends -->
-  <section class="featured-products">
+  <section class="featured-products dark-mode-section1">
     <h5 class="text-center text-light">Subtitle</h5>
     <h3 class="text-center text-light">Our Products Categories</h3>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
