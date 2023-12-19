@@ -117,10 +117,6 @@
       font-size: 14px;
       font-weight: 100;
     }
-
-    .mbsc-ios.mbsc-textfield-wrapper {
-      width:50%;
-    }
   </style>
 </head>
 
@@ -232,41 +228,29 @@
 
               <div class="row mb-2">
                 <div class="col-4">Kategorie </div>
-                <!-- <div class="container">
-                  <section>
-                    <select multiple="multiple" name="myMulti" id="myMulti">
-                      <option value="Item 1">Item 1</option>
-                      <option value="Item 2">item 2</option>
-                      <option value="Item 3">item 3</option>
-                      <option value="Item 4">item 4</option>
-                      <option value="Item 5">item 5</option>
-                      <option value="Item 6">item 6</option>
-
-                    </select>
-                  </section>
-                </div> -->
+                <div class="col-8">
 
 
                 <div style="height:100%" style="padding:0">
                   <label>
-                    Select Your Kategorie
+                  Kategorie
                     <input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
                   </label>
                   <select id="demo-multiple-select" name="standardUsed[]" multiple>
                   
-                    <option style="heigh:50px; width:300px;">
+                    <option >
                     Kategorie 1
                     </option>
-                    <option style="heigh:50px; width:300px;">
+                    <option >
                     Kategorie 2
                     </option>
-                    <option style="heigh:50px; width:300px;">
+                    <option >
                     Kategorie 3
                     </option>
             
                   </select>
                 </div>
-
+                </div>
 
 
 
