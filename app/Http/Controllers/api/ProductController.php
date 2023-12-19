@@ -87,7 +87,6 @@ class ProductController extends Controller
             'Lief_Art_Nr' => $request->input('Lief_Art_Nr'),
             'Rabattcode_1' => $request->input('Rabattcode_1'), 
             'Rabattcode_2' => $request->input('Rabattcode_2'),
-
             'Rabattcode_3' => $request->input('Rabattcode_3') ,
             'Preis_zzgl_MwSt' => $request->input('Preis_zzgl_MwSt'),
             'Preis_inkl_MwSt' => $request->input('Preis_inkl_MwSt'),
@@ -106,7 +105,7 @@ class ProductController extends Controller
             'lm' => $request->input('lm'), 
             'Druckstufe_PN' => $request->input('Druckstufe_PN'),
             'Material' => $request->input('Material') ,
-            'Körnung' => $request->input('Körnung'),
+            'Körnung/h' => $request->input('Körnung'),
             'Durchmesser' => $request->input('Durchmesser'),
             'Radius' => $request->input('Radius'),
             'Gewicht' => $request->input('Gewicht'),
@@ -122,7 +121,7 @@ class ProductController extends Controller
             'Anleitung_PDF_3' => $request->input('Anleitung_PDF_3'),
 
 
-            'Beschreibung_lang' => $request->input('Beschreibung_lang'),
+           
          
 
 

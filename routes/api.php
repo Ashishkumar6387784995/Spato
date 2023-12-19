@@ -13,6 +13,7 @@ use App\Http\Controllers\api\tryController;
 use App\Http\Controllers\api\frontEnd\webController;
 use App\Http\Controllers\api\OfferController;
 use App\Http\Controllers\api\PoolBuilder;
+use App\Http\Controllers\api\AssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,12 @@ Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
 Route::get('offerListing',[OfferController::class,'offerListing']);
 Route::get('addOffer',[OfferController::class,'addOffer']);
 Route::get('editOffer',[OfferController::class,'editOffer']);
+
+
+// Assignment for Admin
+Route::get('assignmentListing',[AssignmentController::class,'AssignmentListing']);
+Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
+Route::get('editAssignment',[AssignmentController::class,'editAssignment']);
 
 
 
