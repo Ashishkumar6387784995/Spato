@@ -540,10 +540,7 @@
   </section>
 
 
-  @include('frontEnd/partial/footer');
-
-
-
+  @include('frontEnd/partial/footer')
 </body>
 
 </html>
