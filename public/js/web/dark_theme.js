@@ -25,9 +25,7 @@ window.onload = function () {
     const image = document.getElementById("myImage");
 
     // Replace image source based on dark mode
-    const baseUrl = document.head.querySelector(
-        'meta[name="base-url"]'
-    ).content;
+    const baseUrl = window.location.origin;
 
     // ... your other JavaScript code ...
 
