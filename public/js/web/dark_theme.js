@@ -53,4 +53,15 @@ function toggleDarkMode() {
     });
 
     const image = document.getElementById("myImage");
+
+    // Save the current dark mode preference to local storage
+    localStorage.setItem("darkMode", body.classList.contains("body-dark"));
+    const baseUrl = window.location.origin;
+    // Replace image source based on dark mode
+    if (body.classList.contains("body-dark")) {
+        image.src = baseUrl + "/assets/frontEnd/web/images/dark-background.png";
+    } else {
+        image.src =
+            baseUrl + "/assets/frontEnd/web/images/light-background.png";
+    }
 }
