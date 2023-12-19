@@ -26,6 +26,10 @@
   <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
 
+          
+  <link href="{{ asset('master/css/mobiscroll.javascript.min.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('master/js/mobiscroll.javascript.min.js') }}"></script>
+
   <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 
 
@@ -112,301 +116,6 @@
       font-family: arial, verdana, sans-serif;
       font-size: 14px;
       font-weight: 100;
-    }
-
-    .drop {
-      position: relative;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    .drop.open {
-      z-index: 100;
-    }
-
-    .drop.open .drop-screen {
-      z-index: 100;
-      display: block;
-    }
-
-    .drop.open .drop-options {
-      z-index: 200;
-      max-height: 200px;
-    }
-
-    .drop.open .drop-display {
-      z-index: 200;
-      border-color: #465;
-    }
-
-    .drop select {
-      display: none;
-    }
-
-    .drop .drop-screen {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      top: 0px;
-      left: 0px;
-      opacity: 0;
-      display: none;
-      z-index: 1;
-    }
-
-    .link {
-      text-align: center;
-      margin: 20px 0px;
-      color: #8CACD7;
-    }
-
-
-    .drop .drop-display {
-      position: relative;
-      padding: 0px 20px 5px 5px;
-      border: 4px solid #444;
-      width: 100%;
-      background: #FFF;
-      z-index: 1;
-      margin: 0px;
-      font-size: 16px;
-      min-height: 58px;
-    }
-
-    .drop .drop-display:hover:after {
-      opacity: 0.75;
-    }
-
-    .drop .drop-display:after {
-      font-family: 'Material Icons';
-      content: "\e5c6";
-      position: absolute;
-      right: 10px;
-      top: 12px;
-      font-size: 24px;
-      color: #444;
-    }
-
-    .drop .drop-display .item {
-      position: relative;
-      display: inline-block;
-      border: 2px solid #333;
-      margin: 5px 5px -4px 0px;
-      padding: 0px 25px 0px 10px;
-      overflow: hidden;
-      height: 40px;
-      line-height: 36px;
-    }
-
-    .drop .drop-display .item .btnclose {
-      color: #444;
-      position: absolute;
-      font-size: 16px;
-      right: 5px;
-      top: 10px;
-      cursor: pointer;
-    }
-
-    .drop .drop-display .item .btnclose:hover {
-      opacity: 0.75;
-    }
-
-    .drop .drop-display .item.remove {
-      -webkit-animation: removeSelected 0.2s, hide 1s infinite;
-      animation: removeSelected 0.2s, hide 1s infinite;
-      -webkit-animation-delay: 0s, 0.2s;
-      animation-delay: 0s, 0.2s;
-    }
-
-    .drop .drop-display .item.add {
-      -webkit-animation: addSelected 0.2s;
-      animation: addSelected 0.2s;
-    }
-
-    .drop .drop-display .item.hide {
-      display: none;
-    }
-
-    .drop .drop-options {
-      background: #444;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-      position: absolute;
-      width: 100%;
-      max-height: 0px;
-      overflow-y: auto;
-      transition: all 0.25s linear;
-      z-index: 1;
-    }
-
-    .drop .drop-options a {
-      display: block;
-      height: 40px;
-      line-height: 40px;
-      padding: 0px 20px;
-      color: white;
-      position: relative;
-      max-height: 40px;
-      transition: all 1s;
-      overflow: hidden;
-    }
-
-    .drop .drop-options a:hover {
-      background: #465;
-      cursor: pointer;
-    }
-
-    .drop .drop-options a.remove {
-      -webkit-animation: removeOption 0.2s;
-      animation: removeOption 0.2s;
-      max-height: 0px;
-    }
-
-    .drop .drop-options a.add {
-      -webkit-animation: addOption 0.2s;
-      animation: addOption 0.2s;
-    }
-
-    .drop .drop-options a.hide {
-      display: none;
-    }
-
-    @-webkit-keyframes pop {
-      from {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-
-      to {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-    }
-
-    @keyframes pop {
-      from {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-
-      to {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-    }
-
-    @-webkit-keyframes removeOption {
-      from {
-        max-height: 40px;
-      }
-
-      to {
-        max-height: 0px;
-      }
-    }
-
-    @keyframes removeOption {
-      from {
-        max-height: 40px;
-      }
-
-      to {
-        max-height: 0px;
-      }
-    }
-
-    @-webkit-keyframes addOption {
-      from {
-        max-height: 0px;
-      }
-
-      to {
-        max-height: 40px;
-      }
-    }
-
-    @keyframes addOption {
-      from {
-        max-height: 0px;
-      }
-
-      to {
-        max-height: 40px;
-      }
-    }
-
-    @-webkit-keyframes removeSelected {
-      from {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-
-      to {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-    }
-
-    @keyframes removeSelected {
-      from {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-
-      to {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-    }
-
-    @-webkit-keyframes addSelected {
-      from {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-
-      to {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-    }
-
-    @keyframes addSelected {
-      from {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-
-      to {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-    }
-
-    @-webkit-keyframes hide {
-
-      from,
-      to {
-        max-height: 0px;
-        max-width: 0px;
-        padding: 0px;
-        margin: 0px;
-        border-width: 0px;
-      }
-    }
-
-    @keyframes hide {
-
-      from,
-      to {
-        max-height: 0px;
-        max-width: 0px;
-        padding: 0px;
-        margin: 0px;
-        border-width: 0px;
-      }
     }
   </style>
 </head>
@@ -533,9 +242,30 @@
                   </section>
                 </div> -->
 
-                
 
-                
+                <div style="height:100%" style="padding:0">
+                  <label>
+                    Select Master Equipment
+                    <input mbsc-input id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
+                  </label>
+                  <select id="demo-multiple-select" name="standardUsed[]" multiple>
+                  
+                    <option style="heigh:50px; width:300px;">
+                     kjsfhdfdglksdf
+                    </option>
+                    <option style="heigh:50px; width:300px;">
+                     kjsfdfgdfghlksdf
+                    </option>
+                    <option style="heigh:50px; width:300px;">
+                     kjsfhdfgdfglksdf
+                    </option>
+            
+                  </select>
+                </div>
+
+
+
+
               </div>
             </div>
 
@@ -620,123 +350,123 @@
 
               </div>
 
-             
+
 
             </div>
-            
+
           </div>
           <div class="row pt-3 add-products-field">
-          <h4 class="pb-3">Produkt Spezifikation</h4>
+            <h4 class="pb-3">Produkt Spezifikation</h4>
             <div class="col border">
-            <div class="row mb-2">
-                            <div class="col-4">m3/h</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Stichmass (mm)</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">kW</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Volt</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Kelvin</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">lm (lumen)</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Druckstufe PN</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Material</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Körnung</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Durchmesser (mm)</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Radius mm</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
+              <div class="row mb-2">
+                <div class="col-4">m3/h</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Stichmass (mm)</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">kW</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Volt</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Kelvin</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">lm (lumen)</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Druckstufe PN</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Material</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Körnung</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Durchmesser (mm)</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Radius mm</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
             </div>
 
             <div class="col border">
-            <div class="row mb-2">
-                            <div class="col-4">Gewicht Kg</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Länge (mm)</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Breite (mm)</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Höhe (mm)</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        
+              <div class="row mb-2">
+                <div class="col-4">Gewicht Kg</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Länge (mm)</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Breite (mm)</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Höhe (mm)</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+
             </div>
 
 
             <div class="col">
-            <div class="row mb-2">
-                            <div class="col-4">Bild JPG1</div>
-                            <div class="col-8"><input type="text" class="form-control" ></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Bild JPG2</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Bild JPG3</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Bild JPG4</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Anleitung / Tech Info 1 PDF</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Anleitung / Tech Info 2 PDF</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">Anleitung / Tech Info 3 PDF</div>
-                            <div class="col-8"><input type="text" class="form-control"></div>
-                        </div>
-                    </div>
+              <div class="row mb-2">
+                <div class="col-4">Bild JPG1</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Bild JPG2</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Bild JPG3</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Bild JPG4</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Anleitung / Tech Info 1 PDF</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Anleitung / Tech Info 2 PDF</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Anleitung / Tech Info 3 PDF</div>
+                <div class="col-8"><input type="text" class="form-control"></div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+        <!-- Specification starts -->
+
+        <!-- Specification ends -->
+
+
+
       </div>
-      </form>
-
-
-<!-- Specification starts -->
-
-<!-- Specification ends -->
-
-
-
     </div>
-  </div>
   </div>
   <!-- content-wrapper ends -->
 
@@ -744,7 +474,7 @@
   </div>
   <!-- main-panel ends -->
   </div>
-  
+
   <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
@@ -758,141 +488,161 @@
 
 
   <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
   <script>
-    jQuery.noConflict();
-    (function($) {
-      $(document).ready(function() {
-        // Event listener for Save button
-        $('#saveBtn').on('click', function() {
-          // Collect form data
-
-          $('#Hersteller_err').text('');
-          $('#Herst_Nr_err').text('');
-          $('#Lief_Art_Nr_err').text('');
-          $('#Hersteller_Artikelnummer_err').text('');
-          $('#Katalog_Art_Nummer_err').text('');
-          $('#Kategorie_err').text('');
-          $('#VE_ VPE_err').text('');
-          $('#Einheit_err').text('');
-
-          $('#Rabattcode_1_err').text('');
-          $('#Rabattcode_2_err').text('');
-          $('#Rabattcode_3_err').text('');
-          $('#Preis_zzgl_MwSt_err').text('');
-          $('#Preis_inkl_MwSt_err').text('');
-          $('#Einkausfpreis_zzgl_MwSt_err').text('');
-          $('#Einkaufsrabatt_err').text('');
-          $('#Artikelname_err').text('');
-          $('#Beschreibung_kurz_err').text('');
-          $('#Beschreibung_lang_err').text('');
-
-
-          if (!$('#type').val()) {
-            $('#type_err').text('Please select type.');
-            return;
-          }
-
-
-          if (!$('#Hersteller').val()) {
-            $('#Hersteller_err').text('Please enter Hersteller.');
-            return;
-          }
-
-          if (!$('#Artikelname').val()) {
-            $('#Artikelname_err').text('Please enter Artikelname.');
-            return;
-          }
-
-          if (!$('#images').val()) {
-            $('#images_err').text('Please add Some Images.');
-            return;
-          }
-
-
-
-
-          var formData = collectFormData();
-
-
-          // Log form data to the console (for testing)
-          console.log('Form Data:', formData);
-
-          // Send the formData to the server using AJAX
-          sendDataToServer(formData);
+        mobiscroll.setOptions({
+            locale: mobiscroll
+            .localeEn, // Specify language like: locale: mobiscroll.localePl or omit setting to use default
+            theme: 'ios', // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light' // More info about themeVariant: https://docs.mobiscroll.com/5-27-0/javascript/select#opt-themeVariant
         });
 
-        // Function to collect form data
-        function collectFormData() {
-          var formData = new FormData($('#addProductform')[0]);
+        mobiscroll.select('#demo-multiple-select', {
+            inputElement: document.getElementById(
+                'demo-multiple-select-input') // More info about inputElement: https://docs.mobiscroll.com/5-27-0/javascript/select#opt-inputElement
+        });
+    </script>
 
-          return formData;
+
+
+  <script>
+  
+
+
+
+    $(document).ready(function() {
+      // Event listener for Save button
+      $('#saveBtn').on('click', function() {
+        // Collect form data
+
+        $('#Hersteller_err').text('');
+        $('#Herst_Nr_err').text('');
+        $('#Lief_Art_Nr_err').text('');
+        $('#Hersteller_Artikelnummer_err').text('');
+        $('#Katalog_Art_Nummer_err').text('');
+        $('#Kategorie_err').text('');
+        $('#VE_ VPE_err').text('');
+        $('#Einheit_err').text('');
+
+        $('#Rabattcode_1_err').text('');
+        $('#Rabattcode_2_err').text('');
+        $('#Rabattcode_3_err').text('');
+        $('#Preis_zzgl_MwSt_err').text('');
+        $('#Preis_inkl_MwSt_err').text('');
+        $('#Einkausfpreis_zzgl_MwSt_err').text('');
+        $('#Einkaufsrabatt_err').text('');
+        $('#Artikelname_err').text('');
+        $('#Beschreibung_kurz_err').text('');
+        $('#Beschreibung_lang_err').text('');
+
+
+        if (!$('#type').val()) {
+          $('#type_err').text('Please select type.');
+          return;
         }
 
-        // Function to send data to the server using AJAX
-        function sendDataToServer(formData) {
 
-
-          $.ajax({
-            type: 'POST', // Use POST or GET depending on your server-side implementation
-            url: 'addProduct', // Replace with your server endpoint
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-              // Handle the success response from the server
-
-              if (response.success) {
-
-                $('#success_message').text(response.success);
-                console.log('Server Response:', response);
-              }
-
-              if (response.ValidationError) {
-                // Display validation errors next to the respective form fields
-                console.log(response.ValidationError);
-                displayValidationErrors(response.ValidationError);
-              }
-
-
-
-            },
-            error: function(error) {
-              // Handle the error response from the server
-              console.error('Error:', error);
-            }
-          });
-
-          function displayValidationErrors(errors) {
-            // Display validation errors next to the respective form fields
-            if (errors.Hersteller) {
-              $('#Hersteller_err').text(errors.Hersteller[0]);
-            }
-            if (errors.Herst_Nr) {
-              $('#Herst_Nr_err').text(errors.Herst_Nr[0]);
-            }
-            if (errors.Hersteller_Artikelnummer) {
-              $('#Hersteller_Artikelnummer_err').text(errors.Hersteller_Artikelnummer[0]);
-            }
-            if (errors.email) {
-              $('#signup_email_err').text(errors.email[0]);
-            }
-            if (errors.password) {
-              $('#signup_password_err').text(errors.password[0]);
-            }
-            if (errors.password_confirmation) {
-              $('#signup_Confirm_password_err').text(errors.password_confirmation[0]);
-            }
-            if (errors.captcha) {
-              $('#signup_captcha_err').text(errors.captcha[0]);
-            }
-          }
-
-
-
+        if (!$('#Hersteller').val()) {
+          $('#Hersteller_err').text('Please enter Hersteller.');
+          return;
         }
+
+        if (!$('#Artikelname').val()) {
+          $('#Artikelname_err').text('Please enter Artikelname.');
+          return;
+        }
+
+        if (!$('#images').val()) {
+          $('#images_err').text('Please add Some Images.');
+          return;
+        }
+
+
+
+
+        var formData = collectFormData();
+
+
+        // Log form data to the console (for testing)
+        console.log('Form Data:', formData);
+
+        // Send the formData to the server using AJAX
+        sendDataToServer(formData);
       });
-    })(jQuery);
+
+      // Function to collect form data
+      function collectFormData() {
+        var formData = new FormData($('#addProductform')[0]);
+
+        return formData;
+      }
+
+      // Function to send data to the server using AJAX
+      function sendDataToServer(formData) {
+
+
+        $.ajax({
+          type: 'POST', // Use POST or GET depending on your server-side implementation
+          url: 'addProduct', // Replace with your server endpoint
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(response) {
+            // Handle the success response from the server
+
+            if (response.success) {
+
+              $('#success_message').text(response.success);
+              console.log('Server Response:', response);
+            }
+
+            if (response.ValidationError) {
+              // Display validation errors next to the respective form fields
+              console.log(response.ValidationError);
+              displayValidationErrors(response.ValidationError);
+            }
+
+
+
+          },
+          error: function(error) {
+            // Handle the error response from the server
+            console.error('Error:', error);
+          }
+        });
+
+        function displayValidationErrors(errors) {
+          // Display validation errors next to the respective form fields
+          if (errors.Hersteller) {
+            $('#Hersteller_err').text(errors.Hersteller[0]);
+          }
+          if (errors.Herst_Nr) {
+            $('#Herst_Nr_err').text(errors.Herst_Nr[0]);
+          }
+          if (errors.Hersteller_Artikelnummer) {
+            $('#Hersteller_Artikelnummer_err').text(errors.Hersteller_Artikelnummer[0]);
+          }
+          if (errors.email) {
+            $('#signup_email_err').text(errors.email[0]);
+          }
+          if (errors.password) {
+            $('#signup_password_err').text(errors.password[0]);
+          }
+          if (errors.password_confirmation) {
+            $('#signup_Confirm_password_err').text(errors.password_confirmation[0]);
+          }
+          if (errors.captcha) {
+            $('#signup_captcha_err').text(errors.captcha[0]);
+          }
+        }
+
+
+
+      }
+    });
   </script>
+
+
 
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
@@ -909,216 +659,6 @@
 
 
 
-  <script>
-    //Varun Dewan 2019
-    var $ = {
-      get: function(selector) {
-        var ele = document.querySelectorAll(selector);
-        for (var i = 0; i < ele.length; i++) {
-          this.init(ele[i]);
-        }
-        return ele;
-      },
-      template: function(html) {
-        var template = document.createElement('div');
-        template.innerHTML = html.trim();
-        return this.init(template.childNodes[0]);
-      },
-      init: function(ele) {
-        ele.on = function(event, func) {
-          this.addEventListener(event, func);
-        }
-        return ele;
-      }
-    };
-
-    //Build the plugin
-    var drop = function(info) {
-      var o = {
-        options: info.options,
-        selected: info.selected || [],
-        preselected: info.preselected || [],
-        open: false,
-        html: {
-          select: $.get(info.selector)[0],
-          options: $.get(info.selector + ' option'),
-          parent: undefined,
-        },
-        init: function() {
-          //Setup Drop HTML
-          this.html.parent = $.get(info.selector)[0].parentNode
-          this.html.drop = $.template('<div class="drop"></div>')
-          this.html.dropDisplay = $.template('<div class="drop-display">Display</div>')
-          this.html.dropOptions = $.template('<div class="drop-options">Options</div>')
-          this.html.dropScreen = $.template('<div class="drop-screen"></div>')
-
-          this.html.parent.insertBefore(this.html.drop, this.html.select)
-          this.html.drop.appendChild(this.html.dropDisplay)
-          this.html.drop.appendChild(this.html.dropOptions)
-          this.html.drop.appendChild(this.html.dropScreen)
-          //Hide old select
-          this.html.drop.appendChild(this.html.select);
-
-          //Core Events
-          var that = this;
-          this.html.dropDisplay.on('click', function() {
-            that.toggle()
-          });
-          this.html.dropScreen.on('click', function() {
-            that.toggle()
-          });
-          //Run Render
-          this.load()
-          this.preselect()
-          this.render();
-        },
-        toggle: function() {
-          this.html.drop.classList.toggle('open');
-        },
-        addOption: function(e, element) {
-          var index = Number(element.dataset.index);
-          this.clearStates()
-          this.selected.push({
-            index: Number(index),
-            state: 'add',
-            removed: false
-          })
-          this.options[index].state = 'remove';
-          this.render()
-        },
-        removeOption: function(e, element) {
-          e.stopPropagation();
-          this.clearStates()
-          var index = Number(element.dataset.index);
-          this.selected.forEach(function(select) {
-            if (select.index == index && !select.removed) {
-              select.removed = true
-              select.state = 'remove'
-            }
-          })
-          this.options[index].state = 'add'
-          this.render();
-        },
-        load: function() {
-          this.options = [];
-          for (var i = 0; i < this.html.options.length; i++) {
-            var option = this.html.options[i]
-            this.options[i] = {
-              html: option.innerHTML,
-              value: option.value,
-              selected: option.selected,
-              state: ''
-            }
-          }
-        },
-        preselect: function() {
-          var that = this;
-          this.selected = [];
-          this.preselected.forEach(function(pre) {
-            that.selected.push({
-              index: pre,
-              state: 'add',
-              removed: false
-            })
-            that.options[pre].state = 'remove';
-          })
-        },
-        render: function() {
-          this.renderDrop()
-          this.renderOptions()
-        },
-        renderDrop: function() {
-          var that = this;
-          var parentHTML = $.template('<div></div>')
-          this.selected.forEach(function(select, index) {
-            var option = that.options[select.index];
-            var childHTML = $.template('<span class="item ' + select.state + '">' + option.html + '</span>')
-            var childCloseHTML = $.template(
-              '<i class="material-icons btnclose" data-index="' + select.index + '">&#xe5c9;</i></span>')
-            childCloseHTML.on('click', function(e) {
-              that.removeOption(e, this)
-            })
-            childHTML.appendChild(childCloseHTML)
-            parentHTML.appendChild(childHTML)
-          })
-          this.html.dropDisplay.innerHTML = '';
-          this.html.dropDisplay.appendChild(parentHTML)
-        },
-        renderOptions: function() {
-          var that = this;
-          var parentHTML = $.template('<div></div>')
-          this.options.forEach(function(option, index) {
-            var childHTML = $.template(
-              '<a data-index="' + index + '" class="' + option.state + '">' + option.html + '</a>')
-            childHTML.on('click', function(e) {
-              that.addOption(e, this)
-            })
-            parentHTML.appendChild(childHTML)
-          })
-          this.html.dropOptions.innerHTML = '';
-          this.html.dropOptions.appendChild(parentHTML)
-        },
-        clearStates: function() {
-          var that = this;
-          this.selected.forEach(function(select, index) {
-            select.state = that.changeState(select.state)
-          })
-          this.options.forEach(function(option) {
-            option.state = that.changeState(option.state)
-          })
-        },
-        changeState: function(state) {
-          switch (state) {
-            case 'remove':
-              return 'hide'
-            case 'hide':
-              return 'hide'
-            default:
-              return ''
-          }
-        },
-        isSelected: function(index) {
-          var check = false
-          this.selected.forEach(function(select) {
-            if (select.index == index && select.removed == false) check = true
-          })
-          return check
-        }
-      };
-      o.init();
-      return o;
-    }
-
-
-    //Set up some data
-    var options = [{
-        html: 'cats',
-        value: 'cats'
-      },
-      {
-        html: 'fish',
-        value: 'fish'
-      },
-      {
-        html: 'squids',
-        value: 'squids'
-      },
-      {
-        html: 'cats',
-        value: 'whales'
-      },
-      {
-        html: 'cats',
-        value: 'bikes'
-      },
-    ];
-
-    var myDrop = new drop({
-      selector: '#myMulti',
-      preselected: [0, 2]
-    });
-    myDrop.toggle();
-  </script>
 
 </body>
 
