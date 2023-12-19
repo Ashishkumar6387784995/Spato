@@ -29,11 +29,39 @@ class Product extends Model
         'Artikelname',
         'Beschreibung_kurz',
         'Beschreibung_lang',
-        'images',
+      
         'addedBy',
+
+
+        'm3/h',
+        'Stichmass',
+        'kW',
+        'Volt',
+        'Kelvin',
+        'lm',
+        'Druckstufe_PN',
+        'Material',
+        'Körnung',
+        'Durchmesser',
+        'Radius',
+        'Gewicht',
+        'Länge',
+        'Breite',
+        'Höhe',
+        'Bild_1',
+        'Bild_2',
+        'Bild_3',
+        'Bild_4',
+        'Anleitung_PDF_1',
+        'Anleitung_PDF_2',
+        'Anleitung_PDF_3',
+    
+
         
     ];
 
         protected $table = 'products';
+
+        
 }
 

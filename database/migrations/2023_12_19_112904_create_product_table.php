@@ -34,8 +34,46 @@ return new class extends Migration
             $table->string('Artikelname')->nullable();
             $table->string('Beschreibung_kurz')->nullable();
             $table->string('Beschreibung_lang')->nullable();
-            $table->string('images');
+
+            $table->string('m3/h')->nullable();
+            $table->string('Stichmass')->nullable();
+            $table->string('kW')->nullable();
+            $table->string('Volt')->nullable();
+            $table->string('Kelvin')->nullable();
+            $table->string('lm')->nullable();
+            $table->string('Druckstufe_PN')->nullable();
+            $table->string('Material')->nullable();
+            $table->string('Körnung/h')->nullable();
+            $table->string('Durchmesser')->nullable();
+            $table->string('Radius')->nullable();
+
+
+            $table->string('Gewicht')->nullable();
+            $table->string('Länge')->nullable();
+            $table->string('Breite')->nullable();
+            $table->string('Höhe')->nullable();
+
+
+            $table->string('Bild_1')->nullable();
+            $table->string('Bild_2')->nullable();
+            $table->string('Bild_3')->nullable();
+            $table->string('Bild_4')->nullable();
+            $table->string('Anleitung_PDF_1')->nullable();
+            $table->string('Anleitung_PDF_2')->nullable();
+            $table->string('Anleitung_PDF_3')->nullable();
+     
+
+            // $table->string('images');
+
+
+
             $table->string('addedBy');
+
+
+
+
+
+
             $table->timestamps();
         });
     }
@@ -47,6 +85,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('product');
     }
 };

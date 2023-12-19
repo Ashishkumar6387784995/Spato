@@ -45,8 +45,10 @@ class ProductController extends Controller
             'Artikelname' => 'required|string',
             'Beschreibung_kurz' => 'nullable|string',
             'Beschreibung_lang' => 'nullable|string',
-            'images' => 'nullable|',
+           
             'addedBy' => 'nullable|string',
+
+
            
 
         ]);
@@ -58,14 +60,14 @@ class ProductController extends Controller
         }
 
 
-        $imagePaths = [];
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $filename = uniqid() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('uploads'), $filename);
-                $imagePaths[] = 'uploads/' . $filename;
-            }
-        }
+        // $imagePaths = [];
+        // if ($request->hasFile('images')) {
+        //     foreach ($request->file('images') as $image) {
+        //         $filename = uniqid() . '_' . $image->getClientOriginalName();
+        //         $image->move(public_path('uploads'), $filename);
+        //         $imagePaths[] = 'uploads/' . $filename;
+        //     }
+        // }
 
         // Create a new user
         $Product = Product::create([
@@ -93,10 +95,42 @@ class ProductController extends Controller
             'Einkaufsrabatt' => $request->input('Einkaufsrabatt'),
             'Artikelname' => $request->input('Artikelname'), 
             'Beschreibung_kurz' => $request->input('Beschreibung_kurz'),
+            'Beschreibung_lang' => $request->input('Beschreibung_lang'),
+
+            
+            'm3/h' => $request->input('m3/h') ,
+            'Stichmass' => $request->input('Stichmass'),
+            'kW' => $request->input('kW'),
+            'Volt' => $request->input('Volt'),
+            'Kelvin' => $request->input('Kelvin'),
+            'lm' => $request->input('lm'), 
+            'Druckstufe_PN' => $request->input('Druckstufe_PN'),
+            'Material' => $request->input('Material') ,
+            'Körnung' => $request->input('Körnung'),
+            'Durchmesser' => $request->input('Durchmesser'),
+            'Radius' => $request->input('Radius'),
+            'Gewicht' => $request->input('Gewicht'),
+            'Länge' => $request->input('Länge'), 
+            'Breite' => $request->input('Breite'),
+            'Höhe' => $request->input('Höhe') ,
+            'Bild_1' => $request->input('Bild_1'),
+            'Bild_2' => $request->input('Bild_2'),
+            'Bild_3' => $request->input('Bild_3'),
+            'Bild_4' => $request->input('Bild_4'),
+            'Anleitung_PDF_1' => $request->input('Anleitung_PDF_1'), 
+            'Anleitung_PDF_2' => $request->input('Anleitung_PDF_2'),
+            'Anleitung_PDF_3' => $request->input('Anleitung_PDF_3'),
+
 
             'Beschreibung_lang' => $request->input('Beschreibung_lang'),
-            'images' => json_encode($imagePaths), 
-            'addedBy' => "addedBy')",
+         
+
+
+
+
+
+
+            'addedBy' => "addedBy",
           
         ]);
 
