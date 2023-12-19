@@ -427,31 +427,31 @@
             <div class="col">
               <div class="row mb-2">
                 <div class="col-4">Bild JPG1</div>
-                <div class="col-8"><input type="text" class="form-control" id="Bild_1" name="Bild_1"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Bild_1" name="Bild_1"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Bild JPG2</div>
-                <div class="col-8"><input type="text" class="form-control" id="Bild_2" name="Bild_2"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Bild_2" name="Bild_2"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Bild JPG3</div>
-                <div class="col-8"><input type="text" class="form-control" id="Bild_3" name="Bild_3"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Bild_3" name="Bild_3"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Bild JPG4</div>
-                <div class="col-8"><input type="text" class="form-control" id="Bild_4" name="Bild_4"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Bild_4" name="Bild_4"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Anleitung / Tech Info 1 PDF</div>
-                <div class="col-8"><input type="text" class="form-control" id="Anleitung_PDF_1" name="Anleitung_PDF_1"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Anleitung_PDF_1" name="Anleitung_PDF_1"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Anleitung / Tech Info 2 PDF</div>
-                <div class="col-8"><input type="text" class="form-control" id="Anleitung_PDF_2" name="Anleitung_PDF_2"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Anleitung_PDF_2" name="Anleitung_PDF_2"></div>
               </div>
               <div class="row mb-2">
                 <div class="col-4">Anleitung / Tech Info 3 PDF</div>
-                <div class="col-8"><input type="text" class="form-control" id="Anleitung_PDF_3" name="Anleitung_PDF_3"></div>
+                <div class="col-8"><input type="file" class="form-control" id="Anleitung_PDF_3" name="Anleitung_PDF_3"></div>
               </div>
             </div>
           </div>
@@ -551,19 +551,16 @@
           return;
         }
 
-        if (!$('#images').val()) {
-          $('#images_err').text('Please add Some Images.');
-          return;
-        }
+      
 
-
+     
 
 
         var formData = collectFormData();
 
 
         // Log form data to the console (for testing)
-        console.log('Form Data:', formData);
+      
 
         // Send the formData to the server using AJAX
         sendDataToServer(formData);
@@ -574,6 +571,8 @@
         var formData = new FormData($('#addProductform')[0]);
 
         return formData;
+
+        console.log('Form Data:', formData);
       }
 
       // Function to send data to the server using AJAX

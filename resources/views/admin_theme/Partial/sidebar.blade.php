@@ -29,7 +29,7 @@
 
     
     
-      <span class="img"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></span>
+      <span class="img"><a href="{{url('/api/admin_dashboard')}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></a></span>
   
 
     <li class="nav-item">
