@@ -26,7 +26,6 @@ window.onload = function () {
 
     // Replace image source based on dark mode
     const baseUrl = window.location.origin;
-    console.log(isDarkMode);
 
     if (isDarkMode) {
         image.src = baseUrl + "/assets/frontEnd/web/images/dark-background.png";
