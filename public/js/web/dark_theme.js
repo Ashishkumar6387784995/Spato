@@ -26,9 +26,6 @@ window.onload = function () {
 
     // Replace image source based on dark mode
     const baseUrl = window.location.origin;
-
-    // ... your other JavaScript code ...
-
     console.log(isDarkMode);
 
     if (isDarkMode) {
@@ -56,16 +53,4 @@ function toggleDarkMode() {
     });
 
     const image = document.getElementById("myImage");
-
-    // Save the current dark mode preference to local storage
-    localStorage.setItem("darkMode", body.classList.contains("body-dark"));
-
-    // Replace image source based on dark mode
-    if (body.classList.contains("body-dark")) {
-        image.src =
-            "http://127.0.0.1:8000/assets/frontEnd/web/images/dark-background.png";
-    } else {
-        image.src =
-            "http://127.0.0.1:8000/assets/frontEnd/web/images/light-background.png";
-    }
 }
