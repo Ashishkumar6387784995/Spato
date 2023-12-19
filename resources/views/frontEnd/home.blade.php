@@ -540,7 +540,7 @@
       </a>
     </div>
   </section>
-
+  
 
   @include('frontEnd/partial/footer')
 </body>

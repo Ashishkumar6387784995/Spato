@@ -29,6 +29,8 @@ window.onload = function () {
 
     // ... your other JavaScript code ...
 
+    console.log(isDarkMode);
+
     if (isDarkMode) {
         image.src = baseUrl + "/assets/frontEnd/web/images/dark-background.png";
     } else {
