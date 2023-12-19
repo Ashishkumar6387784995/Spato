@@ -178,7 +178,7 @@
                         <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
                     </div>
                     <div class="col stretch-card" >
-                        <a href="#" class="edit">bearbeiten</a>
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
                     </div>
                 </div>
                 <div class="row pt-3">
@@ -206,7 +206,7 @@
                         <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
                     </div>
                     <div class="col stretch-card" >
-                        <a href="#" class="edit">bearbeiten</a>
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
                     </div>
                 </div>
            
