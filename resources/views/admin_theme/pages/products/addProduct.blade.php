@@ -228,19 +228,7 @@
 
               <div class="row mb-2">
                 <div class="col-4">Kategorie </div>
-                <!-- <div class="container">
-                  <section>
-                    <select multiple="multiple" name="myMulti" id="myMulti">
-                      <option value="Item 1">Item 1</option>
-                      <option value="Item 2">item 2</option>
-                      <option value="Item 3">item 3</option>
-                      <option value="Item 4">item 4</option>
-                      <option value="Item 5">item 5</option>
-                      <option value="Item 6">item 6</option>
-
-                    </select>
-                  </section>
-                </div> -->
+                <div class="col-8">
 
 
                 <div style="height:100%" style="padding:0">
@@ -262,7 +250,7 @@
             
                   </select>
                 </div>
-
+                </div>
 
 
 
