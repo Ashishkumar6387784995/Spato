@@ -43,7 +43,7 @@
  
    
     <li class="nav-item">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link" href="{{ url('/api/assignmentListing') }}">
         <span class="menu-title">Aufträge</span>
       </a>
     </li>
