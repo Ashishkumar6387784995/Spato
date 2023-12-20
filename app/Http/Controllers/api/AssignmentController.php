@@ -9,17 +9,17 @@ class AssignmentController extends Controller
 {
     public function AssignmentListing(){
      
-        return view('admin_theme/pages/Assignments/assignmentList');
+        return view('admin_theme/pages/assignments/assignmentList');
     }
 
 
     public function editAssignment(){
      
-        return view('admin_theme/pages/Assignments/editAssignments');
+        return view('admin_theme/pages/assignments/editAssignments');
     }
 
     public function addAssignment(){
      
-        return view('admin_theme/pages/Assignments/addAssignments');
+        return view('admin_theme/pages/assignments/addAssignments');
     }
 }
