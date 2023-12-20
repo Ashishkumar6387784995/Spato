@@ -80,6 +80,11 @@
             width: 200px;
             font-size:14px;
         }
+        table tr td input{
+            width:100%;
+            border:none;
+            background-color:transparent;
+        }
         table tr td a{
             color:#54606c;
         }
@@ -191,40 +196,130 @@
                     
                 </div>
                 
-                <table id="dataTable">
-                    <tr>
-                        <th>POS.</th>
-                        <th>Produkt</th>
-                        <th>Beschreibung</th>
-                        <th>Menge</th>
-                        <th>Gesamtpreis</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>80.2103281138</td>
-                        <td>BADU® Delta Eco VS</td>
-                        <td>1</td>
-                        <td>1.000,08€</td>
-                        <td><a href="">delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td>80.2103281138</td>
-                        <td>BADU® Delta Eco VS</td>
-                        <td>1</td>
-                        <td>1.000,08€</td>
-                        <td><a href="">delete</a></td>
-                    </tr><tr>
-                        <td>3.</td>
-                        <td> <a href="#"   class="btn">+ neuer Artikel</a></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    
-                </table>
+                
+                
+                
+                <form method="post" action="">
+                @csrf
+       
+
+            
+
+            <div class="form-group col-lg-3" style="display:none">
+                <input type="text" name="jobRequestNo" class="form-control" id="firstname" value="" >
+                <label for="firstname">Job Request No</label>
+                </div> 
+
+           
+
+              <div class="">
+                <div class="table-responsive">
+                    <table id="table">
+                        <thead>
+                            <tr >
+                                <th>
+                                POS.
+                                </th>
+                                <th>
+                                Produkt
+                                </th>
+                                <th>
+                                Beschreibung
+                                </th>
+                                <th>
+                                Menge
+                                </th>
+                                <th>
+                                Einheit
+                                </th>
+                                <th>
+                                Einzelpreis
+                                </th>
+                                <th>Rabatt</th>
+                                <th>Gesamtpreis</th>
+                                <th></th>
+                               
+                            </tr>
+                          
+
+                        </thead>
+                        <tbody>
+
+                      
+
+
+                            <tr  class="hidden" >
+                                <td >
+                                    <input type="text" name='inputs[0][SNo]' value="1"  placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='inputs[0][stdValue]' placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='inputs[0][X1]' placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='inputs[0][X2]' placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='inputs[0][X3]' placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='inputs[0][X4]' placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='inputs[0][X5]' placeholder='#'/>
+                                </td>
+                                <td >
+                                    <input type="text" name='' placeholder='#'/>
+                                </td>
+                                <td >
+                                <a href="">delete</a>
+                                </td>
+                            
+                            </tr>
+
+
+                            <tr  class="hidden1" id="abc" style="display:none;">
+                                <td><b>Expended<br>Uncertainity</b></td>
+                                  <td >
+                                      <input colspan="2" type="text" name='E0StdValue' placeholder='#'/> 
+                                  </td>
+                                  <td >
+                                      <input type="text" name='E0X1' placeholder='#'/>
+                                  </td>
+                                  <td >
+                                      <input type="text" name='E0X2' placeholder='#'/>
+                                  </td>
+                                  <td >
+                                      <input type="text" name='E0X3' placeholder='#'/>
+                                  </td>
+                                  <td >
+                                      <input type="text" name='E0X4' placeholder='#'/>
+                                  </td>
+                                  <td >
+                                    <input type="text" name='E0X5' placeholder='#'/>
+                                </td>
+                               </tr>
+
+                            
+
+
+                        </tbody>
+                    </table>
+
+                    <table>
+                       
+                    </table>
+                </div>
+            </div><br>
+            <button id="add" type="button" name="add" class="btn">+ neuer Artikel</button><br>
+
+
+            <!-- <button type="submit" class="btn btn-common">Submit</button> -->
+
+        </form>
+
                 <hr style="border: 1px solid #54606c;" />
                 <div class="row pt-3">
                     
@@ -233,10 +328,10 @@
                     </div>
                    
                     <div class="col-4 stretch-card "  >
-                  
+                    Gesamt netto
                     </div>
                     <div class="col-2 stretch-card "  >
-                   
+                    2.194,61 €
                     </div>
                     
                 </div>
@@ -247,10 +342,24 @@
                     </div>
                    
                     <div class="col-4 stretch-card "  >
-                  
+                    zzgl. Umsatzsteuer 19 %
                     </div>
                     <div class="col-2 stretch-card "  >
-               
+                    416,98 €
+                    </div>
+                    
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col-6 stretch-card">
+                    
+                    </div>
+                   
+                    <div class="col-4 stretch-card dt">
+                    Gesamtbetrag brutto
+                    </div>
+                    <div class="col-2 stretch-card ">
+                    2.611,59 €
                     </div>
                     
                 </div>
@@ -310,6 +419,61 @@
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
 
 
-
+    <script>
+     
+     var i= 0;
+     var No=1;
+     console.log(i);
+     $('#add').click(function(){
+         ++i;
+       
+         ++No;
+         console.log(i);
+   
+         $('#abc').before(
+             `<tr>
+          
+                     <td >
+                                                     <input type="text" value='`+No+`' name='inputs[`+i+`][SNo]'  placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='inputs[`+i+`][stdValue]' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='inputs[`+i+`][X1]' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='inputs[`+i+`][X2]' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='inputs[`+i+`][X3]' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='inputs[`+i+`][X4]' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='inputs[`+i+`][X5]' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                     <input type="text" name='' placeholder='#'/>
+                                                 </td>
+                                                 <td >
+                                                 <a href="">delete</a>
+                                                 </td>
+                                              
+                                                
+                                
+                         </tr>
+                         `
+            
+         );
+     });
+ 
+     $(document).on('click','.remove-table-row', function(){
+         $(this).parents('tr').remove();
+ 
+     });
+ 
+     </script>
 </body>
 </html>
