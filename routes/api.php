@@ -93,6 +93,8 @@ Route::view('assignmentListing', 'admin_theme/pages/assignments/assignmentList')
 Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
 Route::get('editAssignment',[AssignmentController::class,'editAssignment']);
 
+Route::view('table', 'admin_theme/pages/assignments/table');
+
 
 // Delivery Notes for Admin
 Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListing']);

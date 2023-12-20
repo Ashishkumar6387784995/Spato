@@ -209,6 +209,9 @@
                     <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
                     </div>
                 </div>
+
+
+                
            
               
                 </div>
@@ -232,6 +235,9 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+
+    
 
 
 
