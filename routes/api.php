@@ -17,6 +17,7 @@ use App\Http\Controllers\api\AssignmentController;
 use App\Http\Controllers\api\DeliveryNotesController;
 use App\Http\Controllers\api\billsController;
 use App\Http\Controllers\api\creditsController;
+use App\Http\Controllers\api\claims_manager_Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,6 +118,13 @@ Route::get('creditsListingApi',[creditsController::class,'creditListing']);
 Route::view('creditsListing', 'admin_theme/pages/credits/creditList');
 Route::get('addCredits',[creditsController::class,'addCredits']);
 Route::get('editCredits',[creditsController::class,'editCredits']);
+
+
+// Claim Manger for Admin
+Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('laimsListing', 'admin_theme/pages/claim_manger/claimsList');
+Route::get('addClaims',[claims_manager_Controller::class,'addCliams']);
+Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 
 
 
