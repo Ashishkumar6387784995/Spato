@@ -152,7 +152,7 @@ Route::view('Statistics', 'admin_theme/pages/Statistics/Statistics');
 
 // Connections for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('connection', 'admin_theme/pages/connection/connection');
+Route::view('connection', 'admin_theme/pages/connections/connections');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
