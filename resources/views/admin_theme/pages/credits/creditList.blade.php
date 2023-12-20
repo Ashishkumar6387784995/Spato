@@ -120,7 +120,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addbills')}}">+ neue Rechnung</a>
+                        <a class="edit btn" href="{{url('/api/addbills')}}">+ neue Gutschrift</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
@@ -129,7 +129,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                    Alle Rechnungen
+                    Alle Gutschriften
                     </div>
                 </div>
 
@@ -150,11 +150,11 @@
                         <th></th>
                     </tr>
                     <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
+                        <td>Bezahlt</td>
+                        <td>GS-2768</td>
                         <td>Pool Bau Profi BV Meier</td>
                         <td>26.11.23</td>
-                        <td>9.678,00 €</td>
+                        <td>-9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
                         <td></td>
                     </tr>
@@ -176,24 +176,7 @@
                         <td><a href="">bearbeiten</a></td>
                         <td><a href="">berechnen</a></td>
                     </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
-                    </tr>
+                    
                 </table>
 
             </div>
