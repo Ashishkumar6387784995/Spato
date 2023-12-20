@@ -120,7 +120,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addAssignment')}}">+ neuer Auftrag</a>
+                        <a class="edit btn" href="{{url('/api/addbills')}}">+ neue Rechnung</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
@@ -129,7 +129,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        Alle Produkte
+                    Alle Rechnungen
                     </div>
                 </div>
 
@@ -156,7 +156,7 @@
                         <td>26.11.23</td>
                         <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Berechnet</td>
@@ -165,7 +165,7 @@
                         <td>26.11.23</td>
                         <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td></td>
+                        <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
                         <td>Offen</td>
