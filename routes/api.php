@@ -18,6 +18,8 @@ use App\Http\Controllers\api\DeliveryNotesController;
 use App\Http\Controllers\api\billsController;
 use App\Http\Controllers\api\creditsController;
 use App\Http\Controllers\api\claims_manager_Controller;
+use App\Http\Controllers\api\SuppliersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -121,10 +123,23 @@ Route::get('editCredits',[creditsController::class,'editCredits']);
 
 
 // Claim Manger for Admin
-Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
 Route::view('claimsListing', 'admin_theme/pages/claim_manger/claimsList');
 Route::get('addClaims',[claims_manager_Controller::class,'addCliams']);
 Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
+
+
+// Contact for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('contactListing', 'admin_theme/pages/contacts/ContactsList');
+Route::get('addcontact',[claims_manager_Controller::class,'addContacts']);
+// Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
+
+
+// Suppliers for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('SuppliersListing', 'admin_theme/pages/suppliers/SuppliersList');
+Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
 
