@@ -98,8 +98,8 @@
   width: 50%;
   padding-top:10rem;">Pool builders</h1>
 </div>
-    <div class="container">
-      <h4 class="mb-5">Profile Setting</h4>
+    <div class="container ">
+      <h4 class="mb-5 pt-4">Profile Setting</h4>
       <div class="row">
          <div class="col-2">
         <form action="#" method="post">

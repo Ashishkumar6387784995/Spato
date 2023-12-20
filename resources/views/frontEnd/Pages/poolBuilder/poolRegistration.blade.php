@@ -79,7 +79,7 @@
   padding-top:10rem;">Pool builders</h1>
 </div>
     <div class="container mt-4">
-      <h4 class="mb-2">Registeren</h4>
+      <h4 class="mb-2 pt-4">Registeren</h4>
       <form id="poolRegistrationForm">
 
         <span id="success_msg" style="color:#44e1d5; font-size:25px"></span>
