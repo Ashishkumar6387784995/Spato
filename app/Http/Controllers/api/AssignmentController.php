@@ -9,7 +9,7 @@ class AssignmentController extends Controller
 {
     public function AssignmentListing(){
      
-        return view('admin_theme/pages/assignments/assignmentList');
+        return view('admin_theme/pages/assignments/assignmentLists');
     }
 
 

@@ -89,14 +89,14 @@ Route::get('editOffer',[OfferController::class,'editOffer']);
 
 // Assignment for Admin
 Route::get('assignmentListingApi',[AssignmentController::class,'AssignmentListing']);
-Route::view('assignmentListing', 'admin_theme/pages/offers/assignmentsList');
+Route::view('assignmentListing', 'admin_theme/pages/assignments/assignmentList');
 Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
 Route::get('editAssignment',[AssignmentController::class,'editAssignment']);
 
 
 // Delivery Notes for Admin
 Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListing']);
-Route::view('deliveryNotesListing', 'admin_theme/pages/assignments/DeliveryNotesList');
+Route::view('deliveryNotesListing', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
 Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
 Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNotes']);
 
