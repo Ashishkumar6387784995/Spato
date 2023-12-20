@@ -107,8 +107,8 @@ Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNote
 // Bills for Admin
 Route::get('billsListingApi',[billsController::class,'billsListing']);
 Route::view('billsListing', 'admin_theme/pages/bills/billsList');
-Route::get('billsNotes',[billsController::class,'addbills']);
-Route::get('billsNotes',[billsController::class,'editbills']);
+Route::get('addbills',[billsController::class,'addbills']);
+Route::get('editbills',[billsController::class,'editbills']);
 
 
 

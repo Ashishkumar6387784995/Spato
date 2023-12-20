@@ -18,7 +18,7 @@ class billsController extends Controller
         return view('admin_theme/pages/bills/editbills');
     }
 
-    public function addAssignment(){
+    public function addbills(){
      
         return view('admin_theme/pages/bills/addbills');
     }
