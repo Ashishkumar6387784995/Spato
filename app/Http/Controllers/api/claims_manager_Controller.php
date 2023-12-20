@@ -9,17 +9,17 @@ class claims_manager_Controller extends Controller
 {
     public function billsListing(){
      
-        return view('admin_theme/pages/bills/assignmentList');
+        return view('admin_theme/pages/claim_manager/assignmentList');
     }
 
 
-    public function editbills(){
+    public function editCliams(){
      
-        return view('admin_theme/pages/bills/editbills');
+        return view('admin_theme/pages/claim_manager/editClaims');
     }
 
-    public function addbills(){
+    public function addCliams(){
      
-        return view('admin_theme/pages/bills/addbills');
+        return view('admin_theme/pages/claim_manager/addClaims');
     }
 }
