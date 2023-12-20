@@ -122,7 +122,7 @@ Route::get('editCredits',[creditsController::class,'editCredits']);
 
 // Claim Manger for Admin
 Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('laimsListing', 'admin_theme/pages/claim_manger/claimsList');
+Route::view('claimsListing', 'admin_theme/pages/claim_manager/claimsList');
 Route::get('addClaims',[claims_manager_Controller::class,'addCliams']);
 Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 

@@ -64,7 +64,7 @@
     </li>
     <li class="nav-item">
     <div class="border-bottom ">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link" href="{{ url('/api/claimsListing') }}">
         <span class="menu-title">Claim Manager</span>
       </a>
       </div>
