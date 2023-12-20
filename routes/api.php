@@ -81,19 +81,22 @@ Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
 
 
 // Offers for Admin
-Route::get('offerListing',[OfferController::class,'offerListing']);
+Route::get('offerListingApi',[OfferController::class,'offerListing']);
+Route::view('offerListing', 'admin_theme/pages/offers/offerList');
 Route::get('addOffer',[OfferController::class,'addOffer']);
 Route::get('editOffer',[OfferController::class,'editOffer']);
 
 
 // Assignment for Admin
-Route::get('assignmentListing',[AssignmentController::class,'AssignmentListing']);
+Route::get('assignmentListingApi',[AssignmentController::class,'AssignmentListing']);
+Route::view('assignmentListing', 'admin_theme/pages/offers/assignmentsList');
 Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
 Route::get('editAssignment',[AssignmentController::class,'editAssignment']);
 
 
-// Assignment for Admin
-Route::get('deliveryNotesListing',[DeliveryNotesController::class,'DeliveryNotesListing']);
+// Delivery Notes for Admin
+Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListing']);
+Route::view('deliveryNotesListing', 'admin_theme/pages/assignments/DeliveryNotesList');
 Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
 Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNotes']);
 
