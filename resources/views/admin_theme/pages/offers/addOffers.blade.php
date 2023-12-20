@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Spato Admin Panel</title>
+    <title>Add Offers</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -68,6 +68,23 @@
         }
         .stretch-card{
             font-size:13px;
+        }
+        table tr th {
+            width: 200px;
+            background-color:#54606c;
+            color:#fff;
+        }
+
+        table tr td {
+            padding: 10px 2px;
+            width: 200px;
+            font-size:14px;
+        }
+        table tr td a{
+            color:#54606c;
+        }
+        a{
+            color:#54606c;
         }
     </style>
 </head>
@@ -173,130 +190,53 @@
                     <div class="col-md-2 " > </div>
                     
                 </div>
-                <div class="row pt-3">
-                </div>
-                       
-                <div class="row" style="background-color: #54606c; color:#fff; height:20px;">
+                
+                <table id="dataTable">
+                    <tr>
+                        <th>POS.</th>
+                        <th>Produkt</th>
+                        <th>Beschreibung</th>
+                        <th>Menge</th>
+                        <th>Einheit</th>
+                        <th>Einzelpreis</th>
+                        <th>Rabatt</th>
+                        <th>Gesamtpreis</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>80.2103281138</td>
+                        <td>BADU® Delta Eco VS</td>
+                        <td>1</td>
+                        <td>Stück</td>
+                        <td>1.538,55 €</td>
+                        <td>35%C2</td>
+                        <td>1.000,08€</td>
+                        <td><a href="">delete</a></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>80.2103281138</td>
+                        <td>BADU® Delta Eco VS</td>
+                        <td>1</td>
+                        <td>Stück</td>
+                        <td>1.538,55 €</td>
+                        <td>35%C2</td>
+                        <td>1.000,08€</td>
+                        <td><a href="">delete</a></td>
+                    </tr><tr>
+                        <td>3.</td>
+                        <td> <a href="#"   class="btn">+ neuer Artikel</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                     
-                    <div class="col-1 stretch-card grid-margin" >
-                    POS.
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    Produkt
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    Beschreibung
-                    </div>
-                    <div class="col-1 stretch-card grid-margin" >
-                    Menge
-                    </div>
-                    <div class="col-1 stretch-card grid-margin" >
-                    Einheit
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    Einzelpreis
-                    </div>
-                    <div class="col-1 stretch-card grid-margin" >
-                    Rabatt
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    Gesamtpreis
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    
-                    <div class="col-1 stretch-card grid-margin" >
-                    1.
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    80.2103281138
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    BADU® Delta Eco VS
-                    </div>
-                    <div class="col-1 stretch-card grid-margin " >
-                    1
-                    </div>
-                    <div class="col-1 stretch-card grid-margin " >
-                    Stück
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    1.538,55 €
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    35%C2
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    1.000,08€
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    delete
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    
-                    <div class="col-1 stretch-card grid-margin" >
-                    2.
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    80.2103281138
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    BADU® Delta Eco VS
-                    </div>
-                    <div class="col-1 stretch-card grid-margin " >
-                    1
-                    </div>
-                    <div class="col-1 stretch-card grid-margin " >
-                    Stück
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    1.538,55 €
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    35%C2
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    1.000,08€
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    delete
-                    </div>
-                    
-                </div>
-                <div class="row">
-                    
-                    <div class="col-1 stretch-card grid-margin" >
-                    3.
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">+ neuer Artikel</a>
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    
-                    </div>
-                    <div class="col-1 stretch-card grid-margin " >
-                    
-                    </div>
-                    <div class="col-1 stretch-card grid-margin " >
-                    
-                    </div>
-                    <div class="col-2 stretch-card grid-margin" >
-                    
-                    </div>
-                    <div class="col-1 stretch-card grid-margin" >
-                    
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    
-                    </div>
-                    
-                </div>
+                </table>
                 <hr style="border: 1px solid #54606c;" />
                 <div class="row pt-3">
                     

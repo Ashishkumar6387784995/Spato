@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Assignments Listing</title>
+    <title>Add Delivery Notes</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -14,16 +14,16 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
- 
-<!-- Fonts -->
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
-  <!-- Fonts -->
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
 
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
-     <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
-     <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
     <style>
         .transform-hover {
             height: 150px;
@@ -38,25 +38,42 @@
             cursor: pointer;
         }
 
-        .edit{
-            color:#54606c;
-            padding: 10px 14px;
-            
-        }
-        
-        .btn{
-            /* background-color: #54606c; */
+        .edit {
+            background-color: #54606c;
             border: 1px solid #54606c;
-            color: #54606c;
+            color: #ffff;
             padding: 10px 14px;
+            height: 42px;
             text-decoration: none;
             border-radius: 5px;
+            transition: 0.5s ease;
         }
-        .close{
+
+        .edit:hover {
+            background-color: transparent;
+            border: 1px solid #54606c;
+            color: #54606c;
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #54606c;
+        }
+
+        .row .col {
+            font-size: 14px;
+        }
+
+        table tr th {
+            width: 200px;
+        }
+
+        table tr td {
+            padding: 10px 2px;
+            width: 200px;
+        }
+        table tr td a{
             color:#54606c;
-        }
-        .row .col{
-            font-size:14px;
         }
     </style>
 </head>
@@ -84,6 +101,7 @@
 
 
 
+
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
 
@@ -95,254 +113,94 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
-                  <h2>Admin Dashboard</h2>
-                  <p>Monday, January 12, 2024</p>
+                <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
+                    <h2>Admin Dashboard</h2>
+                    <p>Monday, January 12, 2024</p>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col-md-4 stretch-card grid-margin" >
-                   <a href="{{url('/api/addOffer')}}"  class="btn">+ neuer Auftrag</a>
+
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <a class="edit btn" href="{{url('/api/addDeliveryNotes')}}">+ neuer Lieferschein</a>
                     </div>
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    <a href="#"   class="btn">Filter</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    Alle Aufträge
+                    <div class="col-md-4 stretch-card grid-margin">
+                        Filter
                     </div>
                 </div>
                 <div class="row pt-3">
-                    
-                    <div class="col stretch-card grid-margin" >
-                    Status
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Nr.
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Kunde u. Betreff
-                    </div>
-                    <div class="col stretch-card grid-margin invisible" >
-                   
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Datum
-                    </div>
-                    <div class="col stretch-card grid-margin" >
-                    Betrag netto
-                    </div>
-                    
-                    <div class="col stretch-card grid-margin invisible" >
-                        closs button
-                    </div>
-                    <div class="col stretch-card grid-margin invisible" >
-                        Edit button
+
+                    <div class="col-md-4 stretch-card grid-margin">
+                    Alle Lieferscheine
                     </div>
                 </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card ps-4" >
-                    Offen
-                    </div>
-                    <div class="col stretch-card ps-4"  >
-                    AB-2768
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    Pool Bau Profi BV Meier
-                    </div>
-                    <div class="col stretch-card "  >
-                    
-                    </div>
-                    <div class="col stretch-card "  >
-                    26.11.23
-                    </div>
-                    <div class="col stretch-card "  >
-                    9.678,00 €
-                    </div>
-                    
-                    <div class="col stretch-card" >
-                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                    <div class="col stretch-card" >
-                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
-                    </div>
-                </div>
-                
-           
-              
-                </div>
+
+
+
+                <span id="success_msg" style="color:green"></span>
+                <br>  <br> 
+
+
+                <table id="dataTable">
+                    <tr>
+                        <th>Status</th>
+                        <th>Nr</th>
+                        <th>Kunde u. Betreff</th>
+                        <th>Datum</th>
+                        <th>Betrag netto</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Offen</td>
+                        <td>LI-2768</td>
+                        <td>Pool Bau Profi BV Meier</td>
+                        <td>26.11.23</td>
+                        <td>9.678,00 €</td>
+                        <td><a href="">bearbeiten</a></td>
+                        <td><a href="">berechnen</a></td>
+                    </tr>
+                    <tr>
+                        <td>Berechnet</td>
+                        <td>LI-2767</td>
+                        <td>Pool Bau Profi BV Meier</td>
+                        <td>26.11.23</td>
+                        <td>9.678,00 €</td>
+                        <td><a href="">bearbeiten</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Offen</td>
+                        <td>LI-2766</td>
+                        <td>Pool Bau Profi BV Meier</td>
+                        <td>26.11.23</td>
+                        <td>9.678,00 €</td>
+                        <td><a href="">bearbeiten</a></td>
+                        <td><a href="">berechnen</a></td>
+                    </tr>
+                    <tr>
+                        <td>Offen</td>
+                        <td>LI-2766</td>
+                        <td>Pool Bau Profi BV Meier</td>
+                        <td>26.11.23</td>
+                        <td>9.678,00 €</td>
+                        <td><a href="">bearbeiten</a></td>
+                        <td><a href="">berechnen</a></td>
+                    </tr>
+                    <tr>
+                        <td>Berechnet</td>
+                        <td>LI-2766</td>
+                        <td>Pool Bau Profi BV Meier</td>
+                        <td>26.11.23</td>
+                        <td>9.678,00 €</td>
+                        <td><a href="">bearbeiten</a></td>
+                        <td></td>
+                    </tr>
+                </table>
+
+            </div>
+
+
         </div>
+    </div>
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
@@ -362,6 +220,105 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Execute the code when the document is ready
+        $(document).ready(function() {
+            // Make a GET request using AJAX
+            $.ajax({
+                url: '/api/productListingApi', // Replace with the actual endpoint URL
+                method: 'GET',
+                success: function(data) {
+                    // Handle the successful response
+                    if (data.productList) {
+                        console.log('Data received:', data.productList);
+
+
+                        function populateTable(data) {
+                            var tableBody = $('#dataTable');
+
+                            // Clear existing table rows
+                            // tableBody.empty();
+
+                            // Iterate through the data and add rows to the table
+                            $.each(data, function(index, item) {
+                                var row = $('<tr>');
+                                row.append('<td>' + item.Hersteller + '</td>');
+                                row.append('<td>' + item.Herst_Nr + '</td>');
+                                row.append('<td>' + item.id + '</td>');
+                                row.append('<td>' + item.Artikelname + '</td>');
+                                row.append('<td>' + item.Kategorie + '</td>');
+                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
+                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
+                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
+
+
+                                // Add more columns as needed
+
+                                // Append the row to the table body
+                                tableBody.append(row);
+                            });
+                        }
+
+                        // Call the function to populate the table with the initial data
+                        populateTable(data.productList);
+
+
+
+                    } else {
+                        console.log('Data received:', data.errors);
+                    }
+                }, // Missing comma here
+
+                error: function(error) {
+                    // Handle errors
+                    console.error('Error:', error);
+                }
+            });
+
+
+
+
+        });
+
+
+        function deleteOperation(productId) {
+            // Make a DELETE request using AJAX
+            console.log(productId);
+            $.ajax({
+                url: '/api/deleteProduct/' + productId,
+                method: 'get',
+                success: function(data) {
+
+                    if (data.success) {
+
+
+
+                        $('#success_msg').text(data.success);
+
+                        // Delay the page reload for 2 seconds (2000 milliseconds)
+                            setTimeout(function() {
+                                location.reload(true);
+                            }, 1000);
+
+                        
+
+
+                        console.log('Product deleted successfully:', data.success);
+                        // Perform any additional actions after deletion
+                    } else {
+                        console.log('Product not deleted successfully:', data.message);
+                    }
+
+                },
+                error: function(error) {
+                    console.error('Error deleting product:', error.responseJSON.error);
+                }
+            });
+        }
+    </script>
+
 
 
 
