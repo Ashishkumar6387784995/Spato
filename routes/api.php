@@ -19,6 +19,9 @@ use App\Http\Controllers\api\billsController;
 use App\Http\Controllers\api\creditsController;
 use App\Http\Controllers\api\claims_manager_Controller;
 use App\Http\Controllers\api\SuppliersController;
+use App\Http\Controllers\api\ContactController;
+use App\Http\Controllers\api\ConnectionsController;
+use App\Http\Controllers\api\StatisticsController;
 
 
 /*
@@ -132,7 +135,7 @@ Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 // Contact for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
 Route::view('contactListing', 'admin_theme/pages/contacts/ContactsList');
-Route::get('addcontact',[claims_manager_Controller::class,'addContacts']);
+Route::get('addcontact',[ContactController::class,'addContacts']);
 // Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 
 
@@ -140,6 +143,17 @@ Route::get('addcontact',[claims_manager_Controller::class,'addContacts']);
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
 Route::view('SuppliersListing', 'admin_theme/pages/suppliers/SuppliersList');
 Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+
+
+// Statistics for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('Statistics', 'admin_theme/pages/Statistics/Statistics');
+// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+
+// Connections for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('connection', 'admin_theme/pages/connection/connection');
+// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
 
