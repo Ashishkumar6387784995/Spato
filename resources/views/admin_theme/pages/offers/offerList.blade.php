@@ -137,58 +137,91 @@
                     Alle Angebote
                     </div>
                 </div>
-                
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card grid-margin" >
+                    Status
+                    </div>
+                    <div class="col stretch-card grid-margin" >
+                    Nr.
+                    </div>
+                    <div class="col stretch-card grid-margin" >
+                    Artikel Nr.
+                    </div>
+                    <div class="col stretch-card grid-margin invisible" >
+                    Artikel Name
+                    </div>
+                    <div class="col stretch-card grid-margin" >
+                    Kategorie 1
+                    </div>
+                    <div class="col stretch-card grid-margin" >
+                    Preis netto
+                    </div>
+                    
+                    <div class="col stretch-card grid-margin " >
+                        closs button
+                    </div>
+                    <div class="col stretch-card grid-margin invisible" >
+                        Edit button
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                        Maitic
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                        50
+                    </div>
+                    <div class="col stretch-card "  >
+                        00200M
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    Technik
+                    </div>
+                    <div class="col stretch-card "  >
+                    1,164.00€
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
+                    </div>
+                    <div class="col stretch-card" >
+                        <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    
+                    <div class="col stretch-card ps-4" >
+                        Maitic
+                    </div>
+                    <div class="col stretch-card ps-4"  >
+                        50
+                    </div>
+                    <div class="col stretch-card "  >
+                        00200M
+                    </div>
+                    <div class="col stretch-card "  >
+                    
+                    </div>
+                    <div class="col stretch-card "  >
+                    Technik
+                    </div>
+                    <div class="col stretch-card "  >
+                    1,164.00€
+                    </div>
+                    
+                    <div class="col stretch-card" >
+                        <a href="#"><i class="fa-regular fa-circle-xmark close"></i></a>
+                    </div>
+                    <div class="col stretch-card" >
+                    <a href="{{url('/api/editOffer')}}" class="edit">bearbeiten</a>
+                    </div>
+                </div>
            
-                <table id="dataTable">
-                    <tr>
-                        <th>Status</th>
-                        <th>Nr</th>
-                        <th>Kunde u. Betreff</th>
-                        <th>Datum</th>
-                        <th>Betrag netto</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                </table>
               
                 </div>
         </div>
@@ -211,6 +244,9 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+
+    
 
 
 
