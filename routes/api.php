@@ -111,6 +111,13 @@ Route::get('addbills',[billsController::class,'addbills']);
 Route::get('editbills',[billsController::class,'editbills']);
 
 
+// Credits for Admin
+Route::get('creditsListingApi',[billsController::class,'creditListing']);
+Route::view('creditsListing', 'admin_theme/pages/credits/creditList');
+Route::get('addbills',[billsController::class,'addbills']);
+Route::get('editbills',[billsController::class,'editbills']);
+
+
 
 Route::middleware('api.token')->group(function () {
     // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);

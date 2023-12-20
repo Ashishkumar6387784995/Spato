@@ -58,7 +58,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link" href="{{ url('/api/creditsListing') }}">
         <span class="menu-title">Gutschriften</span>
       </a>
     </li>
