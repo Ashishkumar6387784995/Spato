@@ -16,6 +16,7 @@ use App\Http\Controllers\api\PoolBuilder;
 use App\Http\Controllers\api\AssignmentController;
 use App\Http\Controllers\api\DeliveryNotesController;
 use App\Http\Controllers\api\billsController;
+use App\Http\Controllers\api\creditsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,10 +113,10 @@ Route::get('editbills',[billsController::class,'editbills']);
 
 
 // Credits for Admin
-Route::get('creditsListingApi',[billsController::class,'creditListing']);
+Route::get('creditsListingApi',[creditsController::class,'creditListing']);
 Route::view('creditsListing', 'admin_theme/pages/credits/creditList');
-Route::get('addbills',[billsController::class,'addbills']);
-Route::get('editbills',[billsController::class,'editbills']);
+Route::get('addCredits',[creditsController::class,'addCredits']);
+Route::get('editCredits',[creditsController::class,'editCredits']);
 
 
 
