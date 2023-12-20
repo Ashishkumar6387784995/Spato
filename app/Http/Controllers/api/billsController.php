@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class billsController extends Controller
 {
-    public function AssignmentListing(){
+    public function billsListing(){
      
-        return view('admin_theme/pages/assignments/assignmentList');
+        return view('admin_theme/pages/bills/assignmentList');
     }
 
 
