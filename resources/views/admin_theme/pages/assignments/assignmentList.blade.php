@@ -221,7 +221,7 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         // Execute the code when the document is ready
         $(document).ready(function() {
@@ -317,7 +317,7 @@
                 }
             });
         }
-    </script>
+    </script> -->
 
 
 

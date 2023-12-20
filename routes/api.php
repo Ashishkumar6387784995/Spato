@@ -15,6 +15,7 @@ use App\Http\Controllers\api\OfferController;
 use App\Http\Controllers\api\PoolBuilder;
 use App\Http\Controllers\api\AssignmentController;
 use App\Http\Controllers\api\DeliveryNotesController;
+use App\Http\Controllers\api\billsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,13 @@ Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNo
 Route::view('deliveryNotesListing', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
 Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
 Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNotes']);
+
+
+// Bills for Admin
+Route::get('billsListingApi',[billsController::class,'billsListing']);
+Route::view('billsListing', 'admin_theme/pages/bills/billsList');
+Route::get('billsNotes',[billsController::class,'addbills']);
+Route::get('billsNotes',[billsController::class,'editbills']);
 
 
 
