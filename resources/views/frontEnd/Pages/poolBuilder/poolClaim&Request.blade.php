@@ -70,7 +70,7 @@
   padding-top:10rem;">Pool builders</h1>
 </div>
  <div class="container">
-<h4 class="mb-5">Profile Setting</h4>
+<h4 class="mb-5 pt-4">Profile Setting</h4>
 
 <p  style="font-weight:600;">All Claims requests</p>
  <div class="container">  
