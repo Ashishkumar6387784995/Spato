@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Spato Admin Panel</title>
+    <title>Add assignments </title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -69,6 +69,9 @@
         .stretch-card{
             font-size:13px;
         }
+    a{
+            color:#54606c;
+        }
     </style>
 </head>
 
@@ -120,9 +123,6 @@
                     
                     </div>
                     <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">Auftrag</a>
-                    </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
                     <a href="#"   class="btn">Lieferschein</a>
                     </div>
                     <div class="col-md-2 stretch-card grid-margin" >
@@ -161,7 +161,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-4" >
-                   <h4>Angebot-Nr. <a href="#">AN-12345</a></h4>
+                   <h4>Angebot-Nr. <a href="#">AB-12345</a></h4>
                     </div>
                     <div class="col-md-3 stretch-card grid-margin" >
                      <a href="#"   class="btn">Kopfzeile Standard</a>
