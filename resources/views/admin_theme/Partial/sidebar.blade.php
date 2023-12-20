@@ -70,13 +70,13 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link pt-3" href="pages/icons/mdi.html">
+      <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
         <span class="menu-title">Kontakte</span>
       </a>
     </li>
     <li class="nav-item">
     <div class="border-bottom ">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link" href="{{ url('/api/SuppliersListing') }}">
         <span class="menu-title">Lieferanten</span>
       </a>
 </div>
