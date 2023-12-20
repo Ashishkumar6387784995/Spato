@@ -152,7 +152,30 @@ Route::view('Statistics', 'admin_theme/pages/Statistics/Statistics');
 
 // Connections for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('connection', 'admin_theme/pages/connection/connection');
+Route::view('connection', 'admin_theme/pages/connections/connections');
+// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+
+
+// NewsLetter for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('newsLetter', 'admin_theme/pages/newsLetter/NewsLetter');
+// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+
+// Settings for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('settings', 'admin_theme/pages/settings/settings');
+// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+
+
+// Settings for Admin
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('settings', 'admin_theme/pages/settings/settings');
+// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+
+
+// Customer Address Book for B2B
+// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/customerAddressbook');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
