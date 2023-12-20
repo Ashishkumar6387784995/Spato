@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Claim Manager List</title>
+    <title>Contact List</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -120,16 +120,16 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addbills')}}">+ neue Rechnung</a>
+                        <a class="edit btn" href="{{url('/api/addcontact')}}">+ neuer Kontakt</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
                     </div>
                 </div>
-                <div class="row pt-3">
+                <div class="row">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                    Alle Rechnungen
+                    Alle Kunden
                     </div>
                 </div>
 
@@ -141,58 +141,46 @@
 
                 <table id="dataTable">
                     <tr>
-                        <th>Status</th>
                         <th>Nr</th>
-                        <th>Kunde u. Betreff</th>
-                        <th>Datum</th>
-                        <th>Betrag netto</th>
+                        <th>B2B / B2C</th>
+                        <th>Kunde</th>
+                        <th>PLZ - Ort</th>
                         <th></th>
-                        <th></th>
                     </tr>
                     <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>56478 Flammersfeld</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td></td>
                     </tr>
                 </table>
 

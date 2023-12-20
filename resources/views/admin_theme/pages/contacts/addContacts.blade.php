@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add Bills</title>
+    <title>Add Contact</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -90,6 +90,8 @@
         }
         a{
             color:#54606c;
+            font-size:15px;
+            font-weight:600;
         }
     </style>
 </head>
@@ -139,337 +141,283 @@
                     </div>
                     
                     <div class="col-md-2 stretch-card grid-margin" >
-                    
+                        
+                        <a href="#" class="mt-2">Umsatz 25.067,90 €</a>
                     </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">Lieferschein</a>
+                    <div class="col-md-4 stretch-card grid-margin" >
+                    <a href="#"  class="mt-2">offene Rechnungen 5.007,90 € l</a>
                     </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">senden</a>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-md-4" >
-                   
-                    <form action="">
-                     <textarea name="text" id="" cols="35" rows="10"></textarea>
-                    </form>
-                    </div>
-                    <div class="col-md-2 " >
-                    </div>
-                    <div class="col-md-1 " >
-                    </div>
-                    <div class="col-md-3" >
-                   <p>Rechnungs-Nr.</p><br>
-                   <p>Rechnungsdatum</p><br>
-                   <p>Referenz</p><br>
-                   <p>Ihre Kundennummer</p> <br>
-                   <p>Ihre Ust. ID</p> <br>
-                    </div>
-                    <div class="col-md-2" >
-                    <p><a href="#">AN-12345</a></p><br>
-                    <p><a href="#">15.01.2024</a></p><br>
-                    <p><a href="#">Mrs. Perfect</a></p><br>
-                    <p><a href="#">123456</a></p><br>
-                    <p><a href="#">DE 123456789</a></p><br>
+                    <div class="col-md-4 stretch-card grid-margin" >
+                    <a href="#"  class="mt-2">laufende Aufträge 18.054,09 €</a>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">Typ</div>
+                            <div class="col">
+                                B2B <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                B2C <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            </div>
+                            <div class="col stretch-card">
+                                Kundennummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col stretch-card pt-3">
+                                Firmenname <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col stretch-card pt-3">
+                        Ansprechpartner <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Frau <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Herr <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
+                        </div>
+                        </div>
+                        <div class="row pt-3">
+                        <div class="col">
+                        Adresse
+                        </div>
+                        <div class="col">
+                        Lieferadresse
+                        </div>
+                        </div>
+                        <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Straße
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Straße
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Ort
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Ort
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                        <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       PLZ
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       PLZ
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                           <!--  -->
+                           <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Land
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Land
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                           <!--  -->
+                           <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       VAT ID
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       <!-- Straße -->
+                        </div>
+                        <div class="col-8">
+                       <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;"> -->
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                           <!--  -->
+                           <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Telefon
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Mobile
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                           <!--  -->
+                           <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Mail 
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       Mail RE
 
-                <div class="row pt-3">
-                    
-                    <div class="col-md-4" >
-                   <h4>Rechnungs-Nr. <a href="#">RE-12345</a></h4>
-                    </div>
-                    <div class="col-md-3 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Kopfzeile Standard</a>
-                    </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Kopfzeile neu</a>
-                    </div>
-                    <!-- <div class="col-md-2 " > </div> -->
-                    <div class="col-md-2 " > </div>
-                    
-                </div>
-                
-                
-                
-                
-                <form method="post" action="">
-                @csrf
-       
-
-            
-
-            <div class="form-group col-lg-3" style="display:none">
-                <input type="text" name="jobRequestNo" class="form-control" id="firstname" value="" >
-                <label for="firstname">Job Request No</label>
-                </div> 
-
-           
-
-              <div class="">
-                <div class="table-responsive">
-                    <table id="table">
-                        <thead>
-                            <tr >
-                                <th>
-                                POS.
-                                </th>
-                                <th>
-                                Produkt
-                                </th>
-                                <th>
-                                Beschreibung
-                                </th>
-                                <th>
-                                Menge
-                                </th>
-                                <th>
-                                Einheit
-                                </th>
-                                <th>
-                                Einzelpreis
-                                </th>
-                                <th>Rabatt</th>
-                                <th>Gesamtpreis</th>
-                                <th></th>
-                               
-                            </tr>
-                          
-
-                        </thead>
-                        <tbody>
-
-                      
-
-
-                            <tr  class="hidden" >
-                                <td >
-                                    <input type="text" name='inputs[0][SNo]' value="1"  placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][stdValue]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X1]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X2]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X3]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X4]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X5]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='' placeholder='#'/>
-                                </td>
-                                <td >
-                                <a href="">delete</a>
-                                </td>
-                            
-                            </tr>
-
-
-                            <tr  class="hidden1" id="abc" style="display:none;">
-                                <td><b>Expended<br>Uncertainity</b></td>
-                                  <td >
-                                      <input colspan="2" type="text" name='E0StdValue' placeholder='#'/> 
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X1' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X2' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X3' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X4' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                    <input type="text" name='E0X5' placeholder='#'/>
-                                </td>
-                               </tr>
-
-                            
-
-
-                        </tbody>
-                    </table>
-
-                    <table>
-                       
-                    </table>
-                </div>
-            </div><br>
-            <button id="add" type="button" name="add" class="btn">+ neuer Artikel</button><br>
-
-
-            <!-- <button type="submit" class="btn btn-common">Submit</button> -->
-
-        </form>
-
-                <hr style="border: 1px solid #54606c;" />
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card" >
-                    Lieferbedingungen: zzgl. Frachtkosten
-                    </div>
-                   
-                    <div class="col-4 stretch-card "  >
-                    Gesamt netto
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    2.194,61 €
-                    </div>
-                    
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card" >
-                    Zahlungsbedingungen: nach Vereinbarung
-                    </div>
-                   
-                    <div class="col-4 stretch-card "  >
-                    zzgl. Umsatzsteuer 19 %
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    416,98 €
-                    </div>
-                    
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card">
-                    
-                    </div>
-                   
-                    <div class="col-4 stretch-card dt">
-                    Gesamtbetrag brutto
-                    </div>
-                    <div class="col-2 stretch-card ">
-                    2.611,59 €
-                    </div>
-                    
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col stretch-card" >
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                           <!--  -->
+                           <div class="row pt-3">
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       WWW
+                        </div>
+                        <div class="col-8">
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                        </div>
+                       </div>
+                        </div>
+                        <div class="col">
+                       <div class="row">
+                       <div class="col-4">
+                       <!-- Straße -->
+                        </div>
+                        <div class="col-8">
+                       <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;"> -->
+                        </div>
+                       </div>
+                        </div>
+                        </div>
+                        <!--  -->
+                        <div class="row">
+                        <div class="col stretch-card pt-3">
+                        Newsletter <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Ja <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Nein  Mail  <span style="padding:0 15px;">Newsletter</span>  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:200px;">
+                        </div>
+                        </div>
                         
                     </div>
-                    <div class="col stretch-card"  >
-                        
-                    </div>
-                    <div class="col stretch-card "  >
-                    <a href="#" class="edit">Fußzeile Standard</a>
+
+                    <div class="col">
+                        Maps <br><br>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.3952458803487!2d77.38694107550029!3d28.617913975672646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5041555554f%3A0x6c59d83bd08b7d6f!2sNettechnocrats%20-%20SEO%20Company%20in%20Noida!5e0!3m2!1sen!2sin!4v1703071892370!5m2!1sen!2sin" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="buttons pt-4">
+                        <a href="#"> Kundenadressbuch</a><br><br>
+                        <a href="#"  class="btn">+ neuer Kontakt</a>
+                        </div>
                     </div>
                     
-                    <div class="col stretch-card" >
-                        <a href="#" class="edit">Fußzeile neu</a>
-                    </div>
-                    <div class="col stretch-card"  >
-                        
-                    </div>
                 </div>
-           
-              
-                </div>
-        </div>
+          <div class="row">
+            <div class="col">
+            <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>1</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>2</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>3</span> <span>Zahlung</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>PayPal</span> <span>MwSt. Satz</span> <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:2px;">
+            </div>
+          </div>      
+          <div class="row">
+            <div class="col">
+            <span>Shop / APP sperren</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>ja</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>Nein</span> <span>Zugangsdaten Shop / APP ändern</span>
+            </div>
+          </div>  
+          <div class="row pt-3">
+            <div class="col">
+            <span>Premium B2B – B2C connection</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>ja</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>Nein</span>
+            </div>
+          </div>  
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <!-- <footer class="footer">
-        <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2021</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                    admin template</a> from Bootstrapdash.com</span>
-        </div>
-    </footer> -->
-    <!-- partial -->
+    </div>  
     </div>
-    <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
+  
+  
+  
     <!-- plugins:js -->
-
-
-
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> -->
-
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
 
-
-    <script>
-     
-     var i= 0;
-     var No=1;
-     console.log(i);
-     $('#add').click(function(){
-         ++i;
-       
-         ++No;
-         console.log(i);
-   
-         $('#abc').before(
-             `<tr>
-          
-                     <td >
-                                                     <input type="text" value='`+No+`' name='inputs[`+i+`][SNo]'  placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][stdValue]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X1]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X2]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X3]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X4]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X5]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                 <a href="">delete</a>
-                                                 </td>
-                                              
-                                                
-                                
-                         </tr>
-                         `
-            
-         );
-     });
- 
-     $(document).on('click','.remove-table-row', function(){
-         $(this).parents('tr').remove();
- 
-     });
- 
-     </script>
 </body>
 </html>

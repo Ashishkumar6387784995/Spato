@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Spato Admin Panel</title>
+    <title>Suppliers List</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -72,6 +72,9 @@
             padding: 10px 2px;
             width: 200px;
         }
+        table tr td a{
+            color:#54606c;
+        }
     </style>
 </head>
 
@@ -117,16 +120,16 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addProduct')}}">+ neues Produkt</a>
+                        <a class="edit btn" href="{{url('/api/addSuppliers')}}">+ neuer Lieferant</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
                     </div>
                 </div>
-                <div class="row pt-3">
+                <div class="row">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        Alle Produkte
+                    Alle Kunden
                     </div>
                 </div>
 
@@ -138,16 +141,47 @@
 
                 <table id="dataTable">
                     <tr>
-                        <th>Hersteller</th>
-                        <th> Herst. Nr.</th>
-                        <th>Artikel Nr.</th>
-                        <th>Artikel Name</th>
-                        <th> Kategorie 1</th>
-                        <th> Preis netto</th>
-                        <th></th>
+                        <th>Nr</th>
+                        <th>B2B / B2C</th>
+                        <th>Kunde</th>
+                        <th>PLZ - Ort</th>
                         <th></th>
                     </tr>
-
+                    <tr>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
+                        <td><a href="">bearbeiten</a></td>
+                    </tr>
+                    <tr>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
+                        <td><a href="">bearbeiten</a></td>
+                    </tr>
+                    <tr>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>56478 Flammersfeld</td>
+                        <td><a href="">bearbeiten</a></td>
+                    </tr>
+                    <tr>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
+                        <td><a href="">bearbeiten</a></td>
+                    </tr>
+                    <tr>
+                        <td>1256</td>
+                        <td>B2B</td>
+                        <td>Pool Bau Profi</td>
+                        <td>46578 Wesel</td>
+                        <td><a href="">bearbeiten</a></td>
+                    </tr>
                 </table>
 
             </div>
@@ -175,7 +209,7 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         // Execute the code when the document is ready
         $(document).ready(function() {
@@ -271,7 +305,7 @@
                 }
             });
         }
-    </script>
+    </script> -->
 
 
 
