@@ -65,12 +65,13 @@
         }
 
         table tr th {
-            width: 200px;
+            width: 300px;
         }
 
         table tr td {
             padding: 10px 2px;
-            width: 200px;
+            width: 300px;
+            font-size:14px;
         }
         table tr td a{
             color:#54606c;
@@ -120,7 +121,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addbills')}}">+ neue Rechnung</a>
+                        <a class="edit btn" href="{{url('/api/addClaims')}}">+ neue Reklamation</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
@@ -129,7 +130,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                    Alle Rechnungen
+                    Alle Claim‘s
                     </div>
                 </div>
 
@@ -145,8 +146,6 @@
                         <th>Nr</th>
                         <th>Kunde u. Betreff</th>
                         <th>Datum</th>
-                        <th>Betrag netto</th>
-                        <th></th>
                         <th></th>
                     </tr>
                     <tr>
@@ -154,17 +153,13 @@
                         <td>AB-2768</td>
                         <td>Pool Bau Profi BV Meier</td>
                         <td>26.11.23</td>
-                        <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td>Berechnet</td>
                         <td>AB-2767</td>
                         <td>Pool Bau Profi BV Meier</td>
                         <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
                         <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
@@ -172,8 +167,6 @@
                         <td>AB-2768</td>
                         <td>Pool Bau Profi BV Meier</td>
                         <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
                         <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
@@ -181,8 +174,6 @@
                         <td>AB-2768</td>
                         <td>Pool Bau Profi BV Meier</td>
                         <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
                         <td><a href="">berechnen</a></td>
                     </tr>
                     <tr>
@@ -190,7 +181,6 @@
                         <td>AB-2767</td>
                         <td>Pool Bau Profi BV Meier</td>
                         <td>26.11.23</td>
-                        <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
                         <td></td>
                     </tr>

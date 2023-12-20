@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add Bills</title>
+    <title>Add Claims</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -91,6 +91,12 @@
         a{
             color:#54606c;
         }
+        .product-image{
+            width:250px;
+            padding:15px;
+            background-color:#fff;
+            border:1px solid #000;
+        }
     </style>
 </head>
 
@@ -141,11 +147,11 @@
                     <div class="col-md-2 stretch-card grid-margin" >
                     
                     </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">Lieferschein</a>
+                    <div class="col-md-4 stretch-card grid-margin" >
+                    <a href="#"   class="btn">an L-1234 senden</a>
                     </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">senden</a>
+                    <div class="col-md-4 stretch-card grid-margin" >
+                    <a href="#"   class="btn">an KD 123456 senden</a>
                     </div>
                 </div>
                 <div class="row pt-3">
@@ -161,14 +167,14 @@
                     <div class="col-md-1 " >
                     </div>
                     <div class="col-md-3" >
-                   <p>Rechnungs-Nr.</p><br>
-                   <p>Rechnungsdatum</p><br>
+                   <p>Claim-Nr.</p><br>
+                   <p>Claimdatum</p><br>
                    <p>Referenz</p><br>
                    <p>Ihre Kundennummer</p> <br>
                    <p>Ihre Ust. ID</p> <br>
                     </div>
                     <div class="col-md-2" >
-                    <p><a href="#">AN-12345</a></p><br>
+                    <p><a href="#">CL-12345</a></p><br>
                     <p><a href="#">15.01.2024</a></p><br>
                     <p><a href="#">Mrs. Perfect</a></p><br>
                     <p><a href="#">123456</a></p><br>
@@ -178,204 +184,75 @@
 
                 <div class="row pt-3">
                     
-                    <div class="col-md-4" >
-                   <h4>Rechnungs-Nr. <a href="#">RE-12345</a></h4>
-                    </div>
-                    <div class="col-md-3 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Kopfzeile Standard</a>
+                    <div class="col-md-2" >
+                   <p>Suche aus </p>
                     </div>
                     <div class="col-md-2 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Kopfzeile neu</a>
+                     <a href="#"   class="btn">RE Nummer</a>
+                    </div>
+                    <div class="col-md-2 stretch-card grid-margin" >
+                     <a href="#"   class="btn">Referenz</a>
                     </div>
                     <!-- <div class="col-md-2 " > </div> -->
-                    <div class="col-md-2 " > </div>
+                    <div class="col-md-2 " ><a href="#"   class="btn">Artikelnr.</a></div>
+                    <div class="col-md-2 " ><a href="#"   class="btn">Zeitraum</a></div>
+                    <div class="col-md-2 " ><a href="#"   class="btn">Freitext suche</a></div>
                     
                 </div>
-                
-                
-                
-                
-                <form method="post" action="">
-                @csrf
-       
-
-            
-
-            <div class="form-group col-lg-3" style="display:none">
-                <input type="text" name="jobRequestNo" class="form-control" id="firstname" value="" >
-                <label for="firstname">Job Request No</label>
-                </div> 
-
-           
-
-              <div class="">
-                <div class="table-responsive">
-                    <table id="table">
-                        <thead>
-                            <tr >
-                                <th>
-                                POS.
-                                </th>
-                                <th>
-                                Produkt
-                                </th>
-                                <th>
-                                Beschreibung
-                                </th>
-                                <th>
-                                Menge
-                                </th>
-                                <th>
-                                Einheit
-                                </th>
-                                <th>
-                                Einzelpreis
-                                </th>
-                                <th>Rabatt</th>
-                                <th>Gesamtpreis</th>
-                                <th></th>
-                               
-                            </tr>
-                          
-
-                        </thead>
-                        <tbody>
-
-                      
-
-
-                            <tr  class="hidden" >
-                                <td >
-                                    <input type="text" name='inputs[0][SNo]' value="1"  placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][stdValue]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X1]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X2]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X3]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X4]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X5]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='' placeholder='#'/>
-                                </td>
-                                <td >
-                                <a href="">delete</a>
-                                </td>
-                            
-                            </tr>
-
-
-                            <tr  class="hidden1" id="abc" style="display:none;">
-                                <td><b>Expended<br>Uncertainity</b></td>
-                                  <td >
-                                      <input colspan="2" type="text" name='E0StdValue' placeholder='#'/> 
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X1' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X2' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X3' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X4' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                    <input type="text" name='E0X5' placeholder='#'/>
-                                </td>
-                               </tr>
-
-                            
-
-
-                        </tbody>
-                    </table>
-
-                    <table>
-                       
-                    </table>
+                <div class="mb-3">
+                aus <a href="#">RE-12345</a> erstellt aus <a href="">AB-12345</a> erstellt aus <a href=""> LI-12345 erstellt</a>
                 </div>
-            </div><br>
-            <button id="add" type="button" name="add" class="btn">+ neuer Artikel</button><br>
+                <table>
+                    <tr>
+                        <th>Auswählen</th>
+                        <th>POS.</th>
+                        <th>Produkt</th>
+                        <th>Beschreibung</th>
+                        <th>Menge</th>
+                        <th>Einheit</th>
+                    </tr>
+                    <tr>
+                        <td>
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+</td>
+                        <td>1.</td>
+                        <td>80.2103281138</td>
+                        <td>BADU® Delta Eco VS</td>
+                        <td>1</td>
+                        <td>Stück</td>
+                    </tr>
+                </table>
 
-
-            <!-- <button type="submit" class="btn btn-common">Submit</button> -->
-
-        </form>
-
-                <hr style="border: 1px solid #54606c;" />
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card" >
-                    Lieferbedingungen: zzgl. Frachtkosten
-                    </div>
-                   
-                    <div class="col-4 stretch-card "  >
-                    Gesamt netto
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    2.194,61 €
-                    </div>
-                    
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card" >
-                    Zahlungsbedingungen: nach Vereinbarung
-                    </div>
-                   
-                    <div class="col-4 stretch-card "  >
-                    zzgl. Umsatzsteuer 19 %
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    416,98 €
-                    </div>
-                    
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card">
-                    
-                    </div>
-                   
-                    <div class="col-4 stretch-card dt">
-                    Gesamtbetrag brutto
-                    </div>
-                    <div class="col-2 stretch-card ">
-                    2.611,59 €
-                    </div>
-                    
-                </div>
+              
                 <div class="row pt-3">
                     
                     <div class="col stretch-card" >
-                        
+                        <p>Claim-Bild upload</p>
+                    </div>
+                    
+                    <div class="col stretch-card text-right"  >
+                    <p>Seriennummer: </p>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
                     </div>
                     <div class="col stretch-card"  >
                         
                     </div>
-                    <div class="col stretch-card "  >
-                    <a href="#" class="edit">Fußzeile Standard</a>
+                </div>
+                
+                <div class="row pt-3">
+                    
+                    <div class="col-3" >
+                        <img class="product-image" src="{{ asset('assets/frontEnd/web/images/product 1.png') }}" alt="" srcset="">
                     </div>
                     
-                    <div class="col stretch-card" >
-                        <a href="#" class="edit">Fußzeile neu</a>
+                    <div class="col-9"  >
+                    <p>Fehlerbeschreibung: </p>
+  <textarea class="form-control"  placeholder="" id="floatingTextarea" style="height:6rem; border:1px solid #000; background-color:transparent;"></textarea>
+                    <div class="row pt-2">
+                    <div class="col">Bearbeitungsstand </div>
+                    <div class="col">fertig <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
+                    <div class="col">offen <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
                     </div>
-                    <div class="col stretch-card"  >
-                        
                     </div>
                 </div>
            
@@ -413,63 +290,5 @@
 
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
-
-
-    <script>
-     
-     var i= 0;
-     var No=1;
-     console.log(i);
-     $('#add').click(function(){
-         ++i;
-       
-         ++No;
-         console.log(i);
-   
-         $('#abc').before(
-             `<tr>
-          
-                     <td >
-                                                     <input type="text" value='`+No+`' name='inputs[`+i+`][SNo]'  placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][stdValue]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X1]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X2]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X3]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X4]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X5]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                 <a href="">delete</a>
-                                                 </td>
-                                              
-                                                
-                                
-                         </tr>
-                         `
-            
-         );
-     });
- 
-     $(document).on('click','.remove-table-row', function(){
-         $(this).parents('tr').remove();
- 
-     });
- 
-     </script>
 </body>
 </html>

@@ -13,12 +13,12 @@ class claims_manager_Controller extends Controller
     }
 
 
-    public function editCliams(){
+    public function editClaims(){
      
         return view('admin_theme/pages/claim_manager/editClaims');
     }
 
-    public function addCliams(){
+    public function addClaims(){
      
         return view('admin_theme/pages/claim_manager/addClaims');
     }
