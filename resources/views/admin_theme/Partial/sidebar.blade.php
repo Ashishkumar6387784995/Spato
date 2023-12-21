@@ -87,13 +87,13 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/forms/basic_elements.html">
+      <a class="nav-link" href="{{url('/api/Statistics')}}">
         <span class="menu-title">Statistik</span>
       </a>
     </li>
     <li class="nav-item">
     <div class="border-bottom">
-      <a class="nav-link" href="pages/charts/chartjs.html">
+      <a class="nav-link" href="{{url('/api/connection')}}">
         <span class="menu-title">B2C B2B Connection</span>
       </a>
 </div>
