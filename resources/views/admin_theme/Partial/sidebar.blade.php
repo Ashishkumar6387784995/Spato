@@ -99,7 +99,7 @@
 </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ url('/shop') }}">
+      <a class="nav-link" href="{{url('/api/newsLetter')}}">
         <span class="menu-title">Newsletter</span>
       </a>
     </li>
@@ -117,13 +117,10 @@
         </ul>
       </div>
     </li>
-    <li class="nav-item sidebar-actions">
-      <span class="nav-link">
-        <div class="border-bottom">
-          <h6 class="font-weight-normal">Einstellungen</h6>
-        </div>
-        
-      </span>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url('/api/settings')}}">
+        <span class="menu-title">Einstellungen</span>
+      </a>
     </li>
   </ul>
 </nav>

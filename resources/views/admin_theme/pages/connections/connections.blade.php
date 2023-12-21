@@ -75,6 +75,19 @@
         table tr td a{
             color:#54606c;
         }
+        .btn{
+            /* background-color: #54606c; */
+            border: 1px solid #54606c;
+            color: #54606c;
+            padding: 10px 14px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover{
+            /* background-color: #54606c; */
+            background-color:#54606c;
+            color: #fff;
+        } 
     </style>
 </head>
 
@@ -120,21 +133,15 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addAssignment')}}">+ neuer Auftrag</a>
-                    </div>
-                    <div class="col-md-4 stretch-card grid-margin">
-                        Filter
+                        <a class="btn" href="{{url('/api/addAssignment')}}">+ neue Connection</a>
                     </div>
                 </div>
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        Alle Produkte
+                    Angebot aussuchen
                     </div>
                 </div>
-
-
-
                 <span id="success_msg" style="color:green"></span>
                 <br>  <br> 
 
@@ -151,21 +158,21 @@
                     </tr>
                     <tr>
                         <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
+                        <td>AN-2768</td>
+                        <td>Family Meier</td>
                         <td>26.11.23</td>
                         <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
+                        <td><a href="">auswählen</a></td>
                     </tr>
                     <tr>
                         <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
+                        <td>AN-2768</td>
+                        <td>Family Meier</td>
                         <td>26.11.23</td>
                         <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td></td>
+                        <td><a href="">auswählen</a></td>
                     </tr>
                     <tr>
                         <td>Offen</td>
@@ -174,27 +181,73 @@
                         <td>26.11.23</td>
                         <td>9.678,00 €</td>
                         <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
+                        <td><a href="">auswählen</a></td>
                     </tr>
                 </table>
+                <div class="row pt-3">
+
+<div class="col-md-4 stretch-card grid-margin">
+    <a class="btn" href="#">ausgewählt AN-2768</a>
+</div>
+</div>
+<div class="row pt-3">
+
+<div class="col-md-4 stretch-card grid-margin">
+Verbinden mit Kunden
+</div>
+</div>
+<span id="success_msg" style="color:green"></span>
+<br>  <br> 
+
+
+<table id="dataTable">
+<tr>
+    <th>Nr.</th>
+    <th>B2B / B2C</th>
+    <th>Kunde</th>
+    <th>PLZ - Ort</th>
+    <th></th>
+</tr>
+<tr>
+    <td>1256</td>
+    <td>B2B</td>
+    <td>Pool Bau Profi</td>
+    <td>46578 Wesel</td>
+    <td><a href="">auswählen</a></td>
+</tr>
+<tr>
+    <td>1678</td>
+    <td>B2C</td>
+    <td>Schumann</td>
+    <td>56478 Flammersfeld</td>
+    <td><a href="">auswählen</a></td>
+</tr>
+<tr>
+    <td>1876</td>
+    <td>B2B</td>
+    <td>SPA NATURAL</td>
+    <td>40271 Hilden</td>
+    <td><a href="">auswählen</a></td>
+</tr>
+</table>
+
+
+<div class="row pt-3">
+
+<div class="col-md-4 stretch-card grid-margin">
+Verbindung
+</div>
+</div>
+
+<div class="row pt-3">
+<div class="col"><a class="btn" href="#">AN-2768</a></div>
+<div class="col"><i class="fa-solid fa-arrow-right" style="font-size:50px;"></i></div>
+<div class="col"><a class="btn" href="#">1256 Pool Bau Profi</a></div>
+<div class="col"><i class="fa-solid fa-arrow-right" style="font-size:50px;"></i></div>
+<div class="col"><a class="btn" href="#">Jetzt an 1256 Pool Bau Profi senden ?</a></div>
+</div>
+
+
 
             </div>
 
