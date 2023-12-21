@@ -200,7 +200,7 @@
                 
                 
                 <form method="post" action="">
-                @csrf
+
        
 
             
