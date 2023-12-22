@@ -31,7 +31,18 @@
 </head>
 
 <body>
-@include('frontEnd/partial/header')
+ @include('frontEnd/partial/header')
+
+
+
+   
+    
+   @if(auth()->check())
+
+{{auth()->user()->id}}
+
+@endif
+
 
   <div class="bg-image myDiv" id="hero" style="clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
 
