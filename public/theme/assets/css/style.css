@@ -14464,7 +14464,7 @@ button:visited {
 
 a:focus,
 input:focus {
-    border-color: transparent;
+    border-color: #8f8c8c;
     outline: none;
 }
 
