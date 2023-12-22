@@ -257,7 +257,6 @@
                                         <th>Rabatt</th>
                                         <th>Gesamtpreis</th>
                                         <th></th>
-                                        <th></th>
 
                                     </tr>
 
@@ -292,9 +291,6 @@
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Gesamtpreis]' placeholder='#' />
-                                        </td>
-                                        <td>
-                                            <input type="text" name='' placeholder='#' />
                                         </td>
                                         <td>
                                             <button>delete</button>
