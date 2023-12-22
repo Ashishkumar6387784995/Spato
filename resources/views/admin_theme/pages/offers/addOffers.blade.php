@@ -257,6 +257,7 @@
                                         <th>Rabatt</th>
                                         <th>Gesamtpreis</th>
                                         <th></th>
+                                        <th></th>
 
                                     </tr>
 
