@@ -88,6 +88,14 @@
         table tr td a{
             color:#54606c;
         }
+
+        .dynamic-field{
+            width:100%;
+            background:transparent;
+           border:1px solid #8F8C8C;
+           border-radius:5px;
+        }
+
         a{
             color:#54606c;
         }
@@ -173,10 +181,10 @@
                    <p>Ihre Kundennummer</p> <br>
                     </div>
                     <div class="col-md-2" >
-                    <p><a href="#">AN-12345</a></p><br>
-                    <p><a href="#">15.01.2024</a></p><br>
-                    <p><a href="#">Mrs. Perfect</a></p><br>
-                    <p><a href="#">123456</a></p><br>
+                    <p><a href="#"><input class="dynamic-field" type="text" placeholder='#'/></a></p><br>
+                    <p><a href="#"><input class="dynamic-field" type="date" placeholder='#'/></a></p><br>
+                    <p><a href="#"><input class="dynamic-field" type="text" placeholder='#'/></a></p><br>
+                    <p><a href="#"><input class="dynamic-field" type="text" placeholder='#'/></a></p><br>
                     </div>
                 </div>
 
