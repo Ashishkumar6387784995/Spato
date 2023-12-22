@@ -423,29 +423,30 @@
                 `<tr>
           
                      <td >
-                                                     <input type="text" value='` + No + `' name='inputs[` + i + `][SNo]'  placeholder='#'/>
+                                                     <input type="text" value='` + No + `' name='inputs[` + i + `][POS]'  placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][stdValue]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Produkt]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X1]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Beschreibung]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X2]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Menge]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X3]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Einheit]' placeholder='#'/>
                                                  </td>
                                                   <td >
-                                                 <input type="text" name='inputs[` + i + `][X4]' placeholder='#'/>
+                                                 <input type="text" name='inputs[` + i + `][Einzelpreis]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X5]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Rabatt]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Gesamtpreis]' placeholder='#'/>
                                                  </td>
+                                                
                                                  <td>
                                                      <button class="delete-row">delete</button>
                                                  </td>
