@@ -149,7 +149,7 @@
                     <h2>Admin Dashboard</h2>
                     <p>Monday, January 12, 2024</p>
                 </div>
-                <form>
+                <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
                     <div class="row pt-3">
 
                         <div class="col-md-2 stretch-card grid-margin">
@@ -459,10 +459,7 @@
             );
         });
 
-        //  $('#delete').on('click','.remove-table-row', function(){
-        //      $(this).parents('tr').remove();
-
-        //  });
+    
 
         $('#table').on('click', '.delete-row', function() {
             $(this).closest('tr').remove();
