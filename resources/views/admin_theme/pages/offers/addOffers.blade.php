@@ -307,9 +307,7 @@
                                 </tbody>
                             </table>
 
-                            <table>
 
-                            </table>
                         </div>
                     </div><br>
                     <button id="add" type="button" name="add" class="btn">+ neuer Artikel</button><br>
@@ -471,9 +469,41 @@
         $('#saveButton').click(function(e) {
             e.preventDefault(); // Prevent the form from submitting normally
 
-            // console.log('hello');
+
+            var formData = {};
+
+            // Collect data from the main form
+            formData.text = $('#AddOffersForm textarea[name="text"]').val();
+            formData.Angebots_Nr = $('#AddOffersForm input[name="Angebots_Nr"]').val();
+            formData.Angebotsdatum = $('#AddOffersForm input[name="Angebotsdatum"]').val();
+            formData.Referenz = $('#AddOffersForm input[name="Referenz"]').val();
+            formData.Ihre_Kundennummer = $('#AddOffersForm input[name="Ihre_Kundennummer"]').val();
+            formData.jobRequestNo = $('#AddOffersForm input[name="jobRequestNo"]').val();
+
+            // Collect data from the dynamic table
+            formData.inputs = [];
+
+            $('#table tbody tr').each(function(index) {
+                var inputRow = {
+                    POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
+                    Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
+                    Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
+                    Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
+                    Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
+                    Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
+                    Rabatt: $(this).find('input[name^="inputs[' + index + '][Rabatt]"]').val(),
+                    Gesamtpreis: $(this).find('input[name^="inputs[' + index + '][Gesamtpreis]"]').val(),
+                };
+                formData.inputs.push(inputRow);
+            });
+
+
+
+            // console.log(formData);
             // Get form data
             var formData = $(this).serialize();
+            console.log("formdata".formData);
+
 
             // Make AJAX request
             $.ajax({
