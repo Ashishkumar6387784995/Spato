@@ -41,21 +41,35 @@
             cursor: pointer;
         }
 
+        .edit {
+            background-color: #54606c;
+            border: 1px solid #54606c;
+            color: #ffff;
+            padding: 10px 14px;
+            height: 42px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.5s ease;
+        }
+
+        .edit:hover {
+            background-color: transparent;
+            border: 1px solid #54606c;
+            color: #54606c;
+            border-radius: 5px;
+        }
+
         .btn {
             /* background-color: #54606c; */
-            border: 1px solid #404040;
-            color: #404040;
+            border: 1px solid #54606c;
+            color: #54606c;
             padding: 10px 14px;
             text-decoration: none;
             border-radius: 5px;
         }
-        .btn:hover{
-            background-color: #404040;
-            color:#fff;
-        }
 
         .close {
-            color: #404040;
+            color: #54606c;
         }
 
         .stretch-card {
@@ -64,7 +78,7 @@
 
         table tr th {
             width: 200px;
-            background-color: #404040;
+            background-color: #54606c;
             color: #fff;
         }
 
@@ -81,18 +95,18 @@
         }
 
         table tr td a {
-            color: #404040;
+            color: #54606c;
         }
 
         .dynamic-field {
             width: 100%;
             background: transparent;
-            border: 1px solid #404040;
+            border: 1px solid #8F8C8C;
             border-radius: 5px;
         }
 
         a {
-            color: #404040;
+            color: #54606c;
         }
     </style>
 </head>
@@ -170,13 +184,13 @@
                         </div>
                         <div class="col-md-1 ">
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-3">
                             <p>Angebots-Nr.</p><br>
                             <p>Angebotsdatum</p><br>
                             <p>Referenz</p><br>
                             <p>Ihre Kundennummer</p> <br>
                         </div>
-                        <div class="col-2">
+                        <div class="col-md-2">
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr" value="{{$newOfferNo}}" /></p><br>
                             <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum" value="{{ now()->format('d-m-Y') }}" /></p><br>
 
@@ -310,11 +324,11 @@
                             Lieferbedingungen: zzgl. Frachtkosten
                         </div>
 
-                        <div class="col-3 stretch-card ">
+                        <div class="col-4 stretch-card ">
                             Gesamt netto
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' id="gesamt_netto" />
+                            2.194,61 €
                         </div>
 
                     </div>
@@ -324,11 +338,11 @@
                             Zahlungsbedingungen: nach Vereinbarung
                         </div>
 
-                        <div class="col-3 stretch-card ">
+                        <div class="col-4 stretch-card ">
                             zzgl. Umsatzsteuer 19 %
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' id="zzgl" />
+                            416,98 €
                         </div>
 
                     </div>
@@ -338,11 +352,11 @@
 
                         </div>
 
-                        <div class="col-3 stretch-card dt">
+                        <div class="col-4 stretch-card dt">
                             Gesamtbetrag brutto
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' id="Gesamtbetrag_brutto" />
+                            2.611,59 €
                         </div>
 
                     </div>
@@ -355,11 +369,11 @@
 
                         </div>
                         <div class="col stretch-card ">
-                            <a href="#" class="btn">Fußzeile Standard</a>
+                            <a href="#" class="edit">Fußzeile Standard</a>
                         </div>
 
                         <div class="col stretch-card">
-                            <a href="#" class="btn">Fußzeile neu</a>
+                            <a href="#" class="edit">Fußzeile neu</a>
                         </div>
                         <div class="col stretch-card">
 
@@ -455,47 +469,6 @@
         $('#saveButton').click(function(e) {
             e.preventDefault(); // Prevent the form from submitting normally
 
-                document.getElementById('IGST').addEventListener('input', function () {
-                    calculateSubTotal();
-                });
-            }
-    
-            var i = 0;
-            var No = 1;
-    
-            document.getElementById('add').addEventListener('click', function () {
-                ++i;
-                ++No;
-    
-                var table = document.getElementById('table');
-                var newRow = table.insertRow(table.rows.length);
-    
-                newRow.innerHTML = `
-                    <td>
-                        <input type="text" value='${No}' name='inputs[${i}][SNo]' placeholder='#' class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#' class="form-control" onclick="handleClick('Quantity_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Rate]' id="Rate_${i}" placeholder='#' class="form-control" onclick="handleClick('Rate_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Discound]' id="Discount_${i}" placeholder='#' class="form-control" onclick="handleClick('Discount_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Amount]' id="Amount_${i}" placeholder='#' class="form-control"/>
-                    </td>
-                    <td>
-                        <button class="remove-table-row  btn-gradient-danger btn-sm">Delete</button>
-                    </td>`;
-    
-                // Call the setupInputListeners function after adding a new row
-                setupInputListeners();
-    
-                // Recalculate subtotal after adding a new row
-                calculateSubTotal();
-
 
             var formData = {};
 
@@ -526,7 +499,7 @@
 
 
 
-            // console.log(formData);
+            console.log(formData);
             // Get form data
             var formData = $(this).serialize();
             console.log("formdata".formData);
