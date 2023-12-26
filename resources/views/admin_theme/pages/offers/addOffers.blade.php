@@ -215,10 +215,7 @@
 
 
 
-                    <div class="form-group col-lg-3" style="display:none">
-                        <input type="text" name="jobRequestNo" class="form-control" id="firstname" value="">
-                        <label for="firstname">Job Request No</label>
-                    </div>
+                 
 
 
 
