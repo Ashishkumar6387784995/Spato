@@ -50,15 +50,15 @@
         }
         .edit:hover{
             background-color:transparent;
-            border:1px solid #54606c;
+            border:1px solid #404040;
             color:#54606c;
             border-radius:5px;
         }
         
         .btn{
             /* background-color: #54606c; */
-            border: 1px solid #54606c;
-            color: #54606c;
+            border: 1px solid #404040;
+            color: #404040;
             padding: 10px 14px;
             text-decoration: none;
             border-radius: 5px;
@@ -71,7 +71,7 @@
         }
         table tr th {
             width: 200px;
-            background-color:#54606c;
+            background-color:#404040;
             color:#fff;
         }
 
@@ -86,10 +86,10 @@
             background-color:transparent;
         }
         table tr td a{
-            color:#54606c;
+            color:#404040;
         }
         a{
-            color:#54606c;
+            color:#404040;
         }
     </style>
 </head>
