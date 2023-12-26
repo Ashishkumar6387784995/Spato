@@ -41,35 +41,23 @@
             cursor: pointer;
         }
 
-        .edit {
-            background-color: #54606c;
-            border: 1px solid #54606c;
-            color: #ffff;
-            padding: 10px 14px;
-            height: 42px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.5s ease;
-        }
-
-        .edit:hover {
-            background-color: transparent;
-            border: 1px solid #54606c;
-            color: #54606c;
-            border-radius: 5px;
-        }
-
+        
         .btn {
             /* background-color: #54606c; */
-            border: 1px solid #54606c;
-            color: #54606c;
+            border: 1px solid #404040;
+            color: #404040;
             padding: 10px 14px;
             text-decoration: none;
             border-radius: 5px;
+        }
+
+        .btn:hover{
+            background-color: #404040;
+            color:#fff;
         }
 
         .close {
-            color: #54606c;
+            color: #404040;
         }
 
         .stretch-card {
@@ -78,7 +66,7 @@
 
         table tr th {
             width: 200px;
-            background-color: #54606c;
+            background-color: #404040;
             color: #fff;
         }
 
@@ -95,7 +83,7 @@
         }
 
         table tr td a {
-            color: #54606c;
+            color: #404040;
         }
 
         .dynamic-field {
@@ -184,13 +172,13 @@
                         </div>
                         <div class="col-md-1 ">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2 ps-2">
                             <p>Angebots-Nr.</p><br>
                             <p>Angebotsdatum</p><br>
                             <p>Referenz</p><br>
                             <p>Ihre Kundennummer</p> <br>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2" style="margin-top: -5px;">
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr" value="{{$newOfferNo}}" /></p><br>
                             <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum" value="{{ now()->format('d-m-Y') }}" /></p><br>
 
