@@ -160,6 +160,7 @@
                             <a href="#" class="btn">senden</a>
                         </div>
                     </div>
+                    <span id="success_msg" style="color:Green"></span>
                     <div class="row pt-3">
 
                         <div class="col-md-4">
@@ -453,83 +454,70 @@
     </script>
 
 
-    <script>
-        $('#saveButton').click(function(e) {
-            e.preventDefault(); // Prevent the form from submitting normally
+<script>
+    $('#saveButton').click(function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
 
+        var formData = {
+            Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
+            Angebotsdatum: $('#AddOffersForm input[name="Angebotsdatum"]').val(),
+            Referenz: $('#AddOffersForm input[name="Referenz"]').val(),
+            Ihre_Kundennummer: $('#AddOffersForm input[name="Ihre_Kundennummer"]').val(),
+            gesamt_netto: $('#AddOffersForm input[name="gesamt_netto"]').val(),
+            zzgl_Umsatzsteuer: $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val(),
+            Gesamtbetrag_brutto: $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val(),
+            inputs: []
+        };
 
-            var formData = {};
-
-            // Collect data from the main form
-      
-            formData.Angebots_Nr = $('#AddOffersForm input[name="Angebots_Nr"]').val();
-            formData.Angebotsdatum = $('#AddOffersForm input[name="Angebotsdatum"]').val();
-            formData.Referenz = $('#AddOffersForm input[name="Referenz"]').val();
-            formData.Ihre_Kundennummer = $('#AddOffersForm input[name="Ihre_Kundennummer"]').val();
-
-            formData.gesamt_netto = $('#AddOffersForm input[name="gesamt_netto"]').val();
-            formData.zzgl_Umsatzsteuer = $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val();
-            formData.Gesamtbetrag_brutto = $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val();
-
-            // Collect data from the dynamic table
-            formData.inputs = [];
-
-            $('#table tbody tr').each(function(index) {
-                var inputRow = {
-                    POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
-                    Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
-                    Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
-                    Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
-                    Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
-                    Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
-                    Rabatt: $(this).find('input[name^="inputs[' + index + '][Rabatt]"]').val(),
-                    Gesamtpreis: $(this).find('input[name^="inputs[' + index + '][Gesamtpreis]"]').val(),
-                };
-                formData.inputs.push(inputRow);
-            });
-
-
-
-            console.log(formData);
-            // Get form data
-            var formData = $(this).serialize();
-            console.log("formdata".formData);
-
-
-            // Make AJAX request
-            $.ajax({
-                type: 'POST',
-                url: '/api/addOfferApi',
-                data: formData,
-                dataType: 'json',
-                success: function(response) {
-                    // Handle success response
-                    // console.log(response.errors);
-                    if (response.success) {
-
-                        // console.log('hello');
-                    }
-
-                    if (response.errors) {
-
-                        console.log(response.errors);
-                    }
-                },
-                // error: function(xhr, status, error) {
-                //     // Handle error response
-                //     var errors = xhr.responseJSON.errors;
-                //     if (errors) {
-                //         // Display errors in your frontend
-                //         // For example, you can loop through errors and append them to a specific element
-                //         $.each(errors, function(field, messages) {
-                //             // Append error messages to your HTML
-                //             $('#' + field + '-error').text(messages[0]);
-                //         });
-                //     }
-                // }
-            });
+        $('#table tbody tr').each(function(index) {
+            var inputRow = {
+                POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
+                Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
+                Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
+                Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
+                Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
+                Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
+                Rabatt: $(this).find('input[name^="inputs[' + index + '][Rabatt]"]').val(),
+                Gesamtpreis: $(this).find('input[name^="inputs[' + index + '][Gesamtpreis]"]').val(),
+            };
+            formData.inputs.push(inputRow);
         });
-    </script>
+
+        console.log(formData);
+
+        // Make AJAX request
+        $.ajax({
+            type: 'POST',
+            url: '/api/addOfferApi',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                // Handle success response
+                if (response.success) {
+                    console.log(response.success);
+                    $('#success_msg').text(response.success);
+                }
+
+                if (response.errors) {
+                    console.log(response.errors);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle error response
+                var errors = xhr.responseJSON.errors;
+                if (errors) {
+                    // Display errors in your frontend
+                    // For example, you can loop through errors and append them to a specific element
+                    $.each(errors, function(field, messages) {
+                        // Append error messages to your HTML
+                        $('#' + field + '-error').text(messages[0]);
+                    });
+                }
+            }
+        });
+    });
+</script>
+
 
 
 
