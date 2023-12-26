@@ -102,7 +102,6 @@
   .table th,
   .table td {
    font-size: 0.85rem;
-   ;
    padding: -0.0625rem;
   }
 
@@ -307,70 +306,50 @@
 
           <tr class="hidden">
            <td>
-            <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' />
+
+            <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
 
            </td>
            <td>
-
-            <input type="text" name='inputs[0][Produkt]' />
+            <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
 
            </td>
 
 
            <td>
+
             <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+            <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Menge]' placeholder='#' />
+
+            <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
            </td>
            <td>
             <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
+            <br><span id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
+
             <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
+            <br><span id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
+            <p></p>
             <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
              C2</span>
            </td>
            <td>
+            <p></p>
             <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
            </td>
            <td>
             <button class="btn">Delete</button>
            </td>
-
-          </tr>
-
-          <tr>
-           <td></td>
-           <td>
-            <p><span id="Produkt_err" style="color:red; font-size:13px;"></span></p>
-           </td>
-           <td>
-            <p><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span></p>
-           </td>
-           <td>
-           </td>
-           <td>
-            <p><span id="Einheit_err" style="color:red;  font-size:13px;"></span></p>
-           </td>
-           <td>
-            <p><span id="Einzelpreis_err" style="color:red;  font-size:13px;"></span></p>
-           </td>
-           <td></td>
-           <td></td>
-           <td></td>
-          </tr>
-
-
-
-
-
-
          </tbody>
         </table>
 
