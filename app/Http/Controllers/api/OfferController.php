@@ -25,8 +25,9 @@ class OfferController extends Controller
     public function addOffer()
     {
 
-        $lastOffer = offers::latest()->first();
-         $lastOffer= $lastOffer->Angebots_Nr;
+        $lastOffer = "AB-123456";
+        // $lastOffer = offers::latest()->first();
+        //  $lastOffer= $lastOffer->Angebots_Nr;
         // Assuming $lastOffer is 'AN-12345'
         // $lastOffer = 'AN-12345';
 
