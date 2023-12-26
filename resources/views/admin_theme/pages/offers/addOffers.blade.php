@@ -324,11 +324,11 @@
                             Lieferbedingungen: zzgl. Frachtkosten
                         </div>
 
-                        <div class="col-4 stretch-card ">
+                        <div class="col-3 stretch-card ">
                             Gesamt netto
                         </div>
                         <div class="col-2 stretch-card ">
-                            2.194,61 €
+                        <input class="dynamic-field" type="text" placeholder='#' id="gesamt_netto" />
                         </div>
 
                     </div>
@@ -338,11 +338,11 @@
                             Zahlungsbedingungen: nach Vereinbarung
                         </div>
 
-                        <div class="col-4 stretch-card ">
+                        <div class="col-3 stretch-card ">
                             zzgl. Umsatzsteuer 19 %
                         </div>
                         <div class="col-2 stretch-card ">
-                            416,98 €
+                        <input class="dynamic-field" type="text" placeholder='#' id="zzgl" />
                         </div>
 
                     </div>
@@ -352,11 +352,11 @@
 
                         </div>
 
-                        <div class="col-4 stretch-card dt">
+                        <div class="col-3 stretch-card dt">
                             Gesamtbetrag brutto
                         </div>
                         <div class="col-2 stretch-card ">
-                            2.611,59 €
+                        <input class="dynamic-field" type="text" placeholder='#' id="Gesamtbetrag_brutto" />
                         </div>
 
                     </div>
@@ -369,11 +369,11 @@
 
                         </div>
                         <div class="col stretch-card ">
-                            <a href="#" class="edit">Fußzeile Standard</a>
+                            <a href="#" class="btn">Fußzeile Standard</a>
                         </div>
 
                         <div class="col stretch-card">
-                            <a href="#" class="edit">Fußzeile neu</a>
+                            <a href="#" class="btn">Fußzeile neu</a>
                         </div>
                         <div class="col stretch-card">
 
