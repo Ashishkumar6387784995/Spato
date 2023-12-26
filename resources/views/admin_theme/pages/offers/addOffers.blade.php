@@ -108,6 +108,12 @@
         a {
             color: #54606c;
         }
+        .delete-btn{
+            background:none;
+            border:none;
+            color:#54606c;
+            text-decoration:underline;
+        }
     </style>
 </head>
 
@@ -281,23 +287,52 @@
                                             <input type="text" name='inputs[0][Menge]' placeholder='#' />
                                         </td>
                                         <td>
-                                            <input type="text" name='inputs[0][Einheit]' placeholder='#' />
+                                            <input type="text" id="items" name='inputs[0][Einheit]' placeholder='#' />
                                         </td>
                                         <td>
-                                            <input type="text" name='inputs[0][Einzelpreis]' placeholder='#' />
+                                            <input type="number" id="originalPrice" name='inputs[0][Einzelpreis]' placeholder='#' />
                                         </td>
                                         <td>
-                                            <input type="text" name='inputs[0][Rabatt]' placeholder='#' />
+                                            <input type="text" id="discountPercentage" name='inputs[0][Rabatt]' placeholder='#' />
                                         </td>
                                         <td>
-                                            <input type="text" name='inputs[0][Gesamtpreis]' placeholder='#' />
+                                            <input type="text" id="discountedPrice" name='inputs[0][Gesamtpreis]' placeholder='#' />
                                         </td>
                                         <td>
-                                            <button>delete</button>
+                                            <button class="delete-btn">delete</button>
                                         </td>
 
                                     </tr>
+                                    <tr class="hidden">
+                                        <td>
+                                            <input type="text" name='inputs[0][POS]' value="1" placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="text" name='inputs[0][Menge]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="text" id="items" name='inputs[0][Einheit]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="number" id="originalPrice" name='inputs[0][Einzelpreis]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="text" id="discountPercentage" name='inputs[0][Rabatt]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <input type="text" id="discountedPrice" name='inputs[0][Gesamtpreis]' placeholder='#' />
+                                        </td>
+                                        <td>
+                                            <button class="delete-btn">delete</button>
+                                        </td>
 
+                                    </tr>
 
 
 
@@ -435,19 +470,19 @@
                                                      <input type="text" name='inputs[` + i + `][X2]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X3]' placeholder='#'/>
+                                                     <input type="text" id="items" name='inputs[` + i + `][X3]' placeholder='#'/>
                                                  </td>
                                                   <td >
-                                                 <input type="text" name='inputs[` + i + `][X4]' placeholder='#'/>
+                                                 <input type="text"  id="originalPrice"  name='inputs[` + i + `][X4]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X5]' placeholder='#'/>
+                                                     <input type="number"  id="discountPercentage" name='inputs[` + i + `][X5]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='' placeholder='#'/>
+                                                     <input type="text" id="discountedPrice" name='' placeholder='#'/>
                                                  </td>
                                                  <td>
-                                                     <button class="delete-row">delete</button>
+                                                     <button  class="delete-btn delete-row">delete</button>
                                                  </td>
                                               
                                                 
@@ -467,10 +502,201 @@
             $(this).closest('tr').remove();
         });
     </script>
+     <script>
+        // Add event listeners to input fields
+        document.getElementById('originalPrice').addEventListener('input', calculateDiscount);
+        document.getElementById('items').addEventListener('input', calculateDiscount);
+        document.getElementById('discountPercentage').addEventListener('input', calculateDiscount);
+
+        function calculateDiscount() {
+            // Get values from input fields
+            var originalPrice = parseFloat(document.getElementById('originalPrice').value) || 0;
+            var items = parseFloat(document.getElementById('items').value) || 0;
+            var discountPercentage = parseFloat(document.getElementById('discountPercentage').value) || 0;
+
+            // Calculate discounted price
+            var discountedPrice = ((items * originalPrice) - (originalPrice * (discountPercentage / 100)));
+
+            // Display the discounted price in the result field
+            document.getElementById('discountedPrice').value = discountedPrice.toFixed(2);
+        }
+    </script>
 
 
 
+<script>
+        // Add event listeners to all input fields with class "originalPrice" and "discountPercentage"
+        var inputFields = document.querySelectorAll('.originalPrice, .discountPercentage, .');
+        inputFields.forEach(function (input) {
+            input.addEventListener('input', calculateDiscount);
+        });
 
+        function calculateDiscount() {
+            // Iterate through each row in the table
+            var rows = document.querySelectorAll('tbody tr');
+            rows.forEach(function (row) {
+                // Get values from input fields within the row
+                var originalPrice = parseFloat(row.querySelector('.originalPrice').value) || 0;
+                var discountPercentage = parseFloat(row.querySelector('.discountPercentage').value) || 0;
+
+                // Calculate discounted price
+                var discountedPrice = originalPrice - (originalPrice * (discountPercentage / 100));
+
+                // Display the discounted price in the corresponding result field
+                row.querySelector('.discountedPrice').value = discountedPrice.toFixed(2);
+            });
+        }
+    </script>
+    <script>
+     document.addEventListener('DOMContentLoaded', function () {
+            setupInputListeners1();
+    
+            function setupInputListeners1() {
+                document.querySelectorAll('input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function (input) {
+                    input.addEventListener('input', function () {
+                        var idParts = this.id.split('_');
+                        var index = idParts[1];
+    
+                        var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
+                        var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
+                        var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
+    
+                        var discountAmount = (rate * discountPercentage) / 100;
+                        var discountedRate = rate - discountAmount;
+    
+                        var amount = quantity * discountedRate;
+                        document.getElementById('Amount_' + index).value = amount.toFixed(2);
+    
+                        // Recalculate subtotal after each input change
+                        calculateSubTotal();
+                    });
+                });
+    
+                // Add event listeners for Adjustment, SGST, and CGST fields
+                document.getElementById('Adjustment').addEventListener('input', function () {
+                    calculateSubTotal();
+                });
+    
+                document.getElementById('SGST').addEventListener('input', function () {
+                    calculateSubTotal();
+                });
+    
+                document.getElementById('CGST').addEventListener('input', function () {
+                    calculateSubTotal();
+                });
+
+                document.getElementById('IGST').addEventListener('input', function () {
+                    calculateSubTotal();
+                });
+            }
+    
+            var i = 0;
+            var No = 1;
+    
+            document.getElementById('add').addEventListener('click', function () {
+                ++i;
+                ++No;
+    
+                var table = document.getElementById('table');
+                var newRow = table.insertRow(table.rows.length);
+    
+                newRow.innerHTML = `
+                    <td>
+                        <input type="text" value='${No}' name='inputs[${i}][SNo]' placeholder='#' class="form-control"/>
+                    </td>
+                    <td>
+                        <select class="form-control" name='inputs[${i}][name]'>
+                            @foreach ($ProductNames as $product)
+                                                            <option value="{{ $product->productName }}/{{ $product->productImage }}">{{ $product->productName }}  </option>
+                                                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#' class="form-control" onclick="handleClick('Quantity_${i}')"/>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Rate]' id="Rate_${i}" placeholder='#' class="form-control" onclick="handleClick('Rate_${i}')"/>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Discound]' id="Discount_${i}" placeholder='#' class="form-control" onclick="handleClick('Discount_${i}')"/>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Amount]' id="Amount_${i}" placeholder='#' class="form-control"/>
+                    </td>
+                    <td>
+                        <button class="remove-table-row  btn-gradient-danger btn-sm">Delete</button>
+                    </td>`;
+    
+                // Call the setupInputListeners function after adding a new row
+                setupInputListeners();
+    
+                // Recalculate subtotal after adding a new row
+                calculateSubTotal();
+            });
+    
+            document.addEventListener('click', function (event) {
+                if (event.target.classList.contains('remove-table-row')) {
+                    event.target.closest('tr').remove();
+                    // Recalculate subtotal after removing a row
+                    calculateSubTotal();
+                }
+            });
+    
+            // Function to set up input event listeners
+            function setupInputListeners() {
+                document.querySelectorAll('input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function (input) {
+                    input.addEventListener('input', function () {
+                        var idParts = this.id.split('_');
+                        var index = idParts[1];
+    
+                        var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
+                        var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
+                        var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
+    
+                        var discountAmount = (rate * discountPercentage) / 100;
+                        var discountedRate = rate - discountAmount;
+    
+                        var amount = quantity * discountedRate;
+                        document.getElementById('Amount_' + index).value = amount.toFixed(2);
+    
+                        // Recalculate subtotal after each input change
+                        calculateSubTotal();
+                    });
+                });
+            }
+    
+            // Function to calculate and update the subtotal
+            function calculateSubTotal() {
+                var subtotal = 0;
+                document.querySelectorAll('input[id^="Amount_"]').forEach(function (amountInput) {
+                    subtotal += parseFloat(amountInput.value) || 0;
+                });
+    
+                // Update the SubTotal input field
+                document.getElementById('SubTotal').value = subtotal.toFixed(2);
+    
+                // Subtract the value of Adjustment
+                var adjustment = parseFloat(document.getElementById('Adjustment').value) || 0;
+                var sgstPercentage = parseFloat(document.getElementById('SGST').value) || 0;
+                var cgstPercentage = parseFloat(document.getElementById('CGST').value) || 0;
+                var igstPercentage = parseFloat(document.getElementById('IGST').value) || 0;
+                console.log(igstPercentage);
+    
+                var sgstAmount = (subtotal * sgstPercentage) / 100;
+                var cgstAmount = (subtotal * cgstPercentage) / 100;
+                var igstAmount = (subtotal * igstPercentage) / 100;
+    
+                var adjustedTotal = subtotal - adjustment + sgstAmount + cgstAmount + igstAmount;
+    
+                // Update the AdjustmentShow, SGSTShow, CGSTShow, and Total input fields
+                document.getElementById('AdjustmentShow').value = adjustment.toFixed(2);
+                document.getElementById('SGSTShow').value = sgstAmount.toFixed(2);
+                document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
+                document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
+                document.getElementById('Total').value = adjustedTotal.toFixed(2);
+            }
+        });
+    </script>
 
 
 
