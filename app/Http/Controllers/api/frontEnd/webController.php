@@ -10,4 +10,8 @@ class webController extends Controller
     public function home(){
         return view('frontEnd/home');
     }
+
+    public function ProductdetailPage(){
+        return view('frontEnd/Pages/products/ProductDetailsPage');
+    }
 }

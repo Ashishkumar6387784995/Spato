@@ -41,7 +41,7 @@
             cursor: pointer;
         }
 
-        
+
         .btn {
             /* background-color: #54606c; */
             border: 1px solid #404040;
@@ -51,9 +51,9 @@
             border-radius: 5px;
         }
 
-        .btn:hover{
+        .btn:hover {
             background-color: #404040;
-            color:#fff;
+            color: #fff;
         }
 
         .close {
@@ -182,6 +182,7 @@
                         <div class="col-md-2" style="margin-top: -5px;">
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr" value="{{$newOfferNo}}" /></p><br>
                             <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum" value="{{ now()->format('d-m-Y') }}" /></p><br>
+                            <span id="Angebotsdatum_err" style="color:red"></span>
 
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
 
@@ -191,6 +192,7 @@
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer" name="Ihre_Kundennummer" /></p>
 
                             <br>
+                            <span id="Ihre_Kundennummer_err" style="color:red"></span>
                         </div>
                     </div>
 
@@ -259,21 +261,26 @@
                                     <tr class="hidden">
                                         <td>
                                             <input type="text" name='inputs[0][POS]' value="1" placeholder='#' />
+
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+                                            <span id="Produkt_err" style="color:red"></span>
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+                                            <span id="Beschreibung_err" style="color:red"></span>
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Menge]' placeholder='#' />
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Einheit]' placeholder='#' />
+                                            <span id="Einheit_err" style="color:red"></span>
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Einzelpreis]' placeholder='#' />
+                                            <span id="Einzelpreis_err" style="color:red"></span>
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Rabatt]' placeholder='#' />
@@ -317,7 +324,7 @@
                             Gesamt netto
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' name="gesamt_netto" />
+                            <input class="dynamic-field" type="text" placeholder='#' name="gesamt_netto" />
                         </div>
 
                     </div>
@@ -331,7 +338,7 @@
                             zzgl. Umsatzsteuer 19 %
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' name="zzgl_Umsatzsteuer" />
+                            <input class="dynamic-field" type="text" placeholder='#' name="zzgl_Umsatzsteuer" />
                         </div>
 
                     </div>
@@ -345,7 +352,7 @@
                             Gesamtbetrag brutto
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' name="Gesamtbetrag_brutto" />
+                            <input class="dynamic-field" type="text" placeholder='#' name="Gesamtbetrag_brutto" />
                         </div>
 
                     </div>
@@ -454,69 +461,109 @@
     </script>
 
 
-<script>
-    $('#saveButton').click(function(e) {
-        e.preventDefault(); // Prevent the form from submitting normally
+    <script>
+        $('#saveButton').click(function(e) {
+            e.preventDefault(); // Prevent the form from submitting normally
 
-        var formData = {
-            Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
-            Angebotsdatum: $('#AddOffersForm input[name="Angebotsdatum"]').val(),
-            Referenz: $('#AddOffersForm input[name="Referenz"]').val(),
-            Ihre_Kundennummer: $('#AddOffersForm input[name="Ihre_Kundennummer"]').val(),
-            gesamt_netto: $('#AddOffersForm input[name="gesamt_netto"]').val(),
-            zzgl_Umsatzsteuer: $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val(),
-            Gesamtbetrag_brutto: $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val(),
-            inputs: []
-        };
+            $('#Angebotsdatum_err').text('');
+            $('#Ihre_Kundennummer_err').text('');
+            $('#Produkt_err').text('');
+            $('#Beschreibung_err').text('');
 
-        $('#table tbody tr').each(function(index) {
-            var inputRow = {
-                POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
-                Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
-                Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
-                Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
-                Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
-                Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
-                Rabatt: $(this).find('input[name^="inputs[' + index + '][Rabatt]"]').val(),
-                Gesamtpreis: $(this).find('input[name^="inputs[' + index + '][Gesamtpreis]"]').val(),
+            $('#Einheit_err').text('');
+            $('#Einzelpreis_err').text('');
+
+            var formData = {
+                Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
+                Angebotsdatum: $('#AddOffersForm input[name="Angebotsdatum"]').val(),
+                Referenz: $('#AddOffersForm input[name="Referenz"]').val(),
+                Ihre_Kundennummer: $('#AddOffersForm input[name="Ihre_Kundennummer"]').val(),
+                gesamt_netto: $('#AddOffersForm input[name="gesamt_netto"]').val(),
+                zzgl_Umsatzsteuer: $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val(),
+                Gesamtbetrag_brutto: $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val(),
+                inputs: []
             };
-            formData.inputs.push(inputRow);
-        });
 
-        console.log(formData);
+            $('#table tbody tr').each(function(index) {
+                var inputRow = {
+                    POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
+                    Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
+                    Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
+                    Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
+                    Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
+                    Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
+                    Rabatt: $(this).find('input[name^="inputs[' + index + '][Rabatt]"]').val(),
+                    Gesamtpreis: $(this).find('input[name^="inputs[' + index + '][Gesamtpreis]"]').val(),
+                };
+                formData.inputs.push(inputRow);
+            });
 
-        // Make AJAX request
-        $.ajax({
-            type: 'POST',
-            url: '/api/addOfferApi',
-            data: formData,
-            dataType: 'json',
-            success: function(response) {
-                // Handle success response
-                if (response.success) {
-                    console.log(response.success);
-                    $('#success_msg').text(response.success);
+            console.log(formData);
+
+            // Make AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '/api/addOfferApi',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    // Handle success response
+                    if (response.success) {
+                        console.log(response.success);
+                        $('#success_msg').text(response.success);
+                    } else if (response.errors) {
+                        // Display validation errors in the console
+                        console.log(response.errors);
+                        displayValidationErrors(response.errors);
+
+
+                        // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
+
+                        // You can also update your HTML to show errors in a specific element
+                        // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    var errors = xhr.responseJSON.errors;
+                    if (errors) {
+                        // Display errors in your frontend
+                        // For example, you can loop through errors and append them to a specific element
+                        $.each(errors, function(field, messages) {
+                            // Append error messages to your HTML
+                            $('#' + field + '-error').text(messages[0]);
+                        });
+                    }
                 }
 
-                if (response.errors) {
-                    console.log(response.errors);
+
+            });
+
+            function displayValidationErrors(errors) {
+                // Display validation errors next to the respective form fields
+                if (errors.Angebotsdatum) {
+                    $('#Angebotsdatum_err').text(errors.Angebotsdatum[0]);
                 }
-            },
-            error: function(xhr, status, error) {
-                // Handle error response
-                var errors = xhr.responseJSON.errors;
-                if (errors) {
-                    // Display errors in your frontend
-                    // For example, you can loop through errors and append them to a specific element
-                    $.each(errors, function(field, messages) {
-                        // Append error messages to your HTML
-                        $('#' + field + '-error').text(messages[0]);
-                    });
+                if (errors.Ihre_Kundennummer) {
+                    $('#Ihre_Kundennummer_err').text(errors.Ihre_Kundennummer[0]);
                 }
+                if (errors['inputs.0.Produkt']) {
+                    $('#Produkt_err').text('Produkt is Required');
+                }
+                if (errors['inputs.0.Beschreibung']) {
+                    $('#Beschreibung_err').text('Beschreibung is Required');
+                }
+                if (errors['inputs.0.Einheit']) {
+                    $('#Einheit_err').text('Einheit Is Required');
+                }
+                if (errors['inputs.0.Einzelpreis']) {
+                    $('#Einzelpreis_err').text('Einzelpreis is Required');
+                }
+
+              
             }
         });
-    });
-</script>
+    </script>
 
 
 

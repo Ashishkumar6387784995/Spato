@@ -49,14 +49,14 @@ class OfferController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            'Angebots_Nr' => 'required|string',
+            // 'Angebots_Nr' => 'required|string',
             'Angebotsdatum' => 'required|date_format:Y-m-d',
-            'Referenz' => 'required|string',
+            // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',
             'inputs.*.POS' => 'required|numeric',
             'inputs.*.Produkt' => 'required|string',
             'inputs.*.Beschreibung' => 'required|string',
-            'inputs.*.Menge' => 'required|string',
+            // 'inputs.*.Menge' => 'required|string',
             'inputs.*.Einheit' => 'required|string',
             'inputs.*.Einzelpreis' => 'required|string',
             'inputs.*.Rabatt' => 'required|string',
@@ -64,7 +64,7 @@ class OfferController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422); // 422 Unprocessable Entity
+            return response()->json(['errors' => $validator->errors()]); // 422 Unprocessable Entity
         }
 
 

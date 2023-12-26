@@ -40,7 +40,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/home', [webController::class, 'home']);
+
 
 
 Route::get('/register', [loginController::class, 'registerForm']);
@@ -53,9 +53,10 @@ Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']
 Route::post('password/reset',[loginController::class,'passwordReset']);
 Route::post('logout',[loginController::class,'logout']);
 
-Route::get('home1',[loginController::class,'home']);
 
 
+Route::get('/home', [webController::class, 'home']);
+Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
 
 
 // Route::get('login',[authController::class,'loginform']);
