@@ -274,10 +274,11 @@
             <input type="text" laceholder='#' placeholder="BADU® Delta Eco VS" />
            </td>
            <td>
-            <input type="text" name='inputs[0][Quantity]' id="Quantity_0" placeholder='#' />
+            <input type="text" laceholder='#' placeholder="Stück" />
+
            </td>
            <td>
-            <input type="text" laceholder='#' placeholder="Stück" />
+            <input type="text" name='inputs[0][Quantity]' id="Quantity_0" placeholder='#' />
            </td>
            <td>
             <input type="text" name='inputs[0][Rate]' id="Rate_0" placeholder='#' />
@@ -581,10 +582,11 @@
                         <input type="text" placeholder="#"/>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+                    <input type="text" placeholder="#"/>
+                       
                     </td>
                     <td>
-                        <input type="text" placeholder="#"/>
+                    <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
                     </td>
                     <td>
                         <input type="text" name='inputs[${i}][Rate]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
@@ -668,7 +670,7 @@
     document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
     document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
     document.getElementById('Total').value = adjustedTotal.toFixed(2);
-    document.getElementById("tax").innerHTML = igstAmount;
+    document.getElementById("tax").innerHTML = igstAmount.toFixed(2);
    }
   });
   </script>
