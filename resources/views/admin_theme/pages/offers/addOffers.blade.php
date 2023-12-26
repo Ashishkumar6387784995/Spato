@@ -98,6 +98,23 @@
   a {
    color: #54606c;
   }
+
+  .table th,
+  .table td {
+   font-size: 0.85rem;
+   ;
+   padding: -0.0625rem;
+  }
+
+  .details {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+  }
+
+  .details input {
+   width: 250px;
+  }
   </style>
  </head>
 
@@ -171,34 +188,59 @@
         <textarea name="text" id="" cols="35" rows="10"></textarea>
 
        </div>
-       <div class="col-md-2 ">
+       <div class="col-md-2"></div>
+
+
+       <div class="col-md-6">
+        <div class="details">
+         <div class="field">
+          <p>Angebots-Nr.</p>
+         </div>
+         <div class="inputs">
+          <input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr"
+           value="{{$newOfferNo}}" /></p>
+         </div>
+        </div>
+
+        <div class="details">
+         <div class="field">
+          <p>Angebotsdatum</p>
+         </div>
+         <div class="inputs">
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum"
+            value="{{ now()->format('d-m-Y') }}" /> <br>
+           <span id="Angebotsdatum_err" style="color:red;  font-size:13px;"></span>
+          </p>
+         </div>
+        </div>
+
+        <div class="details">
+         <div class="field">
+          <p>Referenz</p>
+         </div>
+         <div class="inputs">
+          <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
+         </div>
+        </div>
+
+        <div class="details">
+         <div class="field">
+          <p>Ihre Kundennummer</p>
+         </div>
+         <div class="inputs">
+          <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer"
+            name="Ihre_Kundennummer" /><br>
+           <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+          </p>
+         </div>
+        </div>
+
+
        </div>
-       <div class="col-md-1 ">
-       </div>
-       <div class="col-md-2 ps-2">
-        <p>Angebots-Nr.</p><br>
-        <p>Angebotsdatum</p><br>
-        <p>Referenz</p><br>
-        <p>Ihre Kundennummer</p> <br>
-       </div>
-       <div class="col-md-2" style="margin-top: -5px;">
-        <p><input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr"
-          value="{{$newOfferNo}}" /></p><br>
-        <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum"
-          value="{{ now()->format('d-m-Y') }}" /></p><br>
-        <span id="Angebotsdatum_err" style="color:red"></span>
-
-        <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
-
-        <br>
 
 
-        <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer" name="Ihre_Kundennummer" />
-        </p>
 
-        <br>
-        <span id="Ihre_Kundennummer_err" style="color:red"></span>
-       </div>
+
       </div>
 
       <div class="row pt-3">
@@ -269,23 +311,28 @@
 
            </td>
            <td>
+<<<<<<< HEAD
             <input type="text" name='inputs[0][Produkt]'  />
             <span id="Produkt_err" style="color:red"></span>
+=======
+            <input type="text" name='inputs[0][Produkt]' placeholder="80.2103281138" />
+            <p><span id="Produkt_err" style="color:red; font-size:13px;"></span></p>
+>>>>>>> 350be78ac65b9cf6360eb7df0da1bf060721770c
            </td>
            <td>
-            <input type="text" name='inputs[0][Beschreibung]' />
-            <span id="Beschreibung_err" style="color:red"></span>
+            <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+            <p><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span></p>
            </td>
            <td>
             <input type="text" name='inputs[0][Menge]' placeholder='#' />
            </td>
            <td>
             <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
-            <span id="Einheit_err" style="color:red"></span>
+            <p><span id="Einheit_err" style="color:red;  font-size:13px;"></span></p>
            </td>
            <td>
             <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
-            <span id="Einzelpreis_err" style="color:red"></span>
+            <p><span id="Einzelpreis_err" style="color:red;  font-size:13px;"></span></p>
            </td>
            <td>
             <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
