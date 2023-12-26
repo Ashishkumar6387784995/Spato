@@ -47,59 +47,82 @@ class OfferController extends Controller
 
     public function addOfferApi(Request $request){
 
-        // return response()->json(['hello' => 'hello']);
 
-         // $lastOffer = offers::latest()->first();
-        // Assuming $lastOffer is 'AN-12345'
-        $lastOffer = 'AN-12345';
-
-        // Extract the numeric part
-        $numericPart = preg_replace('/[^0-9]/', '', $lastOffer);
-
-        // Increment the numeric part
-        $newNumericPart = $numericPart + 1;
-
-        // Create the new offerNo
-        $newOfferNo = 'AN-' . $newNumericPart;
-
-        // dd($request);
-
-         // Validation rules
-         $rules = [
-            'Angebots_Nr' => 'required|string',
+        $validator = Validator::make($request->all(), [
+            // 'Angebots_Nr' => 'required|string',
             'Angebotsdatum' => 'required|date_format:Y-m-d',
-            'Referenz' => 'required|string',
+            // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',
             'inputs.*.POS' => 'required|numeric',
             'inputs.*.Produkt' => 'required|string',
             'inputs.*.Beschreibung' => 'required|string',
-            'inputs.*.Menge' => 'required|string',
+            // 'inputs.*.Menge' => 'required|string',
             'inputs.*.Einheit' => 'required|string',
             'inputs.*.Einzelpreis' => 'required|string',
             'inputs.*.Rabatt' => 'required|string',
             'inputs.*.Gesamtpreis' => 'required|string',
-        ];
+        ]);
 
-        // Custom validation messages
-        $messages = [
-            'inputs.*.POS.required' => 'POS field is required.',
-            // Add more custom messages for other fields if needed
-        ];
-
-        // Perform validation
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        // Check if validation fails
         if ($validator->fails()) {
-            $errors = $validator->errors();
-        
-                return response()->json(['errors' => $errors]);
+            return response()->json(['errors' => $validator->errors()]); // 422 Unprocessable Entity
         }
 
-        // If validation passes, retrieve the validated data
-        $validatedData = $validator->validated();
+
+       
+   
+ 
+
+
+
+
+ 
+    $offer = new offers();
+
+    // Set the attributes of the model with the main form data
+   
+
+    // Get the dynamic fields from the request
+    $dynamicFields = $request->input('inputs');
+
+    // Set dynamic fields on the offer
+    foreach ($dynamicFields as $dynamicField) {
+        $offer = new offers();
+        $offer->Angebots_Nr = $request->input('Angebots_Nr');
+        $offer->Angebotsdatum = $request->input('Angebotsdatum');
+        $offer->Referenz = $request->input('Referenz');
+        $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+
+        $offer->gesamt_netto = $request->input('gesamt_netto');
+        $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+        $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+
+
+        $offer->POS = $dynamicField['POS'];
+        $offer->Produkt = $dynamicField['Produkt'];
+        $offer->Beschreibung = $dynamicField['Beschreibung'];
+        $offer->Menge = $dynamicField['Menge'];
+        $offer->Einheit = $dynamicField['Einheit'];
+        $offer->Einzelpreis = $dynamicField['Einzelpreis'];
+        $offer->Rabatt = $dynamicField['Rabatt'];
+        $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
+        $offer->save();
+    }
+
+    // Save the model to the database
+ 
       
-         return response()->json(['message' => 'Data validated and processed successfully', 'newOfferNo' => $newOfferNo]);
+
+        // Return a success response
+        return response()->json(['success' => "Offer Is Added"]);
+
+    // Return a success response
+
+
+
+
+
+        
+       
     
 
     }
