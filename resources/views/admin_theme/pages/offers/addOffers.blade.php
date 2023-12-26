@@ -41,24 +41,6 @@
             cursor: pointer;
         }
 
-        .edit {
-            background-color: #404040;
-            border: 1px solid #404040;
-            color: #ffff;
-            padding: 10px 14px;
-            height: 42px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.5s ease;
-        }
-
-        .edit:hover {
-            background-color: transparent;
-            border: 1px solid #404040;
-            color: #404040;
-            border-radius: 5px;
-        }
-
         .btn {
             /* background-color: #54606c; */
             border: 1px solid #404040;
@@ -66,6 +48,10 @@
             padding: 10px 14px;
             text-decoration: none;
             border-radius: 5px;
+        }
+        .btn:hover{
+            background-color: #404040;
+            color:#fff;
         }
 
         .close {
@@ -184,13 +170,13 @@
                         </div>
                         <div class="col-md-1 ">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-2">
                             <p>Angebots-Nr.</p><br>
                             <p>Angebotsdatum</p><br>
                             <p>Referenz</p><br>
                             <p>Ihre Kundennummer</p> <br>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-2">
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr" value="{{$newOfferNo}}" /></p><br>
                             <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum" value="{{ now()->format('d-m-Y') }}" /></p><br>
 
@@ -326,11 +312,11 @@
                             Lieferbedingungen: zzgl. Frachtkosten
                         </div>
 
-                        <div class="col-4 stretch-card ">
+                        <div class="col-3 stretch-card ">
                             Gesamt netto
                         </div>
                         <div class="col-2 stretch-card ">
-                            2.194,61 €
+                        <input class="dynamic-field" type="text" placeholder='#' id="gesamt_netto" />
                         </div>
 
                     </div>
@@ -340,11 +326,11 @@
                             Zahlungsbedingungen: nach Vereinbarung
                         </div>
 
-                        <div class="col-4 stretch-card ">
+                        <div class="col-3 stretch-card ">
                             zzgl. Umsatzsteuer 19 %
                         </div>
                         <div class="col-2 stretch-card ">
-                            416,98 €
+                        <input class="dynamic-field" type="text" placeholder='#' id="zzgl" />
                         </div>
 
                     </div>
@@ -354,11 +340,11 @@
 
                         </div>
 
-                        <div class="col-4 stretch-card dt">
+                        <div class="col-3 stretch-card dt">
                             Gesamtbetrag brutto
                         </div>
                         <div class="col-2 stretch-card ">
-                            2.611,59 €
+                        <input class="dynamic-field" type="text" placeholder='#' id="Gesamtbetrag_brutto" />
                         </div>
 
                     </div>
@@ -371,11 +357,11 @@
 
                         </div>
                         <div class="col stretch-card ">
-                            <a href="#" class="edit">Fußzeile Standard</a>
+                            <a href="#" class="btn">Fußzeile Standard</a>
                         </div>
 
                         <div class="col stretch-card">
-                            <a href="#" class="edit">Fußzeile neu</a>
+                            <a href="#" class="btn">Fußzeile neu</a>
                         </div>
                         <div class="col stretch-card">
 
