@@ -328,7 +328,7 @@
                             Gesamt netto
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' id="gesamt_netto" />
+                        <input class="dynamic-field" type="text" placeholder='#' name="gesamt_netto" />
                         </div>
 
                     </div>
@@ -342,7 +342,7 @@
                             zzgl. Umsatzsteuer 19 %
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' id="zzgl" />
+                        <input class="dynamic-field" type="text" placeholder='#' name="zzgl_Umsatzsteuer" />
                         </div>
 
                     </div>
@@ -356,7 +356,7 @@
                             Gesamtbetrag brutto
                         </div>
                         <div class="col-2 stretch-card ">
-                        <input class="dynamic-field" type="text" placeholder='#' id="Gesamtbetrag_brutto" />
+                        <input class="dynamic-field" type="text" placeholder='#' name="Gesamtbetrag_brutto" />
                         </div>
 
                     </div>
@@ -473,12 +473,15 @@
             var formData = {};
 
             // Collect data from the main form
-            formData.text = $('#AddOffersForm textarea[name="text"]').val();
+      
             formData.Angebots_Nr = $('#AddOffersForm input[name="Angebots_Nr"]').val();
             formData.Angebotsdatum = $('#AddOffersForm input[name="Angebotsdatum"]').val();
             formData.Referenz = $('#AddOffersForm input[name="Referenz"]').val();
             formData.Ihre_Kundennummer = $('#AddOffersForm input[name="Ihre_Kundennummer"]').val();
-            formData.jobRequestNo = $('#AddOffersForm input[name="jobRequestNo"]').val();
+
+            formData.gesamt_netto = $('#AddOffersForm input[name="gesamt_netto"]').val();
+            formData.zzgl_Umsatzsteuer = $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val();
+            formData.Gesamtbetrag_brutto = $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val();
 
             // Collect data from the dynamic table
             formData.inputs = [];
@@ -516,7 +519,7 @@
                     // console.log(response.errors);
                     if (response.success) {
 
-                        console.log('hello');
+                        // console.log('hello');
                     }
 
                     if (response.errors) {

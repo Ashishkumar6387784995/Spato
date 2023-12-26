@@ -94,7 +94,6 @@ class OfferController extends Controller
             $errors = $validator->errors();
         
                 return response()->json(['errors' => $errors]);
-
         }
 
         // If validation passes, retrieve the validated data
