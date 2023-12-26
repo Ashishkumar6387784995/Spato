@@ -153,7 +153,7 @@
                     <div class="row pt-3">
 
                         <div class="col-md-2 stretch-card grid-margin">
-                            <button class="btn">Save</button>
+                            <button class="btn" type="button" id="saveButton">Save</button>
                         </div>
 
                         <div class="col-md-2 stretch-card grid-margin">
@@ -194,8 +194,14 @@
                             <p><input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr" value="{{$newOfferNo}}" /></p><br>
                             <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum" value="{{ now()->format('d-m-Y') }}" /></p><br>
 
-                            <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p><br>
-                            <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer" name="Ihre_Kundennummer" /></p><br>
+                            <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
+
+                            <br>
+
+
+                            <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer" name="Ihre_Kundennummer" /></p>
+
+                            <br>
                         </div>
                     </div>
 
@@ -214,12 +220,6 @@
                         <div class="col-md-2 "> </div>
 
                     </div>
-
-
-
-
-
-
 
 
 
@@ -459,7 +459,7 @@
             );
         });
 
-    
+
 
         $('#table').on('click', '.delete-row', function() {
             $(this).closest('tr').remove();
@@ -467,6 +467,48 @@
     </script>
 
 
+    <script>
+        $('#saveButton').click(function(e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            // console.log('hello');
+            // Get form data
+            var formData = $(this).serialize();
+
+            // Make AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '/api/addOfferApi',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    // Handle success response
+                    // console.log(response.errors);
+                    if (response.success) {
+
+                        console.log('hello');
+                    }
+
+                    if (response.errors) {
+
+                        console.log(response.errors);
+                    }
+                },
+                // error: function(xhr, status, error) {
+                //     // Handle error response
+                //     var errors = xhr.responseJSON.errors;
+                //     if (errors) {
+                //         // Display errors in your frontend
+                //         // For example, you can loop through errors and append them to a specific element
+                //         $.each(errors, function(field, messages) {
+                //             // Append error messages to your HTML
+                //             $('#' + field + '-error').text(messages[0]);
+                //         });
+                //     }
+                // }
+            });
+        });
+    </script>
 
 
 
