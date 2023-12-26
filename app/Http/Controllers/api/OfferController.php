@@ -37,16 +37,8 @@ class OfferController extends Controller
             $parts = explode('-', $lastOffer);
             $parts= $parts[1];
         
-            // Check if the array has at least two elements
-            // if (count($parts) >= 2) {
-            //     // Echo the first element of the array (the numeric part)
-            
-            // } else {
-            //     echo "Invalid format: Not enough parts after splitting.";
-            // }
-    
-
-        // Extract the numeric part
+         
+ 
    
         // Increment the numeric part
         $newNumericPart = $parts + 1;
