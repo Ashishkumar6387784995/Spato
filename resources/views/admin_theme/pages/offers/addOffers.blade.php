@@ -155,7 +155,7 @@
                     <h2>Admin Dashboard</h2>
                     <p>Monday, January 12, 2024</p>
                 </div>
-                <form>
+                <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
                     <div class="row pt-3">
 
                         <div class="col-md-2 stretch-card grid-margin">
@@ -458,29 +458,30 @@
                 `<tr>
           
                      <td >
-                                                     <input type="text" value='` + No + `' name='inputs[` + i + `][SNo]'  placeholder='#'/>
+                                                     <input type="text" value='` + No + `' name='inputs[` + i + `][POS]'  placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][stdValue]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Produkt]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X1]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Beschreibung]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" name='inputs[` + i + `][X2]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][Menge]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" id="items" name='inputs[` + i + `][X3]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][X3]' placeholder='#'/>
                                                  </td>
                                                   <td >
-                                                 <input type="text"  id="originalPrice"  name='inputs[` + i + `][X4]' placeholder='#'/>
+                                                 <input type="text" name='inputs[` + i + `][X4]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="number"  id="discountPercentage" name='inputs[` + i + `][X5]' placeholder='#'/>
+                                                     <input type="text" name='inputs[` + i + `][X5]' placeholder='#'/>
                                                  </td>
                                                  <td >
-                                                     <input type="text" id="discountedPrice" name='' placeholder='#'/>
+                                                     <input type="text" name='' placeholder='#'/>
                                                  </td>
+                                                
                                                  <td>
                                                      <button  class="delete-btn delete-row">delete</button>
                                                  </td>
@@ -493,10 +494,7 @@
             );
         });
 
-        //  $('#delete').on('click','.remove-table-row', function(){
-        //      $(this).parents('tr').remove();
-
-        //  });
+    
 
         $('#table').on('click', '.delete-row', function() {
             $(this).closest('tr').remove();

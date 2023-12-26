@@ -45,4 +45,8 @@ class OfferController extends Controller
 
         return view('admin_theme/pages/offers/addoffers')->with(compact('newOfferNo'));
     }
+
+    public function addOfferApi(){
+        
+    }
 }
