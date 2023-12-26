@@ -25,15 +25,30 @@ class OfferController extends Controller
     public function addOffer()
     {
 
-        // $lastOffer = offers::latest()->first();
+        $lastOffer = offers::latest()->first();
+         $lastOffer= $lastOffer->Angebots_Nr;
         // Assuming $lastOffer is 'AN-12345'
-        $lastOffer = 'AN-12345';
+        // $lastOffer = 'AN-12345';
+
+
+  
+            // Split the string into an array based on the dash
+            $parts = explode('-', $lastOffer);
+            $parts= $parts[1];
+        
+            // Check if the array has at least two elements
+            // if (count($parts) >= 2) {
+            //     // Echo the first element of the array (the numeric part)
+            
+            // } else {
+            //     echo "Invalid format: Not enough parts after splitting.";
+            // }
+    
 
         // Extract the numeric part
-        $numericPart = preg_replace('/[^0-9]/', '', $lastOffer);
-
+   
         // Increment the numeric part
-        $newNumericPart = $numericPart + 1;
+        $newNumericPart = $parts + 1;
 
         // Create the new offerNo
         $newOfferNo = 'AN-' . $newNumericPart;

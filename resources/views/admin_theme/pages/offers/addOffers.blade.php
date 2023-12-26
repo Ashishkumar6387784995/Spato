@@ -269,7 +269,7 @@
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Produkt]' placeholder="80.2103281138" />
+            <input type="text" name='inputs[0][Produkt]'  />
             <span id="Produkt_err" style="color:red"></span>
            </td>
            <td>
@@ -670,6 +670,7 @@
      // Handle success response
      if (response.success) {
       console.log(response.success);
+      $('#AddOffersForm')[0].reset();
       $('#success_msg').text(response.success);
      } else if (response.errors) {
       // Display validation errors in the console
