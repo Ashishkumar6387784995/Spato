@@ -39,8 +39,8 @@
         }
 
         .edit{
-            background-color:#54606c;
-            border:1px solid #54606c;
+            background-color:#404040;
+            border:1px solid #404040;
             color:#ffff;
             padding: 10px 14px;
             height: 42px;
@@ -50,28 +50,28 @@
         }
         .edit:hover{
             background-color:transparent;
-            border:1px solid #54606c;
-            color:#54606c;
+            border:1px solid #404040;
+            color:#404040;
             border-radius:5px;
         }
         
         .btn{
             /* background-color: #54606c; */
-            border: 1px solid #54606c;
-            color: #54606c;
+            border: 1px solid #404040;
+            color: #404040;
             padding: 10px 14px;
             text-decoration: none;
             border-radius: 5px;
         }
         .close{
-            color:#54606c;
+            color:#404040;
         }
         .stretch-card{
             font-size:13px;
         }
         table tr th {
             width: 200px;
-            background-color:#54606c;
+            background-color:#404040;
             color:#fff;
         }
 
@@ -86,10 +86,10 @@
             background-color:transparent;
         }
         table tr td a{
-            color:#54606c;
+            color:#404040;
         }
         a{
-            color:#54606c;
+            color:#404040;
         }
     </style>
 </head>

@@ -42,8 +42,8 @@
         }
 
         .edit {
-            background-color: #54606c;
-            border: 1px solid #54606c;
+            background-color: #404040;
+            border: 1px solid #404040;
             color: #ffff;
             padding: 10px 14px;
             height: 42px;
@@ -54,22 +54,22 @@
 
         .edit:hover {
             background-color: transparent;
-            border: 1px solid #54606c;
-            color: #54606c;
+            border: 1px solid #404040;
+            color: #404040;
             border-radius: 5px;
         }
 
         .btn {
             /* background-color: #54606c; */
-            border: 1px solid #54606c;
-            color: #54606c;
+            border: 1px solid #404040;
+            color: #404040;
             padding: 10px 14px;
             text-decoration: none;
             border-radius: 5px;
         }
 
         .close {
-            color: #54606c;
+            color: #404040;
         }
 
         .stretch-card {
@@ -78,7 +78,7 @@
 
         table tr th {
             width: 200px;
-            background-color: #54606c;
+            background-color: #404040;
             color: #fff;
         }
 
@@ -95,18 +95,18 @@
         }
 
         table tr td a {
-            color: #54606c;
+            color: #404040;
         }
 
         .dynamic-field {
             width: 100%;
             background: transparent;
-            border: 1px solid #8F8C8C;
+            border: 1px solid #404040;
             border-radius: 5px;
         }
 
         a {
-            color: #54606c;
+            color: #404040;
         }
         .delete-btn{
             background:none;
@@ -601,13 +601,6 @@
                 newRow.innerHTML = `
                     <td>
                         <input type="text" value='${No}' name='inputs[${i}][SNo]' placeholder='#' class="form-control"/>
-                    </td>
-                    <td>
-                        <select class="form-control" name='inputs[${i}][name]'>
-                            @foreach ($ProductNames as $product)
-                                                            <option value="{{ $product->productName }}/{{ $product->productImage }}">{{ $product->productName }}  </option>
-                                                            @endforeach
-                        </select>
                     </td>
                     <td>
                         <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#' class="form-control" onclick="handleClick('Quantity_${i}')"/>
