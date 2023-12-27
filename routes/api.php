@@ -101,9 +101,10 @@ Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 Route::get('assignmentListingApi',[AssignmentController::class,'AssignmentListing']);
 Route::view('assignmentListing', 'admin_theme/pages/assignments/assignmentList');
 Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
-Route::get('editAssignment',[AssignmentController::class,'editAssignment']);
+Route::post('addAssignmentsApi',[AssignmentController::class,'addAssignmentsApi']);
+Route::get('editAssignment/{id}',[AssignmentController::class,'editAssignment']);
 
-Route::view('table', 'admin_theme/pages/assignments/table');
+
 
 
 // Delivery Notes for Admin

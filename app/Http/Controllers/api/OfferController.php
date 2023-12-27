@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\offers;
 use Illuminate\Support\Facades\Validator;
 
+
 class OfferController extends Controller
 {
     public function offerListing()
