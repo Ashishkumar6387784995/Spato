@@ -114,6 +114,12 @@
   .details input {
    width: 250px;
   }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+   .details input {
+    width: 170px;
+   }
+  }
   </style>
  </head>
 
@@ -154,6 +160,10 @@
      <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
       <h2>Admin Dashboard</h2>
       <p>Monday, January 12, 2024</p>
+
+      <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+       <span class="mdi mdi-menu"></span>
+      </button>
      </div>
      <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
       <div class="row pt-3">

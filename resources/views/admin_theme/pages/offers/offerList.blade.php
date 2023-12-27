@@ -131,10 +131,10 @@
       <button class="navbar-toggler" type="button" data-toggle="offcanvas">
        <span class="mdi mdi-menu"></span>
       </button>
+
      </div>
 
      <div class="row pt-3">
-
       <div class="col-md-4 stretch-card grid-margin">
        <a href="{{url('/api/addOffer')}}" class="btn">+ neues Angebot</a>
       </div>
