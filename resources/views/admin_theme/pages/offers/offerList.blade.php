@@ -148,7 +148,7 @@
        Alle Angebote
       </div>
      </div>
-     <div class="row pt-3">
+     <div class="row pt-3 container">
       <table id="dataTable">
        <tr>
         <th>Status</th>
