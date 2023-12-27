@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         .transform-hover {
             height: 150px;
@@ -149,51 +150,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
-                    </tr>
+                    
                 </table>
 
             </div>
@@ -221,19 +178,17 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         // Execute the code when the document is ready
         $(document).ready(function() {
             // Make a GET request using AJAX
             $.ajax({
-                url: '/api/productListingApi', // Replace with the actual endpoint URL
+                url: '/api/assignmentListingApi', // Replace with the actual endpoint URL
                 method: 'GET',
                 success: function(data) {
                     // Handle the successful response
-                    if (data.productList) {
-                        console.log('Data received:', data.productList);
-
+                    if (data.assignments) {
+                        console.log('Data received:', data.assignments);
 
                         function populateTable(data) {
                             var tableBody = $('#dataTable');
@@ -244,15 +199,13 @@
                             // Iterate through the data and add rows to the table
                             $.each(data, function(index, item) {
                                 var row = $('<tr>');
-                                row.append('<td>' + item.Hersteller + '</td>');
-                                row.append('<td>' + item.Herst_Nr + '</td>');
-                                row.append('<td>' + item.id + '</td>');
-                                row.append('<td>' + item.Artikelname + '</td>');
-                                row.append('<td>' + item.Kategorie + '</td>');
-                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
-                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
-
+                                row.append('<td>' + 'Offen' + '</td>');
+                                row.append('<td>' + item.Angebots_Nr + '</td>');
+                                row.append('<td>' + item.Ihre_Kundennummer + '</td>');
+                                row.append('<td>' + item.Angebotsdatum + '</td>');
+                                // row.append('<td>' + item.Kategorie + '</td>');
+                                row.append('<td>' + item.gesamt_netto + '</td>');
+                                row.append('<td><a href="/api/editOffer/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
 
                                 // Add more columns as needed
 
@@ -262,14 +215,12 @@
                         }
 
                         // Call the function to populate the table with the initial data
-                        populateTable(data.productList);
-
-
-
+                        populateTable(data.assignments);
                     } else {
                         console.log('Data received:', data.errors);
                     }
-                }, // Missing comma here
+                },
+
 
                 error: function(error) {
                     // Handle errors
@@ -281,43 +232,8 @@
 
 
         });
+    </script>
 
-
-        function deleteOperation(productId) {
-            // Make a DELETE request using AJAX
-            console.log(productId);
-            $.ajax({
-                url: '/api/deleteProduct/' + productId,
-                method: 'get',
-                success: function(data) {
-
-                    if (data.success) {
-
-
-
-                        $('#success_msg').text(data.success);
-
-                        // Delay the page reload for 2 seconds (2000 milliseconds)
-                            setTimeout(function() {
-                                location.reload(true);
-                            }, 1000);
-
-                        
-
-
-                        console.log('Product deleted successfully:', data.success);
-                        // Perform any additional actions after deletion
-                    } else {
-                        console.log('Product not deleted successfully:', data.message);
-                    }
-
-                },
-                error: function(error) {
-                    console.error('Error deleting product:', error.responseJSON.error);
-                }
-            });
-        }
-    </script> -->
 
 
 
