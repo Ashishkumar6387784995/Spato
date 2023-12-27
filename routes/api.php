@@ -94,7 +94,7 @@ Route::get('offerListingApi',[OfferController::class,'offerListing']);
 Route::view('offerListing', 'admin_theme/pages/offers/offerList');
 Route::get('addOffer',[OfferController::class,'addOffer']);
 Route::post('addOfferApi',[OfferController::class,'addOfferApi']);
-Route::get('editOffer',[OfferController::class,'editOffer']);
+Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
 
 // Assignment for Admin

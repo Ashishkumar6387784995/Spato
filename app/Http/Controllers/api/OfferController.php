@@ -11,8 +11,13 @@ class OfferController extends Controller
 {
     public function offerListing()
     {
+        $offers = offers::orderBy('created_at', 'desc')->get();
 
-        return view('admin_theme/pages/offers/offerList');
+        if ($offers){
+            return response()->json(['offersList'=>$offers]);
+        }
+     
+            return response()->json(['errors'=>"Offer Not Found"]);
     }
 
 
@@ -25,11 +30,11 @@ class OfferController extends Controller
     public function addOffer()
     {
 
-        $lastOffer = "AB-123456";
-        // $lastOffer = offers::latest()->first();
-        //  $lastOffer= $lastOffer->Angebots_Nr;
+        // $lastOffer = "AB-123456";
+        $lastOffer = offers::latest()->first();
+         $lastOffer= $lastOffer->Angebots_Nr;
         // Assuming $lastOffer is 'AN-12345'
-        // $lastOffer = 'AN-12345';
+        $lastOffer = 'AN-12345';
 
 
   
@@ -76,13 +81,6 @@ class OfferController extends Controller
         }
 
 
-       
-   
- 
-
-
-
-
  
     $offer = new offers();
 
@@ -114,24 +112,13 @@ class OfferController extends Controller
         $offer->Rabatt = $dynamicField['Rabatt'];
         $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
         $offer->save();
-    }
-
-    // Save the model to the database
- 
-      
+    }      
 
         // Return a success response
-        return response()->json(['success' => "Offer Is Added"]);
+        return response()->json(['success' => "Offer Is Added SuccessFully"]);
 
     // Return a success response
 
-
-
-
-
-        
-       
-    
 
     }
 }
