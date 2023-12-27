@@ -113,21 +113,26 @@
 
 
 
+
   <!-- partial -->
   <div class="container-fluid page-body-wrapper">
 
 
    @include('admin_theme/Partial/sidebar')
 
-
-
    <!-- partial -->
    <div class="main-panel">
     <div class="content-wrapper">
-     <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
+
+     <div class="" style="padding-bottom:10px; border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
       <h2>Admin Dashboard</h2>
       <p>Monday, January 12, 2024</p>
+
+      <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+       <span class="mdi mdi-menu"></span>
+      </button>
      </div>
+
      <div class="row pt-3">
 
       <div class="col-md-4 stretch-card grid-margin">

@@ -6793,12 +6793,15 @@ fieldset:disabled .btn {
     -ms-flex-align: center;
     align-items: center;
 }
-
+@media (min-width: 1281px) {
+    .navbar-toggler {
+        display: none;
+    }
+}
 .navbar-toggler {
     padding: 0.25rem 0.75rem;
     font-size: 1.25rem;
     line-height: 1;
-    background-color: transparent;
     border: 1px solid transparent;
     border-radius: 0.25rem;
     -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
@@ -6806,7 +6809,11 @@ fieldset:disabled .btn {
     transition: box-shadow 0.15s ease-in-out;
     transition: box-shadow 0.15s ease-in-out,
         -webkit-box-shadow 0.15s ease-in-out;
+    /* position: absolute; */
+    /* left: 0%;
+    top: 8%; */
 }
+
 @media (prefers-reduced-motion: reduce) {
     .navbar-toggler {
         -webkit-transition: none;
@@ -6819,8 +6826,8 @@ fieldset:disabled .btn {
 .navbar-toggler:focus {
     text-decoration: none;
     outline: 0;
-    -webkit-box-shadow: 0 0 0 0.25rem;
-    box-shadow: 0 0 0 0.25rem;
+    /* -webkit-box-shadow: 0 0 0 0.25rem;
+    box-shadow: 0 0 0 0.25rem; */
 }
 
 .navbar-toggler-icon {
@@ -19532,7 +19539,7 @@ dl li {
     .sidebar-offcanvas {
         position: fixed;
         max-height: calc(100vh - 70px);
-        top: 70px;
+        top: 0px;
         bottom: 0;
         overflow: auto;
         right: -260px;
