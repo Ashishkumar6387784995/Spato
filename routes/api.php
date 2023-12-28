@@ -186,6 +186,16 @@ Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/custom
 
 
 
+
+
+
+
+//  Account Setting for B2C users
+
+  Route::view('accountSetting', 'frontEnd/pages/setting');
+
+
+
 Route::middleware('api.token')->group(function () {
     // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);
     // Route::get('contact',[staticPageController::class,'contact']);
