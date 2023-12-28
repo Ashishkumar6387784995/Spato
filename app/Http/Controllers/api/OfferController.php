@@ -35,7 +35,7 @@ class OfferController extends Controller
         $lastOffer = offers::latest()->first();
          $lastOffer= $lastOffer->Angebots_Nr;
         // Assuming $lastOffer is 'AN-12345'
-        $lastOffer = 'AN-12345';
+        // $lastOffer = 'AN-12345';
 
 
   

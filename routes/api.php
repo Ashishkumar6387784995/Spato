@@ -111,6 +111,7 @@ Route::get('editAssignment/{id}',[AssignmentController::class,'editAssignment'])
 Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListing']);
 Route::view('deliveryNotesListing', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
 Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
+Route::post('addDeliveryNotesApi',[DeliveryNotesController::class,'addDeliveryNotesApi']);
 Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNotes']);
 
 
