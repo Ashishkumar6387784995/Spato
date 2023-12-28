@@ -219,6 +219,7 @@
    background-color: #656565;
    color: #fff;
    font-weight: 600;
+   width: 55%;
   }
 
   .brand-details h1 {
@@ -369,64 +370,66 @@
       <li class="breadcrumb-item active" aria-current="page">MSI WS Series</li>
      </ol>
     </nav>
-    <div class="mt-5 mb-5">
-     <div class="">
+    <form action="">
+     <div class="mt-5 mb-5">
       <div class="">
-       <div class="product">
-        <div class="row">
-         <div class="col-md-4">
-          <div class="images ">
-           <div class="text-center p-4"> <img id="main-image" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}"
-             width="350" height="300" />
-           </div>
-           <div class="thumbnail text-center">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" width="70"
-             height="70">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" width="70"
-             height="70">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/pool.png')}}" width="70"
-             height="70">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-2.png')}}" width="70"
-             height="70">
-           </div>
-          </div>
-         </div>
-         <div class="brand-details col-md-4">
-          <h1>Product name - Brand name</h1>
-          <p>MSI MPG Trident 3</p>
-          <div class="list">
-           <ul>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-           </ul>
-           <div class="button-counter">
-
-            <button class="btn">Estashiboneoe</button>
-            <div class="counter">
-             <button class="counter-btn" id="decrement-btn">-</button>
-             <div id="counter-value">0</div>
-             <button class="counter-btn" id="increment-btn">+</button>
+       <div class="">
+        <div class="product">
+         <div class="row">
+          <div class="col-md-4">
+           <div class="images ">
+            <div class="text-center p-4"> <img id="main-image" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}"
+              width="350" height="300" />
+            </div>
+            <div class="thumbnail text-center">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" width="70"
+              height="70">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" width="70"
+              height="70">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/pool.png')}}" width="70"
+              height="70">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-2.png')}}" width="70"
+              height="70">
             </div>
            </div>
           </div>
-         </div>
+          <div class="brand-details col-md-4">
+           <h1>Product name - Brand name</h1>
+           <p>MSI MPG Trident 3</p>
+           <div class="list">
+            <ul>
+             <li class="item-list"><span>lorem</span> <span>0,56</span></li>
+             <li class="item-list"><span>lorem</span> <span>0,56</span></li>
+             <li class="item-list"><span>lorem</span> <span>0,56</span></li>
+             <li class="item-list"><span>lorem</span> <span>0,56</span></li>
+            </ul>
+            <div class="button-counter">
 
-
-
-         <div class="col-md-4">
-          <div class="product p-4">
-
-           <div class="product-particular-detail mt-4 mb-3">
-            <p class="product-size">Auf Large</p>
-            <p class="model-number">Model No.#7389392930</p>
-            <p class="product-price">
-             <span class="price">25,30€</span> Statt 42,45 €
-            </p>
+             <button class="btn">Estashiboneoe</button>
+             <div class="counter">
+              <button class="counter-btn" id="decrement-btn">-</button>
+              <div id="counter-value">0</div>
+              <button class="counter-btn" id="increment-btn">+</button>
+             </div>
+            </div>
            </div>
-           <div class="cart mt-4 align-items-center">
-            <button class="btn text-uppercase">IN DEN WARENKORB</button>
+          </div>
+
+
+
+          <div class="col-md-4">
+           <div class="product p-4">
+
+            <div class="product-particular-detail mt-4 mb-3">
+             <p class="product-size">Auf Large</p>
+             <p class="model-number">Model No.#7389392930</p>
+             <p class="product-price">
+              <span class="price">25,30€</span> Statt 42,45 €
+             </p>
+            </div>
+            <div class="cart mt-4 align-items-center">
+             <button class="btn text-uppercase">IN DEN WARENKORB</button>
+            </div>
            </div>
           </div>
          </div>
@@ -434,16 +437,15 @@
        </div>
       </div>
      </div>
-    </div>
 
-    <div class=" container availibility">
-     <p class="check">Check Delivery Availability</p>
-     <div class="search">
-      <input type="text" name="pin-code" id="pin" placeholder="Enter pincode">
-      <button class="btn">SEARCH</button>
+     <div class=" container availibility">
+      <p class="check">Check Delivery Availability</p>
+      <div class="search">
+       <input type="text" name="pin-code" id="pin" placeholder="Enter pincode">
+       <button class="btn">SEARCH</button>
+      </div>
      </div>
-    </div>
-
+    </form>
 
     <div class="product-desc">
      <h3 class="product-desc-heading">Product Description</h3>
