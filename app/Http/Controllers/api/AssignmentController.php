@@ -30,10 +30,10 @@ class AssignmentController extends Controller
     public function addAssignment(){
      
          // $lastOffer = "AB-123456";
-        //  $lastOffer = offers::latest()->first();
-        //  $lastOffer= $lastOffer->Angebots_Nr;
+         $lastOffer = Assignments_list::latest()->first();
+         $lastOffer= $lastOffer->Auftrags_Nr;
         // Assuming $lastOffer is 'AN-12345'
-        $lastOffer = 'AN-12345';
+        // $lastOffer = 'AN-12345';
 
 
   

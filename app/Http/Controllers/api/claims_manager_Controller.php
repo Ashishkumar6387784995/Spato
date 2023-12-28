@@ -18,7 +18,7 @@ class claims_manager_Controller extends Controller
         return view('admin_theme/pages/claim_manager/editClaims');
     }
 
-    public function addClaims(){
+    public function addCliams(){
      
         return view('admin_theme/pages/claim_manager/addClaims');
     }
