@@ -108,7 +108,7 @@ Route::get('editAssignment/{id}',[AssignmentController::class,'editAssignment'])
 
 
 // Delivery Notes for Admin
-Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListing']);
+Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListingApi']);
 Route::view('deliveryNotesListing', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
 Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
 Route::post('addDeliveryNotesApi',[DeliveryNotesController::class,'addDeliveryNotesApi']);
@@ -116,16 +116,18 @@ Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNote
 
 
 // Bills for Admin
-Route::get('billsListingApi',[billsController::class,'billsListing']);
+Route::get('billsListingApi',[billsController::class,'billsListingApi']);
 Route::view('billsListing', 'admin_theme/pages/bills/billsList');
 Route::get('addbills',[billsController::class,'addbills']);
+Route::POST('addbillsApi',[billsController::class,'addbillsApi']);
 Route::get('editbills',[billsController::class,'editbills']);
 
 
 // Credits for Admin
-Route::get('creditsListingApi',[creditsController::class,'creditListing']);
+Route::get('creditsListingApi',[creditsController::class,'creditListingApi']);
 Route::view('creditsListing', 'admin_theme/pages/credits/creditList');
 Route::get('addCredits',[creditsController::class,'addCredits']);
+Route::post('addCreditsApi',[creditsController::class,'addCreditsApi']);
 Route::get('editCredits',[creditsController::class,'editCredits']);
 
 

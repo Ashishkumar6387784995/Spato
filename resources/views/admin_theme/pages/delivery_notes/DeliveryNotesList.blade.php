@@ -149,51 +149,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>LI-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>LI-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>LI-2766</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>LI-2766</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>LI-2766</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td>9.678,00 €</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
-                    </tr>
+                   
                 </table>
 
             </div>
@@ -221,103 +177,68 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        // Execute the code when the document is ready
-        $(document).ready(function() {
-            // Make a GET request using AJAX
-            $.ajax({
-                url: '/api/productListingApi', // Replace with the actual endpoint URL
-                method: 'GET',
-                success: function(data) {
-                    // Handle the successful response
-                    if (data.productList) {
-                        console.log('Data received:', data.productList);
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+  <script>
+  // Execute the code when the document is ready
+  $(document).ready(function() {
+   // Make a GET request using AJAX
+   $.ajax({
+    url: '/api/deliveryNotesListingApi', // Replace with the actual endpoint URL
+    method: 'GET',
+    success: function(data) {
+     // Handle the successful response
+     if (data.delivery_notes) {
+      console.log('Data received:', data.delivery_notes);
+
+      function populateTable(data) {
+       var tableBody = $('#dataTable');
+
+       // Clear existing table rows
+       // tableBody.empty();
+
+       // Iterate through the data and add rows to the table
+       $.each(data, function(index, item) {
+        var row = $('<tr>');
+        row.append('<td>' + 'Offen' + '</td>');
+        row.append('<td>' + item.Lieferschein_Nr + '</td>');
+        row.append('<td>' + item.Ihre_Kundennummer + '</td>');
+        row.append('<td>' + item.Lieferdatum + '</td>');
+        // row.append('<td>' + item.Kategorie + '</td>');
+        row.append('<td>' + item.gesamt_netto + '</td>');
+        row.append('<td><a href="/api/editOffer/' + item.id +
+         '" class="edit" id="editProductBtn">bearbeiten</a></td>');
+         row.append('<td><a href="/api/editOffer/' + item.id +
+         '" class="edit" id="editProductBtn">berechnen</a></td>');
+
+        // Add more columns as needed
+
+        // Append the row to the table body
+        tableBody.append(row);
+       });
+      }
+
+      // Call the function to populate the table with the initial data
+      populateTable(data.delivery_notes);
+     } else {
+      console.log('Data received:', data.errors);
+     }
+    },
 
 
-                        function populateTable(data) {
-                            var tableBody = $('#dataTable');
-
-                            // Clear existing table rows
-                            // tableBody.empty();
-
-                            // Iterate through the data and add rows to the table
-                            $.each(data, function(index, item) {
-                                var row = $('<tr>');
-                                row.append('<td>' + item.Hersteller + '</td>');
-                                row.append('<td>' + item.Herst_Nr + '</td>');
-                                row.append('<td>' + item.id + '</td>');
-                                row.append('<td>' + item.Artikelname + '</td>');
-                                row.append('<td>' + item.Kategorie + '</td>');
-                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
-                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
-
-
-                                // Add more columns as needed
-
-                                // Append the row to the table body
-                                tableBody.append(row);
-                            });
-                        }
-
-                        // Call the function to populate the table with the initial data
-                        populateTable(data.productList);
-
-
-
-                    } else {
-                        console.log('Data received:', data.errors);
-                    }
-                }, // Missing comma here
-
-                error: function(error) {
-                    // Handle errors
-                    console.error('Error:', error);
-                }
-            });
-
-
-
-
-        });
-
-
-        function deleteOperation(productId) {
-            // Make a DELETE request using AJAX
-            console.log(productId);
-            $.ajax({
-                url: '/api/deleteProduct/' + productId,
-                method: 'get',
-                success: function(data) {
-
-                    if (data.success) {
+    error: function(error) {
+     // Handle errors
+     console.error('Error:', error);
+    }
+   });
 
 
 
-                        $('#success_msg').text(data.success);
 
-                        // Delay the page reload for 2 seconds (2000 milliseconds)
-                            setTimeout(function() {
-                                location.reload(true);
-                            }, 1000);
-
-                        
+  });
+  </script>
 
 
-                        console.log('Product deleted successfully:', data.success);
-                        // Perform any additional actions after deletion
-                    } else {
-                        console.log('Product not deleted successfully:', data.message);
-                    }
-
-                },
-                error: function(error) {
-                    console.error('Error deleting product:', error.responseJSON.error);
-                }
-            });
-        }
-    </script> -->
 
 
 
@@ -327,7 +248,7 @@
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
-    <!-- <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> -->
+    <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> 
 
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>

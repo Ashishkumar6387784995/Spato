@@ -126,7 +126,7 @@
 
      <div class="" style="padding-bottom:10px; border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
       <h2>Admin Dashboard</h2>
-      <p>Monday, January 12, 2024</p>
+      <p>{{ now()->format('l, F j, Y') }}</p>
 
       <button class="navbar-toggler" type="button" data-toggle="offcanvas">
        <span class="mdi mdi-menu"></span>

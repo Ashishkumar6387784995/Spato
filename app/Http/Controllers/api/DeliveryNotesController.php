@@ -9,10 +9,20 @@ use Illuminate\Support\Facades\Validator;
 
 class DeliveryNotesController extends Controller
 {
-    public function DeliveryNotesListing(){
+
+    public function DeliveryNotesListingApi()
+    {
+        $delivery_notes = Delivery_notes::orderBy('created_at', 'desc')->get();
+
+        if ($delivery_notes){
+            return response()->json(['delivery_notes'=>$delivery_notes]);
+        }
      
-        return view('admin_theme/pages/delivery_notes/DeliveryNotesList');
+            return response()->json(['errors'=>"Offer Not Found"]);
     }
+
+
+  
 
 
     public function editDeliveryNotes(){
@@ -25,7 +35,7 @@ class DeliveryNotesController extends Controller
         
          // $lastOffer = "AB-123456";
         //  $lastOffer = Delivery_notes::latest()->first();
-        //  $lastOffer= $lastOffer->Auftrags_Nr;
+        //  $lastOffer= $lastOffer->Lieferschein_Nr;
         // Assuming $lastOffer is 'AN-12345'
         $lastOffer = 'Li-12345';
 
