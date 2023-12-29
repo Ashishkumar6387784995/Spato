@@ -193,6 +193,7 @@ Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/custom
 //  Account Setting for B2C users
 
   Route::view('accountSetting', 'frontEnd/pages/setting');
+  Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 
 
 
