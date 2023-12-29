@@ -530,7 +530,18 @@
         if (response.success) {
           console.log(response.token);
           localStorage.setItem('authToken', response.token);
-          window.location.href = 'http://127.0.0.1:8000/api/home';
+          console.log(response.role);
+          if(response.role == "Normal"){
+            window.location.href = 'http://127.0.0.1:8000/api/home';
+          }
+          if (response.role === "B2B" || response.role === "Admin") {
+            window.location.href = 'http://127.0.0.1:8000/api/admin_dashboard';
+          }
+
+          else{
+            window.location.href = 'http://127.0.0.1:8000/api/home';
+          }
+          
           fetchUserProfile();
         } else {
           $('#error-message').text(response.error);

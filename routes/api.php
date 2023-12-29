@@ -56,7 +56,7 @@ Route::post('logout',[loginController::class,'logout']);
 
 
 Route::get('/home', [webController::class, 'home']);
-Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
+
 
 
 // Route::get('login',[authController::class,'loginform']);
@@ -192,6 +192,7 @@ Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/custom
 
 //  Account Setting for B2C users
 
+  Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
   Route::view('accountSetting', 'frontEnd/pages/setting');
   Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 
