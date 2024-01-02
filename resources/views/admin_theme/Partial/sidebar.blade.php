@@ -1,13 +1,11 @@
-
-
 <style>
-  .img img{
-    width:200px;
-    margin:auto;
-    justify-content:center;
-    display:block;
-    padding-bottom:2rem;
-    border-bottom:2px solid #44e1d5;
+  .img img {
+    width: 200px;
+    margin: auto;
+    justify-content: center;
+    display: block;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #44e1d5;
   }
 </style>
 
@@ -27,21 +25,21 @@
       </a>
     </li> -->
 
-    
-    
-      <span class="img"><a href="{{url('/api/admin_dashboard')}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></a></span>
-  
+
+
+    <span class="img"><a href="{{url('/api/admin_dashboard')}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></a></span>
+
 
     <li class="nav-item">
-    
+
       <a class="nav-link" href="{{ url('/api/offerListing') }}">
         <span class="menu-title">Angebote</span>
       </a>
 
     </li>
 
- 
-   
+
+
     <li class="nav-item">
       <a class="nav-link" href="{{ url('/api/assignmentListing') }}">
         <span class="menu-title">Aufträge</span>
@@ -63,23 +61,41 @@
       </a>
     </li>
     <li class="nav-item">
-    <div class="border-bottom ">
-      <a class="nav-link" href="{{ url('/api/claimsListing') }}">
-        <span class="menu-title">Claim Manager</span>
-      </a>
+      <div class="border-bottom ">
+        <a class="nav-link" href="{{ url('/api/claimsListing') }}">
+          <span class="menu-title">Claim Manager</span>
+        </a>
       </div>
     </li>
+
+  
+    @if(auth()->user()->role === 'B2B')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
+        <span class="menu-title">Kundenadress Buch</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <div class="border-bottom ">
+        <a class="nav-link" href="{{ url('/api/claimsListing1') }}">
+          <span class="menu-title">Einstellungen</span>
+        </a>
+      </div>
+    </li>
+
+    @else
+
     <li class="nav-item">
       <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
         <span class="menu-title">Kontakte</span>
       </a>
     </li>
     <li class="nav-item">
-    <div class="border-bottom ">
-      <a class="nav-link" href="{{ url('/api/SuppliersListing') }}">
-        <span class="menu-title">Lieferanten</span>
-      </a>
-</div>
+      <div class="border-bottom ">
+        <a class="nav-link" href="{{ url('/api/SuppliersListing') }}">
+          <span class="menu-title">Lieferanten</span>
+        </a>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
@@ -92,11 +108,11 @@
       </a>
     </li>
     <li class="nav-item">
-    <div class="border-bottom">
-      <a class="nav-link" href="{{url('/api/connection')}}">
-        <span class="menu-title">B2C B2B Connection</span>
-      </a>
-</div>
+      <div class="border-bottom">
+        <a class="nav-link" href="{{url('/api/connection')}}">
+          <span class="menu-title">B2C B2B Connection</span>
+        </a>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{url('/api/newsLetter')}}">
@@ -122,5 +138,8 @@
         <span class="menu-title">Einstellungen</span>
       </a>
     </li>
+
+
+    @endif
   </ul>
 </nav>

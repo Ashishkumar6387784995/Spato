@@ -116,7 +116,7 @@
 
         @include('admin_theme/Partial/sidebar')
 
-
+        <!-- {{auth()->user()->role}} -->
 
         <!-- partial -->
         <div class="main-panel">
