@@ -47,7 +47,7 @@
     <p class="footer-desc phone">
      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
      ad recusandae ratione? Maiores, architecto aliquam veniam ducimus
-     esse cum quaerat.
+     esse cum quaerat
     </p>
    </div>
   </div>
