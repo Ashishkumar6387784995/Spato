@@ -679,6 +679,8 @@
   incrementBtn.addEventListener('click', () => {
    counter++;
    counterValue.innerHTML = counter;
+
+
   });
 
   // To decrement the value of counter
