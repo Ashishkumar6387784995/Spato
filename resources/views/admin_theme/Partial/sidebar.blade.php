@@ -68,7 +68,7 @@
       </div>
     </li>
 
-  
+ 
     @if(auth()->user()->role === 'B2B')
     <li class="nav-item">
       <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
