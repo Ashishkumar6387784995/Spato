@@ -120,12 +120,11 @@
 
         @include('admin_theme/Partial/sidebar')
 
-        <!-- {{auth()->user()->role}} -->
 
         <!-- partial -->
 
 
-        <!-- @if(auth()->user()->role === 'Admin')
+
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
@@ -179,7 +178,7 @@
             </div>
         </div>
 
-        @else() -->
+    
 
 
             <div class="row mb-3">
@@ -210,7 +209,7 @@
                             <div class="col"></div>
                             <div class="col-10">Top 5 Produkte sales</div>
                         </div>
-        <!-- @endif() -->
+
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
