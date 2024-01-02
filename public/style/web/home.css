@@ -130,7 +130,7 @@ i {
     border: none !important;
 }
 .modal-header .signup-brand-logo {
-    width: 50%;
+    width: 30%;
     margin: auto;
     display: block;
 }
@@ -302,6 +302,7 @@ footer {
     color: var(--black);
 }
 footer .footer-container {
+    padding-top: 10rem;
     background-color: var(--white);
     width: 85%;
     height: 400px;
@@ -373,6 +374,7 @@ footer .footer-container .space-for-phone {
         clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%);
         background-size: contain;
         color: var(--white);
+        padding-top: 3rem;
     }
     footer .footer-container .footer-desc a {
         margin-left: 1.5rem;
