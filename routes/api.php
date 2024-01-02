@@ -195,6 +195,7 @@ Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/custom
   Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
   Route::view('accountSetting', 'frontEnd/pages/setting');
   Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
+  Route::view('addToCart', 'frontEnd/pages/addToCart');
 
 
 
