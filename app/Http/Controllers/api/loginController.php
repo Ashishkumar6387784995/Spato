@@ -107,7 +107,7 @@ class loginController extends Controller
             $user->remember_token = $customToken;
             $user->save();
 
-            return response()->json(['success' => 'Login Successfull', 'token' => $customToken]);
+            return response()->json(['success' => 'Login Successfull', 'token' => $customToken, 'role'=> auth()->user()->role]);
         } else {
             return response()->json(['error' => 'User Credential Mis Matched']);
         }

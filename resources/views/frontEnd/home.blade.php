@@ -37,11 +37,11 @@
 
    
     
-   @if(auth()->check())
+   <!-- @if(auth()->check())
 
 {{auth()->user()->id}}
 
-@endif
+@endif -->
 
 
   <div class="bg-image myDiv" id="hero" style="clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 100%);">
@@ -158,11 +158,11 @@
         <div class="carousel-item active">
           <div class="cards-wrapper">
             <div class="card">
-            <img
+           <a href="{{url('api/ProductdetailPage')}}"> <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
@@ -177,11 +177,11 @@
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card">
-            <img
+            <a href="{{url('api/ProductdetailPage')}}">  <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
@@ -196,11 +196,11 @@
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card">
-            <img
+            <a href="{{url('api/ProductdetailPage')}}">  <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
@@ -359,11 +359,11 @@
         <div class="carousel-item active">
           <div class="cards-wrapper">
             <div class="card">
-            <img
+            <a href="{{url('api/ProductdetailPage')}}">  <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
@@ -378,11 +378,11 @@
                 <a href="#" class="btn">IN DEN WARENKORB</a>
             </div>
             <div class="card ">
-            <img
+            <a href="{{url('api/ProductdetailPage')}}"> <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
@@ -420,11 +420,11 @@
         <div class="carousel-item">
           <div class="cards-wrapper">
             <div class="card">
-            <img
+            <a href="{{url('api/ProductdetailPage')}}">   <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
@@ -440,11 +440,11 @@
             </div>
             <div class="card">
             
-              <img
+            <a href="{{url('api/ProductdetailPage')}}">   <img
                   src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
                   class="card-img-top"
                   alt="..."
-                />
+                /></a>
                 <div class="card-body">
                   <h5 class="card-title">Saugrobroter</h5>
                   <p class="card-text">
