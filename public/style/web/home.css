@@ -356,6 +356,57 @@ footer .footer-container .space-for-phone {
         padding: 0;
         border-bottom: 5px solid var(--blue);
     }
+    .bg-image .myImage {
+        z-index: -1;
+    }
+    .bg-image .product {
+        display: block;
+        position: absolute;
+        width: 100px;
+        top: 20%;
+        left: 9%;
+    }
+    .bg-image .exclusive {
+        display: block;
+        position: absolute;
+        width: 100px;
+        left: 72%;
+        top: 10%;
+    }
+    .bg-image .hero-heading-container {
+        /* padding-top: 10rem; */
+        /* line-height: 10px; */
+        display: block;
+        position: absolute;
+        top: -5%;
+        left: 40%;
+    }
+
+    .bg-image .hero-heading-container h1 {
+        font-size: 15px;
+        font-weight: 800;
+        color: #273340;
+        padding: 0;
+        margin: 0;
+    }
+    .bg-image .hero-heading-container p {
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+        font-weight: 600;
+        color: #444f59;
+    }
+
+    .dropdown-menu {
+        width: 300px;
+        z-index: 1000;
+    }
+
+    .dropdown-menu .dropdown-row {
+        display: block;
+        z-index: 1000;
+    }
+
     footer .footer-container .useless {
         display: none;
     }
@@ -370,7 +421,7 @@ footer .footer-container .space-for-phone {
     }
     footer .footer-container {
         width: 97%;
-        height: 720px;
+        height: 800px;
         clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%);
         background-size: contain;
         color: var(--white);
@@ -381,7 +432,8 @@ footer .footer-container .space-for-phone {
     }
     footer .footer-container .footer-desc .footer-brand {
         display: block;
-        margin-top: 1rem;
+        margin-top: 3rem;
+        width: 150px;
     }
     footer .footer-container .phone {
         text-align: center;

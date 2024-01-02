@@ -67,7 +67,7 @@
       </a>
       <ul class="dropdown-menu pools-dropdown">
        <li>
-        <div class="row">
+        <div class="row dropdown-row">
          <div class="col">
           <h6 class="ml-3 ">EPS Pools</h6>
           <a class="dropdown-item" href="#">EPS stone P40</a>
