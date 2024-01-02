@@ -174,11 +174,11 @@
                    <p>Ihre Ust. ID</p> <br>
                     </div>
                     <div class="col-md-2" >
-                    <p><a href="#">CL-12345</a></p><br>
-                    <p><a href="#">15.01.2024</a></p><br>
-                    <p><a href="#">Mrs. Perfect</a></p><br>
-                    <p><a href="#">123456</a></p><br>
-                    <p><a href="#">DE 123456789</a></p><br>
+                    <p><input type="text" name="Claim_Nr" id=""></p><br>
+                    <p><input type="text" name="Claimdatum" id=""></p><br>
+                    <p><input type="text" name="Referenz" id=""></p><br>
+                    <p><input type="text" name="Ihre_Kundennummer" id=""></p><br>
+                    <p><input type="text" name="Ihre_Ust_ID" id=""></p><br>
                     </div>
                 </div>
 
