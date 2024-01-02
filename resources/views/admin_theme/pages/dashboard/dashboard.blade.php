@@ -61,7 +61,8 @@
         .close {
             color: #54606c;
         }
-        .btn{
+
+        .btn {
             /* background-color: #54606c; */
             border: 1px solid #54606c;
             color: #54606c;
@@ -69,20 +70,23 @@
             text-decoration: none;
             border-radius: 5px;
         }
-.form-check-input[type="radio"] {
-    margin-left: 2rem;
-}
 
-.add-products-field input{
-    /* height:5px; */
-    padding:5px;
-}
-.border{
-    border-right: 1px solid #44e1d5 !important;
-}
-.row .col .row{
-    padding:5px 0px;
-}
+        .form-check-input[type="radio"] {
+            margin-left: 2rem;
+        }
+
+        .add-products-field input {
+            /* height:5px; */
+            padding: 5px;
+        }
+
+        .border {
+            border-right: 1px solid #44e1d5 !important;
+        }
+
+        .row .col .row {
+            padding: 5px 0px;
+        }
     </style>
 </head>
 
@@ -108,7 +112,7 @@
     </div>
 
 
-    
+
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
@@ -119,6 +123,9 @@
         <!-- {{auth()->user()->role}} -->
 
         <!-- partial -->
+
+
+        @if(auth()->user()->role === 'Admin')
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
@@ -126,51 +133,82 @@
                     <p>Monday, January 12, 2024</p>
                 </div>
                 <div class="row pt-3">
-                  <div class="col-6">
-                  <div class="row mb-3">
-                   <div class="col" style="font-weight:600; color:#000; ">12</div>
-                   <div class="col-10">Neue Mails</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"  style="font-weight:600; color:#000; ">2</div>
-                   <div class="col-10">Neue Kunden</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"></div>
-                   <div class="col-10">Neue Lieferanten</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"  style="font-weight:600; color:#000; ">35</div>
-                   <div class="col-10">Neue Aufträge</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"  style="font-weight:600; color:#000; ">3</div>
-                   <div class="col-10">Neue Claim`s</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"  style="font-weight:600; color:#000; ">1</div>
-                   <div class="col-10">Neue B2C B2B Connection Anfragen</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"></div>
-                   <div class="col-10">Top 10 Produkte klicks</div>
-                  </div>
-                  <div class="row mb-3">
-                   <div class="col"></div>
-                   <div class="col-10">Top 5 Produkte sales</div>
-                  </div>
+                    <div class="col-6">
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">12</div>
+                            <div class="col-10">Neue Mails</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">2</div>
+                            <div class="col-10">Neue Kunden</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-10">Neue Lieferanten</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">35</div>
+                            <div class="col-10">Neue Aufträge</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">3</div>
+                            <div class="col-10">Neue Claim`s</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">1</div>
+                            <div class="col-10">Neue B2C B2B Connection Anfragen</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-10">Top 10 Produkte klicks</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-10">Top 5 Produkte sales</div>
+                        </div>
 
 
-                  </div>
-                  <div class="col-6">
-                  <div id="chart_div" style="width: 485px; height: 400px; border-radius:5px;"></div>
-                  </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="chart_div" style="width: 485px; height: 400px; border-radius:5px;"></div>
+                    </div>
                 </div>
-                
-              
+
+
 
             </div>
         </div>
+
+        @else()
+            <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">2</div>
+                            <div class="col-10">Neue Kunden</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-10">Neue Lieferanten</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">35</div>
+                            <div class="col-10">Neue Aufträge</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">3</div>
+                            <div class="col-10">Neue Claim`s</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">1</div>
+                            <div class="col-10">Neue B2C B2B Connection Anfragen</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-10">Top 10 Produkte klicks</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col"></div>
+                            <div class="col-10">Top 5 Produkte sales</div>
+                        </div>
+        @endif()
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
@@ -205,36 +243,42 @@
 
 
     <script type="text/javascript">
-     google.charts.load("current", {packages:["corechart"]});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ['Age', 'Weight'],
-         [ 8,      12],
-         [ 4,      5.5],
-         [ 11,     14],
-         [ 4,      5],
-         [ 3,      3.5],
-         [ 6.5,    7]
-       ]);
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
 
-       var options = {
-         title: 'Age vs. Weight comparison',
-         legend: 'none',
-         crosshair: { trigger: 'both', orientation: 'both' },
-         trendlines: {
-           0: {
-             type: 'polynomial',
-             degree: 3,
-             visibleInLegend: true,
-           }
-         }
-       };
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Age', 'Weight'],
+                [8, 12],
+                [4, 5.5],
+                [11, 14],
+                [4, 5],
+                [3, 3.5],
+                [6.5, 7]
+            ]);
 
-       var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
-       chart.draw(data, options);
-     }
-   </script>
+            var options = {
+                title: 'Age vs. Weight comparison',
+                legend: 'none',
+                crosshair: {
+                    trigger: 'both',
+                    orientation: 'both'
+                },
+                trendlines: {
+                    0: {
+                        type: 'polynomial',
+                        degree: 3,
+                        visibleInLegend: true,
+                    }
+                }
+            };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </body>
 
 </html>

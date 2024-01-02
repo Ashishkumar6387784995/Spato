@@ -525,6 +525,12 @@
         console.log(response.token);
         localStorage.setItem('authToken', response.token);
 
+        console.log(response.role);
+        if (response.role === 'B2B' || response.role === 'Admin') {
+          window.location.href = 'http://127.0.0.1:8000/api/admin_dashboard';
+        } else {
+          window.location.href = 'http://127.0.0.1:8000/api/home';
+        }
       
 
         fetchUserProfile();
