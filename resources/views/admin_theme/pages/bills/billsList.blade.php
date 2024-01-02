@@ -94,7 +94,7 @@
   <div class="container-scroller">
    <div class="row p-0 m-0 proBanner" id="proBanner">
     <div class="col-md-12 p-0 m-0">
-    
+
     </div>
    </div>
   </div>
@@ -124,7 +124,7 @@
 
      <div class="row pt-3">
       <div class="col-md-4 stretch-card grid-margin">
-       <a href="{{url('/api/addbills')}}" class="btn">+ neues Angebot</a>
+       <a href="{{url('/api/addbills')}}" class="btn">+ neue Rechnung</a>
       </div>
       <div class="col-md-4 stretch-card grid-margin">
        <a href="#" class="btn">Filter</a>
@@ -133,7 +133,7 @@
      <div class="row pt-3">
 
       <div class="col-md-4 stretch-card grid-margin">
-       Alle Angebote
+       Alle Rechnungen
       </div>
      </div>
      <div class="row pt-3 container">
