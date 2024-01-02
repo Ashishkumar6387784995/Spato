@@ -325,6 +325,25 @@
                   <span id="Einkaufsrabatt_err" style="color:red"></span>
                 </div>
               </div>
+
+
+
+              <div class="row mb-2">
+                <div class="col-4">Price for B2C user</div>
+                <div class="col-8"><input type="text" class="form-control" id="b2c" name="b2c"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Price for B2B user</div>
+                <div class="col-8"><input type="text" class="form-control" id="b2b" name="b2b"></div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-4">Price for Guest user</div>
+                <div class="col-8"><input type="text" class="form-control" id="guest" name="guest"></div>
+              </div>
+
+
+
+
             </div>
 
 
@@ -455,6 +474,8 @@
               </div>
             </div>
           </div>
+
+
         </form>
 
 
