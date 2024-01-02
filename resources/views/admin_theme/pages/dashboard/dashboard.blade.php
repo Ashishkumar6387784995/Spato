@@ -238,12 +238,6 @@
                 <div class="top-products">
                     <p>Top 5 Produkte sales</p>
                     <div class="row">
-                    <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
-                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
-                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
-                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
-                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
-                        
                     </div>
                 </div>
             </div>
