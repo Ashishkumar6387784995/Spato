@@ -120,53 +120,11 @@
 
         @include('admin_theme/Partial/sidebar')
 
+        <!-- {{auth()->user()->role}} -->
 
         <!-- partial -->
 
 
-<<<<<<< HEAD
-
-   <div class="main-panel">
-    <div class="content-wrapper">
-     <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
-      <h2>Admin Dashboard</h2>
-      <p>Monday, January 12, 2024</p>
-     </div>
-     <div class="row pt-3">
-      <div class="col-6">
-       <div class="row mb-3">
-        <div class="col" style="font-weight:600; color:#000; ">12</div>
-        <div class="col-10">Neue Mails</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col" style="font-weight:600; color:#000; ">2</div>
-        <div class="col-10">Neue Kunden</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col"></div>
-        <div class="col-10">Neue Lieferanten</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col" style="font-weight:600; color:#000; ">35</div>
-        <div class="col-10">Neue Aufträge</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col" style="font-weight:600; color:#000; ">3</div>
-        <div class="col-10">Neue Claim`s</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col" style="font-weight:600; color:#000; ">1</div>
-        <div class="col-10">Neue B2C B2B Connection Anfragen</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col"></div>
-        <div class="col-10">Top 10 Produkte klicks</div>
-       </div>
-       <div class="row mb-3">
-        <div class="col"></div>
-        <div class="col-10">Top 5 Produkte sales</div>
-       </div>
-=======
         @if(auth()->user()->role === 'Admin')
         <div class="main-panel">
             <div class="content-wrapper">
@@ -208,7 +166,6 @@
                             <div class="col"></div>
                             <div class="col-10">Top 5 Produkte sales</div>
                         </div>
->>>>>>> a8311fc6814a7159f8e12907f164d3f57ed2e0e9
 
 
                     </div>
@@ -219,47 +176,6 @@
 
 
 
-<<<<<<< HEAD
-    </div>
-   </div>
-
-
-
-
-   <div class="row mb-3">
-    <div class="col" style="font-weight:600; color:#000; ">2</div>
-    <div class="col-10">Neue Kunden</div>
-   </div>
-   <div class="row mb-3">
-    <div class="col"></div>
-    <div class="col-10">Neue Lieferanten</div>
-   </div>
-   <div class="row mb-3">
-    <div class="col" style="font-weight:600; color:#000; ">35</div>
-    <div class="col-10">Neue Aufträge</div>
-   </div>
-   <div class="row mb-3">
-    <div class="col" style="font-weight:600; color:#000; ">3</div>
-    <div class="col-10">Neue Claim`s</div>
-   </div>
-   <div class="row mb-3">
-    <div class="col" style="font-weight:600; color:#000; ">1</div>
-    <div class="col-10">Neue B2C B2B Connection Anfragen</div>
-   </div>
-   <div class="row mb-3">
-    <div class="col"></div>
-    <div class="col-10">Top 10 Produkte klicks</div>
-   </div>
-   <div class="row mb-3">
-    <div class="col"></div>
-    <div class="col-10">Top 5 Produkte sales</div>
-   </div>
-
-  </div>
-  <!-- content-wrapper ends -->
-  <!-- partial:partials/_footer.html -->
-  <!-- <footer class="footer">
-=======
             </div>
         </div>
 
@@ -330,7 +246,6 @@
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
     <!-- <footer class="footer">
->>>>>>> a8311fc6814a7159f8e12907f164d3f57ed2e0e9
         <div class="container-fluid d-flex justify-content-between">
             <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
                 bootstrapdash.com 2021</span>
