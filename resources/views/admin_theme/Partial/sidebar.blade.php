@@ -69,7 +69,7 @@
     </li>
 
   
-
+    @if(auth()->user()->role === 'B2B')
     <li class="nav-item">
       <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
         <span class="menu-title">Kundenadress Buch</span>
@@ -83,7 +83,7 @@
       </div>
     </li>
 
-
+    @else
 
     <li class="nav-item">
       <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
@@ -140,6 +140,6 @@
     </li>
 
 
-
+    @endif
   </ul>
 </nav>
