@@ -182,10 +182,36 @@ class loginController extends Controller
   
 
 
-    function logout()
+    public function logout()
     {
         Auth::logout();
 
         return response()->json(['message' => 'Successfully logged out']);  
+    }
+
+    public function userDetails(Request $request){
+        $authorizationHeader = $request->header('Authorization');
+        $token = str_replace('Bearer ', '', $authorizationHeader);
+
+
+        $user = User::where('remember_token', $token)->first();
+        // $role= $user->role;
+        // dd($user);
+
+        
+
+        if ($user) {
+            // User details found
+            return response()->json(['user' => $user]);
+        } else {
+            // Token not found or user not associated with the token
+            return response()->json(['error' => 'Invalid token']);
+        }
+
+
+
+        // Use the $token as needed
+
+        return response()->json(['success' => $token]);
     }
 }

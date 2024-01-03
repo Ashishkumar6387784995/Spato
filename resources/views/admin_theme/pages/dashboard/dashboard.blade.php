@@ -87,6 +87,10 @@
         .row .col .row {
             padding: 5px 0px;
         }
+
+        .hide{
+            display: none;
+        }
     </style>
 </head>
 
@@ -120,13 +124,15 @@
 
         @include('admin_theme/Partial/sidebar')
 
-        <!-- {{auth()->user()->role}} -->
+
 
         <!-- partial -->
 
 
-        @if(auth()->user()->role === 'Admin')
-        <div class="main-panel">
+
+    
+
+        <div class="main-panel admin" id="admin">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
@@ -179,8 +185,8 @@
             </div>
         </div>
 
-        @else()
-        <div class="main-panel">
+
+        <div class="main-panel B2B" id="b2b">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
@@ -208,7 +214,7 @@
                             <div class="col" style="font-weight:600; color:#000; ">2</div>
                             <div class="col-10">Top Special Angebote</div>
                         </div>
-                       
+
 
 
                     </div>
@@ -232,8 +238,8 @@
                         <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
                         <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
                         <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
-                        
-                        </div>
+
+                    </div>
                 </div>
                 <div class="top-products">
                     <p>Top 5 Produkte sales</p>
@@ -241,11 +247,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-        @endif()
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <!-- <footer class="footer">
+
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <!-- <footer class="footer">
         <div class="container-fluid d-flex justify-content-between">
             <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
                 bootstrapdash.com 2021</span>
@@ -253,9 +258,9 @@
                     admin template</a> from Bootstrapdash.com</span>
         </div>
     </footer> -->
-    <!-- partial -->
-    </div>
-    <!-- main-panel ends -->
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
     </div>
@@ -312,6 +317,48 @@
             chart.draw(data, options);
         }
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve the authentication token from local storage
+            var storedToken = localStorage.getItem('authToken');
+
+            // Check if the token is present
+            if (storedToken) {
+                console.log('Token found:', storedToken);
+
+                // Make an AJAX request to obtain the user's role
+                // Replace the URL with the actual endpoint you want to use
+                // Adjust headers or other parameters as needed
+                $.ajax({
+                    url: '/api/userDetails', // Replace with your actual API endpoint
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + storedToken,
+                        // Add other headers as needed
+                    },
+                    success: function(response) {
+                        // Handle the response, which may contain the user's role
+                        console.log('User Details:', response.user['role']);
+
+                        if(response.user['role'] == 'Admin'){
+                            document.querySelector('.B2B').style.display = 'none';
+                            document.querySelector('#B2B'). 
+                        }
+                        else{
+                            document.querySelector('.admin').style.display = 'none';
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error fetching user role:', error);
+                    }
+                });
+            } else {
+                console.log('Token not found');
+            }
+        });
+    </script>
+
 </body>
 
 </html>

@@ -53,6 +53,10 @@ Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']
 Route::post('password/reset',[loginController::class,'passwordReset']);
 Route::post('logout',[loginController::class,'logout']);
 
+Route::get('userDetails',[loginController::class,'userDetails']);
+
+
+
 
 
 Route::get('/home', [webController::class, 'home']);

@@ -536,9 +536,9 @@
           // Redirect to the new URL
           window.location.href = newUrl;
 
-          // window.location.href = 'http://127.0.0.1:8000/api/admin_dashboard';
+          window.location.href = '/api/admin_dashboard';
         } else {
-          window.location.href = 'http://127.0.0.1:8000/api/home';
+          window.location.href = '/api/home';
         }
 
 
