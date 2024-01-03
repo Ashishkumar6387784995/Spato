@@ -78,14 +78,98 @@
    padding: 0;
   }
 
+  .input-field {
+   font-weight: 700;
+  }
+
+  .total {
+   font-size: 20px;
+  }
+
+  .item-img {
+   width: 15%;
+  }
+
+  .item-img .img {
+   width: 100%;
+   height: 100px;
+   background: #fff;
+  }
+
+  .product-desc {
+   width: 35%;
+  }
+
+  .product-desc p {
+   /* margin: 0px 5px; */
+  }
+
+  table thead tr th {
+   text-align: center;
+  }
+
+  table tbody tr {
+   /* margin: 20px 0px !important; */
+  }
+
+
+  .counter {
+   width: 50px;
+   display: flex;
+   height: 50px;
+   justify-content: center;
+   background-color: #F1F1F1;
+   border-radius: 5px;
+  }
+
+  .counter-btn {
+   background: transparent;
+   border: none;
+   color: #606060;
+  }
+
+  #counter-value {
+   /* background-color: #F1F1F1; */
+   padding: 15px 10px;
+   text-align: center;
+  }
+
+  .counter i {
+   font-size: 10px;
+  }
+
+
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .cart-container {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
    }
 
+   .content {
+    display: block !important;
+   }
+
+   .form {
+    width: 100% !important;
+   }
+
+   .address {
+    width: 100% !important;
+   }
+
    /* footer .footer-container {
     width: 96%;
   } */
+
+   td {
+    display: block;
+
+   }
+
+   th {
+    display: none;
+   }
+
+
   }
   </style>
  </head>
@@ -102,44 +186,85 @@
      </ol>
     </nav>
 
+    <h1 class="text-start" style="font-size: 30px; font-weight: 600; color: black;">Shopping Cart
+    </h1>
 
-
-
-
-    <h1 class="text-start" style="font-size: 25px; font-weight: 600; color: black;">Contact Us</h1>
-    <p class="details mb-5">
-     We love hearing from you, our Shop customers.
-     <br />
-     Please contact us and we will make sure to get back to you as soon as we possibly can.
-    </p>
     <div class="row content">
      <div class="col-8 form">
-      <div class="row g-3 mb-5">
-       <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Your Name <span style="color:red;">*</span></label>
-        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-       </div>
-       <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Your Email <span style="color:red;">*</span></label>
-        <input type="text" class="form-control" placeholder="Your Email" aria-label="Your Email">
-       </div>
-      </div>
-      <div class="row g-3 mb-5">
-       <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Your Phone Number <span
-          style="color:red;">*</span></label>
-        <input type="text" class="form-control" placeholder="Your Phone" aria-label="Your Phone">
-       </div>
-       <div class="col">
-       </div>
-      </div>
-      <div class="row g-3">
-       <div class="col">
-        <label for="exampleFormControlTextarea1" class="form-label">What's on your mind? <span
-          style="color:red;">*</span></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
-       </div>
-      </div>
+
+      <table class="table">
+       <thead>
+        <tr>
+         <th scope="col">Item</th>
+         <th scope="col"></th>
+         <th scope="col">Price</th>
+         <th scope="col">Qty</th>
+         <th scope="col">Subtotal</th>
+         <th scope="col"></th>
+        </tr>
+       </thead>
+
+       <tbody>
+
+        <tr class="border-top">
+         <td class="item-img"><img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="img" alt="..." />
+         </td>
+         <td class="product-desc">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vitae suscipit sequi velit sunt iste
+           pariatr error <a href="#">more</a></p>
+         </td>
+         <td><input type="text" class="input-field" name="" id="" value="€4,047.00"
+           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
+         <td>
+          <div class="counter">
+           <div id="counter-value">0</div>
+           <div>
+            <button class="counter-btn" id="increment-btn"><i class="fa-solid fa-angle-up"></i></button><br>
+            <button class="counter-btn" id="decrement-btn"><i class="fa-solid fa-chevron-down"></i></button>
+           </div>
+          </div>
+         </td>
+         <td><input type="text" class="input-field" name="" id="" value="€13,047.00"
+           style="width:80px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
+         <td>
+          <div class="icon">
+           <i class="fa-regular fa-circle-xmark"></i><br>
+           <i class="fa-regular fa-pen-to-square"></i>
+          </div>
+         </td>
+        </tr>
+
+
+
+        <tr class="border-top">
+         <td class="item-img"><img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="img" alt="..." />
+         </td>
+         <td class="product-desc">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vitae suscipit sequi velit sunt iste
+           pariatr error <a href="#">more</a></p>
+         </td>
+         <td><input type="text" class="input-field" name="" id="" value="€4,047.00"
+           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
+         <td>
+          <div class="counter">
+           <div id="counter-value">0</div>
+           <div>
+            <button class="counter-btn" id="increment-btn"><i class="fa-solid fa-angle-up"></i></button><br>
+            <button class="counter-btn" id="decrement-btn"><i class="fa-solid fa-chevron-down"></i></button>
+           </div>
+          </div>
+         </td>
+         <td><input type="text" class="input-field" name="" id="" value="€13,047.00"
+           style="width:80px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
+         <td>
+          <div class="icon">
+           <i class="fa-regular fa-circle-xmark"></i><br>
+           <i class="fa-regular fa-pen-to-square"></i>
+          </div>
+         </td>
+        </tr>
+       </tbody>
+      </table>
 
      </div>
      <div class="col-4  address">
@@ -185,24 +310,27 @@
           </div>
           <hr />
           <div class="details d-flex justify-content-between">
-           <p>Subtotal</p>
-           <p>$13,047.00</p>
+           <p class="input-field">Subtotal</p>
+           <input type="text" class="input-field" name="" id="" value="€13,047.00"
+            style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
           <div class="details d-flex justify-content-between">
-           <p>Shipping </p>
-           <p>$21.00</p>
-
+           <p class="input-field">Shipping </p>
+           <input type="text" class="input-field" name="" id="" value="€21.00"
+            style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
           <div class="details d-flex justify-content-between">
-           <p>Tax</p>
-           <p>$1.91</p>
+           <p class="input-field">Tax</p>
+           <input type="text" class="input-field" name="" id="" value="€1.91"
+            style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
           <div class="details d-flex justify-content-between">
-           <p>Order Total</p>
-           <p>$13,068.00</p>
+           <p class="input-field">Order Total</p>
+           <input type="text" class="input-field total" name="" id="" value="€13,068.00"
+            style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
 
@@ -211,7 +339,7 @@
        </div>
        <div class="row">
         <div class="col">
-         <button type="submit" class="btn mt-5 mb-3">Proceed to Checkout</button>
+         <button type="submit" class="btn mb-3">Proceed to Checkout</button>
         </div>
        </div>
       </div>
@@ -222,6 +350,30 @@
 
 
   @include('frontEnd/partial/footer')
+
+
+  <script>
+  let counter = 0;
+  const counterValue = document.getElementById('counter-value');
+  const incrementBtn = document.getElementById('increment-btn');
+  const decrementBtn = document.getElementById('decrement-btn');
+
+  // To increment the value of counter
+  incrementBtn.addEventListener('click', () => {
+   counter++;
+   counterValue.innerHTML = counter;
+
+
+  });
+
+  // To decrement the value of counter
+  decrementBtn.addEventListener('click', () => {
+   if (counter > 0) {
+    counter--;
+    counterValue.innerHTML = counter;
+   }
+  });
+  </script>
  </body>
 
 </html>
