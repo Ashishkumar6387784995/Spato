@@ -142,6 +142,11 @@
   </li>
 
 
+  <li class="nav-item">
+   <button type="submit" name="logout">Log Out</button>
+   </a>
+  </li>
+
   @endif
  </ul>
 </nav>
