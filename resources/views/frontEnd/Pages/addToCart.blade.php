@@ -101,7 +101,7 @@
   }
 
   .product-desc p {
-   margin: 0px 5px;
+   /* margin: 0px 5px; */
   }
 
   table thead tr th {
@@ -109,7 +109,7 @@
   }
 
   table tbody tr {
-   margin: 20px 0px !important;
+   /* margin: 20px 0px !important; */
   }
 
 
@@ -148,9 +148,28 @@
     display: block !important;
    }
 
+   .form {
+    width: 100% !important;
+   }
+
+   .address {
+    width: 100% !important;
+   }
+
    /* footer .footer-container {
     width: 96%;
   } */
+
+   td {
+    display: block;
+
+   }
+
+   th {
+    display: none;
+   }
+
+
   }
   </style>
  </head>
@@ -167,25 +186,21 @@
      </ol>
     </nav>
 
-
-
-
-
     <h1 class="text-start" style="font-size: 30px; font-weight: 600; color: black;">Shopping Cart
     </h1>
 
     <div class="row content">
      <div class="col-8 form">
 
-      <table>
+      <table class="table">
        <thead>
         <tr>
-         <th>Item</th>
-         <th></th>
-         <th>Price</th>
-         <th>Qty</th>
-         <th>Subtotal</th>
-         <th></th>
+         <th scope="col">Item</th>
+         <th scope="col"></th>
+         <th scope="col">Price</th>
+         <th scope="col">Qty</th>
+         <th scope="col">Subtotal</th>
+         <th scope="col"></th>
         </tr>
        </thead>
 
@@ -199,7 +214,7 @@
            pariatr error <a href="#">more</a></p>
          </td>
          <td><input type="text" class="input-field" name="" id="" value="€4,047.00"
-           style="width:120px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
+           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
          <td>
           <div class="counter">
            <div id="counter-value">0</div>
@@ -210,7 +225,7 @@
           </div>
          </td>
          <td><input type="text" class="input-field" name="" id="" value="€13,047.00"
-           style="width:120px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
+           style="width:80px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
          <td>
           <div class="icon">
            <i class="fa-regular fa-circle-xmark"></i><br>
@@ -229,7 +244,7 @@
            pariatr error <a href="#">more</a></p>
          </td>
          <td><input type="text" class="input-field" name="" id="" value="€4,047.00"
-           style="width:120px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
+           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
          <td>
           <div class="counter">
            <div id="counter-value">0</div>
@@ -240,7 +255,7 @@
           </div>
          </td>
          <td><input type="text" class="input-field" name="" id="" value="€13,047.00"
-           style="width:120px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
+           style="width:80px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
          <td>
           <div class="icon">
            <i class="fa-regular fa-circle-xmark"></i><br>
