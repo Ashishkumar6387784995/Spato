@@ -7,6 +7,24 @@
  padding-bottom: 2rem;
  border-bottom: 2px solid #44e1d5;
 }
+
+.nav-item button {
+ padding: 5px 15px;
+ /* border:none; */
+ border: 1px solid #44e1d5;
+ background: transparent;
+ color: #44e1d5;
+ border-radius: 5px;
+ font-weight: 800;
+ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ transition: 0.5s;
+}
+
+.nav-item button:hover {
+ background-color: #44e1d5;
+ color: #404040;
+ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 </style>
 
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -70,89 +88,85 @@
   </li>
 
 
-<div class="B2B">
-  <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
-    <span class="menu-title">Kundenadress Buch</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/claimsListing1') }}">
-     <span class="menu-title">Einstellungen</span>
+  <div class="B2B">
+   <li class="nav-item">
+    <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
+     <span class="menu-title">Kundenadress Buch</span>
     </a>
-   </div>
-  </li>
-</div>
-
-
-<div class="admin">
-  <li class="nav-item">
-   <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
-    <span class="menu-title">Kontakte</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/SuppliersListing') }}">
-     <span class="menu-title">Lieferanten</span>
-    </a>
-   </div>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
-    <span class="menu-title">Produkte</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" href="{{url('/api/Statistics')}}">
-    <span class="menu-title">Statistik</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <div class="border-bottom">
-    <a class="nav-link" href="{{url('/api/connection')}}">
-     <span class="menu-title">B2C B2B Connection</span>
-    </a>
-   </div>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" href="{{url('/api/newsLetter')}}">
-    <span class="menu-title">Newsletter</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
-    aria-controls="general-pages">
-    <span class="menu-title">Wallet</span>
-   </a>
-   <div class="collapse" id="general-pages">
-    <ul class="nav flex-column sub-menu">
-     <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-     <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-     <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-     <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-     <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-    </ul>
-   </div>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" href="{{url('/api/settings')}}">
-    <span class="menu-title">Einstellungen</span>
-   </a>
-  </li>
+   </li>
+   <li class="nav-item">
+    <div class="border-bottom ">
+     <a class="nav-link" href="{{ url('/api/claimsListing1') }}">
+      <span class="menu-title">Einstellungen</span>
+     </a>
+    </div>
+   </li>
   </div>
 
 
-<<<<<<< HEAD
-=======
-  <li class="nav-item">
+  <div class="admin">
+   <li class="nav-item">
+    <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
+     <span class="menu-title">Kontakte</span>
+    </a>
+   </li>
+   <li class="nav-item">
+    <div class="border-bottom ">
+     <a class="nav-link" href="{{ url('/api/SuppliersListing') }}">
+      <span class="menu-title">Lieferanten</span>
+     </a>
+    </div>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
+     <span class="menu-title">Produkte</span>
+    </a>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link" href="{{url('/api/Statistics')}}">
+     <span class="menu-title">Statistik</span>
+    </a>
+   </li>
+   <li class="nav-item">
+    <div class="border-bottom">
+     <a class="nav-link" href="{{url('/api/connection')}}">
+      <span class="menu-title">B2C B2B Connection</span>
+     </a>
+    </div>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link" href="{{url('/api/newsLetter')}}">
+     <span class="menu-title">Newsletter</span>
+    </a>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
+     aria-controls="general-pages">
+     <span class="menu-title">Wallet</span>
+    </a>
+    <div class="collapse" id="general-pages">
+     <ul class="nav flex-column sub-menu">
+      <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+      <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+      <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+      <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+      <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+     </ul>
+    </div>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link" href="{{url('/api/settings')}}">
+     <span class="menu-title">Einstellungen</span>
+    </a>
+   </li>
+  </div>
+
+
+  <li class="nav-item" style="background-color:transparent;">
    <button type="submit" name="logout">Log Out</button>
    </a>
   </li>
 
-  @endif
->>>>>>> 5774440325cfcca7446b6dfdb11d98a404073ac6
  </ul>
- 
+
 </nav>
