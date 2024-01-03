@@ -88,7 +88,7 @@
    </div>
   </li>
 
-
+<!-- 
   <div class="B2B">
    <li class="nav-item">
     <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
@@ -102,7 +102,7 @@
      </a>
     </div>
    </li>
-  </div>
+  </div> -->
 
 
   <div class="admin">

@@ -86,11 +86,7 @@
 
         .row .col .row {
             padding: 5px 0px;
-        }
-
-        .hide{
-            display: none;
-        }
+        }        
     </style>
 </head>
 
@@ -132,7 +128,7 @@
 
     
 
-        <div class="main-panel admin" id="admin">
+        <div class="main-panel admin">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
@@ -186,7 +182,7 @@
         </div>
 
 
-        <div class="main-panel B2B" id="b2b">
+        <div class="main-panel B2B" >
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
@@ -343,7 +339,7 @@
 
                         if(response.user['role'] == 'Admin'){
                             document.querySelector('.B2B').style.display = 'none';
-                            document.querySelector('#B2B'). 
+
                         }
                         else{
                             document.querySelector('.admin').style.display = 'none';
