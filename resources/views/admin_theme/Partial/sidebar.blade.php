@@ -144,6 +144,15 @@
   </div>
 
 
+<<<<<<< HEAD
+=======
+  <li class="nav-item">
+   <button type="submit" name="logout">Log Out</button>
+   </a>
+  </li>
+
+  @endif
+>>>>>>> 5774440325cfcca7446b6dfdb11d98a404073ac6
  </ul>
  
 </nav>
