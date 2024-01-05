@@ -19,6 +19,7 @@
  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
  transition: 0.5s;
  width: 100%;
+ margin-top: 1rem;
 }
 
 .nav-item button:hover {
