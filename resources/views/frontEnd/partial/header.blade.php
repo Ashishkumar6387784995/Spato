@@ -426,7 +426,7 @@
     console.log("hello");
     // Make a POST request to the logout endpoint using jQuery
     $.ajax({
-      url: 'http://127.0.0.1:8000/api/logout',
+      url: 'http://127.0.0.1:8000/api/logoutApi',
       type: 'POST',
       headers: {
         'Authorization': 'Bearer ' + authToken,

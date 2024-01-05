@@ -88,8 +88,8 @@
    </div>
   </li>
 
-<!-- 
-  <div class="B2B">
+
+  <div id="b2bSidebar">
    <li class="nav-item">
     <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
      <span class="menu-title">Kundenadress Buch</span>
@@ -102,10 +102,10 @@
      </a>
     </div>
    </li>
-  </div> -->
+  </div>
 
 
-  <div class="admin">
+  <div id="adminSidebar">
    <li class="nav-item">
     <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
      <span class="menu-title">Kontakte</span>
@@ -164,10 +164,49 @@
 
 
   <li class="nav-item" style="background-color:transparent;">
-   <button type="submit" name="logout">Log Out</button>
+  <a href="{{url('/api/logout')}}"><button type="submit" name="logout"  id="logoutButton">Log Out</button></a>
    </a>
   </li>
 
  </ul>
 
 </nav>
+
+
+
+
+<script>
+  // public/js/logout.js
+
+  // Function to handle the logout API call
+  function logout() {
+    // Retrieve the token from local storage
+    var authToken = localStorage.getItem('authToken');
+    console.log("hello");
+    // Make a POST request to the logout endpoint using jQuery
+    $.ajax({
+      url: 'http://127.0.0.1:8000/api/logoutApi',
+      type: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + authToken,
+        'Content-Type': 'application/json'
+      },
+      success: function(response) {
+        // Clear the authentication token from local storage
+        localStorage.removeItem('authToken');
+        // Redirect or perform any other necessary actions after logout
+        window.location.href = 'http://127.0.0.1:8000/api/home';
+      },
+      error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+      }
+    });
+  }
+
+  // Attach the logout function to the click event of the logout button
+
+  $('#logoutButton').on('click', function() {
+    logout();
+  });
+</script>

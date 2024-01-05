@@ -18,9 +18,24 @@ class EmailVerification extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+     public $user;
+     public $token;
+    public function __construct($user, $token)
     {
-        //
+        $this->user = $user;
+        $this->token = $token;
+    }
+
+
+    public function build()
+    {
+        return $this->subject('Reset Your Password')
+                    ->view('mail.emailReset')
+                    ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
+                        'as' => 'logo.png',
+                        'mime' => 'image/png',
+                    ]);
     }
 
     /**

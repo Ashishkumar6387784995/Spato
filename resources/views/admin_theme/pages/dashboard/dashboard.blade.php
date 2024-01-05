@@ -86,7 +86,10 @@
 
         .row .col .row {
             padding: 5px 0px;
-        }        
+        }   
+        .hide{
+            display: none;
+        }     
     </style>
 </head>
 
@@ -125,10 +128,7 @@
         <!-- partial -->
 
 
-
-    
-
-        <div class="main-panel admin">
+        <div class="main-panel " id="adminDashboard">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
@@ -182,10 +182,10 @@
         </div>
 
 
-        <div class="main-panel B2B" >
+        <div class="main-panel " id="b2bDashboard">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
-                    <h2>Admin Dashboard</h2>
+                    <h2>Herzlich willkommen Firma Pool Bau Profi</h2>
                     <p>Monday, January 12, 2024</p>
                 </div>
                 <div class="row pt-3">
@@ -337,12 +337,14 @@
                         // Handle the response, which may contain the user's role
                         console.log('User Details:', response.user['role']);
 
-                        if(response.user['role'] == 'Admin'){
-                            document.querySelector('.B2B').style.display = 'none';
+                        if(response.user['role'] === 'Admin'){
+                            document.querySelector('#b2bSidebar').style.display = 'none';
+                            document.querySelector('#b2bDashboard').classList.add('hide');
 
                         }
                         else{
-                            document.querySelector('.admin').style.display = 'none';
+                            document.querySelector('#adminSidebar').style.display = 'none';
+                            document.querySelector('#adminDashboard').classList.add('hide');
                         }
                     },
                     error: function(error) {
