@@ -35,6 +35,11 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
+
   .transform-hover {
    height: 150px;
    object-fit: cover;
@@ -185,7 +190,7 @@
        <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
         <a href="#" class="btn">Auftrag</a>
        </div>
-       <div class="col-md-2 stretch-card grid-margin">
+       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
         <a href="#" class="btn">Lieferschein</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
@@ -800,10 +805,7 @@
   </script>
 
 
-  <!-- Modals -->
-  <!-- Button trigger modal -->
-
-  <!-- Modal -->
+  <!-- auftrag Modal -->
   <div class="modal fade" id="auftrag" tabindex="-1" aria-labelledby="auftragLabel" aria-hidden="true">
    <div class="modal-dialog">
     <div class="modal-content">
@@ -813,6 +815,28 @@
      </div>
      <div class="modal-body">
       ...
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+
+  <!-- lieferschein Modal -->
+  <div class="modal fade" id="lieferschein" tabindex="-1" aria-labelledby="lieferscheinLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <p class="modal-title fs-5" id="lieferscheinLabel">Write note</p>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="form-floating">
+       <textarea class="form-control" placeholder="Write note" id="floatingTextarea"></textarea>
+      </div>
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
