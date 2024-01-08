@@ -17,8 +17,13 @@ use App\Mail\sendResetLinkEmail;
 
 
 
+
+
 class loginController extends Controller
 {
+
+
+
     public function registerForm()
     {
         return view('login/registerForm');
@@ -70,14 +75,10 @@ class loginController extends Controller
         ]);
 
 
-        // $email =  $request->input('email'); 
 
-
-        // $message = Mail::to($email)->send(new EmailVerification($email));
-        // dd($message);
 
         if ($user) {
-
+            $token = $user->createToken('auth-token')->plainTextToken;
             $message = Mail::to($user)->send(new EmailVerification($user, $token));
 
 
@@ -91,34 +92,59 @@ class loginController extends Controller
     public function loginform()
     {
 
+
         return view('login/loginForm');
     }
 
-    function loginCheck(Request $request)
+    function index(Request $request)
     {
 
-        $user_data = array(
-            'email'  => $request->email,
-            'password' => $request->password
-        );
+        // $user_data = array(
+        //     'email'  => $request->email,
+        //     'password' => $request->password
+        // );
 
 
 
-        if (Auth::attempt($user_data)) {
-            $user = Auth::user();
+        // if (Auth::attempt($user_data)) {
+        //     $user = Auth::user();
 
-            $customToken = Str::random(40);
+        //     $customToken = Str::random(40);
 
-            $user->remember_token = $customToken;
-            $user->save();
+        //     $user->remember_token = $customToken;
+        //     $user->save();
 
-            // $customToken = $user->createToken('auth-token')->plainTextToken;
+        //     $customToken = $user->createToken('auth-token')->plainTextToken;
 
 
-            return response()->json(['success' => 'Login Successfull', 'token' => $customToken, 'role'=> auth()->user()->role]);
-        } else {
-            return response()->json(['error' => 'User Credential Mis Matched']);
+
+        //     return response()->json(['success' => 'Login Successfull', 'token' => $customToken, 'role'=> auth()->user()->role]);
+        // } else {
+        //     return response()->json(['error' => 'User Credential Mis Matched']);
+        // }
+
+
+        $user = User::where('email', $request->email)->first();
+        // print_r($data);
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response([
+                'message' => ['These credentials do not match our records.']
+            ], 404);
         }
+
+        $role = $user->role;
+
+        $token = $user->createToken('my-app-token')->plainTextToken;
+
+        //  $user->remember_token = $token;
+        //  $user->save();
+
+        // $response = [
+        //     'user' => $user,
+        //     'token' => $token
+        // ];
+
+        return response()->json(['success' => 'Login Successfull', 'token' => $token, 'role' => $role]);
     }
 
 
@@ -187,18 +213,18 @@ class loginController extends Controller
     }
 
 
-  
+
 
 
     public function logoutApi()
     {
         // Auth::logout();
 
-   
+
         // return response()->json(['message' => 'Successfully logged out']);
-        
-        
-        
+
+
+
     }
 
     public function logout()
@@ -206,12 +232,13 @@ class loginController extends Controller
         Auth::logout();
 
         return redirect('api/home');
-   
+
         // return response()->json(['message' => 'Successfully logged out']);  
     }
 
 
-    public function userDetails(Request $request){
+    public function userDetails(Request $request)
+    {
         $authorizationHeader = $request->header('Authorization');
         $token = str_replace('Bearer ', '', $authorizationHeader);
 
@@ -220,7 +247,7 @@ class loginController extends Controller
         // $role= $user->role;
         // dd($user);
 
-        
+
 
         if ($user) {
             // User details found

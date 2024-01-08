@@ -18,14 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/x', function () {
-    return view('welcom');
-});
-
-
-Route::get('dashboard',[DashboardController::class,'dashboard']);
-Route::get('print',[DashboardController::class,'print']);
-
 
 
 

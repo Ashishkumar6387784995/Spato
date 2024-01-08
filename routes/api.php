@@ -46,8 +46,8 @@ use App\Http\Controllers\api\StatisticsController;
 Route::get('/register', [loginController::class, 'registerForm']);
 Route::post('/register', [loginController::class, 'submitRegistration']);
 Route::get('refresh_captcha', [loginController::class, 'refreshCaptcha']);
-Route::get('login',[loginController::class,'loginform']);
-Route::post('login',[loginController::class,'loginCheck']);
+// Route::get('login',[loginController::class,'loginform']);
+Route::post('login',[loginController::class,'index']);
 Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']);
 Route::post('password/reset',[loginController::class,'passwordReset']);
@@ -76,8 +76,8 @@ Route::get('agb',[staticPageController::class,'agb']);
 Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']);
 
 
-// dashboard for Admin
-Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
+// dashboard for Admin  
+Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
 
 
 // Pool Builder For Front End
@@ -87,32 +87,38 @@ Route::get('poolBuilderProfile',[PoolBuilder::class,'poolBuilderProfile']);
 Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 
   // dashboard for Admin
-  Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
+  // Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
 
 
-Route::middleware('verifyApiUser')->group(function () {
-  // Your API routes that require user verification go here
-  
+
+
+
+
+
+
+
+
+
+
 
 
 
 
   // products for Admin
-Route::get('productListingApi',[productController::class,'productListing']);
-Route::view('productListing', 'admin_theme/pages/products/productsList');
-Route::get('addProduct',[productController::class,'addProduct']);
-Route::post('addProduct',[productController::class,'addproductList']);
-Route::get('editProduct/{id}',[productController::class,'editProduct']);
-Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
-
+  Route::get('productListingApi',[productController::class,'productListing']);
+  Route::view('productListing', 'admin_theme/pages/products/productsList');
+  Route::get('addProduct',[productController::class,'addProduct']);
+  Route::post('addProduct',[productController::class,'addproductList']);
+  Route::get('editProduct/{id}',[productController::class,'editProduct']);
+  Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
 
 
 
 
 // Offers for Admin
 Route::get('offerListingApi',[OfferController::class,'offerListing']);
-Route::view('offerListing', 'admin_theme/pages/offers/offerList');
-Route::get('addOffer',[OfferController::class,'addOffer']);
+Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
+Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
 Route::post('addOfferApi',[OfferController::class,'addOfferApi']);
 Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
@@ -208,14 +214,6 @@ Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/custom
 
 
 
-
-
-
-
-
-
-
-});
 
 
 
