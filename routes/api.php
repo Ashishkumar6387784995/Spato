@@ -51,8 +51,8 @@ Route::post('login',[loginController::class,'index']);
 Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']);
 Route::post('password/reset',[loginController::class,'passwordReset']);
-Route::post('logoutApi',[loginController::class,'logoutApi']);
-Route::get('logout',[loginController::class,'logout']);
+// Route::post('logoutApi',[loginController::class,'logoutApi']);
+// Route::get('logout',[loginController::class,'logout']);
 
 Route::get('userDetails',[loginController::class,'userDetails']);
 
@@ -77,7 +77,7 @@ Route::get('cancelationPolicy',[staticPageController::class,'cancelationPolicy']
 
 
 // dashboard for Admin  
-Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
+// Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
 
 
 // Pool Builder For Front End
@@ -86,15 +86,33 @@ Route::post('poolBuilderRegister',[PoolBuilder::class,'submitpoolBuilderRegistra
 Route::get('poolBuilderProfile',[PoolBuilder::class,'poolBuilderProfile']);
 Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 
-  // dashboard for Admin
-  // Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
+
+
+Route::middleware('api.auth')->group(function () {
+
+  // Offers for Admin
+Route::get('offerListingApi',[OfferController::class,'offerListing']);
+
+
+Route::post('addOfferApi',[OfferController::class,'addOfferApi']);
 
 
 
 
 
 
+Route::post('logoutApi',[loginController::class,'logoutApi']);
+// Route::get('logout',[loginController::class,'logout']);
+});
 
+
+
+Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
+
+ // Offers for Admin
+Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
+Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
+Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
 
 
@@ -115,12 +133,12 @@ Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 
 
 
-// Offers for Admin
-Route::get('offerListingApi',[OfferController::class,'offerListing']);
-Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
-Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
-Route::post('addOfferApi',[OfferController::class,'addOfferApi']);
-Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
+// // Offers for Admin
+// Route::get('offerListingApi',[OfferController::class,'offerListing']);
+// Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
+// Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
+// Route::post('addOfferApi',[OfferController::class,'addOfferApi']);
+// Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
 
 // Assignment for Admin

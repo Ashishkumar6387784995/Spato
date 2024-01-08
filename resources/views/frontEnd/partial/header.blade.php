@@ -422,21 +422,30 @@
   // Function to handle the logout API call
   function logout() {
     // Retrieve the token from local storage
-    var authToken = localStorage.getItem('authToken');
-    console.log("hello");
+    var token = localStorage.getItem('authToken');
+    console.log(token);
+
+    // Check if the token exists
+    if (!token) {
+      console.error('Token not found in localStorage');
+      window.location.href = '/api/home';
+      // return;
+    }
     // Make a POST request to the logout endpoint using jQuery
     $.ajax({
       url: 'http://127.0.0.1:8000/api/logoutApi',
       type: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + authToken,
-        'Content-Type': 'application/json'
+        'Authorization': 'Bearer ' + token,
       },
       success: function(response) {
         // Clear the authentication token from local storage
-        localStorage.removeItem('authToken');
+        if(response.message){
+          localStorage.removeItem('authToken');
         // Redirect or perform any other necessary actions after logout
-        window.location.href = 'http://127.0.0.1:8000/api/home';
+        // window.location.href = 'http://127.0.0.1:8000/api/home';
+        }
+       
       },
       error: function(error) {
         // Handle errors
@@ -528,28 +537,26 @@
         console.log(response.role);
         // if (response.role === 'B2B' || response.role === 'Admin') {
 
-          var baseUrl = window.location.origin;
+        var baseUrl = window.location.origin;
 
-      
-          // // Append the desired path
-          // var newUrl = baseUrl + '/api/admin_dashboard';
 
-          // // Redirect to the new URL
-          // window.location.href = newUrl;
-          if(response.role=="Admin"){
-            window.location.href = '/api/admin_dashboard/admin';
-          }
+        // // Append the desired path
+        // var newUrl = baseUrl + '/api/admin_dashboard';
 
-          else{
-            window.location.href = '/api/admin_dashboard/b2b';
-          }
-      
+        // // Redirect to the new URL
+        // window.location.href = newUrl;
+        if (response.role == "Admin") {
+          window.location.href = '/api/admin_dashboard/admin';
+        } else {
+          window.location.href = '/api/admin_dashboard/b2b';
+        }
+
         // }
         //  else {
         //   window.location.href = '/api/home';
         // }
 
-        
+
 
         fetchUserProfile();
       } else {

@@ -158,7 +158,7 @@
 
 
   <li class="nav-item" style="background-color:transparent;">
-  <a href="{{url('/api/logout')}}"><button type="submit" name="logout"  id="logoutButton">Log Out</button></a>
+  <button type="submit" name="logout"  id="logoutButton">Log Out</button>
    </a>
   </li>
 
@@ -167,7 +167,7 @@
 </nav>
 
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
   // public/js/logout.js
@@ -186,10 +186,15 @@
         'Content-Type': 'application/json'
       },
       success: function(response) {
-        // Clear the authentication token from local storage
+
+        if(response.message){
+
+             // Clear the authentication token from local storage
         localStorage.removeItem('authToken');
         // Redirect or perform any other necessary actions after logout
-        window.location.href = 'http://127.0.0.1:8000/api/home';
+        window.location.href = '/api/home';
+        }
+     
       },
       error: function(error) {
         // Handle errors
