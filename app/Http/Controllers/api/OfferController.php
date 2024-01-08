@@ -28,7 +28,7 @@ class OfferController extends Controller
         return view('admin_theme/pages/offers/editoffers');
     }
 
-    public function addOffer()
+    public function addOffer($role)
     {
 
         // $lastOffer = "AB-123456";
@@ -56,7 +56,7 @@ class OfferController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo'));
+        return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo','role'));
     }
 
     public function addOfferApi(Request $request){

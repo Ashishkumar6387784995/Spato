@@ -118,7 +118,7 @@ Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 // Offers for Admin
 Route::get('offerListingApi',[OfferController::class,'offerListing']);
 Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
-Route::get('addOffer',[OfferController::class,'addOffer']);
+Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
 Route::post('addOfferApi',[OfferController::class,'addOfferApi']);
 Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
