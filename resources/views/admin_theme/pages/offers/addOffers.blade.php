@@ -269,11 +269,11 @@
        <div class="col-md-4">
         <h4>Angebot-Nr. <a href="#">{{$newOfferNo}}</a></h4>
        </div>
-       <div class="col-md-3 stretch-card grid-margin modal-dialog modal-dialog-centered">
+       <div class="col-md-3 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#header">
         <a href="#" class="btn">Kopfzeile Standard</a>
        </div>
 
-       <div class="col-md-2 stretch-card grid-margin">
+       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#newheader">
         <a href="#" class="btn">Kopfzeile neu</a>
        </div>
        <!-- <div class="col-md-2 " > </div> -->
@@ -848,9 +848,51 @@
   <!-- Modals -->
 
 
+  <!-- default header Modal -->
+  <div class="modal fade" id="header" tabindex="-1" aria-labelledby="headerLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <p class="modal-title fs-5" id="headerLabel">Write note</p>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="form-floating">
+       <textarea class="form-control" placeholder="Write note" id="floatingTextarea"></textarea>
+      </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
 
 
 
+  <!-- New header Modal -->
+  <div class="modal fade" id="newheader" tabindex="-1" aria-labelledby="newheaderLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <p class="modal-title fs-5" id="newheaderLabel">Write note</p>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="form-floating">
+       <textarea class="form-control" placeholder="Write note" id="floatingTextarea"></textarea>
+      </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
 
 
 
