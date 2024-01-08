@@ -182,16 +182,16 @@
        <div class="col-md-2 stretch-card grid-margin">
 
        </div>
-       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+       <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">Auftrag</a>
        </div>
-       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+       <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">Lieferschein</a>
        </div>
-       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+       <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">Rechnung</a>
        </div>
-       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+       <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">senden</a>
        </div>
       </div>
