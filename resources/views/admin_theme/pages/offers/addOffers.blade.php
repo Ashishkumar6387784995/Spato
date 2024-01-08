@@ -269,11 +269,11 @@
        <div class="col-md-4">
         <h4>Angebot-Nr. <a href="#">{{$newOfferNo}}</a></h4>
        </div>
-       <div class="col-md-3 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#header">
+       <div class="col-md-3 stretch-card grid-margin">
         <a href="#" class="btn">Kopfzeile Standard</a>
        </div>
 
-       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#newheader">
+       <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">Kopfzeile neu</a>
        </div>
        <!-- <div class="col-md-2 " > </div> -->
@@ -490,11 +490,11 @@
        <div class="col stretch-card">
 
        </div>
-       <div class="col stretch-card" data-bs-toggle="modal" data-bs-target="#footer">
+       <div class="col stretch-card">
         <a href="#" class="btn">Fußzeile Standard</a>
        </div>
 
-       <div class="col stretch-card" data-bs-toggle="modal" data-bs-target="#newfooter">
+       <div class="col stretch-card">
         <a href="#" class="btn">Fußzeile neu</a>
        </div>
        <div class="col stretch-card">
