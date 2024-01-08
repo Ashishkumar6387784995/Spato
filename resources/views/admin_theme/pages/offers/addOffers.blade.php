@@ -490,11 +490,11 @@
        <div class="col stretch-card">
 
        </div>
-       <div class="col stretch-card ">
+       <div class="col stretch-card" data-bs-toggle="modal" data-bs-target="#footer">
         <a href="#" class="btn">Fußzeile Standard</a>
        </div>
 
-       <div class="col stretch-card">
+       <div class="col stretch-card" data-bs-toggle="modal" data-bs-target="#newfooter">
         <a href="#" class="btn">Fußzeile neu</a>
        </div>
        <div class="col stretch-card">
@@ -810,7 +810,7 @@
    <div class="modal-dialog">
     <div class="modal-content">
      <div class="modal-header">
-      <h1 class="modal-title fs-5" id="auftragLabel">Modal title</h1>
+      <h1 class="modal-title fs-5" id="auftragLabel">Order Number</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
      </div>
      <div class="modal-body">
@@ -840,7 +840,7 @@
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn btn-primary">Save</button>
      </div>
     </div>
    </div>
@@ -853,7 +853,7 @@
    <div class="modal-dialog">
     <div class="modal-content">
      <div class="modal-header">
-      <p class="modal-title fs-5" id="headerLabel">Write note</p>
+      <p class="modal-title fs-5" id="headerLabel">Write Default Header</p>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
      </div>
      <div class="modal-body">
@@ -863,7 +863,7 @@
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn btn-primary">Save</button>
      </div>
     </div>
    </div>
@@ -877,7 +877,7 @@
    <div class="modal-dialog">
     <div class="modal-content">
      <div class="modal-header">
-      <p class="modal-title fs-5" id="newheaderLabel">Write note</p>
+      <p class="modal-title fs-5" id="newheaderLabel">Write New Header</p>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
      </div>
      <div class="modal-body">
@@ -887,12 +887,63 @@
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn btn-primary">Save</button>
      </div>
     </div>
    </div>
   </div>
   <!-- Modals -->
+
+
+
+
+
+  <!-- default footer Modal -->
+  <div class="modal fade" id="footer" tabindex="-1" aria-labelledby="footerLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <p class="modal-title fs-5" id="footerLabel">Write Default Header</p>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="form-floating">
+       <textarea class="form-control" placeholder="Write note" id="floatingTextarea"></textarea>
+      </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+
+
+
+  <!-- New Footer Modal -->
+  <div class="modal fade" id="newfooter" tabindex="-1" aria-labelledby="newfooterLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <p class="modal-title fs-5" id="newfooterLabel">Write New Footer</p>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="form-floating">
+       <textarea class="form-control" placeholder="Write note" id="floatingTextarea"></textarea>
+      </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+
 
 
 
