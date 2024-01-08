@@ -213,19 +213,23 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vitae suscipit sequi velit sunt iste
            pariatr error <a href="#">more</a></p>
          </td>
-         <td><input type="text" class="input-field" name="" id="" value="€4,047.00"
-           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
+         <td>€<input type="number" id="price" value="4349.00" step="0.01"
+           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"
+           oninput="calculateTotal()"></td>
          <td>
           <div class="counter">
-           <div id="counter-value">0</div>
+           <!-- <div id="counter-value" oninput="calculateTotal()">0</div>
            <div>
             <button class="counter-btn" id="increment-btn"><i class="fa-solid fa-angle-up"></i></button><br>
             <button class="counter-btn" id="decrement-btn"><i class="fa-solid fa-chevron-down"></i></button>
-           </div>
+           </div> -->
+           <input type="number" style="width:80px; border:none; text-align:right; background:transparent;" id="quantity"
+            value="1" min="1" oninput="calculateTotal()">
+
           </div>
          </td>
-         <td><input type="text" class="input-field" name="" id="" value="€13,047.00"
-           style="width:80px; border:none; text-align:right;  background:transparent;" readonly="readonly"></td>
+         <td>€<input type="text" class="input-field" name="" id="subtotal" value="13,047.00"
+           style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>
          <td>
           <div class="icon">
            <i class="fa-regular fa-circle-xmark"></i><br>
@@ -236,7 +240,7 @@
 
 
 
-        <tr class="border-top">
+        <!-- <tr class="border-top">
          <td class="item-img"><img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="img" alt="..." />
          </td>
          <td class="product-desc">
@@ -262,7 +266,7 @@
            <i class="fa-regular fa-pen-to-square"></i>
           </div>
          </td>
-        </tr>
+        </tr> -->
        </tbody>
       </table>
 
@@ -311,25 +315,25 @@
           <hr />
           <div class="details d-flex justify-content-between">
            <p class="input-field">Subtotal</p>
-           <input type="text" class="input-field" name="" id="" value="€13,047.00"
+           €<input type="text" class="input-field" name="" id="subtotal" value="13,047.00"
             style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Shipping </p>
-           <input type="text" class="input-field" name="" id="" value="€21.00"
-            style="width:150px; border:none; text-align:right;" readonly="readonly">
+           €<input type="number" id="shipping" value="21.00" step="0.01"
+            style="width:150px; border:none; text-align:right;" readonly="readonly" oninput="calculateTotal()">
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Tax</p>
-           <input type="text" class="input-field" name="" id="" value="€1.91"
+           €<input type="text" class="input-field" name="" id="tax" value="1.91"
             style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Order Total</p>
-           <input type="text" class="input-field total" name="" id="" value="€13,068.00"
+           €<input type="text" class="input-field total" name="" id="grandTotal" value="13,068.00"
             style="width:150px; border:none; text-align:right;" readonly="readonly">
           </div>
 
@@ -374,6 +378,193 @@
    }
   });
   </script>
+
+
+  <!-- <script>
+  document.addEventListener('DOMContentLoaded', function() {
+   setupInputListeners1();
+
+   function setupInputListeners1() {
+    document.querySelectorAll(
+     'input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
+     input) {
+     input.addEventListener('input', function() {
+      var idParts = this.id.split('_');
+      var index = idParts[1];
+
+      var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
+      var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
+      var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
+
+      var discountAmount = (rate * discountPercentage) / 100;
+      var discountedRate = rate - discountAmount;
+
+      var amount = quantity * discountedRate;
+      document.getElementById('Amount_' + index).value = amount.toFixed(2);
+
+      // Recalculate subtotal after each input change
+      calculateSubTotal();
+     });
+    });
+
+    // Add event listeners for Adjustment, SGST, and CGST fields
+    document.getElementById('Adjustment').addEventListener('input', function() {
+     calculateSubTotal();
+    });
+
+    document.getElementById('SGST').addEventListener('input', function() {
+     calculateSubTotal();
+    });
+
+    document.getElementById('CGST').addEventListener('input', function() {
+     calculateSubTotal();
+    });
+
+    document.getElementById('IGST').addEventListener('input', function() {
+     calculateSubTotal();
+    });
+   }
+
+   //  var i = 0;
+   //  var No = 1;
+
+   //  document.getElementById('add').addEventListener('click', function() {
+   //   ++i;
+   //   ++No;
+
+   //   var table = document.getElementById('table');
+   //   var newRow = table.insertRow(table.rows.length);
+
+   //   newRow.innerHTML = `
+   //                   <td>
+   //                       <input type="text" value='${No}' name='inputs[${i}][SNo]' placeholder='#' />
+   //                   </td>
+   //                   <td>
+   //                       <input type="text"" placeholder="#"/>
+   //                   </td>
+   //                   <td>
+   //                       <input type="text" placeholder="#"/>
+   //                   </td>
+   //                   <td>
+   //                   <input type="text" placeholder="#"/>
+
+   //                   </td>
+   //                   <td>
+   //                   <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+   //                   </td>
+   //                   <td>
+   //                       <input type="text" name='inputs[${i}][Rate]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+   //                   </td>
+   //                   <td>
+   //                       <input type="text" name='inputs[${i}][Discound]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
+   //                   </td>
+   //                   <td>
+   //                       <input type="text" name='inputs[${i}][Amount]' id="Amount_${i}" placeholder='#' />
+   //                   </td>
+   //                   <td>
+   //                       <button class="remove-table-row  btn btn-sm">Delete</button>
+   //                   </td>`;
+
+   //   // Call the setupInputListeners function after adding a new row
+   //   setupInputListeners();
+
+   //   // Recalculate subtotal after adding a new row
+   //   calculateSubTotal();
+   //  });
+
+   //  document.addEventListener('click', function(event) {
+   //   if (event.target.classList.contains('remove-table-row')) {
+   //    event.target.closest('tr').remove();
+   //    // Recalculate subtotal after removing a row
+   //    calculateSubTotal();
+   //   }
+   //  });
+
+   // Function to set up input event listeners
+   function setupInputListeners() {
+    document.querySelectorAll(
+     'input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
+     input) {
+     input.addEventListener('input', function() {
+      var idParts = this.id.split('_');
+      var index = idParts[1];
+
+      var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
+      var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
+      var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
+
+      var discountAmount = (rate * discountPercentage) / 100;
+      var discountedRate = rate - discountAmount;
+
+      var amount = quantity * discountedRate;
+      document.getElementById('Amount_' + index).value = amount.toFixed(2);
+
+      // Recalculate subtotal after each input change
+      calculateSubTotal();
+     });
+    });
+   }
+
+   // Function to calculate and update the subtotal
+   function calculateSubTotal() {
+    var subtotal = 0;
+    document.querySelectorAll('input[id^="Amount_"]').forEach(function(amountInput) {
+     subtotal += parseFloat(amountInput.value) || 0;
+    });
+
+    // Update the SubTotal input field
+    document.getElementById('SubTotal').value = subtotal.toFixed(2);
+
+    // Subtract the value of Adjustment
+    var adjustment = parseFloat(document.getElementById('Adjustment').value) || 0;
+    var sgstPercentage = parseFloat(document.getElementById('SGST').value) || 0;
+    var cgstPercentage = parseFloat(document.getElementById('CGST').value) || 0;
+    var igstPercentage = (subtotal * 19) / 100;
+    console.log(igstPercentage);
+
+    var sgstAmount = (subtotal * sgstPercentage) / 100;
+    var cgstAmount = (subtotal * cgstPercentage) / 100;
+    var igstAmount = (subtotal * 19) / 100;
+
+    var adjustedTotal = subtotal - adjustment + sgstAmount + cgstAmount + igstAmount;
+
+    // Update the AdjustmentShow, SGSTShow, CGSTShow, and Total input fields
+    document.getElementById('AdjustmentShow').value = adjustment.toFixed(2);
+    document.getElementById('SGSTShow').value = sgstAmount.toFixed(2);
+    document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
+    document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
+    document.getElementById('Total').value = adjustedTotal.toFixed(2);
+    document.getElementById("tax").innerHTML = igstAmount.toFixed(2);
+   }
+  });
+  </script> -->
+
+  <!--  -->
+
+  <script>
+  function calculateTotal() {
+   // Get the values from input fields
+   var quantity = parseInt(document.getElementById('quantity').value);
+   var price = parseFloat(document.getElementById('price').value);
+   var shipping = parseFloat(document.getElementById('shipping').value);
+   //  var taxRate = parseFloat(document.getElementById('taxRate').value);
+
+   // Calculate subtotal, tax, and grand total based on input values
+   var subtotal = quantity * price;
+   var tax = (subtotal + shipping) * (19 / 100);
+   var grandTotal = subtotal + shipping + tax;
+
+   // Update the input fields with the calculated values
+   document.getElementById('subtotal').value = subtotal.toFixed(2);
+   document.getElementById('tax').value = tax.toFixed(2);
+   document.getElementById('grandTotal').value = grandTotal.toFixed(2);
+  }
+
+  // Initial calculation when the page loads
+  calculateTotal();
+  </script>
+  <!--  -->
+
  </body>
 
 </html>

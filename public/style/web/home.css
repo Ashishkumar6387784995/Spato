@@ -234,7 +234,7 @@ form .btn-style {
     display: flex;
     justify-content: center;
 }
-.card img {
+.card .img-cont {
     margin: auto;
     justify-content: center;
     max-width: 50%;

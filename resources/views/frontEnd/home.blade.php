@@ -159,8 +159,8 @@
      <div class="carousel-item active">
       <div class="cards-wrapper">
        <div class="card">
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -175,8 +175,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -191,58 +191,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
-        <div class="card-body">
-         <h5 class="card-title">Saugrobroter</h5>
-         <p class="card-text">
-          <li>Merkamal 1 - lauft fluffig</li>
-          <li>Merkamal 2 - fahurt urail... lorem</li>
-         </p>
-         <p class="product-price">
-          statt - 42,50€ <span class="price">25,30€</span>
-         </p>
-
-        </div>
-        <a href="#" class="btn">IN DEN WARENKORB</a>
-       </div>
-      </div>
-     </div>
-     <div class="carousel-item">
-      <div class="cards-wrapper">
-       <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
-        <div class="card-body">
-         <h5 class="card-title">Saugrobroter</h5>
-         <p class="card-text">
-          <li>Merkamal 1 - lauft fluffig</li>
-          <li>Merkamal 2 - fahurt urail... lorem</li>
-         </p>
-         <p class="product-price">
-          statt - 42,50€ <span class="price">25,30€</span>
-         </p>
-
-        </div>
-        <a href="#" class="btn">IN DEN WARENKORB</a>
-       </div>
-       <div class="card">
-
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
-        <div class="card-body">
-         <h5 class="card-title">Saugrobroter</h5>
-         <p class="card-text">
-          <li>Merkamal 1 - lauft fluffig</li>
-          <li>Merkamal 2 - fahurt urail... lorem</li>
-         </p>
-         <p class="product-price">
-          statt - 42,50€ <span class="price">25,30€</span>
-         </p>
-
-        </div>
-        <a href="#" class="btn">IN DEN WARENKORB</a>
-       </div>
-       <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -261,7 +211,8 @@
      <div class="carousel-item">
       <div class="cards-wrapper">
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -276,7 +227,9 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -291,7 +244,60 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
+        <div class="card-body">
+         <h5 class="card-title">Saugrobroter</h5>
+         <p class="card-text">
+          <li>Merkamal 1 - lauft fluffig</li>
+          <li>Merkamal 2 - fahurt urail... lorem</li>
+         </p>
+         <p class="product-price">
+          statt - 42,50€ <span class="price">25,30€</span>
+         </p>
+
+        </div>
+        <a href="#" class="btn">IN DEN WARENKORB</a>
+       </div>
+      </div>
+     </div>
+     <div class="carousel-item">
+      <div class="cards-wrapper">
+       <div class="card">
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
+        <div class="card-body">
+         <h5 class="card-title">Saugrobroter</h5>
+         <p class="card-text">
+          <li>Merkamal 1 - lauft fluffig</li>
+          <li>Merkamal 2 - fahurt urail... lorem</li>
+         </p>
+         <p class="product-price">
+          statt - 42,50€ <span class="price">25,30€</span>
+         </p>
+
+        </div>
+        <a href="#" class="btn">IN DEN WARENKORB</a>
+       </div>
+       <div class="card">
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
+        <div class="card-body">
+         <h5 class="card-title">Saugrobroter</h5>
+         <p class="card-text">
+          <li>Merkamal 1 - lauft fluffig</li>
+          <li>Merkamal 2 - fahurt urail... lorem</li>
+         </p>
+         <p class="product-price">
+          statt - 42,50€ <span class="price">25,30€</span>
+         </p>
+
+        </div>
+        <a href="#" class="btn">IN DEN WARENKORB</a>
+       </div>
+       <div class="card">
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -327,8 +333,8 @@
      <div class="carousel-item active">
       <div class="cards-wrapper">
        <div class="card">
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -343,8 +349,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card ">
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -359,7 +365,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card ">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -378,8 +385,8 @@
      <div class="carousel-item">
       <div class="cards-wrapper">
        <div class="card">
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -395,8 +402,8 @@
        </div>
        <div class="card">
 
-        <a href="{{url('api/ProductdetailPage')}}"> <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-          class="card-img-top" alt="..." /></a>
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -411,7 +418,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -430,7 +438,8 @@
      <div class="carousel-item">
       <div class="cards-wrapper">
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -445,7 +454,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
@@ -460,7 +470,8 @@
         <a href="#" class="btn">IN DEN WARENKORB</a>
        </div>
        <div class="card">
-        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+        <a class="img-cont" href="{{url('api/ProductdetailPage')}}"> <img
+          src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." /></a>
         <div class="card-body">
          <h5 class="card-title">Saugrobroter</h5>
          <p class="card-text">
