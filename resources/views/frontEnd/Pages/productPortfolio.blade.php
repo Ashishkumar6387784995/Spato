@@ -106,7 +106,6 @@
    padding-top: 5rem;
    margin-bottom: -10rem;
    padding-bottom: 10rem;
-
    /* clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%); */
   }
 
@@ -378,16 +377,16 @@
          <div class="row">
           <div class="col">
            <div class="images ">
-            <div class="text-center p-4"> <img id="main-image" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}"
-              width="100%" height="300" />
+            <div class="text-center p-4"> <img id="main-image"
+              src="{{ asset('assets/frontEnd/web/images/productpage.png')}}" width="100%" height="450" />
             </div>
             <div class="thumbnail text-center">
-             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}"
-              width="calc(100% / 3)" height="200">
-             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/product-2.png')}}"
-              width="calc(100% / 3)" height="200">
-             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/pool.png')}}"
-              width="calc(100% / 3)" height="200">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/productpage.png')}}"
+              width="350" height="200">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/productpage1.png')}}"
+              width="350" height="200">
+             <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/productpage.png')}}"
+              width="350" height="200">
              <!-- <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-2.png')}}" width="70"
               height="70"> -->
             </div>
@@ -405,9 +404,10 @@
               <div class="product p-4">
                <div class="product-particular-detail mt-4 mb-3">
                 <p class="product-size">Auf Large</p>
-                <p class="model-number">Model No.#7389392930</p>
+                <p class="model-number"><span>4.8 <img src="{{ asset('assets/frontEnd/web/images/star.png')}}" alt=""
+                   srcset="" width="100px"></span> In Stock</p>
                 <p class="product-price">
-                 <span class="price">25,30€</span> Statt 42,45 €
+                 Statt 42,45 € <span class="price">25,30€</span>
                 </p>
                </div>
               </div>
