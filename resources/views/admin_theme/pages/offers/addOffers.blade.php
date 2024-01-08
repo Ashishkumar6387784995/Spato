@@ -182,7 +182,7 @@
        <div class="col-md-2 stretch-card grid-margin">
 
        </div>
-       <div class="col-md-2 stretch-card grid-margin">
+       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
         <a href="#" class="btn">Auftrag</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
@@ -788,21 +788,6 @@
   });
   </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
@@ -813,6 +798,38 @@
   <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
   </script>
+
+
+  <!-- Modals -->
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="auftrag" tabindex="-1" aria-labelledby="auftragLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h1 class="modal-title fs-5" id="auftragLabel">Modal title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      ...
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Modals -->
+
+
+
+
+
+
+
+
  </body>
 
 </html>
