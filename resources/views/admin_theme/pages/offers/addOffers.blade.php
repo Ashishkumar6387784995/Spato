@@ -25,6 +25,13 @@
   <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
 
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <style>
@@ -161,9 +168,60 @@
           <h2>Admin Dashboard</h2>
           <p>{{ now()->format('l, F j, Y') }}</p>
 
+<<<<<<< HEAD
           <button class="navbar-toggler" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
           </button>
+=======
+      <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+       <span class="mdi mdi-menu"></span>
+      </button>
+     </div>
+     <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
+      <div class="row pt-3">
+
+       <div class="col-md-2 stretch-card grid-margin">
+        <button class="btn" type="button" id="saveButton">Save</button>
+       </div>
+
+       <div class="col-md-2 stretch-card grid-margin">
+
+       </div>
+       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+        <a href="#" class="btn">Auftrag</a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+        <a href="#" class="btn">Lieferschein</a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+        <a href="#" class="btn">Rechnung</a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin modal-dialog modal-dialog-centered">
+        <a href="#" class="btn">senden</a>
+       </div>
+      </div>
+      <span id="success_msg" style="color:Green"></span>
+      <div class="row pt-3">
+
+       <div class="col-md-4">
+
+
+        <textarea name="text" id="" cols="35" rows="10"></textarea>
+
+       </div>
+       <div class="col-md-2"></div>
+
+
+       <div class="col-md-6">
+        <div class="details">
+         <div class="field">
+          <p>Angebots-Nr.</p>
+         </div>
+         <div class="inputs">
+          <input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr"
+           value="{{$newOfferNo}}" /></p>
+         </div>
+>>>>>>> 17750a220d99e0c551bb5088e85758bd32554fb2
         </div>
         <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
           <div class="row pt-3">
@@ -486,6 +544,249 @@
         </form>
 
       </div>
+<<<<<<< HEAD
+=======
+
+      <div class="row pt-3">
+
+       <div class="col-md-4">
+        <h4>Angebot-Nr. <a href="#">{{$newOfferNo}}</a></h4>
+       </div>
+       <div class="col-md-3 stretch-card grid-margin modal-dialog modal-dialog-centered">
+        <a href="#" class="btn">Kopfzeile Standard</a>
+       </div>
+
+       <div class="col-md-2 stretch-card grid-margin">
+        <a href="#" class="btn">Kopfzeile neu</a>
+       </div>
+       <!-- <div class="col-md-2 " > </div> -->
+       <div class="col-md-2 "> </div>
+
+      </div>
+
+
+
+
+      <div class="form-group col-lg-3" style="display:none">
+       <input type="text" name="jobRequestNo" class="form-control" id="firstname" value="">
+       <label for="firstname">Job Request No</label>
+      </div>
+
+
+
+      <div class="">
+       <div class="table-responsive">
+        <table class="table" id="table">
+         <thead>
+          <tr>
+           <th>
+            POS.
+           </th>
+           <th>
+            Produkt
+           </th>
+           <th>
+            Beschreibung
+           </th>
+           <th>
+            Menge
+           </th>
+           <th>
+            Einheit
+           </th>
+           <th>
+            Einzelpreis
+           </th>
+           <th>Rabatt</th>
+           <th>Gesamtpreis</th>
+           <th></th>
+
+          </tr>
+
+
+         </thead>
+         <tbody>
+
+
+
+
+          <tr class="hidden">
+           <td>
+
+            <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+
+           </td>
+           <td>
+            <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+
+           </td>
+
+
+           <td>
+
+            <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+            <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+
+           </td>
+           <td>
+
+            <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+           </td>
+           <td>
+            <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
+            <br><span id="Einheit_err" style="color:red;  font-size:13px;"></span>
+
+           </td>
+           <td>
+
+            <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
+            <br><span id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
+
+           </td>
+           <td>
+            <p></p>
+            <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
+             C2</span>
+           </td>
+           <td>
+            <p></p>
+            <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
+           </td>
+           <td>
+            <button class="btn">Delete</button>
+           </td>
+         </tbody>
+        </table>
+
+
+       </div>
+      </div><br>
+      <button id="add" type="button" name="add" class="btn">+ neuer Artikel</button><br>
+
+
+      <!-- <button type="submit" class="btn btn-common">Submit</button> -->
+
+
+
+      <hr style="border: 1px solid #54606c;" />
+
+      <div class="row pt-3">
+
+       <table class="table">
+        <thead>
+         <tr>
+
+         </tr>
+        </thead>
+        <tbody>
+
+         <tr style="display:none;">
+          <th scope="row">Adjustment</th>
+          <td> <input type="text" name='Adjustment' id="Adjustment" placeholder='#' class="form-control" /></td>
+          <td><input type="text" name='AdjustmentShow' id="AdjustmentShow" placeholder='#' class="form-control" />
+          </td>
+         </tr>
+
+
+         <tr id="SGSTRow" style="display:none;">
+          <th scope="row">SGST (%)</th>
+
+          <td> <input type="text" name='SGST' id="SGST" onclick="" placeholder='#' class="form-control" /></td>
+          <td><input type="text" name='SGSTShow' id="SGSTShow" placeholder='#' class="form-control" /></td>
+         </tr>
+
+
+
+         <tr id="CGSTRow" style="display:none;">
+          <th scope="row"> CGST (%)</th>
+          <td><input type="text" name='CGST' id="CGST" placeholder='#' class="form-control" /></td>
+          <td><input type="text" name='CGSTShow' id="CGSTShow" placeholder='#' class="form-control" /></td>
+         </tr>
+
+         <tr id="IGSTRow" style="display:none;">
+          <th scope="row" style="display:none;"> IGST (%)</th>
+          <td><input type="text" name='IGST' id="IGST" placeholder='#' class="form-control" /></td>
+          <td><input type="text" name='IGSTShow' id="IGSTShow" placeholder='#' class="form-control" /></td>
+         <tr id="IGSTRow" style="display:none;">
+          <th scope="row"> IGST (%)</th>
+          <td><input type="text" name='IGST' id="IGST" placeholder='#' class="form-control" /></td>
+          <td></td>
+         </tr>
+         </tr>
+
+
+        </tbody>
+       </table>
+      </div>
+
+
+      <div class="row pt-3">
+
+       <div class="col-6 stretch-card">
+        Lieferbedingungen: zzgl. Frachtkosten
+       </div>
+
+       <div class="col-3 stretch-card ">
+        Gesamt netto
+       </div>
+       <div class="col-2 stretch-card ">
+        <input type="text" name="gesamt_netto" id="SubTotal" placeholder='#'
+         style="background:transparent; border:none;" />
+       </div>
+
+      </div>
+      <div class="row pt-3">
+
+       <div class="col-6 stretch-card">
+        Zahlungsbedingungen: nach Vereinbarung
+       </div>
+
+       <div class="col-3 stretch-card ">
+        zzgl. Umsatzsteuer 19 %
+       </div>
+       <div class="col-2 stretch-card ">
+        <p id="tax"></p>
+       </div>
+
+      </div>
+      <div class="row pt-3">
+
+       <div class="col-6 stretch-card">
+
+       </div>
+
+       <div class="col-3 stretch-card dt">
+        Gesamtbetrag brutto
+       </div>
+       <div class="col-2 stretch-card ">
+        <input type="text" name="Gesamtbetrag_brutto" id="Total" placeholder='#'
+         style="background:transparent; border:none;" />
+       </div>
+
+      </div>
+      <div class="row pt-3">
+
+       <div class="col stretch-card">
+
+       </div>
+       <div class="col stretch-card">
+
+       </div>
+       <div class="col stretch-card ">
+        <a href="#" class="btn">Fußzeile Standard</a>
+       </div>
+
+       <div class="col stretch-card">
+        <a href="#" class="btn">Fußzeile neu</a>
+       </div>
+       <div class="col stretch-card">
+
+       </div>
+      </div>
+     </form>
+
+>>>>>>> 17750a220d99e0c551bb5088e85758bd32554fb2
     </div>
   </div>
   <!-- content-wrapper ends -->

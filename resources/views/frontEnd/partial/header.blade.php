@@ -443,7 +443,7 @@
         if(response.message){
           localStorage.removeItem('authToken');
         // Redirect or perform any other necessary actions after logout
-        // window.location.href = 'http://127.0.0.1:8000/api/home';
+        window.location.href = '/api/home';
         }
        
       },
