@@ -128,11 +128,14 @@
         <!-- partial -->
 
 
+        @if($role=="admin")
         <div class="main-panel " id="adminDashboard">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
                     <h2>Admin Dashboard</h2>
                     <p>Monday, January 12, 2024</p>
+                    {{$role}}
+                  
                 </div>
                 <div class="row pt-3">
                     <div class="col-6">
@@ -182,6 +185,7 @@
         </div>
 
 
+        @elseif($role="b2b")
         <div class="main-panel " id="b2bDashboard">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
@@ -244,6 +248,7 @@
                 </div>
             </div>
 
+            @endif
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
             <!-- <footer class="footer">

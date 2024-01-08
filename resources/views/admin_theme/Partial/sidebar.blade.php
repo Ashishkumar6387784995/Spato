@@ -29,21 +29,12 @@
 }
 </style>
 
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas" >
  <ul class="nav">
-  <!-- <li class="nav-item nav-profile">
-      <a href="#" class="nav-link">
-         <div class="nav-profile-image">
-          <img src=" {{ asset('theme/assets/images/faces/face1.jpg') }} "  alt="profile">
-          <span class="login-status online"></span>
-          change to offline or busy as needed
-        </div> 
-        <div class="nav-profile-text d-flex flex-column">
-          <span class="font-weight-bold mb-2">{{Session::get('empCode')}}</span>
-          <span class="text-secondary text-small">{{ Session::get('role') }}</span>
-        </div>
-      </a>
-    </li> -->
+
+
+
+
 
 
 
@@ -53,7 +44,7 @@
 
   <li class="nav-item">
 
-   <a class="nav-link" href="{{ url('/api/offerListing') }}">
+  <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}">
     <span class="menu-title">Angebote</span>
    </a>
 
@@ -90,7 +81,8 @@
   </li>
 
 
-  <div id="b2bSidebar">
+  @if($role=="b2b")
+
    <li class="nav-item">
     <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
      <span class="menu-title">Kundenadress Buch</span>
@@ -103,9 +95,9 @@
      </a>
     </div>
    </li>
-  </div>
 
 
+  @elseif($role=="admin")
   <div id="adminSidebar">
    <li class="nav-item">
     <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
@@ -162,6 +154,7 @@
     </a>
    </li>
   </div>
+  @endif
 
 
   <li class="nav-item" style="background-color:transparent;">

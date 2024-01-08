@@ -166,7 +166,7 @@
         @if(auth()->check())
 
         <li class="nav-item list-unstyled pe-3 ps-5">
-          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
         </li>
         <li class="nav-item list-unstyled pe-3 ps-3">
           <a class="nav-link" href="#">0,00€</a>
@@ -526,21 +526,30 @@
         localStorage.setItem('authToken', response.token);
 
         console.log(response.role);
-        if (response.role === 'B2B' || response.role === 'Admin') {
+        // if (response.role === 'B2B' || response.role === 'Admin') {
 
           var baseUrl = window.location.origin;
 
-          // Append the desired path
-          var newUrl = baseUrl + '/api/admin_dashboard';
+      
+          // // Append the desired path
+          // var newUrl = baseUrl + '/api/admin_dashboard';
 
-          // Redirect to the new URL
-          window.location.href = newUrl;
+          // // Redirect to the new URL
+          // window.location.href = newUrl;
+          if(response.role=="Admin"){
+            window.location.href = '/api/admin_dashboard/admin';
+          }
 
-          window.location.href = '/api/admin_dashboard';
-        } else {
-          window.location.href = '/api/home';
-        }
+          else{
+            window.location.href = '/api/admin_dashboard/b2b';
+          }
+      
+        // }
+        //  else {
+        //   window.location.href = '/api/home';
+        // }
 
+        
 
         fetchUserProfile();
       } else {
