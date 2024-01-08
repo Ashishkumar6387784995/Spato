@@ -36,6 +36,10 @@
 
 
 
+ <!-- <div id="user-header" class="text-center">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, dolorem. Odit delectus ipsam mollitia sed error
+   magni deserunt, repudiandae architecto?</p> <i onclick="close()" class="fa-solid fa-xmark"></i>
+ </div> -->
  <nav class="navbar navbar-expand-lg ps-4 pe-4">
   <div class="container-fluid">
 
@@ -1056,6 +1060,13 @@
 
   });
  });
+ </script>
+
+
+ <script>
+ function myFunction() {
+  document.getElementById("user-header").style.display = "none";
+ }
  </script>
 
 
