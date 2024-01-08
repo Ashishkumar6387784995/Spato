@@ -216,12 +216,12 @@ class loginController extends Controller
 
 
 
-    public function logoutApi()
+    public function logoutApi(Request $request)
     {
-        // Auth::logout();
+        Auth::logout();
 
 
-        // return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out']);
 
 
 
