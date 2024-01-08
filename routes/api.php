@@ -251,8 +251,3 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 // Notification Well
 
 Route::get('/nav', [tryController::class, 'nav']);
-
-
-
-
-
