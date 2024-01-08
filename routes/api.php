@@ -35,9 +35,9 @@ use App\Http\Controllers\api\StatisticsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 
@@ -51,9 +51,11 @@ Route::post('login',[loginController::class,'loginCheck']);
 Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']);
 Route::post('password/reset',[loginController::class,'passwordReset']);
-Route::post('logout',[loginController::class,'logout']);
+Route::post('logoutApi',[loginController::class,'logoutApi']);
+Route::get('logout',[loginController::class,'logout']);
 
 Route::get('userDetails',[loginController::class,'userDetails']);
+
 
 
 
@@ -84,13 +86,27 @@ Route::post('poolBuilderRegister',[PoolBuilder::class,'submitpoolBuilderRegistra
 Route::get('poolBuilderProfile',[PoolBuilder::class,'poolBuilderProfile']);
 Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 
-// products for Admin
+  // dashboard for Admin
+  Route::get('/admin_dashboard', [dashboardController::class, 'admin_Dashboard']);
+
+
+Route::middleware('verifyApiUser')->group(function () {
+  // Your API routes that require user verification go here
+  
+
+
+
+
+  // products for Admin
 Route::get('productListingApi',[productController::class,'productListing']);
 Route::view('productListing', 'admin_theme/pages/products/productsList');
 Route::get('addProduct',[productController::class,'addProduct']);
 Route::post('addProduct',[productController::class,'addproductList']);
 Route::get('editProduct/{id}',[productController::class,'editProduct']);
 Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
+
+
+
 
 
 // Offers for Admin
@@ -194,20 +210,24 @@ Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/custom
 
 
 
+
+
+
+
+
+});
+
+
+
 //  Account Setting for B2C users
 
-  Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
-  Route::view('accountSetting', 'frontEnd/pages/setting');
-  Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
-  Route::view('addToCart', 'frontEnd/pages/addToCart');
+Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
+Route::view('accountSetting', 'frontEnd/pages/setting');
+Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
+Route::view('addToCart', 'frontEnd/pages/addToCart');
 
 
 
-Route::middleware('api.token')->group(function () {
-    // Route::get('/protected-endpoint', [ApiController::class, 'protectedEndpoint']);
-    // Route::get('contact',[staticPageController::class,'contact']);
-    // Route::get('about',[staticPageController::class,'about']);
-});
 
 // staticPages
 
@@ -234,15 +254,6 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 
 Route::get('/nav', [tryController::class, 'nav']);
 
-
-// Route::group(['middleware' => 'api'], function () {
-
-//     Route::get('login1',[authController::class,'loginform']);
-//     Route::post('/login1', [apiAuthController::class, 'login']);
-//     Route::middleware([apiAuthController::class])->group(function () {
-//         // Your protected routes go here
-//     });
-// });
 
 
 

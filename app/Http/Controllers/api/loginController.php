@@ -16,6 +16,7 @@ use App\Mail\EmailVerification;
 use App\Mail\sendResetLinkEmail;
 
 
+
 class loginController extends Controller
 {
     public function registerForm()
@@ -76,6 +77,10 @@ class loginController extends Controller
         // dd($message);
 
         if ($user) {
+
+            $message = Mail::to($user)->send(new EmailVerification($user, $token));
+
+
             return response()->json(['success' => 'User registered successfully', 'token' => $token]);
         } else {
             return response()->json(['error' => 'User registered Failed due Query']);
@@ -106,6 +111,9 @@ class loginController extends Controller
 
             $user->remember_token = $customToken;
             $user->save();
+
+            // $customToken = $user->createToken('auth-token')->plainTextToken;
+
 
             return response()->json(['success' => 'Login Successfull', 'token' => $customToken, 'role'=> auth()->user()->role]);
         } else {
@@ -182,12 +190,26 @@ class loginController extends Controller
   
 
 
+    public function logoutApi()
+    {
+        // Auth::logout();
+
+   
+        // return response()->json(['message' => 'Successfully logged out']);
+        
+        
+        
+    }
+
     public function logout()
     {
         Auth::logout();
 
-        return response()->json(['message' => 'Successfully logged out']);  
+        return redirect('api/home');
+   
+        // return response()->json(['message' => 'Successfully logged out']);  
     }
+
 
     public function userDetails(Request $request){
         $authorizationHeader = $request->header('Authorization');

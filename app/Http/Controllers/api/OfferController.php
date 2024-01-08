@@ -56,7 +56,7 @@ class OfferController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/offers/addoffers')->with(compact('newOfferNo'));
+        return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo'));
     }
 
     public function addOfferApi(Request $request){
