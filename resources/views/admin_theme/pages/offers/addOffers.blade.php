@@ -40,6 +40,14 @@
    padding: 0;
   }
 
+  .contact-show {
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
+   border: 0.5px solid #000;
+   padding: 10px 10px;
+  }
+
   .transform-hover {
    height: 150px;
    object-fit: cover;
@@ -127,6 +135,10 @@
    width: 250px;
   }
 
+  .details input select {
+   width: 250px !important;
+  }
+
   @media (min-width: 481px) and (max-width: 767px) {
    .details input {
     width: 170px;
@@ -177,7 +189,7 @@
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="AddOffersForm" method="post" >
+     <form id="AddOffersForm" method="post">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
@@ -185,9 +197,7 @@
 
        </div>
 
-       <div class="col-md-2 stretch-card grid-margin">
 
-       </div>
        <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
         <a href="#" class="btn">Auftrag</a>
        </div>
@@ -195,7 +205,12 @@
         <a href="#" class="btn">Lieferschein</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
-       <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
+        <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin">
+        <div class="mb-3">
+         <input class="form-control btn" type="file" id="formFile" placeholder="Select File">
+        </div>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">senden</a>
@@ -205,14 +220,14 @@
       <div class="row pt-3">
 
        <div class="col-md-4">
-
-
-        <textarea name="text" id="" cols="35" rows="10"></textarea>
-
+        <div class="contact-show">
+         <p>Name -> Lorem</p>
+         <p>Conatac -> Lorem</p>
+         <p>Order no. -> Lorem</p>
+         <p>Date of Purchase -> Lorem</p>
+        </div>
        </div>
        <div class="col-md-2"></div>
-
-
        <div class="col-md-6">
         <div class="details">
          <div class="field">
@@ -250,13 +265,26 @@
           <p>Ihre Kundennummer</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer"
-            name="Ihre_Kundennummer" /><br>
-           <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+           id="Ihre_Kundennummer" name="Ihre_Kundennummer">
+           <option selected>Select Costumer</option>
+           <option value="1">One</option>
+           <option value="2">Two</option>
+           <option value="3">Three</option>
+          </select><br>
+          <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+
+         </div>
+        </div>
+        <div class="details">
+         <div class="field">
+          <p>Email</p>
+         </div>
+         <div class="inputs">
+          <p><input class="dynamic-field" type="text" placeholder='#' id="email" name="email" />
           </p>
          </div>
         </div>
-
 
        </div>
 
@@ -853,7 +881,7 @@
      </div>
      <div class="modal-body">
       <div class="form-floating">
-       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein" ></textarea>
+       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein"></textarea>
       </div>
      </div>
      <div class="modal-footer">
