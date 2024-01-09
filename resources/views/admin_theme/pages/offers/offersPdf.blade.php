@@ -3,12 +3,40 @@
 <head>
     <title>Offer PDF</title>
     <!-- Include any necessary styles or additional configurations here -->
+
+    <style>
+        *{
+            font-family: "Source Sans 3", sans-serif;
+        }
+        .brand-logo{
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: end;
+        }
+         .brand-logo .logo{
+            width: 300px;
+            margin: auto;
+            justify-content: end;
+        }
+
+        table{
+            margin: auto;
+        }
+        table thead tr{
+            background-color: #54606c;
+            color: #ffffff;
+            padding: 2px 6px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Offer PDF</h1>
+    <div class="brand-logo"><img class="logo" src="{{ public_path('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></div>
+    <div class="desc"><p>SPATO GmbH - Schellberger Weg 34 - 42659 DE - Solingen</p></div>
 
-    <table border="1">
+
+    <table>
         <thead>
             <tr>
                 <th>POS</th>
@@ -22,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($dynamicFieldsArray as $data)
+            @foreach ($offers as $data)
                 <tr>
                     <td>{{ $data['POS'] }}</td>
                     <td>{{ $data['Produkt'] }}</td>
