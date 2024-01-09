@@ -8,9 +8,9 @@ use App\Models\Cart;
 
 class tryController extends Controller
 {
-    public function nav(){
+    public function productListing(){
 
-        return view('try/notification');
+        return view('frontEnd/Pages/products/productListing');
 
     }
 }

@@ -105,6 +105,7 @@ Route::post('logoutApi',[loginController::class,'logoutApi']);
 // Route::get('logout',[loginController::class,'logout']);
 });
 
+Route::get('/productList', [tryController::class, 'productListing']);
 
 
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
@@ -251,10 +252,7 @@ Route::view('addToCart', 'frontEnd/pages/addToCart');
 // Route::get('about',[staticPageController::class,'about']);
 
 
-// Products
-Route::get('/products', [ProductController::class, 'productList']);
-Route::post('/products', [ProductController::class, 'addproductList']);
-Route::get('/addProducts', [ProductController::class, 'addProduct']);
+
 
 // Cart
 Route::post('/cartProducts', [CartController::class, 'cartProductList']);
@@ -268,7 +266,7 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 
 // Notification Well
 
-Route::get('/nav', [tryController::class, 'nav']);
+Route::get('/productListing', [tryController::class, 'productListing']);
 
 // routes/web.php
 
