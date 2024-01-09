@@ -55,7 +55,8 @@ Route::post('password/reset',[loginController::class,'passwordReset']);
 // Route::get('logout',[loginController::class,'logout']);
 
 Route::get('userDetails',[loginController::class,'userDetails']);
-
+Route::get('B2CUserDetails',[loginController::class,'B2CUserDetails']);
+Route::get('selectedB2CUserDetails/{id}',[loginController::class,'selectedB2CUserDetails']);
 
 
 

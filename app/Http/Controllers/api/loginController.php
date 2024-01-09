@@ -263,4 +263,23 @@ class loginController extends Controller
 
         return response()->json(['success' => $token]);
     }
+
+
+    public function B2CUserDetails(){
+
+        $users = user::where('role', 'Normal')->get();
+        // dd($users);
+
+        return response()->json([ 'success' => $users]);
+
+    }
+
+    public function selectedB2CUserDetails($id){
+
+        $users = user::where('id', $id)->get();
+        // dd($users);
+
+        return response()->json([ 'success' => $users]);
+
+    }
 }
