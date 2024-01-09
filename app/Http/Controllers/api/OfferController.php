@@ -85,7 +85,7 @@ class OfferController extends Controller
 
 
  
-    $offer = new offers();
+    
 
     // Set the attributes of the model with the main form data
    
@@ -118,7 +118,7 @@ class OfferController extends Controller
     }      
 
         // Return a success response
-        return response()->json(['success' => "Offer Is Added SuccessFully"]);
+        return response()->json(['success' => "Offer Is Added SuccessFully", 'dynamicFields' => $dynamicFields]);
 
     // Return a success response
 
@@ -126,55 +126,18 @@ class OfferController extends Controller
     }
 
 
-    public function downloadPdf(Request $request){
+    public function downloadPdf($offerId){
        
 
-    $dynamicFields = $request->input('inputs');
-    $dynamicFieldsArray = [];
-    // Set dynamic fields on the offer
-    foreach ($dynamicFields as $dynamicField) {
-    
-        $Angebots_Nr = $request->input('Angebots_Nr');
-        $Angebotsdatum = $request->input('Angebotsdatum');
-        $Referenz = $request->input('Referenz');
-        $Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+        // echo $offerId;
 
-        $gesamt_netto = $request->input('gesamt_netto');
-        $zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
-        $Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+        $offers = offers::where('Angebots_Nr', $offerId)->get();
+        // dd($offers);
 
 
-        $POS = $dynamicField['POS'];
-        $Produkt = $dynamicField['Produkt'];
-        $Beschreibung = $dynamicField['Beschreibung'];
-        $Menge = $dynamicField['Menge'];
-        $Einheit = $dynamicField['Einheit'];
-        $Einzelpreis = $dynamicField['Einzelpreis'];
-        $Rabatt = $dynamicField['Rabatt'];
-        $Gesamtpreis = $dynamicField['Gesamtpreis'];
-     
 
-        $dynamicFieldsArray[] = [
-            'Angebots_Nr' => $Angebots_Nr,
-            'Angebotsdatum' => $Angebotsdatum,
-            'Referenz' => $Referenz,
-            'Ihre_Kundennummer' => $Ihre_Kundennummer,
-            'gesamt_netto' => $gesamt_netto,
-            'zzgl_Umsatzsteuer' => $zzgl_Umsatzsteuer,
-            'Gesamtbetrag_brutto' => $Gesamtbetrag_brutto,
-            'POS' => $POS,
-            'Produkt' => $Produkt,
-            'Beschreibung' => $Beschreibung,
-            'Menge' => $Menge,
-            'Einheit' => $Einheit,
-            'Einzelpreis' => $Einzelpreis,
-            'Rabatt' => $Rabatt,
-            'Gesamtpreis' => $Gesamtpreis,
-        ];
 
-    }
-
-    $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('dynamicFieldsArray'));
+    $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
 
         return $pdf->download('sample.pdf');
     }
