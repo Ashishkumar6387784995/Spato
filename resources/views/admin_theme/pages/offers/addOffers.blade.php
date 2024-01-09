@@ -177,11 +177,7 @@
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-<<<<<<< HEAD
-     <form id="AddOffersForm" method="post">
-=======
      <form id="AddOffersForm" method="post" >
->>>>>>> 4ae4a85f10d7adf0740c2f460be73d0979ac4d83
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
@@ -199,11 +195,7 @@
         <a href="#" class="btn">Lieferschein</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
-<<<<<<< HEAD
-        <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
-=======
        <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
->>>>>>> 4ae4a85f10d7adf0740c2f460be73d0979ac4d83
        </div>
        <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">senden</a>
@@ -861,7 +853,7 @@
      </div>
      <div class="modal-body">
       <div class="form-floating">
-       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein"></textarea>
+       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein" ></textarea>
       </div>
      </div>
      <div class="modal-footer">
