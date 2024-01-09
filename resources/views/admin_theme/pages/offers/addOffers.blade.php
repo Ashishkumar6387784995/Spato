@@ -177,7 +177,7 @@
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="AddOffersForm" method="post" action="{{url('/api/OffersPdfdownload')}}">
+     <form id="AddOffersForm" method="post">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
@@ -195,7 +195,7 @@
         <a href="#" class="btn">Lieferschein</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
-       <a href="{{url('api/downloadPdf')}}" class="btn"><button type="submit">Rechnung</button></a>
+        <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">senden</a>
@@ -585,29 +585,29 @@
 
     newRow.innerHTML = `
                     <td>
-                        <input type="text" value='${No}' name='inputs[${i}][SNo]' placeholder='#' />
+                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
                     </td>
                     <td>
-                        <input type="text"" placeholder="#"/>
+                        <input type="text"" name='inputs[${i}][Produkt]' placeholder="#"/>
                     </td>
                     <td>
-                        <input type="text" placeholder="#"/>
+                        <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
                     </td>
                     <td>
-                    <input type="text" placeholder="#"/>
+                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
                        
                     </td>
                     <td>
-                    <input type="text" name='inputs[${i}][Quantity]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Rate]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+                        <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Discound]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
+                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Amount]' id="Amount_${i}" placeholder='#' />
+                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
                     </td>
                     <td>
                         <button class="remove-table-row  btn btn-sm">Delete</button>
@@ -713,6 +713,7 @@
    };
 
    $('#table tbody tr').each(function(index) {
+    console.log("Processing row " + index);
     var inputRow = {
      POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
      Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
@@ -753,6 +754,7 @@
      // Handle success response
      if (response.success) {
       console.log(response.success);
+      console.log(response.dynamicFields);
       $('#AddOffersForm')[0].reset();
       $('#success_msg').text(response.success);
      } else if (response.errors) {
@@ -851,7 +853,7 @@
      </div>
      <div class="modal-body">
       <div class="form-floating">
-       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein" ></textarea>
+       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein"></textarea>
       </div>
      </div>
      <div class="modal-footer">
