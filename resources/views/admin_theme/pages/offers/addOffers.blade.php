@@ -196,26 +196,26 @@
             </div>
 
 
-            <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
-              <a href="#" class="btn">Auftrag</a>
-            </div>
-            <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
-              <a href="#" class="btn">Lieferschein</a>
-            </div>
-            <div class="col-md-2 stretch-card grid-margin">
-              <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
-            </div>
-            <div class="col-md-2 stretch-card grid-margin">
-              <div class="mb-3">
-                <input class="form-control btn" type="file" id="formFile" placeholder="Select File">
-              </div>
-            </div>
-            <div class="col-md-2 stretch-card grid-margin">
-              <a href="#" class="btn">senden</a>
-            </div>
-          </div>
-          <span id="success_msg" style="color:Green"></span>
-          <div class="row pt-3">
+       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
+        <a href="#" class="btn">Auftrag</a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
+        <a href="#" class="btn">Lieferschein</a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin">
+        <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin">
+        <div class="mb-3">
+         <input class="form-control btn" type="file" id="formFile" placeholder="Select File">
+        </div>
+       </div>
+       <div class="col-md-2 stretch-card grid-margin">
+        <a href="#" class="btn">senden</a>
+       </div>
+      </div>
+      <span id="success_msg" style="color:Green"></span>
+      <div class="row pt-3">
 
             <div class="col-md-4">
               <div class="contact-show">
