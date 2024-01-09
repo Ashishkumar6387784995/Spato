@@ -440,12 +440,12 @@
       },
       success: function(response) {
         // Clear the authentication token from local storage
-        if(response.message){
+        if (response.message) {
           localStorage.removeItem('authToken');
-        // Redirect or perform any other necessary actions after logout
-        window.location.href = '/api/home';
+          // Redirect or perform any other necessary actions after logout
+          window.location.href = '/api/home';
         }
-       
+
       },
       error: function(error) {
         // Handle errors
@@ -547,10 +547,17 @@
         // window.location.href = newUrl;
         if (response.role == "Admin") {
           window.location.href = '/api/admin_dashboard/admin';
-        } else {
+        } else if (response.role == "b2b") {
           window.location.href = '/api/admin_dashboard/b2b';
+        } else {
+          window.location.href = '/api/home';
         }
 
+
+        if (response.error) {
+
+          $('#error-message').text(response.error);
+        }
         // }
         //  else {
         //   window.location.href = '/api/home';

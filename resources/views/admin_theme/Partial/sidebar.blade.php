@@ -177,9 +177,10 @@
     // Retrieve the token from local storage
     var authToken = localStorage.getItem('authToken');
     console.log("hello");
+    var baseUrl = window.location.origin;
     // Make a POST request to the logout endpoint using jQuery
     $.ajax({
-      url: 'http://127.0.0.1:8000/api/logoutApi',
+      url: baseUrl + '/api/logoutApi',
       type: 'POST',
       headers: {
         'Authorization': 'Bearer ' + authToken,

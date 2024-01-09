@@ -114,7 +114,7 @@ Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
 Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
 Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
-
+Route::post('OffersPdfdownload',[OfferController::class,'downloadPdf']);
 
 
 
@@ -269,3 +269,6 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 // Notification Well
 
 Route::get('/nav', [tryController::class, 'nav']);
+
+// routes/web.php
+

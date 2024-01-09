@@ -177,11 +177,12 @@
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
+     <form id="AddOffersForm" method="post" action="{{url('/api/OffersPdfdownload')}}">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
         <button class="btn" type="button" id="saveButton">Save</button>
+
        </div>
 
        <div class="col-md-2 stretch-card grid-margin">
@@ -194,7 +195,7 @@
         <a href="#" class="btn">Lieferschein</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
-        <a href="#" class="btn">Rechnung</a>
+       <a href="{{url('api/downloadPdf')}}" class="btn"><button type="submit">Rechnung</button></a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">senden</a>
@@ -825,15 +826,15 @@
    <div class="modal-dialog">
     <div class="modal-content">
      <div class="modal-header">
-      <h1 class="modal-title fs-5" id="auftragLabel">Order Number</h1>
+      <h1 class="modal-title fs-5" id="auftragLabel">Order </h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
      </div>
      <div class="modal-body">
-      ...
+      <input type="text" id="Auftrag" name="Auftrag" />
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
      </div>
     </div>
    </div>
@@ -850,12 +851,12 @@
      </div>
      <div class="modal-body">
       <div class="form-floating">
-       <textarea class="form-control" placeholder="Write note" id="floatingTextarea"></textarea>
+       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein" ></textarea>
       </div>
      </div>
      <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save</button>
+      <!-- <button type="button" class="btn btn-primary">Save</button> -->
      </div>
     </div>
    </div>

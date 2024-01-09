@@ -127,9 +127,9 @@ class loginController extends Controller
         $user = User::where('email', $request->email)->first();
         // print_r($data);
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response([
-                'message' => ['These credentials do not match our records.']
-            ], 404);
+            return response()->json([
+                'error' => ['These credentials do not match our records.']
+            ]);
         }
 
         $role = $user->role;

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\offers;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class OfferController extends Controller
@@ -61,6 +62,7 @@ class OfferController extends Controller
 
     public function addOfferApi(Request $request){
 
+       
 
         $validator = Validator::make($request->all(), [
             // 'Angebots_Nr' => 'required|string',
@@ -121,5 +123,59 @@ class OfferController extends Controller
     // Return a success response
 
 
+    }
+
+
+    public function downloadPdf(Request $request){
+       
+
+    $dynamicFields = $request->input('inputs');
+    $dynamicFieldsArray = [];
+    // Set dynamic fields on the offer
+    foreach ($dynamicFields as $dynamicField) {
+    
+        $Angebots_Nr = $request->input('Angebots_Nr');
+        $Angebotsdatum = $request->input('Angebotsdatum');
+        $Referenz = $request->input('Referenz');
+        $Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+
+        $gesamt_netto = $request->input('gesamt_netto');
+        $zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+        $Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+
+
+        $POS = $dynamicField['POS'];
+        $Produkt = $dynamicField['Produkt'];
+        $Beschreibung = $dynamicField['Beschreibung'];
+        $Menge = $dynamicField['Menge'];
+        $Einheit = $dynamicField['Einheit'];
+        $Einzelpreis = $dynamicField['Einzelpreis'];
+        $Rabatt = $dynamicField['Rabatt'];
+        $Gesamtpreis = $dynamicField['Gesamtpreis'];
+     
+
+        $dynamicFieldsArray[] = [
+            'Angebots_Nr' => $Angebots_Nr,
+            'Angebotsdatum' => $Angebotsdatum,
+            'Referenz' => $Referenz,
+            'Ihre_Kundennummer' => $Ihre_Kundennummer,
+            'gesamt_netto' => $gesamt_netto,
+            'zzgl_Umsatzsteuer' => $zzgl_Umsatzsteuer,
+            'Gesamtbetrag_brutto' => $Gesamtbetrag_brutto,
+            'POS' => $POS,
+            'Produkt' => $Produkt,
+            'Beschreibung' => $Beschreibung,
+            'Menge' => $Menge,
+            'Einheit' => $Einheit,
+            'Einzelpreis' => $Einzelpreis,
+            'Rabatt' => $Rabatt,
+            'Gesamtpreis' => $Gesamtpreis,
+        ];
+
+    }
+
+    $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('dynamicFieldsArray'));
+
+        return $pdf->download('sample.pdf');
     }
 }
