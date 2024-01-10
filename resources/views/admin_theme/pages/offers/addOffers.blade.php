@@ -278,7 +278,7 @@
               </div>
               <div class="details">
                 <div class="field">
-                  <p>Email</p>
+                  <p style="display:none">Email</p>
                 </div>
                 <div class="inputs">
                   <p><input class="dynamic-field" type="text" placeholder='#' id="customer_email" name="customer_email" style="display:none" />
