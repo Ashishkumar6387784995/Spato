@@ -904,6 +904,24 @@
     // console.log("Selected item value:", $(this).val());
   </script>
 
+<script>
+        function selectFile() {
+            // Trigger a click event on the file input
+            document.getElementById('fileInput').click();
+        }
+
+        // Listen for change event on file input
+        document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(event) {
+            // Access the selected file(s) using event.target.files
+            const selectedFile = event.target.files[0];
+
+            // Do something with the selected file, for example, display its name
+            alert('Selected file: ' + selectedFile.name);
+        }
+    </script>
+
 
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
