@@ -66,6 +66,10 @@
    margin: auto;
    font-size: 10px !important;
   }
+
+  .details {
+   font-size: 10px;
+  }
   </style>
  </head>
 
@@ -97,8 +101,8 @@
      <td>
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
      </td>
-     <td>Datum</td>
-     <td>24.12.2023</td>
+     <td class="details">Datum</td>
+     <td class="details">24.12.2023</td>
     </tr>
     <tr>
 
@@ -109,8 +113,8 @@
      <td>
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
      </td>
-     <td>Referenz</td>
-     <td>BV Vaillant Villa</td>
+     <td class="details">Referenz</td>
+     <td class="details">BV Vaillant Villa</td>
     </tr>
     <tr>
 
@@ -121,8 +125,8 @@
      <td>
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum </p>
      </td>
-     <td>Ihre Kundennummer</td>
-     <td>1073</td>
+     <td class="details">Ihre Kundennummer</td>
+     <td class="details">1073</td>
     </tr>
     <tr>
 
@@ -133,8 +137,8 @@
      <td>
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
      </td>
-     <td>Ihr Ansprechpartner</td>
-     <td>Oliver Laug</td>
+     <td class="details">Ihr Ansprechpartner</td>
+     <td class="details">Oliver Laug</td>
     </tr>
    </table>
   </div>
