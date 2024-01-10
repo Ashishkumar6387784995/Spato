@@ -187,7 +187,7 @@
             <span class="mdi mdi-menu"></span>
           </button>
         </div>
-        <form id="AddOffersForm" method="post">
+        <form id="AddOffersForm" method="post" enctype="multipart/form-data">
           <div class="row pt-3">
 
             <div class="col-md-2 stretch-card grid-margin">
@@ -196,26 +196,28 @@
             </div>
 
 
-       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
-        <a href="#" class="btn">Auftrag</a>
-       </div>
-       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
-        <a href="#" class="btn">Lieferschein</a>
-       </div>
-       <div class="col-md-2 stretch-card grid-margin">
-        <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
-       </div>
-       <div class="col-md-2 stretch-card grid-margin">
-        <div class="mb-3">
-         <input class="form-control btn" type="file" id="formFile" placeholder="Select File">
-        </div>
-       </div>
-       <div class="col-md-2 stretch-card grid-margin">
-        <a href="#" class="btn">senden</a>
-       </div>
-      </div>
-      <span id="success_msg" style="color:Green"></span>
-      <div class="row pt-3">
+            <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
+              <a href="#" class="btn">Auftrag</a>
+            </div>
+            <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
+              <a href="#" class="btn">Lieferschein</a>
+            </div>
+            <div class="col-md-2 stretch-card grid-margin">
+              <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
+            </div>
+            <div class="col-md-2 stretch-card grid-margin">
+              <div class="mb-3">
+                <!-- <input class="form-control btn" type="file" id="formFile" placeholder="Select File"> -->
+                <input type="file" id="fileInput">
+              </div>
+            </div>
+            <div class="col-md-2 stretch-card grid-margin">
+              <!-- <a href="#" class="btn">senden</a> -->
+              <button onclick="selectFile()">senden</button>
+            </div>
+          </div>
+          <span id="success_msg" style="color:Green"></span>
+          <div class="row pt-3">
 
             <div class="col-md-4">
               <div class="contact-show">
@@ -870,12 +872,12 @@
 
               $.ajax({
                 type: 'get',
-                url: baseUrl + '/api/selectedB2CUserDetails/' + selectedUser ,
+                url: baseUrl + '/api/selectedB2CUserDetails/' + selectedUser,
                 dataType: 'json',
                 success: function(response) {
                   // Handle success response
                   if (response.success) {
-                  
+
                     console.log(response.success[0].email);
                     $("#customer_email").val(response.success[0].email);
                     $("#customer_Email").text(response.success[0].email);
@@ -885,10 +887,28 @@
 
 
                     // Dynamically set the loop limit based on the array length
-                 
+
                   }
                 },
               });
+
+
+              function selectFile() {
+                // Trigger a click event on the file input
+                $('#fileInput').click();
+              }
+
+              // Listen for change event on file input
+              $('#fileInput').on('change', handleFileSelect);
+
+              function handleFileSelect() {
+                // Access the selected file(s) using event.target.files
+                var Angebots_Nr = $('#AddOffersForm input[name="Angebots_Nr"]').val();
+                let selectedFile = Angebots_Nr + '.pdf';
+
+                // Do something with the selected file, for example, display its name
+                alert('Selected file: ' + selectedFile);
+              }
 
 
 
@@ -904,23 +924,9 @@
     // console.log("Selected item value:", $(this).val());
   </script>
 
-<script>
-        function selectFile() {
-            // Trigger a click event on the file input
-            document.getElementById('fileInput').click();
-        }
+  <script>
 
-        // Listen for change event on file input
-        document.getElementById('fileInput').addEventListener('change', handleFileSelect);
-
-        function handleFileSelect(event) {
-            // Access the selected file(s) using event.target.files
-            const selectedFile = event.target.files[0];
-
-            // Do something with the selected file, for example, display its name
-            alert('Selected file: ' + selectedFile.name);
-        }
-    </script>
+  </script>
 
 
 
