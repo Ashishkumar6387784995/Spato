@@ -158,7 +158,7 @@
     <tr>
      <td>{{ $data['POS'] }}</td>
      <td>{{ $data['Produkt'] }}</td>
-     <td>{{ $data['Beschreibung'] }}</td>
+     <td style="width:300px;">{{ $data['Beschreibung'] }}</td>
      <td>{{ $data['Menge'] }}</td>
      <td>{{ $data['Einheit'] }}</td>
      <td>{{ $data['Einzelpreis'] }}</td>
