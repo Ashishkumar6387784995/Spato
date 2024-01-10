@@ -109,6 +109,8 @@ Route::post('logoutApi',[loginController::class,'logoutApi']);
 Route::get('/productList', [tryController::class, 'productListing']);
 
 
+
+
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
 
  // Offers for Admin
@@ -117,7 +119,7 @@ Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
 Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
 
 Route::get('OffersPdfdownload/{offerId}',[OfferController::class,'downloadPdf']);
-
+Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
 
 
 

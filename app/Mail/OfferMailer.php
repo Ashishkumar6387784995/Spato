@@ -9,35 +9,41 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EmailVerification extends Mailable
+class OfferMailer extends Mailable
 {
     use Queueable, SerializesModels;
+
+    /**
+     * Public variable to be accessed in the view.
+     *
+     * @var string
+     */
+    public $offerId;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-
-     public $user;
-     public $token;
-    public function __construct($user, $token)
-
-
+    public function __construct($offerId)
     {
-        $this->user = $user;
-        $this->token = $token;
+        $this->offerId = $offerId;
     }
 
-
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
     public function build()
     {
+        // Access the offerId using $this->offerId
         return $this->subject('Reset Your Password')
-                    ->view('mail.emailReset')
-                    ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
-                        'as' => 'logo.png',
-                        'mime' => 'image/png',
-                    ]);
+            ->view('mail.offerPdfMailer')
+            ->attach(storage_path('app/pdf/' . $this->offerId . '.pdf'), [
+                'as' => $this->offerId . '.pdf',  // Use $offerId as the file name
+                'mime' => 'application/pdf', // Set the correct MIME type for a PDF file
+            ]);
     }
 
     /**
@@ -48,7 +54,7 @@ class EmailVerification extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Email Verification',
+            subject: 'Offer Mailer',
         );
     }
 
@@ -60,7 +66,7 @@ class EmailVerification extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mail.emailVerification',
+            view: 'mail.offerPdfMailer',
         );
     }
 
