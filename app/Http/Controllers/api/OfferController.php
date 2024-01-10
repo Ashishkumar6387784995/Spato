@@ -136,8 +136,8 @@ class OfferController extends Controller
 
     public function downloadPdf($offerId)
     {
-        $offers = offers::where('Angebots_Nr', $offerId)->get();
-    
+        $offers = offers::where('Angebots_Nr', $offerId)->get();  
+        // dd($offers);  
         $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
     
         // Save the PDF to the storage/app/pdf directory
