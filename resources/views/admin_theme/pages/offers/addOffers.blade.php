@@ -112,7 +112,12 @@
       border: 1px solid #8F8C8C;
       border-radius: 5px;
     }
-
+    .showButton{
+      width: 250px;
+      background: transparent;
+      border: 1px solid #8F8C8C;
+      border-radius: 5px;
+    }
     a {
       color: #54606c;
     }
@@ -203,7 +208,7 @@
               <a href="#" class="btn">Lieferschein</a>
             </div>
             <div class="col-md-2 stretch-card grid-margin">
-              <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" class="btn"><button type="button">Rechnung</button></a>
+              <a href="{{url('api/OffersPdfdownload/'.$newOfferNo)}}" ><button class="btn" type="button">Rechnung</button></a>
             </div>
             <div class="col-md-2 stretch-card grid-margin">
             
@@ -211,7 +216,7 @@
             <div class="col-md-2 stretch-card grid-margin">
               <!-- <a href="#" class="btn">senden</a> -->
 
-              <button id="emailSend">senden</button>
+              <button id="emailSend" class="btn">senden</button>
             </div>
           </div>
           <span id="success_msg" style="color:Green; font-size:20px;"></span>
@@ -219,9 +224,9 @@
 
             <div class="col-md-4">
               <div class="contact-show">
-                <p><b>Name</b> -> <span id="customer_Name">Lorem<span></p>
-                <p><b>Conatact</b> -> <span id="customer_Contact">Lorem<span></p>
-                <p><b>Email</b> -> <span id="customer_Email">Lorem<span></p>
+                <p><b>Name</b> -> <span id="customer_Name"><span></p>
+                <p><b>Conatact</b> -> <span id="customer_Contact"><span></p>
+                <p><b>Email</b> -> <span id="customer_Email"><span></p>
 
               </div>
             </div>
