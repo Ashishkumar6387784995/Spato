@@ -162,27 +162,7 @@ class OfferController extends Controller
     Mail::to($email)->send(new OfferMailer($offerId,));
 
       return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
-    // if (File::exists($offerPdf)) {
-    //     try {
-    //         // Attempt to send the email
-         
-
-    //         // Check if the email sending process had any failures
-    //         if (count(Mail::failures()) > 0) {
-    //             // Handle email sending failure, log, or report it
-    //             return response()->json(['error' => 'Failed to send the offer email.']);
-    //         }
-
-    //         // Email sent successfully
-    //         return response()->json(['success' => 'Offer email sent successfully.']);
-    //     } catch (\Exception $e) {
-    //         // Handle any exceptions that might occur during email sending
-    //         return response()->json(['error' => 'An unexpected error occurred.']);
-    //     }
-    // } else {
-    //     // The file does not exist. Handle this case accordingly.
-    //     return response()->json(['error' => 'Offer PDF file not found.']);
-    // }
+   
 }
 
 }
