@@ -38,7 +38,7 @@
 
 
 
-  <span class="img"><a href="{{url('/api/admin_dashboard')}}"><img
+  <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img
      src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></a></span>
 
 

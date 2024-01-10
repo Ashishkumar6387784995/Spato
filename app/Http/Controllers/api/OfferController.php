@@ -15,11 +15,11 @@ class OfferController extends Controller
     {
         $offers = offers::orderBy('created_at', 'desc')->get();
 
-        if ($offers){
-            return response()->json(['offersList'=>$offers]);
+        if ($offers) {
+            return response()->json(['offersList' => $offers]);
         }
-     
-            return response()->json(['errors'=>"Offer Not Found"]);
+
+        return response()->json(['errors' => "Offer Not Found"]);
     }
 
 
@@ -34,19 +34,19 @@ class OfferController extends Controller
 
         // $lastOffer = "AB-123456";
         $lastOffer = offers::latest()->first();
-         $lastOffer= $lastOffer->Angebots_Nr;
+        $lastOffer = $lastOffer->Angebots_Nr;
         // Assuming $lastOffer is 'AN-12345'
         // $lastOffer = 'AN-12345';
 
 
-  
-            // Split the string into an array based on the dash
-            $parts = explode('-', $lastOffer);
-            $parts= $parts[1];
-        
-         
- 
-   
+
+        // Split the string into an array based on the dash
+        $parts = explode('-', $lastOffer);
+        $parts = $parts[1];
+
+
+
+
         // Increment the numeric part
         $newNumericPart = $parts + 1;
 
@@ -57,12 +57,13 @@ class OfferController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo','role'));
+        return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo', 'role'));
     }
 
-    public function addOfferApi(Request $request){
+    public function addOfferApi(Request $request)
+    {
 
-       
+
 
         $validator = Validator::make($request->all(), [
             // 'Angebots_Nr' => 'required|string',
@@ -84,61 +85,61 @@ class OfferController extends Controller
         }
 
 
- 
-    
-
-    // Set the attributes of the model with the main form data
-   
-
-    // Get the dynamic fields from the request
-    $dynamicFields = $request->input('inputs');
-
-    // Set dynamic fields on the offer
-    foreach ($dynamicFields as $dynamicField) {
-        $offer = new offers();
-        $offer->Angebots_Nr = $request->input('Angebots_Nr');
-        $offer->Angebotsdatum = $request->input('Angebotsdatum');
-        $offer->Referenz = $request->input('Referenz');
-        $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
-
-        $offer->gesamt_netto = $request->input('gesamt_netto');
-        $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
-        $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
 
 
-        $offer->POS = $dynamicField['POS'];
-        $offer->Produkt = $dynamicField['Produkt'];
-        $offer->Beschreibung = $dynamicField['Beschreibung'];
-        $offer->Menge = $dynamicField['Menge'];
-        $offer->Einheit = $dynamicField['Einheit'];
-        $offer->Einzelpreis = $dynamicField['Einzelpreis'];
-        $offer->Rabatt = $dynamicField['Rabatt'];
-        $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
-        $offer->save();
-    }      
+
+        // Set the attributes of the model with the main form data
+
+
+        // Get the dynamic fields from the request
+        $dynamicFields = $request->input('inputs');
+
+        // Set dynamic fields on the offer
+        foreach ($dynamicFields as $dynamicField) {
+            $offer = new offers();
+            $offer->Angebots_Nr = $request->input('Angebots_Nr');
+            $offer->Angebotsdatum = $request->input('Angebotsdatum');
+            $offer->Referenz = $request->input('Referenz');
+            $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+
+            $offer->gesamt_netto = $request->input('gesamt_netto');
+            $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+            $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+
+
+            $offer->POS = $dynamicField['POS'];
+            $offer->Produkt = $dynamicField['Produkt'];
+            $offer->Beschreibung = $dynamicField['Beschreibung'];
+            $offer->Menge = $dynamicField['Menge'];
+            $offer->Einheit = $dynamicField['Einheit'];
+            $offer->Einzelpreis = $dynamicField['Einzelpreis'];
+            $offer->Rabatt = $dynamicField['Rabatt'];
+            $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
+            $offer->save();
+        }
 
         // Return a success response
         return response()->json(['success' => "Offer Is Added SuccessFully", 'dynamicFields' => $dynamicFields]);
 
-    // Return a success response
+        // Return a success response
 
 
     }
 
 
-    public function downloadPdf($offerId){
-       
+    public function downloadPdf($offerId)
+    {
 
         // echo $offerId;
 
         $offers = offers::where('Angebots_Nr', $offerId)->get();
         // dd($offers);
+    
+        $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
 
+        return $pdf->download($offerId.'.pdf');
 
-
-
-    $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
-
-        return $pdf->download('sample.pdf');
     }
+
+
 }

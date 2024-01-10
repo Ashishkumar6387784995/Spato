@@ -731,7 +731,7 @@
         Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
         Angebotsdatum: $('#AddOffersForm input[name="Angebotsdatum"]').val(),
         Referenz: $('#AddOffersForm input[name="Referenz"]').val(),
-        Ihre_Kundennummer: $('#AddOffersForm input[name="Ihre_Kundennummer"]').val(),
+        Ihre_Kundennummer: $('#AddOffersForm select[name="Ihre_Kundennummer"]').val(),
         gesamt_netto: $('#AddOffersForm input[name="gesamt_netto"]').val(),
         zzgl_Umsatzsteuer: $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val(),
         Gesamtbetrag_brutto: $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val(),
