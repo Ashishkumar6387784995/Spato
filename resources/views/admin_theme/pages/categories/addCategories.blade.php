@@ -50,7 +50,7 @@
   }
 
   #uploadPreview img {
-   min-width: 70%;
+   min-width: 200px;
    min-height: 200px;
    margin: auto;
    justify-content: center;
@@ -206,6 +206,7 @@
 
        <div class="col-md-4">
         <div id="uploadPreview"></div>
+        <p class="warning" style="color:#404040; font-weight:600;">Upload only in 200 x 200 size image</p>
        </div>
 
        <div class="col-md-2"></div>
@@ -304,7 +305,7 @@
            </td>
            <td>
 
-            <input type="file" id="file" /><br>
+            <input type="file" id="file" accept=".jpg,.jpeg,.png" onchange="validateFileType()" /><br>
            </td>
 
            <td>
@@ -384,6 +385,20 @@
    }
    image.src = _URL.createObjectURL(file);
   });
+  </script>
+
+
+  <script type="text/javascript">
+  function validateFileType() {
+   var fileName = document.getElementById("file").value;
+   var idxDot = fileName.lastIndexOf(".") + 1;
+   var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+   if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+    //TO DO
+   } else {
+    alert("Only jpg/jpeg and png files are allowed!");
+   }
+  }
   </script>
   <!-- Dynamic table update ends-->
 
