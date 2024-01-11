@@ -70,6 +70,10 @@
   .details {
    font-size: 10px;
   }
+
+  .page_break {
+   page-break-before: always;
+  }
   </style>
  </head>
 
@@ -270,6 +274,11 @@
      </tr>
     </tbody>
    </table>
+   <div class="page_break"></div>
+
+   <div class="hello">
+    <h1>Hello</h1>
+   </div>
   </div>
  </body>
 
