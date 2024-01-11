@@ -308,7 +308,7 @@
            </td>
 
            <td>
-            <button class="btn">Zurücksetzen</button>
+            <button  class="btn">Zurücksetzen</button>
            </td>
          </tbody>
         </table>

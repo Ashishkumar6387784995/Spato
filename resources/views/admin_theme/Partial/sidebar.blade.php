@@ -74,7 +74,7 @@
   </li>
   <li class="nav-item">
 
-   <a class="nav-link border-bottom" href="{{ url('/api/claimsListing') }}">
+   <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}">
     <span class="menu-title">Claim Manager</span>
    </a>
 
