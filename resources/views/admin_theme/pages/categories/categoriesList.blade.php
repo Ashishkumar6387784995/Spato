@@ -146,24 +146,41 @@
      </div>
      <div class="row pt-3">
 
-          <div class="col-md-4 stretch-card grid-margin">
-            Alle Angebote
-          </div>
-        </div>
-        <div class="row pt-3 container">
-          <table id="dataTable">
-            <tr>
-              <th>Status</th>
-              <th>Nr</th>
-              <th>Kunde u. Betreff</th>
-              <th>Datum</th>
-              <th>Betrag netto</th>
-              <th></th>
-            </tr>
-
-
-          </table>
-        </div>
+      <div class="col-md-4 stretch-card grid-margin">
+       Alle Kategorie
+      </div>
+     </div>
+     <div class="row pt-3 container">
+      <table id="dataTable">
+       <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Datum</th>
+        <th>No. of Produkte</th>
+        <th></th>
+        <th></th>
+       </tr>
+       <tr>
+        <td>1</td>
+        <td>Moters</td>
+        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, nemo?</td>
+        <td>24-1-2024</td>
+        <td>12</td>
+        <td><button class="btn-del">bearbeiten</button></td>
+        <td><button class="btn-del">Löschen</button></td>
+       </tr>
+       <tr>
+        <td>2</td>
+        <td>Robots</td>
+        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, nemo?</td>
+        <td>11-1-2024</td>
+        <td>30</td>
+        <td><button class="btn-del">bearbeiten</button></td>
+        <td><button class="btn-del">Löschen</button></td>
+       </tr>
+      </table>
+     </div>
 
 
     </div>
