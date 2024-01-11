@@ -14,4 +14,8 @@ class webController extends Controller
     public function ProductdetailPage(){
         return view('frontEnd/Pages/products/ProductDetailsPage');
     }
+
+    public function ProductsByCategories(){
+        return view('frontEnd/Pages/products/ProductsByCategories');
+    }
 }
