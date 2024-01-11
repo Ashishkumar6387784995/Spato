@@ -205,7 +205,7 @@
 
        <div class="col-md-4">
         <div id="uploadPreview"></div>
-        <span id="error" style="color:red;  font-size:15px; font-weight:600;"></span>
+        <span id="error" style="font-size:15px; font-weight:600;"></span>
        </div>
 
        <div class="col-md-2"></div>
@@ -215,7 +215,8 @@
           <p>Kategorie-Nr.</p>
          </div>
          <div class="inputs">
-          <input class="dynamic-field" type="text" placeholder='#' id="Kategorie_Nr" name="KKategorie_Nr" value="{{$lastCategory}}" /></p>
+          <input class="dynamic-field" type="text" placeholder='#' id="Kategorie_Nr" name="KKategorie_Nr"
+           value="{{$lastCategory}}" /></p>
          </div>
         </div>
 
@@ -224,8 +225,8 @@
           <p>Kategorie datum</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Kategorie_datum" name="Kategorie_datum"
-          /> <br>
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Kategorie_datum" name="Kategorie_datum" />
+           <br>
            <span id="Angebotsdatum_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
@@ -412,12 +413,14 @@
     if (img.width <= 200 && img.height <= 200) {
 
      document.getElementById("error").innerText = "Image Upload Succesfully";
+     error.style.color = '#44e1d5';
      // upload logic here
     } else {
      document.getElementById("error").innerText = "Please upload only 200 X 200 image";
      var form = document.getElementById("signupForm");
      form.reset();
      document.getElementById("uploadPreview").innerText = 'No image is select';
+     error.style.color = 'red';
     }
 
     // Release the object URL resources
