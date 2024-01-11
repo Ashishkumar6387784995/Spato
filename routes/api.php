@@ -117,7 +117,7 @@ Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashbo
  // Offers for Admin
 Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
 Route::get('addOffer/{role}',[OfferController::class,'addOffer']);
-Route::get('editOffer/{id}',[OfferController::class,'editOffer']);
+Route::get('editOffer/{id}{role}',[OfferController::class,'editOffer']);
 
 Route::get('OffersPdfdownload/{offerId}',[OfferController::class,'downloadPdf']);
 Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
@@ -138,8 +138,8 @@ Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2
 
   // products for Admin
   Route::get('productListingApi',[productController::class,'productListing']);
-  Route::view('productListing', 'admin_theme/pages/products/productsList');
-  Route::get('addProduct',[productController::class,'addProduct']);
+  Route::view('productListing/{role}', 'admin_theme/pages/products/productsList');
+  Route::get('addProduct/{role}',[productController::class,'addProduct']);
   Route::post('addProduct',[productController::class,'addproductList']);
   Route::get('editProduct/{id}',[productController::class,'editProduct']);
   Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
@@ -157,8 +157,8 @@ Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2
 
 // Assignment for Admin
 Route::get('assignmentListingApi',[AssignmentController::class,'AssignmentListing']);
-Route::view('assignmentListing', 'admin_theme/pages/assignments/assignmentList');
-Route::get('addAssignment',[AssignmentController::class,'addAssignment']);
+Route::view('assignmentListing/{role}', 'admin_theme/pages/assignments/assignmentList');
+Route::get('addAssignment/{role}',[AssignmentController::class,'addAssignment']);
 Route::post('addAssignmentsApi',[AssignmentController::class,'addAssignmentsApi']);
 Route::get('editAssignment/{id}',[AssignmentController::class,'editAssignment']);
 
@@ -167,79 +167,79 @@ Route::get('editAssignment/{id}',[AssignmentController::class,'editAssignment'])
 
 // Delivery Notes for Admin
 Route::get('deliveryNotesListingApi',[DeliveryNotesController::class,'DeliveryNotesListingApi']);
-Route::view('deliveryNotesListing', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
-Route::get('addDeliveryNotes',[DeliveryNotesController::class,'addDeliveryNotes']);
+Route::view('deliveryNotesListing/{role}', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
+Route::get('addDeliveryNotes/{role}',[DeliveryNotesController::class,'addDeliveryNotes']);
 Route::post('addDeliveryNotesApi',[DeliveryNotesController::class,'addDeliveryNotesApi']);
 Route::get('editDeliveryNotes',[DeliveryNotesController::class,'editDeliveryNotes']);
 
 
 // Bills for Admin
 Route::get('billsListingApi',[billsController::class,'billsListingApi']);
-Route::view('billsListing', 'admin_theme/pages/bills/billsList');
-Route::get('addbills',[billsController::class,'addbills']);
+Route::view('billsListing/{role}', 'admin_theme/pages/bills/billsList');
+Route::get('addbills/{role}',[billsController::class,'addbills']);
 Route::POST('addbillsApi',[billsController::class,'addbillsApi']);
 Route::get('editbills',[billsController::class,'editbills']);
 
 
 // Credits for Admin
 Route::get('creditsListingApi',[creditsController::class,'creditListingApi']);
-Route::view('creditsListing', 'admin_theme/pages/credits/creditList');
-Route::get('addCredits',[creditsController::class,'addCredits']);
+Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
+Route::get('addCredits/{role}',[creditsController::class,'addCredits']);
 Route::post('addCreditsApi',[creditsController::class,'addCreditsApi']);
 Route::get('editCredits',[creditsController::class,'editCredits']);
 
 
 // Claim Manger for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('claimsListing', 'admin_theme/pages/claim_manager/claimsList');
-Route::get('addClaims',[claims_manager_Controller::class,'addCliams']);
+Route::view('claimsListing/{role}', 'admin_theme/pages/claim_manager/claimsList');
+Route::get('addClaims/{role}',[claims_manager_Controller::class,'addCliams']);
 Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 
 
 // Contact for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('contactListing', 'admin_theme/pages/contacts/ContactsList');
-Route::get('addcontact',[ContactController::class,'addContacts']);
+Route::view('contactListing/{role}', 'admin_theme/pages/contacts/ContactsList');
+Route::get('addcontact/{role}',[ContactController::class,'addContacts']);
 // Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 
 
 // Suppliers for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('SuppliersListing', 'admin_theme/pages/suppliers/SuppliersList');
-Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
+Route::view('SuppliersListing/{role}', 'admin_theme/pages/suppliers/SuppliersList');
+Route::get('addSuppliers/{role}',[SuppliersController::class,'addSuppliers']);
 
 
 // Statistics for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('Statistics', 'admin_theme/pages/Statistics/Statistics');
+Route::view('Statistics/{role}', 'admin_theme/pages/Statistics/Statistics');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 // Connections for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('connection', 'admin_theme/pages/connections/connections');
+Route::view('connection/{role}', 'admin_theme/pages/connections/connections');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
 // NewsLetter for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('newsLetter', 'admin_theme/pages/newsLetter/NewsLetter');
+Route::view('newsLetter/{role}', 'admin_theme/pages/newsLetter/NewsLetter');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 // Settings for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('settings', 'admin_theme/pages/settings/settings');
+Route::view('settings/{role}', 'admin_theme/pages/settings/settings');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
 // Settings for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('settings', 'admin_theme/pages/settings/settings');
+Route::view('settings/{role}', 'admin_theme/pages/settings/settings');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
 // Customer Address Book for B2B
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('customerAddressbook', 'admin_theme/pages/customerAddressbook/customerAddressbook');
+Route::view('customerAddressbook{role}', 'admin_theme/pages/customerAddressbook/customerAddressbook');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
@@ -279,7 +279,7 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 
 // Notification Well
 
-Route::get('/productListing', [tryController::class, 'productListing']);
+Route::get('/productListingNew', [tryController::class, 'productListing']);
 
 // routes/web.php
 

@@ -18,8 +18,8 @@ class contactController extends Controller
     //     return view('admin_theme/pages/claim_manager/editClaims');
     // }
 
-    public function addContacts(){
+    public function addContacts($role){
      
-        return view('admin_theme/pages/contacts/addContacts');
+        return view('admin_theme/pages/contacts/addContacts')->with(compact('role'));
     }
 }

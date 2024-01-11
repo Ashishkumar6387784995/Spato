@@ -121,7 +121,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="edit btn" href="{{url('/api/addAssignment')}}">+ neuer Auftrag</a>
+                        <a class="edit btn" href="{{url('/api/addAssignment/'.$role)}}">+ neuer Auftrag</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter

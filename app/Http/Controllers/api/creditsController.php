@@ -27,7 +27,7 @@ class creditsController extends Controller
         return view('admin_theme/pages/offers/editoffers');
     }
 
-    public function addCredits()
+    public function addCredits($role)
     {
 
         // $lastOffer = "AB-123456";
@@ -55,7 +55,7 @@ class creditsController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/credits/addCredits')->with(compact('CreditNo'));
+        return view('admin_theme/pages/credits/addCredits')->with(compact('CreditNo', 'role'));
     }
 
     public function addCreditsApi(Request $request){

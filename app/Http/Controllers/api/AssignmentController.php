@@ -22,12 +22,12 @@ class AssignmentController extends Controller
     }
 
 
-    public function editAssignment(){
+    public function editAssignment($role){
      
-        return view('admin_theme/pages/assignments/editAssignments');
+        return view('admin_theme/pages/assignments/editAssignments')->with(compact('role'));
     }
 
-    public function addAssignment(){
+    public function addAssignment($role){
      
          // $lastOffer = "AB-123456";
          $lastOffer = Assignments_list::latest()->first();
@@ -54,7 +54,7 @@ class AssignmentController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/assignments/addAssignments')->with(compact('newAssignmentNo'));
+        return view('admin_theme/pages/assignments/addAssignments')->with(compact('newAssignmentNo','role'));
 
 
     }

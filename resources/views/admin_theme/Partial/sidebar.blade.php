@@ -53,28 +53,28 @@
 
 
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/assignmentListing') }}">
+   <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}">
     <span class="menu-title">Aufträge</span>
    </a>
   </li>
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/deliveryNotesListing') }}">
+   <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}">
     <span class="menu-title">Lieferscheine</span>
    </a>
   </li>
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/billsListing') }}">
+   <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}">
     <span class="menu-title">Rechnungen</span>
    </a>
   </li>
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing') }}">
+   <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}">
     <span class="menu-title">Gutschriften</span>
    </a>
   </li>
   <li class="nav-item">
    <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/claimsListing') }}">
+    <a class="nav-link" href="{{ url('/api/claimsListing/'.$role) }}">
      <span class="menu-title">Claim Manager</span>
     </a>
    </div>
@@ -84,13 +84,13 @@
   @if($role=="b2b")
 
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
+   <a class="nav-link" href="{{ url('/api/creditsListing1/'.$role) }}">
     <span class="menu-title">Kundenadress Buch</span>
    </a>
   </li>
   <li class="nav-item">
    <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/claimsListing1') }}">
+    <a class="nav-link" href="{{ url('/api/claimsListing1/'.$role) }}">
      <span class="menu-title">Einstellungen</span>
     </a>
    </div>
@@ -100,13 +100,13 @@
   @elseif($role=="admin")
   <div id="adminSidebar">
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{ url('/api/contactListing') }}">
+    <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}">
      <span class="menu-title">Kontakte</span>
     </a>
    </li>
    <li class="nav-item">
     <div class="border-bottom ">
-     <a class="nav-link" href="{{ url('/api/SuppliersListing') }}">
+     <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}">
       <span class="menu-title">Lieferanten</span>
      </a>
     </div>
@@ -117,24 +117,24 @@
     </a>
    </li>
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
+    <a class="nav-link pt-3" href="{{url('/api/productListing/'.$role)}}">
      <span class="menu-title">Produkte</span>
     </a>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/Statistics')}}">
+    <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}">
      <span class="menu-title">Statistik</span>
     </a>
    </li>
    <li class="nav-item">
     <div class="border-bottom">
-     <a class="nav-link" href="{{url('/api/connection')}}">
+     <a class="nav-link" href="{{url('/api/connection/'.$role)}}">
       <span class="menu-title">B2C B2B Connection</span>
      </a>
     </div>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/newsLetter')}}">
+    <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}">
      <span class="menu-title">Newsletter</span>
     </a>
    </li>
@@ -154,7 +154,7 @@
     </div>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/settings')}}">
+    <a class="nav-link" href="{{url('/api/settings/'.$role)}}">
      <span class="menu-title">Einstellungen</span>
     </a>
    </li>
