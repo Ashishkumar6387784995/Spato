@@ -33,6 +33,7 @@
 
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
   <style>
   * {
@@ -41,31 +42,22 @@
   }
 
   #uploadPreview {
-   border: 1px solid red;
-   width: 200px;
-   height: 200px;
+   border: 1px solid #000;
+   width: 250px;
+   height: 250px;
    overflow: hidden;
    background-color: #fff;
   }
 
   #uploadPreview img {
-   min-width: 200px;
+   min-width: 70%;
    min-height: 200px;
+   margin: auto;
+   justify-content: center;
+   display: flex;
+   align-items: center;
+   margin-top: 20px;
   }
-
-  .transform-hover {
-   height: 150px;
-   object-fit: cover;
-   transition: transform 0.3s ease;
-   /* You can adjust the scale value for the desired zoom effect */
-
-  }
-
-  .transform-hover:hover {
-   transform: scale(1.1);
-   cursor: pointer;
-  }
-
 
   .btn {
    /* background-color: #54606c; */
@@ -81,10 +73,6 @@
   .btn:hover {
    background-color: #404040;
    color: #fff;
-  }
-
-  .close {
-   color: #404040;
   }
 
   .stretch-card {
@@ -246,7 +234,7 @@
        </div>
 
       </div>
-      <div class="row pt-3">
+      <!-- <div class="row pt-3">
 
        <div class="col stretch-card">
 
@@ -264,7 +252,7 @@
        <div class="col stretch-card">
 
        </div>
-      </div>
+      </div> -->
 
 
       <div class="pt-5">
@@ -320,7 +308,7 @@
            </td>
 
            <td>
-            <button class="btn">Delete</button>
+            <button class="btn">Zurücksetzen</button>
            </td>
          </tbody>
         </table>
@@ -382,8 +370,7 @@
 
 
   <script>
-  < script >
-   var _URL = window.URL || window.webkitURL;
+  var _URL = window.URL || window.webkitURL;
 
   $("#file").change(function(e) {
    var image, file;
@@ -398,10 +385,9 @@
    image.src = _URL.createObjectURL(file);
   });
   </script>
-  </script>
   <!-- Dynamic table update ends-->
 
-  <script>
+  <!-- <script>
   $('#saveButton').click(function(e) {
    e.preventDefault(); // Prevent the form from submitting normally
 
@@ -630,8 +616,7 @@
     },
    });
   });
-  </script>
-
+  </script> -->
 
 
 
@@ -646,52 +631,6 @@
 
   <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
-  </script>
-
-
-  <!-- auftrag Modal -->
-  <div class="modal fade" id="auftrag" tabindex="-1" aria-labelledby="auftragLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="auftragLabel">Order </h1>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-     </div>
-     <div class="modal-body">
-      <input type="text" id="Auftrag" name="Auftrag" />
-     </div>
-     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-     </div>
-    </div>
-   </div>
-  </div>
-  <!-- Modals -->
-
-  <!-- lieferschein Modal -->
-  <div class="modal fade" id="lieferschein" tabindex="-1" aria-labelledby="lieferscheinLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-     <div class="modal-header">
-      <p class="modal-title fs-5" id="lieferscheinLabel">Write note</p>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-     </div>
-     <div class="modal-body">
-      <div class="form-floating">
-       <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein"></textarea>
-      </div>
-     </div>
-     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <!-- <button type="button" class="btn btn-primary">Save</button> -->
-     </div>
-    </div>
-   </div>
-  </div>
-  <!-- Modals -->
-
-
 
 
  </body>
