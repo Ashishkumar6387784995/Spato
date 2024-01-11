@@ -308,7 +308,7 @@
            </td>
 
            <td>
-            <button  class="btn">Zurücksetzen</button>
+            <button class="btn">Zurücksetzen</button>
            </td>
          </tbody>
         </table>
@@ -420,6 +420,7 @@
 
      var form = document.getElementById("signupForm");
      form.reset();
+     document.getElementById("uploadPreview").innerText = 'No image is select';
     }
 
     // Release the object URL resources
