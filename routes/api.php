@@ -52,6 +52,7 @@ Route::post('login',[loginController::class,'index']);
 Route::post('forgetPassword',[loginController::class,'forgetPassword']);
 Route::get('password/reset/{token}',[loginController::class,'passwordResetFrom']);
 Route::post('password/reset',[loginController::class,'passwordReset']);
+Route::get('/pagenotfound', [loginController::class,'pagenotfound'])->name('notfound');
 // Route::post('logoutApi',[loginController::class,'logoutApi']);
 // Route::get('logout',[loginController::class,'logout']);
 
