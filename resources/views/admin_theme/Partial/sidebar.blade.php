@@ -74,7 +74,7 @@
   </li>
   <li class="nav-item">
    <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/claimsListing/'.$role) }}">
+    <a class="nav-link" href="{{ url('/api/claimsListing') }}">
      <span class="menu-title">Claim Manager</span>
     </a>
    </div>
@@ -117,7 +117,7 @@
     </a>
    </li>
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{url('/api/productListing/'.$role)}}">
+    <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
      <span class="menu-title">Produkte</span>
     </a>
    </li>
