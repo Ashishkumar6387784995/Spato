@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\offers;
+use Illuminate\Support\Facades\Validator;
 
 class categoriesController extends Controller
 {
@@ -29,32 +30,34 @@ class categoriesController extends Controller
     public function addCategories($role)
     {
 
-        // $lastOffer = "AB-123456";
-        $lastOffer = offers::latest()->first();
-        $lastOffer = $lastOffer->Angebots_Nr;
-        // Assuming $lastOffer is 'AN-12345'
-        // $lastOffer = 'AN-12345';
+        // // $lastOffer = "AB-123456";
+        // $lastOffer = offers::latest()->first();
+        // $lastOffer = $lastOffer->Angebots_Nr;
+        // // Assuming $lastOffer is 'AN-12345'
+        // // $lastOffer = 'AN-12345';
 
 
 
-        // Split the string into an array based on the dash
-        $parts = explode('-', $lastOffer);
-        $parts = $parts[1];
+        // // Split the string into an array based on the dash
+        // $parts = explode('-', $lastOffer);
+        // $parts = $parts[1];
 
 
 
 
-        // Increment the numeric part
-        $newNumericPart = $parts + 1;
+        // // Increment the numeric part
+        // $newNumericPart = $parts + 1;
 
-        // Create the new offerNo
-        $newOfferNo = 'AN-' . $newNumericPart;
+        // // Create the new offerNo
+        // $newOfferNo = 'AN-' . $newNumericPart;
         // echo $newOfferNo;
 
         // $newOfferNo will be 'AN-12346'
 
+              $lastCategory = 'AN-12345';
 
-        return view('admin_theme/pages/categories/addCategories')->with(compact('newOfferNo', 'role'));
+
+        return view('admin_theme/pages/categories/addCategories')->with(compact('lastCategory', 'role'));
     }
 
     public function addOfferApi(Request $request)
