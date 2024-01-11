@@ -22,6 +22,7 @@ use App\Http\Controllers\api\SuppliersController;
 use App\Http\Controllers\api\ContactController;
 use App\Http\Controllers\api\ConnectionsController;
 use App\Http\Controllers\api\StatisticsController;
+use App\Http\Controllers\api\categoriesController;
 
 
 /*
@@ -126,12 +127,12 @@ Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2
 
 
   // Categories for Admin
-  Route::get('productListingApi',[productController::class,'productListing']);
-  Route::view('productListing', 'admin_theme/pages/products/productsList');
-  Route::get('addProduct',[productController::class,'addProduct']);
-  Route::post('addProduct',[productController::class,'addproductList']);
-  Route::get('editProduct/{id}',[productController::class,'editProduct']);
-  Route::get('deleteProduct/{id}',[productController::class,'deleteProduct']);
+  Route::get('categoriesListingApi',[categoriesController::class,'categoriesListing']);
+  Route::view('categoriesListing/{role}', 'admin_theme/pages/categories/categoriesList');
+  Route::get('addCategories/{role}',[categoriesController::class,'addCategories']);
+  Route::post('addCategories/{role}',[categoriesController::class,'addCategoriesList']);
+  Route::get('editProduct/{id}',[categoriesController::class,'editProduct']);
+  Route::get('deleteProduct/{id}',[categoriesController::class,'deleteProduct']);
 
 
 

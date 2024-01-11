@@ -112,7 +112,7 @@
     </div>
    </li>
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{url('/api/kategorieListing')}}">
+    <a class="nav-link pt-3" href="{{url('/api/categoriesListing/'.$role)}}">
      <span class="menu-title">Kategorie</span>
     </a>
    </li>
