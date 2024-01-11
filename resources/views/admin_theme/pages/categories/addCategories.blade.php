@@ -274,8 +274,6 @@
            <th></th>
 
           </tr>
-
-
          </thead>
          <tbody>
 
@@ -285,29 +283,29 @@
           <tr class="hidden">
            <td>
 
-            <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+            <input type="text" name='' value="1" id="" placeholder='#' /><br>
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Produkt]' placeholder='#' />
-            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+            <input type="text" name='Kategorie_Name' id="Kategorie_Name" placeholder='#' />
+            <br><span id="Kategorie_Name" style="color:red; font-size:13px;"></span>
 
            </td>
 
 
            <td>
 
-            <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
-            <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+            <input type="text" name='Kategorie_Beschreibung' id="Kategorie_Beschreibung" placeholder='#' />
+            <br><span id="Kategorie_Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
 
-            <input type="file" id="file" accept=".jpg,.jpeg,.png" onchange="validateFileType()" /><br>
+            <input type="file" id="file" accept=".jpg,.jpeg,.png" name="file" onchange="validateFileType()" /><br>
            </td>
 
            <td>
-            <button class="btn">Zurücksetzen</button>
+            <button class="btn" type="button">Zurücksetzen</button>
            </td>
          </tbody>
         </table>
