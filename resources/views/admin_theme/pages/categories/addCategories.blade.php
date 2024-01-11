@@ -187,12 +187,11 @@
      <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
       <h2>Admin Dashboard</h2>
       <p>{{ now()->format('l, F j, Y') }}</p>
-
       <button class="navbar-toggler" type="button" data-toggle="offcanvas">
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="AddOffersForm" method="post">
+     <form id="signupForm" method="post">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
@@ -317,7 +316,6 @@
 
        </div>
       </div><br>
-
       <!-- <button type="submit" class="btn btn-common">Submit</button> -->
 
 
@@ -399,6 +397,40 @@
     alert("Only jpg/jpeg and png files are allowed!");
    }
   }
+
+  document.getElementById('file').addEventListener('change', function(event) {
+   const file = event.target.files[0];
+
+   if (!file) {
+    // User canceled file selection
+    return;
+   }
+
+   let img = new Image();
+   img.src = window.URL.createObjectURL(file);
+
+   img.onload = () => {
+    if (img.width <= 200 && img.height <= 200) {
+     alert(`Nice, image is the right size. It can be uploaded`);
+     // upload logic here
+    } else {
+     alert(
+      `Sorry, this image doesn't look like the size we wanted. It's ${img.width} x ${img.height}, but we require a 200 x 200 size image.`
+     );
+
+     var form = document.getElementById("signupForm");
+     form.reset();
+    }
+
+    // Release the object URL resources
+    window.URL.revokeObjectURL(img.src);
+   };
+
+   img.onerror = () => {
+    // Handle image loading error, if any
+    alert(`Error loading the image.`);
+   };
+  });
   </script>
   <!-- Dynamic table update ends-->
 
