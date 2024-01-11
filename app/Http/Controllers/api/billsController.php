@@ -24,7 +24,7 @@ class billsController extends Controller
 
 
 
-    public function addbills()
+    public function addbills($role)
     {
 
         // $lastOffer = "AB-123456";
@@ -52,7 +52,7 @@ class billsController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/bills/addbills')->with(compact('newBillNo'));
+        return view('admin_theme/pages/bills/addbills')->with(compact('newBillNo','role'));
     }
 
     

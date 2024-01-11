@@ -17,9 +17,9 @@ class ProductController extends Controller
     //     return response()->json(['Product Details' => $products]);
     // }
 
-   public function addproduct(){
+   public function addproduct($role){
 
-     return view('admin_theme/pages/products/addProduct');
+     return view('admin_theme/pages/products/addProduct')->with(compact('role'));
    }
 
     public function addproductList(Request $request){

@@ -133,7 +133,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="btn" href="{{url('/api/addAssignment')}}">+ neue Connection</a>
+                        <a class="btn" href="{{url('/api/addConnections')}}">+ neue Connection</a>
                     </div>
                 </div>
                 <div class="row pt-3">

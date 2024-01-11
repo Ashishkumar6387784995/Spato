@@ -30,7 +30,7 @@ class DeliveryNotesController extends Controller
         return view('admin_theme/pages/delivery_notes/editDeliveryNotes');
     }
 
-    public function addDeliveryNotes(){
+    public function addDeliveryNotes($role){
      
         
          // $lastOffer = "AB-123456";
@@ -58,7 +58,7 @@ class DeliveryNotesController extends Controller
         // $newOfferNo will be 'AN-12346'
 
 
-        return view('admin_theme/pages/delivery_notes/addDeliveryNotes')->with(compact('newDeliveryNotesNo'));
+        return view('admin_theme/pages/delivery_notes/addDeliveryNotes')->with(compact('newDeliveryNotesNo','role'));
 
       
     }

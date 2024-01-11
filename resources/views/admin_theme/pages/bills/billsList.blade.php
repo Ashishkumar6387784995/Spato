@@ -124,7 +124,7 @@
 
      <div class="row pt-3">
       <div class="col-md-4 stretch-card grid-margin">
-       <a href="{{url('/api/addbills')}}" class="btn">+ neue Rechnung</a>
+       <a href="{{url('/api/addbills/' .$role)}}" class="btn">+ neue Rechnung</a>
       </div>
       <div class="col-md-4 stretch-card grid-margin">
        <a href="#" class="btn">Filter</a>

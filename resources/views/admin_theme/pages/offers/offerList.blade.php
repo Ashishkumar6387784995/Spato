@@ -152,7 +152,7 @@
         </div>
         <div class="row pt-3 container">
           <table id="dataTable">
-            <tr>
+            <tr id="headings">
               <th>Status</th>
               <th>Nr</th>
               <th>Kunde u. Betreff</th>
@@ -212,7 +212,7 @@
               var tableBody = $('#dataTable');
 
               // Clear existing table rows
-              tableBody.empty();
+              tableBody.find("tr:gt(0)").remove();
 
               // Iterate through the data and add rows to the table
               $.each(dataList, function(index, item) {

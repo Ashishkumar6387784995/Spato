@@ -18,8 +18,8 @@ class claims_manager_Controller extends Controller
         return view('admin_theme/pages/claim_manager/editClaims');
     }
 
-    public function addCliams(){
+    public function addCliams($role){
      
-        return view('admin_theme/pages/claim_manager/addClaims');
+        return view('admin_theme/pages/claim_manager/addClaims')->with(compact('role'));
     }
 }
