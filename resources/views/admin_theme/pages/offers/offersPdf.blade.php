@@ -95,7 +95,7 @@
      <th></th>
      <th></th>
      <th>Angebots-Nr.</th>
-     <th>AN-2473</th>
+     <th>{{$offers[0]->Angebots_Nr}}</th>
     </tr>
     <tr>
      <td>SPATO GmbH</td>
@@ -106,7 +106,7 @@
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
      </td>
      <td class="details">Datum</td>
-     <td class="details">24.12.2023</td>
+     <td class="details">{{$offers[0]->Angebotsdatum}}</td>
     </tr>
     <tr>
 
@@ -118,7 +118,7 @@
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
      </td>
      <td class="details">Referenz</td>
-     <td class="details">BV Vaillant Villa</td>
+     <td class="details">{{$offers[0]->Referenz}}</td>
     </tr>
     <tr>
 
@@ -130,7 +130,7 @@
       <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum </p>
      </td>
      <td class="details">Ihre Kundennummer</td>
-     <td class="details">1073</td>
+     <td class="details">{{$offers[0]->Ihre_Kundennummer}}</td>
     </tr>
     <tr>
 
