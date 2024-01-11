@@ -205,7 +205,7 @@
 
        <div class="col-md-4">
         <div id="uploadPreview"></div>
-        <p class="warning" style="color:#404040; font-weight:600;">Upload only in 200 x 200 size image</p>
+        <span id="error" style="color:red;  font-size:15px; font-weight:600;"></span>
        </div>
 
        <div class="col-md-2"></div>
@@ -411,13 +411,11 @@
 
    img.onload = () => {
     if (img.width <= 200 && img.height <= 200) {
-     alert(`Nice, image is the right size. It can be uploaded`);
+
+     document.getElementById("error").innerText = "Image Upload Succesfully";
      // upload logic here
     } else {
-     alert(
-      `Sorry, this image doesn't look like the size we wanted. It's ${img.width} x ${img.height}, but we require a 200 x 200 size image.`
-     );
-
+     document.getElementById("error").innerText = "Please upload only 200 X 200 image";
      var form = document.getElementById("signupForm");
      form.reset();
      document.getElementById("uploadPreview").innerText = 'No image is select';
