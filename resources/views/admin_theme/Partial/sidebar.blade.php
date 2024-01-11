@@ -29,7 +29,7 @@
 }
 </style>
 
-<nav class="sidebar sidebar-offcanvas" >
+<nav class="sidebar sidebar-offcanvas">
  <ul class="nav">
 
 
@@ -44,7 +44,7 @@
 
   <li class="nav-item">
 
-  <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}">
     <span class="menu-title">Angebote</span>
    </a>
 
@@ -83,18 +83,18 @@
 
   @if($role=="b2b")
 
-   <li class="nav-item">
-    <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
-     <span class="menu-title">Kundenadress Buch</span>
+  <li class="nav-item">
+   <a class="nav-link" href="{{ url('/api/creditsListing1') }}">
+    <span class="menu-title">Kundenadress Buch</span>
+   </a>
+  </li>
+  <li class="nav-item">
+   <div class="border-bottom ">
+    <a class="nav-link" href="{{ url('/api/claimsListing1') }}">
+     <span class="menu-title">Einstellungen</span>
     </a>
-   </li>
-   <li class="nav-item">
-    <div class="border-bottom ">
-     <a class="nav-link" href="{{ url('/api/claimsListing1') }}">
-      <span class="menu-title">Einstellungen</span>
-     </a>
-    </div>
-   </li>
+   </div>
+  </li>
 
 
   @elseif($role=="admin")
@@ -110,6 +110,11 @@
       <span class="menu-title">Lieferanten</span>
      </a>
     </div>
+   </li>
+   <li class="nav-item">
+    <a class="nav-link pt-3" href="{{url('/api/kategorieListing')}}">
+     <span class="menu-title">Kategorie</span>
+    </a>
    </li>
    <li class="nav-item">
     <a class="nav-link pt-3" href="{{url('/api/productListing')}}">
@@ -158,7 +163,7 @@
 
 
   <li class="nav-item" style="background-color:transparent;">
-  <button type="submit" name="logout"  id="logoutButton">Log Out</button>
+   <button type="submit" name="logout" id="logoutButton">Log Out</button>
    </a>
   </li>
 
@@ -170,43 +175,43 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-  // public/js/logout.js
+// public/js/logout.js
 
-  // Function to handle the logout API call
-  function logout() {
-    // Retrieve the token from local storage
-    var authToken = localStorage.getItem('authToken');
-    console.log("hello");
-    var baseUrl = window.location.origin;
-    // Make a POST request to the logout endpoint using jQuery
-    $.ajax({
-      url: baseUrl + '/api/logoutApi',
-      type: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + authToken,
-        'Content-Type': 'application/json'
-      },
-      success: function(response) {
+// Function to handle the logout API call
+function logout() {
+ // Retrieve the token from local storage
+ var authToken = localStorage.getItem('authToken');
+ console.log("hello");
+ var baseUrl = window.location.origin;
+ // Make a POST request to the logout endpoint using jQuery
+ $.ajax({
+  url: baseUrl + '/api/logoutApi',
+  type: 'POST',
+  headers: {
+   'Authorization': 'Bearer ' + authToken,
+   'Content-Type': 'application/json'
+  },
+  success: function(response) {
 
-        if(response.message){
+   if (response.message) {
 
-             // Clear the authentication token from local storage
-        localStorage.removeItem('authToken');
-        // Redirect or perform any other necessary actions after logout
-        window.location.href = '/api/home';
-        }
-     
-      },
-      error: function(error) {
-        // Handle errors
-        console.error('Error:', error);
-      }
-    });
+    // Clear the authentication token from local storage
+    localStorage.removeItem('authToken');
+    // Redirect or perform any other necessary actions after logout
+    window.location.href = '/api/home';
+   }
+
+  },
+  error: function(error) {
+   // Handle errors
+   console.error('Error:', error);
   }
+ });
+}
 
-  // Attach the logout function to the click event of the logout button
+// Attach the logout function to the click event of the logout button
 
-  $('#logoutButton').on('click', function() {
-    logout();
-  });
+$('#logoutButton').on('click', function() {
+ logout();
+});
 </script>
