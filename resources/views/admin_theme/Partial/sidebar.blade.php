@@ -79,7 +79,7 @@
    </a>
 
   </li>
-
+ 
 
   @if($role=="b2b")
 
@@ -113,7 +113,7 @@
    </li>
    <li class="nav-item">
     <a class="nav-link pt-3" href="{{url('/api/categoriesListing/'.$role)}}">
-     <span class="menu-title">Kategorie</span>
+     <span class="menu-title">Produkte Kategorie</span>
     </a>
    </li>
    <li class="nav-item">

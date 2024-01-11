@@ -282,4 +282,8 @@ class loginController extends Controller
         return response()->json([ 'success' => $users]);
 
     }
+
+    public function pagenotfound(){
+        return view('frontEnd/Pages/errors/pageNotFound');
+    }
 }
