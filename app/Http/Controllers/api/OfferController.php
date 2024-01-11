@@ -136,16 +136,25 @@ class OfferController extends Controller
 
     public function downloadPdf($offerId)
     {
-        $offers = offers::where('Angebots_Nr', $offerId)->get();  
-        // dd($offers);  
-        $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
-    
-        // Save the PDF to the storage/app/pdf directory
-        $pdfFilePath = 'pdf/' . $offerId . '.pdf';
-        Storage::put($pdfFilePath, $pdf->output());
-    
-        // Download the saved PDF
-        return response()->download(storage_path('app/' . $pdfFilePath));
+
+        $offer = offers::where('Angebots_Nr', $offerId)->first();
+        // dd($offers);
+        if($offer){
+            $offers = offers::where('Angebots_Nr', $offerId)->get(); 
+            // dd($offers);  
+            $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
+        
+            // Save the PDF to the storage/app/pdf directory
+            $pdfFilePath = 'pdf/' . $offerId . '.pdf';
+            Storage::put($pdfFilePath, $pdf->output());
+        
+            // Download the saved PDF
+            return response()->download(storage_path('app/' . $pdfFilePath));
+        }
+        else{
+            return back();
+        }
+       
     }
     
 
