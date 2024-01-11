@@ -215,8 +215,7 @@
           <p>Kategorie-Nr.</p>
          </div>
          <div class="inputs">
-          <input class="dynamic-field" type="text" placeholder='#' id="Kategorie_Nr" name="Kategorie_Nr"
-           value="KA - 1357" /></p>
+          <input class="dynamic-field" type="text" placeholder='#' id="Kategorie_Nr" name="KKategorie_Nr" value="{{$lastCategory}}" /></p>
          </div>
         </div>
 
@@ -225,8 +224,8 @@
           <p>Kategorie datum</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Kategoriedatum" name="Kategoriedatum"
-            value="{{ now()->format('d-m-Y') }}" /> <br>
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Kategorie_datum" name="Kategorie_datum"
+          /> <br>
            <span id="Angebotsdatum_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
@@ -261,7 +260,7 @@
          <thead>
           <tr>
            <th>
-            Kategorie Ausweis
+            Kategorie Nr.
            </th>
            <th>
             Kategorie Name
