@@ -40,12 +40,17 @@
    padding: 0;
   }
 
-  .contact-show {
-   width: 100%;
-   height: 100%;
+  #uploadPreview {
+   border: 1px solid red;
+   width: 200px;
+   height: 200px;
+   overflow: hidden;
    background-color: #fff;
-   border: 0.5px solid #000;
-   padding: 10px 10px;
+  }
+
+  #uploadPreview img {
+   min-width: 200px;
+   min-height: 200px;
   }
 
   .transform-hover {
@@ -212,9 +217,7 @@
       <div class="row pt-3">
 
        <div class="col-md-4">
-        <div class="contact-show">
-         input
-        </div>
+        <div id="uploadPreview"></div>
        </div>
 
        <div class="col-md-2"></div>
@@ -313,7 +316,7 @@
            </td>
            <td>
 
-            <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+            <input type="file" id="file" /><br>
            </td>
 
            <td>
@@ -379,164 +382,23 @@
 
 
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-   setupInputListeners1();
+  < script >
+   var _URL = window.URL || window.webkitURL;
 
-   function setupInputListeners1() {
-    document.querySelectorAll(
-     'input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
-     input) {
-     input.addEventListener('input', function() {
-      var idParts = this.id.split('_');
-      var index = idParts[1];
-
-      var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
-      var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
-      var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
-
-      var discountAmount = (rate * discountPercentage) / 100;
-      var discountedRate = rate - discountAmount;
-
-      var amount = quantity * discountedRate;
-      document.getElementById('Amount_' + index).value = amount.toFixed(2);
-
-      // Recalculate subtotal after each input change
-      calculateSubTotal();
-     });
-    });
-
-    // Add event listeners for Adjustment, SGST, and CGST fields
-    document.getElementById('Adjustment').addEventListener('input', function() {
-     calculateSubTotal();
-    });
-
-    document.getElementById('SGST').addEventListener('input', function() {
-     calculateSubTotal();
-    });
-
-    document.getElementById('CGST').addEventListener('input', function() {
-     calculateSubTotal();
-    });
-
-    document.getElementById('IGST').addEventListener('input', function() {
-     calculateSubTotal();
-    });
+  $("#file").change(function(e) {
+   var image, file;
+   if ((file = this.files[0])) {
+    image = new Image();
+    image.onload = function() {
+     src = this.src;
+     $("#uploadPreview").html('<img src="' + src + '"></div>');
+     e.preventDefault();
+    };
    }
-
-   var i = 0;
-   var No = 1;
-
-   document.getElementById('add').addEventListener('click', function() {
-    ++i;
-    ++No;
-
-    var table = document.getElementById('table');
-    var newRow = table.insertRow(table.rows.length);
-
-    newRow.innerHTML = `
-                    <td>
-                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
-                    </td>
-                    <td>
-                        <input type="text"" name='inputs[${i}][Produkt]' placeholder="#"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
-                    </td>
-                    <td>
-                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
-                       
-                    </td>
-                    <td>
-                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
-                    </td>
-                    <td>
-                        <button class="remove-table-row  btn btn-sm">Delete</button>
-                    </td>`;
-
-    // Call the setupInputListeners function after adding a new row
-    setupInputListeners();
-
-    // Recalculate subtotal after adding a new row
-    calculateSubTotal();
-   });
-
-   document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('remove-table-row')) {
-     event.target.closest('tr').remove();
-     // Recalculate subtotal after removing a row
-     calculateSubTotal();
-    }
-   });
-
-   // Function to set up input event listeners
-   function setupInputListeners() {
-    document.querySelectorAll(
-     'input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
-     input) {
-     input.addEventListener('input', function() {
-      var idParts = this.id.split('_');
-      var index = idParts[1];
-
-      var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
-      var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
-      var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
-
-      var discountAmount = (rate * discountPercentage) / 100;
-      var discountedRate = rate - discountAmount;
-
-      var amount = quantity * discountedRate;
-      document.getElementById('Amount_' + index).value = amount.toFixed(2);
-
-      // Recalculate subtotal after each input change
-      calculateSubTotal();
-     });
-    });
-   }
-
-   // Function to calculate and update the subtotal
-   function calculateSubTotal() {
-    var subtotal = 0;
-    document.querySelectorAll('input[id^="Amount_"]').forEach(function(amountInput) {
-     subtotal += parseFloat(amountInput.value) || 0;
-    });
-
-    // Update the SubTotal input field
-    document.getElementById('SubTotal').value = subtotal.toFixed(2);
-
-    // Subtract the value of Adjustment
-    var adjustment = parseFloat(document.getElementById('Adjustment').value) || 0;
-    var sgstPercentage = parseFloat(document.getElementById('SGST').value) || 0;
-    var cgstPercentage = parseFloat(document.getElementById('CGST').value) || 0;
-    var igstPercentage = (subtotal * 19) / 100;
-    console.log(igstPercentage);
-
-    var sgstAmount = (subtotal * sgstPercentage) / 100;
-    var cgstAmount = (subtotal * cgstPercentage) / 100;
-    var igstAmount = (subtotal * 19) / 100;
-
-    var adjustedTotal = subtotal - adjustment + sgstAmount + cgstAmount + igstAmount;
-
-    // Update the AdjustmentShow, SGSTShow, CGSTShow, and Total input fields
-    document.getElementById('AdjustmentShow').value = adjustment.toFixed(2);
-    document.getElementById('SGSTShow').value = sgstAmount.toFixed(2);
-    document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
-    document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
-    document.getElementById('Total').value = adjustedTotal.toFixed(2);
-    document.getElementById("tax").value = igstAmount.toFixed(2);
-   }
+   image.src = _URL.createObjectURL(file);
   });
   </script>
-
+  </script>
   <!-- Dynamic table update ends-->
 
   <script>
