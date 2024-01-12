@@ -257,10 +257,17 @@
         </div>
 
         <div class="row mb-2">
-         <div class="col-4">Kategorie </div>
+         <div class="col-4">Kategorie 1 </div>
          <div class="col-8">
-          <input type="text" class="form-control" name="Kategorie" id="kategorie">
-          <span id="kategorie_err" style="color:red"></span>
+          <select name="" id="">
+           <option value="">Select Kategorie</option>
+           <option value="Kategorie1">Kategorie1</option>
+           <option value="Kategorie2">Kategorie2</option>
+           <option value="Kategorie3">Kategorie3</option>
+           <option value="Kategorie4">Kategorie4</option>
+          </select>
+          <!-- <input type="text" class="form-control" name="Kategorie" id="kategorie">
+          <span id="kategorie_err" style="color:red"></span> -->
 
           <!-- <div style="height:100%; margin-top: -1.5rem !important;  margin-left: -1rem; margin-right:1rem;" style="padding:0">
                   <label style="width:100%;">
@@ -293,10 +300,77 @@
                   </select>
                 </div> -->
          </div>
-
-
-
         </div>
+
+
+        <div class="row mb-2">
+         <div class="col-4">Kategorie 2</div>
+         <div class="col-8">
+          <select name="" id="">
+           <option value="">Select Kategorie</option>
+           <option value="Kategorie1">Kategorie1</option>
+           <option value="Kategorie2">Kategorie2</option>
+           <option value="Kategorie3">Kategorie3</option>
+           <option value="Kategorie4">Kategorie4</option>
+          </select>
+         </div>
+        </div>
+
+
+        <div class="row mb-2">
+         <div class="col-4">Kategorie 3</div>
+         <div class="col-8">
+          <select name="" id="">
+           <option value="">Select Kategorie</option>
+           <option value="Kategorie1">Kategorie1</option>
+           <option value="Kategorie2">Kategorie2</option>
+           <option value="Kategorie3">Kategorie3</option>
+           <option value="Kategorie4">Kategorie4</option>
+          </select>
+         </div>
+        </div>
+
+
+        <div class="row mb-2">
+         <div class="col-4">Kategorie 4</div>
+         <div class="col-8">
+          <select name="" id="">
+           <option value="">Select Kategorie</option>
+           <option value="Kategorie1">Kategorie1</option>
+           <option value="Kategorie2">Kategorie2</option>
+           <option value="Kategorie3">Kategorie3</option>
+           <option value="Kategorie4">Kategorie4</option>
+          </select>
+         </div>
+        </div>
+
+        <div class="row mb-2">
+         <div class="col-4">Kategorie 5</div>
+         <div class="col-8">
+          <select name="" id="">
+           <option value="">Select Kategorie</option>
+           <option value="Kategorie1">Kategorie1</option>
+           <option value="Kategorie2">Kategorie2</option>
+           <option value="Kategorie3">Kategorie3</option>
+           <option value="Kategorie4">Kategorie4</option>
+          </select>
+         </div>
+        </div>
+
+        <div class="row mb-2">
+         <div class="col-4">Kategorie 6</div>
+         <div class="col-8">
+          <select name="" id="">
+           <option value="">Select Kategorie</option>
+           <option value="Kategorie1">Kategorie1</option>
+           <option value="Kategorie2">Kategorie2</option>
+           <option value="Kategorie3">Kategorie3</option>
+           <option value="Kategorie4">Kategorie4</option>
+          </select>
+         </div>
+        </div>
+
+
        </div>
 
        <div class="col border">
