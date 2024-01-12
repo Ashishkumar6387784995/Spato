@@ -251,10 +251,13 @@ Route::view('customerAddressbook{role}', 'admin_theme/pages/customerAddressbook/
 
 
 //  Account Setting for B2C users
+Route::view('accountSetting', 'frontEnd/pages/setting');
 
+
+// front End WebSite Pages...
 Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
 Route::get('/ProductsByCategories/{Kategorie_Nr}', [webController::class, 'ProductsByCategories']);
-Route::view('accountSetting', 'frontEnd/pages/setting');
+
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 Route::view('addToCart', 'frontEnd/pages/addToCart');
 

@@ -53,7 +53,7 @@ class categoriesController extends Controller
 
         // Create the new offerNo
         $lastCategory = 'KA-' . $newNumericPart;
-        // echo $lastCategory;
+        // dd($lastCategory);
 
         // $newOfferNo will be 'AN-12346'
 

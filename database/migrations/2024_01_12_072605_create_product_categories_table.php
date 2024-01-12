@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Kategorie_Name');
             $table->text('Kategorie_Beschreibung')->nullable();
             $table->text('imageFile')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
