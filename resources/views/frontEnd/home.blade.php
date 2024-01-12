@@ -86,24 +86,19 @@
       <div class="row categories text-center p-4 m-auto justify-content-evenly">
 
         @foreach($productCategories as $category)
-       
+
 
         <div class="col dark-mode-section1">
-         <a href="{{url('/api/ProductsByCategories/' . $category->Kategorie_Nr)}}" <span class="icon" style="padding-top:10px;"><img src="{{asset('storage/' . $category->imageFile )}}"</span>
-          <p class="view-desc">{{ $category->Kategorie_Name }}</p> </a>
+          <a href="{{url('/api/ProductsByCategories/' . $category->Kategorie_Nr)}}" <span class="icon" style="padding-top:10px;"><img src="{{asset('storage/' . $category->imageFile )}}" </span>
+            <p class="view-desc">{{ $category->Kategorie_Name }}</p>
+          </a>
         </div>
         @endforeach
 
 
-        <!-- <div class="col">
-          <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
-          /></span>
-          <p class="view-desc">Pool Installation & Maintanence</p>
-        </div> -->
       </div>
       <div class="row categories text-center p-4 m-auto justify-content-evenly">
-       
+
         <!-- <div class="col">
           <span class="icon"
             ><img src="assets/icons/cart.svg" alt="" srcset=""
