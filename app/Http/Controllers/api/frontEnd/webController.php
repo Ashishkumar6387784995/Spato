@@ -12,7 +12,8 @@ class webController extends Controller
     public function home(){
 
 
-        $productCategories = ProductCategory::get();
+        $productCategories = ProductCategory::where('status', 'active')->get();
+
 
 
         // dd($productCategories);

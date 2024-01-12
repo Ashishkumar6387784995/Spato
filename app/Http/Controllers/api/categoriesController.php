@@ -12,7 +12,8 @@ class categoriesController extends Controller
 {
     public function categoriesListing()
     {
-        $category = ProductCategory::orderBy('created_at', 'desc')->get();
+        $category = ProductCategory::where('status', 'active')->orderBy('created_at', 'desc')->get();
+
 
         if ($category) {
             return response()->json(['offersList' => $category]);
@@ -57,7 +58,7 @@ class categoriesController extends Controller
 
         // $newOfferNo will be 'AN-12346'
 
-            //   $lastCategory = 'AN-12345';
+        //   $lastCategory = 'AN-12345';
 
 
         return view('admin_theme/pages/categories/addCategories')->with(compact('lastCategory', 'role'));
@@ -65,7 +66,7 @@ class categoriesController extends Controller
 
     public function addCategoriesApi(Request $request)
     {
-       
+
 
         $validator = Validator::make($request->all(), [
             'Kategorie_Nr' => 'required|string',
@@ -76,7 +77,7 @@ class categoriesController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()]); 
+            return response()->json(['errors' => $validator->errors()]);
         }
 
         // Handle image upload
@@ -84,7 +85,7 @@ class categoriesController extends Controller
         if ($request->hasFile('imageFile')) {
             $image = $request->file('imageFile');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            
+
             $imagePath = $request->file('imageFile')->storeAs('category_icons', $imageName, 'public');
         }
 
@@ -100,11 +101,27 @@ class categoriesController extends Controller
         // Save the category to the database
         $category->save();
 
-        return response()->json(['success' => "Category Added Successfully"]); 
+        return response()->json(['success' => "Category Added Successfully"]);
     }
 
 
-    public function deleteCategory($Kategorie_Nr){
-
+    public function deleteCategory($Kategorie_Nr)
+    {
+        $productCategory = ProductCategory::where('Kategorie_Nr', $Kategorie_Nr)->first();
+    
+        // Check if the product category exists
+        if ($productCategory) {
+            // Update the status
+            $productCategory->status = 'deactive';
+            $productCategory->save();
+    
+            // Output success message or perform other actions
+            return response()->json(['success' => "Category Deleted Successfully"]);
+        } else {
+            // Output error message or perform other actions
+            return response()->json(['error' => "No product categories found for the given condition."], 404);
+        }
     }
+    
+    
 }
