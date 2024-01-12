@@ -196,7 +196,6 @@
 
        <div class="col-md-6 stretch-card grid-margin">
         <button class="btn" type="button" id="saveButton">Save</button>
-        <br />
        </div>
        <div class="col-md-6 stretch-card grid-margin" style="justify-content: end;">
         <a href="{{url('/api/addCategories/'. $role)}}" class="btn">+ neues Kategorie</a>
