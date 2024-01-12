@@ -133,7 +133,7 @@ Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2
   Route::get('addCategories/{role}',[categoriesController::class,'addCategories']);
   Route::post('addCategoriesApi',[categoriesController::class,'addCategoriesApi']);
   Route::get('editProduct/{id}',[categoriesController::class,'editProduct']);
-  Route::get('deleteProduct/{id}',[categoriesController::class,'deleteProduct']);
+  Route::get('deleteCategory/{id}',[categoriesController::class,'deleteCategory']);
 
 
 

@@ -102,4 +102,9 @@ class categoriesController extends Controller
 
         return response()->json(['success' => "Category Added Successfully"]); 
     }
+
+
+    public function deleteCategory($Kategorie_Nr){
+
+    }
 }

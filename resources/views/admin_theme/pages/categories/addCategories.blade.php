@@ -447,7 +447,7 @@
   <script>
   $('#saveButton').click(function(e) {
    e.preventDefault(); // Prevent the form from submitting normally
-
+   $('#success_msg').text('');
    $('#Kategorie_Nr_err').text('');
    $('#Kategorie_datum_err').text('');
    $('#Kategorie_Name_err').text('');
@@ -492,6 +492,7 @@
       console.log(response.success);
       // $('#AddOffersForm')[0].reset();
       $('#success_msg').text(response.success);
+      $('#signupForm')[0].reset();
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);

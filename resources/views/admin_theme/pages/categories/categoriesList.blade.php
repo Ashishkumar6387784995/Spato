@@ -154,10 +154,10 @@
           <table id="dataTable">
             <tr>
               <th>Id</th>
+              
               <th>Name</th>
-              <th>Description</th>
               <th>Datum</th>
-              <th>No. of Produkte</th>
+              <th>Beschreibung</th>
               <th></th>
               <th></th>
               <!-- <img src="{{ asset('storage/category_icons/1704977563.png') }}" width="120px" hight="120px" alt=""> -->
@@ -219,16 +219,19 @@
               // Iterate through the data and add rows to the table
               $.each(dataList, function(index, item) {
                 var row = $('<tr>');
-                row.append(`<td>Offen</td>`);
+               
                 row.append(`<td>${item.Kategorie_Nr}</td>`);
-                row.append(`<td>${item.Kategorie_datum}</td>`);
                 row.append(`<td>${item.Kategorie_Name}</td>`);
+                row.append(`<td>${item.Kategorie_datum}</td>`);
+              
 
-                row.append(`<td>${item.geKategorie_Beschreibung}</td>`);
+                row.append(`<td>${item.Kategorie_Beschreibung}</td>`);
 
                 row.append('<td><img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;"></td>');
 
-                row.append(`<td><a href="/api/editOffer/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+                row.append(`<td><a href="/api/editCategory/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+
+                row.append(`<td><button ><a href="/api/deleteCategory/${item.Kategorie_Nr}" >Löschen</a></button></td>`);
 
 
                 // Add more columns as needed
