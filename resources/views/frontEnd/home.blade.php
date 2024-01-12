@@ -96,14 +96,9 @@
       </a>
      </div>
      @endforeach
+    </div>
+   </div>
 
-
-     <!-- <div class="col">
-          <span class="icon"
-            ><img src="assets/icons/cart.svg" alt="" srcset=""
-          /></span>
-          <p class="view-desc">Pool Installation & Maintanence</p>
-        </div> -->
   </section>
   <!-- Latest Products starts -->
   <section class="latest-products pt-5 dark-mode-section2">
