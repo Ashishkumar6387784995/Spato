@@ -131,7 +131,7 @@ Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2
   Route::get('categoriesListingApi',[categoriesController::class,'categoriesListing']);
   Route::view('categoriesListing/{role}', 'admin_theme/pages/categories/categoriesList');
   Route::get('addCategories/{role}',[categoriesController::class,'addCategories']);
-  Route::post('addCategories/{role}',[categoriesController::class,'addCategoriesList']);
+  Route::post('addCategoriesApi',[categoriesController::class,'addCategoriesApi']);
   Route::get('editProduct/{id}',[categoriesController::class,'editProduct']);
   Route::get('deleteProduct/{id}',[categoriesController::class,'deleteProduct']);
 
