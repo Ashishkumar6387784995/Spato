@@ -28,7 +28,7 @@ class webController extends Controller
 
     public function ProductsByCategories($Kategorie_Nr){
 
-        $productCategories = Product:: where('Kategorie_Nr_1', $Kategorie_Nr)->get();
+        // $productCategories = Product:: where('Kategorie_Nr_1', $Kategorie_Nr)->get();
 
         return view('frontEnd/Pages/products/ProductsByCategories');
     }

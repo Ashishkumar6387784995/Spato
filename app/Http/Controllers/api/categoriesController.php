@@ -32,9 +32,12 @@ class categoriesController extends Controller
     public function addCategories($role)
     {
 
-        // $lastOffer = "AB-123456";
+    
         $lastOffer = ProductCategory::latest()->first();
 
+        if($lastOffer){
+
+            
         $lastOffer = $lastOffer->Kategorie_Nr;
         // Assuming $lastOffer is 'AN-12345'
         // $lastOffer = 'AN-12345';
@@ -54,12 +57,15 @@ class categoriesController extends Controller
 
         // Create the new offerNo
         $lastCategory = 'KA-' . $newNumericPart;
-        // dd($lastCategory);
+        }
 
-        // $newOfferNo will be 'AN-12346'
+        else{
 
-        //   $lastCategory = 'AN-12345';
+            $lastCategory = 'AN-12345';
+            
+        }
 
+    
 
         return view('admin_theme/pages/categories/addCategories')->with(compact('lastCategory', 'role'));
     }
