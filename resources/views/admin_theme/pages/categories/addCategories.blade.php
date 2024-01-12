@@ -197,13 +197,13 @@
        <div class="col-md-6 stretch-card grid-margin">
         <button class="btn" type="button" id="saveButton">Save</button>
         <br />
-        <span id="success_msg" style="color:#44e1d5; font-size:20px; font-weight:600; padding-top:5px;"></span>
        </div>
        <div class="col-md-6 stretch-card grid-margin" style="justify-content: end;">
         <a href="{{url('/api/addCategories/'. $role)}}" class="btn">+ neues Kategorie</a>
 
        </div>
       </div>
+      <div><span id="success_msg" style="color:#44e1d5; font-size:20px; font-weight:600;"></span></div>
       <div class="row pt-3">
        <div class="col-md-4">
         <div id="uploadPreview"></div>
