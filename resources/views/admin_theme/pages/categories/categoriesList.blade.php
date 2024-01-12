@@ -144,6 +144,7 @@
             <a href="#" class="btn">Filter</a>
           </div>
         </div>
+        <div><span id="success_msg" style="color:#44e1d5; font-size:20px; font-weight:600;"></span></div>
         <div class="row pt-3">
 
           <div class="col-md-4 stretch-card grid-margin">
@@ -154,7 +155,7 @@
           <table id="dataTable">
             <tr>
               <th>Id</th>
-              
+
               <th>Name</th>
               <th>Datum</th>
               <th>Beschreibung</th>
@@ -219,11 +220,11 @@
               // Iterate through the data and add rows to the table
               $.each(dataList, function(index, item) {
                 var row = $('<tr>');
-               
+
                 row.append(`<td>${item.Kategorie_Nr}</td>`);
                 row.append(`<td>${item.Kategorie_Name}</td>`);
                 row.append(`<td>${item.Kategorie_datum}</td>`);
-              
+
 
                 row.append(`<td>${item.Kategorie_Beschreibung}</td>`);
 
@@ -231,7 +232,7 @@
 
                 row.append(`<td><a href="/api/editCategory/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
 
-                row.append(`<td><button ><a href="/api/deleteCategory/${item.Kategorie_Nr}" >Löschen</a></button></td>`);
+                row.append(`<td><button type="button" id="deleteButton">Löschen</button></td>`);
 
 
                 // Add more columns as needed
@@ -257,6 +258,41 @@
           }
         }
       });
+
+
+      $(document).on('click', '#deleteButton', function() {
+
+        // Get the ID or any other data you need from the row
+        var categoryId = $(this).closest('tr').find('td:first').text(); // Assuming ID is in the first column
+        // console.log(categoryId);
+        // Perform the AJAX request
+        $.ajax({
+          url: '/api/deleteCategory/' + categoryId, // Replace with your actual endpoint URL
+          method: 'POST',
+          data: {
+            categoryId: categoryId
+          }, // Pass any data you need to delete
+          success: function(response) {
+            // Handle success response
+            if(response.success){
+
+            $('#success_msg').text(response.success);
+
+            // Delay the page reload for 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+              location.reload(true);
+            }, 1000);
+          }
+          },
+          error: function(xhr, status, error) {
+            // Handle error response
+            console.error('Error deleting category:', error);
+          }
+        });
+      });
+
+
+
     });
   </script>
 
