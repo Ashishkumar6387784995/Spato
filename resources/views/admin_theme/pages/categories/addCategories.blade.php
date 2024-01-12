@@ -196,7 +196,7 @@
 
        <div class="col-md-6 stretch-card grid-margin">
         <button class="btn" type="button" id="saveButton">Save</button>
-
+        <span id="success_msg" style="color:#44e1d5; font-size:20px; font-weight:600;"></span>
        </div>
        <div class="col-md-6 stretch-card grid-margin" style="justify-content: end;">
         <a href="{{url('/api/addCategories/'. $role)}}" class="btn">+ neues Kategorie</a>
@@ -204,7 +204,6 @@
        </div>
       </div>
       <div class="row pt-3">
-       <span id="success_msg" style="color:#44e1d5; font-size:15px; font-weight:600;"></span>
        <div class="col-md-4">
         <div id="uploadPreview"></div>
         <span id="error" style="font-size:15px; font-weight:600;"></span>
