@@ -100,6 +100,14 @@
    </div>
 
   </section>
+
+
+  <!--  -->
+  <section class="latest-products pt-5 dark-mode-section2">
+  </section>
+  <!--  -->
+
+
   <!-- Latest Products starts -->
   <section class="latest-products pt-5 dark-mode-section2">
    <h5 class="text-center ">Subtitle</h5>
@@ -278,7 +286,7 @@
   <section class="featured-products dark-mode-section1">
    <h5 class="text-center text-light">Subtitle</h5>
    <h3 class="text-center text-light">Our Products Categories</h3>
-   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+   <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
      <div class="carousel-item active">
       <div class="cards-wrapper">
@@ -442,12 +450,13 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
     <!-- <span class="sr-only">Previous</span> -->
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carouselExampleControlss" role="button" data-slide="next">
      <span class="carousel-control-next-icon" aria-hidden="true"></span>
      <span class="sr-only">Next</span>
     </a>
    </div>
   </section>
+
 
 
   @include('frontEnd/partial/footer')
