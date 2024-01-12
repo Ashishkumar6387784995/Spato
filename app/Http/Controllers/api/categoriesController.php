@@ -70,7 +70,7 @@ class categoriesController extends Controller
         $validator = Validator::make($request->all(), [
             'Kategorie_Nr' => 'required|string',
             'Kategorie_datum' => 'nullable|date',
-            'Kategorie_Name' => 'required|string',
+            'Kategorie_Name' => 'required|string|max:50',
             'Kategorie_Beschreibung' => 'nullable|string',
             'imageFile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
