@@ -89,7 +89,7 @@
        
 
         <div class="col dark-mode-section1">
-         <a href="{{url('/api/ProductsByCategories')}}" <span class="icon" style="padding-top:10px;"><img src="{{asset('storage/' . $category->imageFile )}}"</span>
+         <a href="{{url('/api/ProductsByCategories/' . $category->Kategorie_Nr)}}" <span class="icon" style="padding-top:10px;"><img src="{{asset('storage/' . $category->imageFile )}}"</span>
           <p class="view-desc">{{ $category->Kategorie_Name }}</p> </a>
         </div>
         @endforeach
