@@ -17,14 +17,17 @@ class ProductController extends Controller
     //     return response()->json(['Product Details' => $products]);
     // }
 
-   public function addproduct($role){
+    public function addproduct($role)
+    {
 
-     return view('admin_theme/pages/products/addProduct')->with(compact('role'));
-   }
+        return view('admin_theme/pages/products/addProduct')->with(compact('role'));
+    }
 
-    public function addproductList(Request $request){
+    public function addproductList(Request $request)
+    {
 
-        
+        // return response()->json(['success' => 'Pls Fill Form Properly']);
+
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
             'Hersteller' => 'required|string',
@@ -33,7 +36,7 @@ class ProductController extends Controller
             'Hersteller_Artikelnummer' => 'nullable|string',
             'descriKatalog_Art_Nummertion' => 'nullable|string',
             'Katalog_Art_Nummer' => 'nullable|string',
-            'Kategorie' => 'nullable|string',
+            'Kategorie_1' => 'nullable|string',
             'VE_VPE' => 'nullable|string',
             'Einheit' => 'nullable|string',
             'Rabattcode_1' => 'nullable|string',
@@ -46,142 +49,102 @@ class ProductController extends Controller
             'Artikelname' => 'required|string',
             'Beschreibung_kurz' => 'nullable|string',
             'Beschreibung_lang' => 'nullable|string',
-           
+
             'addedBy' => 'nullable|string',
 
+            'Bild_1' => 'nullable|image|mimes:jpeg,jpg,png,webp',
+            'Bild_2' => 'nullable|image|mimes:jpeg,jpg,png,webp',
+            'Bild_3' => 'nullable|image|mimes:jpeg,jpg,png,webp',
+            'Bild_4' => 'nullable|image|mimes:jpeg,jpg,png,webp',
 
-           
+            'Anleitung_PDF_1' => 'nullable|mimes:pdf',
+            'Anleitung_PDF_2' => 'nullable|mimes:pdf',
+            'Anleitung_PDF_3' => 'nullable|mimes:pdf',
+    
+
+
+
 
         ]);
 
 
         if ($validator->fails()) {
             // Return validation errors in the response
-            return response()->json(['ValidationError' => $validator->errors(), 'message'=>'Pls Fill Form Properly']);
+            return response()->json(['ValidationError' => $validator->errors(), 'message' => 'Pls Fill Form Properly']);
         }
 
 
-        // $imagePaths = [];
-        // if ($request->hasFile('images')) {
-        //     foreach ($request->file('images') as $image) {
-        //         $filename = uniqid() . '_' . $image->getClientOriginalName();
-        //         $image->move(public_path('uploads'), $filename);
-        //         $imagePaths[] = 'uploads/' . $filename;
-        //     }
-        // }
-
-        // Create a new user
-        $Product = Product::create([
-            'type' => $request->input('type'),
-
-            'Hersteller' => $request->input('Hersteller'),
-            'Herst_Nr' => $request->input('Herst_Nr'),
-            'Lief_Art_Nr' => $request->input('Lief_Art_Nr'),
-             'Hersteller_Artikelnummer' => $request->input('Hersteller_Artikelnummer'),
-            'Katalog_Art_Nummertion' => $request->input('descriKatalog_Art_Nummertion'), 
-            'Katalog_Art_Nummer' => $request->input('Katalog_Art_Nummer'),
-
-            'Kategorie' => $request->input('Kategorie'),
-            'VE_VPE' => $request->input('VE_VPE'),
-            'Einheit' => $request->input('Einheit'),
-            'Lief_Art_Nr' => $request->input('Lief_Art_Nr'),
-            'Lief_Art_Nr' => $request->input('Lief_Art_Nr'),
-            'Rabattcode_1' => $request->input('Rabattcode_1'), 
-            'Rabattcode_2' => $request->input('Rabattcode_2'),
-            'Rabattcode_3' => $request->input('Rabattcode_3') ,
-            'Preis_zzgl_MwSt' => $request->input('Preis_zzgl_MwSt'),
-            'Preis_inkl_MwSt' => $request->input('Preis_inkl_MwSt'),
-            'Einkausfpreis_zzgl_MwSt' => $request->input('Einkausfpreis_zzgl_MwSt'),
-            'Einkaufsrabatt' => $request->input('Einkaufsrabatt'),
-            'Artikelname' => $request->input('Artikelname'), 
-            'Beschreibung_kurz' => $request->input('Beschreibung_kurz'),
-            'Beschreibung_lang' => $request->input('Beschreibung_lang'),
-
-            
-            'm3/h' => $request->input('m3/h') ,
-            'Stichmass' => $request->input('Stichmass'),
-            'kW' => $request->input('kW'),
-            'Volt' => $request->input('Volt'),
-            'Kelvin' => $request->input('Kelvin'),
-            'lm' => $request->input('lm'), 
-            'Druckstufe_PN' => $request->input('Druckstufe_PN'),
-            'Material' => $request->input('Material') ,
-            'Körnung/h' => $request->input('Körnung'),
-            'Durchmesser' => $request->input('Durchmesser'),
-            'Radius' => $request->input('Radius'),
-            'Gewicht' => $request->input('Gewicht'),
-            'Länge' => $request->input('Länge'), 
-            'Breite' => $request->input('Breite'),
-            'Höhe' => $request->input('Höhe') ,
-            'Bild_1' => $request->input('Bild_1'),
-            'Bild_2' => $request->input('Bild_2'),
-            'Bild_3' => $request->input('Bild_3'),
-            'Bild_4' => $request->input('Bild_4'),
-            'Anleitung_PDF_1' => $request->input('Anleitung_PDF_1'), 
-            'Anleitung_PDF_2' => $request->input('Anleitung_PDF_2'),
-            'Anleitung_PDF_3' => $request->input('Anleitung_PDF_3'),
-
-
-           
-         
+         $uploadedimages = [];
+         $imageFields = ['Bild_1', 'Bild_2', 'Bild_3', 'Bild_4'];
+ 
+         foreach ($imageFields as $image) {
+             if ($request->hasFile($image)) {
+                 $uploadedimages[$image] = $request->file($image)->store('public/products_images');
+                 
+             }
+         }
 
 
 
+        // Handle file uploads
+        $uploadedFiles = [];
+        $fileFields = ['Anleitung_PDF_1', 'Anleitung_PDF_2', 'Anleitung_PDF_3'];
 
-
-
-            'addedBy' => "addedBy",
-          
-        ]);
-
-        if($Product){
-
-        return response()->json(['success' => 'Product Added successfully...']);
-
+        foreach ($fileFields as $field) {
+            if ($request->hasFile($field)) {
+                $uploadedFiles[$field] = $request->file($field)->store('public/products_pdf');
+            }
         }
 
-        else{
+        // Create a new product
+        $product = Product::create(array_merge(
+            $request->only(['type', 'Hersteller', 'Herst_Nr', 'Lief_Art_Nr', 'Hersteller_Artikelnummer', 'descriKatalog_Art_Nummertion', 'Katalog_Art_Nummer', 'Kategorie_1', 'VE_VPE', 'Einheit', 'Rabattcode_1', 'Rabattcode_2', 'Rabattcode_3', 'Preis_zzgl_MwSt', 'Preis_inkl_MwSt', 'Einkausfpreis_zzgl_MwSt', 'Einkaufsrabatt', 'Artikelname', 'Beschreibung_kurz', 'Beschreibung_lang']),
+            $uploadedimages,$uploadedFiles,
+            ['addedBy' => 'addedBy'] // Adjust this value as needed
+        ));
 
-        return response()->json(['error' => 'Product not Added successfully !']);
-
+        // Check if the product was created successfully
+        if ($product) {
+            return response()->json(['success' => 'Product Added successfully...']);
+        } else {
+            return response()->json(['error' => 'Product not Added successfully !']);
         }
     }
 
 
 
-    
-    public function productListing(){
+
+    public function productListing()
+    {
 
         $products = Product::orderBy('created_at', 'desc')->get();
 
-        if ($products){
-            return response()->json(['productList'=>$products]);
+        if ($products) {
+            return response()->json(['productList' => $products]);
         }
-     
-            return response()->json(['errors'=>"Products Not Found"]);
+
+        return response()->json(['errors' => "Products Not Found"]);
     }
 
 
-    public function editProduct(){
-     
+    public function editProduct()
+    {
+
         return view('admin_theme/pages/products/editProduct');
     }
 
-    public function deleteProduct($id){
+    public function deleteProduct($id)
+    {
 
         $deletedProduct = Product::where('id', $id)->delete();
 
-        if ($deletedProduct){
-            return response()->json(['success'=>"Product Deleted Successfully"]);
+        if ($deletedProduct) {
+            return response()->json(['success' => "Product Deleted Successfully"]);
+        } else {
+            return response()->json(['errors' => "Products Not Deleted"]);
         }
-     
-        else{
-            return response()->json(['errors'=>"Products Not Deleted"]);
-        }
-           
-     
+
+
         // return view('admin_theme/pages/products/addProduct');
     }
-
-   
 }

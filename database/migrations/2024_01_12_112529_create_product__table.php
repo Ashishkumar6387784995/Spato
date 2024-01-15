@@ -21,7 +21,11 @@ return new class extends Migration
             $table->string('Lief_Art_Nr')->nullable();
             $table->string('Hersteller_Artikelnummer')->nullable();
             $table->string('Katalog_Art_Nummer')->nullable();
-            $table->string('Kategorie')->nullable();
+            $table->string('Kategorie_1')->nullable();
+            $table->string('Kategorie_2')->nullable();
+            $table->string('Kategorie_3')->nullable();
+            $table->string('Kategorie_4')->nullable();
+            $table->string('Kategorie_5')->nullable();
             $table->string('VE_VPE')->nullable();
             $table->string('Einheit')->nullable();
             $table->string('Rabattcode_1')->nullable();
@@ -61,18 +65,11 @@ return new class extends Migration
             $table->string('Anleitung_PDF_1')->nullable();
             $table->string('Anleitung_PDF_2')->nullable();
             $table->string('Anleitung_PDF_3')->nullable();
-     
 
             // $table->string('images');
 
-
-
-            $table->string('addedBy');
-
-
-
-
-
+            $table->string('addedBy')->nullable();
+            $table->string('status')->default('active');
 
             $table->timestamps();
         });
@@ -85,6 +82,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('product_');
     }
 };

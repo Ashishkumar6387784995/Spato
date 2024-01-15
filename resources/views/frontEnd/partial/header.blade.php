@@ -162,8 +162,9 @@
           <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
         </li>
 
+        {{auth()->user('role')}}
 
-        @if(auth()->check())
+        @if(auth()->user('role'))
 
         <li class="nav-item list-unstyled pe-3 ps-5">
           <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -191,7 +192,7 @@
             </li>
             @endif
         </li>
-        </ul>
+        </ul> 
         </li>
 
 
