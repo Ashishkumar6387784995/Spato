@@ -19420,11 +19420,11 @@ dl li {
 .sidebar .nav .nav-item .nav-link[aria-expanded="true"] .menu-arrow:before {
     content: "\f140";
 }
-.sidebar .nav .nav-item.active {
+/* .sidebar .nav .nav-item.active {
     background: #ffffff;
-}
+} */
 .sidebar .nav .nav-item.active > .nav-link .menu-title {
-    color: #b66dff;
+    /* color: #b66dff; */
     font-family: "ubuntu-medium", sans-serif;
 }
 .sidebar .nav .nav-item.active > .nav-link i {

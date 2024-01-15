@@ -214,22 +214,24 @@ form .btn-style {
     font-size: 15px;
 } */
 .categories {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    gap: 10px;
-    cursor: pointer;
-    justify-content: space-between;
+    align-items: space-between;
+    /* gap: 10px; */
 }
 .categories .categories-card {
-    width: 120px;
+    width: 150px;
     height: 120px;
     border: 1px solid var(--black) !important;
     margin: 10px 10px;
     padding-top: 16px;
     text-align: center;
-    flex: 1 0 15%;
+    cursor: pointer;
+    /* flex-flow: row wrap; */
+    /* flex: 1 0 15%; */
+    flex-grow: 0;
 }
 .categories .categories-card a {
     text-decoration: none;
@@ -251,7 +253,7 @@ form .btn-style {
     padding-bottom: 10rem;
 }
 /* Crausel Products */
-.cards-wrapper {
+/* .cards-wrapper {
     display: flex;
     justify-content: center;
 }
@@ -292,8 +294,8 @@ form .btn-style {
 }
 .carousel-inner {
     padding: 1em;
-}
-.carousel-control-prev,
+} */
+/* .carousel-control-prev,
 .carousel-control-next {
     background-color: var(--blue);
     width: 30px;
@@ -306,24 +308,24 @@ form .btn-style {
     width: 45px !important;
     height: 45px !important;
     opacity: 1 !important;
-}
-@media (max-width: 768px) {
+} */
+/* @media (max-width: 768px) {
     .carousel-inner .carousel-item > div {
         display: none;
     }
     .carousel-inner .carousel-item > div:first-child {
         display: flex;
     }
-}
+} */
 
-.carousel-inner .carousel-item.active,
+/* .carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,
 .carousel-inner .carousel-item-prev {
     display: flex;
-}
+} */
 
 /* display 3 */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .carousel-inner .carousel-item-right.active,
     .carousel-inner .carousel-item-next {
         transform: translateX(33.333%);
@@ -338,13 +340,13 @@ form .btn-style {
 .carousel-inner .carousel-item-right,
 .carousel-inner .carousel-item-left {
     transform: translateX(0);
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .card img {
         height: 11em;
     }
-}
+} */
 /* Crausel Products */
 footer {
     background-color: var(--white);
