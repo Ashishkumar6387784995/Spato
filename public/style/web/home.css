@@ -230,6 +230,25 @@ form .btn-style {
     text-align: center;
     cursor: pointer;
 }
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .categories .categories-card {
+        flex: 0 0 calc(50% - 20px); /* Adjust for 2 items in a row on mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .categories .categories-card {
+        flex: 0 0 calc(33.333% - 20px); /* Adjust for 3 items in a row on tablets */
+    }
+}
+
+@media (min-width: 992px) {
+    .categories .categories-card {
+        flex: 0 0 calc(16.666% - 20px); /* Maintain 6 items in a row on desktop */
+    }
+}
 .categories .categories-card a {
     text-decoration: none;
 }
