@@ -169,28 +169,10 @@
         </li>
 
     
-<div id="validUser">
-        <li class="nav-item list-unstyled pe-3 ps-5">
-          <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-        </li>
-        <li class="nav-item list-unstyled pe-3 ps-3">
-          <a class="nav-link" href="#">0,00€</a>
-        </li>
-
-
-
-        <li class="nav-item dropdown" style="list-style-type:none;">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-            <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;"></span></a></li>
-            <li><i class="fa-solid fa-user"></i>Profile</li>
-            <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
-            <li id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
-            <li>
+<div id="validUser" style="display:flex;">
+       
 </div>
+  
 <div id="invalidUser">
             <li class="nav-item border-0 list-unstyled pe-3 ps-3">
               <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>

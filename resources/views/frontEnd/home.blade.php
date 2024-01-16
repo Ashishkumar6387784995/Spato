@@ -593,7 +593,7 @@
     $(document).ready(function() {
       // Retrieve the user token from localStorage
       var userToken = localStorage.getItem('authToken');
-      // console.log(userToken);
+      console.log(userToken); 
 
       // Make sure the token is not null or undefined
 
@@ -613,8 +613,28 @@
 
             // If success is not null or undefined, hide invalidUser and show validUser
             $("#invalidUser").css("display", "none");
-            $("#validUser").css("display", "flex");
-            $("#userName").html(response.success['name']);
+            $("#validUser").html(`
+  <li class="nav-item list-unstyled pe-3 ps-5">
+    <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+  </li>
+  <li class="nav-item list-unstyled pe-3 ps-3">
+    <a class="nav-link" href="#">0,00€</a>
+  </li>
+
+  <li class="nav-item dropdown" style="list-style-type:none;">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
+      <li><i class="fa-solid fa-user"></i>Profile</li>
+      <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
+      <button id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+    </ul>
+  </li>
+`);
+
+            // $("#userName").html(response.success['name']);
           } else {
 
             // If success is null or undefined, hide validUser and show invalidUser
@@ -630,8 +650,17 @@
         }
       });
 
+
+      $('#logoutButton').on('click', function() {
+        console.log('helo');
+      });
+
     });
   </script>
+
+  
+
+  
 
 
 
