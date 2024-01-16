@@ -461,8 +461,8 @@
    </div>
   </section>
   <section class="sidebar">
-   <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
-    aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+   <button class="btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -490,11 +490,11 @@
     </div>
     <div class="total">
      <p>Total</p>
-     <p>1452</p>
+     <p>1452 € /-</p>
     </div>
     <div class="container">
-     <a href="#"><button class="checkout">Checkout</button></a> <br />
-     <a href="#"><button class="cart">View Cart</button></a>
+     <a href="#"><button class="btn checkout">Checkout</button></a> <br />
+     <a href="#"><button class="btn cart">View Cart</button></a>
     </div>
    </div>
   </section>
@@ -638,7 +638,7 @@
    
 `);
 
-      
+
 
 
       // $("#userName").html(response.success['name']);
