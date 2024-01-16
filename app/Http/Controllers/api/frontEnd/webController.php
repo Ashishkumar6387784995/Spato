@@ -26,11 +26,25 @@ class webController extends Controller
         // dd(auth()->user());
         // dd($productCategories);
 
+// Get the latest products for each category
+$latestProducts = Product::select('Kategorie_1', DB::raw('MAX(created_at) as latest_created_at'))
+    ->groupBy('Kategorie_1')
+    ->get();
 
-        return view('frontEnd/home')->with(compact('productCategories'));
+// Fetch the complete details of the latest products
+$latestProduct = Product::whereIn('Kategorie_1', $latestProducts->pluck('Kategorie_1'))
+    ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
+    ->get();
+
+// Now, $products contains all details of the latest products for each category
+// dd($products);
+
+
+
+        return view('frontEnd/home')->with(compact('productCategories', 'latestProduct'));
     }
 
-  
+
 
     public function home1()
     {
@@ -55,17 +69,12 @@ class webController extends Controller
     public function ProductsByCategories($Kategorie_Name)
     {
 
-        
-        $products = Product:: where('Kategorie_1', $Kategorie_Name)->get();
+
+        $products = Product::where('Kategorie_1', $Kategorie_Name)->get();
         // dd($products);
 
-        $latestProducts = Product::select('Kategorie_1', DB::raw('MAX(created_at) as latest_created_at'))
-        ->groupBy('Kategorie_1')
-        ->get();
-
-        // dd($latestProducts);
 
 
-        return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name', 'latestProducts'));
+        return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name',));
     }
 }

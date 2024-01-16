@@ -254,96 +254,36 @@
     <div class="wrapper">
      <i id="left" class="fa-solid fa-angle-left"></i>
      <ul class="carousel">
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+      
+
+     @foreach($latestProduct as $latestProducts)
+
+
+     
+
+
+ 
+     <li class="card">
+       <div class="img"><img src="{{ asset('storage/' . $latestProducts->Bild_1) }}" alt="Image">
        </div>
        <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
+        <h5 class="card-title">{{$latestProducts->Hersteller}}</h5>
         <p class="card-text">
         <p>Merkamal 1 - lauft fluffig</p>
         <p>Merkamal 2 - fahurt urail... lorem</p>
         </p>
         <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
+         statt - 42,50€ <span class="price">250,30€</span>
         </p>
        </div>
        <a href="#" class="btn">IN DEN WARENKORB</a>
       </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
+
+
+
+
+@endforeach
+    
      </ul>
      <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
