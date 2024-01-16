@@ -160,6 +160,88 @@
     grid-auto-columns: 110%;
    }
   }
+
+  .container button {
+   width: 100%;
+   padding: 12px 10px;
+   border: 1px solid var(--blue);
+   border-radius: 5px;
+   margin: 5px;
+   font-weight: 800;
+   font-size: 12px;
+   text-transform: uppercase;
+   font-family: "Source Sans 3", sans-serif;
+   transition: 0.7s ease-in-out;
+  }
+
+  .container .checkout {
+   background-color: var(--blue);
+   color: var(--white);
+  }
+
+  .container .checkout:hover {
+   background-color: transparent;
+   color: var(--black);
+  }
+
+  .container .cart {
+   background-color: var(--white);
+   color: var(--black);
+  }
+
+  .container .cart:hover {
+   background-color: var(--blue);
+   color: var(--white);
+  }
+
+  .total {
+   font-weight: 800;
+   font-size: 18px;
+   padding: 12px;
+   margin: 5px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+
+  }
+
+  .offcanvas-body .products-list .products img {
+   width: 150px;
+   height: 150px;
+  }
+
+  .offcanvas-body .products-list .products {
+   border-bottom: 0.5px solid var(--black);
+  }
+
+  .offcanvas-body .products-list .products .product-name {
+   color: var(--blue);
+   text-decoration: none;
+   font-weight: 400;
+  }
+
+  .offcanvas-body .products-list .products .price {
+   color: var(--black);
+   font-weight: 600;
+  }
+
+  .quentity-btn {
+   font-weight: 800;
+   background-color: #fff;
+   border: 1px solid #000;
+   border-radius: 3px;
+   padding: 5px 10px;
+  }
+
+  #quantity {
+   width: 50px;
+   font-weight: 600;
+   background-color: #fff;
+   border: 1px solid #000;
+   border-radius: 3px;
+   padding: 5px 10px;
+   text-align: center;
+  }
   </style>
  </head>
 
@@ -266,7 +348,8 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
+       <a href="#" class="btn" data-bs-target="#offcanvasRight" data-bs-toggle="offcanvas"
+        aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </li>
       <li class="card">
        <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
@@ -454,7 +537,44 @@
     </div>
    </div>
   </section>
+  <section class="sidebar">
+   <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
+    aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
 
+   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+     <h3 id="offcanvasRightLabel">Shopping Cart</h3>
+     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+     <div class="products-list">
+      <div class="products row">
+       <div class="col">
+        <img src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" alt="" srcset="">
+       </div>
+       <div class="col">
+        <a href="#" class="product-name">
+         <p>Lorem ipsum dolor sit amet.</p>
+        </a>
+        <p class="price"><span id="totalPriceDisplay1">10</span>€</p>
+        <button class="quentity-btn" onclick="decreaseQuantity()">
+         -</button>
+        <input type="text" id="quantity" value="1" min="1" readonly />
+        <button class="quentity-btn" onclick="increaseQuantity()">+</button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="total">
+     <p>Total</p>
+     <p>1452</p>
+    </div>
+    <div class="container">
+     <a href="#"><button class="checkout">Checkout</button></a> <br />
+     <a href="#"><button class="cart">View Cart</button></a>
+    </div>
+   </div>
+  </section>
 
   <script>
   const wrapper = document.querySelector(".wrapper");
@@ -545,6 +665,38 @@
   wrapper.addEventListener("mouseleave", autoPlay);
   </script>
 
+  <script>
+  const quantityInput = document.getElementById("quantity");
+  const totalPriceDisplay1 = document.getElementById("totalPriceDisplay1");
+  const totalPriceDisplay2 = document.getElementById("totalPriceDisplay2");
+  let totalPrice = 300; // Initial price
+
+  function updateTotalPrice() {
+   const quantity = parseInt(quantityInput.value, 10);
+   totalPrice = totalPrice * quantity; // Update the total price based on quantity and price per unit
+   totalPriceDisplay1.textContent = totalPrice;
+   totalPriceDisplay2.textContent = totalPrice;
+  }
+
+  function increaseQuantity() {
+   let currentQuantity = parseInt(quantityInput.value, 10);
+   currentQuantity += 1;
+   quantityInput.value = currentQuantity;
+   updateTotalPrice();
+  }
+
+  function decreaseQuantity() {
+   let currentQuantity = parseInt(quantityInput.value, 10);
+   if (currentQuantity > 1) {
+    currentQuantity -= 1;
+    quantityInput.value = currentQuantity;
+    updateTotalPrice();
+   }
+  }
+
+  // Add event listeners to update the total price whenever the quantity changes
+  quantityInput.addEventListener("input", updateTotalPrice);
+  </script>
 
 
   @include('frontEnd/partial/footer')

@@ -214,24 +214,21 @@ form .btn-style {
     font-size: 15px;
 } */
 .categories {
-    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-    align-items: space-between;
-    /* gap: 10px; */
+    align-items: flex-start; /* Align items at the start of the cross axis */
 }
+
 .categories .categories-card {
-    width: 150px;
+    flex: 0 0 calc(16.666% - 20px); /* Set flex-basis to achieve 6 items in a row with margin */
     height: 120px;
     border: 1px solid var(--black) !important;
-    margin: 10px 10px;
+    margin: 10px 0; /* Remove right margin */
+    margin-right: auto; /* Push the last item to the right edge of the container */
     padding-top: 16px;
     text-align: center;
     cursor: pointer;
-    /* flex-flow: row wrap; */
-    /* flex: 1 0 15%; */
-    flex-grow: 0;
 }
 .categories .categories-card a {
     text-decoration: none;
