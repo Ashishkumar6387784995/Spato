@@ -276,6 +276,7 @@
                     <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
                     <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
                   </select>
+                  <span id="Kategorie_1_err" style="color:red"></span>
                   <!-- <input type="text" class="form-control" name="Kategorie" id="kategorie">
           <span id="kategorie_err" style="color:red"></span> -->
 
@@ -645,6 +646,7 @@
         $('#Artikelname_err').text('');
         $('#Beschreibung_kurz_err').text('');
         $('#Beschreibung_lang_err').text('');
+        $('#Kategorie_1_err').text('');
 
 
         // if (!$('#type').val()) {
@@ -747,6 +749,9 @@
           }
           if (errors.type) {
             $('#type_err').text(errors.type[0]);
+          }
+          if (errors.Kategorie_1) {
+            $('#Kategorie_1_err').text(errors.Kategorie_1[0]);
           }
       
         }
