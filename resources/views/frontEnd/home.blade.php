@@ -34,11 +34,6 @@
   /* Import Google font - Poppins */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-  body {
-   transition: 2s ease-in-out;
-   transition-delay: 1s;
-  }
-
   .wrapper {
    max-width: 90%;
    width: 100%;
@@ -492,9 +487,9 @@
      <p>Total</p>
      <p>1452 € /-</p>
     </div>
-    <div class="btn container">
+    <div class="container">
      <a href="#"><button class="btn checkout">Checkout</button></a> <br />
-     <a href="#"><button class="cart">View Cart</button></a>
+     <a href="#"><button class="btn cart">View Cart</button></a>
     </div>
    </div>
   </section>
