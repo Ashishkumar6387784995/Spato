@@ -493,8 +493,8 @@
      <p>1452 € /-</p>
     </div>
     <div class="container">
-     <a href="#"><button class="btn checkout">Checkout</button></a> <br />
-     <a href="#"><button class="btn cart">View Cart</button></a>
+     <a href="#"><button class="checkout">Checkout</button></a> <br />
+     <a href="#"><button class="cart">View Cart</button></a>
     </div>
    </div>
   </section>
@@ -625,10 +625,11 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
         </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="dropmenu">
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
             <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
-            <li><i class="fa-solid fa-user"></i>Profile</li>
+            <li><i class="fa-solid fa-user"></i><a href="">Profile</a></li>
             <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
+            <li id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
         </ul>
     </li>
 `);
@@ -647,7 +648,7 @@
       // If success is null or undefined, hide validUser and show invalidUser
       $("#validUser").css("display", "none");
       console.log(response.success);
-      // $("#invalidUser").css("display", "block");
+      $("#invalidUser").css("display", "block");
      }
     },
 
@@ -657,9 +658,52 @@
     }
    });
 
+  });
+  </script>
 
+  <script>
+  $(document).ready(function() {
+   // Hide invalidUser initially
+   $("#invalidUser").css("display", "none");
 
+   // Check if the "Log Out" list item is clicked within #validUser
+   $("#validUser").off('click').on('click', 'li:contains("Log out")', function(event) {
+    if ($(event.target).is('#logout')) {
+     console.log('hello');
+     var token = localStorage.getItem('authToken');
+     console.log(token);
 
+     // Check if the token exists
+     if (!token) {
+      console.error('Token not found in localStorage');
+      window.location.href = '/api/home';
+      // return;
+     }
+     // Make a POST request to the logout endpoint using jQuery
+     $.ajax({
+      url: 'logoutApi',
+      type: 'POST',
+      headers: {
+       'Authorization': 'Bearer ' + token,
+      },
+      success: function(response) {
+       // Clear the authentication token from local storage
+       if (response.message) {
+        console.log(response.message);
+        localStorage.removeItem('authToken');
+        // Redirect or perform any other necessary actions after logout
+        window.location.href = '/api/home';
+       }
+
+      },
+      error: function(error) {
+       // Handle errors
+       console.error('Error:', error);
+      }
+     });
+    }
+
+   });
   });
   </script>
 
