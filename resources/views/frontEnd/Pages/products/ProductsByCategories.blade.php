@@ -151,25 +151,14 @@
         </ol>
       </nav>
 
-      <h1 class="text-center">Pool Installation & Maintanence</h1>
-
-      @foreach($products as $product)
-   
-
-
-    <div class="content">
+      <h1 class="text-center">{{$Kategorie_Name}}</h1>
+      <div class="content">
         <div class="products">
+          @foreach($products as $product)
+
           <div class="product">
             <div class="img">
-            <!-- <img src="{{ asset('storage/app/' . $product->Bild_1) }}" alt="" /> -->
-            <!-- <img src="{{ asset("storage/") }}  . $product->Bild_1   " alt="Image""> -->
-     
-            <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Image">
-
-
-
-
-
+              <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Image">
             </div>
             <div class="product-details">
               <h5 class="card-title">{{ $product->Artikelname }}</h5>
@@ -184,13 +173,11 @@
             <a href="#" class="cart-btn">IN DEN WARENKORB</a>
           </div>
 
-
+          @endforeach
         </div>
       </div>
-@endforeach
 
 
-      
   </section>
 
 
