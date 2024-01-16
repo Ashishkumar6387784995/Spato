@@ -10,6 +10,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
   /* Imports */
 
@@ -99,7 +103,7 @@
    clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
   }
 
-  .agb-container nav .home {
+  /* .agb-container nav .home {
    color: var(--black) !important;
    text-decoration: none !important;
   }
@@ -114,7 +118,7 @@
   .agb-container .content .details {
    margin: 2rem 0rem;
    text-align: justify;
-  }
+  } */
 
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .agb-container {
@@ -124,11 +128,6 @@
    /* footer .footer-container {
     width: 96%;
   } */
-  }
-
-  .page.active {
-   background-color: #e74c3c;
-   /* Active color */
   }
 
   .profile {
@@ -174,6 +173,58 @@
    border-radius: 2px;
    border: 1px solid #000;
   }
+
+  /* Manage Address starts */
+
+  .address table tr {
+   background-color: #fff;
+  }
+
+  .address table tr td:nth-child(1) {
+   width: 200px;
+  }
+
+  .address table tr td:nth-child(2) {
+   width: 350px;
+  }
+
+  .address table tr td:nth-child(3) {
+   width: 200px;
+  }
+
+  .address td img {
+   width: 100px;
+   height: 100px;
+  }
+
+  .address td ul li {
+   font-size: 12px;
+  }
+
+  .address td p {
+   font-size: 12px;
+  }
+
+  .address table tr td:nth-child(2) p {
+   margin-left: 2rem;
+  }
+
+  .address table tr td:nth-child(2) p .old-price {
+   text-decoration: line-through;
+
+  }
+
+  .address table tr td:nth-child(2) p .newprice {
+   font-size: 18px;
+   color: #5ce1d5;
+   font-weight: 800;
+  }
+
+  .add-address {
+   font-size: 15px;
+  }
+
+  /* Manage Address ends */
 
   /* For mobile */
 
@@ -273,11 +324,108 @@
      </div>
 
      <div id="address" onclick="toggleActive(this)" class="page">
-      <h1>Manage</h1>
+      <h6>Manage Address</h6>
+
+      <div class="address">
+       <table>
+        <tbody>
+         <tr>
+          <td><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="" srcset=""></td>
+          <td>
+           <ul>
+            <li>Merkmal 1 lauft fllugig</li>
+            <li>Merkmal 1 lauft fllugig ...lorem ipasum</li>
+           </ul>
+           <p>
+            <span class="old-price">start $499.00</span> <span class="newprice">$499.00</span>
+           </p>
+          </td>
+          <td>
+           <p>East Streets 14, Word No. 04, Road
+            No. 13/x, House no. 1320/C, Flat No.
+            5D, Berlin - 1200, Germany</p>
+          </td>
+         </tr>
+        </tbody>
+       </table>
+
+       <a class="add-address" href="#">Add address +</a>
+      </div>
      </div>
 
      <div id="order" onclick="toggleActive(this)" class="page">
-      <h1>Order History</h1>
+      <h6>Order History</h6>
+      <table>
+       <tbody>
+        <tr>
+         <td>MONTH</td>
+         <td></td>
+         <td>ORDER NUMBER</td>
+         <td>COST</td>
+         <td>DATE</td>
+        </tr>
+       </tbody>
+      </table>
+
+      <p>February 2024</p>
+      <div class="order-history">
+       <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+         <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+           aria-expanded="true" aria-controls="collapseOne">
+           Accordion Item #1
+          </button>
+         </h2>
+         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+           <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin
+           adds the appropriate classes that we use to style each element. These classes control the overall appearance,
+           as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+           overriding our default variables. It's also worth noting that just about any HTML can go within the
+           <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+         </div>
+        </div>
+        <div class="accordion-item">
+         <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+           data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+           Accordion Item #2
+          </button>
+         </h2>
+         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+           <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin
+           adds the appropriate classes that we use to style each element. These classes control the overall appearance,
+           as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+           overriding our default variables. It's also worth noting that just about any HTML can go within the
+           <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+         </div>
+        </div>
+        <div class="accordion-item">
+         <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+           data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+           Accordion Item #3
+          </button>
+         </h2>
+         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+           <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin
+           adds the appropriate classes that we use to style each element. These classes control the overall appearance,
+           as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+           overriding our default variables. It's also worth noting that just about any HTML can go within the
+           <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
      </div>
 
 
