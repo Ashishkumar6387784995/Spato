@@ -635,13 +635,8 @@
 
       // Append the logout button outside of the string
       $("#dropmenu").append(`
-    <button id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+   
 `);
-
-      // Add click event to the logout button
-      $("#logoutButton").on("click", function() {
-       console.log("hello");
-      });
 
       
 

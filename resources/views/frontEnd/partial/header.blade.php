@@ -169,8 +169,9 @@
         </li>
 
     
-<div id="validUser" style="display:flex;">
-       
+<div id="validUser" style="display:flex;"></div>
+<div id="dropmenu" >
+<li id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
 </div>
   
 <div id="invalidUser">
