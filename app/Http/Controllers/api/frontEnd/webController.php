@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class webController extends Controller
 {
@@ -58,8 +59,13 @@ class webController extends Controller
         $products = Product:: where('Kategorie_1', $Kategorie_Name)->get();
         // dd($products);
 
-        $latestProducts = Product;
+        $latestProducts = Product::select('Kategorie_1', DB::raw('MAX(created_at) as latest_created_at'))
+        ->groupBy('Kategorie_1')
+        ->get();
 
-        return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name'));
+        // dd($latestProducts);
+
+
+        return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name', 'latestProducts'));
     }
 }
