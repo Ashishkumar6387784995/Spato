@@ -16,7 +16,12 @@ class Product extends Model
         'Hersteller_Artikelnummer',
         'descriKatalog_Art_Nummertion',
         'Katalog_Art_Nummer',
-        'Kategorie',
+        'Kategorie_1',
+        'Kategorie_2',
+        'Kategorie_3',
+        'Kategorie_4',
+        'Kategorie_5',
+
         'VE_VPE',
         'Einheit',
         'Rabattcode_1',

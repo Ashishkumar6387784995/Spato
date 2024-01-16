@@ -36,7 +36,7 @@ class ProductController extends Controller
             'Hersteller_Artikelnummer' => 'nullable|string',
             'descriKatalog_Art_Nummertion' => 'nullable|string',
             'Katalog_Art_Nummer' => 'nullable|string',
-            'Kategorie_1' => 'nullable|string',
+            'Kategorie_1' => 'required|string',
             'VE_VPE' => 'nullable|string',
             'Einheit' => 'nullable|string',
             'Rabattcode_1' => 'nullable|string',
@@ -74,34 +74,46 @@ class ProductController extends Controller
         }
 
 
-         $uploadedimages = [];
-         $imageFields = ['Bild_1', 'Bild_2', 'Bild_3', 'Bild_4'];
- 
-         foreach ($imageFields as $image) {
-             if ($request->hasFile($image)) {
-                 $uploadedimages[$image] = $request->file($image)->store('public/products_images');
-                 
-             }
-         }
-
-
-
+        $uploadedimages = [];
+        $imageFields = ['Bild_1', 'Bild_2', 'Bild_3', 'Bild_4'];
+        
+        foreach ($imageFields as $image) {
+            if ($request->hasFile($image)) {
+                $uploadedImage = $request->file($image);
+                $imagePath = $uploadedImage->store('public/products_images');
+        
+                // Save file path in the database
+                $uploadedimages[$image] = '/products_images/' . $uploadedImage->hashName();
+        
+                // You can also save the full path like $uploadedimages[$image] = $imagePath; if needed.
+            }
+        }
+        
         // Handle file uploads
         $uploadedFiles = [];
         $fileFields = ['Anleitung_PDF_1', 'Anleitung_PDF_2', 'Anleitung_PDF_3'];
-
+        
         foreach ($fileFields as $field) {
             if ($request->hasFile($field)) {
-                $uploadedFiles[$field] = $request->file($field)->store('public/products_pdf');
+                $uploadedFile = $request->file($field);
+                $filePath = $uploadedFile->store('public/products_pdf');
+        
+                // Save file path in the database
+                $uploadedFiles[$field] = '/products_pdf/' . $uploadedFile->hashName();
+        
+                // You can also save the full path like $uploadedFiles[$field] = $filePath; if needed.
             }
         }
-
+        
         // Create a new product
         $product = Product::create(array_merge(
-            $request->only(['type', 'Hersteller', 'Herst_Nr', 'Lief_Art_Nr', 'Hersteller_Artikelnummer', 'descriKatalog_Art_Nummertion', 'Katalog_Art_Nummer', 'Kategorie_1', 'VE_VPE', 'Einheit', 'Rabattcode_1', 'Rabattcode_2', 'Rabattcode_3', 'Preis_zzgl_MwSt', 'Preis_inkl_MwSt', 'Einkausfpreis_zzgl_MwSt', 'Einkaufsrabatt', 'Artikelname', 'Beschreibung_kurz', 'Beschreibung_lang']),
-            $uploadedimages,$uploadedFiles,
+            $request->only(['type', 'Hersteller', 'Herst_Nr', 'Lief_Art_Nr', 'Hersteller_Artikelnummer', 'descriKatalog_Art_Nummertion', 'Katalog_Art_Nummer', 'Kategorie_1','Kategorie_2','Kategorie_3','Kategorie_4','Kategorie_5', 'VE_VPE', 'Einheit', 'Rabattcode_1', 'Rabattcode_2', 'Rabat
+            code_3', 'Preis_zzgl_MwSt', 'Preis_inkl_MwSt', 'Einkausfpreis_zzgl_MwSt', 'Einkaufsrabatt', 'Artikelname', 'Beschreibung_kurz', 'Beschreibung_lang']),
+            $uploadedimages, $uploadedFiles,
             ['addedBy' => 'addedBy'] // Adjust this value as needed
         ));
+        
+        
 
         // Check if the product was created successfully
         if ($product) {

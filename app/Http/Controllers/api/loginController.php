@@ -218,6 +218,7 @@ class loginController extends Controller
 
     public function logoutApi(Request $request)
     {
+        
         Auth::logout();
 
 

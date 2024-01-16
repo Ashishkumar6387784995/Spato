@@ -180,7 +180,7 @@
         <form id="addProductform" enctype="multipart/form-data">
           <div class="row pt-1">
 
-            <div class="col-md-4 stretch-card grid-margin">
+            <div class="col-md-2 stretch-card grid-margin">
               <button class="btn" type="button" id="saveBtn">Save</button>
             </div>
             <div class="col-md-2 stretch-card grid-margin">
@@ -189,9 +189,13 @@
             <div class="col-md-2 stretch-card grid-margin">
               <button class="btn" id="exportBtn">Export CSV</button>
             </div>
-            <div class="col-md-2 stretch-card grid-margin">
+            <div class="col-md-4 stretch-card grid-margin">
               <button class="btn" id="priceUpdaterBtn">Price Updater</button>
             </div>
+
+            <div class="col-md-2 stretch-card grid-margin">
+                        <a class=" btn" href="{{url('/api/addProduct/'.$role)}}">+ neues Produkt</a>
+                    </div>
           </div>
 
           <span id="success_message" style="color:#44e1d5; font-size:20px; font-weight:600;"></span>
@@ -267,10 +271,10 @@
                 <div class="col-8">
                   <select name="Kategorie_1" id="Kategorie_1">
                     <option value="">Select Kategorie</option>
-                    <option value="Kategorie1">Kategorie1</option>
-                    <option value="Kategorie2">Kategorie2</option>
-                    <option value="Kategorie3">Kategorie3</option>
-                    <option value="Kategorie4">Kategorie4</option>
+                    <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
+                    <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
+                    <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
+                    <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
                   </select>
                   <!-- <input type="text" class="form-control" name="Kategorie" id="kategorie">
           <span id="kategorie_err" style="color:red"></span> -->
@@ -314,10 +318,10 @@
                 <div class="col-8">
                   <select name="Kategorie_2" id="Kategorie_2">
                     <option value="">Select Kategorie</option>
-                    <option value="Kategorie1">Kategorie1</option>
-                    <option value="Kategorie2">Kategorie2</option>
-                    <option value="Kategorie3">Kategorie3</option>
-                    <option value="Kategorie4">Kategorie4</option>
+                    <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
+                    <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
+                    <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
+                    <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
                   </select>
                 </div>
               </div>
@@ -328,10 +332,10 @@
                 <div class="col-8">
                   <select naname="Kategorie_3" id="Kategorie_3">
                     <option value="">Select Kategorie</option>
-                    <option value="Kategorie1">Kategorie1</option>
-                    <option value="Kategorie2">Kategorie2</option>
-                    <option value="Kategorie3">Kategorie3</option>
-                    <option value="Kategorie4">Kategorie4</option>
+                    <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
+                    <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
+                    <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
+                    <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
                   </select>
                 </div>
               </div>
@@ -342,10 +346,10 @@
                 <div class="col-8">
                   <select name="Kategorie_4" id="Kategorie_4">
                     <option value="">Select Kategorie</option>
-                    <option value="Kategorie1">Kategorie1</option>
-                    <option value="Kategorie2">Kategorie2</option>
-                    <option value="Kategorie3">Kategorie3</option>
-                    <option value="Kategorie4">Kategorie4</option>
+                    <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
+                    <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
+                    <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
+                    <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
                   </select>
                 </div>
               </div>
@@ -355,10 +359,10 @@
                 <div class="col-8">
                   <select name="Kategorie_5" id="Kategorie_5">
                     <option value="">Select Kategorie</option>
-                    <option value="Kategorie1">Kategorie1</option>
-                    <option value="Kategorie2">Kategorie2</option>
-                    <option value="Kategorie3">Kategorie3</option>
-                    <option value="Kategorie4">Kategorie4</option>
+                    <option value="Kategorie1">Pool Installation & Maintanence_1</option>
+                    <option value="Kategorie2">Pool Installation & Maintanence_2</option>
+                    <option value="Kategorie3">Pool Installation & Maintanence_3</option>
+                    <option value="Kategorie4">Pool Installation & Maintanence_4</option>
                   </select>
                 </div>
               </div>

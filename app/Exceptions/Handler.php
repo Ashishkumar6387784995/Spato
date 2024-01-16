@@ -49,15 +49,15 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $exception)
-    {
-        if ($exception instanceof NotFoundHttpException) {
-            return redirect()->route('notfound');
+    // public function render($request, Throwable $exception)
+    // {
+    //     if ($exception instanceof NotFoundHttpException) {
+    //         return redirect()->route('notfound');
 
-        }
+    //     }
 
-        return parent::render($request, $exception);
-    }
+    //     return parent::render($request, $exception);
+    // }
 
 
 }

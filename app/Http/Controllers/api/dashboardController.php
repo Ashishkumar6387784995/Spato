@@ -12,7 +12,6 @@ class dashboardController extends Controller
 
     public function admin_Dashboard($role){
 
-
         return view('admin_theme/pages/dashboard/dashboard')->with(compact('role'));
         
     }

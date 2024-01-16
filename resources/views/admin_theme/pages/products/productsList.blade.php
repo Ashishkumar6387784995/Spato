@@ -202,7 +202,7 @@
                                 row.append('<td>' + item.Herst_Nr + '</td>');
                                 row.append('<td>' + item.id + '</td>');
                                 row.append('<td>' + item.Artikelname + '</td>');
-                                row.append('<td>' + item.Kategorie + '</td>');
+                                row.append('<td>' + item.Kategorie_1 + '</td>');
                                 row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
                                 row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
                                 row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');

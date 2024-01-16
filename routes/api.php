@@ -68,6 +68,7 @@ Route::get('/home', [webController::class, 'home']);
 
 
 
+
 // Route::get('login',[authController::class,'loginform']);
 // Route::post('login',[authController::class,'loginCheck']);
 // Route::get('home',[authController::class,'home']);
@@ -92,6 +93,8 @@ Route::get('poolBuilderClaim&Request',[PoolBuilder::class,'poolBuilderClaim']);
 
 
 Route::middleware('api.auth')->group(function () {
+
+  Route::get('/home1', [webController::class, 'home1']);
 
   // Offers for Admin
 Route::get('offerListingApi',[OfferController::class,'offerListing']);
@@ -256,7 +259,7 @@ Route::view('accountSetting', 'frontEnd/pages/setting');
 
 // front End WebSite Pages...
 Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
-Route::get('/ProductsByCategories/{Kategorie_Nr}', [webController::class, 'ProductsByCategories']);
+Route::get('/ProductsByCategories/{Kategorie_Name}', [webController::class, 'ProductsByCategories']);
 
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 Route::view('addToCart', 'frontEnd/pages/addToCart');

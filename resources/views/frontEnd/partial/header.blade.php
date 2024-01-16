@@ -29,6 +29,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <!-- Crausel ends -->
+  <style>
+    /* #validUser{
+      display: flex !important;
+      /* flex-direction: row-reverse; 
+    } */
+  </style>
 </head>
 
 
@@ -162,10 +168,8 @@
           <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
         </li>
 
-        {{auth()->user('role')}}
-
-        @if(auth()->user('role'))
-
+    
+<div id="validUser">
         <li class="nav-item list-unstyled pe-3 ps-5">
           <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
         </li>
@@ -179,18 +183,19 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-            <li><a class="dropdown-item">Welcome, <span style="color:red;">{{ auth()->user()->name }}</span></a></li>
+            <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;"></span></a></li>
             <li><i class="fa-solid fa-user"></i>Profile</li>
             <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
             <li id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
             <li>
-              @else
+</div>
+<div id="invalidUser">
             <li class="nav-item border-0 list-unstyled pe-3 ps-3">
               <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
             </li>
-            @endif
+</div>         
         </li>
         </ul> 
         </li>
@@ -434,7 +439,7 @@
     }
     // Make a POST request to the logout endpoint using jQuery
     $.ajax({
-      url: 'http://127.0.0.1:8000/api/logoutApi',
+      url: 'logoutApi',
       type: 'POST',
       headers: {
         'Authorization': 'Bearer ' + token,
@@ -442,6 +447,7 @@
       success: function(response) {
         // Clear the authentication token from local storage
         if (response.message) {
+          console.log(response.message);
           localStorage.removeItem('authToken');
           // Redirect or perform any other necessary actions after logout
           window.location.href = '/api/home';

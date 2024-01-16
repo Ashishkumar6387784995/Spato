@@ -305,7 +305,7 @@
            </td>
            <td>
 
-            <input type="file" id="file" name="imageFile" onchange="validateFileType()" /><br>
+            <input type="file" id="file" name="imageFile" onchange="validateFileType()" accept=".jpg, .jpeg, .png"/><br>
            </td>
 
            <td>

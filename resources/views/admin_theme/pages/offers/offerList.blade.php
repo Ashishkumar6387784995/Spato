@@ -205,7 +205,7 @@
     success: function(data) {
      // Handle the successful response
      if (data.offersList) {
-      console.log('Data received:', data.offersList);
+      console.log('Data received:', data.user);
 
 
       // Function to populate the table with data

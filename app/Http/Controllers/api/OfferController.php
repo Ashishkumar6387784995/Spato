@@ -12,19 +12,24 @@ use App\Mail\OfferMailer;
 use App\Mail\sendResetLinkEmail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 
 class OfferController extends Controller
 {
+
+   
+
     public function offerListing()
     {
-        $offers = offers::orderBy('created_at', 'desc')->get();
+        $user = Auth::guard('api')->user();
+        $offers = Offers::orderBy('created_at', 'desc')->get();
 
         if ($offers) {
-            return response()->json(['offersList' => $offers]);
+            return response()->json(['offersList' => $offers, 'user' => $user]);
         }
 
-        return response()->json(['errors' => "Offer Not Found"]);
+        return response()->json(['errors' => 'Offer Not Found'], 404);
     }
 
 
