@@ -273,7 +273,8 @@
          statt - 42,50€ <span class="price">{{ $product->Preis_inkl_MwSt }}</span>
         </p>
        </div>
-       <a href="#" class="btn" id="addToCartButton">IN DEN WARENKORB</a>
+       <a href="#" class="btn" id="addToCartButton" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </li>
       @endforeach
 
@@ -307,7 +308,8 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
+       <a href="#" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </li>
       <li class="card">
        <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
@@ -322,7 +324,8 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
+       <a href="#" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </li>
       <li class="card">
        <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
