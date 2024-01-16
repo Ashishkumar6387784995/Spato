@@ -492,8 +492,8 @@
      <p>Total</p>
      <p>1452 € /-</p>
     </div>
-    <div class="container">
-     <a href="#"><button class="checkout">Checkout</button></a> <br />
+    <div class="btn container">
+     <a href="#"><button class="btn checkout">Checkout</button></a> <br />
      <a href="#"><button class="cart">View Cart</button></a>
     </div>
    </div>
