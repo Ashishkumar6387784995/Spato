@@ -374,6 +374,12 @@ form .btn-style {
     width: 150px;
     height: 150px;
 }
+.sidebar .offcanvas-body .products-list .products .product-name {
+    text-decoration: none;
+    color: var(--blue);
+    font-weight: 600;
+    font-family: "Source Sans 3", sans-serif;
+}
 .sidebar .total {
     display: flex;
     justify-content: space-between;
