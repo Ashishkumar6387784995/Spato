@@ -258,7 +258,7 @@ Route::view('accountSetting', 'frontEnd/pages/setting');
 
 
 // front End WebSite Pages...
-Route::get('/ProductdetailPage', [webController::class, 'ProductdetailPage']);
+Route::get('/ProductdetailPage/{product_id}/{product_category}', [webController::class, 'ProductdetailPage']);
 Route::get('/ProductsByCategories/{Kategorie_Name}', [webController::class, 'ProductsByCategories']);
 
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
