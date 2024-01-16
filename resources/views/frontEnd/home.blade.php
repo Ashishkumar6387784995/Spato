@@ -588,6 +588,51 @@
   wrapper.addEventListener("mouseleave", autoPlay);
   </script>
 
+<script>
+    // Wait for the DOM to be ready
+    $(document).ready(function() {
+      // Retrieve the user token from localStorage
+      var userToken = localStorage.getItem('authToken');
+      // console.log(userToken);
+
+      // Make sure the token is not null or undefined
+
+      // Perform your AJAX request
+      $.ajax({
+        url: '/api/home1', // Replace with your API endpoint
+        method: 'GET',
+        contentType: 'application/json', // Set the content type
+        headers: {
+          'Authorization': 'Bearer ' + userToken
+        },
+        success: function(response) {
+
+
+          if (response.success !== null && response.success !== undefined) {
+
+
+            // If success is not null or undefined, hide invalidUser and show validUser
+            $("#invalidUser").css("display", "none");
+            $("#validUser").css("display", "flex");
+            $("#userName").html(response.success['name']);
+          } else {
+
+            // If success is null or undefined, hide validUser and show invalidUser
+            $("#validUser").css("display", "none");
+            console.log(response.success);
+            // $("#invalidUser").css("display", "block");
+          }
+        },
+
+        error: function(error) {
+          console.error(error);
+          // Handle the error here
+        }
+      });
+
+    });
+  </script>
+
 
 
   @include('frontEnd/partial/footer')
