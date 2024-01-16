@@ -154,17 +154,107 @@
       margin-bottom: 1rem;
     }
 
+<<<<<<< HEAD
     @media screen and (max-width: 900px) {
       .wrapper .carousel {
         grid-auto-columns: calc((110% / 2) - 9px);
       }
     }
 
+    @media screen and (max-width: 600px) {
+      .wrapper .carousel {
+        grid-auto-columns: 110%;
+      }
+    }
+=======
   @media screen and (max-width: 600px) {
    .wrapper .carousel {
     grid-auto-columns: 110%;
    }
   }
+
+  .container button {
+   width: 100%;
+   padding: 12px 10px;
+   border: 1px solid var(--blue);
+   border-radius: 5px;
+   margin: 5px;
+   font-weight: 800;
+   font-size: 12px;
+   text-transform: uppercase;
+   font-family: "Source Sans 3", sans-serif;
+   transition: 0.7s ease-in-out;
+  }
+
+  .container .checkout {
+   background-color: var(--blue);
+   color: var(--white);
+  }
+
+  .container .checkout:hover {
+   background-color: transparent;
+   color: var(--black);
+  }
+
+  .container .cart {
+   background-color: var(--white);
+   color: var(--black);
+  }
+
+  .container .cart:hover {
+   background-color: var(--blue);
+   color: var(--white);
+  }
+
+  .total {
+   font-weight: 800;
+   font-size: 18px;
+   padding: 12px;
+   margin: 5px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+
+  }
+
+  .offcanvas-body .products-list .products img {
+   width: 150px;
+   height: 150px;
+  }
+
+  .offcanvas-body .products-list .products {
+   border-bottom: 0.5px solid var(--black);
+  }
+
+  .offcanvas-body .products-list .products .product-name {
+   color: var(--blue);
+   text-decoration: none;
+   font-weight: 400;
+  }
+
+  .offcanvas-body .products-list .products .price {
+   color: var(--black);
+   font-weight: 600;
+  }
+
+  .quentity-btn {
+   font-weight: 800;
+   background-color: #fff;
+   border: 1px solid #000;
+   border-radius: 3px;
+   padding: 5px 10px;
+  }
+
+  #quantity {
+   width: 50px;
+   font-weight: 600;
+   background-color: #fff;
+   border: 1px solid #000;
+   border-radius: 3px;
+   padding: 5px 10px;
+   text-align: center;
+  }
+>>>>>>> 55b515ac088b7ec6a2019d851fd8ed0a33bd39b0
   </style>
 </head>
 
@@ -254,6 +344,104 @@
   padding: 0 35px;
   align-items: center;
   justify-content: center;">
+<<<<<<< HEAD
+      <div class="wrapper">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <ul class="carousel">
+          <li class="card">
+            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Saugrobroter</h5>
+              <p class="card-text">
+              <p>Merkamal 1 - lauft fluffig</p>
+              <p>Merkamal 2 - fahurt urail... lorem</p>
+              </p>
+              <p class="product-price">
+                statt - 42,50€ <span class="price">25,30€</span>
+              </p>
+            </div>
+            <a href="#" class="btn">IN DEN WARENKORB</a>
+          </li>
+          <li class="card">
+            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Saugrobroter</h5>
+              <p class="card-text">
+              <p>Merkamal 1 - lauft fluffig</p>
+              <p>Merkamal 2 - fahurt urail... lorem</p>
+              </p>
+              <p class="product-price">
+                statt - 42,50€ <span class="price">25,30€</span>
+              </p>
+            </div>
+            <a href="#" class="btn">IN DEN WARENKORB</a>
+          </li>
+          <li class="card">
+            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Saugrobroter</h5>
+              <p class="card-text">
+              <p>Merkamal 1 - lauft fluffig</p>
+              <p>Merkamal 2 - fahurt urail... lorem</p>
+              </p>
+              <p class="product-price">
+                statt - 42,50€ <span class="price">25,30€</span>
+              </p>
+            </div>
+            <a href="#" class="btn">IN DEN WARENKORB</a>
+          </li>
+          <li class="card">
+            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Saugrobroter</h5>
+              <p class="card-text">
+              <p>Merkamal 1 - lauft fluffig</p>
+              <p>Merkamal 2 - fahurt urail... lorem</p>
+              </p>
+              <p class="product-price">
+                statt - 42,50€ <span class="price">25,30€</span>
+              </p>
+            </div>
+            <a href="#" class="btn">IN DEN WARENKORB</a>
+          </li>
+          <li class="card">
+            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Saugrobroter</h5>
+              <p class="card-text">
+              <p>Merkamal 1 - lauft fluffig</p>
+              <p>Merkamal 2 - fahurt urail... lorem</p>
+              </p>
+              <p class="product-price">
+                statt - 42,50€ <span class="price">25,30€</span>
+              </p>
+            </div>
+            <a href="#" class="btn">IN DEN WARENKORB</a>
+          </li>
+          <li class="card">
+            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Saugrobroter</h5>
+              <p class="card-text">
+              <p>Merkamal 1 - lauft fluffig</p>
+              <p>Merkamal 2 - fahurt urail... lorem</p>
+              </p>
+              <p class="product-price">
+                statt - 42,50€ <span class="price">25,30€</span>
+              </p>
+            </div>
+            <a href="#" class="btn">IN DEN WARENKORB</a>
+          </li>
+        </ul>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+      </div>
+=======
     <div class="wrapper">
      <i id="left" class="fa-solid fa-angle-left"></i>
      <ul class="carousel">
@@ -270,7 +458,8 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
+       <a href="#" class="btn" data-bs-target="#offcanvasRight" data-bs-toggle="offcanvas"
+        aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </li>
       <li class="card">
        <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
@@ -349,8 +538,8 @@
       </li>
      </ul>
      <i id="right" class="fa-solid fa-angle-right"></i>
+>>>>>>> 55b515ac088b7ec6a2019d851fd8ed0a33bd39b0
     </div>
-   </div>
   </section>
   <!-- Latest Products ends -->
   <section class="featured-products dark-mode-section1">
@@ -584,6 +773,84 @@
     carousel.addEventListener("scroll", infiniteScroll);
     wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
     wrapper.addEventListener("mouseleave", autoPlay);
+  </script>
+
+  <script>
+    // Wait for the DOM to be ready
+    $(document).ready(function() {
+      // Retrieve the user token from localStorage
+      var userToken = localStorage.getItem('authToken');
+      // console.log(userToken);
+
+      // Make sure the token is not null or undefined
+
+      // Perform your AJAX request
+      $.ajax({
+        url: '/api/home1', // Replace with your API endpoint
+        method: 'GET',
+        contentType: 'application/json', // Set the content type
+        headers: {
+          'Authorization': 'Bearer ' + userToken
+        },
+        success: function(response) {
+
+
+          if (response.success !== null && response.success !== undefined) {
+
+
+            // If success is not null or undefined, hide invalidUser and show validUser
+            $("#invalidUser").css("display", "none");
+            $("#validUser").css("display", "flex");
+            $("#userName").html(response.success['name']);
+          } else {
+
+            // If success is null or undefined, hide validUser and show invalidUser
+            $("#validUser").css("display", "none");
+            console.log(response.success);
+            // $("#invalidUser").css("display", "block");
+          }
+        },
+
+        error: function(error) {
+          console.error(error);
+          // Handle the error here
+        }
+      });
+
+    });
+  </script>
+
+  <script>
+  const quantityInput = document.getElementById("quantity");
+  const totalPriceDisplay1 = document.getElementById("totalPriceDisplay1");
+  const totalPriceDisplay2 = document.getElementById("totalPriceDisplay2");
+  let totalPrice = 300; // Initial price
+
+  function updateTotalPrice() {
+   const quantity = parseInt(quantityInput.value, 10);
+   totalPrice = totalPrice * quantity; // Update the total price based on quantity and price per unit
+   totalPriceDisplay1.textContent = totalPrice;
+   totalPriceDisplay2.textContent = totalPrice;
+  }
+
+  function increaseQuantity() {
+   let currentQuantity = parseInt(quantityInput.value, 10);
+   currentQuantity += 1;
+   quantityInput.value = currentQuantity;
+   updateTotalPrice();
+  }
+
+  function decreaseQuantity() {
+   let currentQuantity = parseInt(quantityInput.value, 10);
+   if (currentQuantity > 1) {
+    currentQuantity -= 1;
+    quantityInput.value = currentQuantity;
+    updateTotalPrice();
+   }
+  }
+
+  // Add event listeners to update the total price whenever the quantity changes
+  quantityInput.addEventListener("input", updateTotalPrice);
   </script>
 
 
