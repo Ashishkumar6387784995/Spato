@@ -168,19 +168,18 @@
           <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
         </li>
 
-    
-<div id="validUser" style="display:flex;"></div>
-<div id="dropmenu" >
-<li id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
-</div>
-  
-<div id="invalidUser">
-            <li class="nav-item border-0 list-unstyled pe-3 ps-3">
-              <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-            </li>
-</div>         
+
+        <div id="validUser" style="display:flex;"></div>
+
+      
+
+        <div id="invalidUser">
+          <li class="nav-item border-0 list-unstyled pe-3 ps-3">
+            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
+          </li>
+        </div>
         </li>
-        </ul> 
+        </ul>
         </li>
 
 
@@ -404,7 +403,7 @@
 
 </nav>
 
-
+<!-- 
 <script>
   // public/js/logout.js
 
@@ -450,7 +449,7 @@
     logout();
   });
 </script>
-
+ -->
 
 
 
