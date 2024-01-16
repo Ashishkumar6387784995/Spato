@@ -58,6 +58,6 @@ class webController extends Controller
         $products = Product:: where('Kategorie_1', $Kategorie_Name)->get();
         // dd($products);
 
-        return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products'));
+        return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name'));
     }
 }
