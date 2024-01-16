@@ -651,9 +651,7 @@
       });
 
 
-      $('#logoutButton').on('click', function() {
-        console.log('helo');
-      });
+   
 
     });
   </script>
