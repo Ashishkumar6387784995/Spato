@@ -34,11 +34,6 @@
   /* Import Google font - Poppins */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-  body {
-   transition: 2s ease-in-out;
-   transition-delay: 1s;
-  }
-
   .wrapper {
    max-width: 90%;
    width: 100%;
@@ -201,17 +196,15 @@
   <section class="services dark-mode-section1" id="view">
    <div class="container">
     <div class="row text-center p-4">
-     <div class="col d-flex m-auto justify-content-center">
+     <div class="col-md d-flex justify-content-md-start mb-3">
       <span class="icon"><i class="fa fa-truck" aria-hidden="true"></i></span>
-      <p class="view-desc ps-3">Fast, Free Shipping On Order Over 350€</p>
+      <p class="view-desc ps-3">Fast, Free Shipping On Orders Over 350€</p>
      </div>
-     <div class="col d-flex m-auto justify-content-center">
+     <div class="col-md d-flex justify-content-md-start mb-3">
       <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
-      <p class="view-desc ps-3">
-       Your Trade Partener in Water Technology
-      </p>
+      <p class="view-desc ps-3">Your Trade Partner in Water Technology</p>
      </div>
-     <div class="col d-flex m-auto justify-content-center">
+     <div class="col-md d-flex justify-content-md-start">
       <span class="icon"><i class="fa-solid fa-star"></i></span>
       <p class="view-desc ps-3">8.3/10 Customer Rating</p>
      </div>
@@ -461,8 +454,9 @@
    </div>
   </section>
   <section class="sidebar">
-   <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
-    aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight">Toggle right
+    offcanvas</button>
 
    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -588,49 +582,49 @@
   wrapper.addEventListener("mouseleave", autoPlay);
   </script>
 
-<script>
-    // Wait for the DOM to be ready
-    $(document).ready(function() {
-      // Retrieve the user token from localStorage
-      var userToken = localStorage.getItem('authToken');
-      // console.log(userToken);
+  <script>
+  // Wait for the DOM to be ready
+  $(document).ready(function() {
+   // Retrieve the user token from localStorage
+   var userToken = localStorage.getItem('authToken');
+   // console.log(userToken);
 
-      // Make sure the token is not null or undefined
+   // Make sure the token is not null or undefined
 
-      // Perform your AJAX request
-      $.ajax({
-        url: '/api/home1', // Replace with your API endpoint
-        method: 'GET',
-        contentType: 'application/json', // Set the content type
-        headers: {
-          'Authorization': 'Bearer ' + userToken
-        },
-        success: function(response) {
-
-
-          if (response.success !== null && response.success !== undefined) {
+   // Perform your AJAX request
+   $.ajax({
+    url: '/api/home1', // Replace with your API endpoint
+    method: 'GET',
+    contentType: 'application/json', // Set the content type
+    headers: {
+     'Authorization': 'Bearer ' + userToken
+    },
+    success: function(response) {
 
 
-            // If success is not null or undefined, hide invalidUser and show validUser
-            $("#invalidUser").css("display", "none");
-            $("#validUser").css("display", "flex");
-            $("#userName").html(response.success['name']);
-          } else {
+     if (response.success !== null && response.success !== undefined) {
 
-            // If success is null or undefined, hide validUser and show invalidUser
-            $("#validUser").css("display", "none");
-            console.log(response.success);
-            // $("#invalidUser").css("display", "block");
-          }
-        },
 
-        error: function(error) {
-          console.error(error);
-          // Handle the error here
-        }
-      });
+      // If success is not null or undefined, hide invalidUser and show validUser
+      $("#invalidUser").css("display", "none");
+      $("#validUser").css("display", "flex");
+      $("#userName").html(response.success['name']);
+     } else {
 
-    });
+      // If success is null or undefined, hide validUser and show invalidUser
+      $("#validUser").css("display", "none");
+      console.log(response.success);
+      // $("#invalidUser").css("display", "block");
+     }
+    },
+
+    error: function(error) {
+     console.error(error);
+     // Handle the error here
+    }
+   });
+
+  });
   </script>
 
 
