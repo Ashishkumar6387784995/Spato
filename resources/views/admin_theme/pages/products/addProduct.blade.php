@@ -269,7 +269,7 @@
               <div class="row mb-2">
                 <div class="col-4">Kategorie 1 </div>
                 <div class="col-8">
-                  <select name="Kategorie_1" id="Kategorie_1">
+                  <select name="Kategorie_1" id="Kategorie_1" class="form-control">
                     <option value="">Select Kategorie</option>
                     <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
                     <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
@@ -316,7 +316,7 @@
               <div class="row mb-2">
                 <div class="col-4">Kategorie 2</div>
                 <div class="col-8">
-                  <select name="Kategorie_2" id="Kategorie_2">
+                  <select name="Kategorie_2" id="Kategorie_2" class="form-control">
                     <option value="">Select Kategorie</option>
                     <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
                     <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
@@ -330,7 +330,7 @@
               <div class="row mb-2">
                 <div class="col-4">Kategorie 3</div>
                 <div class="col-8">
-                  <select naname="Kategorie_3" id="Kategorie_3">
+                  <select naname="Kategorie_3" id="Kategorie_3" class="form-control">
                     <option value="">Select Kategorie</option>
                     <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
                     <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
@@ -344,7 +344,7 @@
               <div class="row mb-2">
                 <div class="col-4">Kategorie 4</div>
                 <div class="col-8">
-                  <select name="Kategorie_4" id="Kategorie_4">
+                  <select name="Kategorie_4" id="Kategorie_4" class="form-control">
                     <option value="">Select Kategorie</option>
                     <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
                     <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
@@ -357,7 +357,7 @@
               <div class="row mb-2">
                 <div class="col-4">Kategorie 5</div>
                 <div class="col-8">
-                  <select name="Kategorie_5" id="Kategorie_5">
+                  <select name="Kategorie_5" id="Kategorie_5" class="form-control">
                     <option value="">Select Kategorie</option>
                     <option value="Kategorie1">Pool Installation & Maintanence_1</option>
                     <option value="Kategorie2">Pool Installation & Maintanence_2</option>

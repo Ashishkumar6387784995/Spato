@@ -256,33 +256,27 @@
      <ul class="carousel">
       
 
-     @foreach($latestProduct as $latestProducts)
-
-
-     
-
-
- 
-     <li class="card">
-       <div class="img"><img src="{{ asset('storage/' . $latestProducts->Bild_1) }}" alt="Image">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">{{$latestProducts->Hersteller}}</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">250,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-
-
-
-
+     @foreach ($latestProduct as $product)
+    <li class="card">
+        <a href="{{ url('api/ProductdetailPage/' . $product->id . '/' . $product->Kategorie_1) }}">
+            <div class="img">
+                <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image">
+            </div>
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{ $product->Hersteller }}</h5>
+            <p class="card-text">
+                <p>Merkamal 1 - lauft fluffig</p>
+                <p>Merkamal 2 - fahurt urail... lorem</p>
+            </p>
+            <p class="product-price">
+                statt - 42,50€ <span class="price">{{ $product->Preis_inkl_MwSt }}</span>
+            </p>
+        </div>
+        <a href="#" class="btn">IN DEN WARENKORB</a>
+    </li>
 @endforeach
+
     
      </ul>
      <i id="right" class="fa-solid fa-angle-right"></i>
@@ -523,124 +517,7 @@
   wrapper.addEventListener("mouseleave", autoPlay);
   </script>
 
-  <script>
-  // Wait for the DOM to be ready
-  $(document).ready(function() {
-   // Retrieve the user token from localStorage
-   var userToken = localStorage.getItem('authToken');
-   console.log(userToken);
 
-   // Make sure the token is not null or undefined
-
-   // Perform your AJAX request
-   $.ajax({
-    url: '/api/home1', // Replace with your API endpoint
-    method: 'GET',
-    contentType: 'application/json', // Set the content type
-    headers: {
-     'Authorization': 'Bearer ' + userToken
-    },
-    success: function(response) {
-
-
-     if (response.success !== null && response.success !== undefined) {
-
-
-      // If success is not null or undefined, hide invalidUser and show validUser
-      $("#invalidUser").css("display", "none");
-      $("#validUser").html(`
-    <li class="nav-item list-unstyled pe-3 ps-5">
-        <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-    </li>
-    <li class="nav-item list-unstyled pe-3 ps-3">
-        <a class="nav-link" href="#">0,00€</a>
-    </li>
-
-    <li class="nav-item dropdown" style="list-style-type:none;">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
-            <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
-            <li><i class="fa-solid fa-user"></i><a href="">Profile</a></li>
-            <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
-            <li id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
-        </ul>
-    </li>
-`);
-
-      // Append the logout button outside of the string
-      $("#dropmenu").append(`
-   
-`);
-
-
-
-
-      // $("#userName").html(response.success['name']);
-     } else {
-
-      // If success is null or undefined, hide validUser and show invalidUser
-      $("#validUser").css("display", "none");
-      console.log(response.success);
-      $("#invalidUser").css("display", "block");
-     }
-    },
-
-    error: function(error) {
-     console.error(error);
-     // Handle the error here
-    }
-   });
-
-  });
-  </script>
-
-  <script>
-  $(document).ready(function() {
-   // Hide invalidUser initially
-   $("#invalidUser").css("display", "none");
-
-   // Check if the "Log Out" list item is clicked within #validUser
-   $("#validUser").off('click').on('click', 'li:contains("Log out")', function(event) {
-    if ($(event.target).is('#logout')) {
-     console.log('hello');
-     var token = localStorage.getItem('authToken');
-     console.log(token);
-
-     // Check if the token exists
-     if (!token) {
-      console.error('Token not found in localStorage');
-      window.location.href = '/api/home';
-      // return;
-     }
-     // Make a POST request to the logout endpoint using jQuery
-     $.ajax({
-      url: 'logoutApi',
-      type: 'POST',
-      headers: {
-       'Authorization': 'Bearer ' + token,
-      },
-      success: function(response) {
-       // Clear the authentication token from local storage
-       if (response.message) {
-        console.log(response.message);
-        localStorage.removeItem('authToken');
-        // Redirect or perform any other necessary actions after logout
-        window.location.href = '/api/home';
-       }
-
-      },
-      error: function(error) {
-       // Handle errors
-       console.error('Error:', error);
-      }
-     });
-    }
-
-   });
-  });
-  </script>
 
 
 

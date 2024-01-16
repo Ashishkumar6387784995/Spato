@@ -377,23 +377,26 @@
         <div class="row">
          <div class="col-md-4">
           <div class="images ">
-           <div class="text-center p-4"> <img id="main-image" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}"
+            
+       
+
+           <div class="text-center p-4"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}"
              width="350" height="300" />
            </div>
            <div class="thumbnail text-center">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" width="70"
+            <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}"width="70"
              height="70">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" width="70"
+            <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_2) }}" width="70"
              height="70">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/pool.png')}}" width="70"
+            <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_3) }}" width="70"
              height="70">
-            <img onclick="change_image(this)" src="{{ asset('assets/frontEnd/web/images/p-2.png')}}" width="70"
+            <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_4) }}" width="70"
              height="70">
            </div>
           </div>
          </div>
          <div class="brand-details col-md-4">
-          <h1>Product name - Brand name</h1>
+          <h1>Product name -  {{$product[0]->Artikelname}}</h1>
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
