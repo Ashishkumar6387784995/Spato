@@ -588,77 +588,87 @@
   wrapper.addEventListener("mouseleave", autoPlay);
   </script>
 
-<script>
-    // Wait for the DOM to be ready
-    $(document).ready(function() {
-      // Retrieve the user token from localStorage
-      var userToken = localStorage.getItem('authToken');
-      console.log(userToken); 
+  <script>
+  // Wait for the DOM to be ready
+  $(document).ready(function() {
+   // Retrieve the user token from localStorage
+   var userToken = localStorage.getItem('authToken');
+   console.log(userToken);
 
-      // Make sure the token is not null or undefined
+   // Make sure the token is not null or undefined
 
-      // Perform your AJAX request
-      $.ajax({
-        url: '/api/home1', // Replace with your API endpoint
-        method: 'GET',
-        contentType: 'application/json', // Set the content type
-        headers: {
-          'Authorization': 'Bearer ' + userToken
-        },
-        success: function(response) {
-
-
-          if (response.success !== null && response.success !== undefined) {
+   // Perform your AJAX request
+   $.ajax({
+    url: '/api/home1', // Replace with your API endpoint
+    method: 'GET',
+    contentType: 'application/json', // Set the content type
+    headers: {
+     'Authorization': 'Bearer ' + userToken
+    },
+    success: function(response) {
 
 
-            // If success is not null or undefined, hide invalidUser and show validUser
-            $("#invalidUser").css("display", "none");
-            $("#validUser").html(`
-  <li class="nav-item list-unstyled pe-3 ps-5">
-    <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-  </li>
-  <li class="nav-item list-unstyled pe-3 ps-3">
-    <a class="nav-link" href="#">0,00€</a>
-  </li>
+     if (response.success !== null && response.success !== undefined) {
 
-  <li class="nav-item dropdown" style="list-style-type:none;">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
-      <li><i class="fa-solid fa-user"></i>Profile</li>
-      <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
-      <button id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
-    </ul>
-  </li>
+
+      // If success is not null or undefined, hide invalidUser and show validUser
+      $("#invalidUser").css("display", "none");
+      $("#validUser").html(`
+    <li class="nav-item list-unstyled pe-3 ps-5">
+        <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+    </li>
+    <li class="nav-item list-unstyled pe-3 ps-3">
+        <a class="nav-link" href="#">0,00€</a>
+    </li>
+
+    <li class="nav-item dropdown" style="list-style-type:none;">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="dropmenu">
+            <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
+            <li><i class="fa-solid fa-user"></i>Profile</li>
+            <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
+        </ul>
+    </li>
 `);
 
-            // $("#userName").html(response.success['name']);
-          } else {
+      // Append the logout button outside of the string
+      $("#dropmenu").append(`
+    <button id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i> Log out</button>
+`);
 
-            // If success is null or undefined, hide validUser and show invalidUser
-            $("#validUser").css("display", "none");
-            console.log(response.success);
-            // $("#invalidUser").css("display", "block");
-          }
-        },
-
-        error: function(error) {
-          console.error(error);
-          // Handle the error here
-        }
+      // Add click event to the logout button
+      $("#logoutButton").on("click", function() {
+       console.log("hello");
       });
 
 
-   
+      // $("#userName").html(response.success['name']);
+     } else {
 
-    });
+      // If success is null or undefined, hide validUser and show invalidUser
+      $("#validUser").css("display", "none");
+      console.log(response.success);
+      // $("#invalidUser").css("display", "block");
+     }
+    },
+
+    error: function(error) {
+     console.error(error);
+     // Handle the error here
+    }
+   });
+
+
+
+
+  });
   </script>
 
-  
 
-  
+
+
 
 
 
