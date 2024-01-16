@@ -160,11 +160,11 @@
       }
     }
 
-    @media screen and (max-width: 600px) {
-      .wrapper .carousel {
-        grid-auto-columns: 110%;
-      }
-    }
+  @media screen and (max-width: 600px) {
+   .wrapper .carousel {
+    grid-auto-columns: 110%;
+   }
+  }
   </style>
 </head>
 
@@ -254,103 +254,103 @@
   padding: 0 35px;
   align-items: center;
   justify-content: center;">
-      <div class="wrapper">
-        <i id="left" class="fa-solid fa-angle-left"></i>
-        <ul class="carousel">
-          <li class="card">
-            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Saugrobroter</h5>
-              <p class="card-text">
-              <p>Merkamal 1 - lauft fluffig</p>
-              <p>Merkamal 2 - fahurt urail... lorem</p>
-              </p>
-              <p class="product-price">
-                statt - 42,50€ <span class="price">25,30€</span>
-              </p>
-            </div>
-            <a href="#" class="btn">IN DEN WARENKORB</a>
-          </li>
-          <li class="card">
-            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Saugrobroter</h5>
-              <p class="card-text">
-              <p>Merkamal 1 - lauft fluffig</p>
-              <p>Merkamal 2 - fahurt urail... lorem</p>
-              </p>
-              <p class="product-price">
-                statt - 42,50€ <span class="price">25,30€</span>
-              </p>
-            </div>
-            <a href="#" class="btn">IN DEN WARENKORB</a>
-          </li>
-          <li class="card">
-            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Saugrobroter</h5>
-              <p class="card-text">
-              <p>Merkamal 1 - lauft fluffig</p>
-              <p>Merkamal 2 - fahurt urail... lorem</p>
-              </p>
-              <p class="product-price">
-                statt - 42,50€ <span class="price">25,30€</span>
-              </p>
-            </div>
-            <a href="#" class="btn">IN DEN WARENKORB</a>
-          </li>
-          <li class="card">
-            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Saugrobroter</h5>
-              <p class="card-text">
-              <p>Merkamal 1 - lauft fluffig</p>
-              <p>Merkamal 2 - fahurt urail... lorem</p>
-              </p>
-              <p class="product-price">
-                statt - 42,50€ <span class="price">25,30€</span>
-              </p>
-            </div>
-            <a href="#" class="btn">IN DEN WARENKORB</a>
-          </li>
-          <li class="card">
-            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Saugrobroter</h5>
-              <p class="card-text">
-              <p>Merkamal 1 - lauft fluffig</p>
-              <p>Merkamal 2 - fahurt urail... lorem</p>
-              </p>
-              <p class="product-price">
-                statt - 42,50€ <span class="price">25,30€</span>
-              </p>
-            </div>
-            <a href="#" class="btn">IN DEN WARENKORB</a>
-          </li>
-          <li class="card">
-            <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Saugrobroter</h5>
-              <p class="card-text">
-              <p>Merkamal 1 - lauft fluffig</p>
-              <p>Merkamal 2 - fahurt urail... lorem</p>
-              </p>
-              <p class="product-price">
-                statt - 42,50€ <span class="price">25,30€</span>
-              </p>
-            </div>
-            <a href="#" class="btn">IN DEN WARENKORB</a>
-          </li>
-        </ul>
-        <i id="right" class="fa-solid fa-angle-right"></i>
-      </div>
+    <div class="wrapper">
+     <i id="left" class="fa-solid fa-angle-left"></i>
+     <ul class="carousel">
+      <li class="card">
+       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Saugrobroter</h5>
+        <p class="card-text">
+        <p>Merkamal 1 - lauft fluffig</p>
+        <p>Merkamal 2 - fahurt urail... lorem</p>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+       <a href="#" class="btn">IN DEN WARENKORB</a>
+      </li>
+      <li class="card">
+       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Saugrobroter</h5>
+        <p class="card-text">
+        <p>Merkamal 1 - lauft fluffig</p>
+        <p>Merkamal 2 - fahurt urail... lorem</p>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+       <a href="#" class="btn">IN DEN WARENKORB</a>
+      </li>
+      <li class="card">
+       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Saugrobroter</h5>
+        <p class="card-text">
+        <p>Merkamal 1 - lauft fluffig</p>
+        <p>Merkamal 2 - fahurt urail... lorem</p>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+       <a href="#" class="btn">IN DEN WARENKORB</a>
+      </li>
+      <li class="card">
+       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Saugrobroter</h5>
+        <p class="card-text">
+        <p>Merkamal 1 - lauft fluffig</p>
+        <p>Merkamal 2 - fahurt urail... lorem</p>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+       <a href="#" class="btn">IN DEN WARENKORB</a>
+      </li>
+      <li class="card">
+       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Saugrobroter</h5>
+        <p class="card-text">
+        <p>Merkamal 1 - lauft fluffig</p>
+        <p>Merkamal 2 - fahurt urail... lorem</p>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+       <a href="#" class="btn">IN DEN WARENKORB</a>
+      </li>
+      <li class="card">
+       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Saugrobroter</h5>
+        <p class="card-text">
+        <p>Merkamal 1 - lauft fluffig</p>
+        <p>Merkamal 2 - fahurt urail... lorem</p>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+       <a href="#" class="btn">IN DEN WARENKORB</a>
+      </li>
+     </ul>
+     <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
+   </div>
   </section>
   <!-- Latest Products ends -->
   <section class="featured-products dark-mode-section1">
@@ -458,7 +458,44 @@
       </div>
     </div>
   </section>
+  <section class="sidebar">
+   <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
+    aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
 
+   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+     <h3 id="offcanvasRightLabel">Shopping Cart</h3>
+     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+     <div class="products-list">
+      <div class="products row">
+       <div class="col">
+        <img src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" alt="" srcset="">
+       </div>
+       <div class="col">
+        <a href="#" class="product-name">
+         <p>Lorem ipsum dolor sit amet.</p>
+        </a>
+        <p class="price"><span id="totalPriceDisplay1">10</span>€</p>
+        <button class="quentity-btn" onclick="decreaseQuantity()">
+         -</button>
+        <input type="text" id="quantity" value="1" min="1" readonly />
+        <button class="quentity-btn" onclick="increaseQuantity()">+</button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="total">
+     <p>Total</p>
+     <p>1452</p>
+    </div>
+    <div class="container">
+     <a href="#"><button class="checkout">Checkout</button></a> <br />
+     <a href="#"><button class="cart">View Cart</button></a>
+    </div>
+   </div>
+  </section>
 
   <script>
     const wrapper = document.querySelector(".wrapper");
@@ -548,52 +585,6 @@
     wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
     wrapper.addEventListener("mouseleave", autoPlay);
   </script>
-
-  <script>
-    // Wait for the DOM to be ready
-    $(document).ready(function() {
-      // Retrieve the user token from localStorage
-      var userToken = localStorage.getItem('authToken');
-      // console.log(userToken);
-
-      // Make sure the token is not null or undefined
-
-      // Perform your AJAX request
-      $.ajax({
-        url: '/api/home1', // Replace with your API endpoint
-        method: 'GET',
-        contentType: 'application/json', // Set the content type
-        headers: {
-          'Authorization': 'Bearer ' + userToken
-        },
-        success: function(response) {
-
-
-          if (response.success !== null && response.success !== undefined) {
-
-
-            // If success is not null or undefined, hide invalidUser and show validUser
-            $("#invalidUser").css("display", "none");
-            $("#validUser").css("display", "flex");
-            $("#userName").html(response.success['name']);
-          } else {
-
-            // If success is null or undefined, hide validUser and show invalidUser
-            $("#validUser").css("display", "none");
-            console.log(response.success);
-            // $("#invalidUser").css("display", "block");
-          }
-        },
-
-        error: function(error) {
-          console.error(error);
-          // Handle the error here
-        }
-      });
-
-    });
-  </script>
-
 
 
 
