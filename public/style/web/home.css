@@ -370,17 +370,11 @@ form .btn-style {
 .sidebar .offcanvas-body .products-list .products {
     border-bottom: 1px solid var(--black);
 }
-.sidebar .offcanvas-body .products-list .main-product .products .col img {
+.sidebar .offcanvas-body .products-list .products img {
     width: 150px;
     height: 150px;
 }
-.sidebar
-    .offcanvas-body
-    .main-product
-    .products-list
-    .products
-    .col
-    .product-name {
+.sidebar .offcanvas-body .products-list .products .product-name {
     text-decoration: none;
     color: var(--black);
     font-weight: 600;

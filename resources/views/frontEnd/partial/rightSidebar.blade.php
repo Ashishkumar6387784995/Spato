@@ -177,13 +177,9 @@ function displayCartItems(cartItems) {
 
 
 // Example function signatures for increasing and decreasing quantity
-function increaseQuantity(productId) {
- // Implement your logic to increase quantity for the specified product
-}
+// Example function to decrease quantity
 
-function decreaseQuantity(productId) {
- // Implement your logic to decrease quantity for the specified product
-}
+
 
 // Function to get or generate guest token
 function getGuestToken() {
