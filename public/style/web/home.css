@@ -246,7 +246,7 @@ form .btn-style {
 
 @media (min-width: 992px) {
     .categories .categories-card {
-        flex: 0 0 calc(16.666% - 20px); /* Maintain 6 items in a row on desktop */
+        flex: 0 0 calc(16.666% - 20px); /*Maintain 6 items in a row on desktop*/
     }
 }
 .categories .categories-card a {
