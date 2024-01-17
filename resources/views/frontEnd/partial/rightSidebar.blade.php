@@ -142,7 +142,7 @@
 
         cartItems.forEach(function(item, index) {
             // Create a new product element for each cart item
-            var productElement = $(' <div class="products row"><div class="col">');
+            var productElement = $(' <div class="products row">');
 
             // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
 
