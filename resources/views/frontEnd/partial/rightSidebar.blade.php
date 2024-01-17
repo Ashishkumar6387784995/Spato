@@ -174,53 +174,7 @@ function updateTotalPrice(quantity) {
  
     // Example function signatures for increasing and decreasing quantity
    // Example function to decrease quantity
-function decreaseQuantity(productId) {
-    var quantityInput = $('#quantity' + productId);
-    var currentQuantity = parseInt(quantityInput.val(), 10);
 
-    if (currentQuantity > 1) {
-        // Decrease the quantity by 1
-        var newQuantity = currentQuantity - 1;
-        quantityInput.val(newQuantity);
-
-        updateQuantityInDatabase(productId, newQuantity);
-        // Implement any additional  logic you need, such as updating the server or recalculating prices
-    }
-}
-
-// Example function to increase quantity
-function increaseQuantity(productId) {
-    var quantityInput = $('#quantity' + productId);
-    var currentQuantity = parseInt(quantityInput.val(), 10);
-
-    // Increase the quantity by 1
-    var newQuantity = currentQuantity + 1;
-    quantityInput.val(newQuantity);
-    updateQuantityInDatabase(productId, newQuantity);
-    // Implement any additional logic you need, such as updating the server or recalculating prices
-}
-
-
-function updateQuantityInDatabase(productId, newQuantity) {
-    $.ajax({
-        type: 'POST',
-        url: '/api/cart/updateQuanityApi',
-        headers: {
-            'guest-token': getGuestToken(),
-        },
-        data: {
-            product_id: productId,
-            quantity: newQuantity,
-        },
-        success: function (response) {
-            console.log('Quantity updated successfully');
-            // You can handle additional logic or UI updates here if needed
-        },
-        error: function (error) {
-            console.error('Error updating quantity', error);
-        }
-    });
-}
 
 
     // Function to get or generate guest token
