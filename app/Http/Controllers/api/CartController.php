@@ -18,12 +18,12 @@ class CartController extends Controller
         $guestToken = $request->header('guest-token', Str::uuid());
         $productID = $request->product_id;
         $quantity = $request->quantity;
-        
+
         // Check if a cart item with the same product_id and guest_token exists
         $existingCartItem = Cart::where('guest_token', $guestToken)
             ->where('product_id', $productID)
             ->first();
-        
+
         if ($existingCartItem) {
             // If the cart item exists, update the quantity
             $existingCartItem->quantity += $quantity;
@@ -35,29 +35,77 @@ class CartController extends Controller
                 'product_id' => $productID,
                 'quantity' => $quantity,
             ]);
-        
+
             $cartItem->save();
         }
-        
+
         return response()->json(['message' => 'Item added to cart successfully']);
-        
     }
+
+
+
 
 
     public function getCartItems(Request $request)
     {
         $guestToken = $request->header('guest-token', Str::uuid());
 
-  
+
         $cartItems = Cart::where('guest_token', $guestToken)
             ->join('products', 'cart_items.product_id', '=', 'products.id')
             ->select('cart_items.*', 'products.Artikelname as product_name', 'products.Bild_1 as product_image', 'products.Hersteller as Hersteller')
+            ->orderBy('cart_items.created_at', 'desc') // Order by the creation date in descending order
             ->get();
-        // dd($cartItems);
-
 
         return response()->json(['cartItems' => $cartItems]);
     }
+
+
+    public function updateQuantityOfItems(Request $request)
+    {
+
+        $guestToken = $request->header('guest-token');
+        $productId = $request->input('product_id');
+        $newQuantity = $request->input('quantity');
+
+        // Find the cart item with the given product ID and guest token
+        $cartItem = Cart::where('guest_token', $guestToken)
+            ->where('product_id', $productId)
+            ->first();
+
+        if ($cartItem) {
+            // Update the quantity
+            $cartItem->quantity = $newQuantity;
+            $cartItem->save();
+
+            return response()->json(['message' => 'Quantity updated successfully']);
+        }
+
+        return response()->json(['message' => 'Cart item not found'], 404);
+    }
+
+
+    public function deleteCartProducts(Request $request, $product_id)
+    {
+
+
+
+        $guestToken = $request->header('guest-token');
+
+        // Find and delete the cart item with the given product ID and guest token
+        $cartItem = Cart::where('guest_token', $guestToken)
+            ->where('product_id', $product_id)
+            ->first();
+
+        if ($cartItem) {
+            $cartItem->delete();
+            return response()->json(['message' => 'Item removed successfully']);
+        }
+
+        return response()->json(['message' => 'Cart item not found'], 404);
+    }
+
+
 
 
 
