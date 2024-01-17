@@ -8,9 +8,60 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
+
+    public function addToCart(Request $request)
+    {
+        $guestToken = $request->header('guest-token', Str::uuid());
+        $productID = $request->product_id;
+        $quantity = $request->quantity;
+        
+        // Check if a cart item with the same product_id and guest_token exists
+        $existingCartItem = Cart::where('guest_token', $guestToken)
+            ->where('product_id', $productID)
+            ->first();
+        
+        if ($existingCartItem) {
+            // If the cart item exists, update the quantity
+            $existingCartItem->quantity += $quantity;
+            $existingCartItem->save();
+        } else {
+            // If the cart item does not exist, create a new one
+            $cartItem = new Cart([
+                'guest_token' => $guestToken,
+                'product_id' => $productID,
+                'quantity' => $quantity,
+            ]);
+        
+            $cartItem->save();
+        }
+        
+        return response()->json(['message' => 'Item added to cart successfully']);
+        
+    }
+
+
+    public function getCartItems(Request $request)
+    {
+        $guestToken = $request->header('guest-token', Str::uuid());
+
+  
+        $cartItems = Cart::where('guest_token', $guestToken)
+            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->select('cart_items.*', 'products.Artikelname as product_name', 'products.Bild_1 as product_image', 'products.Hersteller as Hersteller')
+            ->get();
+        // dd($cartItems);
+
+
+        return response()->json(['cartItems' => $cartItems]);
+    }
+
+
+
+
     public function cartProductList(Request $request)
     {
 
@@ -99,7 +150,7 @@ class CartController extends Controller
         $cartItems = Cart::where('userEmail', $email)->get();
 
         $totalCalculatedAmount = 0;
-        
+
         // Iterate through the cart details array
         foreach ($cartItems as $cartItem) {
             // Convert the calculatedAmount to float and add to the total
