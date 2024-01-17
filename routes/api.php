@@ -67,12 +67,13 @@ Route::get('selectedB2CUserDetails/{id}',[loginController::class,'selectedB2CUse
 Route::get('/home', [webController::class, 'home']);
 Route::post('/cart/addApi', [CartController::class, 'addToCart']);  
 Route::get('/cart/getCartItemsApi', [CartController::class, 'getCartItems']);  
-
+Route::post('/cart/updateQuanityApi', [CartController::class, 'updateQuantityOfItems']); 
+Route::delete('/cart/deleteCartProductsApi/{product_id}', [CartController::class, 'deleteCartProducts']); 
 
 
 
 // Route::get('login',[authController::class,'loginform']);
-// Route::post('login',[authController::class,'loginCheck']);
+// Route::post('login',[authController::class,'loginCheck']);s
 // Route::get('home',[authController::class,'home']);
 // Route::get('logout',[authController::class,'logout']); 
 
