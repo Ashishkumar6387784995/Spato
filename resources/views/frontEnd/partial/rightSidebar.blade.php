@@ -171,6 +171,8 @@ function updateTotalPrice(quantity) {
     });
 }
 
+
+
  
     // Example function signatures for increasing and decreasing quantity
    // Example function to decrease quantity
