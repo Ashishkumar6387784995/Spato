@@ -11,22 +11,24 @@
    <div class="products-list">
 
     <!--  -->
-    <div class="products row" id="cart-items-list">
-     <div class="col">
-      <img src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" alt="" srcset="">
-     </div>
-     <div class="col">
-      <a href="#" class="product-name">
-       <p>Lorem ipsum dolor sit amet.</p>
-      </a>
-      <p class="price"><span id="totalPriceDisplay1">10</span>€</p>
-      <div class="sidebar-quantity">
-       <button class="quantity-btn" onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
-       <input type="text" id="quantity" value="1" min="1" readonly />
-       <button class="quantity-btn" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
+    <div id="cart-items-list" class="main-product">
+     <div class="products row">
+      <div class="col">
+       <img src="{{ asset('assets/frontEnd/web/images/p-1.png')}}" alt="" srcset="">
+      </div>
+      <div class="col">
+       <a href="#" class="product-name">
+        <p>Lorem ipsum dolor sit amet.</p>
+       </a>
+       <p class="price"><span id="totalPriceDisplay1">10</span>€</p>
+       <div class="sidebar-quantity">
+        <button class="quantity-btn" onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
+        <input type="text" id="quantity" value="1" min="1" readonly />
+        <button class="quantity-btn" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
+       </div>
       </div>
      </div>
-    </div><br />
+    </div>
     <!--  -->
 
 
