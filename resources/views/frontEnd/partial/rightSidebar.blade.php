@@ -26,12 +26,12 @@
        <button class="quantity-btn" onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
       </div>
      </div>
-    </div>
+    </div><br />
     <!--  -->
 
-  
 
-   
+
+
 
    </div>
   </div>
@@ -90,113 +90,115 @@ function updateTotalPrice(quantity) {
 
 
 <script>
-    // Add to Cart AJAX request
-    $('.addToCartButton').on('click', function() {
-      var productId = $(this).data('product-id');
-      var quantity = $(this).data('quantity');
-      console.log(quantity);
+// Add to Cart AJAX request
+$('.addToCartButton').on('click', function() {
+ var productId = $(this).data('product-id');
+ var quantity = $(this).data('quantity');
+ console.log(quantity);
 
-      $.ajax({
-        type: 'POST',
-        url: '/api/cart/addApi',
-        headers: {
-          'guest-token': getGuestToken(),
-        },
-        data: {
-          product_id: productId,
-          quantity: quantity,
-        },
-        success: function(response) {
-        //   alert(response.message);
-          updateCartItemsList();
-        },
-        error: function(error) {
-          console.error('Error adding to cart', error);
-        }
-      });
-    });
+ $.ajax({
+  type: 'POST',
+  url: '/api/cart/addApi',
+  headers: {
+   'guest-token': getGuestToken(),
+  },
+  data: {
+   product_id: productId,
+   quantity: quantity,
+  },
+  success: function(response) {
+   //   alert(response.message);
+   updateCartItemsList();
+  },
+  error: function(error) {
+   console.error('Error adding to cart', error);
+  }
+ });
+});
 
-    // Retrieve Cart Items AJAX request
-    function updateCartItemsList() {
-      $.ajax({
-        type: 'GET',
-        url: '/api/cart/getCartItemsApi',
-        headers: {
-          'guest-token': getGuestToken(),
-        },
-        success: function(response) {
-            console.log(response.cartItems);
-          displayCartItems(response.cartItems);
-        },
-        error: function(error) {
-          console.error('Error retrieving cart items', error);
-        }
-      });
-    }
-
-    // Display Cart Items in the right sidebar
-    function displayCartItems(cartItems) {
-    console.log(cartItems);
-    var cartItemsList = $('#cart-items-list');
-    cartItemsList.empty();
-
-    cartItems.forEach(function (item, index) {
-        // Create a new product element for each cart item
-        var productElement = $('<div class="col">');
-
-        // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
-
-        // Product image (replace 'item.product_image_url' with the actual property in your response)
-        productElement.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" alt="" srcset="">');
-
-        // Product details
-        var productDetails = $('<div class="col">');
-        productDetails.append('<a href="#" class="product-name"><p>' + item.product_name + '</p></a>');
-
-        // Price display (replace 'item.total_price' with the actual property in your response)
-        productDetails.append('<p class="price"><span id="totalPriceDisplay' + index + '">' + item.total_price + '</span>€</p>');
-
-        // Quantity controls
-        var quantityControls = $('<div class="sidebar-quantity">');
-        quantityControls.append('<button class="quantity-btn" onclick="decreaseQuantity(' + item.product_id + ')"><i class="fa-solid fa-minus"></i></button>');
-        quantityControls.append('<input type="text" id="quantity' + item.product_id + '" value="' + item.quantity + '" min="1" readonly />');
-        quantityControls.append('<button class="quantity-btn" onclick="increaseQuantity(' + item.product_id + ')"><i class="fa-solid fa-plus"></i></button>');
-
-        productDetails.append(quantityControls);
-        productElement.append(productDetails);
-
-        cartItemsList.append(productElement);
-    });
+// Retrieve Cart Items AJAX request
+function updateCartItemsList() {
+ $.ajax({
+  type: 'GET',
+  url: '/api/cart/getCartItemsApi',
+  headers: {
+   'guest-token': getGuestToken(),
+  },
+  success: function(response) {
+   console.log(response.cartItems);
+   displayCartItems(response.cartItems);
+  },
+  error: function(error) {
+   console.error('Error retrieving cart items', error);
+  }
+ });
 }
 
- 
-    // Example function signatures for increasing and decreasing quantity
-    function increaseQuantity(productId) {
-        // Implement your logic to increase quantity for the specified product
-    }
+// Display Cart Items in the right sidebar
+function displayCartItems(cartItems) {
+ console.log(cartItems);
+ var cartItemsList = $('#cart-items-list');
+ cartItemsList.empty();
 
-    function decreaseQuantity(productId) {
-        // Implement your logic to decrease quantity for the specified product
-    }
+ cartItems.forEach(function(item, index) {
+  // Create a new product element for each cart item
+  var productElement = $('<div class="col">');
 
-    // Function to get or generate guest token
-    function getGuestToken() {
-      var guestToken = localStorage.getItem('guestToken');
-      console.log(guestToken);
-      if (!guestToken) {
-        guestToken = generateGuestToken();
-        localStorage.setItem('guestToken', guestToken);
-      }
-      return guestToken;
-    }
+  // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
 
-    // Function to generate a guest token
-    function generateGuestToken() {
-      return Math.random().toString(36).substring(2) + Date.now().toString(36);
-    }
+  // Product image (replace 'item.product_image_url' with the actual property in your response)
+  productElement.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" alt="" srcset="">');
 
-    // Initial update of cart items list
-    updateCartItemsList();
-  </script>
+  // Product details
+  var productDetails = $('<div class="col">');
+  productDetails.append('<a href="#" class="product-name"><p>' + item.product_name + '</p></a>');
+
+  // Price display (replace 'item.total_price' with the actual property in your response)
+  productDetails.append('<p class="price"><span id="totalPriceDisplay' + index + '">' + item.total_price +
+   '</span>€</p>');
+
+  // Quantity controls
+  var quantityControls = $('<div class="sidebar-quantity">');
+  quantityControls.append('<button class="quantity-btn" onclick="decreaseQuantity(' + item.product_id +
+   ')"><i class="fa-solid fa-minus"></i></button>');
+  quantityControls.append('<input type="text" id="quantity' + item.product_id + '" value="' + item.quantity +
+   '" min="1" readonly />');
+  quantityControls.append('<button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
+   ')"><i class="fa-solid fa-plus"></i></button>');
+
+  productDetails.append(quantityControls);
+  productElement.append(productDetails);
+
+  cartItemsList.append(productElement);
+ });
+}
 
 
+// Example function signatures for increasing and decreasing quantity
+function increaseQuantity(productId) {
+ // Implement your logic to increase quantity for the specified product
+}
+
+function decreaseQuantity(productId) {
+ // Implement your logic to decrease quantity for the specified product
+}
+
+// Function to get or generate guest token
+function getGuestToken() {
+ var guestToken = localStorage.getItem('guestToken');
+ console.log(guestToken);
+ if (!guestToken) {
+  guestToken = generateGuestToken();
+  localStorage.setItem('guestToken', guestToken);
+ }
+ return guestToken;
+}
+
+// Function to generate a guest token
+function generateGuestToken() {
+ return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+// Initial update of cart items list
+updateCartItemsList();
+</script>
