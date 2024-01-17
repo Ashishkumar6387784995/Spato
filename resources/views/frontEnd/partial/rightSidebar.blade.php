@@ -42,7 +42,7 @@
         </div>
         <div class="container">
             <a href="{{url('/api/checkout')}}"><button class="btn checkout">Checkout</button></a> <br />
-            <a href="{{url('/api/addToCart')}}"><button class="btn cart">View Cart</button></a>
+            <a href="{{url('/api/viewCart')}}"><button class="btn cart">View Cart</button></a>
         </div>
     </div>
 </section>

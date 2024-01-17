@@ -69,6 +69,8 @@ Route::post('/cart/addApi', [CartController::class, 'addToCart']);
 Route::get('/cart/getCartItemsApi', [CartController::class, 'getCartItems']);  
 Route::post('/cart/updateQuanityApi', [CartController::class, 'updateQuantityOfItems']); 
 Route::delete('/cart/deleteCartProductsApi/{product_id}', [CartController::class, 'deleteCartProducts']); 
+Route::get('/viewCart', [CartController::class, 'viewCart']);
+
 
 
 
@@ -262,7 +264,7 @@ Route::get('/ProductdetailPage/{product_id}/{product_category}', [webController:
 Route::get('/ProductsByCategories/{Kategorie_Name}', [webController::class, 'ProductsByCategories']);
 
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
-Route::view('addToCart', 'frontEnd/pages/addToCart');
+
 Route::view('checkout', 'frontEnd/pages/checkout');
 
 

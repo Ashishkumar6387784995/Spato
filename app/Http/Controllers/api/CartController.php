@@ -213,4 +213,10 @@ class CartController extends Controller
             return response()->json(['message' => 'Product Not Found']);
         }
     }
+
+    
+    public function viewCart(){
+
+        return view('frontEnd/pages/cart/cartView');
+    }
 }
