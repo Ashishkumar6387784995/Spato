@@ -61,7 +61,7 @@
    font-size: 15px;
   }
 
-  .checkout-container .btn {
+  /* .checkout-container .btn {
    background-color: #44e1d5;
    border: 1px solid #44e1d5;
    width: 90%;
@@ -76,7 +76,7 @@
   .checkout-container .btn:hover {
    border: 1px solid #44e1d5;
    color: var(--blue);
-  }
+  } */
 
   .checkout-container .details p {
    margin: 0;
@@ -114,7 +114,7 @@
    font-weight: 700;
   }
 
-  .checkout-container .content .address-container .address-btn .change-btn {
+  .change-btn {
    background-color: var(--blue);
    border: 1px solid var(--blue);
    border-radius: 5px;
@@ -125,7 +125,7 @@
    margin-top: 1.5rem;
   }
 
-  .checkout-container .content .address-container .address-btn .change-btn:hover {
+  .change-btn:hover {
    background-color: var(--white);
    border: 1px solid var(--blue);
    color: var(--blue);
@@ -220,6 +220,10 @@
 
 
   }
+
+  .mt-0 {
+   margin-top: 0rem;
+  }
   </style>
  </head>
 
@@ -250,7 +254,8 @@
         <p class="name">Alex</p>
         <p class="address">159, Park Avenue, Schmalkalden, Germany</p>
        </div>
-       <div class="col-4 address-btn"><button class="change-btn">Change Address</button></div>
+       <div class="col-4 address-btn"><button class="change-btn" data-bs-toggle="modal"
+         data-bs-target="#caddress">Change Address</button></div>
       </div>
 
 
@@ -445,6 +450,50 @@
     </div>
   </section>
 
+
+  <!-- Change Address Modal Starts-->
+  <!-- Modal -->
+  <div class="modal fade" id="caddress" tabindex="-1" aria-labelledby="caddressLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h1 class="modal-title fs-5" id="caddressLabel">Change Address</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+
+      <div class="row mt-2">
+       <div class="col-10">
+        <p class="address">159, Park Avenue, Schmalkalden, Germany</p>
+       </div>
+       <div class="col-2"><button class="mt-0 change-btn" type="submit">Add +</button></div>
+      </div>
+
+      <div class="row mt-2">
+       <div class="col-10">
+        <p class="address">Am Medenstein 7, 36145 Hofbieber, Germany</p>
+       </div>
+       <div class="col-2"><button class="mt-0 change-btn" type="submit">Add +</button></div>
+      </div>
+
+      <div class="row mt-2">
+       <div class="col-10">
+        <p class="address">Fuldaer Str. 2, 36166 Haunetal, Germany</p>
+       </div>
+       <div class="col-2"><button class="mt-0 change-btn" type="submit">Add +</button></div>
+      </div>
+
+
+     </div>
+
+     <div class="modal-footer justify-content-start">
+      <a href="#"><button type="button" class="change-btn">Add address +</button></a>
+      <!-- <button type="button" class="mt-0 change-btn">Save changes</button> -->
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Change Address Modal Ends-->
 
   @include('frontEnd/partial/footer')
 
