@@ -235,10 +235,6 @@ Route::view('settings/{role}', 'admin_theme/pages/settings/settings');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
-// Settings for Admin
-// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('settings/{role}', 'admin_theme/pages/settings/settings');
-// Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 
 // Customer Address Book for B2B
@@ -257,13 +253,14 @@ Route::view('customerAddressbook{role}', 'admin_theme/pages/customerAddressbook/
 Route::view('accountSetting', 'frontEnd/pages/setting');
 
 
+
 // front End WebSite Pages...
 Route::get('/ProductdetailPage/{product_id}/{product_category}', [webController::class, 'ProductdetailPage']);
 Route::get('/ProductsByCategories/{Kategorie_Name}', [webController::class, 'ProductsByCategories']);
 
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 Route::view('addToCart', 'frontEnd/pages/addToCart');
-
+Route::view('checkout', 'frontEnd/pages/checkout');
 
 
 
