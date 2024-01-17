@@ -65,6 +65,8 @@ Route::get('selectedB2CUserDetails/{id}',[loginController::class,'selectedB2CUse
 
 
 Route::get('/home', [webController::class, 'home']);
+Route::post('/cart/addApi', [CartController::class, 'addToCart']);  
+Route::get('/cart/getCartItemsApi', [CartController::class, 'getCartItems']);  
 
 
 
