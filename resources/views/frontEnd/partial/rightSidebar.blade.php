@@ -165,7 +165,7 @@ function displayCartItems(cartItems) {
   quantityControls.append('<input type="text" id="quantity' + item.product_id + '" value="' + item.quantity +
    '" min="1" readonly />');
   quantityControls.append('<button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
-   ')"><i class="fa-solid fa-plus"></i></button><i style="margin-left:2.5rem;" class="fa-solid fa-circle-xmark"></i></div></div></div>'
+   ')"><i class="fa-solid fa-plus"></i></button><i style="margin-left:2.5rem; font-size:20px;" class="fa-solid fa-circle-xmark"></i></div></div></div>'
   );
 
   productDetails.append(quantityControls);
