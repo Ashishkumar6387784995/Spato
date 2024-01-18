@@ -434,7 +434,7 @@
            </div>
            <div class="cart mt-4 align-items-center">
             <button class="btn text-uppercase">IN DEN WARENKORB</button>
-            <button class="btn text-uppercase mt-3">Fordern Sie ein Angebot an</button>
+            <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
            </div>
           </div>
          </div>
