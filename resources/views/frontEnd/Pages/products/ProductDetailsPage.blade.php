@@ -288,13 +288,16 @@
    text-align: center;
    width: 100%;
    background-color: var(--blue);
-   color: #050811;
+   color: var(--white);
+   border: 1px solid var(--blue);
    font-weight: 600;
    transition: 0.5s;
   }
 
   .cart .btn:hover {
-   background-color: var(--blue);
+   background-color: var(--white);
+   border: 1px solid var(--blue);
+   color: var(--blue);
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
@@ -377,14 +380,14 @@
         <div class="row">
          <div class="col-md-4">
           <div class="images ">
-            
-       
+
+
 
            <div class="text-center p-4"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}"
              width="350" height="300" />
            </div>
            <div class="thumbnail text-center">
-            <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}"width="70"
+            <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="70"
              height="70">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_2) }}" width="70"
              height="70">
@@ -396,7 +399,7 @@
           </div>
          </div>
          <div class="brand-details col-md-4">
-          <h1>Product name -  {{$product[0]->Artikelname}}</h1>
+          <h1>Product name - {{$product[0]->Artikelname}}</h1>
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
@@ -431,6 +434,7 @@
            </div>
            <div class="cart mt-4 align-items-center">
             <button class="btn text-uppercase">IN DEN WARENKORB</button>
+            <button class="btn text-uppercase mt-3">Fordern Sie ein Angebot an</button>
            </div>
           </div>
          </div>
