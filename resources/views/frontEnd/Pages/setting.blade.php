@@ -14,15 +14,26 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
+
   <style>
   /* Imports */
 
 
   .sidebar {
    width: 300px;
-   height: 240px;
+   height: 200px;
    background-color: #fff;
    padding: 10px 20px;
+   border-radius: 5px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .sidebar h6 {
+   font-weight: 700;
+   color: #000;
+   margin: 20px 0px;
   }
 
   .menu {
@@ -68,9 +79,9 @@
   }
 
   /* Add margin to every element in a page */
-  .page * {
+  /* .page * {
    margin: 10px;
-  }
+  } */
 
   .menu * {
    transform: translateX(0px);
@@ -240,7 +251,119 @@
     display: block;
    }
   }
+
+  /* Accordion */
+
+  .order-history tbody tr td {
+   width: 300px;
+  }
+
+  .accordion {
+   border-radius: 5px;
+   margin-bottom: 10px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: var(--white);
+  }
+
+  .accordion-heading {
+   cursor: pointer;
+   padding: 10px;
+   background-color: var(--white);
+   border-radius: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+  }
+
+  .accordion-content {
+   display: none;
+   padding: 10px;
+  }
+
+  table {
+   border-collapse: collapse;
+   width: 100%;
+  }
+
+  th,
+  td {
+   width: 300px;
+   border: 1px solid #ddd;
+   padding: 8px;
+   text-align: left;
+  }
+
+  .order-history .t-price .pdf {
+   font-size: 15px;
+  }
+
+  .order-history .t-price .pdf i {
+   color: red;
+  }
+
+  .order-history .t-price .total-price {
+   font-size: 18px;
+   font-weight: 700;
+   text-align: right;
+  }
+
+  .order-product-img {
+   width: 100px;
+   height: 100px;
+  }
+
+  /* .accordion {
+   /* max-width: 33rem; 
+   width: 100%;
+   background: #FFF;
+   margin: 1rem 0;
+   padding: 1.5rem;
+  }
+
+  .accordion .accordion-content {
+   margin: 10px 0;
+   border-radius: 5px;
+   background-color: #e8ffdc;
+   border-color: #bbffaa;
+   overflow: hidden;
+
+  }
+
+  .accordion-content.is-open {
+   padding-bottom: 10px;
+  }
+
+  .accordion-content header {
+   display: flex;
+   min-height: 50px;
+   padding: 0 15px;
+   cursor: pointer;
+   align-items: center;
+   justify-content: space-between;
+   transition: all 0.2s linear;
+  }
+
+  .accordion-content.is-open header {
+   min-height: 25px;
+  }
+
+  .accordion-content-title {
+   font-size: 1rem;
+   font-weight: 600;
+   color: #000000;
+  }
+
+  .accordion-content-description {
+   height: 0;
+   font-size: 13px;
+   color: #000000;
+   font-weight: 400;
+   padding: 0 15px;
+  } */
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
  </head>
 
  <body oncontextmenu="return false" class="snippet-body">
@@ -255,7 +378,7 @@
       <h6 class="title">Account Settings</h6>
      </div>
 
-     <div id="profile" class="page">
+     <div id="profile" class="page container">
 
       <form action="">
        <p class="account">Account Information</p>
@@ -323,7 +446,7 @@
       </form>
      </div>
 
-     <div id="address" onclick="toggleActive(this)" class="page">
+     <div id="address" onclick="toggleActive(this)" class="page container">
       <h6>Manage Address</h6>
 
       <div class="address">
@@ -353,87 +476,106 @@
       </div>
      </div>
 
-     <div id="order" onclick="toggleActive(this)" class="page">
+     <div id="order" onclick="toggleActive(this)" class="page container">
       <h6>Order History</h6>
-      <table>
-       <tbody>
+      <table class="order-history">
+       <thead>
         <tr>
-         <td>MONTH</td>
-         <td></td>
-         <td>ORDER NUMBER</td>
-         <td>COST</td>
-         <td>DATE</td>
+         <th>MONTH</th>
+         <th></th>
+         <th>ORDER NUMBER</th>
+         <th>COST</th>
+         <th>DATE</th>
         </tr>
-       </tbody>
+       </thead>
       </table>
 
       <p>February 2024</p>
       <div class="order-history">
-       <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-         <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-           aria-expanded="true" aria-controls="collapseOne">
-           Accordion Item #1
-          </button>
-         </h2>
-         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-          data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-           <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin
-           adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-           as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-           overriding our default variables. It's also worth noting that just about any HTML can go within the
-           <code>.accordion-body</code>, though the transition does limit overflow.
-          </div>
-         </div>
+       <div class="accordion">
+        <div class="accordion-heading" onclick="toggleAccordion('accordion1')">
+         <table>
+          <tbody>
+           <tr>
+            <td>Alex</td>
+            <td></td>
+            <td>#2564</td>
+            <td>$452</td>
+            <td>23/04/2024</td>
+           </tr>
+          </tbody>
+         </table>
+         <!-- <span>&#9660;</span> -->
         </div>
-        <div class="accordion-item">
-         <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-           data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-           Accordion Item #2
-          </button>
-         </h2>
-         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-          data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-           <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin
-           adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-           as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-           overriding our default variables. It's also worth noting that just about any HTML can go within the
-           <code>.accordion-body</code>, though the transition does limit overflow.
-          </div>
-         </div>
-        </div>
-        <div class="accordion-item">
-         <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-           data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-           Accordion Item #3
-          </button>
-         </h2>
-         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-          data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-           <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin
-           adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-           as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-           overriding our default variables. It's also worth noting that just about any HTML can go within the
-           <code>.accordion-body</code>, though the transition does limit overflow.
-          </div>
-         </div>
+        <div class="accordion-content" id="accordion1">
+         <table>
+          <tbody>
+           <tr>
+            <td><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/p-1.png') }}" alt="" srcset="">
+            </td>
+
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi quos ipsam facilis quas quidem
+             dicta ea reiciendis et dignissimos.</td>
+            <td>
+             <p>East Streets 14, Word No. 04, Road
+              No. 13/x, House no. 1320/C, Flat No.
+              5D, Berlin - 1200, Germany</p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
         </div>
        </div>
+
+       <div class="accordion">
+        <div class="accordion-heading" onclick="toggleAccordion('accordion2')">
+         <table>
+          <tbody>
+           <tr>
+            <td>Alex</td>
+            <td></td>
+            <td>#2564</td>
+            <td>$452</td>
+            <td>23/04/2024</td>
+           </tr>
+          </tbody>
+         </table>
+         <!-- <span>&#9660;</span> -->
+        </div>
+        <div class="accordion-content" id="accordion2">
+         <table>
+          <tbody>
+           <tr>
+            <td><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/p-1.png') }}" alt="" srcset="">
+            </td>
+
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi quos ipsam facilis quas quidem
+             dicta ea reiciendis et dignissimos.</td>
+            <td>
+             <p>East Streets 14, Word No. 04, Road
+              No. 13/x, House no. 1320/C, Flat No.
+              5D, Berlin - 1200, Germany</p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+
+       </div>
+       <div class="t-price row">
+        <div class="pdf col"><a href="#"><i class="fa-solid fa-file-pdf"></i> Download The
+          Invoice</a></div>
+        <div class="total-price col">Total Amount : 2543.00 €</div>
+       </div>
       </div>
-     </div>
 
 
-     <div id="claim" onclick="toggleActive(this)" class="page">
-      <h1>Claim Issue</h1>
+      <!-- <div id="claim" onclick="toggleActive(this)" class="page">
+       <h1>Claim Issue</h1>
+
+      </div> -->
      </div>
     </div>
-   </div>
   </section>
   @include('frontEnd/partial/footer')
 
@@ -482,12 +624,12 @@
    menus.push(new Menu("Manage Profile Settings", "/"));
    menus.push(new Menu("Manage Addresses", "/address"));
    menus.push(new Menu("Orders History", "/info/order"));
-   menus.push(new Menu("Claim Issues", "/info/claim"));
+   //  menus.push(new Menu("Claim Issues", "/info/claim"));
 
    pages.push(document.getElementById("profile"));
    pages.push(document.getElementById("address"));
    pages.push(document.getElementById("order"));
-   pages.push(document.getElementById("claim"));
+   //  pages.push(document.getElementById("claim"));
   }
 
   //Call functions and open first page
@@ -540,6 +682,22 @@
   $("#imageUpload").change(function() {
    fasterPreview(this);
   });
+  </script>
+
+  <script>
+  function toggleAccordion(accordionId) {
+   var accordionContent = document.getElementById(accordionId);
+   var accordions = document.querySelectorAll(".accordion-content");
+
+   for (var i = 0; i < accordions.length; i++) {
+    if (accordions[i].id !== accordionId) {
+     accordions[i].style.display = "none";
+    }
+   }
+
+   accordionContent.style.display =
+    accordionContent.style.display === "block" ? "none" : "block";
+  }
   </script>
  </body>
 

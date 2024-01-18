@@ -43,9 +43,9 @@ i {
     color: var(--black);
 }
 
-.active {
+/* .active {
     color: var(--blue) !important;
-}
+} */
 .navbar-nav {
     /* height: 20px; */
 }
