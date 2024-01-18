@@ -71,6 +71,7 @@ Route::post('/cart/updateQuanityApi', [CartController::class, 'updateQuantityOfI
 Route::delete('/cart/deleteCartProductsApi/{product_id}', [CartController::class, 'deleteCartProducts']);
 Route::get('/viewCart', [CartController::class, 'viewCart']);
 Route::get('checkout', [CartController::class, 'checkout']);
+Route::get('quotes', [CartController::class, 'quotesForm']);
 
 
 

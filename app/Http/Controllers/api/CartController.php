@@ -111,6 +111,11 @@ class CartController extends Controller
         return view('frontEnd/pages/cart/checkout');
     }
 
+    public function quotesForm()
+    {
+        return view('frontEnd/pages/cart/quotesForm');
+    }
+
 
 
 
