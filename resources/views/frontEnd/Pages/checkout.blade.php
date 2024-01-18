@@ -441,7 +441,7 @@
        </div>
        <div class="row">
         <div class="col">
-         <button type="submit" class="btn mb-3">Proceed to Checkout</button>
+         <button type="submit" style="width:100%;" class="change-btn mb-3">Proceed to Checkout</button>
         </div>
        </div>
       </div>
