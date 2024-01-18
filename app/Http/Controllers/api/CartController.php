@@ -106,6 +106,44 @@ class CartController extends Controller
     }
 
 
+    public function checkout()
+    {
+        return view('frontEnd/pages/cart/checkout');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -212,5 +250,12 @@ class CartController extends Controller
 
             return response()->json(['message' => 'Product Not Found']);
         }
+    }
+
+
+    public function viewCart()
+    {
+
+        return view('frontEnd/pages/cart/cartView');
     }
 }

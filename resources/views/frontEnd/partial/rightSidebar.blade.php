@@ -41,8 +41,8 @@
             <p>1452 € /-</p>
         </div>
         <div class="container">
-            <a href="{{url('/api/checkout')}}"><button class="btn checkout">Checkout</button></a> <br />
-            <a href="{{url('/api/addToCart')}}"><button class="btn cart">View Cart</button></a>
+            <a id="checkOutButton"><button class="btn checkout">Checkout</button></a> <br />
+            <a href="{{url('/api/viewCart')}}"><button class="btn cart">View Cart</button></a>
         </div>
     </div>
 </section>
@@ -207,6 +207,8 @@
         // Implement any additional logic you need, such as updating the server or recalculating prices
     }
 
+    
+
 
     function updateQuantityInDatabase(productId, newQuantity) {
         $.ajax({
@@ -250,13 +252,6 @@
         });
     }
 
-
-
-
-
-
-
-
     // Example function signatures for increasing and decreasing quantity
     // Example function to decrease quantity
 
@@ -280,4 +275,33 @@
 
     // Initial update of cart items list
     updateCartItemsList();
+</script>
+
+
+<script>
+        $('#checkOutButton').on('click', function() {
+
+            var guestToken = localStorage.getItem('guestToken');
+        console.log(guestToken);
+        if (!guestToken) {
+            guestToken = generateGuestToken();
+            localStorage.setItem('guestToken', guestToken);
+        }
+  
+    
+
+        var authToken = localStorage.getItem('authToken');
+        console.log(authToken);
+        if (!authToken) {
+         
+            $('#exampleModal').modal('show');
+            $('.sidebar').hide();
+
+        }
+        else{
+            window.location.href = '/api/checkout';
+        }
+
+    
+        });
 </script>

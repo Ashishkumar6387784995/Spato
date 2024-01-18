@@ -154,7 +154,7 @@
             </li> -->
 
      <li class="nav-item list-unstyled pe-3 ps-5">
-      <a class="nav-link" href="{{url('api/addToCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
      </li>
     </ul>
     <form class="d-flex" role="search">
