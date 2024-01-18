@@ -55,7 +55,7 @@
   .quote .btn {
    background-color: #44e1d5;
    border: 1px solid #44e1d5;
-   width: 100%;
+   width: 50%;
    font-weight: 600;
    color: var(--white);
   }
