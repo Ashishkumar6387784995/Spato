@@ -106,6 +106,44 @@ class CartController extends Controller
     }
 
 
+    public function checkout()
+    {
+        return view('frontEnd/pages/cart/checkout');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -214,8 +252,9 @@ class CartController extends Controller
         }
     }
 
-    
-    public function viewCart(){
+
+    public function viewCart()
+    {
 
         return view('frontEnd/pages/cart/cartView');
     }
