@@ -4,7 +4,7 @@
  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us</title>
+  <title>Request a quote</title>
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -21,7 +21,7 @@
    --white: #ffffff;
   }
 
-  .contact-us {
+  .quote {
    background-color: #eaebef;
    /* margin-top: -10rem; */
    padding-top: 5rem;
@@ -31,18 +31,18 @@
    clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
   }
 
-  .contact-us nav .home {
+  .quote nav .home {
    color: var(--black) !important;
    text-decoration: none !important;
   }
 
-  .contact-us .content h6 {
+  .quote .content h6 {
    font-weight: 600;
    font-size: 18px;
    color: black;
   }
 
-  .contact-us .content .details {
+  .quote .content .details {
    text-align: justify;
    font-size: 14px;
   }
@@ -52,7 +52,7 @@
    border-radius: 5px;
   }
 
-  .contact-us .btn {
+  .quote .btn {
    background-color: #44e1d5;
    border: 1px solid #44e1d5;
    width: 100%;
@@ -60,28 +60,29 @@
    color: var(--white);
   }
 
-  .contact-us .btn:hover {
+  .quote .btn:hover {
    border: 1px solid #44e1d5;
+   background-color: var(--white);
    color: var(--blue);
   }
 
 
 
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
-   .contact-us {
+   .quote {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
    }
 
-   .contact-us .content {
+   .quote .content {
     display: block;
    }
 
-   .contact-us .address {
+   .quote .address {
     width: 100% !important;
     margin: 2rem 0rem;
    }
 
-   .contact-us .form {
+   .quote .form {
     width: 100% !important;
    }
 
@@ -97,13 +98,13 @@
   <!-- Header -->
   @include('frontEnd/partial/header')
   <!-- Header -->
-  <section class="contact-us">
+  <section class="quote">
    <div class="container">
     <nav aria-label="breadcrumb">
      <ol class="breadcrumb">
       <li class="breadcrumb-item"><a class="home" href="#">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">
-       Contact us
+       Request a quote
       </li>
      </ol>
     </nav>
@@ -111,80 +112,108 @@
 
 
 
-    <h1 class="text-start" style="font-size: 25px; font-weight: 600; color: black;">Contact Us</h1>
+    <h1 class="text-start" style="font-size: 25px; font-weight: 600; color: black;">Request a quote</h1>
     <p class="details mb-5">
      We love hearing from you, our Shop customers.
      <br />
-     Please contact us and we will make sure to get back to you as soon as we possibly can.
+     Please Request a quote and we will make sure to get back to you as soon as we possibly can.
     </p>
     <div class="row content">
-     <div class="col-8 form">
+     <div class="col form">
       <div class="row g-3 mb-5">
        <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Your Name <span style="color:red;">*</span></label>
+        <label for="exampleFormControlInput1" class="form-label">Firmenname: <span style="color:red;">*</span></label>
         <input type="text" class="form-control" placeholder="First name" aria-label="First name">
        </div>
        <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Your Email <span style="color:red;">*</span></label>
-        <input type="text" class="form-control" placeholder="Your Email" aria-label="Your Email">
+        <label for="exampleFormControlInput1" class="form-label">Kontaktname <span style="color:red;">*</span></label>
+        <input type="text" class="form-control" placeholder="Kontaktname" aria-label="Kontaktname">
        </div>
       </div>
       <div class="row g-3 mb-5">
        <div class="col">
-        <label for="exampleFormControlInput1" class="form-label">Your Phone Number <span
-          style="color:red;">*</span></label>
-        <input type="text" class="form-control" placeholder="Your Phone" aria-label="Your Phone">
+        <label for="exampleFormControlInput1" class="form-label">E-Mail <span style="color:red;">*</span></label>
+        <input type="email" class="form-control" placeholder="Your Email" aria-label="Your Email">
        </div>
        <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">Telefonnummer <span style="color:red;">*</span></label>
+        <input type="text" class="form-control" placeholder="Telefonnummer" aria-label="Telefonnummer">
        </div>
       </div>
+
+      <div class="row g-3 mb-5">
+       <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">Spare Part Name <span
+          style="color:red;">*</span></label>
+        <input type="text" class="form-control" placeholder="Spare Part Name " aria-label="Your Email">
+       </div>
+       <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">Quote Needed By <span
+          style="color:red;">*</span></label>
+        <input type="text" class="form-control" placeholder="Quote Needed By " aria-label="Your Phone">
+       </div>
+      </div>
+      <div class="row g-3 mb-5">
+       <p>Project Budget Status</p>
+       <div class="col">
+        <div class="form-check">
+         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+         <label class="form-check-label" for="flexRadioDefault1">
+          Freigegeben
+         </label>
+        </div>
+       </div>
+
+       <div class="col">
+        <div class="form-check">
+         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+         <label class="form-check-label" for="flexRadioDefault1">
+          Appropal Pending
+         </label>
+        </div>
+       </div>
+       <div class="col">
+        <div class="form-check">
+         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+         <label class="form-check-label" for="flexRadioDefault1">
+          Geöffnet
+         </label>
+        </div>
+       </div>
+
+       <div class="col">
+        <div class="form-check">
+         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+         <label class="form-check-label" for="flexRadioDefault1">
+          No Appropal
+         </label>
+        </div>
+       </div>
+       <div class="col"></div>
+       <div class="col"></div>
+      </div>
+
       <div class="row g-3">
        <div class="col">
-        <label for="exampleFormControlTextarea1" class="form-label">What's on your mind? <span
+        <label for="exampleFormControlTextarea1" class="form-label">Brief Overview <span
           style="color:red;">*</span></label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
        </div>
       </div>
-      <div class="row g-3">
+      <div class="row g-3 mt-5">
        <div class="col">
-        <button type="submit" class="btn mt-5">Submit</button>
+        <label for="exampleFormControlTextarea1" class="form-label">Upload Document:<span
+          style="color:red;">*</span></label><br />
+        <input type="file" name="" id="" accept="'jpg', 'png', 'jpeg'">
+        <p>You can upload files with these file extensions only (jpg,jpeg,png,gif)</p>
        </div>
       </div>
-     </div>
-     <div class="col-4 ps-3 address">
-      <div class="contact-details py-4 pe-3">
-       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10">
-         <h6>Address:</h6>
-         <p class="details"> 1234 Street Adress City Address, 1234</p>
-        </div>
-       </div>
-       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10">
-         <h6>Phone:</h6>
-         <p class="details">(00)1234 5678</p>
-        </div>
-       </div>
-       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10">
-         <h6>We are open:</h6>
-         <p class="details">Monday - Thursday: 9:00 AM - 5:30 PM <br />
 
-          Friday 9:00 AM - 6:00 PM <br />
-
-          Saturday: 11:00 AM - 5:00 PM</p>
-        </div>
+      <div class="row g-3">
+       <div class="col">
+        <button type="submit" class="btn mt-5">Absenden</button>
        </div>
-       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10">
-         <h6>E-mail:</h6>
-         <p class="details"> <a href="#" style="text-decoration: none;">shop@email.com</a></p>
-        </div>
-       </div>
+       <div class="col"></div>
       </div>
      </div>
     </div>
