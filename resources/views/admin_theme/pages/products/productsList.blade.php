@@ -132,7 +132,7 @@
 
 
 
-                <span id="success_msg" style="color:green"></span>
+                <span id="success_msg" style="color:#44e1d5; font-size:22px; font-weight: 800;"></span>
                 <br>  <br> 
 
 

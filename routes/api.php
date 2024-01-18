@@ -116,6 +116,8 @@ Route::middleware('api.auth')->group(function () {
 
   Route::post('logoutApi', [loginController::class, 'logoutApi']);
   // Route::get('logout',[loginController::class,'logout']);
+
+  
 });
 
 Route::get('/productList', [tryController::class, 'productListing']);
