@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spato</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
 
   <!-- 
@@ -358,6 +358,7 @@
    font-size: 13px;
   }
   </style>
+  
  </head>
 
  <body oncontextmenu="return false" class="snippet-body">
@@ -666,6 +667,219 @@
   @include('frontEnd/partial/footer')
 
 
+
+ <!-- Login Form Modal starts -->
+
+
+
+ <div class="modal fade" id="exampleLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a class="" href="#"><img class="signup-brand-logo" src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
+
+                    </a>
+
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <p class="form-header-content text-center">
+                    Wenn Sie ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an
+                </p>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <span id="erro-message" style="color:red;"></span>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">E-mail*</label>
+                            <input type="text" class="form-control" id="emai" name="email" require>
+                            <span id="emai-err" style="color:red;"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password*</label>
+                            <input type="password" class="form-control" id="passwor" name="password" require>
+                            <span id="passwor_err" style="color:red;"></span>
+                        </div>
+                        <button type="button" class="btn btn-style" id="exampleLogin">Login</button>
+                    </form>
+                    <p class="foget-password d-flex"><a style="text-decoration:underline;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
+                    <p class="foget-password d-flex">Sie haben kein Konto?<span><a style="text-decoration:underline;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#"> Hier
+                                registrieren.</a></span></p>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  Login Form Modal ends -->
+
+
+
+
+
+
+
+
+    <script>
+        $('#quoteButton').on('click', function() {
+
+            // var guestToken = localStorage.getItem('guestToken');
+            // console.log(guestToken);
+            // if (!guestToken) {
+            //     guestToken = generateGuestToken();
+            //     localStorage.setItem('guestToken', guestToken);
+            // }
+        
+
+
+
+            var authToken = localStorage.getItem('authToken');
+            // console.log('authToken');
+            if (!authToken) {
+
+                $('#exampleLogin').modal('show');
+                $('.sidebar').hide();
+
+            } else {
+                window.location.href = '/api/quotes';
+            }
+
+
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#exampleLogin').click(function(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+
+                console.log('hello');
+                // Clear previous error messages
+                $('#erro-message').text('');
+                $('#emai-err').text('');
+                $('#passwor-err').text('');
+
+                // Get form data
+                var formData = {
+                    email: $('#emai').val(),
+                    password: $('#passwor').val()
+                };
+
+                // Client-side validation
+                if (!formData.email) {
+                    $('#emai-err').text('Please enter your email.');
+                    return;
+                }
+
+                if (!formData.password) {
+                    $('#passwor-err').text('Please enter your password.');
+                    return;
+                }
+
+                // Perform AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/login',
+                    dataType: 'json',
+                    data: formData,
+                    success: handleLoginResponse,
+                    error: handleAjaxError
+                });
+            });
+        });
+
+        // Rest of your code...
+
+
+        // Common function to handle login response
+        function handleLoginResponse(response) {
+            if (response.success) {
+                console.log(response.token);
+                localStorage.setItem('authToken', response.token);
+
+                console.log(response.role);
+
+                if (response.role == "Admin") {
+                    window.location.href = '/api/admin_dashboard/admin';
+                } else if (response.role == "b2b") {
+                    window.location.href = '/api/admin_dashboard/b2b';
+                } else {
+                    window.location.href = '/api/quotes';
+                }
+            } else if (response.error) {
+                $('#erro-message').text(response.error);
+            }
+        }
+
+        // Common function to handle AJAX errors
+        function handleAjaxError(jqXHR, textStatus, errorThrown) {
+            console.error('AJAX Error:', textStatus, errorThrown);
+            // Handle the error as needed
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <script>
   function change_image(image) {
 

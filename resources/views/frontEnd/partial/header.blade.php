@@ -793,7 +793,7 @@
  $(document).ready(function() {
   // Retrieve the user token from localStorage
   var userToken = localStorage.getItem('authToken');
-  console.log(userToken);
+  console.log('t--'+userToken);
 
   // Make sure the token is not null or undefined
 
@@ -810,7 +810,7 @@
 
     if (response.success !== null && response.success !== undefined) {
 
-
+      console.log('t--'+ response.success['name']);
      // If success is not null or undefined, hide invalidUser and show validUser
      $("#invalidUser").css("display", "none");
      $("#validUser").html(`
@@ -866,8 +866,9 @@
 
   // Check if the "Log Out" list item is clicked within #validUser
   $("#validUser").off('click').on('click', 'li:contains("Log out")', function(event) {
-   if ($(event.target).is('#logout')) {
     console.log('hello');
+   if ($(event.target).is('#logout')) {
+    // console.log('hello');
     var token = localStorage.getItem('authToken');
     console.log(token);
 
