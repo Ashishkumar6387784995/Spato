@@ -825,7 +825,7 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
             <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
-            <a href="{{url('api/accountSetting')}}"></a><li><i class="fa-solid fa-user"></i><a href="">Profile</a></li>
+            <a href="{{url('api/accountSetting')}}"><li><i class="fa-solid fa-user"></i>Profile</li></a>
             <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
             <li id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
         </ul>
