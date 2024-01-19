@@ -161,7 +161,7 @@
     </a>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/Angebot/')}}">
+    <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}">
      <span class="menu-title">Angebot</span>
     </a>
    </li>

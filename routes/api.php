@@ -23,7 +23,7 @@ use App\Http\Controllers\api\ContactController;
 use App\Http\Controllers\api\ConnectionsController;
 use App\Http\Controllers\api\StatisticsController;
 use App\Http\Controllers\api\categoriesController;
-
+use App\Http\Controllers\api\quatationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,6 +162,9 @@ Route::post('addProduct', [productController::class, 'addproductList']);
 Route::get('editProduct/{id}', [productController::class, 'editProduct']);
 Route::get('deleteProduct/{id}', [productController::class, 'deleteProduct']);
 
+// products for Admin
+Route::get('quatationListingApi', [quatationController::class, 'quatationListingApi']);
+Route::get('quatationListing/{role}', [quatationController::class, 'quatationList']);
 
 
 
