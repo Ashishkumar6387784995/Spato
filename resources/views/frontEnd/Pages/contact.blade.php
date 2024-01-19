@@ -31,10 +31,17 @@
    clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
   }
 
-  .contact-us nav .home {
+  .contact-us nav ol li a {
    color: var(--black) !important;
    text-decoration: none !important;
+   font-weight: 600;
   }
+
+  .contact-us nav ol li:nth-child(2) {
+   color: var(--blue) !important;
+   font-weight: 600;
+  }
+
 
   .contact-us .content h6 {
    font-weight: 600;
@@ -70,6 +77,7 @@
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .contact-us {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+    padding-top: 2rem;
    }
 
    .contact-us .content {
@@ -101,7 +109,7 @@
    <div class="container">
     <nav aria-label="breadcrumb">
      <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a class="home" href="#">Home</a></li>
+      <li class="breadcrumb-item"><a class="home" href="{{url('api/home')}}">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">
        Contact us
       </li>
@@ -182,7 +190,7 @@
         <div class="col-2"></div>
         <div class="col-10">
          <h6>E-mail:</h6>
-         <p class="details"> <a href="#" style="text-decoration: none;">shop@email.com</a></p>
+         <p class="details"> <a href="#" style="text-decoration: none; color:#000;">shop@email.com</a></p>
         </div>
        </div>
       </div>
