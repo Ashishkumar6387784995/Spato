@@ -83,6 +83,7 @@ Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
 // Route::get('logout',[authController::class,'logout']); 
 
 Route::get('contact', [staticPageController::class, 'contact']);
+Route::post('contactSubmit', [staticPageController::class, 'contactSubmit']);
 Route::get('about', [staticPageController::class, 'about']);
 Route::get('agb', [staticPageController::class, 'agb']);
 Route::get('cancelationPolicy', [staticPageController::class, 'cancelationPolicy']);
