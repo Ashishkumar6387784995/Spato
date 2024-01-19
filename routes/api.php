@@ -118,6 +118,9 @@ Route::middleware('api.auth')->group(function () {
   Route::post('logoutApi', [loginController::class, 'logoutApi']);
   // Route::get('logout',[loginController::class,'logout']);
 
+   // Quatation submit
+   Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
+
   
 });
 
