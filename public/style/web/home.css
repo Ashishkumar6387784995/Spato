@@ -141,6 +141,30 @@ i {
     box-shadow: none !important;
 }
 
+.profile-drop {
+    left: -160% !important;
+    top: 150% !important;
+    background-color: var(--black);
+}
+.profile-drop li {
+    color: var(--white);
+    font-weight: 500;
+    cursor: pointer;
+}
+.profile-drop li a {
+    color: var(--white);
+    font-weight: 500;
+}
+.profile-drop li i {
+    color: var(--white) !important;
+}
+.profile-drop li:hover i {
+    color: var(--black) !important;
+}
+.profile-drop li a:hover i {
+    color: var(--black) !important;
+}
+
 /* Signup Form starts*/
 /* .modal-content {
     width: 130% !important;

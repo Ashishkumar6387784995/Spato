@@ -823,11 +823,11 @@
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
         </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
-            <li><a class="dropdown-item">Welcome, <span id="userName" style="color:red;">${response.success['name']}</span></a></li>
-            <a href="{{url('api/accountSetting')}}"><li><i class="fa-solid fa-user"></i>Profile</li></a>
-            <li><i class="fa-solid fa-chart-line"></i>Activity Log</li>
-            <li id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
+        <ul class="profile-drop dropdown-menu" aria-labelledby="dropdownMenuLink" >
+            <li><a class="dropdown-item">Welcome, <span id="userName" style="color:var(--blue);">${response.success['name']}</span></a></li>
+           <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a  class="dropdown-item" href="#"><i class="fa-solid fa-chart-line"></i> Activity Log</a></li>
+            <li class="dropdown-item" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
         </ul>
     </li>
 `);
