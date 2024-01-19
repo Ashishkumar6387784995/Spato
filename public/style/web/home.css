@@ -214,41 +214,37 @@ form .btn-style {
     font-size: 15px;
 } */
 .categories {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(15.666% - 20px), 1fr));
+    gap: 20px;
     padding: 10px;
-    align-items: flex-start; /* Align items at the start of the cross axis */
 }
 
 .categories .categories-card {
-    flex: 0 0 calc(16.666% - 20px); /* Set flex-basis to achieve 6 items in a row with margin */
     height: 120px;
-    border: 1px solid var(--black) !important;
-    margin: 10px 0; /* Remove right margin */
-    margin-right: auto; /* Push the last item to the right edge of the container */
+    border: 1px solid #000;
     padding-top: 16px;
     text-align: center;
     cursor: pointer;
 }
 
-/* Responsive adjustments */
-@media (max-width: 767px) {
-    .categories .categories-card {
-        flex: 0 0 calc(50% - 20px); /* Adjust for 2 items in a row on mobile */
-    }
-}
-
+/* For tablets (768px and above) */
 @media (min-width: 768px) and (max-width: 991px) {
-    .categories .categories-card {
-        flex: 0 0 calc(33.333% - 20px); /* Adjust for 3 items in a row on tablets */
+    .categories {
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(calc(33.333% - 20px), 1fr)
+        );
     }
 }
 
-@media (min-width: 992px) {
-    .categories .categories-card {
-        flex: 0 0 calc(16.666% - 20px); /*Maintain 6 items in a row on desktop*/
+/* For mobile devices (up to 767px) */
+@media (max-width: 767px) {
+    .categories {
+        grid-template-columns: repeat(auto-fill, minmax(calc(50% - 20px), 1fr));
     }
 }
+
 .categories .categories-card a {
     text-decoration: none;
 }
