@@ -51,7 +51,7 @@ class enquiryMailer extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Enquiry Mailer',
+            subject: 'New Customer Enquiry in Spato',
         );
     }
 

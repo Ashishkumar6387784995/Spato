@@ -160,6 +160,11 @@
      <span class="menu-title">Einstellungen</span>
     </a>
    </li>
+   <li class="nav-item">
+    <a class="nav-link" href="{{url('/api/Angebot/')}}">
+     <span class="menu-title">Angebot</span>
+    </a>
+   </li>
   </div>
   @endif
 
