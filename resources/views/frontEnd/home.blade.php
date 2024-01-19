@@ -486,7 +486,16 @@
   wrapper.addEventListener("mouseleave", autoPlay);
   </script>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+   const categoriesContainer = document.querySelector('.categories');
+   const categoriesCards = document.querySelectorAll('.categories-card');
 
+   if (categoriesCards.length < 6) {
+    categoriesContainer.style.justifyContent = 'center';
+   }
+  });
+  </script>
 
 
 
