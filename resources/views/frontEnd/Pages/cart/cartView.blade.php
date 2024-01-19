@@ -21,9 +21,13 @@
    clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
   }
 
-  .cart-container nav .home {
+  .cart-container nav ol li a {
    color: var(--black) !important;
    text-decoration: none !important;
+  }
+
+  .cart-container nav ol li:nth-child(2) {
+   color: var(--blue) !important;
   }
 
   .cart-container .content h6 {
@@ -80,6 +84,8 @@
 
   .input-field {
    font-weight: 700;
+   border: none;
+   outline: none;
   }
 
   .total {
@@ -207,7 +213,7 @@
    <div class="container">
     <nav aria-label="breadcrumb">
      <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a class="home" href="#">Home</a></li>
+      <li class="breadcrumb-item"><a class="home" href="{{url('api/home')}}">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Cart</li>
      </ol>
     </nav>
@@ -282,26 +288,27 @@
           <hr />
           <div class="details d-flex justify-content-between">
            <p class="input-field">Subtotal</p>
-           €<input type="text" class="input-field" name="" id="subto" value="13,047.00"
-            style="width:150px; border:none; text-align:right;" readonly="readonly">
+           <span><input type="text" class="input-field" name="" id="subto" value="13,047.00"
+             style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Shipping </p>
-           €<input type="number" id="shipping" value="21.00" step="0.01"
-            style="width:150px; border:none; text-align:right;" readonly="readonly" oninput="calculateTotal()">
+           <span><input type="number" id="shipping" value="21.00" step="0.01"
+             style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly"
+             oninput="calculateTotal()">€</span>
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Tax</p>
-           €<input type="text" class="input-field" name="" id="tax" value="1.91"
-            style="width:150px; border:none; text-align:right;" readonly="readonly">
+           <span><input type="text" class="input-field" name="" id="tax" value="1.91"
+             style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Order Total</p>
-           €<input type="text" class="input-field total" name="" id="grandTotal" value="13,068.00"
-            style="width:150px; border:none; text-align:right;" readonly="readonly">
+           <span><input type="text" class="input-field total" name="" id="grandTotal" value="13,068.00"
+             style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
           </div>
 
 
@@ -418,8 +425,8 @@
     productDescCell.append('<p>' + item.product_name + '</p>');
     tableRow.append(productDescCell);
 
-    var priceCell = $('<td>€<input type="number" id="price' + index + '" value="' + item.total_price +
-     '" step="0.01" style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>'
+    var priceCell = $('<td><input type="number" id="price' + index + '" value="' + item.total_price +
+     '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
     );
     tableRow.append(priceCell);
 
@@ -432,9 +439,10 @@
      ')"><i class="fa-solid fa-plus"></i></button></div>');
     tableRow.append(quantityCell);
 
-    var subtotalCell = $('<td>€<input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
+    var subtotalCell = $('<td><input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
       .total_price * item.quantity) +
-     '" style="width:80px; border:none; text-align:right; background:transparent;" readonly="readonly"></td>');
+     '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+    );
     tableRow.append(subtotalCell);
 
     var iconCell = $('<td>');
