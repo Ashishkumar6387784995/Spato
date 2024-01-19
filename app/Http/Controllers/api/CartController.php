@@ -111,9 +111,14 @@ class CartController extends Controller
         return view('frontEnd/pages/cart/checkout');
     }
 
-    public function quotesForm()
+    public function quotesForm($product_id)
     {
-        return view('frontEnd/pages/cart/quotesForm');
+        return view('frontEnd/pages/cart/quotesForm')->with(compact('product_id'));
+    }
+
+    public function SubmitQuotes(Request $request)
+    {
+        return view('frontEnd/pages/cart/quotesForm')->with(compact('product_id'));
     }
 
 
