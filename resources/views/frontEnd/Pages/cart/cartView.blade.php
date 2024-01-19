@@ -24,10 +24,12 @@
   .cart-container nav ol li a {
    color: var(--black) !important;
    text-decoration: none !important;
+   font-weight: 600;
   }
 
   .cart-container nav ol li:nth-child(2) {
    color: var(--blue) !important;
+   font-weight: 600;
   }
 
   .cart-container .content h6 {
@@ -98,7 +100,7 @@
 
   .item-img .img {
    width: 100%;
-   height: 100px;
+   height: 100%;
    background: #fff;
   }
 
@@ -172,6 +174,7 @@
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .cart-container {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+    padding-top: 2rem;
    }
 
    .content {
@@ -179,7 +182,9 @@
    }
 
    .form {
-    width: 100% !important;
+    width: 95% !important;
+    margin: auto;
+    justify-content: center;
    }
 
    .address {
@@ -189,17 +194,14 @@
    /* footer .footer-container {
     width: 96%;
   } */
-   tr {
-    display: grid;
-   }
 
-   td {
-    display: grid;
+   /* td {
+    display: flex;
    }
 
    th {
     display: none;
-   }
+   } */
 
 
   }
@@ -222,7 +224,7 @@
     </h1>
 
     <div class="row content">
-     <div class="col-8 form">
+     <div class="col-8 form table-responsive">
 
       <table class="table" id="cart-items-table">
        <thead>
@@ -244,7 +246,7 @@
       </table>
 
      </div>
-     <div class="col-4  address">
+     <div class="col-4 mt-5 mb-5 address">
       <div class="contact-details container">
        <h3 class="pt-3">Summary</h3>
        <div class="row">
@@ -425,7 +427,8 @@
     productDescCell.append('<p>' + item.product_name + '</p>');
     tableRow.append(productDescCell);
 
-    var priceCell = $('<td><input type="number" id="price' + index + '" value="' + item.total_price +
+    var priceCell = $('<td style="display:flex;"><input type="number" id="price' + index + '" value="' + item
+     .total_price +
      '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
     );
     tableRow.append(priceCell);
@@ -439,7 +442,8 @@
      ')"><i class="fa-solid fa-plus"></i></button></div>');
     tableRow.append(quantityCell);
 
-    var subtotalCell = $('<td><input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
+    var subtotalCell = $('<td style="display:flex;"><input type="text" class="input-field" id="subtotal' + index +
+     '" value="' + (item
       .total_price * item.quantity) +
      '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
     );
