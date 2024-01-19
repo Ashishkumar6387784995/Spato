@@ -10,16 +10,18 @@
    border-radius: 10px;
   }
 
-  .logo {
+  .logo a {
    display: flex;
    justify-content: center;
    align-items: center;
    margin: 1rem 0rem;
   }
 
-  .logo img {
+  .logo a img {
    margin: auto;
-   width: 20%;
+   justify-content: center;
+   align-items: center;
+   width: 40%;
   }
 
   .details {
@@ -28,10 +30,14 @@
 
   .details .mail {
    font-weight: 700;
+   font-family: "Roboto", sans-serif;
   }
 
   .footer p {
    text-align: center;
+   font-weight: 400;
+   color: var(--black);
+   margin-top: 2rem;
   }
   </style>
  </head>
@@ -39,13 +45,14 @@
  <body>
   <div class="mailer">
    <div class="logo">
-    <img src="cid:logo.png" alt="Spato" srcset="">
+    <a href="#"><img src="cid:logo.png" alt="Spato" srcset=""></a>
    </div>
    <div class="details">
     <span class="mail">Name: </span><span>{{$name}}</span><br /><br />
     <span class="mail">Email: </span><span>{{$email}}</span><br /><br />
     <span class="mail">Phone: </span><span>{{$phone}}</span><br /><br />
     <span class="mail">Message: </span><span>{{$textarea}}</span><br /><br />
+
    </div>
 
    <div class="footer">

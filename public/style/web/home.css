@@ -121,6 +121,26 @@ i {
     width: 55%;
 }
 
+.form-control:focus {
+    color: var(--black);
+    background-color: #fff;
+    border-color: var(--blue) !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.btn-check:focus + .btn,
+.btn:focus {
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--blue) !important;
+    border-color: var(--blue) !important;
+    box-shadow: none !important;
+}
+
 /* Signup Form starts*/
 /* .modal-content {
     width: 130% !important;
