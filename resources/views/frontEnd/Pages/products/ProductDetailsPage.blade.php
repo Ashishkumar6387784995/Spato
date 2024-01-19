@@ -387,6 +387,7 @@
            <div class="text-center p-4"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}"
              width="350" height="300" />
            </div>
+         
            <div class="thumbnail text-center">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="70"
              height="70">
@@ -412,11 +413,13 @@
            <div class="button-counter">
 
             <button class="btn">Estashiboneoe</button>
+         
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
              <div id="counter-value">0</div>
              <button class="counter-btn" id="increment-btn">+</button>
             </div>
+            <input type="text" name="product_id" id="product_id" value="{{$product[0]->id}}" style="display:none;"/>
            </div>
           </div>
          </div>
@@ -688,7 +691,7 @@
                     Wenn Sie ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an
                 </p>
                 <div class="modal-body">
-                    <form id="loginForm">
+                    <form id="">
                         <span id="erro-message" style="color:red;"></span>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">E-mail*</label>
@@ -724,14 +727,15 @@
     <script>
         $('#quoteButton').on('click', function() {
 
-            // var guestToken = localStorage.getItem('guestToken');
-            // console.log(guestToken);
-            // if (!guestToken) {
-            //     guestToken = generateGuestToken();
-            //     localStorage.setItem('guestToken', guestToken);
-            // }
+            var guestToken = localStorage.getItem('guestToken');
+            console.log(guestToken);
+            if (!guestToken) {
+                guestToken = generateGuestToken();
+                localStorage.setItem('guestToken', guestToken);
+            }
         
-
+            var product_id = $('#product_id').val();
+                    // console.log('p'+product_id);
 
 
             var authToken = localStorage.getItem('authToken');
@@ -742,7 +746,7 @@
                 $('.sidebar').hide();
 
             } else {
-                window.location.href = '/api/quotes';
+                window.location.href = '/api/quotes/' + product_id;
             }
 
 
@@ -750,75 +754,82 @@
     </script>
 
 
-    <script>
-        $(document).ready(function() {
-            $('#exampleLogin').click(function(event) {
-                event.preventDefault(); // Prevent the default form submission behavior
+        <script>
+            $(document).ready(function() {
+                $('#exampleLogin').click(function(event) {
+                    event.preventDefault(); // Prevent the default form submission behavior
 
-                console.log('hello');
-                // Clear previous error messages
-                $('#erro-message').text('');
-                $('#emai-err').text('');
-                $('#passwor-err').text('');
+                    console.log('hello');
+                    // Clear previous error messages
+                    $('#erro-message').text('');
+                    $('#emai-err').text('');
+                    $('#passwor-err').text('');
 
-                // Get form data
-                var formData = {
-                    email: $('#emai').val(),
-                    password: $('#passwor').val()
-                };
+                    // Get form data
+                    var formData = {
+                        email: $('#emai').val(),
+                        password: $('#passwor').val()
+                    };
 
-                // Client-side validation
-                if (!formData.email) {
-                    $('#emai-err').text('Please enter your email.');
-                    return;
-                }
+                    // Client-side validation
+                    if (!formData.email) {
+                        $('#emai-err').text('Please enter your email.');
+                        return;
+                    }
 
-                if (!formData.password) {
-                    $('#passwor-err').text('Please enter your password.');
-                    return;
-                }
+                    if (!formData.password) {
+                        $('#passwor-err').text('Please enter your password.');
+                        return;
+                    }
 
-                // Perform AJAX request
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/login',
-                    dataType: 'json',
-                    data: formData,
-                    success: handleLoginResponse,
-                    error: handleAjaxError
+                    
+             
+
+                    // Perform AJAX request
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/login',
+                        dataType: 'json',
+                        data: formData,
+                        success: handleLoginResponse,
+                        error: handleAjaxError
+                    });
                 });
-            });
-        });
+            }); 
 
-        // Rest of your code...
+            // Rest of your code...
 
 
-        // Common function to handle login response
-        function handleLoginResponse(response) {
-            if (response.success) {
-                console.log(response.token);
-                localStorage.setItem('authToken', response.token);
+            // Common function to handle login response
+    function handleLoginResponse(response) {
+                if (response.success) {
+                    console.log(response.token);
+                    localStorage.setItem('authToken', response.token);
 
-                console.log(response.role);
+                    console.log(response.role);
 
-                if (response.role == "Admin") {
-                    window.location.href = '/api/admin_dashboard/admin';
-                } else if (response.role == "b2b") {
-                    window.location.href = '/api/admin_dashboard/b2b';
-                } else {
-                    window.location.href = '/api/quotes';
+                    var product_id = $('#product_id').val();
+                    console.log('p'+product_id);
+
+                    if (response.role == "Admin") {
+                        window.location.href = '/api/admin_dashboard/admin';
+                    } else if (response.role == "b2b") {
+                        window.location.href = '/api/admin_dashboard/b2b';
+                    } else {
+                        window.location.href = '/api/quotes/' + product_id ;
+                    }
+                } 
+                else if (response.error) {
+                    $('#erro-message').text(response.error);
                 }
-            } else if (response.error) {
-                $('#erro-message').text(response.error);
             }
-        }
 
-        // Common function to handle AJAX errors
-        function handleAjaxError(jqXHR, textStatus, errorThrown) {
-            console.error('AJAX Error:', textStatus, errorThrown);
-            // Handle the error as needed
-        }
-    </script>
+            // Common function to handle AJAX errors
+            function handleAjaxError(jqXHR, textStatus, errorThrown) {
+                console.error('AJAX Error:', textStatus, errorThrown);
+                // Handle the error as needed
+            }
+        </script> 
 
 
 

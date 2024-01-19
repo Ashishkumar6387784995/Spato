@@ -793,7 +793,7 @@
  $(document).ready(function() {
   // Retrieve the user token from localStorage
   var userToken = localStorage.getItem('authToken');
-  console.log('t--'+userToken);
+  console.log(userToken);
 
   // Make sure the token is not null or undefined
 
@@ -810,7 +810,7 @@
 
     if (response.success !== null && response.success !== undefined) {
 
-      console.log('t--'+ response.success['name']);
+
      // If success is not null or undefined, hide invalidUser and show validUser
      $("#invalidUser").css("display", "none");
      $("#validUser").html(`
@@ -866,9 +866,8 @@
 
   // Check if the "Log Out" list item is clicked within #validUser
   $("#validUser").off('click').on('click', 'li:contains("Log out")', function(event) {
-    console.log('hello');
    if ($(event.target).is('#logout')) {
-    // console.log('hello');
+    console.log('hello');
     var token = localStorage.getItem('authToken');
     console.log(token);
 
@@ -880,7 +879,7 @@
     }
     // Make a POST request to the logout endpoint using jQuery
     $.ajax({
-     url: 'logoutApi',
+     url: '/api/logoutApi',
      type: 'POST',
      headers: {
       'Authorization': 'Bearer ' + token,
