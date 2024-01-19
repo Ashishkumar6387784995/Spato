@@ -66,6 +66,25 @@
    color: var(--main-col);
   }
 
+  .profile-btn {
+   background-color: var(--blue);
+   border: 1px solid var(--blue);
+   width: 30%;
+   font-weight: 600;
+   color: var(--white);
+   padding: 5px;
+   font-size: 18px;
+   border-radius: 5px;
+   transition: 0.5s;
+   margin-top: 2rem;
+  }
+
+  .profile-btn:hover {
+   background-color: var(--white);
+   border: 1px solid #44e1d5;
+   color: var(--blue);
+  }
+
   /* Fade in animation */
   @keyframes fadein {
    from {
@@ -393,12 +412,13 @@
           <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
          </form>
         </div>
-        <div class="mt-5">
+        <div class="mt-5 ml-3">
          <p>Alex Driver</p>
          <p>Example@mail.com</p>
          <div class="links">
-          <a href="#" class="m-0 pr-5">Edit</a>
-          <a href="#" class="m-0">Change Password</a>
+          <!-- <a href="#" class="m-0 pr-5">Edit</a> -->
+          <a href="#" class="m-0" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cpassword">Change
+           Password</a>
          </div>
         </div>
        </div>
@@ -409,36 +429,39 @@
         <table>
          <tbody>
           <tr>
-           <td>Time Zone</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
-          </tr>
-          <tr>
-           <td>Backoffice Language</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+           <td>Name</td>
+           <td> <input type="text" class="form-control" value="Alex Driver" id="floatingInputValue"></td>
           </tr>
           <tr>
            <td>Mobile Number</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+           <td> <input type="text" class="form-control" id="floatingInputValue" readonly></td>
           </tr>
           <tr>
-           <td>Website</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+          <tr>
+           <td><b>Permanent Address</b></td>
+           <td></td>
           </tr>
           <tr>
-           <td>Client Category</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+           <td>Address(Street name and House number)</td>
+           <td> <textarea class="form-control"
+             id="floatingInputValue">East Streets 14, Word No. 04, Road No. 13/x, House no. 1320/C, Flat No. 5D,</textarea>
+           </td>
           </tr>
           <tr>
-           <td>Manufacturer Category</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+           <td>City</td>
+           <td> <input type="text" value="Berlin" class="form-control" id="floatingInputValue"></td>
           </tr>
           <tr>
-           <td>Staff Category</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+           <td>Zip code</td>
+           <td> <input type="text" value="1200" class="form-control" id="floatingInputValue"></td>
           </tr>
           <tr>
-           <td>Seller Category</td>
-           <td> <input type="text" class="form-control" id="floatingInputValue"></td>
+           <td>Country</td>
+           <td> <input type="text" value="Germany" class="form-control" id="floatingInputValue"></td>
+          </tr>
+          <tr>
+           <td><button type="submit" class="profile-btn">Submit</button></td>
+           <td></td>
           </tr>
          </tbody>
         </table>
@@ -580,6 +603,37 @@
   @include('frontEnd/partial/footer')
 
 
+  <!-- Change Password trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="cpassword" tabindex="-1" aria-labelledby="cpasswordLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h1 class="modal-title fs-5" id="ecpasswordLabel">Change Password</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <label for="basic-url" class="form-label">Old Password</label>
+      <div class="input-group mb-3">
+       <input type="password" class="form-control" placeholder="old password" aria-label="old-password"
+        aria-describedby="basic-addon1">
+      </div>
+      <label for="basic-url" class="form-label">New Password</label>
+      <div class="input-group mb-3">
+       <input type="password" class="form-control" placeholder="new password" aria-label="new-password"
+        aria-describedby="basic-addon1">
+      </div>
+      <label for="basic-url" class="form-label">Confirm Password</label>
+      <div class="input-group mb-3">
+       <input type="password" class="form-control" placeholder="confirm password" aria-label="confirm-password"
+        aria-describedby="basic-addon1">
+      </div>
+     </div>
+     <button type="button" class="m-3 profile-btn" data-bs-dismiss="modal">Save changes</button>
+
+    </div>
+   </div>
+  </div>
 
   <script>
   /*
