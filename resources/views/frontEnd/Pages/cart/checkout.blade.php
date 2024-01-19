@@ -99,7 +99,7 @@
    padding: 30px 2px;
    margin: 1.5rem 0rem;
    border-radius: 5px;
-   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   }
 
   /* .checkout-container .content .address-container input {
