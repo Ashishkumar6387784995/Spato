@@ -231,6 +231,15 @@
    font-size: 15px;
   }
 
+
+  #addaddressModal label {
+   width: 100px;
+  }
+
+  #addaddressModal input {
+   width: 300px;
+  }
+
   /* Manage Address ends */
 
   /* For mobile */
@@ -643,8 +652,8 @@
      <div class="modal-body">
       <div class="input-group mb-3">
        <label for="Address">Address</label>
-       <textarea type="text" class="form-control" placeholder="address" aria-label="Address"
-        aria-describedby="basic-addon1"> </textarea>
+       <input type="text" class="form-control" placeholder="Address" aria-label="Address"
+        aria-describedby="basic-addon1" />
       </div>
       <div class="input-group mb-3">
        <label for="city">City</label>
@@ -654,14 +663,24 @@
 
       <div class="input-group mb-3">
        <label for="Zip code">Zip code</label>
-       <input type="number" class="form-control" placeholder="Zip Code" aria-label="Zip code"
+       <input type="text" class="form-control" placeholder="Zip Code" aria-label="Zip code"
         aria-describedby="basic-addon1" />
       </div>
 
       <div class="input-group mb-3">
        <label for="country">Country</label>
-       <input type="text" class="form-control" placeholder="Country" aria-label="Country"
-        aria-describedby="basic-addon1" />
+       <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <option selected>Select Country</option>
+        <option value="Denmark">Denmark</option>
+        <option value="Poland">Poland</option>
+        <option value="Czech Republic">Czech Republic</option>
+        <option value="Austria">Austria</option>
+        <option value="Switzerland">Switzerland</option>
+        <option value="France">France</option>
+        <option value="Luxembourg">Luxembourg</option>
+        <option value="Belgium">Belgium</option>
+        <option value="Netherlands">Netherlands</option>
+       </select>
       </div>
 
 
@@ -790,6 +809,27 @@
     accordionContent.style.display === "block" ? "none" : "block";
   }
   </script>
+
+
+  <!-- Countries name -->
+  <script>
+  var select = document.getElementById("countries");
+
+  // Fetch countries from the REST Countries API
+  fetch("https://restcountries.com/v3.1/all")
+   .then(response => response.json())
+   .then(data => {
+    // Loop through the data and create options
+    data.forEach(country => {
+     var option = document.createElement("option");
+     option.value = country.name.common.toLowerCase();
+     option.text = country.name.common;
+     select.appendChild(option);
+    });
+   })
+   .catch(error => console.error("Error fetching countries:", error));
+  </script>
+  <!-- Countries name -->
  </body>
 
 </html>
