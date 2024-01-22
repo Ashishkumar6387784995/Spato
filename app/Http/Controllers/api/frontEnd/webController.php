@@ -78,4 +78,9 @@ class webController extends Controller
 
         return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name',));
     }
+
+    public function accountSetting()
+    {
+        return view('frontEnd/pages/user_profile/setting');
+    }
 }

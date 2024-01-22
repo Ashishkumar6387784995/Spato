@@ -36,12 +36,6 @@ use App\Http\Controllers\api\quatationController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
-
 
 
 Route::get('/register', [loginController::class, 'registerForm']);
@@ -77,20 +71,11 @@ Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
 
 
 
-// Route::get('login',[authController::class,'loginform']);
-// Route::post('login',[authController::class,'loginCheck']);s
-// Route::get('home',[authController::class,'home']);
-// Route::get('logout',[authController::class,'logout']); 
-
 Route::get('contact', [staticPageController::class, 'contact']);
 Route::post('contactSubmit', [staticPageController::class, 'contactSubmit']);
 Route::get('about', [staticPageController::class, 'about']);
 Route::get('agb', [staticPageController::class, 'agb']);
 Route::get('cancelationPolicy', [staticPageController::class, 'cancelationPolicy']);
-
-
-// dashboard for Admin  
-// Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
 
 
 // Pool Builder For Front End
@@ -107,8 +92,6 @@ Route::middleware('api.auth')->group(function () {
 
   // Offers for Admin
   Route::get('offerListingApi', [OfferController::class, 'offerListing']);
-
-
   Route::post('addOfferApi', [OfferController::class, 'addOfferApi']);
 
 
@@ -274,6 +257,8 @@ Route::view('accountSetting', 'frontEnd/pages/setting');
 // front End WebSite Pages...
 Route::get('/ProductdetailPage/{product_id}/{product_category}', [webController::class, 'ProductdetailPage']);
 Route::get('/ProductsByCategories/{Kategorie_Name}', [webController::class, 'ProductsByCategories']);
+Route::get('/accountSetting', [webController::class, 'accountSetting']);
+
 
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 
