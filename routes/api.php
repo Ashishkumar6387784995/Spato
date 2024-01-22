@@ -99,11 +99,22 @@ Route::middleware('api.auth')->group(function () {
   Route::get('cart/checkoutItemsApiAuthentic', [CartController::class, 'getCartItems']);
 
 
-  Route::post('logoutApi', [loginController::class, 'logoutApi']);
-  // Route::get('logout',[loginController::class,'logout']);
 
    // Quatation submit
    Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
+
+
+   // B2C User Profile
+   Route::get('profileViewApi', [webController::class, 'profileViewApi']);
+   Route::post('addPermanentProfileApi', [webController::class, 'addPermanentProfileApi']);
+
+
+
+
+
+   
+  Route::post('logoutApi', [loginController::class, 'logoutApi']);
+  // Route::get('logout',[loginController::class,'logout']);
 
   
 });

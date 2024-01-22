@@ -8,6 +8,7 @@ use App\Models\ProductCategory;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\UserProfile;
 
 class webController extends Controller
 {
@@ -60,21 +61,18 @@ class webController extends Controller
     {
         // dd($product_id, $product_category);
 
-        $product= Product::where('id', $product_id)->get();
+        $product = Product::where('id', $product_id)->get();
 
-        $products_accoring_category= Product::where('Kategorie_1', $product_category)->get();
+        $products_accoring_category = Product::where('Kategorie_1', $product_category)->get();
 
-        return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product','products_accoring_category'));
+        return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product', 'products_accoring_category'));
     }
 
     public function ProductsByCategories($Kategorie_Name)
     {
 
-
         $products = Product::where('Kategorie_1', $Kategorie_Name)->get();
         // dd($products);
-
-
 
         return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name',));
     }
@@ -82,5 +80,58 @@ class webController extends Controller
     public function accountSetting()
     {
         return view('frontEnd/pages/user_profile/setting');
+    }
+
+    public function profileViewApi()
+    {
+        $user = Auth::guard('api')->user();
+        return response()->json(['success' => $user]);
+    }
+
+    public function addPermanentProfileApi(Request $request)
+    {
+        $userId = Auth::guard('api')->user()->id;
+
+        // return response()->json(['success' => $request->input('RepeatuserName')]);
+
+        // Validate the request data
+        // $validator = UserProfile::make($request->all(), [
+        //     'name' => 'required|string',
+        //     'email' => 'required|email',
+        //     'mobile' => 'nullable|string',
+        //     'permanent_address' => 'nullable|string',
+        //     'city' => 'nullable|string',
+        //     'zipCode' => 'nullable|string|max:10',
+        //     'country' => 'nullable|string',
+        //     'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust as needed
+
+        // ]);
+
+        // // If validation fails, return the errors
+        // if ($validator->fails()) {
+        //     return response()->json(['errors' => $validator->errors()]);
+        // }
+        
+
+        // Create a new user profile
+        $userProfile = UserProfile::create([
+            'name' => $request->input('RepeatuserName'),
+            'email' => $request->input('userEmail'),
+            'mobile' => $request->input('mobile'),
+            'permanent_address' => $request->input('permanentAddress'),
+            'city' => $request->input('City'),
+            'zipCode' => $request->input('zipCode'),
+            'country' => $request->input('country'),
+            'user_id' => $userId,
+        ]);
+
+        // Save profile picture in the storage
+        if ($request->hasFile('profile_picture')) {
+            $uploadedImage = $request->file('profile_picture');
+            $imagePath = $uploadedImage->store('public/profile_pictures');
+            $userProfile->update(['profile_picture' => $imagePath]);
+        }
+
+        return response()->json(['success' => 'User profile created successfully', 'userProfile' => $userProfile]);
     }
 }
