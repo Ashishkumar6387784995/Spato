@@ -72,7 +72,7 @@
    width: 30%;
    font-weight: 600;
    color: var(--white);
-   padding: 5px;
+   padding: 5px 3px;
    font-size: 18px;
    border-radius: 5px;
    transition: 0.5s;
@@ -629,7 +629,7 @@
         aria-describedby="basic-addon1">
       </div>
      </div>
-     <button type="button" class="m-3 profile-btn" data-bs-dismiss="modal">Save changes</button>
+     <button type="button" class="m-1 profile-btn" data-bs-dismiss="modal">Update Password</button>
 
     </div>
    </div>
