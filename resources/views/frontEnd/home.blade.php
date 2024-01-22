@@ -69,6 +69,8 @@
 
   .wrapper i:last-child {
    right: -22px;
+   background-color: var(--blue);
+   color: var(--white);
   }
 
   .wrapper .carousel {
