@@ -44,7 +44,7 @@
 
   <li class="nav-item">
 
-   <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Angebote</span>
    </a>
 
@@ -53,44 +53,44 @@
 
 
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Aufträge</span>
    </a>
   </li>
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Lieferscheine</span>
    </a>
   </li>
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Rechnungen</span>
    </a>
   </li>
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Gutschriften</span>
    </a>
   </li>
   <li class="nav-item">
 
-   <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}">
+   <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Claim Manager</span>
    </a>
 
   </li>
- 
+
 
   @if($role=="b2b")
 
   <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing1/'.$role) }}">
+   <a class="nav-link" href="{{ url('/api/creditsListing1/'.$role) }}" onclick="markVisited(this)">
     <span class="menu-title">Kundenadress Buch</span>
    </a>
   </li>
   <li class="nav-item">
    <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/claimsListing1/'.$role) }}">
+    <a class="nav-link" href="{{ url('/api/claimsListing1/'.$role) }}" onclick="markVisited(this)">
      <span class="menu-title">Einstellungen</span>
     </a>
    </div>
@@ -100,43 +100,43 @@
   @elseif($role=="admin")
   <div id="adminSidebar">
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}">
+    <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
      <span class="menu-title">Kontakte</span>
     </a>
    </li>
    <li class="nav-item">
     <div class="border-bottom ">
-     <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}">
+     <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
       <span class="menu-title">Lieferanten</span>
      </a>
     </div>
    </li>
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{url('/api/categoriesListing/'.$role)}}">
+    <a class="nav-link pt-3" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
      <span class="menu-title">Produkte Kategorie</span>
     </a>
    </li>
    <li class="nav-item">
 
-    <a class="nav-link" href="{{url('/api/productListing/'.$role)}}">
+    <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
 
      <span class="menu-title">Produkte</span>
     </a>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}">
+    <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}" onclick="markVisited(this)">
      <span class="menu-title">Statistik</span>
     </a>
    </li>
    <li class="nav-item">
     <div class="border-bottom">
-     <a class="nav-link" href="{{url('/api/connection/'.$role)}}">
+     <a class="nav-link" href="{{url('/api/connection/'.$role)}}" onclick="markVisited(this)">
       <span class="menu-title">B2C B2B Connection</span>
      </a>
     </div>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}">
+    <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}" onclick="markVisited(this)">
      <span class="menu-title">Newsletter</span>
     </a>
    </li>
@@ -156,12 +156,12 @@
     </div>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/settings/'.$role)}}">
+    <a class="nav-link" href="{{url('/api/settings/'.$role)}}" onclick="markVisited(this)">
      <span class="menu-title">Einstellungen</span>
     </a>
    </li>
    <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}">
+    <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}" onclick="markVisited(this)">
      <span class="menu-title">Angebot</span>
     </a>
    </li>
