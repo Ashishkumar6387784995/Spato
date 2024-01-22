@@ -642,9 +642,29 @@
      </div>
      <div class="modal-body">
       <div class="input-group mb-3">
+       <label for="Address">Address</label>
        <textarea type="text" class="form-control" placeholder="address" aria-label="Address"
         aria-describedby="basic-addon1"> </textarea>
       </div>
+      <div class="input-group mb-3">
+       <label for="city">City</label>
+       <input type="text" class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" />
+      </div>
+
+
+      <div class="input-group mb-3">
+       <label for="Zip code">Zip code</label>
+       <input type="number" class="form-control" placeholder="Zip Code" aria-label="Zip code"
+        aria-describedby="basic-addon1" />
+      </div>
+
+      <div class="input-group mb-3">
+       <label for="country">Country</label>
+       <input type="text" class="form-control" placeholder="Country" aria-label="Country"
+        aria-describedby="basic-addon1" />
+      </div>
+
+
      </div>
      <button type="button" class="m-3 profile-btn" data-bs-dismiss="modal">Save Address</button>
     </div>
