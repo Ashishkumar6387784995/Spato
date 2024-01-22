@@ -170,7 +170,8 @@
                 statt - 42,50€ <span class="price">25,30€</span>
               </p>
             </div>
-            <a href="#" class="cart-btn">IN DEN WARENKORB</a>
+            <a href="#" class="btn addToCartButton" data-product-id="{{ $product->id }}" data-quantity="1"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
           </div>
 
           @endforeach
@@ -180,7 +181,7 @@
 
   </section>
 
-
+  @include('frontEnd/partial/rightSidebar')
   @include('frontEnd/partial/footer')
 </body>
 

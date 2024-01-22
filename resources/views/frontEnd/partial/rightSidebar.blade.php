@@ -237,7 +237,7 @@
     function removeCartItem(productId) {
         $.ajax({
             type: 'DELETE',
-            url: 'cart/deleteCartProductsApi/' + productId, // Replace with your actual delete endpoint
+            url: '/api/cart/deleteCartProductsApi/' + productId, // Replace with your actual delete endpoint
             headers: {
                 'guest-token': getGuestToken(),
             },

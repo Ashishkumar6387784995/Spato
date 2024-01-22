@@ -419,7 +419,7 @@
              <div id="counter-value">0</div>
              <button class="counter-btn" id="increment-btn">+</button>
             </div>
-            <input type="text" name="product_id" id="product_id" value="{{$product[0]->id}}" style="display:none;"/>
+            <input type="text" name="product_id" id="product_id" value="{{$product[0]->Artikelname}}" style="display:none;"/>
            </div>
           </div>
          </div>
@@ -437,7 +437,8 @@
             </p>
            </div>
            <div class="cart mt-4 align-items-center">
-            <button class="btn text-uppercase">IN DEN WARENKORB</button>
+            <a href="#" class="btn addToCartButton" data-product-id="{{$product[0]->id}}" data-quantity="1"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
             <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
            </div>
           </div>
@@ -667,6 +668,7 @@
 
    </div>
   </section>
+  @include('frontEnd/partial/rightSidebar')
   @include('frontEnd/partial/footer')
 
 
