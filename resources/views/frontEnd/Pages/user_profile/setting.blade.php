@@ -43,6 +43,11 @@
    transition-duration: 0.3s;
   }
 
+  .title {
+   font-weight: 700;
+   margin: 20px 0px;
+  }
+
   .menu:nth-child(5) {
    margin-top: 10px;
    padding-top: 15px;
@@ -380,7 +385,7 @@
 
     <div class="allpage">
      <div id="sidebar" class="sidebar">
-      <h6 class="title">Account Settings</h6>
+      <h5 class="title">Account Settings</h5>
      </div>
 
      <div id="profile" class="page container">
