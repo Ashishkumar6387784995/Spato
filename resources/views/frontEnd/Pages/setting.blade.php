@@ -206,48 +206,25 @@
 
   /* Manage Address starts */
 
-  .address table tr {
-   background-color: #fff;
+
+  .address table tr td i {
+   margin: 0px 20px;
+   padding: 10px;
+   border-radius: 100%;
+   background-color: var(--white);
+   transition: 0.5s ease-in-out;
+   cursor: pointer;
   }
 
-  .address table tr td:nth-child(1) {
-   width: 200px;
-  }
-
-  .address table tr td:nth-child(2) {
-   width: 350px;
-  }
-
-  .address table tr td:nth-child(3) {
-   width: 200px;
-  }
-
-  .address td img {
-   width: 100px;
-   height: 100px;
-  }
-
-  .address td ul li {
-   font-size: 12px;
+  .address table tr td i:hover {
+   background-color: red;
+   color: var(--white);
   }
 
   .address td p {
    font-size: 12px;
-  }
-
-  .address table tr td:nth-child(2) p {
-   margin-left: 2rem;
-  }
-
-  .address table tr td:nth-child(2) p .old-price {
-   text-decoration: line-through;
-
-  }
-
-  .address table tr td:nth-child(2) p .newprice {
-   font-size: 18px;
-   color: #5ce1d5;
-   font-weight: 800;
+   background-color: #fff;
+   padding: 15px 10px;
   }
 
   .add-address {
@@ -470,22 +447,13 @@
      </div>
 
      <div id="address" onclick="toggleActive(this)" class="page container">
-      <h6>Manage Address</h6>
+      <h5>Manage Address</h5>
 
       <div class="address">
+       <h6>Permanent Address</h6>
        <table>
         <tbody>
          <tr>
-          <td><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="" srcset=""></td>
-          <td>
-           <ul>
-            <li>Merkmal 1 lauft fllugig</li>
-            <li>Merkmal 1 lauft fllugig ...lorem ipasum</li>
-           </ul>
-           <p>
-            <span class="old-price">start $499.00</span> <span class="newprice">$499.00</span>
-           </p>
-          </td>
           <td>
            <p>East Streets 14, Word No. 04, Road
             No. 13/x, House no. 1320/C, Flat No.
@@ -494,8 +462,34 @@
          </tr>
         </tbody>
        </table>
+       <hr />
+       <h6>Temprorary Address</h6>
+       <table>
+        <tbody>
+         <tr>
+          <td>
+           <p>East Streets 14, Word No. 04, Road
+            No. 13/x, House no. 1320/C, Flat No.
+            5D, Berlin - 1200, Germany</p>
+          </td>
+          <td>
+           <i class="fa-solid fa-trash"></i>
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <p>East Streets 14, Word No. 04, Road
+            No. 13/x, House no. 1320/C, Flat No.
+            5D, Berlin - 1200, Germany</p>
+          </td>
+          <td>
+           <i class="fa-solid fa-trash"></i>
+          </td>
+         </tr>
+        </tbody>
+       </table>
 
-       <a class="add-address" href="#">Add address +</a>
+       <a class="add-address" href="#" data-bs-toggle="modal" data-bs-target="#addaddressModal">Add address +</a>
       </div>
      </div>
 
@@ -634,6 +628,29 @@
     </div>
    </div>
   </div>
+
+
+
+  <!-- Button trigger modal -->
+  <!-- Modal start for add address -->
+  <div class="modal fade" id="addaddressModal" tabindex="-1" aria-labelledby="addaddressLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h1 class="modal-title fs-5" id="addaddressLabel">Add Address</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="input-group mb-3">
+       <textarea type="text" class="form-control" placeholder="address" aria-label="Address"
+        aria-describedby="basic-addon1"> </textarea>
+      </div>
+     </div>
+     <button type="button" class="m-3 profile-btn" data-bs-dismiss="modal">Save Address</button>
+    </div>
+   </div>
+  </div>
+  <!-- Modal end for add Address -->
 
   <script>
   /*
