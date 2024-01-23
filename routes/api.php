@@ -107,8 +107,8 @@ Route::middleware('api.auth')->group(function () {
    // B2C User Profile
    Route::get('profileViewApi', [webController::class, 'profileViewApi']);
    Route::post('addPermanentProfileApi', [webController::class, 'addPermanentProfileApi']);
-
-
+   Route::post('changePasswordApi', [webController::class, 'changePasswordApi']);
+   Route::post('saveTempAddressApi', [webController::class, 'saveTempAddressApi']);
 
 
 

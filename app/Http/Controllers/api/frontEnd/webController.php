@@ -9,12 +9,13 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\UserProfile;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class webController extends Controller
 {
-
-
-
     public function home()
     {
 
@@ -68,6 +69,9 @@ class webController extends Controller
         return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product', 'products_accoring_category'));
     }
 
+
+
+
     public function ProductsByCategories($Kategorie_Name)
     {
 
@@ -77,41 +81,49 @@ class webController extends Controller
         return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name',));
     }
 
+
+
+
     public function accountSetting()
     {
         return view('frontEnd/pages/user_profile/setting');
     }
 
+
+
+
     public function profileViewApi()
     {
-        $user = Auth::guard('api')->user();
-        return response()->json(['success' => $user]);
+        $userName= Auth::guard('api')->user()->name;
+        $userEmail= Auth::guard('api')->user()->email;
+        $userMobile= Auth::guard('api')->user()->mobile;
+        $userId = Auth::guard('api')->user()->id;
+        $user = UserProfile::select()->where('id', $userId)->where('status', 'Permanent')->get();
+        return response()->json(['success' => $user, 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]);
     }
+
+
+
 
     public function addPermanentProfileApi(Request $request)
     {
         $userId = Auth::guard('api')->user()->id;
 
-        // return response()->json(['success' => $request->input('RepeatuserName')]);
 
-        // Validate the request data
-        // $validator = UserProfile::make($request->all(), [
-        //     'name' => 'required|string',
-        //     'email' => 'required|email',
-        //     'mobile' => 'nullable|string',
-        //     'permanent_address' => 'nullable|string',
-        //     'city' => 'nullable|string',
-        //     'zipCode' => 'nullable|string|max:10',
-        //     'country' => 'nullable|string',
-        //     'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust as needed
+        $validator = Validator::make($request->all(), [
+            'RepeatuserName' => 'required|string',
+            'userEmail' => 'required|email',
+            'mobile' => 'required|string',
+            'permanentAddress' => 'required|string',
+            'City' => 'required|string',
+            'zipCode' => 'required|string|max:10',
+            'country' => 'required|string',
+            'imageUpload' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-        // ]);
-
-        // // If validation fails, return the errors
-        // if ($validator->fails()) {
-        //     return response()->json(['errors' => $validator->errors()]);
-        // }
-        
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        }
 
         // Create a new user profile
         $userProfile = UserProfile::create([
@@ -123,15 +135,87 @@ class webController extends Controller
             'zipCode' => $request->input('zipCode'),
             'country' => $request->input('country'),
             'user_id' => $userId,
+            'status' => 'Permanent',
         ]);
 
         // Save profile picture in the storage
-        if ($request->hasFile('profile_picture')) {
-            $uploadedImage = $request->file('profile_picture');
+        if ($request->hasFile('imageUpload')) {
+
+            $uploadedImage = $request->file('imageUpload');
             $imagePath = $uploadedImage->store('public/profile_pictures');
+
+            // Update the user profile with the file path
             $userProfile->update(['profile_picture' => $imagePath]);
         }
 
-        return response()->json(['success' => 'User profile created successfully', 'userProfile' => $userProfile]);
+        return response()->json(['success' => 'User profile created successfully']);
     }
+
+
+    public function changePasswordApi(Request $request){
+
+
+        $userId = Auth::guard('api')->user()->id;
+
+        $validator = Validator::make($request->all(), [
+            'oldPassword' => 'required|string', 
+            'newPassword' => 'required|string|confirmed',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        }
+    
+        $user = User::find($userId);
+    
+        if ($user) {
+            // Check if the old password matches the current password
+            if (Hash::check($request->input('oldPassword'), $user->password)) {
+                // Update the password with the new one
+                $user->update([
+                    'password' => bcrypt($request->input('newPassword')),
+                ]);
+    
+                return response()->json(['success' => 'Password updated successfully']);
+            } else {
+                return response()->json(['error' => 'Old password is incorrect']);
+            }
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+    }
+
+
+    public function saveTempAddressApi(Request $request){
+
+
+        $userId = Auth::guard('api')->user()->id;
+     
+        // return response()->json(['success' => $userId]);
+        $validator = Validator::make($request->all(), [
+            'tempAddress' => 'required|string',
+            'tempCity' => 'required',
+            'tempZip' => 'required|string',
+            'tempCountry' => 'required|string',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]);
+        }
+    
+        $userProfile = UserProfile::create([  
+            'permanent_address' => $request->input('tempAddress'),
+            'city' => $request->input('tempCity'),
+            'zipCode' => $request->input('tempZip'),
+            'country' => $request->input('tempCountry'),
+            'user_id' => $userId,
+            'status' => "temp",
+        ]);
+            return response()->json(['success' => 'Data Saved Succeessfulley']);
+      
+
+    }
+
+
 }

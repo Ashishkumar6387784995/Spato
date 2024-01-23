@@ -93,7 +93,7 @@ class categoriesController extends Controller
             $imageName = time() . '.' . $image->getClientOriginalExtension();
 
             $imagePath = $request->file('imageFile')->storeAs('category_icons', $imageName, 'public');
-        }
+        }   
 
         // Create new ProductCategory instance
         $category = new ProductCategory([

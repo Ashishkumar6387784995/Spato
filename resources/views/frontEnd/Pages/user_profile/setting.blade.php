@@ -400,12 +400,12 @@
                   <image id="profileImage" />
                   Edit
                 </div>
-                <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
+                <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
 
               </div>
               <div class="mt-5 ml-3">
-                <p id="userName">Alex Driver</p>
-                <input type="text" value="Example@mail.com" id="userEmail" name="userEmail" />
+                <input type="text"  id="user" />
+                <input type="text"  id="userEmail" name="userEmail" />
                 <div class="links">
                   <!-- <a href="#" class="m-0 pr-5">Edit</a> -->
                   <a href="#" class="m-0" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cpassword">Change
@@ -421,7 +421,7 @@
                 <tbody>
                   <tr>
                     <td>Name</td>
-                    <td> <input type="text" id="RepeatuserName" name="RepeatuserName" class="form-control" value="Alex Driver"></td>
+                    <td> <input type="text" id="RepeatuserName" name="RepeatuserName" class="form-control"  readonly></td>
                   </tr>
                   <tr>
                     <td>Mobile Number</td>
@@ -434,20 +434,24 @@
                   </tr>
                   <tr>
                     <td>Address(Street name and House number)</td>
-                    <td> <textarea class="form-control" id="permanentAddress" name="permanentAddress">East Streets 14, Word No. 04, Road No. 13/x, House no. 1320/C, Flat No. 5D,</textarea>
+                    <td> <textarea class="form-control" id="permanentAddress" name="permanentAddress"></textarea>
                     </td>
+                    <span id="permanentAddress_err" style="color:red"></span>
                   </tr>
                   <tr>
                     <td>City</td>
-                    <td> <input type="text" value="Berlin" class="form-control" name="City" id="City"></td>
+                    <td> <input type="text"  class="form-control" name="City" id="City"></td>
+                    <span id="City_err" style="color:red"></span>
                   </tr>
                   <tr>
                     <td>Zip code</td>
-                    <td> <input type="text" value="1200" class="form-control" name="zipCode" id="zipCode"></td>
+                    <td> <input type="text"  class="form-control" name="zipCode" id="zipCode"></td>
+                    <span id="zipCode_err" style="color:red"></span>
                   </tr>
                   <tr>
                     <td>Country</td>
-                    <td> <input type="text" value="Germany" class="form-control" name="country" id="country"></td>
+                    <td> <input type="text"  class="form-control" name="country" id="country"></td>
+                    <span id="country_err" style="color:red"></span>
                   </tr>
                   <tr>
                     <td><button type="submit" class="profile-btn" id="pAddressSubmit">Submit</button></td>
@@ -613,40 +617,40 @@
 
   <!-- Change Password trigger modal -->
   <!-- Modal -->
-  <form id="newPasswordForm" method="post">
+  <form id="changePasswordForm" method="post">
     <div class="modal fade" id="cpassword" tabindex="-1" aria-labelledby="cpasswordLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="ecpasswordLabel">Change Password</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <label for="basic-url" class="form-label">Old Password</label>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" id="oldPassword" placeholder="old password" aria-label="old-password" aria-describedby="basic-addon1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ecpasswordLabel">Change Password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="basic-url" class="form-label">Old Password</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="old password" aria-label="old-password" aria-describedby="basic-addon1">
+                    </div>
+                    <label for="basic-url" class="form-label">New Password</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="new password" aria-label="new-password" aria-describedby="basic-addon1">
+                    </div>
+                    <label for="basic-url" class="form-label">Confirm Password</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="confirmPassword" name="newPassword_confirmation" placeholder="confirm password" aria-label="confirm-password" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <button type="button" class="m-1 profile-btn" id="UpdatePasswordButton" >Update Password</button>
             </div>
-            <label for="basic-url" class="form-label">New Password</label>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" id="newPassword" placeholder="new password" aria-label="new-password" aria-describedby="basic-addon1">
-            </div>
-            <label for="basic-url" class="form-label">Confirm Password</label>
-            <div class="input-group mb-3">
-              <input type="password" class="form-control" id="confirmPassword" placeholder="confirm password" aria-label="confirm-password" aria-describedby="basic-addon1">
-            </div>
-          </div>
-          <button type="button" class="m-1 profile-btn" id="UpdatePasswordButton" data-bs-dismiss="modal">Update Password</button>
-
         </div>
-      </div>
     </div>
-  </form>
+</form>
+
 
 
 
   <!-- Button trigger modal -->
   <!-- Modal start for add address -->
-  <form id="newAddressForm" method="post">
+  <form id="tempAddressForm" method="post">
     <div class="modal fade" id="addaddressModal" tabindex="-1" aria-labelledby="addaddressLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -657,23 +661,23 @@
           <div class="modal-body">
             <div class="input-group mb-3">
               <label for="Address">Address</label>
-              <input type="text" class="form-control" id="newAddress" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1" />
+              <input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1" />
             </div>
             <div class="input-group mb-3">
               <label for="city">City</label>
-              <input type="text" class="form-control" id="newCity" placeholder="City" aria-label="City" aria-describedby="basic-addon1" />
+              <input type="text" class="form-control" name="tempCity" placeholder="City" aria-label="City" aria-describedby="basic-addon1" />
             </div>
 
 
             <div class="input-group mb-3">
               <label for="Zip code">Zip code</label>
-              <input type="text" class="form-control" id="newZip" placeholder="Zip Code" aria-label="Zip code" aria-describedby="basic-addon1" />
+              <input type="text" class="form-control" name="tempZip" placeholder="Zip Code" aria-label="Zip code" aria-describedby="basic-addon1" />
             </div>
 
             <div class="input-group mb-3">
               <label for="country">Country</label>
-              <select class="form-select" id="floatingSelect" id="newCountry" aria-label="Floating label select example">
-                <option selected>Select Country</option>
+              <select class="form-select" id="floatingSelect" name="tempCountry" aria-label="Floating label select example">
+              <option value="Germany">Germany</option>
                 <option value="Denmark">Denmark</option>
                 <option value="Poland">Poland</option>
                 <option value="Czech Republic">Czech Republic</option>
@@ -688,7 +692,7 @@
 
 
           </div>
-          <button type="button" class="m-3 profile-btn" id="saveNewAddress" data-bs-dismiss="modal">Save Address</button>
+          <button type="button" class="m-3 profile-btn" id="saveTempAddress">Save Address</button>
         </div>
       </div>
     </div>
@@ -710,60 +714,42 @@
       }
 
       // // Make a GET request using AJAX
-      // $.ajax({
-      //     url: '/api/profileViewApi', // Replace with the actual endpoint URL
-      //     method: 'GET',
-      //     headers: {
-      //         'Authorization': 'Bearer ' + token,
-      //     },
-      //     success: function (data) {
-      //         // Handle the successful response
-      //         if (data.offersList) {
-      //             console.log('Data received:', data.user);
+      $.ajax({
+          url: '/api/profileViewApi', // Replace with the actual endpoint URL
+          method: 'GET',
+          headers: {
+              'Authorization': 'Bearer ' + token,
+          },
+          success: function (data) {
+              // Handle the successful response
+              if (data.success) {
+                  console.log('Data received:', data.success);
 
-      //             // Function to populate the table with data
-      //             function populateTable(dataList) {
-      //                 var tableBody = $('#dataTable');
+                  $('#user').val(data.userName);
+                  $('#RepeatuserName').val(data.userName);
+                  $('#userEmail').val(data.userEmail);
+                  $('#mobile').val(data.userMobile);
+                  $('#permanentAddress').val(data.success['permanentAddress']);
+                  $('#permanentAddress').val(data.success['permanentAddress']);
+                  $('#permanentAddress').val(data.success['permanentAddress']);
+                  $('#permanentAddress').val(data.success['permanentAddress']);
 
-      //                 // Clear existing table rows
-      //                 tableBody.find("tr:gt(0)").remove();
+              
+                  
+              } else {
+                  console.log('Data received:', data.errors);
+              }
+          },
 
-      //                 // Iterate through the data and add rows to the table
-      //                 $.each(dataList, function (index, item) {
-      //                     var row = $('<tr>');
-      //                     row.append(`<td>Offen</td>`);
-      //                     row.append(`<td>${item.Angebots_Nr}</td>`);
-      //                     row.append(`<td>${item.Ihre_Kundennummer}</td>`);
-      //                     row.append(`<td>${item.Angebotsdatum}</td>`);
-      //                     // row.append(`<td>${item.Kategorie}</td>`); // Uncomment if needed
-      //                     row.append(`<td>${item.gesamt_netto}</td>`);
-      //                     row.append(
-      //                         `<td><a href="/api/editOffer/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`
-      //                     );
-
-      //                     // Add more columns as needed
-
-      //                     // Append the row to the table body
-      //                     tableBody.append(row);
-      //                 });
-      //             }
-
-      //             // Call the function to populate the table with the initial data
-      //             populateTable(data.offersList);
-      //         } else {
-      //             console.log('Data received:', data.errors);
-      //         }
-      //     },
-
-      //     error: function (xhr, status, error) {
-      //         // Handle specific errors
-      //         if (xhr.status === 401) {
-      //             console.error('Unauthorized: Please check your authentication token.');
-      //         } else {
-      //             console.error('Error:', error);
-      //         }
-      //     }
-      // });
+          error: function (xhr, status, error) {
+              // Handle specific errors
+              if (xhr.status === 401) {
+                  console.error('Unauthorized: Please check your authentication token.');
+              } else {
+                  console.error('Error:', error);
+              }
+          }
+      });
 
       $('#pAddressSubmit').click(function(e) {
         // Your code here
@@ -772,24 +758,7 @@
         // Clear error messages
         $('.error-msg').text('');
 
-        // Serialize form data
-        // var formData = $('#profileForm').serialize();
-
-        var formData = {
-          RepeatuserName: $('#profileForm input[name="RepeatuserName"]').val(),
-          userEmail: $('#profileForm input[name="userEmail"]').val(),
-          mobile: $('#profileForm input[name="mobile"]').val(),
-          permanentAddress: $('#profileForm input[name="permanentAddress"]').val(),
-          City: $('#profileForm input[name="City"]').val(),
-          zipCode: $('#profileForm select[name="zipCode"]').val(),
-          country: $('#profileForm input[name="country"]').val(),
-          inputs: []
-        };
-
-        console.log('hello' + formData);
-
-
-
+              var formData = new FormData($('#profileForm')[0]);
 
 
         // Make AJAX request
@@ -798,6 +767,8 @@
           url: '/api/addPermanentProfileApi',
           data: formData,
           dataType: 'json',
+          processData: false, // Important: tell jQuery not to process the data
+          contentType: false,
           // processData: false,
           // contentType: false,
           headers: {
@@ -807,13 +778,13 @@
             // Handle success response
             if (response.success) {
               console.log(response.success);
-              console.log(response.dynamicFields);
+            
               // $('#AddOffersForm')[0].reset();
               $('#success_msg').text(response.success);
             } else if (response.errors) {
               // Display validation errors in the console
               console.log(response.errors);
-              displayValidationErrors(response.errors);
+              //   displayValidationErrors(response.errors);
             }
           },
           error: function(xhr, status, error) {
@@ -832,8 +803,123 @@
           }
         });
       });
+
+      $('#UpdatePasswordButton').click(function(e) {
+        // Your code here
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        // Clear error messages
+        $('.error-msg').text('');
+
+              var formData = new FormData($('#changePasswordForm')[0]);
+
+
+        // Make AJAX request
+        $.ajax({
+          type: 'POST',
+          url: '/api/changePasswordApi',
+          data: formData,
+          dataType: 'json',
+          processData: false, // Important: tell jQuery not to process the data
+          contentType: false,
+          // processData: false,
+          // contentType: false,
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          },
+          success: function(response) {
+            // Handle success response
+            if (response.success) {
+              console.log(response.success);
+            
+              // $('#AddOffersForm')[0].reset();
+              $('#success_msg').text(response.success);
+            } else if (response.errors) {
+              // Display validation errors in the console
+              console.log(response.errors);
+              //   displayValidationErrors(response.errors);
+            }
+          },
+          error: function(xhr, status, error) {
+            // Handle error response
+            var errors = xhr.responseJSON.errors;
+            if (errors) {
+
+              // Display errors in your frontend
+              // For example, you can loop through errors and append them to a specific element
+              $.each(errors, function(field, messages) {
+                // Append error messages to your HTML
+
+                $('#' + field + '-err').text(messages[0]);
+              });
+            }
+          }
+        });
+      });
+
+
+      $('#saveTempAddress').click(function(e) {
+        // Your code here
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        // Clear error messages
+        $('.error-msg').text('');
+
+              var formData = new FormData($('#tempAddressForm')[0]);
+
+
+        // Make AJAX request
+        $.ajax({
+          type: 'POST',
+          url: '/api/saveTempAddressApi',
+          data: formData,
+          dataType: 'json',
+          processData: false, // Important: tell jQuery not to process the data
+          contentType: false,
+          // processData: false,
+          // contentType: false,
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          },
+          success: function(response) {
+            // Handle success response
+            if (response.success) {
+              console.log(response.success);
+            
+              // $('#AddOffersForm')[0].reset();
+              $('#success_msg').text(response.success);
+            } else if (response.errors) {
+              // Display validation errors in the console
+              console.log(response.errors);
+              //   displayValidationErrors(response.errors);
+            }
+          },
+          error: function(xhr, status, error) {
+            // Handle error response
+            var errors = xhr.responseJSON.errors;
+            if (errors) {
+
+              // Display errors in your frontend
+              // For example, you can loop through errors and append them to a specific element
+              $.each(errors, function(field, messages) {
+                // Append error messages to your HTML
+
+                $('#' + field + '-err').text(messages[0]);
+              });
+            }
+          }
+        });
+      });
+
+
     });
   </script>
+
+
+
+
+
+
 
   <script>
     /*
@@ -937,6 +1023,8 @@
       fasterPreview(this);
     });
   </script>
+
+
 
   <script>
     function toggleAccordion(accordionId) {
