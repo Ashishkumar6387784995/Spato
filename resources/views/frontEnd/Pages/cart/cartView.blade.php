@@ -347,9 +347,9 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
      </div>
-     <p class="form-header-content text-center">
+     <!-- <p class="form-header-content text-center">
       Wenn Sie ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an
-     </p>
+     </p> -->
      <div class="modal-body">
       <form id="loginForm">
        <span id="erro-message" style="color:red;"></span>
