@@ -20,11 +20,11 @@
   /* Imports */
 
 
-  .sidebar {
+  /* .sidebar {
    height: 100vh;
    width: 200px;
-   /* background-color:#252627; */
-  }
+   /* background-color:#252627;
+  } */
 
   .menu {
    user-select: none;

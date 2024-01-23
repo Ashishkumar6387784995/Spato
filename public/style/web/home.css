@@ -81,6 +81,7 @@ i {
 
 .pools-dropdown {
     width: 600px;
+    position: absolute !important;
 }
 .pools-dropdown li h6 {
     font-size: 15px;
@@ -174,9 +175,14 @@ i {
     position: relative;
     font-weight: 700;
     font-size: 10px;
-    bottom: 150%;
+    bottom: 190%;
     right: -50%;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.cart-count:hover {
+    color: var(--white);
 }
 
 /* Signup Form starts*/
@@ -324,12 +330,20 @@ form .btn-style {
         display: block;
     }
     .cart-count {
-        bottom: 30px;
+        bottom: 38px;
     }
 
     .navbar .nav-item {
         border: none;
         padding: 17px 15px;
+    }
+
+    .services .row {
+        display: block;
+    }
+
+    .services .row .col p {
+        font-size: 14px;
     }
 }
 
@@ -354,100 +368,6 @@ form .btn-style {
     padding-bottom: 10rem;
 }
 /* Crausel Products */
-/* .cards-wrapper {
-    display: flex;
-    justify-content: center;
-}
-.card .img-cont {
-    margin: auto;
-    justify-content: center;
-    max-width: 50%;
-    max-height: 100%;
-    padding-top: 2rem;
-}
-.card {
-    width: 400px;
-    margin: 0 0.5em;
-    box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-    border: none;
-    border-radius: 0;
-}
-.card .card-body .product-price {
-    text-align: right !important;
-    color: #050811;
-    font-weight: 600;
-}
-.card .card-body li {
-    color: #050811;
-    font-weight: 600;
-}
-.card .card-body .product-price .price {
-    font-size: 25px;
-    color: var(--blue);
-    font-weight: 800;
-}
-.card .btn {
-    text-align: center;
-    width: 100%;
-    background-color: var(--blue);
-    color: #050811;
-    font-weight: 600;
-}
-.carousel-inner {
-    padding: 1em;
-} */
-/* .carousel-control-prev,
-.carousel-control-next {
-    background-color: var(--blue);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    top: 50% !important;
-    transform: translateY(-50%);
-}
-.carousel-control-next {
-    width: 45px !important;
-    height: 45px !important;
-    opacity: 1 !important;
-} */
-/* @media (max-width: 768px) {
-    .carousel-inner .carousel-item > div {
-        display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-        display: flex;
-    }
-} */
-
-/* .carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-    display: flex;
-} */
-
-/* display 3 */
-/* @media (min-width: 768px) {
-    .carousel-inner .carousel-item-right.active,
-    .carousel-inner .carousel-item-next {
-        transform: translateX(33.333%);
-    }
-
-    .carousel-inner .carousel-item-left.active,
-    .carousel-inner .carousel-item-prev {
-        transform: translateX(-33.333%);
-    }
-}
-
-.carousel-inner .carousel-item-right,
-.carousel-inner .carousel-item-left {
-    transform: translateX(0);
-} */
-
-/* @media (min-width: 768px) {
-    .card img {
-        height: 11em;
-    }
-} */
 /* Crausel Products */
 
 /* Side bar starts*/

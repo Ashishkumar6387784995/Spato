@@ -155,7 +155,7 @@
 
      <li class="nav-item list-unstyled pe-3 ps-5 large-s">
       <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-      <p class="cart-count">1</p>
+      <a class="cart-count" href="{{url('api/viewCart')}}">0</a>
      </li>
     </ul>
     <form class="d-flex justify-content-end" role="search">
@@ -834,7 +834,7 @@
 
     <li class="nav-item list-unstyled pe-3 ps-5 small-s">
       <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-      <p class="cart-count">1</p>
+      <a class="cart-count">0</a>
      </li>
 `);
 

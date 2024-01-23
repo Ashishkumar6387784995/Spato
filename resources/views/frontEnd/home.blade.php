@@ -198,17 +198,17 @@
   <section class="services dark-mode-section1" id="view">
    <div class="container">
     <div class="row text-center p-4">
-     <div class="col d-flex m-auto justify-content-center">
+     <div class="col d-flex m-auto">
       <span class="icon"><i class="fa fa-truck" aria-hidden="true"></i></span>
       <p class="view-desc ps-3">Fast, Free Shipping On Order Over 350€</p>
      </div>
-     <div class="col d-flex m-auto justify-content-center">
+     <div class="col d-flex m-auto">
       <span class="icon"><i class="fa-solid fa-water-ladder"></i></span>
       <p class="view-desc ps-3">
        Your Trade Partener in Water Technology
       </p>
      </div>
-     <div class="col d-flex m-auto justify-content-center">
+     <div class="col d-flex m-auto">
       <span class="icon"><i class="fa-solid fa-star"></i></span>
       <p class="view-desc ps-3">8.3/10 Customer Rating</p>
      </div>
