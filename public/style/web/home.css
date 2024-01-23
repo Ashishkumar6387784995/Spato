@@ -142,8 +142,9 @@ i {
 }
 
 .profile-drop {
-    left: -160% !important;
+    left: -200% !important;
     top: 150% !important;
+    width: 200px !important;
     background-color: var(--black);
 }
 .profile-drop li {
@@ -163,6 +164,19 @@ i {
 }
 .profile-drop li a:hover i {
     color: var(--black) !important;
+}
+
+.cart-count {
+    background-color: var(--blue);
+    padding: 2px 6px;
+    border-radius: 100%;
+    color: var(--white);
+    position: relative;
+    font-weight: 700;
+    font-size: 10px;
+    bottom: 150%;
+    right: -50%;
+    cursor: pointer;
 }
 
 /* Signup Form starts*/
@@ -272,6 +286,10 @@ form .btn-style {
     cursor: pointer;
 }
 
+.small-s {
+    display: none;
+}
+
 /* For tablets (768px and above) */
 @media (min-width: 768px) and (max-width: 991px) {
     .categories {
@@ -280,12 +298,38 @@ form .btn-style {
             minmax(calc(33.333% - 20px), 1fr)
         );
     }
+
+    .large-s {
+        display: none;
+    }
+    .small-s {
+        display: block;
+    }
+
+    .cart-count {
+        top: 89%;
+        right: 6%;
+    }
 }
 
 /* For mobile devices (up to 767px) */
 @media (max-width: 767px) {
     .categories {
         grid-template-columns: repeat(auto-fill, minmax(calc(50% - 20px), 1fr));
+    }
+    .large-s {
+        display: none;
+    }
+    .small-s {
+        display: block;
+    }
+    .cart-count {
+        bottom: 30px;
+    }
+
+    .navbar .nav-item {
+        border: none;
+        padding: 17px 15px;
     }
 }
 

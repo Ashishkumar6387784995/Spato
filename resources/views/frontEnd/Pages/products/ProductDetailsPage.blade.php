@@ -107,12 +107,20 @@
    margin-bottom: -10rem;
    padding-bottom: 10rem;
 
-   clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
+   clip-path: polygon(0% 1.5%, 100% 0%, 100% 100%, 0% 100%);
   }
 
-  .product-details nav .home {
+
+
+  .product-details nav ol li a {
    color: var(--black) !important;
    text-decoration: none !important;
+   font-weight: 600;
+  }
+
+  .product-details nav ol li:nth-child(3) {
+   color: var(--blue) !important;
+   font-weight: 600;
   }
 
   .agb-container .content h6 {
@@ -230,7 +238,6 @@
   .brand-details p {
    font-size: 15px;
   }
-
 
   .counter {
    width: 30%;
@@ -358,7 +365,7 @@
    font-size: 13px;
   }
   </style>
-  
+
  </head>
 
  <body oncontextmenu="return false" class="snippet-body">
@@ -369,7 +376,7 @@
    <div class="container">
     <nav aria-label="breadcrumb">
      <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a class="home" href="#">Home</a></li>
+      <li class="breadcrumb-item"><a class="home" href="{{url('api/home')}}">Home</a></li>
       <li class="breadcrumb-item">Pool Products</li>
       <li class="breadcrumb-item active" aria-current="page">MSI WS Series</li>
      </ol>
@@ -387,7 +394,7 @@
            <div class="text-center p-4"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}"
              width="350" height="300" />
            </div>
-         
+
            <div class="thumbnail text-center">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="70"
              height="70">
@@ -413,13 +420,14 @@
            <div class="button-counter">
 
             <button class="btn">Estashiboneoe</button>
-         
+
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
              <div id="counter-value">0</div>
              <button class="counter-btn" id="increment-btn">+</button>
             </div>
-            <input type="text" name="product_id" id="product_id" value="{{$product[0]->Artikelname}}" style="display:none;"/>
+            <input type="text" name="product_id" id="product_id" value="{{$product[0]->Artikelname}}"
+             style="display:none;" />
            </div>
           </div>
          </div>
@@ -438,7 +446,8 @@
            </div>
            <div class="cart mt-4 align-items-center">
             <a href="#" class="btn addToCartButton" data-product-id="{{$product[0]->id}}" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
+             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
+             WARENKORB</a>
             <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
            </div>
           </div>
@@ -673,51 +682,54 @@
 
 
 
- <!-- Login Form Modal starts -->
+  <!-- Login Form Modal starts -->
 
 
 
- <div class="modal fade" id="exampleLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a class="" href="#"><img class="signup-brand-logo" src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
+  <div class="modal fade" id="exampleLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <a class="" href="#"><img class="signup-brand-logo" src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}"
+        alt="" srcset="" />
 
-                    </a>
+      </a>
 
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-                </div>
-                <p class="form-header-content text-center">
-                    Wenn Sie ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an
-                </p>
-                <div class="modal-body">
-                    <form id="">
-                        <span id="erro-message" style="color:red;"></span>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">E-mail*</label>
-                            <input type="text" class="form-control" id="emai" name="email" require>
-                            <span id="emai-err" style="color:red;"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Password*</label>
-                            <input type="password" class="form-control" id="passwor" name="password" require>
-                            <span id="passwor_err" style="color:red;"></span>
-                        </div>
-                        <button type="button" class="btn btn-style" id="exampleLogin">Login</button>
-                    </form>
-                    <p class="foget-password d-flex"><a style="text-decoration:underline;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
-                    <p class="foget-password d-flex">Sie haben kein Konto?<span><a style="text-decoration:underline;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#"> Hier
-                                registrieren.</a></span></p>
-                </div>
-                <div class="modal-footer">
+     </div>
+     <p class="form-header-content text-center">
+      Wenn Sie ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an
+     </p>
+     <div class="modal-body">
+      <form id="">
+       <span id="erro-message" style="color:red;"></span>
+       <div class="mb-3">
+        <label for="recipient-name" class="col-form-label">E-mail*</label>
+        <input type="text" class="form-control" id="emai" name="email" require>
+        <span id="emai-err" style="color:red;"></span>
+       </div>
+       <div class="mb-3">
+        <label for="message-text" class="col-form-label">Password*</label>
+        <input type="password" class="form-control" id="passwor" name="password" require>
+        <span id="passwor_err" style="color:red;"></span>
+       </div>
+       <button type="button" class="btn btn-style" id="exampleLogin">Login</button>
+      </form>
+      <p class="foget-password d-flex"><a style="text-decoration:underline;" type="button" data-bs-toggle="modal"
+        data-bs-target="#exampleModal1" class="nav-link" href="#">Passwort vergessen?</a></p>
+      <p class="foget-password d-flex">Sie haben kein Konto?<span><a style="text-decoration:underline;" type="button"
+         data-bs-toggle="modal" data-bs-target="#exampleModal2" class="nav-link ps-3" href="#"> Hier
+         registrieren.</a></span></p>
+     </div>
+     <div class="modal-footer">
 
-                </div>
-            </div>
-        </div>
+     </div>
     </div>
-    <!--  Login Form Modal ends -->
+   </div>
+  </div>
+  <!--  Login Form Modal ends -->
 
 
 
@@ -726,115 +738,111 @@
 
 
 
-    <script>
-        $('#quoteButton').on('click', function() {
+  <script>
+  $('#quoteButton').on('click', function() {
 
-            var guestToken = localStorage.getItem('guestToken');
-            console.log(guestToken);
-            if (!guestToken) {
-                guestToken = generateGuestToken();
-                localStorage.setItem('guestToken', guestToken);
-            }
-        
-            var product_id = $('#product_id').val();
-                    // console.log('p'+product_id);
+   var guestToken = localStorage.getItem('guestToken');
+   console.log(guestToken);
+   if (!guestToken) {
+    guestToken = generateGuestToken();
+    localStorage.setItem('guestToken', guestToken);
+   }
 
+   var product_id = $('#product_id').val();
+   // console.log('p'+product_id);
 
-            var authToken = localStorage.getItem('authToken');
-            // console.log('authToken');
-            if (!authToken) {
 
-                $('#exampleLogin').modal('show');
-                $('.sidebar').hide();
+   var authToken = localStorage.getItem('authToken');
+   // console.log('authToken');
+   if (!authToken) {
 
-            } else {
-                window.location.href = '/api/quotes/' + product_id;
-            }
+    $('#exampleLogin').modal('show');
+    $('.sidebar').hide();
 
+   } else {
+    window.location.href = '/api/quotes/' + product_id;
+   }
 
-        });
-    </script>
 
+  });
+  </script>
 
-        <script>
-            $(document).ready(function() {
-                $('#exampleLogin').click(function(event) {
-                    event.preventDefault(); // Prevent the default form submission behavior
 
-                    console.log('hello');
-                    // Clear previous error messages
-                    $('#erro-message').text('');
-                    $('#emai-err').text('');
-                    $('#passwor-err').text('');
+  <script>
+  $(document).ready(function() {
+   $('#exampleLogin').click(function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-                    // Get form data
-                    var formData = {
-                        email: $('#emai').val(),
-                        password: $('#passwor').val()
-                    };
+    console.log('hello');
+    // Clear previous error messages
+    $('#erro-message').text('');
+    $('#emai-err').text('');
+    $('#passwor-err').text('');
 
-                    // Client-side validation
-                    if (!formData.email) {
-                        $('#emai-err').text('Please enter your email.');
-                        return;
-                    }
+    // Get form data
+    var formData = {
+     email: $('#emai').val(),
+     password: $('#passwor').val()
+    };
 
-                    if (!formData.password) {
-                        $('#passwor-err').text('Please enter your password.');
-                        return;
-                    }
+    // Client-side validation
+    if (!formData.email) {
+     $('#emai-err').text('Please enter your email.');
+     return;
+    }
 
-                    
-             
+    if (!formData.password) {
+     $('#passwor-err').text('Please enter your password.');
+     return;
+    }
 
-                    // Perform AJAX request
-                    $.ajax({
-                        type: 'POST',
-                        url: '/api/login',
-                        dataType: 'json',
-                        data: formData,
-                        success: handleLoginResponse,
-                        error: handleAjaxError
-                    });
-                });
-            }); 
 
-            // Rest of your code...
 
 
-            // Common function to handle login response
-    function handleLoginResponse(response) {
-                if (response.success) {
-                    console.log(response.token);
-                    localStorage.setItem('authToken', response.token);
+    // Perform AJAX request
+    $.ajax({
+     type: 'POST',
+     url: '/api/login',
+     dataType: 'json',
+     data: formData,
+     success: handleLoginResponse,
+     error: handleAjaxError
+    });
+   });
+  });
 
-                    console.log(response.role);
+  // Rest of your code...
 
-                    var product_id = $('#product_id').val();
-                    console.log('p'+product_id);
 
-                    if (response.role == "Admin") {
-                        window.location.href = '/api/admin_dashboard/admin';
-                    } else if (response.role == "b2b") {
-                        window.location.href = '/api/admin_dashboard/b2b';
-                    } else {
-                        window.location.href = '/api/quotes/' + product_id ;
-                    }
-                } 
-                else if (response.error) {
-                    $('#erro-message').text(response.error);
-                }
-            }
+  // Common function to handle login response
+  function handleLoginResponse(response) {
+   if (response.success) {
+    console.log(response.token);
+    localStorage.setItem('authToken', response.token);
 
-            // Common function to handle AJAX errors
-            function handleAjaxError(jqXHR, textStatus, errorThrown) {
-                console.error('AJAX Error:', textStatus, errorThrown);
-                // Handle the error as needed
-            }
-        </script> 
+    console.log(response.role);
 
+    var product_id = $('#product_id').val();
+    console.log('p' + product_id);
 
+    if (response.role == "Admin") {
+     window.location.href = '/api/admin_dashboard/admin';
+    } else if (response.role == "b2b") {
+     window.location.href = '/api/admin_dashboard/b2b';
+    } else {
+     window.location.href = '/api/quotes/' + product_id;
+    }
+   } else if (response.error) {
+    $('#erro-message').text(response.error);
+   }
+  }
 
+  // Common function to handle AJAX errors
+  function handleAjaxError(jqXHR, textStatus, errorThrown) {
+   console.error('AJAX Error:', textStatus, errorThrown);
+   // Handle the error as needed
+  }
+  </script>
 
 
 
@@ -892,7 +900,10 @@
 
 
 
-  
+
+
+
+
   <script>
   function change_image(image) {
 

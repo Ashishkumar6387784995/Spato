@@ -153,11 +153,12 @@
               <a class="nav-link disabled" aria-disabled="true">Link</a>
             </li> -->
 
-     <li class="nav-item list-unstyled pe-3 ps-5">
+     <li class="nav-item list-unstyled pe-3 ps-5 large-s">
       <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <p class="cart-count">1</p>
      </li>
     </ul>
-    <form class="d-flex" role="search">
+    <form class="d-flex justify-content-end" role="search">
      <!-- <input
               class="form-control me-2"
               type="search"
@@ -830,6 +831,11 @@
             <li class="dropdown-item" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
         </ul>
     </li>
+
+    <li class="nav-item list-unstyled pe-3 ps-5 small-s">
+      <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <p class="cart-count">1</p>
+     </li>
 `);
 
      // Append the logout button outside of the string
