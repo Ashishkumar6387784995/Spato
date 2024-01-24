@@ -249,7 +249,7 @@
 
   /* For mobile */
 
-  <<<<<<< HEAD @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
    .allpage {
     display: block;
    }
@@ -290,20 +290,6 @@
    }
   }
 
-  =======@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-   .allpage {
-    display: block;
-   }
-  }
-
-  /* For Mobile Portrait View */
-  @media screen and (max-device-width: 480px) and (orientation: portrait) {
-   .allpage {
-    display: block;
-   }
-  }
-
-  >>>>>>>fbb55e820bcde5aca47134ee8f932941c0343b09
   /* Accordion */
 
   .order-history tbody tr td {
@@ -425,7 +411,7 @@
   <section class="agb-container">
    <div class="container">
 
-    <<<<<<< HEAD <div class="allpage">
+    <div class="allpage">
      <div id="sidebar" class="sidebar">
       <h5 class="title">Account Settings</h5>
      </div>
@@ -642,247 +628,23 @@
            </tr>
           </tbody>
          </table>
-         =======
-         <div class="allpage">
-          <div id="sidebar" class="sidebar">
-           <h5 class="title">Account Settings</h5>
-           >>>>>>> fbb55e820bcde5aca47134ee8f932941c0343b09
-          </div>
+        </div>
 
-          <div id="profile" class="page container">
-
-           <form id="profileForm" method="post" enctype="multipart/form-data">
-            <p class="account">Account Information</p>
-            <hr>
-            <div class="d-flex">
-             <div class="">
-
-              <div id="profile-container">
-               Edit
-              </div>
-              <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo"
-               required="" capture>
-
-             </div>
-             <div class="mt-5 ml-3">
-              <input type="text" id="user" />
-              <input type="text" id="userEmail" name="userEmail" />
-              <div class="links">
-               <!-- <a href="#" class="m-0 pr-5">Edit</a> -->
-               <a href="#" class="m-0" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cpassword">Change
-                Password</a>
-              </div>
-             </div>
-            </div>
-            <hr>
-
-            <div class="other-inforation" style=" margin-top:-1rem;">
-             <span id="success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
-             <p class="other-information">Other Information</p>
-
-             <table>
-              <tbody>
-               <tr>
-                <td>Name</td>
-                <td> <input type="text" id="RepeatuserName" name="RepeatuserName" class="form-control" readonly></td>
-               </tr>
-               <tr>
-                <td>Mobile Number</td>
-                <td> <input type="text" class="form-control" name="mobile" id="mobile" readonly></td>
-               </tr>
-               <tr>
-               <tr>
-                <td><b>Permanent Address</b></td>
-                <td> </td>
-               </tr>
-               <tr>
-                <td>Address(Street name and House number)</td>
-                <td> <textarea class="form-control" id="permanentAddress" name="permanentAddress"></textarea>
-                 <span id="permanentAddress_err" style="color:red"></span>
-                </td>
-
-               </tr>
-               <tr>
-                <td>City</td>
-                <td> <input type="text" class="form-control" name="City" id="City">
-                 <span id="City_err" style="color:red"></span>
-                </td>
-
-               </tr>
-               <tr>
-                <td>Zip code</td>
-                <td> <input type="text" class="form-control" name="zipCode" id="zipCode">
-                 <span id="zipCode_err" style="color:red"></span>
-                </td>
-               </tr>
-               <tr>
-                <td>Country</td>
-                <td> <input type="text" class="form-control" name="country" id="country">
-                 <span id="country_err" style="color:red"></span>
-                </td>
-               </tr>
-               <tr>
-                <td><button type="submit" class="profile-btn" id="pAddressSubmit">Submit</button></td>
-                <td></td>
-               </tr>
-              </tbody>
-             </table>
-            </div>
-           </form>
-
-          </div>
-
-          <div id="address" onclick="toggleActive(this)" class="page container">
-           <h5>Manage Address</h5>
-
-           <div class="address">
-            <h6>Permanent Address</h6>
-            <table>
-             <tbody>
-              <tr>
-               <td>
-                <p id="pAddressShow">East Streets 14, Word No. 04, Road
-                 No. 13/x, House no. 1320/C, Flat No.
-                 5D, Berlin - 1200, Germany</p>
-               </td>
-              </tr>
-             </tbody>
-            </table>
-            <hr />
-            <h6>Temprorary Address</h6>
-            <table>
-             <tbody>
-              <tr>
-               <td>
-                <p id="tAddressShow">East Streets 14, Word No. 04, Road
-                 No. 13/x, House no. 1320/C, Flat No.
-                 5D, Berlin - 1200, Germany</p>
-               </td>
-               <td>
-                <i class="fa-solid fa-trash"></i>
-               </td>
-              </tr>
-              <tr>
-               <td>
-                <p>East Streets 14, Word No. 04, Road
-                 No. 13/x, House no. 1320/C, Flat No.
-                 5D, Berlin - 1200, Germany</p>
-               </td>
-               <td>
-                <i class="fa-solid fa-trash"></i>
-               </td>
-              </tr>
-             </tbody>
-            </table>
-
-            <a class="add-address" href="#" data-bs-toggle="modal" data-bs-target="#addaddressModal">Add address +</a>
-           </div>
-          </div>
-
-          <div id="order" onclick="toggleActive(this)" class="page container">
-           <h6>Order History</h6>
-           <table class="order-history">
-            <thead>
-             <tr>
-              <th>MONTH</th>
-              <th></th>
-              <th>ORDER NUMBER</th>
-              <th>COST</th>
-              <th>DATE</th>
-             </tr>
-            </thead>
-           </table>
-
-           <p>February 2024</p>
-           <div class="order-history">
-            <div class="accordion">
-             <div class="accordion-heading" onclick="toggleAccordion('accordion1')">
-              <table>
-               <tbody>
-                <tr>
-                 <td>Alex</td>
-                 <td></td>
-                 <td>#2564</td>
-                 <td>$452</td>
-                 <td>23/04/2024</td>
-                </tr>
-               </tbody>
-              </table>
-              <!-- <span>&#9660;</span> -->
-             </div>
-             <div class="accordion-content" id="accordion1">
-              <table>
-               <tbody>
-                <tr>
-                 <td><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/p-1.png') }}" alt=""
-                   srcset="">
-                 </td>
-
-                 <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi quos ipsam facilis quas
-                  quidem
-                  dicta ea reiciendis et dignissimos.</td>
-                 <td>
-                  <p>East Streets 14, Word No. 04, Road
-                   No. 13/x, House no. 1320/C, Flat No.
-                   5D, Berlin - 1200, Germany</p>
-                 </td>
-                </tr>
-               </tbody>
-              </table>
-             </div>
-            </div>
-
-            <div class="accordion">
-             <div class="accordion-heading" onclick="toggleAccordion('accordion2')">
-              <table>
-               <tbody>
-                <tr>
-                 <td>Alex</td>
-                 <td></td>
-                 <td>#2564</td>
-                 <td>$452</td>
-                 <td>23/04/2024</td>
-                </tr>
-               </tbody>
-              </table>
-              <!-- <span>&#9660;</span> -->
-             </div>
-             <div class="accordion-content" id="accordion2">
-              <table>
-               <tbody>
-                <tr>
-                 <td><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/p-1.png') }}" alt=""
-                   srcset="">
-                 </td>
-
-                 <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi quos ipsam facilis quas
-                  quidem
-                  dicta ea reiciendis et dignissimos.</td>
-                 <td>
-                  <p>East Streets 14, Word No. 04, Road
-                   No. 13/x, House no. 1320/C, Flat No.
-                   5D, Berlin - 1200, Germany</p>
-                 </td>
-                </tr>
-               </tbody>
-              </table>
-             </div>
-
-            </div>
-            <div class="t-price row">
-             <div class="pdf col"><a href="#"><i class="fa-solid fa-file-pdf"></i> Download The
-               Invoice</a></div>
-             <div class="total-price col">Total Amount : 2543.00 €</div>
-            </div>
-           </div>
+       </div>
+       <div class="t-price row">
+        <div class="pdf col"><a href="#"><i class="fa-solid fa-file-pdf"></i> Download The
+          Invoice</a></div>
+        <div class="total-price col">Total Amount : 2543.00 €</div>
+       </div>
+      </div>
 
 
-           <!-- <div id="claim" onclick="toggleActive(this)" class="page">
+      <!-- <div id="claim" onclick="toggleActive(this)" class="page">
        <h1>Claim Issue</h1>
 
       </div> -->
-          </div>
-         </div>
+     </div>
+    </div>
   </section>
   @include('frontEnd/partial/footer')
 
@@ -1008,7 +770,10 @@
       $('#RepeatuserName').val(data.userName);
       $('#userEmail').val(data.userEmail);
       $('#mobile').val(data.userMobile);
-
+      $('#permanentAddress').val(data.success['permanent_address']);
+      $('#City').val(data.success['city']);
+      $('#zipCode').val(data.success['zipCode']);
+      $('#country').val(data.success['country']);
 
       // Set up image upload functionality
       $("#profile-container").click(function(e) {
@@ -1032,17 +797,6 @@
      } else {
       console.log('Data received:', data.errors);
      }
-
-
-     $('#permanentAddress').val(data.success['permanent_address']);
-     $('#City').val(data.success['city']);
-     $('#zipCode').val(data.success['zipCode']);
-     $('#country').val(data.success['country']);
-
-
-
-
-
     },
 
     error: function(xhr, status, error) {
@@ -1059,10 +813,7 @@
    $('#pAddressSubmit').click(function(e) {
     // Your code here
     e.preventDefault(); // Prevent the form from submitting normally
-    $('#permanentAddress_err').text('');
-    $('#City_err').text('');
-    $('#zipCode_err').text('');
-    $('#country_err').text('');
+
     // Clear error messages
     $('.error-msg').text('');
 
@@ -1089,11 +840,6 @@
 
        // $('#AddOffersForm')[0].reset();
        $('#success_msg').text(response.success);
-       // $('html, body').animate({ scrollTop: 0 }, 'slow');
-       setTimeout(function() {
-        location.reload(true); // true forces a reload from the server and not the cache
-       }, 1000);
-
       } else if (response.errors) {
        // Display validation errors in the console
        console.log(response.errors);
