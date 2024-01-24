@@ -728,8 +728,8 @@
         },
         success: function(data) {
           // Handle the successful response
-          if (data.success) {
-            console.log('Data received:', data.success);
+          if (data.userName) {
+            console.log('Data received:', data.userName);
 
             $('#user').val(data.userName);
             $('#RepeatuserName').val(data.userName);
@@ -742,10 +742,7 @@
 
             $('#profile-container').html('<img src="{{ asset("storage/") }}' + '/' + data.success['profile_picture'] + '">');
 
-            // $('#imageUpload').val(data.success['imageUpload']);
-
-            // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
-
+          
           } else {
             console.log('Data received:', data.errors);
           }
