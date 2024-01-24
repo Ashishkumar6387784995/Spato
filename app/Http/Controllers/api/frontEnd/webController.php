@@ -120,8 +120,69 @@ class webController extends Controller
     public function addPermanentProfileApi(Request $request)
     {
         $userId = Auth::guard('api')->user()->id;
-
-
+    
+        // Find the user by user_id
+        $userProfile = UserProfile::where('user_id', $userId)->first();
+    
+        // If user exists, update the details; otherwise, create a new record
+        if ($userProfile) {
+            // User exists, update the details
+            $validator = Validator::make($request->all(), [
+                'RepeatuserName' => 'required|string',
+                'userEmail' => 'required|email',
+                'mobile' => 'required|string',
+                'permanentAddress' => 'required|string',
+                'City' => 'required|string',
+                'zipCode' => 'required|string|max:10',
+                'country' => 'required|string',
+                'imageUpload' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()]);
+            }
+    
+            if ($request->hasFile('imageUpload')) {
+                $uploadedImage = $request->file('imageUpload');
+    
+                // Use a unique filename to prevent overwriting existing files
+                $fileName = uniqid() . '_' . $uploadedImage->getClientOriginalName();
+    
+                // Store the file in the 'public/profile_pictures' directory
+                $imagePath = $uploadedImage->storeAs('profile_pictures', $fileName, 'public');
+    
+                // Update the user profile with the new details and profile picture
+                $userProfile->update([
+                    'name' => $request->input('RepeatuserName'),
+                    'email' => $request->input('userEmail'),
+                    'mobile' => $request->input('mobile'),
+                    'permanent_address' => $request->input('permanentAddress'),
+                    'city' => $request->input('City'),
+                    'zipCode' => $request->input('zipCode'),
+                    'country' => $request->input('country'),
+                    'status' => 'Permanent',
+                    'profile_picture' => $imagePath ?? null,
+                ]);
+    
+                return response()->json(['success' => 'User profile updated successfully']);
+            }
+    
+            // If no image is uploaded, update the user profile without changing the existing profile picture
+            $userProfile->update([
+                'name' => $request->input('RepeatuserName'),
+                'email' => $request->input('userEmail'),
+                'mobile' => $request->input('mobile'),
+                'permanent_address' => $request->input('permanentAddress'),
+                'city' => $request->input('City'),
+                'zipCode' => $request->input('zipCode'),
+                'country' => $request->input('country'),
+                'status' => 'Permanent',
+            ]);
+    
+            return response()->json(['success' => 'User profile updated successfully']);
+        }
+    
+        // User not found, create a new record
         $validator = Validator::make($request->all(), [
             'RepeatuserName' => 'required|string',
             'userEmail' => 'required|email',
@@ -132,23 +193,23 @@ class webController extends Controller
             'country' => 'required|string',
             'imageUpload' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
         }
-
+    
         if ($request->hasFile('imageUpload')) {
             $uploadedImage = $request->file('imageUpload');
-        
+    
             // Use a unique filename to prevent overwriting existing files
             $fileName = uniqid() . '_' . $uploadedImage->getClientOriginalName();
-        
+    
             // Store the file in the 'public/profile_pictures' directory
             $imagePath = $uploadedImage->storeAs('profile_pictures', $fileName, 'public');
         }
-        
+    
         // Create a new user profile
-        $userProfile = UserProfile::create([
+        UserProfile::create([
             'name' => $request->input('RepeatuserName'),
             'email' => $request->input('userEmail'),
             'mobile' => $request->input('mobile'),
@@ -158,18 +219,12 @@ class webController extends Controller
             'country' => $request->input('country'),
             'user_id' => $userId,
             'status' => 'Permanent',
-            'profile_picture' => $imagePath ?? null, // Use null if no image was uploaded
+            'profile_picture' => $imagePath ?? null,
         ]);
-        
-        // The rest of your code remains unchanged
-        
-
-        // Save profile picture in the storage
-       
-
+    
         return response()->json(['success' => 'User profile created successfully']);
     }
-
+    
 
     public function changePasswordApi(Request $request){
 
