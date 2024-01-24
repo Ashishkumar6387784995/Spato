@@ -397,6 +397,7 @@
               <div class="">
 
                 <div id="profile-container">
+                  <img id="profileImage">
                   Edit
                 </div>
                 <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
@@ -753,10 +754,24 @@
               fasterPreview(this);
             });
 
+
             // Assuming 'profile_picture' is the path to the image file
-            $('#profile-container').html('<img id="profileImage"  src="{{ asset("storage/") }}' + '/' + data.success[
-                'profile_picture'] +
-              '">');
+            var imagePath = data.success['profile_picture'];
+
+            // Clear the existing content of #profile-container
+            $('#profile-container').html('');
+
+            // Create the image element with the specified src attribute
+            var imageElement = $('<img id="profileImage">').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' + imagePath : '{{ asset("storage/profile_pictures/profile.png") }}');
+
+            // Append the image element to #profile-container
+            $('#profile-container').append(imageElement);
+
+            // Optionally, you can add some text or other content to #profile-container
+            $('#profile-container').append(' Edit');
+
+
+
           } else {
             console.log('Data received:', data.errors);
           }
@@ -767,7 +782,7 @@
           $('#zipCode').val(data.success['zipCode']);
           $('#country').val(data.success['country']);
 
-        
+
 
 
 
@@ -819,8 +834,8 @@
               $('#success_msg').text(response.success);
               // $('html, body').animate({ scrollTop: 0 }, 'slow');
               setTimeout(function() {
-            location.reload(true); // true forces a reload from the server and not the cache
-          }, 1000);
+                location.reload(true); // true forces a reload from the server and not the cache
+              }, 1000);
 
             } else if (response.errors) {
               // Display validation errors in the console
