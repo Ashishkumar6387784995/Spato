@@ -729,19 +729,24 @@
     },
     success: function(data) {
      // Handle the successful response
-     if (data.userName) {
+     if (data.success) {
       console.log('Data received:', data.success);
 
       $('#user').val(data.userName);
       $('#RepeatuserName').val(data.userName);
       $('#userEmail').val(data.userEmail);
       $('#mobile').val(data.userMobile);
-      $('#permanentAddress').val(data.success['permanentAddress']);
-      $('#permanentAddress').val(data.success['permanentAddress']);
-      $('#permanentAddress').val(data.success['permanentAddress']);
-      $('#permanentAddress').val(data.success['permanentAddress']);
+      $('#permanentAddress').val(data.success['permanent_address']);
+      $('#City').val(data.success['city']);
+      $('#zipCode').val(data.success['zipCode']);
+      $('#country').val(data.success['country']);
 
+      $('#profile-container').html('<img src="{{ asset("storage/") }}' + '/' + data.success['profile_picture'] +
+       '">');
 
+      // $('#imageUpload').val(data.success['imageUpload']);
+
+      // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
 
      } else {
       console.log('Data received:', data.errors);
