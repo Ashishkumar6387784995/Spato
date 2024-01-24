@@ -34,7 +34,8 @@ class ApiAuthMiddleware
 
         // Share the authenticated user with the request
         $request->merge(['user' => $user]);
-
+       
+        
         return $next($request);
     }
 }

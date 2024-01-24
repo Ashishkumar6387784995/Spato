@@ -98,14 +98,16 @@ class webController extends Controller
         $userEmail= Auth::guard('api')->user()->email;
         $userMobile= Auth::guard('api')->user()->mobile;
         $userId = Auth::guard('api')->user()->id;
-        
-        $user = UserProfile::where('user_id', $userId)
-        ->where('status', 'Permanent')
-        ->latest('created_at') // Order by the 'created_at' field in descending order
-        ->first();   // Retrieve only the latest entry
 
         
-        return response()->json(['success' => $user, 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]);
+        // $user = UserProfile::where('user_id', $userId)
+        // ->where('status', 'Permanent')
+        // ->latest('created_at') // Order by the 'created_at' field in descending order
+        // ->first();   // Retrieve only the latest entry
+        
+       
+        
+        return response()->json([ 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]);
     }
 
 

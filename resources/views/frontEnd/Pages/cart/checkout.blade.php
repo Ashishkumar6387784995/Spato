@@ -133,9 +133,19 @@
 
   }
 
+  .change-btn i {
+   color: var(--white);
+   font-size: 25px;
+   transition: .5s ease-in-out;
+  }
+
   .change-btn:hover {
    background-color: var(--white);
    border: 1px solid var(--blue);
+   color: var(--blue);
+  }
+
+  .change-btn:hover i {
    color: var(--blue);
   }
 
@@ -378,7 +388,8 @@
        </div>
        <div class="row">
         <div class="col">
-         <button type="submit" style="width:100%;" class="change-btn mb-3">Proceed to Pay</button>
+         <button type="submit" style="width:100%;" class="change-btn mb-3">Proceed to Pay via <i
+           class="fa-brands fa-paypal"></i></button>
         </div>
        </div>
       </div>
