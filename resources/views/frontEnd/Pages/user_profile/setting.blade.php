@@ -253,12 +253,40 @@
    .allpage {
     display: block;
    }
+
+   #profile-container {
+    width: 100px;
+    height: 100px;
+   }
+
+   #profile-container img {
+    width: 100px;
+    height: 100px;
+   }
+
+   .profile-btn {
+    width: 100%;
+   }
   }
 
   /* For Mobile Portrait View */
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .allpage {
     display: block;
+   }
+
+   #profile-container {
+    width: 100px;
+    height: 100px;
+   }
+
+   #profile-container img {
+    width: 100px;
+    height: 100px;
+   }
+
+   .profile-btn {
+    width: 100%;
    }
   }
 
@@ -388,7 +416,7 @@
       <h5 class="title">Account Settings</h5>
      </div>
 
-     <div id="profile" class="page container">
+     <div id="profile" class="page container mt-3">
 
       <form id="profileForm" method="post" enctype="multipart/form-data">
        <p class="account">Account Information</p>
@@ -403,7 +431,7 @@
           capture>
 
         </div>
-        <div class="mt-5 ml-3">
+        <div class="mt-5 ml-3 mt-sm-3">
          <input type="text" id="user" />
          <input type="text" id="userEmail" name="userEmail" />
          <div class="links">
