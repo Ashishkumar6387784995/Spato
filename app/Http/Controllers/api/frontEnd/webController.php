@@ -98,7 +98,13 @@ class webController extends Controller
         $userEmail= Auth::guard('api')->user()->email;
         $userMobile= Auth::guard('api')->user()->mobile;
         $userId = Auth::guard('api')->user()->id;
-        $user = UserProfile::select()->where('id', $userId)->where('status', 'Permanent')->get();
+        
+        $user = UserProfile::where('user_id', $userId)
+        ->where('status', 'Permanent')
+        ->latest('created_at') // Order by the 'created_at' field in descending order
+        ->first();   // Retrieve only the latest entry
+
+        
         return response()->json(['success' => $user, 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]);
     }
 
@@ -125,6 +131,16 @@ class webController extends Controller
             return response()->json(['errors' => $validator->errors()]);
         }
 
+        if ($request->hasFile('imageUpload')) {
+            $uploadedImage = $request->file('imageUpload');
+        
+            // Use a unique filename to prevent overwriting existing files
+            $fileName = uniqid() . '_' . $uploadedImage->getClientOriginalName();
+        
+            // Store the file in the 'public/profile_pictures' directory
+            $imagePath = $uploadedImage->storeAs('profile_pictures', $fileName, 'public');
+        }
+        
         // Create a new user profile
         $userProfile = UserProfile::create([
             'name' => $request->input('RepeatuserName'),
@@ -136,17 +152,14 @@ class webController extends Controller
             'country' => $request->input('country'),
             'user_id' => $userId,
             'status' => 'Permanent',
+            'profile_picture' => $imagePath ?? null, // Use null if no image was uploaded
         ]);
+        
+        // The rest of your code remains unchanged
+        
 
         // Save profile picture in the storage
-        if ($request->hasFile('imageUpload')) {
-
-            $uploadedImage = $request->file('imageUpload');
-            $imagePath = $uploadedImage->store('public/profile_pictures');
-
-            // Update the user profile with the file path
-            $userProfile->update(['profile_picture' => $imagePath]);
-        }
+       
 
         return response()->json(['success' => 'User profile created successfully']);
     }

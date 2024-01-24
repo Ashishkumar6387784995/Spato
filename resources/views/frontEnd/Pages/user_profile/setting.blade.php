@@ -404,8 +404,8 @@
 
               </div>
               <div class="mt-5 ml-3">
-                <input type="text"  id="user" />
-                <input type="text"  id="userEmail" name="userEmail" />
+                <input type="text" id="user" />
+                <input type="text" id="userEmail" name="userEmail" />
                 <div class="links">
                   <!-- <a href="#" class="m-0 pr-5">Edit</a> -->
                   <a href="#" class="m-0" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cpassword">Change
@@ -417,11 +417,12 @@
 
             <div class="other-inforation">
               <p class="other-information">Other Information</p>
+              <span id="success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
               <table>
                 <tbody>
                   <tr>
                     <td>Name</td>
-                    <td> <input type="text" id="RepeatuserName" name="RepeatuserName" class="form-control"  readonly></td>
+                    <td> <input type="text" id="RepeatuserName" name="RepeatuserName" class="form-control" readonly></td>
                   </tr>
                   <tr>
                     <td>Mobile Number</td>
@@ -435,23 +436,28 @@
                   <tr>
                     <td>Address(Street name and House number)</td>
                     <td> <textarea class="form-control" id="permanentAddress" name="permanentAddress"></textarea>
+                      <span id="permanentAddress_err" style="color:red"></span>
                     </td>
-                    <span id="permanentAddress_err" style="color:red"></span>
+
                   </tr>
                   <tr>
                     <td>City</td>
-                    <td> <input type="text"  class="form-control" name="City" id="City"></td>
-                    <span id="City_err" style="color:red"></span>
+                    <td> <input type="text" class="form-control" name="City" id="City">
+                      <span id="City_err" style="color:red"></span>
+                    </td>
+
                   </tr>
                   <tr>
                     <td>Zip code</td>
-                    <td> <input type="text"  class="form-control" name="zipCode" id="zipCode"></td>
-                    <span id="zipCode_err" style="color:red"></span>
+                    <td> <input type="text" class="form-control" name="zipCode" id="zipCode">
+                      <span id="zipCode_err" style="color:red"></span>
+                    </td>
                   </tr>
                   <tr>
                     <td>Country</td>
-                    <td> <input type="text"  class="form-control" name="country" id="country"></td>
-                    <span id="country_err" style="color:red"></span>
+                    <td> <input type="text" class="form-control" name="country" id="country">
+                      <span id="country_err" style="color:red"></span>
+                    </td>
                   </tr>
                   <tr>
                     <td><button type="submit" class="profile-btn" id="pAddressSubmit">Submit</button></td>
@@ -619,31 +625,31 @@
   <!-- Modal -->
   <form id="changePasswordForm" method="post">
     <div class="modal fade" id="cpassword" tabindex="-1" aria-labelledby="cpasswordLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="ecpasswordLabel">Change Password</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <label for="basic-url" class="form-label">Old Password</label>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="old password" aria-label="old-password" aria-describedby="basic-addon1">
-                    </div>
-                    <label for="basic-url" class="form-label">New Password</label>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="new password" aria-label="new-password" aria-describedby="basic-addon1">
-                    </div>
-                    <label for="basic-url" class="form-label">Confirm Password</label>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" id="confirmPassword" name="newPassword_confirmation" placeholder="confirm password" aria-label="confirm-password" aria-describedby="basic-addon1">
-                    </div>
-                </div>
-                <button type="button" class="m-1 profile-btn" id="UpdatePasswordButton" >Update Password</button>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ecpasswordLabel">Change Password</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <label for="basic-url" class="form-label">Old Password</label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="old password" aria-label="old-password" aria-describedby="basic-addon1">
             </div>
+            <label for="basic-url" class="form-label">New Password</label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="new password" aria-label="new-password" aria-describedby="basic-addon1">
+            </div>
+            <label for="basic-url" class="form-label">Confirm Password</label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" id="confirmPassword" name="newPassword_confirmation" placeholder="confirm password" aria-label="confirm-password" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <button type="button" class="m-1 profile-btn" id="UpdatePasswordButton">Update Password</button>
         </div>
+      </div>
     </div>
-</form>
+  </form>
 
 
 
@@ -677,7 +683,7 @@
             <div class="input-group mb-3">
               <label for="country">Country</label>
               <select class="form-select" id="floatingSelect" name="tempCountry" aria-label="Floating label select example">
-              <option value="Germany">Germany</option>
+                <option value="Germany">Germany</option>
                 <option value="Denmark">Denmark</option>
                 <option value="Poland">Poland</option>
                 <option value="Czech Republic">Czech Republic</option>
@@ -715,40 +721,44 @@
 
       // // Make a GET request using AJAX
       $.ajax({
-          url: '/api/profileViewApi', // Replace with the actual endpoint URL
-          method: 'GET',
-          headers: {
-              'Authorization': 'Bearer ' + token,
-          },
-          success: function (data) {
-              // Handle the successful response
-              if (data.success) {
-                  console.log('Data received:', data.success);
+        url: '/api/profileViewApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        success: function(data) {
+          // Handle the successful response
+          if (data.success) {
+            console.log('Data received:', data.success);
 
-                  $('#user').val(data.userName);
-                  $('#RepeatuserName').val(data.userName);
-                  $('#userEmail').val(data.userEmail);
-                  $('#mobile').val(data.userMobile);
-                  $('#permanentAddress').val(data.success['permanentAddress']);
-                  $('#permanentAddress').val(data.success['permanentAddress']);
-                  $('#permanentAddress').val(data.success['permanentAddress']);
-                  $('#permanentAddress').val(data.success['permanentAddress']);
+            $('#user').val(data.userName);
+            $('#RepeatuserName').val(data.userName);
+            $('#userEmail').val(data.userEmail);
+            $('#mobile').val(data.userMobile);
+            $('#permanentAddress').val(data.success['permanent_address']);
+            $('#City').val(data.success['city']);
+            $('#zipCode').val(data.success['zipCode']);
+            $('#country').val(data.success['country']);
 
-              
-                  
-              } else {
-                  console.log('Data received:', data.errors);
-              }
-          },
+            $('#profile-container').html('<img src="{{ asset("storage/") }}' + '/' + data.success['profile_picture'] + '">');
 
-          error: function (xhr, status, error) {
-              // Handle specific errors
-              if (xhr.status === 401) {
-                  console.error('Unauthorized: Please check your authentication token.');
-              } else {
-                  console.error('Error:', error);
-              }
+            // $('#imageUpload').val(data.success['imageUpload']);
+
+            // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
+
+          } else {
+            console.log('Data received:', data.errors);
           }
+        },
+
+        error: function(xhr, status, error) {
+          // Handle specific errors
+          if (xhr.status === 401) {
+            console.error('Unauthorized: Please check your authentication token.');
+          } else {
+            console.error('Error:', error);
+          }
+        }
       });
 
       $('#pAddressSubmit').click(function(e) {
@@ -758,7 +768,7 @@
         // Clear error messages
         $('.error-msg').text('');
 
-              var formData = new FormData($('#profileForm')[0]);
+        var formData = new FormData($('#profileForm')[0]);
 
 
         // Make AJAX request
@@ -778,13 +788,31 @@
             // Handle success response
             if (response.success) {
               console.log(response.success);
-            
+
               // $('#AddOffersForm')[0].reset();
               $('#success_msg').text(response.success);
             } else if (response.errors) {
               // Display validation errors in the console
               console.log(response.errors);
-              //   displayValidationErrors(response.errors);
+
+              if (response.errors['permanentAddress']) {
+                $('#permanentAddress_err').text(response.errors['permanentAddress']);
+              }
+              if (response.errors['City']) {
+                $('#City_err').text(response.errors['City']);
+              }
+              if (response.errors['zipCode']) {
+                $('#zipCode_err').text(response.errors['zipCode']);
+              }
+              if (response.errors['country']) {
+                $('#country_err').text(response.errors['country']);
+              }
+
+
+              $('#permanentAddress_err').val(data.success['permanentAddress']);
+              $('#City_err').val(data.success['permanentAddress']);
+              $('#zipCode_err').val(data.success['permanentAddress']);
+              $('#country_err').val(data.success['permanentAddress']);
             }
           },
           error: function(xhr, status, error) {
@@ -811,7 +839,7 @@
         // Clear error messages
         $('.error-msg').text('');
 
-              var formData = new FormData($('#changePasswordForm')[0]);
+        var formData = new FormData($('#changePasswordForm')[0]);
 
 
         // Make AJAX request
@@ -831,7 +859,7 @@
             // Handle success response
             if (response.success) {
               console.log(response.success);
-            
+
               // $('#AddOffersForm')[0].reset();
               $('#success_msg').text(response.success);
             } else if (response.errors) {
@@ -865,7 +893,7 @@
         // Clear error messages
         $('.error-msg').text('');
 
-              var formData = new FormData($('#tempAddressForm')[0]);
+        var formData = new FormData($('#tempAddressForm')[0]);
 
 
         // Make AJAX request
@@ -885,7 +913,7 @@
             // Handle success response
             if (response.success) {
               console.log(response.success);
-            
+
               // $('#AddOffersForm')[0].reset();
               $('#success_msg').text(response.success);
             } else if (response.errors) {
