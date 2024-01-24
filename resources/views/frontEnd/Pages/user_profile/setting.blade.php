@@ -424,11 +424,86 @@
        <div class="d-flex">
         <div class="">
 
+<<<<<<< HEAD
          <div id="profile-container">
           Edit
          </div>
          <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
           capture>
+=======
+                <div id="profile-container">
+                  <img id="profileImage">
+                  Edit
+                </div>
+                <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
+
+              </div>
+              <div class="mt-5 ml-3">
+                <input type="text" id="user" />
+                <input type="text" id="userEmail" name="userEmail" />
+                <div class="links">
+                  <!-- <a href="#" class="m-0 pr-5">Edit</a> -->
+                  <a href="#" class="m-0" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cpassword">Change
+                    Password</a>
+                </div>
+              </div>
+            </div>
+            <hr>
+
+            <div class="other-inforation" style=" margin-top:-1rem;">
+              <span id="success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
+              <p class="other-information">Other Information</p>
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Name</td>
+                    <td> <input type="text" id="RepeatuserName" name="RepeatuserName" class="form-control" readonly></td>
+                  </tr>
+                  <tr>
+                    <td>Mobile Number</td>
+                    <td> <input type="text" class="form-control" name="mobile" id="mobile" readonly></td>
+                  </tr>
+                  <tr>
+                  <tr>
+                    <td><b>Permanent Address</b></td>
+                    <td> </td>
+                  </tr>
+                  <tr>
+                    <td>Address(Street name and House number)</td>
+                    <td> <textarea class="form-control" id="permanentAddress" name="permanentAddress"></textarea>
+                      <span id="permanentAddress_err" style="color:red"></span>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>City</td>
+                    <td> <input type="text" class="form-control" name="City" id="City">
+                      <span id="City_err" style="color:red"></span>
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <td>Zip code</td>
+                    <td> <input type="text" class="form-control" name="zipCode" id="zipCode">
+                      <span id="zipCode_err" style="color:red"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Country</td>
+                    <td> <input type="text" class="form-control" name="country" id="country">
+                      <span id="country_err" style="color:red"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><button type="submit" class="profile-btn" id="pAddressSubmit">Submit</button></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+>>>>>>> 8bb76e464442a42c8cf1d0ec90b14866ade2ac2d
 
         </div>
         <div class="mt-5 ml-3 mt-sm-3">
@@ -786,8 +861,87 @@
        }
       }
 
+<<<<<<< HEAD
       $("#imageUpload").change(function() {
        fasterPreview(this);
+=======
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/profileViewApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        success: function(data) {
+          // Handle the successful response
+          if (data.userName) {
+            console.log('Data received:', data.userName);
+
+            // Update DOM elements with user data
+            $('#user').val(data.userName);
+            $('#RepeatuserName').val(data.userName);
+            $('#userEmail').val(data.userEmail);
+            $('#mobile').val(data.userMobile);
+
+
+            // Set up image upload functionality
+            $("#profile-container").click(function(e) {
+              $("#imageUpload").click();
+            });
+
+            function fasterPreview(uploader) {
+              if (uploader.files && uploader.files[0]) {
+                $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+              }
+            }
+
+            $("#imageUpload").change(function() {
+              fasterPreview(this);
+            });
+
+
+            // Assuming 'profile_picture' is the path to the image file
+            var imagePath = data.success['profile_picture'];
+
+            // Clear the existing content of #profile-container
+            $('#profile-container').html('');
+
+            // Create the image element with the specified src attribute
+            var imageElement = $('<img id="profileImage">').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' + imagePath : '{{ asset("storage/profile_pictures/profile.png") }}');
+
+            // Append the image element to #profile-container
+            $('#profile-container').append(imageElement);
+
+            // Optionally, you can add some text or other content to #profile-container
+            $('#profile-container').append(' Edit');
+
+
+
+          } else {
+            console.log('Data received:', data.errors);
+          }
+
+
+          $('#permanentAddress').val(data.success['permanent_address']);
+          $('#City').val(data.success['city']);
+          $('#zipCode').val(data.success['zipCode']);
+          $('#country').val(data.success['country']);
+
+
+
+
+
+        },
+
+        error: function(xhr, status, error) {
+          // Handle specific errors
+          if (xhr.status === 401) {
+            console.error('Unauthorized: Please check your authentication token.');
+          } else {
+            console.error('Error:', error);
+          }
+        }
+>>>>>>> 8bb76e464442a42c8cf1d0ec90b14866ade2ac2d
       });
 
       // Assuming 'profile_picture' is the path to the image file
@@ -814,8 +968,17 @@
     // Your code here
     e.preventDefault(); // Prevent the form from submitting normally
 
+<<<<<<< HEAD
     // Clear error messages
     $('.error-msg').text('');
+=======
+              // $('#AddOffersForm')[0].reset();
+              $('#success_msg').text(response.success);
+              // $('html, body').animate({ scrollTop: 0 }, 'slow');
+              setTimeout(function() {
+                location.reload(true); // true forces a reload from the server and not the cache
+              }, 1000);
+>>>>>>> 8bb76e464442a42c8cf1d0ec90b14866ade2ac2d
 
     var formData = new FormData($('#profileForm')[0]);
 
