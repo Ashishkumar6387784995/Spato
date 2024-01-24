@@ -101,11 +101,17 @@ class webController extends Controller
         
         $user = UserProfile::where('user_id', $userId)
         ->where('status', 'Permanent')
-        ->latest('created_at') // Order by the 'created_at' field in descending order
-        ->first();   // Retrieve only the latest entry
+        ->latest('created_at') 
+        ->first();  
 
+        if($user){
+            return response()->json(['success' => $user, 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]);
+        }
+        else{
+            return response()->json([ 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]); 
+        }
         
-        return response()->json(['success' => $user, 'userName'=>$userName,'userEmail'=>$userEmail, 'userMobile'=>$userMobile]);
+      
     }
 
 
