@@ -253,40 +253,12 @@
    .allpage {
     display: block;
    }
-
-   #profile-container {
-    width: 100px;
-    height: 100px;
-   }
-
-   #profile-container img {
-    width: 100px;
-    height: 100px;
-   }
-
-   .profile-btn {
-    width: 100%;
-   }
   }
 
   /* For Mobile Portrait View */
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .allpage {
     display: block;
-   }
-
-   #profile-container {
-    width: 100px;
-    height: 100px;
-   }
-
-   #profile-container img {
-    width: 100px;
-    height: 100px;
-   }
-
-   .profile-btn {
-    width: 100%;
    }
   }
 
@@ -416,7 +388,7 @@
       <h5 class="title">Account Settings</h5>
      </div>
 
-     <div id="profile" class="page container mt-3">
+     <div id="profile" class="page container">
 
       <form id="profileForm" method="post" enctype="multipart/form-data">
        <p class="account">Account Information</p>
@@ -431,7 +403,7 @@
           capture>
 
         </div>
-        <div class="mt-5 ml-3 mt-sm-3">
+        <div class="mt-5 ml-3">
          <input type="text" id="user" />
          <input type="text" id="userEmail" name="userEmail" />
          <div class="links">
@@ -443,9 +415,10 @@
        </div>
        <hr>
 
-       <div class="other-inforation">
-        <p class="other-information">Other Information</p>
+       <div class="other-inforation" style=" margin-top:-1rem;">
         <span id="success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
+        <p class="other-information">Other Information</p>
+
         <table>
          <tbody>
           <tr>
@@ -770,10 +743,7 @@
       $('#RepeatuserName').val(data.userName);
       $('#userEmail').val(data.userEmail);
       $('#mobile').val(data.userMobile);
-      $('#permanentAddress').val(data.success['permanent_address']);
-      $('#City').val(data.success['city']);
-      $('#zipCode').val(data.success['zipCode']);
-      $('#country').val(data.success['country']);
+
 
       // Set up image upload functionality
       $("#profile-container").click(function(e) {
@@ -797,6 +767,17 @@
      } else {
       console.log('Data received:', data.errors);
      }
+
+
+     $('#permanentAddress').val(data.success['permanent_address']);
+     $('#City').val(data.success['city']);
+     $('#zipCode').val(data.success['zipCode']);
+     $('#country').val(data.success['country']);
+
+
+
+
+
     },
 
     error: function(xhr, status, error) {
@@ -813,7 +794,10 @@
    $('#pAddressSubmit').click(function(e) {
     // Your code here
     e.preventDefault(); // Prevent the form from submitting normally
-
+    $('#permanentAddress_err').text('');
+    $('#City_err').text('');
+    $('#zipCode_err').text('');
+    $('#country_err').text('');
     // Clear error messages
     $('.error-msg').text('');
 
@@ -840,6 +824,11 @@
 
        // $('#AddOffersForm')[0].reset();
        $('#success_msg').text(response.success);
+       // $('html, body').animate({ scrollTop: 0 }, 'slow');
+       setTimeout(function() {
+        location.reload(true); // true forces a reload from the server and not the cache
+       }, 1000);
+
       } else if (response.errors) {
        // Display validation errors in the console
        console.log(response.errors);
