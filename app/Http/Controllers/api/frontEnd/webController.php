@@ -233,7 +233,8 @@ class webController extends Controller
 
         $validator = Validator::make($request->all(), [
             'oldPassword' => 'required|string', 
-            'newPassword' => 'required|string|confirmed',
+            'newPassword' => 'required|string|min:8|confirmed',
+
         ]);
     
         if ($validator->fails()) {
@@ -288,6 +289,13 @@ class webController extends Controller
         ]);
             return response()->json(['success' => 'Data Saved Succeessfulley']);
       
+
+    }
+
+
+    public function showTempAddressApi(){
+
+        return response()->json(['success' => 'Data Saved Succeessfulley']);
 
     }
 

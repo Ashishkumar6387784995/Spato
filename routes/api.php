@@ -109,11 +109,11 @@ Route::middleware('api.auth')->group(function () {
    Route::post('addPermanentProfileApi', [webController::class, 'addPermanentProfileApi']);
    Route::post('changePasswordApi', [webController::class, 'changePasswordApi']);
    Route::post('saveTempAddressApi', [webController::class, 'saveTempAddressApi']);
-
+   Route::post('showTempAddressApi', [webController::class, 'showTempAddressApi']);
 
 
    
-  Route::post('logoutApi', [loginController::class, 'logoutApi']);
+  Route::get('logoutApi', [loginController::class, 'logoutApi']);
   // Route::get('logout',[loginController::class,'logout']);
 
   
