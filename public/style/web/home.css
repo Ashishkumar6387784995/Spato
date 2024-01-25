@@ -77,11 +77,25 @@ i {
 }
 .dropdown ul li a {
     color: var(--white);
+    font-size: 13px;
+    text-wrap: wrap;
 }
 .pools-position {
     left: -200px !important;
     top: 30px !important;
 }
+
+.verrohrung-position {
+    width: 1050px !important;
+    left: -550px !important;
+    top: 30px !important;
+}
+
+.wasserpflege-position {
+    left: -600px !important;
+    top: 30px !important;
+}
+
 .dropdown-element {
     width: 900px;
     position: absolute !important;
@@ -347,6 +361,21 @@ form .btn-style {
 
     .services .row .col p {
         font-size: 14px;
+    }
+    .pools-position {
+        left: 0px !important;
+        top: 30px !important;
+    }
+
+    .verrohrung-position {
+        width: 100% !important;
+        left: 0px !important;
+        top: 30px !important;
+    }
+
+    .wasserpflege-position {
+        left: 0px !important;
+        top: 30px !important;
     }
 }
 
