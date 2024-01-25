@@ -963,13 +963,13 @@
 
 
 
+   
 
-
-    // Handle the click event
-    $("#address").on("click", function() {
-      console.log('hello');
-      // Add any additional functionality you want to perform on click
-    });
+        // Handle the click event
+        $("#address").on("click", function() {
+            console.log('hello');
+            // Add any additional functionality you want to perform on click
+        });
 
 
 
@@ -1058,7 +1058,7 @@
 
 
 
-  <script>
+<script>
     /*
      *   SIDEBAR V2
      *   Written by Vardan Petrosyan
@@ -1100,7 +1100,7 @@
 
     //function for initializing, populating menu and page arrays
     function populateMenus() {
-      menus.push(new Menu("Manage Profile Settings", "/", "fa-icon-1", "menu1"));
+      menus.push(new Menu("Manage Profile Settings", "/","fa-icon-1", "menu1"));
       menus.push(new Menu("Manage Addresses", "/address", "fa-icon-2", "menu2"));
       menus.push(new Menu("Orders History", "/info/order", "fa-icon-3", "menu3"));
       //  menus.push(new Menu("Claim Issues", "/info/claim"));
@@ -1140,188 +1140,94 @@
       pages[index].style.display = "block";
     }
 
-    // Handle the click event for menu2
-    $("#menu2").on("click", function() {
-      console.log('hello');
-      // Add any additional functionality you want to perform on click
+     // Handle the click event for menu2
+     $("#menu2").on("click", function() {
+            console.log('hello');
+            // Add any additional functionality you want to perform on click
 
-      e.preventDefault(); // Prevent the form from submitting normally
+            e.preventDefault(); // Prevent the form from submitting normally
 
-      $('#tempZip_err').text('');
-      $('#tempCity_err').text('');
-      $('#tempAddress_err').text('');
+$('#tempZip_err').text('');
+$('#tempCity_err').text('');
+$('#tempAddress_err').text('');
 
-      var token = localStorage.getItem('authToken');
-      console.log(token);
+var token = localStorage.getItem('authToken');
+console.log(token);
 
-      // Check if the token exists
-      if (!token) {
-        console.error('Token not found in localStorage');
-        window.location.href = '/api/home';
-        return; // Stop further execution if the token is missing
+// Check if the token exists
+if (!token) {
+  console.error('Token not found in localStorage');
+  window.location.href = '/api/home';
+  return; // Stop further execution if the token is missing
+}
+
+var formData = new FormData($('#tempAddressForm')[0]);
+
+
+// Make AJAX request
+$.ajax({
+  type: 'POST',
+  url: '/api/saveTempAddressApi',
+  data: formData,
+  dataType: 'json',
+  processData: false, // Important: tell jQuery not to process the data
+  contentType: false,
+  // processData: false,
+  // contentType: false,
+  headers: {
+    'Authorization': 'Bearer ' + token,
+  },
+  success: function(response) {
+    // Handle success response
+    if (response.success) {
+      console.log(response.success);
+
+      // $('#AddOffersForm')[0].reset();
+      $('#temp_success_msg').text(response.success);
+      $('#signupForm')[0].reset();
+    } else if (response.errors) {
+      // Display validation errors in the console
+      console.log(response.errors);
+
+      if (response.errors['tempAddress']) {
+        $('#tempAddress_err').text(response.errors['tempAddress']);
       }
 
-      var formData = new FormData($('#tempAddressForm')[0]);
+      if (response.errors['tempCity']) {
+        $('#tempCity_err').text(response.errors['tempCity']);
+      }
 
+      if (response.errors['tempZip']) {
+        $('#tempZip_err').text(response.errors['tempZip']);
+      }
 
-      // Make AJAX request
-      $.ajax({
-        type: 'POST',
-        url: '/api/saveTempAddressApi',
-        data: formData,
-        dataType: 'json',
-        processData: false, // Important: tell jQuery not to process the data
-        contentType: false,
-        // processData: false,
-        // contentType: false,
-        headers: {
-          'Authorization': 'Bearer ' + token,
-        },
-        success: function(response) {
-          // Handle success response
-          if (response.success) {
-            console.log(response.success);
+    }
+  },
+  error: function(xhr, status, error) {
+    // Handle error response
+    var errors = xhr.responseJSON.errors;
+    if (errors) {
 
-            // $('#AddOffersForm')[0].reset();
-            $('#temp_success_msg').text(response.success);
-            $('#signupForm')[0].reset();
-          } else if (response.errors) {
-            // Display validation errors in the console
-            console.log(response.errors);
+      // Display errors in your frontend
+      // For example, you can loop through errors and append them to a specific element
+      $.each(errors, function(field, messages) {
+        // Append error messages to your HTML
 
-            if (response.errors['tempAddress']) {
-              $('#tempAddress_err').text(response.errors['tempAddress']);
-            }
-
-            if (response.errors['tempCity']) {
-              $('#tempCity_err').text(response.errors['tempCity']);
-            }
-
-            if (response.errors['tempZip']) {
-              $('#tempZip_err').text(response.errors['tempZip']);
-            }
-
-          }
-        },
-        error: function(xhr, status, error) {
-          // Handle error response
-          var errors = xhr.responseJSON.errors;
-          if (errors) {
-
-            // Display errors in your frontend
-            // For example, you can loop through errors and append them to a specific element
-            $.each(errors, function(field, messages) {
-              // Append error messages to your HTML
-
-              $('#' + field + '-err').text(messages[0]);
-            });
-          }
-        }
+        $('#' + field + '-err').text(messages[0]);
       });
+    }
+  }
+});
 
 
-    });
-  </script>
+        });
+</script>
 
 
   <script>
-<<<<<<< HEAD
-  /*
-   *   SIDEBAR V2
-   *   Written by Vardan Petrosyan
-   *   https://github.com/Vardan2009
-   */
-
-  // Create Menu Class
-  class Menu {
-   // Constructor for Menu class
-   constructor(_name, _activateID, _fa, _menuID) {
-    this.name = _name;
-    this.activateID = _activateID;
-    this.fa = _fa;
-    this.menuID = _menuID;
-   }
-
-   // Return an HTML element representation of the Menu
-   GetHTMLElement = function() {
-    var element = document.createElement("div");
-    element.className = "menu";
-    var p = document.createElement("p");
-
-    var iT = document.createElement("i");
-    iT.className = this.fa;
-    p.appendChild(iT);
-
-    p.innerHTML += " " + this.name;
-    var i = document.createElement("i");
-    i.className = "";
-    element.appendChild(p);
-    element.appendChild(i);
-
-    // Assign the menuID as the element's ID
-    element.id = this.menuID;
-
-    return element;
-   };
-  }
-
-  // Define arrays for menus and pages
-  var menus = [];
-  var pages = [];
-
-  // Function for initializing, populating menu, and page arrays
-  function populateMenus() {
-   menus.push(new Menu("Manage Profile Settings", "/", "fa-icon-1", "menu1"));
-   menus.push(new Menu("Manage Addresses", "/address", "fa-icon-2", "menu2"));
-   menus.push(new Menu("Orders History", "/info/order", "fa-icon-3", "menu3"));
-   // menus.push(new Menu("Claim Issues", "/info/claim", "fa-icon-4", "menu4"));
-
-   pages.push(document.getElementById("profile"));
-   pages.push(document.getElementById("address"));
-   pages.push(document.getElementById("order"));
-   // pages.push(document.getElementById("claim"));
-  }
-
-  // Call functions and open the first page
-  populateMenus();
-  displayUpdatedMenus();
-  open(0);
-
-  // Update and render menus
-  function displayUpdatedMenus() {
-   var sidebarElement = document.getElementById("sidebar");
-   var sidebarMenus = sidebarElement.querySelectorAll(":scope > .menu");
-   for (let i = 0; i < sidebarMenus.length; i++) {
-    sidebarMenus[i].remove();
-   }
-   for (let i = 0; i < menus.length; i++) {
-    var element = menus[i].GetHTMLElement();
-    sidebarElement.appendChild(element);
-    element.addEventListener("click", function() {
-     open(i);
-    });
-   }
-  }
-
-  // Function for opening a page on menu click
-  function open(index) {
-   for (let i = 0; i < pages.length; i++) {
-    pages[i].style.display = "none";
-   }
-   pages[index].style.display = "block";
-  }
-
-
-  // Handle the click event
-  $("#menu2").on("click", function() {
-   console.log('hello');
-   // Add any additional functionality you want to perform on click
-  });
-=======
     function toggleActive(element) {
       element.classList.toggle('active');
     }
->>>>>>> efe53de2d9d4f58a165341bfe9bed1758fac33ee
   </script>
   <!-- <script>
   
@@ -1365,7 +1271,7 @@
       .catch(error => console.error("Error fetching countries:", error));
   </script> -->
   <!-- Countries name -->
-
+  
 </body>
 
 </html>
