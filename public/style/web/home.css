@@ -80,20 +80,26 @@ i {
     font-size: 13px;
     text-wrap: wrap;
 }
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+    color: var(--blue);
+}
+
 .pools-position {
     left: -200px !important;
-    top: 30px !important;
+    top: 25px !important;
 }
 
 .verrohrung-position {
     width: 1050px !important;
-    left: -550px !important;
-    top: 30px !important;
+    left: -460px !important;
+    top: 25px !important;
 }
 
 .wasserpflege-position {
-    left: -600px !important;
-    top: 30px !important;
+    left: -460px !important;
+    top: 25px !important;
 }
 
 .dropdown-element {
