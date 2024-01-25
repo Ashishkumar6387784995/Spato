@@ -1174,6 +1174,14 @@
           } else if (response.permanent && response.temp) {
             // Display validation errors in the console
 
+            var permanentAddress = response.permanent[0].permanent_address;
+            var zipCode = response.permanent[0].zipCode;
+            var country = response.permanent[0].country;
+
+            var fullAddress = permanentAddress + ', ' + zipCode + ', ' + country;
+            $('#pAddressShow').text(fullAddress);
+
+
             // Assuming 'response.temp' is the variable containing your array of temporary addresses
             var tempAddressTable = $('#tempAddressShow tbody');
 
