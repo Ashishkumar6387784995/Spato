@@ -1233,9 +1233,10 @@
                     // Handle success response
                     console.log('Delete request successful:', response.message);
                     $('#tempAddrssDelete_msg').text(response.message);
-                    // setTimeout(function() {
-                    //   location.reload(true); // true forces a reload from the server and not the cache
-                    // }, 1000);
+                    setTimeout(function() {
+                      location.reload(true); // true forces a reload from the server and not the cache
+                    }, 1000);
+                    
 
                     // Optionally, you can update the UI or take additional actions
                   },
