@@ -113,7 +113,7 @@ Route::middleware('api.auth')->group(function () {
    Route::get('tempAddressDelete/{id}', [webController::class, 'tempAddressDelete']);
 
    
-  Route::get('logoutApi', [loginController::class, 'logoutApi']);
+  Route::post('logoutApi', [loginController::class, 'logoutApi']);
   // Route::get('logout',[loginController::class,'logout']);
 
   
