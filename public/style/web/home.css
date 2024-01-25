@@ -78,16 +78,19 @@ i {
 .dropdown ul li a {
     color: var(--white);
 }
-
-.pools-dropdown {
-    width: 600px;
+.pools-position {
+    left: -200px !important;
+    top: 30px !important;
+}
+.dropdown-element {
+    width: 900px;
     position: absolute !important;
 }
-.pools-dropdown li h6 {
-    font-size: 15px;
+.dropdown-element li h6 {
+    font-size: 18px;
     font-weight: 700;
     border-bottom: 2px solid var(--blue);
-    padding-bottom: 10px;
+    padding: 10px 0px;
 }
 
 .submenu {

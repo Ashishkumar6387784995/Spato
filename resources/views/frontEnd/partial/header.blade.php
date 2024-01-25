@@ -71,7 +71,7 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Pools
       </a>
-      <ul class="dropdown-menu pools-dropdown">
+      <ul class="dropdown-menu dropdown-element pools-position">
        <li>
         <div class="row">
          <div class="col">
@@ -89,12 +89,7 @@
           <a class="dropdown-item" href="#">EPS stone overflow channel P100</a>
           <a class="dropdown-item" href="#">Overflow gutters grates</a>
           <a class="dropdown-item" href="#">Accesories</a>
-          <h6 class="ml-3">Built-In Parts</h6>
-          <a class="dropdown-item" href="#">Stainless steel BEHNCKE ></a>
-          <a class="dropdown-item" href="#">Stainless steel HUGO LAHME ></a>
-          <a class="dropdown-item" href="#">Stainless steel FLUIDRA ></a>
-          <a class="dropdown-item" href="#">Gunmetale Hugo LAHME ></a>
-          <a class="dropdown-item" href="#">ABS Plastic ></a>
+
          </div>
          <div class="col">
           <h6 class="ml-3">Slides</h6>
@@ -110,6 +105,15 @@
           <a class="dropdown-item" href="#">Head stainless steel Mixta</a>
           <a class="dropdown-item" href="#">Ladder 2 parts</a>
           <a class="dropdown-item" href="#">Accesories</a>
+         </div>
+
+         <div class="col">
+          <h6 class="ml-3">Built-In Parts</h6>
+          <a class="dropdown-item" href="#">Stainless steel BEHNCKE ></a>
+          <a class="dropdown-item" href="#">Stainless steel HUGO LAHME ></a>
+          <a class="dropdown-item" href="#">Stainless steel FLUIDRA ></a>
+          <a class="dropdown-item" href="#">Gunmetale Hugo LAHME ></a>
+          <a class="dropdown-item" href="#">ABS Plastic ></a>
          </div>
         </div>
        </li>
@@ -120,45 +124,50 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Technik
       </a>
-      <ul class="dropdown-menu pools-dropdown">
+      <ul class="dropdown-menu dropdown-element pools-position">
        <li>
         <div class="row">
          <div class="col">
-          <h6 class="ml-3 ">EPS Pools</h6>
-          <a class="dropdown-item" href="#">EPS stone P40</a>
-          <a class="dropdown-item" href="#">EPS stone P80</a>
-          <a class="dropdown-item" href="#">EPS stone round arch</a>
-          <a class="dropdown-item" href="#">EPS stone P40 Giant</a>
-          <a class="dropdown-item" href="#">EPS stone round arch giant</a>
-          <a class="dropdown-item" href="#">EPS stone overflow channel P100</a>
-          <a class="dropdown-item" href="#">EPS stairs</a>
-          <a class="dropdown-item" href="#">Accesories</a>
-          <h6 class="ml-3">Overflow Channels</h6>
-          <a class="dropdown-item" href="#">Concrete overflow channel</a>
-          <a class="dropdown-item" href="#">EPS stone overflow channel P100</a>
-          <a class="dropdown-item" href="#">Overflow gutters grates</a>
-          <a class="dropdown-item" href="#">Accesories</a>
-          <h6 class="ml-3">Built-In Parts</h6>
-          <a class="dropdown-item" href="#">Stainless steel BEHNCKE ></a>
-          <a class="dropdown-item" href="#">Stainless steel HUGO LAHME ></a>
-          <a class="dropdown-item" href="#">Stainless steel FLUIDRA ></a>
-          <a class="dropdown-item" href="#">Gunmetale Hugo LAHME ></a>
-          <a class="dropdown-item" href="#">ABS Plastic ></a>
+          <h6 class="ml-3 ">Pump</h6>
+          <a class="dropdown-item" href="#">Swimming pool circulation pumps ></a>
+          <a class="dropdown-item" href="#">Jet pumping attractions ></a>
+          <h6 class="ml-3">Filter</h6>
+          <a class="dropdown-item" href="#">Sand filter ></a>
+          <a class="dropdown-item" href="#">Cartridge filter ></a>
+          <a class="dropdown-item" href="#">Skim filter ></a>
+          <a class="dropdown-item" href="#">Filter material ></a>
+          <a class="dropdown-item" href="#">Accesories ></a>
+
+          <h6 class="ml-3">Valves</h6>
+          <a class="dropdown-item" href="#">Rod valves ></a>
+          <a class="dropdown-item" href="#">Multi-way valves ></a>
+
          </div>
          <div class="col">
-          <h6 class="ml-3">Slides</h6>
-          <a class="dropdown-item" href="#">Renolit Alkorplan ></a>
-          <h6 class="ml-3">Handrails</h6>
-          <a class="dropdown-item" href="#">Grab bars</a>
-          <a class="dropdown-item" href="#">Handrails</a>
+          <h6 class="ml-3">Accessories For Public Filter Technology</h6>
+          <a class="dropdown-item" href="#">Sand filter public</a>
+          <a class="dropdown-item" href="#">Overflow collection container</a>
+          <a class="dropdown-item" href="#">Accessories and technology</a>
+          <h6 class="ml-3">Filter Systems</h6>
+         </div>
+
+         <div class="col">
+          <h6 class="ml-3">Controls</h6>
+          <a class="dropdown-item" href="#">Filter controls</a>
+          <a class="dropdown-item" href="#">Heating filter controls</a>
+          <a class="dropdown-item" href="#">Level controls ></a>
+          <a class="dropdown-item" href="#">Overflow collection container controls</a>
+          <a class="dropdown-item" href="#">Temperature controls</a>
+          <a class="dropdown-item" href="#">PN controls</a>
+          <a class="dropdown-item" href="#">Piezo controls</a>
+          <a class="dropdown-item" href="#">Backwash controls ></a>
+          <a class="dropdown-item" href="#">Frequency converter ></a>
           <a class="dropdown-item" href="#">Accesories</a>
-          <h6 class="ml-3">Ladders</h6>
-          <a class="dropdown-item" href="#">Head of Marina for Public Pools</a>
-          <a class="dropdown-item" href="#">Ladders stainless steel standard</a>
-          <a class="dropdown-item" href="#">Ladders stainless steel Muro Slim</a>
-          <a class="dropdown-item" href="#">Head stainless steel Mixta</a>
-          <a class="dropdown-item" href="#">Ladder 2 parts</a>
-          <a class="dropdown-item" href="#">Accesories</a>
+
+          <h6 class="ml-3">Dehumidifier</h6>
+          <a class="dropdown-item" href="#">Full inverter dehumidifier</a>
+          <h6 class="ml-3">Heating Systems</h6>
+          <a class="dropdown-item" href="#">Heat pumps ></a>
          </div>
         </div>
        </li>
@@ -169,9 +178,63 @@
       <a class="nav-link" href="#"></a>
 
      </li> -->
-     <li class="nav-item">
-      <a class="nav-link" href="#">Attraktionen</a>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       Attraktionen
+      </a>
+      <ul class="dropdown-menu dropdown-element pools-position">
+       <li>
+        <div class="row">
+         <div class="col">
+          <h6 class="ml-3 ">Pump</h6>
+          <a class="dropdown-item" href="#">Swimming pool circulation pumps ></a>
+          <a class="dropdown-item" href="#">Jet pumping attractions ></a>
+          <h6 class="ml-3">Filter</h6>
+          <a class="dropdown-item" href="#">Sand filter ></a>
+          <a class="dropdown-item" href="#">Cartridge filter ></a>
+          <a class="dropdown-item" href="#">Skim filter ></a>
+          <a class="dropdown-item" href="#">Filter material ></a>
+          <a class="dropdown-item" href="#">Accesories ></a>
+
+          <h6 class="ml-3">Valves</h6>
+          <a class="dropdown-item" href="#">Rod valves ></a>
+          <a class="dropdown-item" href="#">Multi-way valves ></a>
+
+         </div>
+         <div class="col">
+          <h6 class="ml-3">Accessories For Public Filter Technology</h6>
+          <a class="dropdown-item" href="#">Sand filter public</a>
+          <a class="dropdown-item" href="#">Overflow collection container</a>
+          <a class="dropdown-item" href="#">Accessories and technology</a>
+          <h6 class="ml-3">Filter Systems</h6>
+         </div>
+
+         <div class="col">
+          <h6 class="ml-3">Controls</h6>
+          <a class="dropdown-item" href="#">Filter controls</a>
+          <a class="dropdown-item" href="#">Heating filter controls</a>
+          <a class="dropdown-item" href="#">Level controls ></a>
+          <a class="dropdown-item" href="#">Overflow collection container controls</a>
+          <a class="dropdown-item" href="#">Temperature controls</a>
+          <a class="dropdown-item" href="#">PN controls</a>
+          <a class="dropdown-item" href="#">Piezo controls</a>
+          <a class="dropdown-item" href="#">Backwash controls ></a>
+          <a class="dropdown-item" href="#">Frequency converter ></a>
+          <a class="dropdown-item" href="#">Accesories</a>
+
+          <h6 class="ml-3">Dehumidifier</h6>
+          <a class="dropdown-item" href="#">Full inverter dehumidifier</a>
+          <h6 class="ml-3">Heating Systems</h6>
+          <a class="dropdown-item" href="#">Heat pumps ></a>
+         </div>
+        </div>
+       </li>
+
+      </ul>
      </li>
+     <!-- <li class="nav-item">
+      <a class="nav-link" href="#"></a>
+     </li> -->
      <li class="nav-item">
       <a class="nav-link" href="#">Verrohrung</a>
      </li>

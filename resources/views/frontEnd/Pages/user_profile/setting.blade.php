@@ -1012,13 +1012,15 @@
 
   // Create Menu Class
   class Menu {
-   //Constructor for Menu class
-   constructor(_name, _activateID, _fa) {
+   // Constructor for Menu class
+   constructor(_name, _activateID, _fa, _menuID) {
     this.name = _name;
     this.activateID = _activateID;
     this.fa = _fa;
+    this.menuID = _menuID;
    }
-   //Return an HTML element representation of the Menu
+
+   // Return an HTML element representation of the Menu
    GetHTMLElement = function() {
     var element = document.createElement("div");
     element.className = "menu";
@@ -1033,33 +1035,37 @@
     i.className = "";
     element.appendChild(p);
     element.appendChild(i);
+
+    // Assign the menuID as the element's ID
+    element.id = this.menuID;
+
     return element;
    };
   }
 
-  //Define arrays for menus and pages
+  // Define arrays for menus and pages
   var menus = [];
   var pages = [];
 
-  //function for initializing, populating menu and page arrays
+  // Function for initializing, populating menu, and page arrays
   function populateMenus() {
-   menus.push(new Menu("Manage Profile Settings", "/"));
-   menus.push(new Menu("Manage Addresses", "/address"));
-   menus.push(new Menu("Orders History", "/info/order"));
-   //  menus.push(new Menu("Claim Issues", "/info/claim"));
+   menus.push(new Menu("Manage Profile Settings", "/", "fa-icon-1", "menu1"));
+   menus.push(new Menu("Manage Addresses", "/address", "fa-icon-2", "menu2"));
+   menus.push(new Menu("Orders History", "/info/order", "fa-icon-3", "menu3"));
+   // menus.push(new Menu("Claim Issues", "/info/claim", "fa-icon-4", "menu4"));
 
    pages.push(document.getElementById("profile"));
    pages.push(document.getElementById("address"));
    pages.push(document.getElementById("order"));
-   //  pages.push(document.getElementById("claim"));
+   // pages.push(document.getElementById("claim"));
   }
 
-  //Call functions and open first page
+  // Call functions and open the first page
   populateMenus();
   displayUpdatedMenus();
   open(0);
 
-  //update and render menus
+  // Update and render menus
   function displayUpdatedMenus() {
    var sidebarElement = document.getElementById("sidebar");
    var sidebarMenus = sidebarElement.querySelectorAll(":scope > .menu");
@@ -1075,19 +1081,20 @@
    }
   }
 
-  //function for opening page on menu click
+  // Function for opening a page on menu click
   function open(index) {
    for (let i = 0; i < pages.length; i++) {
     pages[i].style.display = "none";
    }
    pages[index].style.display = "block";
   }
-  </script>
 
-  <script>
-  function toggleActive(element) {
-   element.classList.toggle('active');
-  }
+
+  // Handle the click event
+  $("#menu2").on("click", function() {
+   console.log('hello');
+   // Add any additional functionality you want to perform on click
+  });
   </script>
   <!-- <script>
   
