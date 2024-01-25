@@ -480,37 +480,27 @@
               <tbody>
                 <tr>
                   <td>
-                    <p id="pAddressShow">East Streets 14, Word No. 04, Road
-                      No. 13/x, House no. 1320/C, Flat No.
-                      5D, Berlin - 1200, Germany</p>
+                    <p id="pAddressShow"></p>
                   </td>
                 </tr>
               </tbody>
             </table>
             <hr />
+
+
             <h6>Temprorary Address</h6>
-            <table>
+            <span id="tempAddrssDelete_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
+            <table id="tempAddressShow">
               <tbody>
                 <tr>
                   <td>
-                    <p id="tAddressShow">East Streets 14, Word No. 04, Road
-                      No. 13/x, House no. 1320/C, Flat No.
-                      5D, Berlin - 1200, Germany</p>
+                    <p id="tAddressShow"></p>
                   </td>
                   <td>
                     <i class="fa-solid fa-trash"></i>
                   </td>
                 </tr>
-                <tr>
-                  <td>
-                    <p>East Streets 14, Word No. 04, Road
-                      No. 13/x, House no. 1320/C, Flat No.
-                      5D, Berlin - 1200, Germany</p>
-                  </td>
-                  <td>
-                    <i class="fa-solid fa-trash"></i>
-                  </td>
-                </tr>
+
               </tbody>
             </table>
 
@@ -919,7 +909,9 @@
             if (response.success) {
               console.log(response.success);
               $('#password_success_msg').text(response.success);
-
+              setTimeout(function() {
+                location.reload(true); // true forces a reload from the server and not the cache
+              }, 1000);
 
             } else if (response.errors) {
               // Display validation errors in the console
@@ -963,18 +955,13 @@
 
 
 
-   
-
-        // Handle the click event
-        $("#address").on("click", function() {
-            console.log('hello');
-            // Add any additional functionality you want to perform on click
-        });
 
 
 
 
-    $('#tempAddressForm').click(function(e) {
+
+
+    $('#saveTempAddress').click(function(e) {
       // Your code here
       e.preventDefault(); // Prevent the form from submitting normally
 
@@ -1015,7 +1002,8 @@
 
             // $('#AddOffersForm')[0].reset();
             $('#temp_success_msg').text(response.success);
-            $('#signupForm')[0].reset();
+            $('#tempAddressForm')[0].reset();
+
           } else if (response.errors) {
             // Display validation errors in the console
             console.log(response.errors);
@@ -1058,7 +1046,7 @@
 
 
 
-<script>
+  <script>
     /*
      *   SIDEBAR V2
      *   Written by Vardan Petrosyan
@@ -1100,7 +1088,7 @@
 
     //function for initializing, populating menu and page arrays
     function populateMenus() {
-      menus.push(new Menu("Manage Profile Settings", "/","fa-icon-1", "menu1"));
+      menus.push(new Menu("Manage Profile Settings", "/", "fa-icon-1", "menu1"));
       menus.push(new Menu("Manage Addresses", "/address", "fa-icon-2", "menu2"));
       menus.push(new Menu("Orders History", "/info/order", "fa-icon-3", "menu3"));
       //  menus.push(new Menu("Claim Issues", "/info/claim"));
@@ -1140,88 +1128,142 @@
       pages[index].style.display = "block";
     }
 
-     // Handle the click event for menu2
-     $("#menu2").on("click", function() {
-            console.log('hello');
-            // Add any additional functionality you want to perform on click
+    // Handle the click event for menu2
+    $("#menu2, #saveTempAddress, .delete-link").on("click", function() {
+      console.log('hello');
+      // Add any additional functionality you want to perform on click
 
-            e.preventDefault(); // Prevent the form from submitting normally
+      var token = localStorage.getItem('authToken');
+      console.log(token);
 
-$('#tempZip_err').text('');
-$('#tempCity_err').text('');
-$('#tempAddress_err').text('');
-
-var token = localStorage.getItem('authToken');
-console.log(token);
-
-// Check if the token exists
-if (!token) {
-  console.error('Token not found in localStorage');
-  window.location.href = '/api/home';
-  return; // Stop further execution if the token is missing
-}
-
-var formData = new FormData($('#tempAddressForm')[0]);
-
-
-// Make AJAX request
-$.ajax({
-  type: 'POST',
-  url: '/api/saveTempAddressApi',
-  data: formData,
-  dataType: 'json',
-  processData: false, // Important: tell jQuery not to process the data
-  contentType: false,
-  // processData: false,
-  // contentType: false,
-  headers: {
-    'Authorization': 'Bearer ' + token,
-  },
-  success: function(response) {
-    // Handle success response
-    if (response.success) {
-      console.log(response.success);
-
-      // $('#AddOffersForm')[0].reset();
-      $('#temp_success_msg').text(response.success);
-      $('#signupForm')[0].reset();
-    } else if (response.errors) {
-      // Display validation errors in the console
-      console.log(response.errors);
-
-      if (response.errors['tempAddress']) {
-        $('#tempAddress_err').text(response.errors['tempAddress']);
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        return; // Stop further execution if the token is missing
       }
 
-      if (response.errors['tempCity']) {
-        $('#tempCity_err').text(response.errors['tempCity']);
-      }
+      var formData = new FormData($('#tempAddressForm')[0]);
 
-      if (response.errors['tempZip']) {
-        $('#tempZip_err').text(response.errors['tempZip']);
-      }
 
-    }
-  },
-  error: function(xhr, status, error) {
-    // Handle error response
-    var errors = xhr.responseJSON.errors;
-    if (errors) {
+      // Make AJAX request
+      $.ajax({
+        type: 'get',
+        url: '/api/showTempAddressApi',
+        data: formData,
+        dataType: 'json',
+        processData: false, // Important: tell jQuery not to process the data
+        contentType: false,
+        // processData: false,
+        // contentType: false,
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        success: function(response) {
+          // Handle success response
+          if (response.permanent && !response.temp) {
+            console.log(response.permanent);
 
-      // Display errors in your frontend
-      // For example, you can loop through errors and append them to a specific element
-      $.each(errors, function(field, messages) {
-        // Append error messages to your HTML
+            var permanentAddress = response.permanent[0].permanent_address;
+            var zipCode = response.permanent[0].zipCode;
+            var country = response.permanent[0].country;
 
-        $('#' + field + '-err').text(messages[0]);
+            var fullAddress = permanentAddress + ', ' + zipCode + ', ' + country;
+            $('#pAddressShow').text(fullAddress);
+
+          } else if (response.permanent && response.temp) {
+            // Display validation errors in the console
+
+            // Assuming 'response.temp' is the variable containing your array of temporary addresses
+            var tempAddressTable = $('#tempAddressShow tbody');
+
+            // Clear existing rows in the table
+            tempAddressTable.empty();
+
+            // Iterate over the array and append rows to the table
+            response.temp.forEach(function(tempAddress) {
+              // Create a new row
+              var newRow = $('<tr>');
+
+              // Create a cell for the temporary address
+              var addressCell = $('<td>').html('<p id="tAddressShow">' + tempAddress.permanent_address + ',' + tempAddress.zipCode +
+                ',' + tempAddress.country + '</p>');
+
+              // Assuming 'deleteUrl' is the URL for the delete action
+              var deleteUrl = '/api/tempAddressDelete/' + tempAddress.id; // Replace with the actual URL
+
+              // Create a cell with a delete icon wrapped in an anchor tag
+              var deleteCell = $('<td>').html('<i class="fa-solid fa-trash delete-link"></i>');
+
+              // Append the deleteCell to the row
+              newRow.append(addressCell, deleteCell);
+
+              // Append the row to the table
+              tempAddressTable.append(newRow);
+
+              // Add a click event handler to the delete link using a closure to capture 'deleteUrl'
+              deleteCell.find('.delete-link').on('click', function(event) {
+                event.preventDefault(); // Prevent the default behavior of the anchor tag
+
+                var token = localStorage.getItem('authToken');
+                console.log(token);
+
+                // Check if the token exists
+                if (!token) {
+                  console.error('Token not found in localStorage');
+                  window.location.href = '/api/home';
+                  return; // Stop further execution if the token is missing
+                }
+                // Perform AJAX request here
+                $.ajax({
+                  url: deleteUrl,
+                  type: 'get',
+                  headers: {
+                    'Authorization': 'Bearer ' + token,
+                  }, // Replace with the appropriate HTTP method
+                  success: function(response) {
+                    // Handle success response
+                    console.log('Delete request successful:', response.message);
+                    $('#tempAddrssDelete_msg').text(response.message);
+                    // setTimeout(function() {
+                    //   location.reload(true); // true forces a reload from the server and not the cache
+                    // }, 1000);
+
+                    // Optionally, you can update the UI or take additional actions
+                  },
+                  error: function(error) {
+                    // Handle error response
+                    console.error('Error in delete request:', error);
+                    // Optionally, you can display an error message or take other actions
+                  }
+                });
+              });
+            });
+          }
+
+
+
+        },
+
+        error: function(xhr, status, error) {
+          // Handle error response
+          var errors = xhr.responseJSON.errors;
+          if (errors) {
+
+            // Display errors in your frontend
+            // For example, you can loop through errors and append them to a specific element
+            $.each(errors, function(field, messages) {
+              // Append error messages to your HTML
+
+              $('#' + field + '-err').text(messages[0]);
+            });
+          }
+        }
       });
-    }
-  }
-});
 
 
-        });
-</script>
+    });
+  </script>
 
 
   <script>
@@ -1271,7 +1313,7 @@ $.ajax({
       .catch(error => console.error("Error fetching countries:", error));
   </script> -->
   <!-- Countries name -->
-  
+
 </body>
 
 </html>
