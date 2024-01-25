@@ -623,8 +623,8 @@
        <h1 class="modal-title fs-5" id="ecpasswordLabel">Change Password</h1>
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <span id="password_success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
       <div class="modal-body">
+       <span id="password_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600;"></span><br />
        <label for="basic-url" class="form-label">Old Password</label>
        <div class="input-group mb-3">
         <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="old password"
@@ -662,20 +662,24 @@
       <div class="modal-header">
        <h1 class="modal-title fs-5" id="addaddressLabel">Add Address</h1>
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       <span id="temp_success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
       </div>
       <div class="modal-body">
+       <span id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1rem;"></span>
        <div class="input-group mb-3">
         <label for="Address">Address</label>
         <input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address"
          aria-describedby="basic-addon1" />
-        <span id="tempAddress_err" style="color:red"></span>
+        <div style="text-align:right; width:100%;">
+         <span id="tempAddress_err" style="color:red"></span>
+        </div>
        </div>
        <div class="input-group mb-3">
         <label for="city">City</label>
         <input type="text" class="form-control" name="tempCity" placeholder="City" aria-label="City"
          aria-describedby="basic-addon1" />
-        <span id="tempCity_err" style="color:red"></span>
+        <div style="text-align:right; width:100%;">
+         <span id="tempCity_err" style="color:red; text-align:right;"></span>
+        </div>
        </div>
 
 
@@ -683,7 +687,9 @@
         <label for="Zip code">Zip code</label>
         <input type="text" class="form-control" name="tempZip" placeholder="Zip Code" aria-label="Zip code"
          aria-describedby="basic-addon1" />
-        <span id="tempZip_err" style="color:red"></span>
+        <div style="text-align:right; width:100%;">
+         <span id="tempZip_err" style="color:red"></span>
+        </div>
        </div>
 
        <div class="input-group mb-3">
