@@ -287,7 +287,7 @@ class webController extends Controller
             'user_id' => $userId,
             'status' => "temp",
         ]);
-        return response()->json(['success' => 'Data Saved Succeessfulley']);
+        return response()->json(['success' => 'Data saved successfully']);
     }
 
 
