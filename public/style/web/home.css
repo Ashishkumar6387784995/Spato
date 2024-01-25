@@ -81,10 +81,10 @@ i {
     text-wrap: wrap;
 }
 
-.navbar-nav .nav-link.active,
+/* .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
     color: var(--blue);
-}
+} */
 
 .pools-position {
     left: -200px !important;
