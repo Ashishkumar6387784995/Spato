@@ -97,7 +97,7 @@ Route::middleware('api.auth')->group(function () {
 
   // items for checkout with auth.
   Route::get('cart/checkoutItemsApiAuthentic', [CartController::class, 'getCartItems']);
-
+  Route::get('cart/userAddress', [CartController::class, 'userAddress']);
 
 
    // Quatation submit

@@ -11,6 +11,7 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use App\Models\Quote_requests;
 use Illuminate\Support\Facades\Validator;
+use App\Models\UserProfile;
 
 
 class CartController extends Controller
@@ -60,7 +61,24 @@ class CartController extends Controller
             ->orderBy('cart_items.created_at', 'desc') // Order by the creation date in descending order
             ->get();
 
-        return response()->json(['cartItems' => $cartItems]);
+
+
+
+
+        return response()->json(['cartItems' => $cartItems, ]);
+    }
+
+    public function userAddress()
+    {
+       
+        $userId = Auth::guard('api')->user()->id;
+        $userPermannetAddsress = UserProfile::select()
+            ->where('user_id', $userId)
+            ->where('status', 'Permanent')
+            ->get();
+
+
+        return response()->json(['Permanent_address' => $userPermannetAddsress]);
     }
 
 
@@ -119,72 +137,72 @@ class CartController extends Controller
         return view('frontEnd/pages/cart/quotesForm')->with(compact('product_id'));
     }
 
-   
-public function submitQuotes(Request $request)
-{
-    $userId = Auth::guard('api')->user()->id;
-    $userName = Auth::guard('api')->user()->name;
 
-    // Define validation rules
-    $rules = [
-        'product_id' => 'required',
-        'firmName' => 'required|string|max:255',
-        'contactName' => 'required|string|max:255',
-        'new_email' => 'required|email|max:255',
-        'mobile' => 'required|string|max:20',
-        'sparePartName' => 'required|string|max:255',
-        'QuoteNeededBy' => 'required|string|max:255',
-        'budget' => 'required|string', // Assuming 'budget' is the name of your radio button group
-        // 'Overview' => 'required|string',
-        // 'Document' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:2048',
-    ];
+    public function submitQuotes(Request $request)
+    {
+        $userId = Auth::guard('api')->user()->id;
+        $userName = Auth::guard('api')->user()->name;
 
-    // Validate the request data
-    $validator = Validator::make($request->all(), $rules);
+        // Define validation rules
+        $rules = [
+            'product_id' => 'required',
+            'firmName' => 'required|string|max:255',
+            'contactName' => 'required|string|max:255',
+            'new_email' => 'required|email|max:255',
+            'mobile' => 'required|string|max:20',
+            'sparePartName' => 'required|string|max:255',
+            'QuoteNeededBy' => 'required|string|max:255',
+            'budget' => 'required|string', // Assuming 'budget' is the name of your radio button group
+            // 'Overview' => 'required|string',
+            // 'Document' => 'nullable|file|mimes:jpg,jpeg,png,gif|max:2048',
+        ];
 
-    // Check if validation fails
-    if ($validator->fails()) {
-        return response()->json(['errors' => $validator->errors()]); // Adjust the HTTP status code as needed
+        // Validate the request data
+        $validator = Validator::make($request->all(), $rules);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()]); // Adjust the HTTP status code as needed
+        }
+
+        // Extract data from the request
+        $product_id = $request->input('product_id');
+        $firmName = $request->input('firmName');
+        $contactName = $request->input('contactName');
+        $email = $request->input('new_email');
+        $mobile = $request->input('mobile');
+        $sparePartName = $request->input('sparePartName');
+        $QuoteNeededBy = $request->input('QuoteNeededBy');
+        $budgetStatus = $request->input('budget');
+        $overview = $request->input('Overview');
+        $document = $request->file('Document');
+
+        // Handle file upload if a document is provided
+        $documentPath = null;
+        if ($document && $request->hasFile('Document')) {
+            $uploadedFile = $request->file('Document');
+            $documentPath = $uploadedFile->store('public/quotes_request');
+        }
+
+        // Create a new Quote_requests instance and save it to the database
+        Quote_requests::create([
+            'product_id' => $product_id,
+            'firmName' => $firmName,
+            'contactName' => $contactName,
+            'email' => $email,
+            'mobile' => $mobile,
+            'sparePartName' => $sparePartName,
+            'QuoteNeededBy' => $QuoteNeededBy,
+            'budgetStatus' => $budgetStatus,
+            'overview' => $overview,
+            'document' => $documentPath,
+            'userId' => $userId,
+            'userName' => $userName,
+        ]);
+
+        // Optionally, you can return a response or redirect the user
+        return response()->json(['message' => 'Quote Request submitted successfully']);
     }
-
-    // Extract data from the request
-    $product_id = $request->input('product_id');
-    $firmName = $request->input('firmName');
-    $contactName = $request->input('contactName');
-    $email = $request->input('new_email');
-    $mobile = $request->input('mobile');
-    $sparePartName = $request->input('sparePartName');
-    $QuoteNeededBy = $request->input('QuoteNeededBy');
-    $budgetStatus = $request->input('budget');
-    $overview = $request->input('Overview');
-    $document = $request->file('Document');
-
-    // Handle file upload if a document is provided
-    $documentPath = null;
-    if ($document && $request->hasFile('Document')) {
-        $uploadedFile = $request->file('Document');
-        $documentPath = $uploadedFile->store('public/quotes_request');
-    }
-
-    // Create a new Quote_requests instance and save it to the database
-    Quote_requests::create([
-        'product_id' => $product_id,
-        'firmName' => $firmName,
-        'contactName' => $contactName,
-        'email' => $email,
-        'mobile' => $mobile,
-        'sparePartName' => $sparePartName,
-        'QuoteNeededBy' => $QuoteNeededBy,
-        'budgetStatus' => $budgetStatus,
-        'overview' => $overview,
-        'document' => $documentPath,
-        'userId' => $userId,
-        'userName' => $userName,
-    ]);
-
-    // Optionally, you can return a response or redirect the user
-    return response()->json(['message' => 'Quote Request submitted successfully']);
-}
 
 
 
