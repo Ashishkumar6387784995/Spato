@@ -253,12 +253,31 @@
    .allpage {
     display: block;
    }
+
+
   }
 
   /* For Mobile Portrait View */
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .allpage {
     display: block;
+   }
+
+   .sidebar {
+    margin-left: 1.5rem;
+    margin-bottom: 2rem;
+   }
+
+   .profile-btn {
+    width: 90%;
+   }
+
+   #tempAddressShow tbody tr td:nth-child(2) {
+    width: 10%;
+   }
+
+   #tempAddressShow tbody tr td i {
+    margin-top: -1rem;
    }
   }
 
@@ -644,7 +663,7 @@
         <span id="newPassword_confirmation_err" style="color:red"></span>
        </div>
       </div>
-      <button type="button" class="m-1 profile-btn" id="UpdatePasswordButton">Update Password</button>
+      <button type="button" class="m-3 profile-btn" id="UpdatePasswordButton">Update Password</button>
      </div>
     </div>
    </div>
@@ -664,7 +683,7 @@
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <span id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1rem;"></span>
+       <div id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1.5rem;"></div>
        <div class="input-group mb-3">
         <label for="Address">Address</label>
         <input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address"
@@ -1247,9 +1266,9 @@
                     // Handle success response
                     console.log('Delete request successful:', response.message);
                     $('#tempAddrssDelete_msg').text(response.message);
-                    setTimeout(function() {
-                      location.reload(true); // true forces a reload from the server and not the cache
-                    }, 1000);
+                    // setTimeout(function() {
+                    //   location.reload(true); // true forces a reload from the server and not the cache
+                    // }, 1000);
 
           // Optionally, you can update the UI or take additional actions
          },
