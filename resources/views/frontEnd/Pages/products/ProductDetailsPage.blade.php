@@ -289,6 +289,7 @@
 
   .availibility .btn:hover {
    border: 2px solid var(--blue);
+   color: var(--blue);
   }
 
   .cart .btn {
@@ -363,6 +364,11 @@
 
   .related-products li {
    font-size: 13px;
+  }
+
+
+  .related-products .img {
+   display: flex
   }
   </style>
 
@@ -542,7 +548,9 @@
      <h3 class="mb-3">Related Products</h3>
      <div class="row">
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -557,7 +565,9 @@
       </div>
 
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -572,7 +582,9 @@
       </div>
 
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -588,7 +600,9 @@
 
 
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -610,7 +624,9 @@
      <h3 class="mb-3">Featured product</h3>
      <div class="row">
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -625,7 +641,9 @@
       </div>
 
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -640,7 +658,9 @@
       </div>
 
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">
@@ -656,7 +676,9 @@
 
 
       <div class="card col">
-       <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" class="card-img-top" alt="..." />
+       </div>
        <div class="card-body">
         <h5 class="card-title">Saugrobroter</h5>
         <p class="card-text">

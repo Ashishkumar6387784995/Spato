@@ -122,7 +122,8 @@
    font-weight: 700 !important;
    text-decoration: none !important;
    padding: 8px 0px !important;
-   border-radius: 5px 5px 0px 5px !important;
+   border-radius: 0px 0px 5px 5px !important;
+   border: 1px solid var(--blue);
    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
    transition: 0.5s ease-in-out;
   }
@@ -130,6 +131,7 @@
   .cart-btn:hover {
    background-color: var(--white) !important;
    color: var(--blue) !important;
+   border: 1px solid var(--blue);
   }
 
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
