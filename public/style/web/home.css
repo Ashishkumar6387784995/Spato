@@ -81,8 +81,7 @@ i {
     text-wrap: wrap;
 }
 
-/* .navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show {
+/* .navbar-nav .nav-item .nav-link.active {
     color: var(--blue);
 } */
 
