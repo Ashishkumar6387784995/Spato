@@ -799,7 +799,7 @@
      var selectedAddress = $(this).data('address');
 
      // Update the #develivery_address element with the selected address
-     $('#delivery_address').text(selectedAddress);
+     $('#develivery_address').text(selectedAddress);
     });
    }
 
