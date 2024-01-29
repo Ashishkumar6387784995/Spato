@@ -1075,7 +1075,7 @@
             <li><a class="dropdown-item">Welcome, <span id="userName" style="color:var(--blue);">${response.success['name']}</span></a></li>
            <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
             <li><a  class="dropdown-item" href="#"><i class="fa-solid fa-chart-line"></i> Activity Log</a></li>
-            <li class="dropdown-item" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</li>
+            <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
         </ul>
     </li>
 
