@@ -636,9 +636,6 @@
           <button type="button" class="btn btn-style" id="forgetBtn">Submit</button>
          </form>
         </div>
-        <div class="modal-footer">
-
-        </div>
        </div>
       </div>
      </div>
