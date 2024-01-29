@@ -76,9 +76,13 @@ class CartController extends Controller
             ->where('user_id', $userId)
             ->where('status', 'Permanent')
             ->get();
+            $userTempAddsress = UserProfile::select()
+            ->where('user_id', $userId)
+            ->where('status', 'temp')
+            ->get();
 
 
-        return response()->json(['Permanent_address' => $userPermannetAddsress]);
+        return response()->json(['Permanent_address' => $userPermannetAddsress, 'userTempAddsress' => $userTempAddsress]);
     }
 
 

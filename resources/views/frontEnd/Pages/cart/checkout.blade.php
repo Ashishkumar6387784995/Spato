@@ -292,7 +292,7 @@
               <p class="name" id="develivery_person"></p>
               <p class="address" id="develivery_address"></p>
             </div>
-            <div class="col-4 address-btn" style="display:flex; justify-content:flex-end;"><button class="change-btn" data-bs-toggle="modal" data-bs-target="#caddress">Change Address</button></div>
+            <div class="col-4 address-btn" style="display:flex; justify-content:flex-end;"><button class="change-btn" data-bs-toggle="modal" data-bs-target="#caddress" id="changeAdressButton">Change Address</button></div>
           </div>
           <div class="table-responsive">
             <table class="table">
@@ -401,32 +401,20 @@
         </div>
         <div class="modal-body">
 
-          <div class="row mt-2">
+          <div class="row mt-2" id="tempAddressShow">
             <div class="col">
-              <p class="address">159, Park Avenue, Schmalkalden, Germany</p>
+              <p class="address" id="tempAddress">159, Park Avenue, Schmalkalden, Germany</p>
             </div>
             <div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;" class="mt-0 change-btn" type="submit">Add +</button></div>
           </div>
 
-          <div class="row mt-2">
-            <div class="col">
-              <p class="address">Am Medenstein 7, 36145 Hofbieber, Germany</p>
-            </div>
-            <div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;" class="mt-0 change-btn" type="submit">Add +</button></div>
-          </div>
-
-          <div class="row mt-2">
-            <div class="col">
-              <p class="address">Fuldaer Str. 2, 36166 Haunetal, Germany</p>
-            </div>
-            <div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;" class="mt-0 change-btn" type="submit">Add +</button></div>
-          </div>
+        
 
 
         </div>
 
         <div class="modal-footer justify-content-start">
-          <a href="#"><button type="button" class="change-btn">Add address +</button></a>
+          <a href="{{ url('/api/accountSetting') }}"><button type="button" class="change-btn">Add address +</button></a>
           <!-- <button type="button" class="mt-0 change-btn">Save changes</button> -->
         </div>
       </div>
@@ -509,7 +497,7 @@
         success: function(response) {
           // console.log(response.cartItems);
           displayCartItems(response.cartItems);
-          displayAddress(response.Permanent_address);
+    
         },
         error: function(error) {
           console.error('Error retrieving cart items', error);
@@ -537,8 +525,6 @@
 
 
     });
-
-
 
 
 
@@ -729,6 +715,65 @@
 
     // // Initial update of cart items list
     // updateCartItemsList();
+  </script>
+
+  <script>
+     $('#changeAdressButton').click(function() {
+
+      var authToken = localStorage.getItem('authToken');
+      $.ajax({
+        type: 'GET',
+        url: '/api/cart/userAddress',
+        headers: {
+
+          'Authorization': 'Bearer ' + authToken,
+          'guest-token': getGuestToken(),
+        },
+        success: function(response) {
+          // console.log(response.cartItems);
+
+          displayTempAddress(response.userTempAddsress);
+        },
+        error: function(error) {
+          console.error('Error retrieving cart items', error);
+        }
+      });
+      function displayTempAddress(userTempAddsress) {
+    console.log(userTempAddsress);
+
+    // Assuming you have an element with id 'tempAddressShow' where you want to display the temporary addresses
+    var addressModalBody = $('#tempAddressShow');
+
+    // Clear the existing content in case you're appending to the existing content
+    addressModalBody.empty();
+
+    // Display addresses in the modal body
+    userTempAddsress.forEach(function (item, index) {
+        // Build the address string for each item in the loop
+        var addressString = `${item.permanent_address}, ${item.zipCode}, ${item.country}`;
+
+        // Log the address string to the console
+        console.log(addressString);
+
+        // Use jQuery to append the address and a button to the container
+        addressModalBody.append('<div>' + addressString + '</div>');
+        addressModalBody.append('<div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;" class="mt-0 change-btn" type="submit" data-bs-dismiss="modal" data-address="' + addressString + '">Add +</button></div>');
+    });
+
+    // Click event handler for the "Add +" button
+    $('.change-btn').on('click', function () {
+        // Get the address data from the data-address attribute
+        var selectedAddress = $(this).data('address');
+
+        // Update the #develivery_address element with the selected address
+        $('#develivery_address').text(selectedAddress);
+    });
+}
+
+
+
+
+     });
   </script>
 
 </body>
