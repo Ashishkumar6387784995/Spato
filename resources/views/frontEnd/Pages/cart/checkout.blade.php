@@ -303,6 +303,27 @@
     <div class="row content">
      <div class="col-8 form">
 
+<<<<<<< HEAD
+          <div class="row address-container">
+            <div class="col-8 add">
+              <p class="name" id="develivery_person"></p>
+              <p class="address" id="develivery_address"></p>
+            </div>
+            <div class="col-4 address-btn" style="display:flex; justify-content:flex-end;"><button class="change-btn" data-bs-toggle="modal" data-bs-target="#caddress" id="changeAdressButton">Change Address</button></div>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col"></th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Subtotal</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+=======
       <div class="row address-container">
        <div class="col-8 add">
         <p class="name" id="develivery_person"></p>
@@ -323,6 +344,7 @@
           <th scope="col"></th>
          </tr>
         </thead>
+>>>>>>> 5549a4dcbb1d67eac532380c37515a3e4fb44814
 
         <tbody id="cart-items-table-body">
 
@@ -426,12 +448,31 @@
      </div>
      <div class="modal-body">
 
+<<<<<<< HEAD
+          <div class="row mt-2" id="tempAddressShow">
+            <div class="col">
+              <p class="address" id="tempAddress">159, Park Avenue, Schmalkalden, Germany</p>
+            </div>
+            <div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;" class="mt-0 change-btn" type="submit">Add +</button></div>
+          </div>
+
+        
+
+
+        </div>
+
+        <div class="modal-footer justify-content-start">
+          <a href="{{ url('/api/accountSetting') }}"><button type="button" class="change-btn">Add address +</button></a>
+          <!-- <button type="button" class="mt-0 change-btn">Save changes</button> -->
+        </div>
+=======
       <div class="row mt-2">
        <div class="col">
         <p class="address">159, Park Avenue, Schmalkalden, Germany</p>
        </div>
        <div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;"
          class="mt-0 change-btn" type="submit">Add +</button></div>
+>>>>>>> 5549a4dcbb1d67eac532380c37515a3e4fb44814
       </div>
 
       <div class="row mt-2">
@@ -525,11 +566,113 @@
 
     window.location.href = '/api/home';
 
+<<<<<<< HEAD
+      }
+      $.ajax({
+        type: 'GET',
+        url: '/api/cart/checkoutItemsApiAuthentic',
+        headers: {
+
+          'Authorization': 'Bearer ' + authToken,
+          'guest-token': getGuestToken(),
+        },
+        success: function(response) {
+          // console.log(response.cartItems);
+          displayCartItems(response.cartItems);
+    
+        },
+        error: function(error) {
+          console.error('Error retrieving cart items', error);
+        }
+      });
+
+      $.ajax({
+        type: 'GET',
+        url: '/api/cart/userAddress',
+        headers: {
+
+          'Authorization': 'Bearer ' + authToken,
+          'guest-token': getGuestToken(),
+        },
+        success: function(response) {
+          // console.log(response.cartItems);
+
+          displayAddress(response.Permanent_address);
+        },
+        error: function(error) {
+          console.error('Error retrieving cart items', error);
+        }
+      });
+
+
+
+    });
+
+
+
+    function displayCartItems(cartItems) {
+      console.log(cartItems);
+      var cartItemsTableBody = $('#cart-items-table-body');
+      // Display Cart Items in the right sidebar
+      cartItemsTableBody.empty();
+
+      cartItems.forEach(function(item, index) {
+        // Create a new table row for each cart item
+        var tableRow = $('<tr>');
+
+        // Item Image
+        var itemImgCell = $('<td class="item-img">');
+        itemImgCell.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" class="img" alt="..." />');
+        tableRow.append(itemImgCell);
+
+        // Product Description
+        var productDescCell = $('<td class="product-desc">');
+        productDescCell.append('<p>' + item.product_name + '</p>');
+        tableRow.append(productDescCell);
+
+        // Price
+        var priceCell = $('<td><input type="number" id="price' + index + '" value="' + item.total_price +
+          '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transp`arent;" readonly="readonly">€</td>'
+        );
+        tableRow.append(priceCell);
+
+        // Quantity
+        var quantityCell = $('<td>');
+        quantityCell.append('<div class="counter"><button class="quantity-btn" onclick="decreaseQuantity(' + item
+          .product_id + ')"><i class="fa-solid fa-minus"></i></button> <input type="text" id="quantity' + item
+          .product_id + '" value="' + item.quantity +
+          '" min="1" readonly /> <button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
+          ')"><i class="fa-solid fa-plus"></i></button></div>');
+
+        quantityCell.append('');
+        quantityCell.append('');
+
+        tableRow.append(quantityCell);
+
+        // Subtotal
+        var subtotalCell = $('<td><input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
+            .total_price * item.quantity) +
+          '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+        );
+        tableRow.append(subtotalCell);
+
+        // Remove and Edit Icons
+        var iconCell = $('<td>');
+        iconCell.append(
+          '<div class="icon" style="cursor:pointer; font-size:18px;"><i class="fa-regular fa-circle-xmark" onclick="removeCartItem(' +
+          item.product_id + ')"></i></div>');
+        tableRow.append(iconCell);
+
+        // Append the row to the table
+        cartItemsTableBody.append(tableRow);
+      });
+=======
    }
    $.ajax({
     type: 'GET',
     url: '/api/cart/checkoutItemsApiAuthentic',
     headers: {
+>>>>>>> 5549a4dcbb1d67eac532380c37515a3e4fb44814
 
      'Authorization': 'Bearer ' + authToken,
      'guest-token': getGuestToken(),
@@ -761,6 +904,69 @@
   // updateCartItemsList();
   </script>
 
+<<<<<<< HEAD
+  <script>
+     $('#changeAdressButton').click(function() {
+
+      var authToken = localStorage.getItem('authToken');
+      $.ajax({
+        type: 'GET',
+        url: '/api/cart/userAddress',
+        headers: {
+
+          'Authorization': 'Bearer ' + authToken,
+          'guest-token': getGuestToken(),
+        },
+        success: function(response) {
+          // console.log(response.cartItems);
+
+          displayTempAddress(response.userTempAddsress);
+        },
+        error: function(error) {
+          console.error('Error retrieving cart items', error);
+        }
+      });
+      function displayTempAddress(userTempAddsress) {
+    console.log(userTempAddsress);
+
+    // Assuming you have an element with id 'tempAddressShow' where you want to display the temporary addresses
+    var addressModalBody = $('#tempAddressShow');
+
+    // Clear the existing content in case you're appending to the existing content
+    addressModalBody.empty();
+
+    // Display addresses in the modal body
+    userTempAddsress.forEach(function (item, index) {
+        // Build the address string for each item in the loop
+        var addressString = `${item.permanent_address}, ${item.zipCode}, ${item.country}`;
+
+        // Log the address string to the console
+        console.log(addressString);
+
+        // Use jQuery to append the address and a button to the container
+        addressModalBody.append('<div>' + addressString + '</div>');
+        addressModalBody.append('<div class="col" style="display:flex; justify-content:flex-end;"><button style="height:50px;" class="mt-0 change-btn" type="submit" data-bs-dismiss="modal" data-address="' + addressString + '">Add +</button></div>');
+    });
+
+    // Click event handler for the "Add +" button
+    $('.change-btn').on('click', function () {
+        // Get the address data from the data-address attribute
+        var selectedAddress = $(this).data('address');
+
+        // Update the #develivery_address element with the selected address
+        $('#develivery_address').text(selectedAddress);
+    });
+}
+
+
+
+
+     });
+  </script>
+
+</body>
+=======
  </body>
+>>>>>>> 5549a4dcbb1d67eac532380c37515a3e4fb44814
 
 </html>
