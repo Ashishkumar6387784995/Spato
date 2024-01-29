@@ -366,7 +366,7 @@
             <div class="accordion-body">
              <div class="mb-3 d-flex">
               <input type="text" class="form-control" id="address" placeholder="Enter your discount coupon">
-              <button type="submit" class="btn ms-2" style="width:30%;">Apply</button>
+              <button type="submit" class="change-btn ms-2" style="width:30%;">Apply</button>
              </div>
             </div>
            </div>

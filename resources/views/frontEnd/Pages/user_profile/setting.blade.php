@@ -424,8 +424,10 @@
 
         </div>
         <div class="mt-5 ml-3">
-         <input type="text" id="user" style="border:none; background:transparent; margin-bottom:2px;" /><br />
-         <input type="text" id="userEmail" name="userEmail" style="border:none;  background:transparent;" />
+         <input type="text" id="user"
+          style="border:none; outline:none; background:transparent; margin-bottom:2px;" /><br />
+         <input type="text" id="userEmail" name="userEmail"
+          style="border:none; outline:none;  background:transparent;" />
          <div class="links">
           <!-- <a href="#" class="m-0 pr-5">Edit</a> -->
           <a href="#" class="m-0" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cpassword">Change
@@ -1249,26 +1251,26 @@
         var token = localStorage.getItem('authToken');
         console.log(token);
 
-                // Check if the token exists
-                if (!token) {
-                  console.error('Token not found in localStorage');
-                  window.location.href = '/api/home';
-                  return; // Stop further execution if the token is missing
-                }
-                // Perform AJAX request here
-                $.ajax({
-                  url: deleteUrl,
-                  type: 'get',
-                  headers: {
-                    'Authorization': 'Bearer ' + token,
-                  }, // Replace with the appropriate HTTP method
-                  success: function(response) {
-                    // Handle success response
-                    console.log('Delete request successful:', response.message);
-                    $('#tempAddrssDelete_msg').text(response.message);
-                    // setTimeout(function() {
-                    //   location.reload(true); // true forces a reload from the server and not the cache
-                    // }, 1000);
+        // Check if the token exists
+        if (!token) {
+         console.error('Token not found in localStorage');
+         window.location.href = '/api/home';
+         return; // Stop further execution if the token is missing
+        }
+        // Perform AJAX request here
+        $.ajax({
+         url: deleteUrl,
+         type: 'get',
+         headers: {
+          'Authorization': 'Bearer ' + token,
+         }, // Replace with the appropriate HTTP method
+         success: function(response) {
+          // Handle success response
+          console.log('Delete request successful:', response.message);
+          $('#tempAddrssDelete_msg').text(response.message);
+          // setTimeout(function() {
+          //   location.reload(true); // true forces a reload from the server and not the cache
+          // }, 1000);
 
           // Optionally, you can update the UI or take additional actions
          },
