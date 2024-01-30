@@ -87,17 +87,18 @@
 
 
   .icon i {
-
+   margin: 0px 20px;
    padding: 2px;
    border-radius: 100%;
-   background-color: var(--white);
+   /* background-color: var(--white); */
    transition: 0.5s ease-in-out;
    cursor: pointer;
+   text-align: center;
   }
 
   .icon i:hover {
-   background-color: red;
-   color: var(--white);
+   /* background-color: var(--white); */
+   color: red;
   }
 
   .checkout-container .details p {

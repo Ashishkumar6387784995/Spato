@@ -89,15 +89,23 @@ i {
     left: -200px !important;
     top: 25px !important;
 }
+.technik-position {
+    left: -260px !important;
+    top: 25px !important;
+}
+.attraktionen-position {
+    left: -300px !important;
+    top: 25px !important;
+}
 
 .verrohrung-position {
     width: 1050px !important;
-    left: -460px !important;
+    left: -550px !important;
     top: 25px !important;
 }
 
 .wasserpflege-position {
-    left: -460px !important;
+    left: -500px !important;
     top: 25px !important;
 }
 
@@ -369,18 +377,26 @@ form .btn-style {
     }
     .pools-position {
         left: 0px !important;
-        top: 30px !important;
+        top: 40px !important;
     }
 
+    .technik-position {
+        left: 0px !important;
+        top: 40px !important;
+    }
+    .attraktionen-position {
+        left: 0px !important;
+        top: 40px !important;
+    }
     .verrohrung-position {
         width: 100% !important;
         left: 0px !important;
-        top: 30px !important;
+        top: 40px !important;
     }
 
     .wasserpflege-position {
         left: 0px !important;
-        top: 30px !important;
+        top: 40px !important;
     }
 }
 

@@ -124,7 +124,7 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Technik
       </a>
-      <ul class="dropdown-menu dropdown-element pools-position">
+      <ul class="dropdown-menu dropdown-element technik-position">
        <li>
         <div class="row">
          <div class="col">
@@ -182,7 +182,7 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Attraktionen
       </a>
-      <ul class="dropdown-menu dropdown-element pools-position">
+      <ul class="dropdown-menu dropdown-element attraktionen-position">
        <li>
         <div class="row">
          <div class="col">
