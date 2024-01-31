@@ -551,6 +551,7 @@
     success: function(response) {
      console.log(response.cartItems);
      displayCartItems(response.cartItems);
+     jQuery('.nav-item .cart-count').text(response.cartItems.length);
     },
     error: function(error) {
      console.error('Error retrieving cart items', error);
