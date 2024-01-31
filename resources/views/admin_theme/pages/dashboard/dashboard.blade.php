@@ -248,6 +248,69 @@
                 </div>
             </div>
 
+            @elseif($role="supplier")
+        <div class="main-panel " id="b2bDashboard">
+            <div class="content-wrapper">
+                <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
+                    <h2>Herzlich willkommen Firma Pool Bau Profi</h2>
+                    <p>Monday, January 12, 2024</p>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-6">
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">2</div>
+                            <div class="col-10">Ihre Mails</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">2</div>
+                            <div class="col-10">Neue Produkte</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">0</div>
+                            <div class="col-10">Ihre Claim`s</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">3</div>
+                            <div class="col-10">Ihre B2C B2B Connection Anfragen</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col" style="font-weight:600; color:#000; ">2</div>
+                            <div class="col-10">Top Special Angebote</div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-6">
+                        <div id="chart_div" style="width: 485px; height: 400px; border-radius:5px;"></div>
+                    </div>
+                </div>
+
+
+
+                <div class="top-products">
+                    <p>Top 10 Produkte klicks</p>
+                    <div class="row">
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+                        <div class="col" style="margin:10px;"><img src="{{ asset('assets/frontEnd/web/images/product-2.png') }}" alt="" srcset="" style="width:50px; height:50px; border:1px solid #000; "></div>
+
+                    </div>
+                </div>
+                <div class="top-products">
+                    <p>Top 5 Produkte sales</p>
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+
             @endif
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->

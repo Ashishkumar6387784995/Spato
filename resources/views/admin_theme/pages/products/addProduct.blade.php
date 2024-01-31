@@ -736,8 +736,6 @@
        displayValidationErrors(response.ValidationError);
       }
 
-
-
      },
      error: function(error) {
       // Handle the error response from the server
@@ -758,14 +756,12 @@
      }
      if (errors.type) {
       $('#type_err').text(errors.type[0]);
-     }
+     }    
      if (errors.Kategorie_1) {
       $('#Kategorie_1_err').text(errors.Kategorie_1[0]);
      }
 
     }
-
-
 
    }
   });

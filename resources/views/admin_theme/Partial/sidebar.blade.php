@@ -96,6 +96,20 @@
    </div>
   </li>
 
+  @elseif($role=="supplier")
+  <div id="adminSidebar">
+   <li class="nav-item">
+    <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
+     <span class="menu-title">B2C B2B Connection</span>
+    </a>
+   </li>
+   <li class="nav-item">
+    <div class="border-bottom ">
+     <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
+      <span class="menu-title">Einstellungen</span>
+     </a>
+    </div>
+   </li>
 
   @elseif($role=="admin")
   <div id="adminSidebar">
