@@ -24,6 +24,7 @@ use App\Http\Controllers\api\ConnectionsController;
 use App\Http\Controllers\api\StatisticsController;
 use App\Http\Controllers\api\categoriesController;
 use App\Http\Controllers\api\quatationController;
+use App\Http\Controllers\api\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,7 +118,11 @@ Route::middleware('api.auth')->group(function () {
   // Route::get('logout',[loginController::class,'logout']);
 
   
+  // Payment Checkout
+  Route::get('/payment', [PaymentController::class, 'index']);
+  Route::post('/cart/addOrder', [PaymentController::class, 'addOrder']);
 });
+Route::get('/checkout/payment', [PaymentController::class, 'payment']);
 
 Route::get('/productList', [tryController::class, 'productListing']);
 

@@ -307,8 +307,10 @@
               <div class="col-8 add">
                 <p class="name" id="develivery_person"></p>
                 <p class="address" id="develivery_address"></p>
+                <input type="hidden" name="delv_address" id="delv_address">
               </div>
               <div class="col-4 address-btn" style="display:flex; justify-content:flex-end;"><button class="change-btn" data-bs-toggle="modal" data-bs-target="#caddress" id="changeAdressButton">Change Address</button></div>
+              <div class="col-12"  id="delv_address_error" style="color:red; display:none">&nbsp;</div>
             </div>
             <div class="table-responsive">
               <table class="table">
@@ -346,7 +348,7 @@
                       <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                           <div class="mb-3 d-flex">
-                            <input type="text" class="form-control" id="address" placeholder="Enter your discount coupon">
+                            <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
                             <button type="submit" class="btn ms-2" style="width:30%;">Apply</button>
                           </div>
                         </div>
@@ -355,22 +357,22 @@
                     <hr />
                     <div class="details d-flex justify-content-between">
                       <p class="input-field">Subtotal</p>
-                      <div class="price-container"><input type="text" class="input-field" name="" id="subtotal" value="13,047.00" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly">€</div>
+                      <div class="price-container"><input type="text" class="input-field" name="sub_total" id="subtotal" value="13,047.00" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly">€</div>
                     </div>
 
                     <div class="details d-flex justify-content-between">
                       <p class="input-field">Shipping </p>
-                      <div class="price-container"><input type="number" id="shipping" value="21.00" step="0.01" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly" oninput="calculateTotal()">€</div>
+                      <div class="price-container"><input type="number" id="shipping" name="shipping_amt" value="21.00" step="0.01" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly" oninput="calculateTotal()">€</div>
                     </div>
 
                     <div class="details d-flex justify-content-between">
                       <p class="input-field">Tax</p>
-                      <div class="price-container"><input type="text" class="input-field" name="" id="tax" value="1.91" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly">€</div>
+                      <div class="price-container"><input type="text" class="input-field" name="tax_amt" id="tax" value="1.91" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly">€</div>
                     </div>
 
                     <div class="details d-flex justify-content-between">
                       <p class="input-field">Order Total</p>
-                      <div class="price-container"><input type="text" class="input-field total" name="" id="grandTotal" value="13,068.00" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly">€
+                      <div class="price-container"><input type="text" class="input-field total" name="order_total" id="grandTotal" value="13,068.00" style="width:150px; border:none; outline:none; text-align:right;" readonly="readonly">€
                       </div>
                     </div>
 
@@ -553,7 +555,7 @@
         tableRow.append(productDescCell);
 
         // Price
-        var priceCell = $('<td><input type="number" id="price' + index + '" value="' + item.total_price +
+        var priceCell = $('<td><input type="hidden" name="product_id[]" value="' + item.product_id + '"><input type="number" name="product_price[]" id="price' + index + '" value="' + item.total_price +
           '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transp`arent;" readonly="readonly">€</td>'
         );
         tableRow.append(priceCell);
@@ -561,7 +563,7 @@
         // Quantity
         var quantityCell = $('<td>');
         quantityCell.append('<div class="counter"><button class="quantity-btn" onclick="decreaseQuantity(' + item
-          .product_id + ')"><i class="fa-solid fa-minus"></i></button> <input type="text" id="quantity' + item
+          .product_id + ')"><i class="fa-solid fa-minus"></i></button> <input type="text" name="product_quanty[]" id="quantity' + item
           .product_id + '" value="' + item.quantity +
           '" min="1" readonly /> <button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
           ')"><i class="fa-solid fa-plus"></i></button></div>');
@@ -597,7 +599,7 @@
       $('#develivery_person').text(Permanent_address[0].name);
       $('#develivery_address').text(Permanent_address[0].permanent_address + ',' + Permanent_address[0].zipCode + ',' +
         Permanent_address[0].country);
-
+      $('#delv_address').val(Permanent_address[0].permanent_address + ',' + Permanent_address[0].zipCode + ',' + Permanent_address[0].country);
     }
 
 
@@ -687,6 +689,7 @@
         success: function(response) {
           console.log(response.cartItems);
           displayCartItems(response.cartItems);
+          jQuery('.nav-item .cart-count').text(response.cartItems.length);
         },
         error: function(error) {
           console.error('Error retrieving cart items', error);
@@ -783,15 +786,23 @@
   </script>
 
   <script>
-    $('#orderButton').click(function() {
+    
+    jQuery('#orderButton').on('click', function(e){
+      e.preventDefault();
 
+      // check for if delivery address is null
+      var address = jQuery('#delv_address').val();
+      jQuery('#delv_address_error').hide();
+      if (address=='') {
+        jQuery('#delv_address_error').show().text('Please add delivery addresss');
+        return false;
+      }
 
       // Create a FormData object and append form data to it
       var formData = new FormData(document.getElementById('orderForm'));
 
       // Log FormData object to the console (for debugging purposes)
       // console.log("FormData:", formData);
-
 
 
       var token = localStorage.getItem('authToken');
@@ -807,17 +818,27 @@
 
       var authToken = localStorage.getItem('authToken');
       $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: '/api/cart/addOrder',
+        data: formData,
+        contentType: false,
+        processData: false,
         headers: {
-
           'Authorization': 'Bearer ' + authToken,
           'guest-token': getGuestToken(),
         },
         success: function(response) {
-          // console.log(response.cartItems);
+          console.log(response);
 
-          displayTempAddress(response.userTempAddsress);
+          // on success
+          if (response.status=='1') {
+              window.location.href = '/api/checkout/payment';
+          }
+
+          // Error handels
+          if (response.status=='0') {
+            $('#cart-items-table-body').html('<tr><td colspan="6" style="color: red;text-align: center;">' + response.message + '</td></tr>');
+          }
         },
         error: function(error) {
           console.error('Error retrieving cart items', error);
