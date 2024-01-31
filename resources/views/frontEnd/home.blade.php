@@ -83,6 +83,8 @@
    border-radius: 8px;
    scroll-behavior: smooth;
    scrollbar-width: none;
+   height: 80vh;
+   margin: 1rem 0rem;
   }
 
   .carousel::-webkit-scrollbar {
@@ -145,10 +147,20 @@
   li .btn {
    text-align: center;
    width: 100%;
-   background-color: var(--blue);
-   color: #050811;
-   font-weight: 600;
-   margin-bottom: 1rem;
+   background-color: var(--blue) !important;
+   color: var(--white) !important;
+   font-weight: 700 !important;
+   text-decoration: none !important;
+   padding: 8px 0px !important;
+   border: 1px solid var(--blue);
+   border-radius: 0px 0px 5px 5px !important;
+   transition: 0.5s ease-in-out;
+  }
+
+  li .btn:hover {
+   background-color: var(--white) !important;
+   color: var(--blue) !important;
+   border: 1px solid var(--blue);
   }
 
   @media screen and (max-width: 900px) {
@@ -166,6 +178,7 @@
  </head>
 
  <body>
+
   @include('frontEnd/partial/header')
 
 
@@ -231,7 +244,7 @@
       </a>
 
      </div>
-     @endforeach 
+     @endforeach
     </div>
 
 

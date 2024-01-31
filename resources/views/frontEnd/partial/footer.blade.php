@@ -53,3 +53,7 @@
   </div>
  </div>
 </footer>
+
+<!-- Cart script starts -->
+    <script type="text/javascript" src="{{ url('js/web/cart.js') }}"></script>
+<!-- Cart script ends -->
