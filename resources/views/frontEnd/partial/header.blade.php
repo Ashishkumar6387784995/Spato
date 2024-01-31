@@ -52,18 +52,6 @@
     <a class="navbar-brand" href="{{url('api/home')}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
 
 
-<<<<<<< HEAD
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
-      <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('api/home')}}">Home</a>
-        </li>
-        <!-- <li class="nav-item">
-=======
    </a>
    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
     aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,10 +60,9 @@
    <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
     <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
      <li class="nav-item">
-      <a class="nav-link active " aria-current="page" href="{{url('api/home')}}">Home</a>
+      <a class="nav-link active" aria-current="page" href="{{url('api/home')}}">Home</a>
      </li>
      <!-- <li class="nav-item">
->>>>>>> 02d6c7abcaab49cd30d12bd7189ebe3a9b0e20b1
           <a class="nav-link pools" href="#">Pools</a></li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -128,34 +115,13 @@
               </div>
             </li>
 
-<<<<<<< HEAD
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Technik
-          </a>
-          <ul class="dropdown-menu dropdown-element pools-position">
-            <li>
-              <div class="row">
-                <div class="col">
-                  <h6 class="ml-3 ">Pump</h6>
-                  <a class="dropdown-item" href="#">Swimming pool circulation pumps ></a>
-                  <a class="dropdown-item" href="#">Jet pumping attractions ></a>
-                  <h6 class="ml-3">Filter</h6>
-                  <a class="dropdown-item" href="#">Sand filter ></a>
-                  <a class="dropdown-item" href="#">Cartridge filter ></a>
-                  <a class="dropdown-item" href="#">Skim filter ></a>
-                  <a class="dropdown-item" href="#">Filter material ></a>
-                  <a class="dropdown-item" href="#">Accesories ></a>
-=======
       </ul>
      </li>
      <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Technik
       </a>
-      <ul class="dropdown-menu dropdown-element technik-position">
+      <ul class="dropdown-menu dropdown-element pools-position">
        <li>
         <div class="row">
          <div class="col">
@@ -168,7 +134,6 @@
           <a class="dropdown-item" href="#">Skim filter ></a>
           <a class="dropdown-item" href="#">Filter material ></a>
           <a class="dropdown-item" href="#">Accesories ></a>
->>>>>>> 02d6c7abcaab49cd30d12bd7189ebe3a9b0e20b1
 
                   <h6 class="ml-3">Valves</h6>
                   <a class="dropdown-item" href="#">Rod valves ></a>
@@ -210,30 +175,11 @@
       <a class="nav-link" href="#"></a>
 
      </li> -->
-<<<<<<< HEAD
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Attraktionen
-          </a>
-          <ul class="dropdown-menu dropdown-element pools-position">
-            <li>
-              <div class="row">
-                <div class="col">
-                  <h6 class="ml-3 ">Pump</h6>
-                  <a class="dropdown-item" href="#">Swimming pool circulation pumps ></a>
-                  <a class="dropdown-item" href="#">Jet pumping attractions ></a>
-                  <h6 class="ml-3">Filter</h6>
-                  <a class="dropdown-item" href="#">Sand filter ></a>
-                  <a class="dropdown-item" href="#">Cartridge filter ></a>
-                  <a class="dropdown-item" href="#">Skim filter ></a>
-                  <a class="dropdown-item" href="#">Filter material ></a>
-                  <a class="dropdown-item" href="#">Accesories ></a>
-=======
      <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Attraktionen
       </a>
-      <ul class="dropdown-menu dropdown-element attraktionen-position">
+      <ul class="dropdown-menu dropdown-element pools-position">
        <li>
         <div class="row">
          <div class="col">
@@ -246,7 +192,6 @@
           <a class="dropdown-item" href="#">Skim filter ></a>
           <a class="dropdown-item" href="#">Filter material ></a>
           <a class="dropdown-item" href="#">Accesories ></a>
->>>>>>> 02d6c7abcaab49cd30d12bd7189ebe3a9b0e20b1
 
                   <h6 class="ml-3">Valves</h6>
                   <a class="dropdown-item" href="#">Rod valves ></a>
