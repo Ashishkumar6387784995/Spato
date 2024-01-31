@@ -726,8 +726,8 @@
   </script>
 
   <script>
-    $('#changeAdressButton').click(function() {
-
+    $('#changeAdressButton').click(function(e) {
+      e.preventDefault();
       var authToken = localStorage.getItem('authToken');
       $.ajax({
         type: 'GET',
