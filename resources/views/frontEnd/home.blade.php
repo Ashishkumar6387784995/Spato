@@ -178,6 +178,7 @@
  </head>
 
  <body>
+
   @include('frontEnd/partial/header')
 
 

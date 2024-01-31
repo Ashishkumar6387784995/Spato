@@ -360,6 +360,7 @@
   .related-products .card {
    height: 400px;
    padding: 0;
+   margin: 0px 5px;
   }
 
   .related-products li {
@@ -367,8 +368,39 @@
   }
 
 
-  .related-products .img {
-   display: flex
+  .related-products .card .img {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+
+  .related-products .card .img img {
+   width: 160px;
+   margin: 1rem 0rem;
+  }
+
+  .related-products .card .btn {
+   text-align: center;
+   /* width: 100%; */
+   background-color: var(--blue);
+   color: var(--white);
+   font-weight: 700;
+   text-decoration: none;
+   padding: 8px 0px;
+   border-radius: 0px 0px 5px 5px;
+   border: 1px solid var(--blue);
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   transition: 0.5s ease-in-out;
+  }
+
+  .related-products .card .btn:hover {
+   background-color: var(--white);
+   border: 1px solid var(--blue);
+   color: var(--blue);
+  }
+
+  input {
+   outline: none;
   }
   </style>
 

@@ -63,7 +63,7 @@
    <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
     <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
      <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{{url('api/home')}}">Home</a>
+      <a class="nav-link active " aria-current="page" href="{{url('api/home')}}">Home</a>
      </li>
      <!-- <li class="nav-item">
           <a class="nav-link pools" href="#">Pools</a></li> -->
@@ -124,7 +124,7 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Technik
       </a>
-      <ul class="dropdown-menu dropdown-element pools-position">
+      <ul class="dropdown-menu dropdown-element technik-position">
        <li>
         <div class="row">
          <div class="col">
@@ -182,7 +182,7 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Attraktionen
       </a>
-      <ul class="dropdown-menu dropdown-element pools-position">
+      <ul class="dropdown-menu dropdown-element attraktionen-position">
        <li>
         <div class="row">
          <div class="col">
