@@ -42,6 +42,7 @@ function generateGuestToken() {
 // Display Cart Items in the right sidebar
 function displayCartItems(cartItems) {
     console.log(cartItems);
+    var baseUrl = jQuery('#baseUrl').val();
     var cartItemsList = $('#cart-items-list');
     cartItemsList.empty();
 
@@ -52,7 +53,7 @@ function displayCartItems(cartItems) {
         // <img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;">
 
         // Product image (replace 'item.product_image_url' with the actual property in your response)
-        productElement.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" alt="" srcset="">');
+        productElement.append('<img src="'+ baseUrl + '/storage/' + item.product_image + '" alt="" srcset="">');
 
         // Product details
         var productDetails = $('<div class="col">');

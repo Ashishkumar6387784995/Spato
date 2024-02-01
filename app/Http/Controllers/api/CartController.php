@@ -133,7 +133,7 @@ class CartController extends Controller
 
     public function checkout()
     {
-        return view('frontEnd/pages/cart/checkout');
+        return view('frontEnd/Pages/cart/checkout');
     }
 
     public function quotesForm($product_id)
@@ -352,6 +352,6 @@ class CartController extends Controller
     public function viewCart()
     {
 
-        return view('frontEnd/pages/cart/cartView');
+        return view('frontEnd/Pages/cart/cartView');
     }
 }

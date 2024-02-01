@@ -37,7 +37,7 @@
   </style>
 </head>
 
-
+<input type="hidden" id="baseUrl" value="{{url('/')}}">
 
 
 <nav class="navbar navbar-expand-lg ps-4 pe-4">
