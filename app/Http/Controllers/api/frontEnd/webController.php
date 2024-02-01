@@ -86,7 +86,7 @@ class webController extends Controller
 
     public function accountSetting()
     {
-        return view('frontEnd/pages/user_profile/setting');
+        return view('frontEnd/Pages/user_profile/setting');
     }
 
 
