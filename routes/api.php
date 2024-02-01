@@ -21,6 +21,8 @@ use App\Http\Controllers\api\claims_manager_Controller;
 use App\Http\Controllers\api\SuppliersController;
 use App\Http\Controllers\api\ContactController;
 use App\Http\Controllers\api\ConnectionsController;
+use App\Http\Controllers\api\CustomerMngController;
+use App\Http\Controllers\api\OrderMngController;
 use App\Http\Controllers\api\StatisticsController;
 use App\Http\Controllers\api\categoriesController;
 use App\Http\Controllers\api\quatationController;
@@ -228,6 +230,23 @@ Route::get('addcontact/{role}', [ContactController::class, 'addContacts']);
 Route::view('SuppliersListing/{role}', 'admin_theme/pages/suppliers/SuppliersList');
 Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
 
+
+// Customer Management for Admin
+  // Route::get('customerListingApi', [CustomerMngController::class, 'customerListingApi']);
+  Route::view('customerListing/{role}', 'admin_theme/pages/customer/customerList');
+  Route::get('editcustomer', [CustomerMngController::class, 'editCustomer']);
+
+// Order Management for Admin
+  // Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);
+  Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
+  Route::get('editorder', [OrderMngController::class, 'editOrder']);
+
+// Order Management for Admin
+  // Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);
+  // Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
+  // Route::get('addorder/{role}', [OrderMngController::class, 'addOrder']);
+  // Route::post('addorderApi', [OrderMngController::class, 'addOrderApi']);
+  // Route::get('editorder', [OrderMngController::class, 'editOrder']);
 
 // Statistics for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
