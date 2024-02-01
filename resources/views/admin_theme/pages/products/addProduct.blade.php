@@ -641,8 +641,8 @@
       <div class="mb-3">
        <label for="formFile" class="form-label">Import your file</label>
        <span class="d-flex"><input style="width:50%;" class="form-control" type="file" id="formFile"
-         accept=".csv, .xlsx"><i style="    position: absolute; left: 30%; top: 45%;"
-         class="fa-solid fa-upload"></i></span>
+         accept=".csv, .xlsx"><i style="position: absolute; left: 30%; top: 45%;"
+         class="fa-solid fa-cloud-arrow-up"></i></span>
       </div>
      </div>
      <div class="modal-footer d-flex justify-content-between">
