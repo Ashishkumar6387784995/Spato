@@ -234,12 +234,12 @@ Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
 // Customer Management for Admin
   // Route::get('customerListingApi', [CustomerMngController::class, 'customerListingApi']);
   Route::view('customerListing/{role}', 'admin_theme/pages/customer/customerList');
-  Route::get('editcustomer', [CustomerMngController::class, 'editCustomer']);
+  Route::get('editcustomer/{role}/{id}', [CustomerMngController::class, 'editCustomer']);
 
 // Order Management for Admin
   // Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);
   Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
-  Route::get('editorder', [OrderMngController::class, 'editOrder']);
+  Route::get('editorder/{role}/{id}', [OrderMngController::class, 'editOrder']);
 
 // Order Management for Admin
   // Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);

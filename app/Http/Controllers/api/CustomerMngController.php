@@ -21,9 +21,9 @@ class CustomerMngController extends Controller
     }
 
 
-    public function editCustomer()
+    public function editCustomer($role, $id)
     {
-        return view('admin_theme/pages/customer/editCustomer');
+        return view('admin_theme/pages/customer/editCustomer', compact('role', 'id'));
     }
 }
 

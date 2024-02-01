@@ -22,8 +22,8 @@ class OrderMngController extends Controller
     }
 
 
-    public function editOrder()
+    public function editOrder($role, $id)
     {
-        return view('admin_theme/pages/order/editOrder');
+        return view('admin_theme/pages/order/editOrder', compact('role', 'id'));
     }
 }
