@@ -184,7 +184,7 @@
         <button class="btn" type="button" id="saveBtn">Save</button>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
-        <button class="btn" id="importBtn">Import CSV</button>
+        <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#importModal">Import CSV</button>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
         <button class="btn" id="exportBtn">Export CSV</button>
@@ -627,7 +627,32 @@
 
   <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 
-
+  <!-- Import CSV Modal -->
+  <!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header" style="border-bottom: 2px solid #44e1d5;">
+      <h1 class="modal-title fs-5" id="importModalLabel">Import CSV/XLSX file</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <div class="mb-3">
+       <label for="formFile" class="form-label">Import your file</label>
+       <span class="d-flex"><input style="width:50%;" class="form-control" type="file" id="formFile"
+         accept=".csv, .xlsx"><i style="    position: absolute; left: 30%; top: 45%;"
+         class="fa-solid fa-upload"></i></span>
+      </div>
+     </div>
+     <div class="modal-footer d-flex justify-content-between">
+      <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn">Import</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- Import CSV Modal  ends-->
 
 
   <script>
@@ -756,7 +781,7 @@
      }
      if (errors.type) {
       $('#type_err').text(errors.type[0]);
-     }    
+     }
      if (errors.Kategorie_1) {
       $('#Kategorie_1_err').text(errors.Kategorie_1[0]);
      }
