@@ -651,14 +651,14 @@
         </div>
         <div class="mb-3">
          <label for="formFile" class="form-label">Import Images file</label>
-         <span class="d-flex"><input style="width:80%;" class="form-control" type="file" name="ProductsImportFile"><i
+         <span class="d-flex"><input style="width:80%;" class="form-control" type="file" name="ProductsImageFile[]"><i
            style="position: absolute; left: 78%; top: 26%;" class="fa-solid fa-image"></i></span>
         </div>
        </div>
        <div class="d-flex">
         <div class="mb-3">
          <label for="formFile" class="form-label">Import PDF file</label>
-         <span class="d-flex"><input style="width:63%;" class="form-control" type="file" name="ProductsImportFile"><i
+         <span class="d-flex"><input style="width:63%;" class="form-control" type="file" name="ProductsPdfFile[]"><i
            style="position: absolute; left: 30%; top: 70%;" class="fa-solid fa-file-pdf"></i></span>
         </div>
        </div>
@@ -856,9 +856,7 @@
        $('#import_success_message').text(response.success);
        console.log('Server Response:', response);
        $('#productsImportForm')[0].reset();
-      } else {
-       $('#import_success_message').text(response.errors);
-      }
+      } 
 
       if (response.error) {
        // Display validation errors next to the respective form fields

@@ -62,7 +62,7 @@ class ProductController extends Controller
             'Anleitung_PDF_1' => 'nullable|mimes:pdf',
             'Anleitung_PDF_2' => 'nullable|mimes:pdf',
             'Anleitung_PDF_3' => 'nullable|mimes:pdf',
-    
+
 
 
 
@@ -78,44 +78,45 @@ class ProductController extends Controller
 
         $uploadedimages = [];
         $imageFields = ['Bild_1', 'Bild_2', 'Bild_3', 'Bild_4'];
-        
+
         foreach ($imageFields as $image) {
             if ($request->hasFile($image)) {
                 $uploadedImage = $request->file($image);
                 $imagePath = $uploadedImage->store('public/products_images');
-        
+
                 // Save file path in the database
                 $uploadedimages[$image] = '/products_images/' . $uploadedImage->hashName();
-        
+
                 // You can also save the full path like $uploadedimages[$image] = $imagePath; if needed.
             }
         }
-        
+
         // Handle file uploads
         $uploadedFiles = [];
         $fileFields = ['Anleitung_PDF_1', 'Anleitung_PDF_2', 'Anleitung_PDF_3'];
-        
+
         foreach ($fileFields as $field) {
             if ($request->hasFile($field)) {
                 $uploadedFile = $request->file($field);
                 $filePath = $uploadedFile->store('public/products_pdf');
-        
+
                 // Save file path in the database
                 $uploadedFiles[$field] = '/products_pdf/' . $uploadedFile->hashName();
-        
+
                 // You can also save the full path like $uploadedFiles[$field] = $filePath; if needed.
             }
         }
-        
+
         // Create a new product
         $product = Product::create(array_merge(
-            $request->only(['type', 'Hersteller', 'Herst_Nr', 'Lief_Art_Nr', 'Hersteller_Artikelnummer', 'descriKatalog_Art_Nummertion', 'Katalog_Art_Nummer', 'Kategorie_1','Kategorie_2','Kategorie_3','Kategorie_4','Kategorie_5', 'VE_VPE', 'Einheit', 'Rabattcode_1', 'Rabattcode_2', 'Rabat
+            $request->only(['type', 'Hersteller', 'Herst_Nr', 'Lief_Art_Nr', 'Hersteller_Artikelnummer', 'descriKatalog_Art_Nummertion', 'Katalog_Art_Nummer', 'Kategorie_1', 'Kategorie_2', 'Kategorie_3', 'Kategorie_4', 'Kategorie_5', 'VE_VPE', 'Einheit', 'Rabattcode_1', 'Rabattcode_2', 'Rabat
             code_3', 'Preis_zzgl_MwSt', 'Preis_inkl_MwSt', 'Einkausfpreis_zzgl_MwSt', 'Einkaufsrabatt', 'Artikelname', 'Beschreibung_kurz', 'Beschreibung_lang']),
-            $uploadedimages, $uploadedFiles,
+            $uploadedimages,
+            $uploadedFiles,
             ['addedBy' => 'addedBy'] // Adjust this value as needed
         ));
-        
-        
+
+
 
         // Check if the product was created successfully
         if ($product) {
@@ -163,36 +164,61 @@ class ProductController extends Controller
     }
 
 
-    
+
     public function productImport(Request $request)
-    {
-        // Check if the file was uploaded successfully
-        if ($request->hasFile('ProductsImportFile')) {
-            // Get the file from the request    
-            $file = $request->file('ProductsImportFile');
-    
-            // Access other form data if needed
-            $otherFormData = $request->input('otherFormData');
-    
-            // Move the file to a specific location
-            $file->move(storage_path('app/public/products_import_files'), $file->getClientOriginalName());
-    
-            // Process the file and import data into the database using the import class
-            $filePath = storage_path('app/public/products_import_files') . '/' . $file->getClientOriginalName();
-           $result = Excel::import(new ProductsImport(), $filePath);
-    
-            // Return a response or perform other actions
-            if($result){
-                return response()->json(['success' => 'File uploaded and data imported successfully']);
+{
+    // Check if the file was uploaded successfully
+    if ($request->hasFile('ProductsImportFile')) {
+        // Get the file from the request
+        $excelFile = $request->file('ProductsImportFile');
+
+        // Access other form data if needed
+        $otherFormData = $request->input('otherFormData');
+
+        // Move the Excel file to a specific location
+        $excelFile->move(storage_path('app/public/products_import_files'), $excelFile->getClientOriginalName());
+
+        // Process the Excel file and import data into the database using the import class
+        $excelFilePath = storage_path('app/public/products_import_files') . '/' . $excelFile->getClientOriginalName();
+        Excel::import(new ProductsImport(), $excelFilePath);
+
+        // Retrieve the last inserted product ID
+        $lastProductId = Product::latest('id')->first()->id;
+
+        // Check and handle the ProductsImageFile
+        if ($request->hasFile('ProductsImageFile')) {
+            $uploadedImages = $request->file('ProductsImageFile');
+            $imagePaths = [];
+
+            foreach ($uploadedImages as $image) {
+                $imagePath = $image->store('public/products_images');
+                $imagePaths[] = $imagePath;
             }
-            else{
-                return response()->json(['errors' => 'File uploaded and data imported filed']);
-            }
-          
-        } else {
-            // Handle the case where no file was uploaded
-            return response()->json(['error' => 'No file uploaded']);
+
+            // Update the product record with image paths
+            Product::where('id', $lastProductId)->update(['image_paths' => $imagePaths]);
         }
+
+        // Check and handle the ProductsPdfFile
+        if ($request->hasFile('ProductsPdfFile')) {
+            $uploadedFiles = $request->file('ProductsPdfFile');
+            $pdfPaths = [];
+
+            foreach ($uploadedFiles as $file) {
+                $pdfPath = $file->store('public/products_pdf');
+                $pdfPaths[] = $pdfPath;
+            }
+
+            // Update the product record with PDF paths
+            Product::where('id', $lastProductId)->update(['pdf_paths' => $pdfPaths]);
+        }
+
+        // Return a response or perform other actions
+        return response()->json(['success' => 'File uploaded and data imported successfully']);
+    } else {
+        // Handle the case where no file was uploaded
+        return response()->json(['error' => 'No file uploaded']);
     }
-    
+}
+
 }
