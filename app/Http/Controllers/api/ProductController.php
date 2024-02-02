@@ -164,9 +164,20 @@ class ProductController extends Controller
     }
 
 
-
     public function productImport(Request $request)
     {
+            // $validator = Validator::make($request->all(), [
+            //     'ProductsImportFile' => 'required|mimes:csv,xlsx',
+            //     'ProductsImageFile' => 'required|mimes:png,jpeg,jpg,TIF',
+            //     'ProductsPdfFile' => 'required|mimes:pdf',
+            // ]);
+
+            // if ($validator->fails()) {
+            //     // Return validation errors in the response
+            //     return response()->json(['ValidationError' => $validator->errors(), 'message' => 'Pls Fill Form Properly']);
+            // }
+        
+
         // Check if the file was uploaded successfully
         if ($request->hasFile('ProductsImportFile')) {
             // Get the file from the request
@@ -191,11 +202,9 @@ class ProductController extends Controller
                 $imagePaths = [];
     
                 foreach ($uploadedImages as $image) {
-                    $imagePath = $image->store('public/products_images');
+                    $imagePath = $image->storeAs('public/products_images', $image->getClientOriginalName());
                     $imagePaths[] = $imagePath;
                 }
-    
-   
             }
     
             // Check and handle the ProductsPdfFile
@@ -204,11 +213,9 @@ class ProductController extends Controller
                 $pdfPaths = [];
     
                 foreach ($uploadedFiles as $file) {
-                    $pdfPath = $file->store('public/products_pdf');
+                    $pdfPath = $file->storeAs('public/products_pdf', $file->getClientOriginalName());
                     $pdfPaths[] = $pdfPath;
                 }
-    
-           
             }
     
             // Return a response or perform other actions
@@ -218,5 +225,6 @@ class ProductController extends Controller
             return response()->json(['error' => 'No file uploaded']);
         }
     }
+    
     
 }
