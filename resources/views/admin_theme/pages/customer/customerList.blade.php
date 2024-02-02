@@ -131,11 +131,6 @@
      </div>
 
 
-
-     <span id="success_msg" style="color:#44e1d5; font-size:22px; font-weight: 800;"></span>
-     <br> <br>
-
-
      <table id="dataTable">
       <tr>
        <th>Kundennummer</th>
