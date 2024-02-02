@@ -158,6 +158,7 @@ Route::get('productListingApi', [productController::class, 'productListing']);
 Route::view('productListing/{role}', 'admin_theme/pages/products/productsList');
 Route::get('addProduct/{role}', [productController::class, 'addProduct']);
 Route::post('addProduct', [productController::class, 'addproductList']);
+Route::post('productImportApi', [productController::class, 'productImport']);
 Route::get('editProduct/{id}', [productController::class, 'editProduct']);
 Route::get('deleteProduct/{id}', [productController::class, 'deleteProduct']);
 

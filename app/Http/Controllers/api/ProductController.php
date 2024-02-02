@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use PDF;
+use App\Imports\ProductsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ProductController extends Controller
@@ -145,7 +147,7 @@ class ProductController extends Controller
         return view('admin_theme/pages/products/editProduct');
     }
 
-    public function deleteProduct($id)
+    public function deleteProduct($id,)
     {
 
         $deletedProduct = Product::where('id', $id)->delete();
@@ -159,4 +161,38 @@ class ProductController extends Controller
 
         // return view('admin_theme/pages/products/addProduct');
     }
+
+
+    
+    public function productImport(Request $request)
+    {
+        // Check if the file was uploaded successfully
+        if ($request->hasFile('ProductsImportFile')) {
+            // Get the file from the request    
+            $file = $request->file('ProductsImportFile');
+    
+            // Access other form data if needed
+            $otherFormData = $request->input('otherFormData');
+    
+            // Move the file to a specific location
+            $file->move(storage_path('app/public/products_import_files'), $file->getClientOriginalName());
+    
+            // Process the file and import data into the database using the import class
+            $filePath = storage_path('app/public/products_import_files') . '/' . $file->getClientOriginalName();
+           $result = Excel::import(new ProductsImport(), $filePath);
+    
+            // Return a response or perform other actions
+            if($result){
+                return response()->json(['success' => 'File uploaded and data imported successfully']);
+            }
+            else{
+                return response()->json(['errors' => 'File uploaded and data imported filed']);
+            }
+          
+        } else {
+            // Handle the case where no file was uploaded
+            return response()->json(['error' => 'No file uploaded']);
+        }
+    }
+    
 }
