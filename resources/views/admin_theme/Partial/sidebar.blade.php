@@ -125,11 +125,25 @@
      </a>
     </div>
    </li>
+
    <li class="nav-item">
-    <a class="nav-link pt-3" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
-     <span class="menu-title">Produkte Kategorie</span>
-    </a>
+      <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
+         <span class="menu-title">Kundenmanagement</span>
+      </a>
    </li>
+
+   <li class="nav-item">
+      <a class="nav-link" href="{{url('/api/orderListing/'.$role)}}" onclick="markVisited(this)">
+         <span class="menu-title">Auftragsverwaltung</span>
+      </a>
+   </li>
+
+   <li class="nav-item">
+      <a class="nav-link" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
+         <span class="menu-title">Produkte Kategorie</span>
+      </a>
+   </li>
+
    <li class="nav-item">
 
     <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
