@@ -218,10 +218,8 @@
       <span id="success_msg" style="color:Green"></span>
       <div class="row pt-3">
 
-       <div class="col-md-4">
-
-
-        <div class="customer-img"><img src="{{ asset('assets/frontEnd/web/images/robot.gif') }}" alt="" srcset="">
+        <div class="col-md-4">
+          <div class="customer-img"><img src="{{url('assets/frontEnd/web/images/profile.png')}}" alt="" srcset="" id="profileImage">
         </div>
 
        </div>
@@ -245,7 +243,7 @@
          </div>
          <div class="inputs">
           <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum"
-            value="{{ now()->format('d-m-Y') }}" /> <br>
+            value="" /> <br>
            <span id="Lieferdatum_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
@@ -316,11 +314,11 @@
           <tr class="hidden">
            <td>
 
-            <input type="text" name='inputs[0][POS]' value="1" id="sno" /><br>
+            <input type="text" name='inputs[0][POS]' value="" id="customer_sno" /><br>
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Produkt]' value="Alex Driver" />
+            <input type="text" name='inputs[0][Produkt]' value="" id="customer_name"/>
             <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
 
            </td>
@@ -328,7 +326,7 @@
 
            <td>
 
-            <input type="text" name='inputs[0][Beschreibung]' value="Order id : 201, 350" />
+            <input type="text" name='inputs[0][Beschreibung]' value="" id="order_id"/>
             <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
@@ -367,21 +365,21 @@
           <th>Kundenname </th>
           <td>-</td>
           <td>
-           <input type="text" value="Alex Driver" name="Kundenname" readonly />
+           <input type="text" value="" name="Kundenname" id="userName" readonly />
           </td>
          </tr>
          <tr>
           <th>Handynummer</th>
           <td>-</td>
           <td>
-           <input type="text" value="984751557" name="Handynummer" readonly />
+           <input type="text" value="" name="Handynummer" id="userMobile" readonly />
           </td>
          </tr>
          <tr>
           <th>fester Wohnsitz</th>
           <td>-</td>
           <td>
-           <input type="text" value="G-758, Newcity, Germany" name="fester-Wohnsitz" readonly />
+           <input type="text" value="" name="fester-Wohnsitz" id="delv_address" readonly />
           </td>
          </tr>
          <tr>
@@ -389,7 +387,7 @@
            Kunden-eMail</th>
           <td>-</td>
           <td>
-           <input type="text" value="alex@gmail.com" name="Kunden-eMail" readonly />
+           <input type="text" value="" name="Kunden-eMail" id="userMail" readonly />
           </td>
          </tr>
          <tr>
@@ -400,12 +398,12 @@
          <tr>
           <th>Neues Kennwort </th>
           <td>-</td>
-          <td><input class="password" type="password" value="sjkdhkashkusha"></td>
+          <td><input class="password" type="password" value=""></td>
          </tr>
          <tr>
           <th>Bestätige das Passwort </th>
           <td>-</td>
-          <td><input class="password" type="password" value="sjkdhkashkusha"></td>
+          <td><input class="password" type="password" value=""></td>
          </tr>
         </tbody>
        </table>
@@ -558,6 +556,70 @@
 
    }
   });
+  </script>
+
+
+
+<script>
+
+    $(document).ready(function() {
+      // Get the token from localStorage
+      var token = localStorage.getItem('authToken');
+      console.log(token);
+
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        return; // Stop further execution if the token is missing
+      }
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/profileViewByIdApi/{{$id}}', // Replace with the actual endpoint URL
+        method: 'GET',
+        headers: {
+        'Authorization': 'Bearer ' + token,
+        },
+        success: function(data) {
+          // Handle the successful response
+          if (data.status) {
+            // var join_date = new Date(data.user.created_at);
+            // alert(join_date.getTime());
+            // alert(data.user.created_at);
+            console.log('Data received:', data.user);
+            // Update DOM elements with user data
+            $('#Lieferschein_Nr, #customer_sno').val(data.user.id);      // customer ID
+            $('#Lieferdatum').val(data.user.created_at);  // Date Of Joining
+            $('#userName, #customer_name').val(data.user.name);
+            $('#userMobile').val(data.user.mobile);
+            $('#delv_address').val(data.user.permanent_address + ',' + data.user.zipCode + ',' + data.user.country);
+            $('#userMail').val(data.user.email);
+            $('#order_id').val('Order id : 201, 350');
+            
+            // Assuming 'profile_picture' is the path to the image file
+            var imagePath = data.user.profile_picture;
+
+            if (data.user.profile_picture !='') {
+              $('#profileImage').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' +
+              imagePath : '{{ asset("assets/frontEnd/web/images/profile.png") }}');
+            }
+          } 
+          else {
+            console.log('Data received:', data.errors);
+          }
+        },
+
+        error: function(xhr, status, error) {
+          // Handle specific errors
+          if (xhr.status === 401) {
+            console.error('Unauthorized: Please check your authentication token.');
+          } else {
+            console.error('Error:', error);
+          }
+        }
+      });
+    });
   </script>
 
 
