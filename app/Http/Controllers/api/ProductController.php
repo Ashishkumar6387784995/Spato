@@ -167,8 +167,8 @@ class ProductController extends Controller
     public function productImport(Request $request)
     {
             // $validator = Validator::make($request->all(), [
-            //     'ProductsImportFile' => 'required|mimes:csv,xlsx',
-            //     'ProductsImageFile' => 'required|mimes:png,jpeg,jpg,TIF',
+            //     'ProductsImportFile' => 'required',
+            //     'ProductsImageFile' => 'required',
             //     'ProductsPdfFile' => 'required|mimes:pdf',
             // ]);
 
