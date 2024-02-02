@@ -651,7 +651,7 @@
         </div>
         <div class="mb-3">
          <label for="formFile" class="form-label">Import Images file</label>
-         <span class="d-flex"><input style="width:80%;" class="form-control" type="file" name="ProductsImportFile"><i
+         <span class="d-flex"><input style="width:80%;" class="form-control" type="file" name="files[]"><i
            style="position: absolute; left: 78%; top: 26%;" class="fa-solid fa-image"></i></span>
         </div>
        </div>

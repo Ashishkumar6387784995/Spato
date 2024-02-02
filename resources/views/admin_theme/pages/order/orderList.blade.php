@@ -72,6 +72,25 @@
    padding: 10px 2px;
    width: 200px;
   }
+
+
+  .order-details tr th {
+   width: 150px;
+  }
+
+  .order-details tr td:nth-child(2) {
+   width: 50px;
+  }
+
+  .modal-body input {
+   border: none;
+   outline: none;
+   width: 100px;
+  }
+
+  .row {
+   --bs-gutter-x: 0px !important;
+  }
   </style>
  </head>
 
@@ -131,14 +150,32 @@
      </div>
      <table id="dataTable">
       <tr>
-       <th>Kundennummer</th>
+       <th>Auftragsnummer</th>
        <th>Kundenname</th>
-       <th>Kundenrolle</th>
+       <th>Zahlungsstatus</th>
        <th></th>
-       <th></th>
+       <th>Endgültiger Status</th>
       </tr>
-
+      <tr>
+       <td>AN-1379</td>
+       <td>Alex</td>
+       <td><span class="p-status">Ausstehend</span></td>
+       <td><a class="edit btn" id="editProductBtn" data-bs-toggle="modal" data-bs-target="#viewModal">Details
+         anzeigen</a></td>
+       <td><span class="f-status" style="color:#B20202;">Incomplete </span> <i style="color:#B20202;" class=" fa-solid
+         fa-xmark"></i></td>
+      </tr>
+      <tr>
+       <td>AN-1380</td>
+       <td>Sam</td>
+       <td><span class="p-status">Erledigt</span></td>
+       <td><a class="edit btn" id="editProductBtn" data-bs-toggle="modal" data-bs-target="#viewModal">Details
+         anzeigen</a></td>
+       <td><span class="f-status" style="color:#02B222;">Complete </span> <i style="color:#02B222;" class=" fa-solid
+         fa-check"></i></td>
+      </tr>
      </table>
+
 
     </div>
 
@@ -165,6 +202,115 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
 
+
+
+  <!-- View Details in Modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h1 class="modal-title fs-5" id="viewModalLabel">Order Details</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+      <table class="order-details">
+       <tbody>
+        <tr>
+         <th>Auftragsnummer</th>
+         <td>-</td>
+         <td>AN-1379</td>
+        </tr>
+        <tr>
+         <th>Kundennummer</th>
+         <td>-</td>
+         <td>UR-503</td>
+        </tr>
+        <tr>
+         <th>Kundenname</th>
+         <td>-</td>
+         <td>Alex</td>
+        </tr>
+        <tr>
+         <th>Rechnungsadresse</th>
+         <td>-</td>
+         <td>UG - 452, New Town, Germany</td>
+        </tr>
+        <tr>
+         <th>Lieferanschrift</th>
+         <td>-</td>
+         <td>House no. - 87, Toronto, Canada</td>
+        </tr>
+       </tbody>
+      </table>
+      <h4 class="pt-3 pb-3" style="color:;">Ordered Products</h4>
+      <table class="order-products">
+       <tbody>
+        <tr>
+         <th>Produkt-ID</th>
+         <th>Produktname</th>
+         <th>Hersteller</th>
+         <th>Preis</th>
+        </tr>
+        <tr>
+         <td>PR-451</td>
+         <td>Robot1</td>
+         <td>Sparto Services</td>
+         <td>€8,745</td>
+        </tr>
+        <tr>
+         <td>PR-781</td>
+         <td>Robot2</td>
+         <td>Sparto Services</td>
+         <td>€8,745</td>
+        </tr>
+        <tr>
+         <td>PR-565</td>
+         <td>Robot3</td>
+         <td>Sparto Services</td>
+         <td>€8,745</td>
+        </tr>
+       </tbody>
+      </table>
+      <hr>
+      <div class="row pt-5">
+       <div class="col-3"></div>
+       <div class="col-4">
+        <p>Zwischensumme</p>
+        <p>Versand</p>
+        <p>Steuer</p>
+        <p>Auftragssumme</p>
+       </div>
+       <div class="col-1">
+        <p>-</p>
+        <p>-</p>
+        <p>-</p>
+        <p>-</p>
+       </div>
+       <div class="col-2">
+        <p><input type="text" value="€8,745" readonly /></p>
+        <p><input type="text" value="€8,745" readonly /></p>
+        <p><input type="text" value="€8,745" readonly /></p>
+        <p><input type="text" value="€8,745" readonly /></p>
+       </div>
+      </div>
+      <hr>
+      <div class="row transection">
+       <div class="col-4">Transaktions-ID</div>
+       <div class="col-2">-</div>
+       <div class="col-6">Td-7458442AS756</div>
+      </div>
+     </div>
+     <div class="modal-footer d-flex justify-content-between">
+      <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="edit">Mark As Complete</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- View Details in Modal -->
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
   // Execute the code when the document is ready
@@ -188,13 +334,17 @@
        // Iterate through the data and add rows to the table
        $.each(data, function(index, item) {
         var row = $('<tr>');
-        row.append('<td>' + item.Hersteller + '</td>');
-        row.append('<td>' + item.Herst_Nr + '</td>');
-        row.append('<td>' + item.id + '</td>');
-        row.append('<td><a href="/api/editcustomer/{{$role}}/' + item.id +
-         '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-        row.append('<td><a href="#"  class="edit btn" onclick="deleteOperation(' + item.id +
-         ')" id="deleteProductBtn">Löschen</a></td>');
+        row.append('<td>'
+         'AN-1379'
+         '</td>');
+        row.append('<td>'
+         'Alex'
+         '</td>');
+        row.append('<td>'
+         '<span class="p-status">Pending</span>'
+         '</td>');
+        row.append('<td><a class="edit btn" id="editProductBtn">Details anzeigen</a></td>');
+        row.append('<td><span class="f-status">Complete </span> <i class="fa-solid fa-circle-check"></i></td>');
 
 
         // Add more columns as needed
