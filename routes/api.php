@@ -115,6 +115,8 @@ Route::middleware('api.auth')->group(function () {
    Route::get('showTempAddressApi', [webController::class, 'showTempAddressApi']);
    Route::get('tempAddressDelete/{id}', [webController::class, 'tempAddressDelete']);
 
+  // For get user details by his id
+  Route::get('profileViewByIdApi/{id}', [webController::class, 'profileViewByIdApi']);
    
   Route::post('logoutApi', [loginController::class, 'logoutApi']);
   // Route::get('logout',[loginController::class,'logout']);
@@ -233,7 +235,7 @@ Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
 
 
 // Customer Management for Admin
-  // Route::get('customerListingApi', [CustomerMngController::class, 'customerListingApi']);
+  Route::get('customerListingApi', [CustomerMngController::class, 'customerListingApi']);
   Route::view('customerListing/{role}', 'admin_theme/pages/customer/customerList');
   Route::get('editcustomer/{role}/{id}', [CustomerMngController::class, 'editCustomer']);
 

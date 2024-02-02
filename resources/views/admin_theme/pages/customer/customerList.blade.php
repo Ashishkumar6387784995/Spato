@@ -173,12 +173,12 @@
   $(document).ready(function() {
    // Make a GET request using AJAX
    $.ajax({
-    url: '/api/productListingApi', // Replace with the actual endpoint URL
+    url: '/api/customerListingApi', // Replace with the actual endpoint URL
     method: 'GET',
     success: function(data) {
      // Handle the successful response
-     if (data.productList) {
-      console.log('Data received:', data.productList);
+     if (data.usersList) {
+      console.log('Data received:', data.usersList);
 
 
       function populateTable(data) {
@@ -190,9 +190,10 @@
        // Iterate through the data and add rows to the table
        $.each(data, function(index, item) {
         var row = $('<tr>');
-        row.append('<td>' + item.Hersteller + '</td>');
-        row.append('<td>' + item.Herst_Nr + '</td>');
+
         row.append('<td>' + item.id + '</td>');
+        row.append('<td>' + item.name + '</td>');
+        row.append('<td>' + item.role + '</td>');
         row.append('<td><a href="/api/editcustomer/{{$role}}/' + item.id +
          '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
         row.append('<td><a href="#"  class="edit btn" onclick="deleteOperation(' + item.id +
@@ -207,7 +208,7 @@
       }
 
       // Call the function to populate the table with the initial data
-      populateTable(data.productList);
+      populateTable(data.usersList);
 
 
 

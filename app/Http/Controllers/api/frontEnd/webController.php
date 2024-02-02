@@ -112,6 +112,22 @@ class webController extends Controller
     }
 
 
+    // Function for get user details by his id
+    public function profileViewByIdApi($id)
+    {   
+        // $user = User::where('id', $id)->first();
+        $user = DB::table('users')
+                    ->select('users.*', 'user_profiles.permanent_address', 'user_profiles.city', 'user_profiles.zipCode', 'user_profiles.country', 'user_profiles.profile_picture')
+                    ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+                    ->where('users.id', $id)
+                    ->where('user_profiles.status', 'Permanent')
+                    ->first();
+        // dd($user);
+        if ($user) {
+            return response()->json(['status' => '1', 'user' => $user]);
+        }
+        return response()->json(['errors'=>"Customer Not Found"]);
+    }
 
 
     public function addPermanentProfileApi(Request $request)
