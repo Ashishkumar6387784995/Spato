@@ -250,11 +250,15 @@ class ProductController extends Controller
                 return response()->json(['error' => $e->getMessage()]);
             }
         }
-            
+
         // Handle non-AJAX requests (if needed)
         return Excel::download(new ProductsExport, 'Products.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
     
     
+
     
 }
+
+
+
