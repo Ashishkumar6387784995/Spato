@@ -888,7 +888,7 @@
             error: function(xhr, textStatus, errorThrown) {
                 try {
                     var errors = JSON.parse(xhr.responseText);
-                    $('#import_success_message').text("File Size is Too Large.");
+               
                     console.error('Validation Errors:', errors);
                 } catch (e) {
                     console.error('Non-JSON response:', xhr.responseText);
