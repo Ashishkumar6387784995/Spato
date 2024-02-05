@@ -187,7 +187,7 @@
               <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#importModal">Import CSV</button>
             </div>
             <div class="col-md-2 stretch-card grid-margin">
-              <button class="btn" id="exportBtn">Export CSV</button>
+              <button class="btn" type="button" id="exportBtn">Export CSV</button>
             </div>
             <div class="col-md-4 stretch-card grid-margin">
               <button class="btn" id="priceUpdaterBtn">Price Updater</button>
@@ -808,7 +808,7 @@
 
 
     $(document).ready(function() {
-    $('#productImportButton').on('click', function() {
+      $('#productImportButton').on('click', function() {
         $('#import_success_message').text('');
         $('#ProductsImportFile-err').text('');
         $('#ProductsImageFile-err').text('');
@@ -821,36 +821,36 @@
 
         // Send the formData to the server using AJAX
         sendDataToServer(formData);
-    });
+      });
 
-    // Function to collect form data
-    function collectFormData() {
+      // Function to collect form data
+      function collectFormData() {
         var formData = new FormData($('#productsImportForm')[0]);
         return formData;
-    }
+      }
 
-    // Function to display validation errors
-    function displayValidationErrors(errors) {
+      // Function to display validation errors
+      function displayValidationErrors(errors) {
         if (errors.ProductsImportFile) {
-            $('#ProductsImportFile-err').text(errors.ProductsImportFile[0]);
+          $('#ProductsImportFile-err').text(errors.ProductsImportFile[0]);
         }
         if (errors.ProductsImageFile) {
-            $('#ProductsImageFile-err').text(errors.ProductsImageFile[0]);
+          $('#ProductsImageFile-err').text(errors.ProductsImageFile[0]);
         }
         if (errors.ProductsPdfFile) {
-            $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
+          $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
         }
-    }
+      }
 
-    function sendDataToServer(formData) {
+      function sendDataToServer(formData) {
         var token = localStorage.getItem('authToken');
         console.log(token);
 
         // Check if the token exists
         if (!token) {
-            console.error('Token not found in localStorage');
-            window.location.href = '/api/home';
-            return; // exit the function if token is not present
+          console.error('Token not found in localStorage');
+          window.location.href = '/api/home';
+          return; // exit the function if token is not present
         }
 
         $('#import_success_message').text("Please Wait It will Take Some Time.");
@@ -858,47 +858,95 @@
         // $('#import_success_message').text("Please Wait While We are Importing Your Data");
 
         $.ajax({
-            type: 'POST',
-            url: '/api/productImportApi',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: {
-                'Authorization': 'Bearer ' + token, // include the token in the headers
-            },
-            success: function(response) {
-                // Handle the success response from the server
-                if (response.success) {
-                    $('#import_success_message').text(response.success);
-                    console.log('Server Response:', response);
-                    $('#productsImportForm')[0].reset();
-                }
-
-                if (response.error) {
-                    // Display validation errors next to the respective form fields
-                    console.log(response.error);
-                }
-
-                if (response.ValidationError) {
-                    // Display validation errors next to the respective form fields
-                    console.log(response.ValidationError);
-                    displayValidationErrors(response.ValidationError);
-                }
-            },
-            error: function(xhr, textStatus, errorThrown) {
-                try {
-                    var errors = JSON.parse(xhr.responseText);
-               
-                    console.error('Validation Errors:', errors);
-                } catch (e) {
-                    console.error('Non-JSON response:', xhr.responseText);
-                    $('#import_success_message').text("File Size is Too Large.");
-                }
+          type: 'POST',
+          url: '/api/productImportApi',
+          data: formData,
+          processData: false,
+          contentType: false,
+          headers: {
+            'Authorization': 'Bearer ' + token, // include the token in the headers
+          },
+          success: function(response) {
+            // Handle the success response from the server
+            if (response.success) {
+              $('#import_success_message').text(response.success);
+              console.log('Server Response:', response);
+              $('#productsImportForm')[0].reset();
             }
-        });
-    }
-});
 
+            if (response.error) {
+              // Display validation errors next to the respective form fields
+              console.log(response.error);
+            }
+
+            if (response.ValidationError) {
+              // Display validation errors next to the respective form fields
+              console.log(response.ValidationError);
+              displayValidationErrors(response.ValidationError);
+            }
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            try {
+              var errors = JSON.parse(xhr.responseText);
+
+              console.error('Validation Errors:', errors);
+            } catch (e) {
+              console.error('Non-JSON response:', xhr.responseText);
+              $('#import_success_message').text("File Size is Too Large.");
+            }
+          }
+        });
+      }
+
+      $('#exportBtn').on('click', function() {
+
+        var token = localStorage.getItem('authToken');
+        console.log(token);
+
+        // Check if the token exists
+        if (!token) {
+          console.error('Token not found in localStorage');
+          window.location.href = '/api/home';
+          return; // exit the function if token is not present
+        }
+
+        $.ajax({
+          type: 'get',
+          url: '/api/productExportApi',
+          processData: false,
+          contentType: false,
+          headers: {
+            'Authorization': 'Bearer ' + token, // include the token in the headers
+          },
+          success: function(response) {
+            // Handle the success response from the server
+            if (response.success) {
+              $('#import_success_message').text(response.success);
+
+            }
+
+            if (response.error) {
+              // Display validation errors next to the respective form fields
+              console.log(response.error);
+            }
+
+
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            try {
+              var errors = JSON.parse(xhr.responseText);
+
+              console.error('Validation Errors:', errors);
+            } catch (e) {
+              console.error('Non-JSON response:', xhr.responseText);
+              $('#import_success_message').text("File Size is Too Large.");
+            }
+          }
+        });
+
+
+      });
+    });
   </script>
 
 

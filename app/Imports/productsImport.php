@@ -51,7 +51,9 @@ class productsImport implements ToCollection
                 'Rabattcode_2' => $row[32],
                 'Rabattcode_3' => $row[33],
                 'Preis_zzgl_MwSt' => $row[34],
-                'Preis_inkl_MwSt' => $row[35],
+                'Preis_inkl_MwSt' => floatval($row[34]) * 1.19,
+
+
                 'Einkaufsrabatt' => $row[36],
                 'Bild_1' => 'products_images/' . $row[37],
                 'Bild_2' => 'products_images/' . $row[38],

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use PDF;
 use App\Imports\ProductsImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 
 
 class ProductController extends Controller
@@ -226,6 +227,11 @@ class ProductController extends Controller
             // Handle the case where no file was uploaded
             return response()->json(['error' => 'No file uploaded']);
         }
+    }
+
+    public function productExport()
+    {
+        return Excel::download(new ProductsExport, 'users.xlsx');
     }
     
     
