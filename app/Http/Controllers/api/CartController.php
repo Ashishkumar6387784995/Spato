@@ -57,7 +57,7 @@ class CartController extends Controller
 
         $cartItems = Cart::where('guest_token', $guestToken)
             ->join('products', 'cart_items.product_id', '=', 'products.id')
-            ->select('cart_items.*', 'products.Artikelname as product_name', 'products.Bild_1 as product_image', 'products.Hersteller as Hersteller', 'products.Preis_inkl_MwSt as Preis_inkl_MwSt')
+            ->select('cart_items.*', 'products.Artikelname as product_name', 'products.Bild_1 as product_image', 'products.Hersteller as Hersteller', 'products.Preis_zzgl_MwSt as Preis_zzgl_MwSt')
             ->orderBy('cart_items.created_at', 'desc') // Order by the creation date in descending order
             ->get();
 

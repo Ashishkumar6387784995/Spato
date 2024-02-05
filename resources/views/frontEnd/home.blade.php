@@ -286,7 +286,7 @@
           <p>Merkamal - {{ $product->Beschreibung_lang }}</p>
         </p>
         <p class="product-price">
-         statt - <span class="price">{{ $product->Preis_inkl_MwSt }}€</span>
+         statt - <span class="price">{{ $product->Preis_zzgl_MwSt }}€</span>
         </p>
        </div>
 
