@@ -230,15 +230,16 @@ i {
 }
 form .btn-style {
     margin-top: 1rem;
-    background: rgb(60, 207, 223);
-    background: linear-gradient(
-        90deg,
-        rgba(60, 207, 223, 1) 15%,
-        rgba(69, 227, 212, 1) 63%
-    );
+    background: var(--blue);
+    border: 1px solid var(--blue);
     padding: 0.5rem 1.5rem;
-    color: var(--black);
+    color: var(--white);
     font-weight: 600;
+}
+form .btn-style:hover {
+    background: transparent;
+    border: 1px solid var(--blue);
+    color: var(--blue);
 }
 .checkbox .row {
     width: 100%;

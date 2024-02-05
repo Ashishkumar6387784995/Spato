@@ -38,15 +38,17 @@
     } */
 
 
-
-  .dropdown-item:focus,
-  #logout:hover {
+  #logout:hover,
+  #logout:hover i {
    color: red !important;
   }
 
-  .dropdown-item:focus,
-  #logout:hover i {
-   color: red !important;
+
+  .dropdown-item.active,
+  .dropdown-item:active {
+   color: var(--black);
+   text-decoration: none;
+   background-color: var(--white);
   }
   </style>
  </head>
