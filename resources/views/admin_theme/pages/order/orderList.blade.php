@@ -144,8 +144,22 @@
      </div>
      <div class="row pt-3">
 
-      <div class="col-md-4 stretch-card grid-margin">
+      <div class="col-4 stretch-card grid-margin">
        Alle Bestellungen
+      </div>
+      <div class="col-2 stretch-card grid-margin">
+
+      </div>
+      <div class="col-2 stretch-card grid-margin">
+       <p>From :</p>br
+       <input type="date" class="form-control mx-2">
+      </div>
+      <div class="col-2 stretch-card grid-margin">
+       <p>To :</p>
+       <input type="date" class="form-control mx-3">
+      </div>
+      <div class="col-2 stretch-card grid-margin">
+       <button class="edit btn">Filter</button>
       </div>
      </div>
      <table id="dataTable">
