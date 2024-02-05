@@ -91,6 +91,14 @@
   .row {
    --bs-gutter-x: 0px !important;
   }
+
+  .filters {
+   background-color: #fff;
+   color: #000;
+   border: none;
+   outline: none;
+   padding: 1px 5px;
+  }
   </style>
  </head>
 
@@ -142,24 +150,25 @@
        Filter
       </div> -->
      </div>
+
      <div class="row pt-3">
 
-      <div class="col-4 stretch-card grid-margin">
+      <div class="col-3 stretch-card grid-margin">
        Alle Bestellungen
       </div>
-      <div class="col-2 stretch-card grid-margin">
+      <div class="col-1 stretch-card grid-margin">
 
       </div>
-      <div class="col-2 stretch-card grid-margin">
-       <p>From :</p>br
-       <input type="date" class="form-control mx-2">
+      <div class="col-3 stretch-card grid-margin">
+       <p>From :</p>
+       <p><input type="date" class="filters mx-2"></p>
       </div>
-      <div class="col-2 stretch-card grid-margin">
+      <div class="col-3 stretch-card grid-margin">
        <p>To :</p>
-       <input type="date" class="form-control mx-3">
+       <p><input type="date" class="filters mx-2"></p>
       </div>
       <div class="col-2 stretch-card grid-margin">
-       <button class="edit btn">Filter</button>
+       <button class="edit btn" style="padding: -2rem 0px;">Filter</button>
       </div>
      </div>
      <table id="dataTable">
