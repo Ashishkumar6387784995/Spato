@@ -187,7 +187,7 @@
               <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#importModal">Import CSV</button>
             </div>
             <div class="col-md-2 stretch-card grid-margin">
-              <button class="btn" type="button" id="exportBtn">Export CSV</button>
+              <a href="{{url('api/productExport')}}"><button class="btn" type="button" id="exportBtn">Export CSV</button></a>
             </div>
             <div class="col-md-4 stretch-card grid-margin">
               <button class="btn" id="priceUpdaterBtn">Price Updater</button>
@@ -898,54 +898,7 @@
         });
       }
 
-      $('#exportBtn').on('click', function() {
-
-        var token = localStorage.getItem('authToken');
-        console.log(token);
-
-        // Check if the token exists
-        if (!token) {
-          console.error('Token not found in localStorage');
-          window.location.href = '/api/home';
-          return; // exit the function if token is not present
-        }
-
-        $.ajax({
-          type: 'get',
-          url: '/api/productExportApi',
-          processData: false,
-          contentType: false,
-          headers: {
-            'Authorization': 'Bearer ' + token, // include the token in the headers
-          },
-          success: function(response) {
-            // Handle the success response from the server
-            if (response.success) {
-              $('#import_success_message').text(response.success);
-
-            }
-
-            if (response.error) {
-              // Display validation errors next to the respective form fields
-              console.log(response.error);
-            }
-
-
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            try {
-              var errors = JSON.parse(xhr.responseText);
-
-              console.error('Validation Errors:', errors);
-            } catch (e) {
-              console.error('Non-JSON response:', xhr.responseText);
-              $('#import_success_message').text("File Size is Too Large.");
-            }
-          }
-        });
-
-
-      });
+  
     });
   </script>
 

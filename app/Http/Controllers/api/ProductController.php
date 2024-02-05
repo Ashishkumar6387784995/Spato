@@ -229,10 +229,36 @@ class ProductController extends Controller
         }
     }
 
-    public function productExport()
+    public function productExport(Request $request)
     {
-        return Excel::download(new ProductsExport, 'users.xlsx');
+        if ($request->ajax()) {
+            try {
+                $exportFile = 'users.xlsx';
+    
+                return response()->stream(
+                    function () use ($exportFile) {
+                        Excel::download(new ProductsExport, $exportFile, \Maatwebsite\Excel\Excel::XLSX)
+                            ->deleteFileAfterSend(false);
+                    },
+                    200,
+                    [
+                        'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'Content-Disposition' => 'attachment; filename="' . $exportFile . '"',
+                    ]
+                );
+            } catch (\Exception $e) {
+                return response()->json(['error' => $e->getMessage()]);
+            }
+        }
+
+        // Handle non-AJAX requests (if needed)
+        return Excel::download(new ProductsExport, 'Products.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
     
     
+
+    
 }
+
+
+
