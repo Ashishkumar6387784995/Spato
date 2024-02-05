@@ -281,13 +281,12 @@
         </div>
        </a>
        <div class="card-body">
-        <h5 class="card-title">{{ $product->Hersteller }}</h5>
+        <h5 class="card-title">{{ $product->Artikelname }}</h5>
         <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
+          <p>Merkamal - {{ $product->Beschreibung_lang }}</p>
         </p>
         <p class="product-price">
-         statt - 42,50€ <span class="price">{{ $product->Preis_inkl_MwSt }}</span>
+         statt - <span class="price">{{ $product->Preis_inkl_MwSt }}€</span>
         </p>
        </div>
 
