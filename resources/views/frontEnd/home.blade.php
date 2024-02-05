@@ -283,7 +283,7 @@
        <div class="card-body">
         <h5 class="card-title">{{ $product->Artikelname }}</h5>
         <p class="card-text">
-          <p>Merkamal - {{ $product->Beschreibung_lang }}</p>
+          <p title="{{ $product->Beschreibung_lang }}">Merkamal - {{ substr($product->Beschreibung_lang, 0,  35) }} @if(strlen($product->Beschreibung_lang)>35) .... @endif</p>
         </p>
         <p class="product-price">
          statt - <span class="price">{{ $product->Preis_zzgl_MwSt }}€</span>
