@@ -808,15 +808,12 @@
 
 
     $(document).ready(function() {
-      $('#productImportButton').on('click', function() {
-
+    $('#productImportButton').on('click', function() {
         $('#import_success_message').text('');
         $('#ProductsImportFile-err').text('');
         $('#ProductsImageFile-err').text('');
         $('#ProductsPdfFile-err').text('');
 
-
-      
         var formData = collectFormData();
 
         // Log form data to the console (for testing)
@@ -824,75 +821,84 @@
 
         // Send the formData to the server using AJAX
         sendDataToServer(formData);
-      });
+    });
 
-      // Function to collect form data
-      function collectFormData() {
+    // Function to collect form data
+    function collectFormData() {
         var formData = new FormData($('#productsImportForm')[0]);
         return formData;
-      }
+    }
 
+    // Function to display validation errors
+    function displayValidationErrors(errors) {
+        if (errors.ProductsImportFile) {
+            $('#ProductsImportFile-err').text(errors.ProductsImportFile[0]);
+        }
+        if (errors.ProductsImageFile) {
+            $('#ProductsImageFile-err').text(errors.ProductsImageFile[0]);
+        }
+        if (errors.ProductsPdfFile) {
+            $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
+        }
+    }
 
-      function sendDataToServer(formData) {
+    function sendDataToServer(formData) {
         var token = localStorage.getItem('authToken');
         console.log(token);
 
         // Check if the token exists
         if (!token) {
-          console.error('Token not found in localStorage');
-          window.location.href = '/api/home';
-          return; // exit the function if token is not present
+            console.error('Token not found in localStorage');
+            window.location.href = '/api/home';
+            return; // exit the function if token is not present
         }
+
+        $('#import_success_message').text("Please Wait It will Take Some Time.");
+
         // $('#import_success_message').text("Please Wait While We are Importing Your Data");
 
         $.ajax({
-          type: 'POST',
-          url: '/api/productImportApi',
-          data: formData,
-          processData: false,
-          contentType: false,
-          headers: {
-            'Authorization': 'Bearer ' + token, // include the token in the headers
-          },
-        
-          success: function(response) {
-            // Handle the success response from the server
-            if (response.success) {
-              $('#import_success_message').text(response.success);
-              console.log('Server Response:', response);
-              $('#productsImportForm')[0].reset();
-            }
+            type: 'POST',
+            url: '/api/productImportApi',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'Authorization': 'Bearer ' + token, // include the token in the headers
+            },
+            success: function(response) {
+                // Handle the success response from the server
+                if (response.success) {
+                    $('#import_success_message').text(response.success);
+                    console.log('Server Response:', response);
+                    $('#productsImportForm')[0].reset();
+                }
 
-            if (response.error) {
-              // Display validation errors next to the respective form fields
-              console.log(response.error);
+                if (response.error) {
+                    // Display validation errors next to the respective form fields
+                    console.log(response.error);
+                }
 
+                if (response.ValidationError) {
+                    // Display validation errors next to the respective form fields
+                    console.log(response.ValidationError);
+                    displayValidationErrors(response.ValidationError);
+                }
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                try {
+                    var errors = JSON.parse(xhr.responseText);
+                    $('#import_success_message').text("File Size is Too Large.");
+                    console.error('Validation Errors:', errors);
+                } catch (e) {
+                    console.error('Non-JSON response:', xhr.responseText);
+                    $('#import_success_message').text("File Size is Too Large.");
+                }
             }
-
-            if (response.ValidationError) {
-              // Display validation errors next to the respective form fields
-              console.log(response.ValidationError);
-              displayValidationErrors(response.ValidationError);
-            }
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            console.error('Error:', errorThrown);
-          }
         });
-      }
+    }
+});
 
-      function displayValidationErrors(errors) {
-        if (errors.ProductsImportFile) {
-          $('#ProductsImportFile-err').text(errors.ProductsImportFile[0]);
-        }
-        if (errors.ProductsImageFile) {
-          $('#roductsImageFile-err').text(errors.ProductsImageFile[0]);
-        }
-        if (errors.ProductsPdfFile) {
-          $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
-        }
-      }
-    });
   </script>
 
 

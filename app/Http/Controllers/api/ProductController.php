@@ -166,16 +166,18 @@ class ProductController extends Controller
 
     public function productImport(Request $request)
     {
-            // $validator = Validator::make($request->all(), [
-            //     'ProductsImportFile' => 'required',
-            //     'ProductsImageFile' => 'required',
-            //     'ProductsPdfFile' => 'required|mimes:pdf',
-            // ]);
-
-            // if ($validator->fails()) {
-            //     // Return validation errors in the response
-            //     return response()->json(['ValidationError' => $validator->errors(), 'message' => 'Pls Fill Form Properly']);
-            // }
+       
+    
+        $validator = Validator::make($request->all(), [
+            'ProductsImportFile' => 'required|mimes:csv,xlsx',
+            'ProductsImageFile.*' => 'required|image',
+            'ProductsPdfFile.*' => 'required|mimes:pdf',
+        ]);
+    
+        if ($validator->fails()) {
+            // Validation failed, return the errors as a JSON response
+            return response()->json(['ValidationError' => $validator->errors()]);
+        }
         
 
         // Check if the file was uploaded successfully
