@@ -111,96 +111,92 @@
     </div>
    </li>
 
-  @elseif($role=="admin")
-  <div id="adminSidebar">
-   <li class="nav-item">
-    <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
-     <span class="menu-title">Kontakte</span>
-    </a>
-   </li>
-   <li class="nav-item">
-    <div class="border-bottom ">
-     <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
+   @elseif($role=="admin")
+   <div id="adminSidebar">
+    <li class="nav-item">
+     <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
+      <span class="menu-title">Kontakte</span>
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link border-bottom" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
       <span class="menu-title">Lieferanten</span>
      </a>
-    </div>
-   </li>
+    </li>
 
-   <li class="nav-item">
-      <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
-         <span class="menu-title">Kundenmanagement</span>
-      </a>
-   </li>
+    <li class="nav-item">
+     <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Kundenmanagement</span>
+     </a>
+    </li>
 
-   <li class="nav-item">
-      <a class="nav-link" href="{{url('/api/orderListing/'.$role)}}" onclick="markVisited(this)">
-         <span class="menu-title">Auftragsverwaltung</span>
-      </a>
-   </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/orderListing/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Auftragsverwaltung</span>
+     </a>
+    </li>
 
-   <li class="nav-item">
-      <a class="nav-link" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
-         <span class="menu-title">Produkte Kategorie</span>
-      </a>
-   </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Produkte Kategorie</span>
+     </a>
+    </li>
 
-   <li class="nav-item">
+    <li class="nav-item">
 
-    <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
+     <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
 
-     <span class="menu-title">Produkte</span>
-    </a>
-   </li>
-   <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}" onclick="markVisited(this)">
-     <span class="menu-title">Statistik</span>
-    </a>
-   </li>
-   <li class="nav-item">
-    <div class="border-bottom">
-     <a class="nav-link" href="{{url('/api/connection/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Produkte</span>
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Statistik</span>
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link border-bottom" href="{{url('/api/connection/'.$role)}}" onclick="markVisited(this)">
       <span class="menu-title">B2C B2B Connection</span>
      </a>
-    </div>
-   </li>
-   <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}" onclick="markVisited(this)">
-     <span class="menu-title">Newsletter</span>
-    </a>
-   </li>
-   <li class="nav-item">
-    <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
-     aria-controls="general-pages">
-     <span class="menu-title">Wallet</span>
-    </a>
-    <div class="collapse" id="general-pages">
-     <ul class="nav flex-column sub-menu">
-      <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-      <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-      <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-      <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-      <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-     </ul>
-    </div>
-   </li>
-   <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/settings/'.$role)}}" onclick="markVisited(this)">
-     <span class="menu-title">Einstellungen</span>
-    </a>
-   </li>
-   <li class="nav-item">
-    <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}" onclick="markVisited(this)">
-     <span class="menu-title">Angebot</span>
-    </a>
-   </li>
-  </div>
-  @endif
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Newsletter</span>
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
+      aria-controls="general-pages">
+      <span class="menu-title">Wallet</span>
+     </a>
+     <div class="collapse" id="general-pages">
+      <ul class="nav flex-column sub-menu">
+       <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+       <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+       <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+       <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+       <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+      </ul>
+     </div>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/settings/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Einstellungen</span>
+     </a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Angebot</span>
+     </a>
+    </li>
+   </div>
+   @endif
 
 
-  <li class="nav-item" style="background-color:transparent;">
-   <button type="submit" name="logout" id="logoutButton">Log Out</button>
-   </a>
-  </li>
+   <li class="nav-item" style="background-color:transparent;">
+    <button type="submit" name="logout" id="logoutButton">Log Out</button>
+    </a>
+   </li>
 
  </ul>
 

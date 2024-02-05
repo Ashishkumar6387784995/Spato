@@ -19490,6 +19490,9 @@ dl li {
     > .nav-link {
     color: #44e1d5;
 }
+.sidebar #adminSidebar .nav-item:hover > .nav-link {
+    color: #44e1d5;
+}
 .sidebar .nav.sub-menu {
     margin-bottom: 20px;
     margin-top: 0;

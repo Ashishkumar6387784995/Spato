@@ -151,6 +151,7 @@
      <table id="dataTable">
       <tr>
        <th>Auftragsnummer</th>
+       <th>Datum</th>
        <th>Kundenname</th>
        <th>Zahlungsstatus</th>
        <th></th>
@@ -158,6 +159,7 @@
       </tr>
       <tr>
        <td>AN-1379</td>
+       <td>2024-2-10</td>
        <td>Alex</td>
        <td><span class="p-status">Ausstehend</span></td>
        <td><a class="edit btn" id="editProductBtn" data-bs-toggle="modal" data-bs-target="#viewModal">Details
@@ -167,6 +169,7 @@
       </tr>
       <tr>
        <td>AN-1380</td>
+       <td>2024-2-10</td>
        <td>Sam</td>
        <td><span class="p-status">Erledigt</span></td>
        <td><a class="edit btn" id="editProductBtn" data-bs-toggle="modal" data-bs-target="#viewModal">Details
@@ -231,6 +234,11 @@
          <th>Kundenname</th>
          <td>-</td>
          <td>Alex</td>
+        </tr>
+        <tr>
+         <th>Rechnungsdatum</th>
+         <td>-</td>
+         <td>2024/3/25</td>
         </tr>
         <tr>
          <th>Rechnungsadresse</th>
