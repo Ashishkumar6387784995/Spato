@@ -191,13 +191,21 @@
        $.each(data, function(index, item) {
         var row = $('<tr>');
 
+        // check if role is not Normal or b2c
+        if (item.role != 'Normal') {
+          var roleAction = '<a href="#"  class="edit btn" onclick="deleteOperation(' + item.id +
+         ')">Löschen</a>';
+        }else{
+          var roleAction = '';
+        }
+
+
         row.append('<td>' + item.id + '</td>');
         row.append('<td>' + item.name + '</td>');
-        row.append('<td>' + item.role + '</td>');
+        row.append('<td  id="deleteProductTD-' + item.id +'">' + item.role + '</td>');
         row.append('<td><a href="/api/editcustomer/{{$role}}/' + item.id +
          '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-        row.append('<td><a href="#"  class="edit btn" onclick="deleteOperation(' + item.id +
-         ')" id="deleteProductBtn">Löschen</a></td>');
+        row.append('<td id="deleteProductBtn-' + item.id +'">' + roleAction +'</td>');
 
 
         // Add more columns as needed
@@ -229,39 +237,31 @@
   });
 
 
-  function deleteOperation(productId) {
-   // Make a DELETE request using AJAX
-   console.log(productId);
-   $.ajax({
-    url: '/api/deleteProduct/' + productId,
-    method: 'get',
-    success: function(data) {
-
-     if (data.success) {
-
-
-
-      $('#success_msg').text(data.success);
-
-      // Delay the page reload for 2 seconds (2000 milliseconds)
-      setTimeout(function() {
-       location.reload(true);
-      }, 1000);
-
-
-
-
-      console.log('Product deleted successfully:', data.success);
-      // Perform any additional actions after deletion
-     } else {
-      console.log('Product not deleted successfully:', data.message);
-     }
-
-    },
-    error: function(error) {
-     console.error('Error deleting product:', error.responseJSON.error);
-    }
-   });
+  function deleteOperation(customerId) {
+    // Make a DELETE request using AJAX
+    console.log(customerId);
+    $.ajax({
+      url: '/api/deletecustomer/' + customerId,
+      method: 'get',
+      success: function(data) {
+        if (data.success) {
+          $('#success_msg').text(data.success);
+          $('#deleteProductTD-'+customerId).text("Normal");
+          $('#deleteProductBtn-'+customerId).html('<span style="color: red;font-size: 14px;">' + data.success + '</span>');
+          // Delay the page reload for 2 seconds (2000 milliseconds)
+          setTimeout(function() {
+            $('#deleteProductBtn-'+customerId).text('');
+          }, 3000);
+          console.log('Customer deleted successfully:', data.success);
+          // Perform any additional actions after deletion
+        } else {
+          console.log('Customer not deleted successfully:', data.message);
+        }
+      },
+      error: function(error) {
+      console.error('Error deleting Customer:', error.responseJSON.error);
+      }
+    });
   }
   </script>
 
