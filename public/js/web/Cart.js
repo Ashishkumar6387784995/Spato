@@ -60,7 +60,7 @@ function displayCartItems(cartItems) {
         productDetails.append('<a href="#" class="product-name"><p>' + item.product_name + '</p></a> ');
 
         // Price display (replace 'item.total_price' with the actual property in your response)
-        productDetails.append('<p class="price"><span id="totalPriceDisplay' + index + '">' + item.total_price +
+        productDetails.append('<p class="price"><span id="totalPriceDisplay' + index + '">' + item.Preis_inkl_MwSt +
             '</span>€</p> ');
 
         // Quantity controls
