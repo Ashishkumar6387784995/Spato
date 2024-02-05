@@ -57,5 +57,13 @@ class staticPageController extends Controller
     public function cancelationPolicy(){
         return view('/frontEnd/Pages/cancellation');
     }
+
+    public function Impressum(){
+        return view('/frontEnd/Pages/Impressum');
+    }
+
+    public function lieferbedingungen(){
+        return view('/frontEnd/Pages/lieferbedingungen');
+    }
     
 }

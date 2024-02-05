@@ -72,13 +72,15 @@ Route::get('quotes/{product_id}', [CartController::class, 'quotesForm']);
 Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
 
 
-
+//Static Pages
 
 Route::get('contact', [staticPageController::class, 'contact']);
 Route::post('contactSubmit', [staticPageController::class, 'contactSubmit']);
 Route::get('about', [staticPageController::class, 'about']);
 Route::get('agb', [staticPageController::class, 'agb']);
 Route::get('cancelationPolicy', [staticPageController::class, 'cancelationPolicy']);
+Route::get('Impressum', [staticPageController::class, 'Impressum']);
+Route::get('lieferbedingungen', [staticPageController::class, 'lieferbedingungen']);
 
 
 // Pool Builder For Front End
