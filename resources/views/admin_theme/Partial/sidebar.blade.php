@@ -27,6 +27,14 @@
  color: #404040;
  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+
+.nav-link.active {
+ background-color: #007bff;
+ /* Change the color as needed */
+ color: #ffffff;
+ /* Change the text color as needed */
+}
 </style>
 
 <nav class="sidebar sidebar-offcanvas">
@@ -245,4 +253,25 @@ function logout() {
 $('#logoutButton').on('click', function() {
  logout();
 });
+</script>
+
+<script>
+function setActivePage() {
+ var currentPage = window.location.pathname;
+
+ // Remove "active" class from all links
+ //  var navLinks = document.getElementsByClassName('nav-link');
+ //  for (var i = 0; i < navLinks.length; i++) {
+ //   navLinks[i].classList.remove('active');
+ //  }
+
+ // Add "active" class to the link corresponding to the current page
+ var activeLink = document.querySelector('a[href="' + currentPage + '"]');
+ if (activeLink) {
+  activeLink.classList.add('active');
+ }
+}
+console.log('a[href="' + currentPage + '"]');
+// Call the function when the page loads
+window.onload = setActivePage;
 </script>

@@ -218,8 +218,9 @@
       <span id="success_msg" style="color:Green"></span>
       <div class="row pt-3">
 
-        <div class="col-md-4">
-          <div class="customer-img"><img src="{{url('assets/frontEnd/web/images/profile.png')}}" alt="" srcset="" id="profileImage">
+       <div class="col-md-4">
+        <div class="customer-img"><img src="{{url('assets/frontEnd/web/images/profile.png')}}" alt="" srcset=""
+          id="profileImage">
         </div>
 
        </div>
@@ -242,8 +243,8 @@
           <p>Beitrittsdatum</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum"
-            value="" /> <br>
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum" value="" />
+           <br>
            <span id="Lieferdatum_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
@@ -318,7 +319,7 @@
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Produkt]' value="" id="customer_name"/>
+            <input type="text" name='inputs[0][Produkt]' value="" id="customer_name" />
             <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
 
            </td>
@@ -326,22 +327,23 @@
 
            <td>
 
-            <input type="text" name='inputs[0][Beschreibung]' value="" id="order_id"/>
+            <input type="text" name='inputs[0][Beschreibung]' value="" id="order_id" />
             <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
             <select name="customerRole" id="customerRole">
-              <option value="Normal">B2C</option>
-              <option value="b2b">B2B</option>
-              <option value="supplier">Vendor/Supplier</option>
-              <option value="Admin">Admin</option>
+             <option value="Normal">B2C</option>
+             <option value="b2b">B2B</option>
+             <option value="supplier">Vendor/Supplier</option>
+             <option value="Admin">Admin</option>
             </select>
             <br>
            </td>
 
            <td>
-            <button class="btn updateCustomerButton" type="button" name="saveFormType" value="saveRole">Speichern</button>
+            <button class="btn updateCustomerButton" type="button" name="saveFormType"
+             value="saveRole">Speichern</button>
            </td>
          </tbody>
         </table>
@@ -399,8 +401,8 @@
           <th>Neues Kennwort </th>
           <td>- <input type="hidden" name="saveLieferschein_Nr" id="saveLieferschein_Nr"></td>
           <td>
-            <input class="password" type="password" name="password" value="">
-            <span id="password_err" style="color:red;"></span>
+           <input class="password" type="password" name="password" value="">
+           <span id="password_err" style="color:red;"></span>
           </td>
          </tr>
          <tr>
@@ -461,43 +463,43 @@
 
   <script>
   $('.updateCustomerButton').click(function(e) {
-    e.preventDefault(); // Prevent the form from submitting normally
-    $('#success_msg').text('');
-    $('#password_err').text('');
+   e.preventDefault(); // Prevent the form from submitting normally
+   $('#success_msg').text('');
+   $('#password_err').text('');
 
-    var formData = {
-      saveLieferschein_Nr: $('#updateCustomerForm input[name="saveLieferschein_Nr"]').val(),
-      customerRole: $('#updateCustomerForm select[name="customerRole"]').val(),
-      password: $('#updateCustomerForm input[name="password"]').val(),
-      password_confirmation: $('#updateCustomerForm input[name="confirm_password"]').val(),
-      saveFormType: jQuery(this).val(),
-      inputs: []
-    };
+   var formData = {
+    saveLieferschein_Nr: $('#updateCustomerForm input[name="saveLieferschein_Nr"]').val(),
+    customerRole: $('#updateCustomerForm select[name="customerRole"]').val(),
+    password: $('#updateCustomerForm input[name="password"]').val(),
+    password_confirmation: $('#updateCustomerForm input[name="confirm_password"]').val(),
+    saveFormType: jQuery(this).val(),
+    inputs: []
+   };
 
-    console.log(formData);
+   console.log(formData);
 
-    // Make AJAX request
-    $.ajax({
-      type: 'POST',
-      url: '/api/updatecustomer',
-      data: formData,
-      dataType: 'json',
-      success: function(response) {
-      // Handle success response
-      if (response.success) {
-        console.log(response.success);
-        // $('#updateCustomerForm input[name="password"], #updateCustomerForm input[name="confirm_password').val(''),
-        $('#success_msg').text(response.success);
-      } else if (response.errors) {
-        // Display validation errors in the console
-        console.log(response.errors);
-        displayValidationErrors(response.errors);
+   // Make AJAX request
+   $.ajax({
+    type: 'POST',
+    url: '/api/updatecustomer',
+    data: formData,
+    dataType: 'json',
+    success: function(response) {
+     // Handle success response
+     if (response.success) {
+      console.log(response.success);
+      $('#updateCustomerForm input[name="password"], #updateCustomerForm input[name="confirm_password').val(''),
+       $('#success_msg').text(response.success);
+     } else if (response.errors) {
+      // Display validation errors in the console
+      console.log(response.errors);
+      displayValidationErrors(response.errors);
 
-        // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
+      // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
 
-        // You can also update your HTML to show errors in a specific element
-        // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
-      }
+      // You can also update your HTML to show errors in a specific element
+      // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+     }
     },
     error: function(xhr, status, error) {
      // Handle error response
@@ -524,72 +526,73 @@
 
 
 
-<script>
+  <script>
+  $(document).ready(function() {
+   // Get the token from localStorage
+   var token = localStorage.getItem('authToken');
+   console.log(token);
 
-    $(document).ready(function() {
-      // Get the token from localStorage
-      var token = localStorage.getItem('authToken');
-      console.log(token);
+   // Check if the token exists
+   if (!token) {
+    console.error('Token not found in localStorage');
+    window.location.href = '/api/home';
+    return; // Stop further execution if the token is missing
+   }
 
-      // Check if the token exists
-      if (!token) {
-        console.error('Token not found in localStorage');
-        window.location.href = '/api/home';
-        return; // Stop further execution if the token is missing
+   // Make a GET request using AJAX
+   $.ajax({
+    url: '/api/profileViewByIdApi/{{$id}}', // Replace with the actual endpoint URL
+    method: 'GET',
+    headers: {
+     'Authorization': 'Bearer ' + token,
+    },
+    success: function(data) {
+     // Handle the successful response
+     if (data.status) {
+      // var join_date = new Date(data.user.created_at);
+      // alert(join_date.getTime());
+      // alert(data.user.created_at);
+      console.log('Data received:', data.user);
+
+      // Update DOM elements with user data
+      $('#Lieferschein_Nr, #customer_sno, #saveLieferschein_Nr').val(data.user.id); // customer ID
+      $('#userName, #customer_name').val(data.user.name);
+      $('#customerRole').trigger('change');
+      $('#updateCustomerForm option[value=' + data.user.role + ']').attr('selected',
+      'selected'); // for customer role
+      $('#userMobile').val(data.user.mobile);
+      $('#delv_address').val(data.user.permanent_address ?? '' + ',' + data.user.zipCode ?? '' + ',' + data.user
+       .country ?? '');
+      $('#userMail').val(data.user.email);
+      $('#order_id').val('Order id : 201, 350');
+
+      // Assuming 'profile_picture' is the path to the image file
+      var imagePath = data.user.profile_picture;
+
+      if (data.user.profile_picture != '') {
+       $('#profileImage').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' +
+        imagePath : '{{ asset("assets/frontEnd/web/images/profile.png") }}');
       }
 
-      // Make a GET request using AJAX
-      $.ajax({
-        url: '/api/profileViewByIdApi/{{$id}}', // Replace with the actual endpoint URL
-        method: 'GET',
-        headers: {
-        'Authorization': 'Bearer ' + token,
-        },
-        success: function(data) {
-          // Handle the successful response
-          if (data.status) {
-            // var join_date = new Date(data.user.created_at);
-            // alert(join_date.getTime());
-            // alert(data.user.created_at);
-            console.log('Data received:', data.user);
+      // for date of joining
+      var dateFormat = new Date(data.user.created_at);
+      $('#Lieferdatum').val(dateFormat.getFullYear() + '-0' + dateFormat.getMonth() + '-0' + dateFormat
+     .getDate()); // Date Of Joining
+     } else {
+      console.log('Data received:', data.errors);
+     }
+    },
 
-            // Update DOM elements with user data
-            $('#Lieferschein_Nr, #customer_sno, #saveLieferschein_Nr').val(data.user.id);      // customer ID
-            $('#userName, #customer_name').val(data.user.name);
-            $('#customerRole').trigger('change');
-            $('#updateCustomerForm option[value='+ data.user.role +']').attr('selected','selected'); // for customer role
-            $('#userMobile').val(data.user.mobile);
-            $('#delv_address').val(data.user.permanent_address ?? '' + ',' + data.user.zipCode ?? '' + ',' + data.user.country ?? '');
-            $('#userMail').val(data.user.email);
-            $('#order_id').val('Order id : 201, 350');
-            
-            // Assuming 'profile_picture' is the path to the image file
-            var imagePath = data.user.profile_picture;
-
-            if (data.user.profile_picture !='') {
-              $('#profileImage').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' +
-              imagePath : '{{ asset("assets/frontEnd/web/images/profile.png") }}');
-            }
-
-            // for date of joining
-            var dateFormat = new Date(data.user.created_at);
-            $('#Lieferdatum').val(dateFormat.getFullYear() +'-0'+ dateFormat.getMonth() + '-0'+ dateFormat.getDate());  // Date Of Joining
-          }
-          else {
-            console.log('Data received:', data.errors);
-          }
-        },
-
-        error: function(xhr, status, error) {
-          // Handle specific errors
-          if (xhr.status === 401) {
-            console.error('Unauthorized: Please check your authentication token.');
-          } else {
-            console.error('Error:', error);
-          }
-        }
-      });
-    });
+    error: function(xhr, status, error) {
+     // Handle specific errors
+     if (xhr.status === 401) {
+      console.error('Unauthorized: Please check your authentication token.');
+     } else {
+      console.error('Error:', error);
+     }
+    }
+   });
+  });
   </script>
 
 
