@@ -207,11 +207,11 @@
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="AddOffersForm" method="post" action="{{'addOfferApi'}}">
+     <form id="updateCustomerForm">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
-        <button class="btn" type="button" id="saveButton">Save</button>
+        <button class="btn updateCustomerButton" type="button" name="saveFormType" value="saveAll">Save</button>
        </div>
 
       </div>
@@ -331,17 +331,17 @@
 
            </td>
            <td>
-            <select>
-             <option value="Select Role">Select Role</option>
-             <option value="B2C">B2C</option>
-             <option value="B2B">B2B</option>
-             <option value="Vendor/Supplier">Vendor/Supplier</option>
-             <option value="Admin">Admin</option>
-            </select><br>
+            <select name="customerRole" id="customerRole">
+              <option value="Normal">B2C</option>
+              <option value="b2b">B2B</option>
+              <option value="supplier">Vendor/Supplier</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <br>
            </td>
 
            <td>
-            <button class="btn">Speichern</button>
+            <button class="btn updateCustomerButton" type="button" name="saveFormType" value="saveRole">Speichern</button>
            </td>
          </tbody>
         </table>
@@ -397,13 +397,16 @@
          </tr>
          <tr>
           <th>Neues Kennwort </th>
-          <td>-</td>
-          <td><input class="password" type="password" value=""></td>
+          <td>- <input type="hidden" name="saveLieferschein_Nr" id="saveLieferschein_Nr"></td>
+          <td>
+            <input class="password" type="password" name="password" value="">
+            <span id="password_err" style="color:red;"></span>
+          </td>
          </tr>
          <tr>
           <th>Bestätige das Passwort </th>
           <td>-</td>
-          <td><input class="password" type="password" value=""></td>
+          <td><input class="password" type="password" name="confirm_password" value=""></td>
          </tr>
         </tbody>
        </table>
@@ -457,64 +460,44 @@
   <!-- Dynamic table update ends-->
 
   <script>
-  $('#saveButton').click(function(e) {
-   e.preventDefault(); // Prevent the form from submitting normally
+  $('.updateCustomerButton').click(function(e) {
+    e.preventDefault(); // Prevent the form from submitting normally
+    $('#success_msg').text('');
+    $('#password_err').text('');
 
-   $('#Lieferdatum_err').text('');
-   $('#Ihre_Kundennummer_err').text('');
-   $('#Produkt_err').text('');
-   $('#Beschreibung_err').text('');
-
-   $('#Einheit_err').text('');
-
-
-   var formData = {
-    Lieferschein_Nr: $('#AddOffersForm input[name="Lieferschein_Nr"]').val(),
-    Lieferdatum: $('#AddOffersForm input[name="Lieferdatum"]').val(),
-    Referenz: $('#AddOffersForm input[name="Referenz"]').val(),
-    Ihre_Kundennummer: $('#AddOffersForm input[name="Ihre_Kundennummer"]').val(),
-    Ihre_Ust_ID: $('#AddOffersForm input[name="Ihre_Ust_ID"]').val(),
-
-    inputs: []
-   };
-
-   $('#table tbody tr').each(function(index) {
-    var inputRow = {
-     POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
-     Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
-     Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
-     Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
-     Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
-
+    var formData = {
+      saveLieferschein_Nr: $('#updateCustomerForm input[name="saveLieferschein_Nr"]').val(),
+      customerRole: $('#updateCustomerForm select[name="customerRole"]').val(),
+      password: $('#updateCustomerForm input[name="password"]').val(),
+      password_confirmation: $('#updateCustomerForm input[name="confirm_password"]').val(),
+      saveFormType: jQuery(this).val(),
+      inputs: []
     };
-    formData.inputs.push(inputRow);
-   });
 
-   console.log(formData);
+    console.log(formData);
 
-   // Make AJAX request
-   $.ajax({
-    type: 'POST',
-    url: '/api/addDeliveryNotesApi',
-    data: formData,
-    dataType: 'json',
-    success: function(response) {
-     // Handle success response
-     if (response.success) {
-      console.log(response.success);
-      $('#AddOffersForm')[0].reset();
-      $('#success_msg').text(response.success);
-     } else if (response.errors) {
-      // Display validation errors in the console
-      console.log(response.errors);
-      displayValidationErrors(response.errors);
+    // Make AJAX request
+    $.ajax({
+      type: 'POST',
+      url: '/api/updatecustomer',
+      data: formData,
+      dataType: 'json',
+      success: function(response) {
+      // Handle success response
+      if (response.success) {
+        console.log(response.success);
+        // $('#updateCustomerForm input[name="password"], #updateCustomerForm input[name="confirm_password').val(''),
+        $('#success_msg').text(response.success);
+      } else if (response.errors) {
+        // Display validation errors in the console
+        console.log(response.errors);
+        displayValidationErrors(response.errors);
 
+        // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
 
-      // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
-
-      // You can also update your HTML to show errors in a specific element
-      // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
-     }
+        // You can also update your HTML to show errors in a specific element
+        // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+      }
     },
     error: function(xhr, status, error) {
      // Handle error response
@@ -524,36 +507,17 @@
       // For example, you can loop through errors and append them to a specific element
       $.each(errors, function(field, messages) {
        // Append error messages to your HTML
-       $('#' + field + '-error').text(messages[0]);
+       $('#' + field + '_error').text(messages[0]);
       });
      }
     }
-
-
    });
 
    function displayValidationErrors(errors) {
     // Display validation errors next to the respective form fields
-    if (errors.Angebotsdatum) {
-     $('#Angebotsdatum_err').text(errors.Angebotsdatum[0]);
+    if (errors.password) {
+     $('#password_err').text(errors.password[0]);
     }
-    if (errors.Ihre_Kundennummer) {
-     $('#Ihre_Kundennummer_err').text(errors.Ihre_Kundennummer[0]);
-    }
-    if (errors['inputs.0.Produkt']) {
-     $('#Produkt_err').text('Produkt is Required');
-    }
-    if (errors['inputs.0.Beschreibung']) {
-     $('#Beschreibung_err').text('Beschreibung is Required');
-    }
-    if (errors['inputs.0.Einheit']) {
-     $('#Einheit_err').text('Einheit Is Required');
-    }
-    if (errors['inputs.0.Einzelpreis']) {
-     $('#Einzelpreis_err').text('Einzelpreis is Required');
-    }
-
-
    }
   });
   </script>
@@ -588,12 +552,14 @@
             // alert(join_date.getTime());
             // alert(data.user.created_at);
             console.log('Data received:', data.user);
+
             // Update DOM elements with user data
-            $('#Lieferschein_Nr, #customer_sno').val(data.user.id);      // customer ID
-            $('#Lieferdatum').val(data.user.created_at);  // Date Of Joining
+            $('#Lieferschein_Nr, #customer_sno, #saveLieferschein_Nr').val(data.user.id);      // customer ID
             $('#userName, #customer_name').val(data.user.name);
+            $('#customerRole').trigger('change');
+            $('#updateCustomerForm option[value='+ data.user.role +']').attr('selected','selected'); // for customer role
             $('#userMobile').val(data.user.mobile);
-            $('#delv_address').val(data.user.permanent_address + ',' + data.user.zipCode + ',' + data.user.country);
+            $('#delv_address').val(data.user.permanent_address ?? '' + ',' + data.user.zipCode ?? '' + ',' + data.user.country ?? '');
             $('#userMail').val(data.user.email);
             $('#order_id').val('Order id : 201, 350');
             
@@ -604,7 +570,11 @@
               $('#profileImage').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' +
               imagePath : '{{ asset("assets/frontEnd/web/images/profile.png") }}');
             }
-          } 
+
+            // for date of joining
+            var dateFormat = new Date(data.user.created_at);
+            $('#Lieferdatum').val(dateFormat.getFullYear() +'-0'+ dateFormat.getMonth() + '-0'+ dateFormat.getDate());  // Date Of Joining
+          }
           else {
             console.log('Data received:', data.errors);
           }
