@@ -228,11 +228,6 @@ i {
     margin: auto;
     display: block;
 }
-
-.modal-body input[type="checkbox"]#checkbox1:checked + span {
-    border-color: red;
-    background-color: red;
-}
 form .btn-style {
     margin-top: 1rem;
     background: var(--blue);
