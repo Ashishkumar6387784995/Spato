@@ -467,7 +467,7 @@
       <div class="modal-dialog">
        <div class="modal-content">
         <div class="modal-header signupform">
-         <a class="" href="#"><img class="signup-brand-logo"
+         <a class="" href="{{url('api/home')}}"><img class="signup-brand-logo"
            src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
 
          </a>
@@ -584,7 +584,7 @@
       <div class="modal-dialog">
        <div class="modal-content">
         <div class="modal-header">
-         <a class="" href="#"><img class="signup-brand-logo"
+         <a class="" href="{{url('api/home')}}"><img class="signup-brand-logo"
            src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
 
          </a>
@@ -630,7 +630,7 @@
       <div class="modal-dialog">
        <div class="modal-content">
         <div class="modal-header">
-         <h1 class="modal-title fs-5" id="exampleModalLabel"><a class="navbar-brand" href="#"><img
+         <h1 class="modal-title fs-5" id="exampleModalLabel"><a class="navbar-brand" href="{{url('api/home')}}"><img
             src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="" />
 
 
