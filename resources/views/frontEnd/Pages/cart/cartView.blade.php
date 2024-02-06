@@ -428,72 +428,76 @@
 
   // Function to display cart items
   function displayCartItems(cartItems) {
-    var cartItemsTableBody = $('#cart-items-table-body');
-    cartItemsTableBody.empty();
+   var cartItemsTableBody = $('#cart-items-table-body');
+   cartItemsTableBody.empty();
 
-    cartItems.forEach(function(item, index) {
-      var subtotal = 0;
-      var tableRow = $('<tr>');
+   cartItems.forEach(function(item, index) {
+    var subtotal = 0;
+    var tableRow = $('<tr>');
 
-      // Item Image
-      var itemImgCell = $('<td class="item-img">');
-      itemImgCell.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" class="img" alt="..." />');
-      tableRow.append(itemImgCell);
+    // Item Image
+    var itemImgCell = $('<td class="item-img">');
+    itemImgCell.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" class="img" alt="..." />');
+    tableRow.append(itemImgCell);
 
-      // Product Description
-      var productDescCell = $('<td class="product-desc">');
-      productDescCell.append('<p>' + item.product_name + '</p>');
-      tableRow.append(productDescCell);
+    // Product Description
+    var productDescCell = $('<td class="product-desc">');
+    productDescCell.append('<p>' + item.product_name + '</p>');
+    tableRow.append(productDescCell);
 
-      // Price
-      var priceCell = $('<td style="display:flex;"><input type="hidden" name="product_id[]" value="' + item.product_id + '"><input type="number" name="product_price[]" id="price' + index + '" value="' + item.Preis_zzgl_MwSt +
-        '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
-      );
-      tableRow.append(priceCell);
+    // Price
+    var priceCell = $('<td style="display:flex;"><input type="hidden" name="product_id[]" value="' + item.product_id +
+     '"><input type="number" name="product_price[]" id="price' + index + '" value="' + item.Preis_zzgl_MwSt +
+     '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+    );
+    tableRow.append(priceCell);
 
-      // Quantity
-      var quantityCell = $('<td>');
-      quantityCell.append('<div class="counter"><button type="button" class="quantity-btn" onclick="decreaseQuantity(' + item
-        .product_id + ')"><i class="fa-solid fa-minus"></i></button> <input type="text" name="product_quanty[]" id="quantity' + item
-        .product_id + '" value="' + item.quantity +
-        '" min="1" readonly /> <button type="button" class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
-        ')"><i class="fa-solid fa-plus"></i></button></div>');
+    // Quantity
+    var quantityCell = $('<td>');
+    quantityCell.append('<div class="counter"><button type="button" class="quantity-btn" onclick="decreaseQuantity(' +
+     item
+     .product_id +
+     ')"><i class="fa-solid fa-minus"></i></button> <input type="text" name="product_quanty[]" id="quantity' + item
+     .product_id + '" value="' + item.quantity +
+     '" min="1" readonly /> <button type="button" class="quantity-btn" onclick="increaseQuantity(' + item
+     .product_id +
+     ')"><i class="fa-solid fa-plus"></i></button></div>');
 
-      quantityCell.append('');
-      quantityCell.append('');
+    quantityCell.append('');
+    quantityCell.append('');
 
-      tableRow.append(quantityCell);
+    tableRow.append(quantityCell);
 
-      // Subtotal
-      var subtotalCell = $('<td><input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
-          .Preis_zzgl_MwSt * item.quantity) +
-        '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
-      );
-      tableRow.append(subtotalCell);
+    // Subtotal
+    var subtotalCell = $('<td><input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
+      .Preis_zzgl_MwSt * item.quantity).toFixed(2) +
+     '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+    );
+    tableRow.append(subtotalCell);
 
-      // Remove and Edit Icons
-      var iconCell = $('<td>');
-      iconCell.append(
-        '<div class="icon" style="cursor:pointer; font-size:18px;"><i class="fa-regular fa-circle-xmark" onclick="removeCartItem(' +
-        item.product_id + ')"></i></div>');
-      tableRow.append(iconCell);
+    // Remove and Edit Icons
+    var iconCell = $('<td>');
+    iconCell.append(
+     '<div class="icon" style="cursor:pointer; font-size:18px;"><i class="fa-regular fa-circle-xmark" onclick="removeCartItem(' +
+     item.product_id + ')"></i></div>');
+    tableRow.append(iconCell);
 
-      // Append the row to the table
-      cartItemsTableBody.append(tableRow);
-    });
-  
-    // Display grand total
-    var allSubTotal = calculateGrandTotal(cartItems);
-    $('#allSubTotalDisplay').val(allSubTotal);
+    // Append the row to the table
+    cartItemsTableBody.append(tableRow);
+   });
+
+   // Display grand total
+   var allSubTotal = calculateGrandTotal(cartItems);
+   $('#allSubTotalDisplay').val(allSubTotal);
 
 
-    // Display Tax total
-    var allTaxTotal = calculateTaxTotal(cartItems);
-    $('#allTaxTotalDisplay').val(allTaxTotal);
+   // Display Tax total
+   var allTaxTotal = calculateTaxTotal(cartItems);
+   $('#allTaxTotalDisplay').val(allTaxTotal);
 
-    // Display Order Summary total
-    var orderSummaryTotal = calculateOrderSummaryTotal(cartItems);
-    $('#orderSummaryTotal').val(orderSummaryTotal);
+   // Display Order Summary total
+   var orderSummaryTotal = calculateOrderSummaryTotal(cartItems);
+   $('#orderSummaryTotal').val(orderSummaryTotal);
   }
 
   // // Example function to increase quantity
