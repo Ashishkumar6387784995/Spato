@@ -30,7 +30,11 @@ class CartController extends Controller
 
         if ($existingCartItem) {
             // If the cart item exists, update the quantity
-            $existingCartItem->quantity += $quantity;
+            if ($request->addExist=='Y') {
+                $existingCartItem->quantity += $quantity;
+            }else {
+                $existingCartItem->quantity = $quantity;
+            }
             $existingCartItem->save();
         } else {
             // If the cart item does not exist, create a new one

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\UserProfile;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Hash;
@@ -66,12 +67,17 @@ class webController extends Controller
         $product = Product::where('id', $product_id)->get();
 
         $products_accoring_category = Product::where('Kategorie_1', $product_category)->get();
-        $countProductInCard = Cart::where('product_id', $product[0]->id)->first()->quantity??0;
 
-        return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product', 'products_accoring_category', 'countProductInCard'));
+        return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product', 'products_accoring_category'));
     }
 
-
+    // for get count no of items of this product
+    public function getCountOfThisProductApi(Request $request)
+    {
+        $guestToken = $request->header('guest-token', Str::uuid());
+        $countProductInCard = Cart::where('guest_token', $guestToken)->where('product_id', $request->product_id)->first()->quantity??0;
+        return response()->json(['message' => $countProductInCard]);
+    }
 
 
     public function ProductsByCategories($Kategorie_Name)

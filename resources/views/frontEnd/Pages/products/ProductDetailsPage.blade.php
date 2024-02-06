@@ -416,7 +416,7 @@
      <ol class="breadcrumb">
       <li class="breadcrumb-item"><a class="home" href="{{url('api/home')}}">Home</a></li>
       <li class="breadcrumb-item">Pool Products</li>
-      <li class="breadcrumb-item active" aria-current="page">{{$product[0]->Artikelname}}</li>
+      <li class="breadcrumb-item active" aria-current="page">MSI WS Series</li>
      </ol>
     </nav>
     <div class="mt-5 mb-5">
@@ -446,7 +446,7 @@
           </div>
          </div>
          <div class="brand-details col-md-4">
-          <h1>{{$product[0]->Artikelname}}</h1>
+          <h1>Product name - {{$product[0]->Artikelname}}</h1>
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
@@ -461,7 +461,7 @@
 
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
-             <div id="counter-value">{{$countProductInCard}}</div>
+             <div id="counter-value">0</div>
              <button class="counter-btn" id="increment-btn">+</button>
             </div>
             <input type="text" name="product_id" id="product_id" value="{{$product[0]->Artikelname}}"
@@ -479,12 +479,11 @@
             <p class="product-size">Auf Large</p>
             <p class="model-number">Model No.#7389392930</p>
             <p class="product-price">
-             <span class="price">{{$product[0]->Preis_zzgl_MwSt}}€</span> <span
-              style="text-decoration:line-through;">Statt 42,45€</span>
+             <span class="price">{{$product[0]->Preis_zzgl_MwSt}}€</span> Statt 42,45 €
             </p>
            </div>
            <div class="cart mt-4 align-items-center">
-            <a href="#" class="btn addToCartButton" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')" ;
+            <a href="#" class="btn" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')";
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
             <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
@@ -818,6 +817,7 @@
 
   <script>
   $(document).ready(function() {
+   getCountOfThisProduct();
    $('#exampleLogin').click(function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -893,57 +893,100 @@
   </script>
 
   <script>
-  function change_image(image) {
-   var container = document.getElementById("main-image");
-   container.src = image.src;
-  }
-  document.addEventListener("DOMContentLoaded", function(event) {});
+    function change_image(image) {
+      var container = document.getElementById("main-image");
+      container.src = image.src;
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {});
   </script>
 
   <script>
-  let counter = jQuery('#counter-value').text();
-  const counterValue = document.getElementById('counter-value');
-  const incrementBtn = document.getElementById('increment-btn');
-  const decrementBtn = document.getElementById('decrement-btn');
+    const counterValue = document.getElementById('counter-value');
+    const incrementBtn = document.getElementById('increment-btn');
+    const decrementBtn = document.getElementById('decrement-btn');
 
-  // To increment the value of counter
-  incrementBtn.addEventListener('click', () => {
-   counter++;
-   counterValue.innerHTML = counter;
-  });
+    // To increment the value of counter
+    incrementBtn.addEventListener('click', () => {
+      let counter = jQuery('#counter-value').text();
+      counter++;
+      counterValue.innerHTML = counter;
+    });
 
-  // To decrement the value of counter
-  decrementBtn.addEventListener('click', () => {
-   if (counter > 0) {
-    counter--;
-    counterValue.innerHTML = counter;
-   }
-  });
+    // To decrement the value of counter
+    decrementBtn.addEventListener('click', () => {
+      let counter = jQuery('#counter-value').text();
+      if (counter > 0) {
+        counter--;
+        counterValue.innerHTML = counter;
+      }
+    });
 
-  // quantity for one product
-  function updateQuantityOneInDatabase(productId) {
-   $.ajax({
-    type: 'POST',
-    url: '/api/cart/updateQuanityApi',
-    headers: {
-     'guest-token': getGuestToken(),
-    },
-    data: {
-     product_id: productId,
-     quantity: jQuery('#counter-value').text(),
-    },
-    success: function(response) {
-     console.log('Quantity updated successfully');
-     console.log(response.message);
-     updateCartItemsList();
-     // You can handle additional logic or UI updates here if needed
-    },
-    error: function(error) {
-     console.error('Error updating quantity', error);
+    // quantity for one product
+    function updateQuantityOneInDatabase(productId) {
+      $.ajax({
+        type: 'POST',
+        url: '/api/cart/updateQuanityApi',
+        headers: {
+          'guest-token': getGuestToken(),
+        },
+        data: {
+          product_id: productId,
+          quantity: jQuery('#counter-value').text(),
+        },
+        success: function(response) {
+          console.log('Quantity updated successfully');
+          console.log(response.message);
+          // You can handle additional logic or UI updates here if needed
+        },
+        error: function(error) {
+          console.error('Error updating quantity', error);
+        }
+      });
+
+      
+      $.ajax({
+        type: 'POST',
+        url: '/api/cart/addApi',
+        headers: {
+        'guest-token': getGuestToken(),
+        },
+        data: {
+          product_id: productId,
+          quantity: jQuery('#counter-value').text(),
+          addExist: 'N',
+        },
+        success: function(response) {
+          // alert(response.message);
+          console.log('string msg - ' + response.message);
+          updateCartItemsList();
+        },
+        error: function(error) {
+          console.error('Error adding to cart', error);
+        }
+      });
     }
-   });
-  }
-  </script>
- </body>
 
+    // for get count no of items of this product
+    function getCountOfThisProduct(){
+      $.ajax({
+        type: 'POST',
+        url: '/api/cart/getCountOfThisProductApi',
+        headers: {
+        'guest-token': getGuestToken(),
+        },
+        data: {
+          product_id: '{{$product[0]->id}}',
+        },
+        success: function(response) {
+          // alert(response.message);
+          console.log('Counted Items - ' + response.message);
+          jQuery('#counter-value').text(response.message);
+        },
+        error: function(error) {
+          console.error('Error', error);
+        }
+      });
+    }
+  </script>
+</body>
 </html>

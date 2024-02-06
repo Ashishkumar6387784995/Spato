@@ -106,6 +106,7 @@ $('.addToCartButton').on('click', function() {
   data: {
    product_id: productId,
    quantity: quantity,
+   addExist: 'Y',
   },
   success: function(response) {
    //   alert(response.message);
