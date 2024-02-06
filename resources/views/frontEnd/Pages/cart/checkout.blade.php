@@ -360,7 +360,8 @@
            <div class="details d-flex justify-content-between">
             <p class="input-field">Subtotal</p>
             <span><input type="text" class="input-field" name="sub_total" id="allSubTotalDisplay" value="00.00"
-              style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
+              style="width:150px; border:none; text-align:right;" readonly="readonly"><span
+              class="input-field">€</span></span>
            </div>
 
            <div class="details d-flex justify-content-between">
@@ -373,13 +374,15 @@
            <div class="details d-flex justify-content-between">
             <p class="input-field">Tax</p>
             <span><input type="text" class="input-field" name="tax_amt" id="allTaxTotalDisplay" value="1.91"
-              style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
+              style="width:150px; border:none; text-align:right;" readonly="readonly"><span
+              class="input-field">€</span></span>
            </div>
 
            <div class="details d-flex justify-content-between">
             <p class="input-field">Order Total</p>
             <span><input type="text" class="input-field total" name="order_total" id="orderSummaryTotal" value="00.00"
-              style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
+              style="width:150px; border:none; text-align:right;" readonly="readonly"><span
+              class="input-field total">€</span></span>
            </div>
 
 

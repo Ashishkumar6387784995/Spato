@@ -308,7 +308,8 @@
           <div class="details d-flex justify-content-between">
            <p class="input-field">Subtotal</p>
            <span><input type="text" class="input-field" name="" id="allSubTotalDisplay" value="00.00"
-             style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
+             style="width:150px; border:none; text-align:right;" readonly="readonly"><span
+             class="input-field">€</span></span>
           </div>
 
           <div class="details d-flex justify-content-between">
@@ -321,13 +322,15 @@
           <div class="details d-flex justify-content-between">
            <p class="input-field">Tax</p>
            <span><input type="text" class="input-field" name="" id="allTaxTotalDisplay" value="1.91"
-             style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
+             style="width:150px; border:none; text-align:right;" readonly="readonly"><span
+             class="input-field">€</span></span>
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Order Total</p>
            <span><input type="text" class="input-field total" name="" id="orderSummaryTotal" value="00.00"
-             style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
+             style="width:150px; border:none; text-align:right;" readonly="readonly"><span
+             class="input-field total">€</span></span>
           </div>
 
 
@@ -451,7 +454,7 @@
      .product_id +
      '"><input type="number" name="product_price[]" id="price' + index + '" value="' + item.Preis_zzgl_MwSt +
      '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent; margin-right:-1rem;" readonly="readonly"><span>€</span></p></td>'
-     );
+    );
     tableRow.append(priceCell);
 
     // Quantity
