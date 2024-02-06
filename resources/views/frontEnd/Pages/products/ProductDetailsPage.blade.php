@@ -479,7 +479,7 @@
             <p class="product-size">Auf Large</p>
             <p class="model-number">Model No.#7389392930</p>
             <p class="product-price">
-             <span class="price">25,30€</span> Statt 42,45 €
+             <span class="price">{{$product[0]->Preis_zzgl_MwSt}}€</span> Statt 42,45 €
             </p>
            </div>
            <div class="cart mt-4 align-items-center">
