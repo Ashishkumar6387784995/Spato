@@ -132,8 +132,9 @@
    text-align: center;
   }
 
-  table tbody tr {
-   /* margin: 20px 0px !important; */
+  table tbody tr,
+  td {
+   height: 60px;
   }
 
 
@@ -446,10 +447,11 @@
     tableRow.append(productDescCell);
 
     // Price
-    var priceCell = $('<td style="display:flex;"><input type="hidden" name="product_id[]" value="' + item.product_id +
+    var priceCell = $('<td><p style="display:flex;"><input type="hidden" name="product_id[]" value="' + item
+     .product_id +
      '"><input type="number" name="product_price[]" id="price' + index + '" value="' + item.Preis_zzgl_MwSt +
-     '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
-    );
+     '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent; margin-right:-1rem;" readonly="readonly"><span>€</span></p></td>'
+     );
     tableRow.append(priceCell);
 
     // Quantity
@@ -469,9 +471,10 @@
     tableRow.append(quantityCell);
 
     // Subtotal
-    var subtotalCell = $('<td><input type="text" class="input-field" id="subtotal' + index + '" value="' + (item
+    var subtotalCell = $('<td><p  style="display:flex;"><input type="text" class="input-field" id="subtotal' + index +
+     '" value="' + (item
       .Preis_zzgl_MwSt * item.quantity).toFixed(2) +
-     '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+     '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly"><span class="input-field" >€</span></p></td>'
     );
     tableRow.append(subtotalCell);
 
