@@ -137,96 +137,98 @@ function updateCartItemsList() {
  });
 }
 
-// Display Cart Items in the right sidebar
-function displayCartItems(cartItems) {
- var cartItemsList = $('#cart-items-list');
- cartItemsList.empty();
+// // Display Cart Items in the right sidebar
+// function displayCartItems(cartItems) {
+//  var cartItemsList = $('#cart-items-list');
+//  cartItemsList.empty();
 
- var grandTotal = 0;
+//  var grandTotal = 0;
 
- cartItems.forEach(function(item, index) {
-  // Create a new product element for each cart item
-  var productElement = $('<div class="products row">');
+//  cartItems.forEach(function(item, index) {
+//   // Create a new product element for each cart item
+//   var productElement = $('<div class="products row">');
 
-  // Product image
-  productElement.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" alt="" srcset="">');
+//   // Product image
+//   productElement.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" alt="" srcset="">');
 
-  // Product details
-  var productDetails = $('<div class="col">');
-  productDetails.append('<a href="#" class="product-name"><p>' + item.product_name + '</p></a> ');
+//   // Product details
+//   var productDetails = $('<div class="col">');
+//   productDetails.append('<a href="#" class="product-name"><p>' + item.product_name + '</p></a> ');
 
-  // Calculate total price based on quantity
-  var totalItemPrice = item.total_price * item.quantity;
+//   // Calculate total price based on quantity
+//   var totalItemPrice = item.total_price * item.quantity;
 
-  // Price display
-  productDetails.append('<p class="price"><span id="totalPriceDisplay' + index + '">' + totalItemPrice +
-   '</span>€</p> ');
+//   // Price display
+//   productDetails.append('<p class="price"><span id="totalPriceDisplay' + index + '">' + totalItemPrice +
+//    '</span>€</p> ');
 
-  // Quantity controls
-  var quantityControls = $('<div class="sidebar-quantity">');
-  quantityControls.append('<button class="quantity-btn" onclick="decreaseQuantity(' + item.product_id +
-   ')"><i class="fa-solid fa-minus"></i></button>');
-  quantityControls.append('<input type="text" id="quantity' + item.product_id + '" value="' + item.quantity +
-   '" min="1" readonly />');
-  quantityControls.append('<button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
-   ')"><i class="fa-solid fa-plus"></i></button></div></div></div>');
+//   // Quantity controls
+//   var quantityControls = $('<div class="sidebar-quantity">');
+//   quantityControls.append('<button class="quantity-btn" onclick="decreaseQuantity(' + item.product_id +
+//    ')"><i class="fa-solid fa-minus"></i></button>');
+//   quantityControls.append('<input type="text" id="quantity' + item.product_id + '" value="' + item.quantity +
+//    '" min="1" readonly />');
+//   quantityControls.append('<button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
+//    ')"><i class="fa-solid fa-plus"></i></button></div></div></div>');
 
-  // Remove item button
-  quantityControls.append(
-   '<i style="margin-left:2.5rem; font-size:23px;" class="fa-solid fa-circle-xmark" onclick="removeCartItem(' + item
-   .product_id + ')"></i></div></div></div>');
+//   // Remove item button
+//   quantityControls.append(
+//    '<i style="margin-left:2.5rem; font-size:23px;" class="fa-solid fa-circle-xmark" onclick="removeCartItem(' + item
+//    .product_id + ')"></i></div></div></div>');
 
-  productDetails.append(quantityControls);
-  productElement.append(productDetails);
+//   productDetails.append(quantityControls);
+//   productElement.append(productDetails);
 
-  cartItemsList.append(productElement);
+//   cartItemsList.append(productElement);
 
-  // Update grand total
-  grandTotal += totalItemPrice;
- });
+//   // Update grand total
+//   grandTotal += totalItemPrice;
+//  });
 
- // Display grand total
- $('#grandTotalDisplay').text(grandTotal + '€');
-}
+//  // Display grand total
+//  $('#grandTotalDisplay').text(grandTotal + '€');
+// }
 
-// Calculate grand total function
-function calculateGrandTotal(cartItems) {
- var grandTotal = 0;
+// // Calculate grand total function
+// function calculateGrandTotal(cartItems) {
+//  var grandTotal = 0;
 
- cartItems.forEach(function(item) {
-  grandTotal += item.total_price * item.quantity;
- });
+//  cartItems.forEach(function(item) {
+//   grandTotal += item.total_price * item.quantity;
+//  });
 
- return grandTotal;
-}
+//  return grandTotal;
+// }
 
 
 
-function decreaseQuantity(productId) {
- var quantityInput = $('#quantity' + productId);
- var currentQuantity = parseInt(quantityInput.val(), 10);
+// function decreaseQuantity(productId) {
+//     var quantityInput = $('#quantity' + productId);
+//     var currentQuantity = parseInt(quantityInput.val(), 10);
 
- if (currentQuantity > 1) {
-  // Decrease the quantity by 1
-  var newQuantity = currentQuantity - 1;
-  quantityInput.val(newQuantity);
+//     if (currentQuantity > 1) {
+//         // Decrease the quantity by 1
+//         var newQuantity = currentQuantity - 1;
+//         quantityInput.val(newQuantity);
 
-  updateQuantityInDatabase(productId, newQuantity);
-  // Implement any additional  logic you need, such as updating the server or recalculating prices
- }
-}
+//         updateQuantityInDatabase(productId, newQuantity);
+//         updateCartItemsList();
+//         // Implement any additional  logic you need, such as updating the server or recalculating prices
+//     }
+// }
 
-// Example function to increase quantity
-function increaseQuantity(productId) {
- var quantityInput = $('#quantity' + productId);
- var currentQuantity = parseInt(quantityInput.val(), 10);
+// // Example function to increase quantity
+// function increaseQuantity(productId) {
+//     var quantityInput = $('#quantity' + productId);
+//     var currentQuantity = parseInt(quantityInput.val(), 10);
 
- // Increase the quantity by 1
- var newQuantity = currentQuantity + 1;
- quantityInput.val(newQuantity);
- updateQuantityInDatabase(productId, newQuantity);
- // Implement any additional logic you need, such as updating the server or recalculating prices
-}
+//     // Increase the quantity by 1
+//     var newQuantity = currentQuantity + 1;
+//     quantityInput.val(newQuantity);
+//     updateQuantityInDatabase(productId, newQuantity);
+//     updateCartItemsList();
+//     // Implement any additional logic you need, such as updating the server or recalculating prices
+// }
 
 
 function updateQuantityInDatabase(productId, newQuantity) {

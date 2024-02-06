@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\UserProfile;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -65,8 +66,9 @@ class webController extends Controller
         $product = Product::where('id', $product_id)->get();
 
         $products_accoring_category = Product::where('Kategorie_1', $product_category)->get();
+        $countProductInCard = Cart::where('product_id', $product[0]->id)->first()->quantity??0;
 
-        return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product', 'products_accoring_category'));
+        return view('frontEnd/Pages/products/ProductDetailsPage')->with(compact('product', 'products_accoring_category', 'countProductInCard'));
     }
 
 

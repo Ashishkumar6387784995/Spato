@@ -461,7 +461,7 @@
 
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
-             <div id="counter-value">0</div>
+             <div id="counter-value">{{$countProductInCard}}</div>
              <button class="counter-btn" id="increment-btn">+</button>
             </div>
             <input type="text" name="product_id" id="product_id" value="{{$product[0]->Artikelname}}"
@@ -483,7 +483,7 @@
             </p>
            </div>
            <div class="cart mt-4 align-items-center">
-            <a href="#" class="btn addToCartButton" data-product-id="{{$product[0]->id}}" data-quantity="1"
+            <a href="#" class="btn addToCartButton" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')";
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
             <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
@@ -507,14 +507,7 @@
 
     <div class="product-desc">
      <h3 class="product-desc-heading">Product Description</h3>
-     <p class="desc">Sette anni fa, abbiamo deciso di creare un modo davvero rivoluzionario per prenderci cura delle
-      nostre piscine senza spendere una fortuna, e sai una cosa? Alla fine abbiamo decifrato il codice con il nostro
-      marchio locale di forniture per piscine, Water TechniX, realizzato e di proprietà esclusiva di Mr Pool Man
-      <br><br>
-      Abbiamo preso anni di feedback dai clienti, il buono, il brutto e il cattivo, e abbiamo combinato tutto questo in
-      un piccolo pacchetto ordinato. Eliminare tutto ciò che non è essenziale e lasciare solo ciò che i proprietari di
-      piscine stanno cercando: attrezzature e prodotti chimici per piscine efficienti e convenienti! Scopri di più qui.
-     </p>
+     <p class="desc">{{ $product['0']->Beschreibung_lang }}</p>
     </div>
 
     <div class="specification mt-5">
@@ -898,101 +891,57 @@
   }
   </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <script>
-  function change_image(image) {
-
-   var container = document.getElementById("main-image");
-
-   container.src = image.src;
-  }
-  document.addEventListener("DOMContentLoaded", function(event) {});
+    function change_image(image) {
+      var container = document.getElementById("main-image");
+      container.src = image.src;
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {});
   </script>
 
   <script>
-  let counter = 0;
-  const counterValue = document.getElementById('counter-value');
-  const incrementBtn = document.getElementById('increment-btn');
-  const decrementBtn = document.getElementById('decrement-btn');
+    let counter = jQuery('#counter-value').text();
+    const counterValue = document.getElementById('counter-value');
+    const incrementBtn = document.getElementById('increment-btn');
+    const decrementBtn = document.getElementById('decrement-btn');
 
-  // To increment the value of counter
-  incrementBtn.addEventListener('click', () => {
-   counter++;
-   counterValue.innerHTML = counter;
+    // To increment the value of counter
+    incrementBtn.addEventListener('click', () => {
+      counter++;
+      counterValue.innerHTML = counter;
+    });
 
+    // To decrement the value of counter
+    decrementBtn.addEventListener('click', () => {
+      if (counter > 0) {
+        counter--;
+        counterValue.innerHTML = counter;
+      }
+    });
 
-  });
-
-  // To decrement the value of counter
-  decrementBtn.addEventListener('click', () => {
-   if (counter > 0) {
-    counter--;
-    counterValue.innerHTML = counter;
-   }
-  });
+    // quantity for one product
+    function updateQuantityOneInDatabase(productId) {
+      $.ajax({
+        type: 'POST',
+        url: '/api/cart/updateQuanityApi',
+        headers: {
+          'guest-token': getGuestToken(),
+        },
+        data: {
+          product_id: productId,
+          quantity: jQuery('#counter-value').text(),
+        },
+        success: function(response) {
+          console.log('Quantity updated successfully');
+          console.log(response.message);
+          updateCartItemsList();
+          // You can handle additional logic or UI updates here if needed
+        },
+        error: function(error) {
+          console.error('Error updating quantity', error);
+        }
+      });
+    }
   </script>
-
-
-
- </body>
-
+</body>
 </html>

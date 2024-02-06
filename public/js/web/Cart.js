@@ -2,6 +2,38 @@
 $(document).ready(function() {
     updateCartItemsList();
 });
+
+
+// Example function to decrease quantity
+function decreaseQuantity(productId) {
+    var quantityInput = $('#quantity' + productId);
+    var currentQuantity = parseInt(quantityInput.val(), 10);
+
+    if (currentQuantity > 1) {
+        // Decrease the quantity by 1
+        var newQuantity = currentQuantity - 1;
+        quantityInput.val(newQuantity);
+
+        updateQuantityInDatabase(productId, newQuantity);
+        updateCartItemsList();
+        // Implement any additional  logic you need, such as updating the server or recalculating prices
+    }
+}
+
+// Example function to increase quantity
+function increaseQuantity(productId) {
+    var quantityInput = $('#quantity' + productId);
+    var currentQuantity = parseInt(quantityInput.val(), 10);
+
+    // Increase the quantity by 1
+    var newQuantity = currentQuantity + 1;
+    quantityInput.val(newQuantity);
+    updateQuantityInDatabase(productId, newQuantity);
+    updateCartItemsList();
+    // Implement any additional logic you need, such as updating the server or recalculating prices
+}
+
+
 // Retrieve Cart Items AJAX request
 function updateCartItemsList() {
     $.ajax({
@@ -82,4 +114,20 @@ function displayCartItems(cartItems) {
 
         cartItemsList.append(productElement);
     });
+
+    // Display grand total
+    var grandTotal = calculateGrandTotal(cartItems);
+    $('#grandTotalDisplay').text(grandTotal + '€');
 }
+
+
+// Calculate grand total function
+    function calculateGrandTotal(cartItems) {
+        var grandTotal = 0;
+
+        cartItems.forEach(function(item) {
+            grandTotal += item.Preis_zzgl_MwSt * item.quantity;
+        });
+
+        return grandTotal;
+    }
