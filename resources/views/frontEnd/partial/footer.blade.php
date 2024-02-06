@@ -11,8 +11,8 @@
     <p class="footer-desc"><a href="{{url('api/agb')}}">AGB</a></p>
     <p class="footer-desc"><a href="#">Versand & Lieferung</a></p>
     <p class="footer-desc"><a href="#">Zahlungsten</a></p>
-    <p class="footer-desc"><a href="#">Widerrufsbelehrung</a></p>
-    <p class="footer-desc"><a href="#">Impressum</a></p>
+    <p class="footer-desc"><a href="{{url('api/lieferbedingungen')}}">lieferbedingungen</a></p>
+    <p class="footer-desc"><a href="{{url('api/Impressum')}}">Impressum</a></p>
    </div>
    <div class="col">
     <p class="footer-desc"><a href="#">Pools</a></p>
@@ -55,5 +55,5 @@
 </footer>
 
 <!-- Cart script starts -->
-    <script type="text/javascript" src="{{ asset('js/web/cart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/web/cart.js') }}"></script>
 <!-- Cart script ends -->

@@ -94,10 +94,16 @@
 
   .filters {
    background-color: #fff;
-   color: #000;
+   color: #54606c;
    border: none;
    outline: none;
-   padding: 1px 5px;
+   padding: 2px 8px;
+   border-radius: 3px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .filters:hover {
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   </style>
  </head>

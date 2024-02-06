@@ -83,91 +83,73 @@
       Halbpalette bis 100 kg ab 900,00 EURO frachtfrei
       Halbpalette bis 100 kg bis 900,00 EURO pauschal 65,00 EURO.
      </p>
-    </div>
-    <div class="content">
-     <h6>Vertreten durch</h6>
      <p class="details">
-      Oliver Laug
+      <b>Gefahrgut</b> (z. B. Wasserpflege):
+      Ab 2.200 EUR frei Haus
+      bis 2.200 EUR per Spedition nach Aufwand Gefahrgutzuschlag 20,00 EURO
      </p>
     </div>
     <div class="content">
-     <h6>Kontakt</h6>
+     <h6>Frachtintensive Güter </h6>
      <p class="details">
-      E-Mail: info@spato.de
+      wie z. B. PVC-Rohre (Langpaletten), Alustangen (ab 2,4 m), Rollen, Behälter, Filtersand, Glas usw. Preise werden
+      nach Aufwand/Tagespreisen der Speditionen abgerechnet.
      </p>
     </div>
     <div class="content">
-     <h6>Registernummer</h6>
+     <h6>Palettenware und frachtintensive Güter wie z.B. Wärmepumpen, Filtermedium etc.</h6>
      <p class="details">
-      HRB 32131
-     </p>
-    </div>
-
-    <div class="content">
-     <h6>Registergericht</h6>
-     <p class="details">
-      Handelsregister Wuppertal
+      Bis 200 kg 135,00 € pro Palette
+      Filtermedium auf Anfrage
      </p>
     </div>
     <div class="content">
-     <h6>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz</h6>
+     <h6>Expresszuschlag bei Speditionsware:</h6>
      <p class="details">
-      DE346441844
+      Garantie am Folgetag bis 16.00 Uhr deutschlandweit (ohne Inseln) = 25,00 EURO Garantie am Folgetag bis 12.00 Uhr
+      deutschlandweit (ohne Inseln) = 40,00 EURO
      </p>
     </div>
 
     <div class="content">
-     <h6>EU-Streitschlichtung</h6>
+     <h6>Expresslieferungen</h6>
      <p class="details">
-      Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-      https://ec.europa.eu/consumers/odr.
-      Unsere E-Mail-Adresse finden Sie oben im Impressum.
+      nach Aufwand. Bei Expressbestellungen gehen die Versandkosten grundsätzlich zu Lasten des Empfängers.
+      Ausgenommen
+      Ersatzteil- und Nachlieferung.
      </p>
     </div>
     <div class="content">
-     <h6>Verbraucher streit beilegung / Universal schlichtungs stelle</h6>
+     <h6>Preise</h6>
      <p class="details">
-      Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-      teilzunehmen.
+      Pro Stück bzw. Meter in EURO zzgl. MwSt., freibleibend.
+      Sollte es nach Fertigstellung dieses Katalogs zu Preissteigerungen z. B. im Rohmaterialbereich kommen, behalten
+      wir
+      uns eine Preisanpassung vor.
+     </p>
+    </div>
+
+    <div class="content">
+     <h6>Warenrücklieferungen </h6>
+     <p class="details">
+      Warenrücklieferungen werden nur nach vorheriger Absprache mit unseren Mitarbeitern akzeptiert.
+      Der Warenrücklieferung ist eine Rechnungskopie, nicht älter als 6 Wochen, beizufügen.
+      Die Ware muss sich in einwandfreiem Zustand befinden. Der Rückversand muss „frei Haus“ erfolgen. Es wird eine
+      Wiedereinlagerungsgebühr in Höhe von mindestens 15 % des Warenwertes erhoben.
+      Von der Rücknahme ausgeschlossen sind Sonderanfertigungen, Sonderbestellungen, Abverkaufsware, Abschnitte
+      (Schlauch, Rohr) sowie bereits eingebaute und verschmutzte Produktwaren und Materialien.
+
      </p>
     </div>
     <div class="content">
-     <h6>Haftung für Inhalte</h6>
+     <h6>Transportbeschädigungen sind in Anwesenheit des Zustellers schriftlich auf der Empfangsbescheinigung
+      festzuhalten. Spätere Reklamationen können wir leider nicht anerkennen. </h6>
      <p class="details">
-      Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
-      Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte
-      oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
-      Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den
-      allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
-      Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden
-      wir diese Inhalte umgehend entfernen.
+      Technische Änderungen und Druckfehler vorbehalten
+      Sämtliche Abbildungen sind Symbolbilder.
      </p>
     </div>
-    <div class="content">
-     <h6>Haftung für Links</h6>
-     <p class="details">
-      Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb
-      können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets
-      der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
-      Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht
-      erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte
-      einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links
-      umgehend entfernen.
-     </p>
-    </div>
-    <div class="content">
-     <h6>Urheberrecht</h6>
-     <p class="details">
-      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
-      Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des
-      Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien
-      dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser
-      Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte
-      Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten
-      wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte
-      umgehend entfernen.
-     </p>
-    </div>
+
    </div>
   </section>
 
