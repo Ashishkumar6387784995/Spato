@@ -306,7 +306,7 @@
           <hr />
           <div class="details d-flex justify-content-between">
            <p class="input-field">Subtotal</p>
-           <span><input type="text" class="input-field" name="" id="subto" value="13,047.00"
+           <span><input type="text" class="input-field" name="" id="allSubTotalDisplay" value="00.00"
              style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
           </div>
 
@@ -319,13 +319,13 @@
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Tax</p>
-           <span><input type="text" class="input-field" name="" id="tax" value="1.91"
+           <span><input type="text" class="input-field" name="" id="allTaxTotalDisplay" value="1.91"
              style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
           </div>
 
           <div class="details d-flex justify-content-between">
            <p class="input-field">Order Total</p>
-           <span><input type="text" class="input-field total" name="" id="grandTotal" value="13,068.00"
+           <span><input type="text" class="input-field total" name="" id="orderSummaryTotal" value="00.00"
              style="width:150px; border:none; text-align:right;" readonly="readonly">€</span>
           </div>
 
@@ -428,78 +428,93 @@
 
   // Function to display cart items
   function displayCartItems(cartItems) {
-   var cartItemsTableBody = $('#cart-items-table-body');
-   cartItemsTableBody.empty();
+    var cartItemsTableBody = $('#cart-items-table-body');
+    cartItemsTableBody.empty();
 
-   cartItems.forEach(function(item, index) {
-    var tableRow = $('<tr>');
+    cartItems.forEach(function(item, index) {
+      var subtotal = 0;
+      var tableRow = $('<tr>');
 
-    var itemImgCell = $('<td class="item-img">');
-    itemImgCell.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" class="img" alt="..." />');
+      var itemImgCell = $('<td class="item-img">');
+      itemImgCell.append('<img src="{{ asset("storage/") }}' + '/' + item.product_image + '" class="img" alt="..." />');
 
-    tableRow.append(itemImgCell);
+      tableRow.append(itemImgCell);
 
-    var productDescCell = $('<td class="product-desc">');
-    productDescCell.append('<p>' + item.product_name + '</p>');
-    tableRow.append(productDescCell);
+      var productDescCell = $('<td class="product-desc">');
+      productDescCell.append('<p>' + item.product_name + '</p>');
+      tableRow.append(productDescCell);
 
-    var priceCell = $('<td style="display:flex;"><input type="number" id="price' + index + '" value="' + item
-     .total_price +
-     '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
-    );
-    tableRow.append(priceCell);
+      var priceCell = $('<td style="display:flex;"><input type="number" id="price' + index + '" value="' + item
+      .Preis_zzgl_MwSt +
+      '" step="0.01" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+      );
+      tableRow.append(priceCell);
 
-    var quantityCell = $('<td>');
-    quantityCell.append('<div class="counter"><button class="quantity-btn" onclick="decreaseQuantity(' + item
-     .product_id +
-     ')"><i class="fa-solid fa-minus"></i></button> <input type="text" class="quantity-input" id="quantity' + item
-     .product_id + '" value="' + item.quantity +
-     '" min="1" readonly /> <button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
-     ')"><i class="fa-solid fa-plus"></i></button></div>');
-    tableRow.append(quantityCell);
+      var quantityCell = $('<td>');
+      quantityCell.append('<div class="counter"><button class="quantity-btn" onclick="decreaseQuantity(' + item
+      .product_id +
+      ')"><i class="fa-solid fa-minus"></i></button> <input type="text" class="quantity-input" id="quantity' + item
+      .product_id + '" value="' + item.quantity +
+      '" min="1" readonly /> <button class="quantity-btn" onclick="increaseQuantity(' + item.product_id +
+      ')"><i class="fa-solid fa-plus"></i></button></div>');
+      tableRow.append(quantityCell);
 
-    var subtotalCell = $('<td style="display:flex;"><input type="text" class="input-field" id="subtotal' + index +
-     '" value="' + (item
-      .total_price * item.quantity) +
-     '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
-    );
-    tableRow.append(subtotalCell);
+      var subtotalCell = $('<td style="display:flex;"><input type="text" class="input-field" id="subtotal' + index +
+      '" value="' + (item
+        .Preis_zzgl_MwSt * item.quantity).toFixed(2) +
+      '" style="width:80px; border:none; outline:none; text-align:right; background:transparent;" readonly="readonly">€</td>'
+      );
+      tableRow.append(subtotalCell);
 
-    var iconCell = $('<td>');
-    iconCell.append(
-     '<div class="icon"><i style="font-size:20px; margin-top:5px; cursor:pointer;" class="fa-regular fa-circle-xmark" onclick="removeCartItem(' +
-     item
-     .product_id + ')"></i></div></td></tr>');
-    tableRow.append(iconCell);
+      var iconCell = $('<td>');
+      iconCell.append(
+      '<div class="icon"><i style="font-size:20px; margin-top:5px; cursor:pointer;" class="fa-regular fa-circle-xmark" onclick="removeCartItem(' +
+      item
+      .product_id + ')"></i></div></td></tr>');
+      tableRow.append(iconCell);
 
-    cartItemsTableBody.append(tableRow);
-   });
+      cartItemsTableBody.append(tableRow);
+    });
+
+   
+    // Display grand total
+    var allSubTotal = calculateGrandTotal(cartItems);
+    $('#allSubTotalDisplay').val(allSubTotal);
+
+
+    // Display Tax total
+    var allTaxTotal = calculateTaxTotal(cartItems);
+    $('#allTaxTotalDisplay').val(allTaxTotal);
+
+    // Display Order Summary total
+    var orderSummaryTotal = calculateOrderSummaryTotal(cartItems);
+    $('#orderSummaryTotal').val(orderSummaryTotal);
   }
 
-  // Example function to increase quantity
-  function increaseQuantity(productId) {
-   var quantityInput = $('#quantity' + productId);
-   var currentQuantity = parseInt(quantityInput.val(), 10);
+  // // Example function to increase quantity
+  // function increaseQuantity(productId) {
+  //  var quantityInput = $('#quantity' + productId);
+  //  var currentQuantity = parseInt(quantityInput.val(), 10);
 
-   // Increase the quantity by 1
-   var newQuantity = currentQuantity + 1;
-   quantityInput.val(newQuantity);
-   updateQuantityInDatabase(productId, newQuantity);
-   // Implement any additional logic you need, such as updating the server or recalculating prices
-  }
+  //  // Increase the quantity by 1
+  //  var newQuantity = currentQuantity + 1;
+  //  quantityInput.val(newQuantity);
+  //  updateQuantityInDatabase(productId, newQuantity);
+  //  // Implement any additional logic you need, such as updating the server or recalculating prices
+  // }
 
-  // Example function to decrease quantity
-  function decreaseQuantity(productId) {
-   var quantityInput = $('#quantity' + productId);
-   var currentQuantity = parseInt(quantityInput.val(), 10);
+  // // Example function to decrease quantity
+  // function decreaseQuantity(productId) {
+  //  var quantityInput = $('#quantity' + productId);
+  //  var currentQuantity = parseInt(quantityInput.val(), 10);
 
-   // Decrease the quantity by 1, but ensure it doesn't go below 1
-   var newQuantity = Math.max(currentQuantity - 1, 1);
+  //  // Decrease the quantity by 1, but ensure it doesn't go below 1
+  //  var newQuantity = Math.max(currentQuantity - 1, 1);
 
-   quantityInput.val(newQuantity);
-   updateQuantityInDatabase(productId, newQuantity);
-   // Implement any additional logic you need, such as updating the server or recalculating prices
-  }
+  //  quantityInput.val(newQuantity);
+  //  updateQuantityInDatabase(productId, newQuantity);
+  //  // Implement any additional logic you need, such as updating the server or recalculating prices
+  // }
 
   function updateQuantityInDatabase(productId, newQuantity) {
    $.ajax({

@@ -121,13 +121,31 @@ function displayCartItems(cartItems) {
 }
 
 
-// Calculate grand total function
+//  START CALCULATION
+
+    // Calculate grand total function
     function calculateGrandTotal(cartItems) {
         var grandTotal = 0;
-
         cartItems.forEach(function(item) {
             grandTotal += item.Preis_zzgl_MwSt * item.quantity;
         });
-
-        return grandTotal;
+        return grandTotal.toFixed(2);
     }
+
+    // Function for Calculate total tax 19%
+    function calculateTaxTotal(cartItems) {
+        var allSubTotal = calculateGrandTotal(cartItems);
+        var taxTotal = ((allSubTotal*19)/100);
+        return taxTotal.toFixed(2);
+    }
+
+    // Function for Calculate total summary (Order Total =(Subtotal+Shipping+Tax))
+    function calculateOrderSummaryTotal(cartItems) {
+        var allSubTotal = parseFloat(calculateGrandTotal(cartItems));
+        var allTaxTotal = parseFloat(calculateTaxTotal(cartItems));
+        var shipping    = parseFloat('21');
+        var orderSummaryTotal    = allSubTotal+shipping+allTaxTotal;
+        return orderSummaryTotal.toFixed(2);
+    }
+
+//  END CALCULATION
