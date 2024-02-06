@@ -75,7 +75,7 @@ class webController extends Controller
     public function getCountOfThisProductApi(Request $request)
     {
         $guestToken = $request->header('guest-token', Str::uuid());
-        $countProductInCard = Cart::where('guest_token', $guestToken)->where('product_id', $request->product_id)->first()->quantity??0;
+        $countProductInCard = Cart::where('guest_token', $guestToken)->where('product_id', $request->product_id)->first()->quantity??1;
         return response()->json(['message' => $countProductInCard]);
     }
 

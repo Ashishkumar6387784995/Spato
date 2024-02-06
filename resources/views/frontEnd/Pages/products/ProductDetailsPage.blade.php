@@ -916,7 +916,7 @@
   // To decrement the value of counter
   decrementBtn.addEventListener('click', () => {
    let counter = jQuery('#counter-value').text();
-   if (counter > 0) {
+   if (counter > 1) {
     counter--;
     counterValue.innerHTML = counter;
    }
