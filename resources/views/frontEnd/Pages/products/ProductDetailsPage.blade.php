@@ -416,7 +416,7 @@
      <ol class="breadcrumb">
       <li class="breadcrumb-item"><a class="home" href="{{url('api/home')}}">Home</a></li>
       <li class="breadcrumb-item">Pool Products</li>
-      <li class="breadcrumb-item active" aria-current="page">MSI WS Series</li>
+      <li class="breadcrumb-item active" aria-current="page">{{$product[0]->Artikelname}}</li>
      </ol>
     </nav>
     <div class="mt-5 mb-5">
@@ -446,7 +446,7 @@
           </div>
          </div>
          <div class="brand-details col-md-4">
-          <h1>Product name - {{$product[0]->Artikelname}}</h1>
+          <h1>{{$product[0]->Artikelname}}</h1>
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
@@ -479,11 +479,12 @@
             <p class="product-size">Auf Large</p>
             <p class="model-number">Model No.#7389392930</p>
             <p class="product-price">
-             <span class="price">{{$product[0]->Preis_zzgl_MwSt}}€</span> Statt 42,45 €
+             <span class="price">{{$product[0]->Preis_zzgl_MwSt}}€</span> <span
+              style="text-decoration:line-through;">Statt 42,45€</span>
             </p>
            </div>
            <div class="cart mt-4 align-items-center">
-            <a href="#" class="btn addToCartButton" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')";
+            <a href="#" class="btn addToCartButton" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')" ;
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
             <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
@@ -892,56 +893,57 @@
   </script>
 
   <script>
-    function change_image(image) {
-      var container = document.getElementById("main-image");
-      container.src = image.src;
-    }
-    document.addEventListener("DOMContentLoaded", function(event) {});
+  function change_image(image) {
+   var container = document.getElementById("main-image");
+   container.src = image.src;
+  }
+  document.addEventListener("DOMContentLoaded", function(event) {});
   </script>
 
   <script>
-    let counter = jQuery('#counter-value').text();
-    const counterValue = document.getElementById('counter-value');
-    const incrementBtn = document.getElementById('increment-btn');
-    const decrementBtn = document.getElementById('decrement-btn');
+  let counter = jQuery('#counter-value').text();
+  const counterValue = document.getElementById('counter-value');
+  const incrementBtn = document.getElementById('increment-btn');
+  const decrementBtn = document.getElementById('decrement-btn');
 
-    // To increment the value of counter
-    incrementBtn.addEventListener('click', () => {
-      counter++;
-      counterValue.innerHTML = counter;
-    });
+  // To increment the value of counter
+  incrementBtn.addEventListener('click', () => {
+   counter++;
+   counterValue.innerHTML = counter;
+  });
 
-    // To decrement the value of counter
-    decrementBtn.addEventListener('click', () => {
-      if (counter > 0) {
-        counter--;
-        counterValue.innerHTML = counter;
-      }
-    });
+  // To decrement the value of counter
+  decrementBtn.addEventListener('click', () => {
+   if (counter > 0) {
+    counter--;
+    counterValue.innerHTML = counter;
+   }
+  });
 
-    // quantity for one product
-    function updateQuantityOneInDatabase(productId) {
-      $.ajax({
-        type: 'POST',
-        url: '/api/cart/updateQuanityApi',
-        headers: {
-          'guest-token': getGuestToken(),
-        },
-        data: {
-          product_id: productId,
-          quantity: jQuery('#counter-value').text(),
-        },
-        success: function(response) {
-          console.log('Quantity updated successfully');
-          console.log(response.message);
-          updateCartItemsList();
-          // You can handle additional logic or UI updates here if needed
-        },
-        error: function(error) {
-          console.error('Error updating quantity', error);
-        }
-      });
+  // quantity for one product
+  function updateQuantityOneInDatabase(productId) {
+   $.ajax({
+    type: 'POST',
+    url: '/api/cart/updateQuanityApi',
+    headers: {
+     'guest-token': getGuestToken(),
+    },
+    data: {
+     product_id: productId,
+     quantity: jQuery('#counter-value').text(),
+    },
+    success: function(response) {
+     console.log('Quantity updated successfully');
+     console.log(response.message);
+     updateCartItemsList();
+     // You can handle additional logic or UI updates here if needed
+    },
+    error: function(error) {
+     console.error('Error updating quantity', error);
     }
+   });
+  }
   </script>
-</body>
+ </body>
+
 </html>
