@@ -315,98 +315,30 @@
     <div class="wrapper">
      <i id="left" class="fa-solid fa-angle-left"></i>
      <ul class="carousel">
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
-      <li class="card">
-       <div class="img"><img src="{{ asset('assets/frontEnd/web/images/product-2.png')}}" alt="img" draggable="false">
-       </div>
-       <div class="card-body">
-        <h5 class="card-title">Saugrobroter</h5>
-        <p class="card-text">
-        <p>Merkamal 1 - lauft fluffig</p>
-        <p>Merkamal 2 - fahurt urail... lorem</p>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-       <a href="#" class="btn">IN DEN WARENKORB</a>
-      </li>
+      @foreach ($allProduct as $product)
+        <li class="card">
+          <a href="{{ url('api/ProductdetailPage/' . $product->id . '/' . $product->Kategorie_1) }}">
+            <div class="img">
+            <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image">
+            </div>
+          </a>
+
+          <div class="card-body">
+            <h5 class="card-title">{{ $product->Artikelname }}</h5>
+            <p class="card-text">
+              <p title="{{ $product->Beschreibung_lang }}">Merkamal - {{ substr($product->Beschreibung_lang, 0,  35) }} @if(strlen($product->Beschreibung_lang)>35) .... @endif</p>
+            </p>
+            <p class="product-price">
+            statt - <span class="price">{{ $product->Preis_zzgl_MwSt }}€</span>
+            </p>
+          </div>
+
+          <a href="#" class="btn addToCartButton" data-product-id="{{ $product->id }}" data-quantity="1"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            IN DEN WARENKORB
+          </a>
+        </li>
+        @endforeach
      </ul>
      <i id="right-2" class="fa-solid fa-angle-right"></i>
     </div>
