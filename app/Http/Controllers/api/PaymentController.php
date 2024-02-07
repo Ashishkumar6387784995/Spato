@@ -102,7 +102,7 @@ class PaymentController extends Controller
 
     public function generateOrderID()
     {
-        $lastOrderID = Payment::latest()->first();
+        $lastOrderID = Order::latest()->first();
 
         // If any lastOrderID not found
         if ($lastOrderID) {

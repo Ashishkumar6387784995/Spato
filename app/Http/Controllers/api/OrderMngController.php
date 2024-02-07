@@ -5,20 +5,49 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\credits;
+use Illuminate\Support\Facades\DB;
+use App\Models\Order;
 
 
 class OrderMngController extends Controller
 {
+    // function for find all orders details
     public function orderListingApi()
     {
-        $credits = credits::orderBy('created_at', 'desc')->get();
+        $orders = DB::table('orders')
+                ->select('orders.order_id', 'orders.created_at', 'orders.payment_status', 'orders.final_status', 'users.name')
+                ->join('users', 'users.id', '=', 'orders.user_id')
+                ->orderby('orders.created_at', 'DESC')
+                ->get()->unique('order_id');
 
-        if ($credits){
-            return response()->json(['creditList'=>$credits]);
+        // $orders = Order::orderBy('created_at', 'desc')->where('id', 'dssd')->get()->unique('order_id');
+
+        if ($orders->count()){
+            return response()->json(['ordersList'=>$orders]);
         }
      
-        return response()->json(['errors'=>"Offer Not Found"]);
+        return response()->json(['errors'=>"Order Not Found"]);
+    }
+
+
+
+    // function for find orders details by his order id
+    public function getOrdersDetailsApi(Request $request)
+    {
+        $orders = DB::table('orders')
+                ->select('orders.*', 'users.name')
+                ->join('users', 'users.id', '=', 'orders.user_id')
+                ->where('orders.order_id', $request->order_id)
+                ->orderby('orders.created_at', 'DESC')
+                ->get();
+
+        // $orders = Order::orderBy('created_at', 'desc')->where('id', 'dssd')->get()->unique('order_id');
+
+        if ($orders->count()){
+            return response()->json(['ordersDtl'=>$orders]);
+        }
+     
+        return response()->json(['errors'=>"Order Not Found"]);
     }
 
 

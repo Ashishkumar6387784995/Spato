@@ -177,41 +177,17 @@
        <button class="edit btn" style="padding: -2rem 0px;">Filter</button>
       </div>
      </div>
-     <table id="dataTable">
-      <tr>
-       <th>Auftragsnummer</th>
-       <th>Datum</th>
-       <th>Kundenname</th>
-       <th>Zahlungsstatus</th>
-       <th></th>
-       <th>Endgültiger Status</th>
-      </tr>
-      <tr>
-       <td>AN-1379</td>
-       <td>2024-2-10</td>
-       <td>Alex</td>
-       <td><span class="p-status">Ausstehend</span></td>
-       <td><a class="edit btn" id="editProductBtn" data-bs-toggle="modal" data-bs-target="#viewModal">Details
-         anzeigen</a></td>
-       <td><span class="f-status" style="color:#B20202;">Incomplete </span> <i style="color:#B20202;" class=" fa-solid
-         fa-xmark"></i></td>
-      </tr>
-      <tr>
-       <td>AN-1380</td>
-       <td>2024-2-10</td>
-       <td>Sam</td>
-       <td><span class="p-status">Erledigt</span></td>
-       <td><a class="edit btn" id="editProductBtn" data-bs-toggle="modal" data-bs-target="#viewModal">Details
-         anzeigen</a></td>
-       <td><span class="f-status" style="color:#02B222;">Complete </span> <i style="color:#02B222;" class=" fa-solid
-         fa-check"></i></td>
-      </tr>
-     </table>
-
-
+      <table id="dataTable">
+        <tr>
+        <th>Auftragsnummer</th>
+        <th>Datum</th>
+        <th>Kundenname</th>
+        <th>Zahlungsstatus</th>
+        <th></th>
+        <th>Endgültiger Status</th>
+        </tr>
+      </table>
     </div>
-
-
    </div>
   </div>
   </div>
@@ -250,65 +226,52 @@
       <table class="order-details">
        <tbody>
         <tr>
-         <th>Auftragsnummer</th>
-         <td>-</td>
-         <td>AN-1379</td>
+          <th>Auftragsnummer</th>
+          <td>-</td>
+          <td id="Auftragsnummer"></td>
         </tr>
         <tr>
-         <th>Kundennummer</th>
-         <td>-</td>
-         <td>UR-503</td>
+          <th>Kundennummer</th>
+          <td>-</td>
+          <td id="Kundennummer"></td>
         </tr>
         <tr>
-         <th>Kundenname</th>
-         <td>-</td>
-         <td>Alex</td>
+          <th>Kundenname</th>
+          <td>-</td>
+          <td id="Kundenname"></td>
         </tr>
         <tr>
-         <th>Rechnungsdatum</th>
-         <td>-</td>
-         <td>2024/3/25</td>
+          <th>Rechnungsdatum</th>
+          <td>-</td>
+          <td id="Rechnungsdatum"></td>
         </tr>
         <tr>
-         <th>Rechnungsadresse</th>
-         <td>-</td>
-         <td>UG - 452, New Town, Germany</td>
+          <th>Rechnungsadresse</th>
+          <td>-</td>
+          <td id="Rechnungsadresse"></td>
         </tr>
         <tr>
-         <th>Lieferanschrift</th>
-         <td>-</td>
-         <td>House no. - 87, Toronto, Canada</td>
+          <th>Lieferanschrift</th>
+          <td>-</td>
+          <td id="Lieferanschrift"></td>
         </tr>
        </tbody>
       </table>
       <h4 class="pt-3 pb-3" style="color:;">Ordered Products</h4>
       <table class="order-products">
-       <tbody>
-        <tr>
-         <th>Produkt-ID</th>
-         <th>Produktname</th>
-         <th>Hersteller</th>
-         <th>Preis</th>
-        </tr>
-        <tr>
-         <td>PR-451</td>
-         <td>Robot1</td>
-         <td>Sparto Services</td>
-         <td>€8,745</td>
-        </tr>
-        <tr>
-         <td>PR-781</td>
-         <td>Robot2</td>
-         <td>Sparto Services</td>
-         <td>€8,745</td>
-        </tr>
-        <tr>
-         <td>PR-565</td>
-         <td>Robot3</td>
-         <td>Sparto Services</td>
-         <td>€8,745</td>
-        </tr>
-       </tbody>
+        <thead>
+          <tr>
+          <th>Produkt-ID</th>
+          <th>Produktname</th>
+          <th>Hersteller</th>
+          <th>Preis</th>
+          <th>Qty</th>
+          </tr>
+        </thead> 
+
+        <tbody id="productDetailsTD">
+        </tbody>
+
       </table>
       <hr>
       <div class="row pt-5">
@@ -326,17 +289,17 @@
         <p>-</p>
        </div>
        <div class="col-2">
-        <p><input type="text" value="€8,745" readonly /></p>
-        <p><input type="text" value="€8,745" readonly /></p>
-        <p><input type="text" value="€8,745" readonly /></p>
-        <p><input type="text" value="€8,745" readonly /></p>
+        <p><input type="text" id="Zwischensumme" readonly /></p>
+        <p><input type="text" id="Versand" readonly /></p>
+        <p><input type="text" id="Steuer" readonly /></p>
+        <p><input type="text" id="Auftragssumme" readonly /></p>
        </div>
       </div>
       <hr>
       <div class="row transection">
        <div class="col-4">Transaktions-ID</div>
        <div class="col-2">-</div>
-       <div class="col-6">Td-7458442AS756</div>
+       <div class="col-6" id="Transaktions-ID"></div>
       </div>
      </div>
      <div class="modal-footer d-flex justify-content-between">
@@ -349,108 +312,132 @@
   <!-- View Details in Modal -->
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
   <script>
-  // Execute the code when the document is ready
-  $(document).ready(function() {
-   // Make a GET request using AJAX
-   $.ajax({
-    url: '/api/productListingApi', // Replace with the actual endpoint URL
-    method: 'GET',
-    success: function(data) {
-     // Handle the successful response
-     if (data.productList) {
-      console.log('Data received:', data.productList);
+    // Execute the code when the document is ready
+    $(document).ready(function() {
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/orderListingApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        success: function(data) {
+          // Handle the successful response
+          if (data.ordersList) {
+            console.log('Data received:', data.ordersList);
+
+            // Call the function to populate the table with the initial data
+            populateTable(data.ordersList);
+
+            function populateTable(data) {
+            var tableBody = $('#dataTable');
+
+            // Clear existing table rows
+            // tableBody.empty();
+
+            // Iterate through the data and add rows to the table
+            $.each(data, function(index, item) {
+              var row = $('<tr>');
+              
+              row.append('<td>' + item.order_id + '</td>');
+              row.append('<td>' + item.created_at + '</td>');
+              row.append('<td>' + item.name + '</td>');
+              row.append('<td>' + item.payment_status + '</td>');
+              row.append('<td><a class="edit btn getOrdersDetails" data-order-id="'+item.order_id+'" data-bs-toggle="modal" data-bs-target="#viewModal">Details anzeigen</a></td>');
+              
+              // check if role is not Normal or b2c
+              if (item.final_status == 'Complete') {
+                var finalStatus = '<span class="f-status" style="color:#02B222;">Complete </span> <i style="color:#02B222;" class="fa-solid fa-check"></i>';
+              }else{
+                var finalStatus = '<span class="f-status" style="color:#B20202;">Incomplete </span> <i style="color:#B20202;" class=" fa-solid fa-xmark"></i>';
+              }
+
+              row.append('<td><span class="f-status">' + finalStatus + '</td></tr>');
+
+              // Add more columns as needed
+              // Append the row to the table body
+              tableBody.append(row);
+            });
+          }
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    });
 
 
-      function populateTable(data) {
-       var tableBody = $('#dataTable');
+    // function for find get orders details by order id
+    jQuery(document).on('click', '.getOrdersDetails', function () {
+      var order_id = $(this).data('order-id');
 
-       // Clear existing table rows
-       // tableBody.empty();
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/getOrdersDetailsApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { order_id: order_id },
+        success: function(data) {
+          // Handle the successful response
+          if (data.ordersDtl) {
+            console.log('Orders Details:', data.ordersDtl);
 
-       // Iterate through the data and add rows to the table
-       $.each(data, function(index, item) {
-        var row = $('<tr>');
-        row.append('<td>'
-         'AN-1379'
-         '</td>');
-        row.append('<td>'
-         'Alex'
-         '</td>');
-        row.append('<td>'
-         '<span class="p-status">Pending</span>'
-         '</td>');
-        row.append('<td><a class="edit btn" id="editProductBtn">Details anzeigen</a></td>');
-        row.append('<td><span class="f-status">Complete </span> <i class="fa-solid fa-circle-check"></i></td>');
+            // Call the function to populate the table with the initial data
+            populateOrderDtl(data.ordersDtl);
 
+            function populateOrderDtl(data) {
 
-        // Add more columns as needed
-
-        // Append the row to the table body
-        tableBody.append(row);
-       });
-      }
-
-      // Call the function to populate the table with the initial data
-      populateTable(data.productList);
+              // customer details
+              jQuery('#Auftragsnummer').text(data[0].order_id);
+              jQuery('#Kundennummer').text(data[0].user_id);
+              jQuery('#Kundenname').text(data[0].name);
+              jQuery('#Rechnungsdatum').text(data[0].created_at);
+              jQuery('#Rechnungsadresse').text(data[0].delv_address);
+              jQuery('#Lieferanschrift').text(data[0].delv_address);
 
 
+              // items details
+                var tableBody = $('#productDetailsTD');
+                // Clear existing table rows
+                tableBody.empty();
 
-     } else {
-      console.log('Data received:', data.errors);
-     }
-    }, // Missing comma here
+                // Iterate through the data and add rows to the table
+                $.each(data, function(index, item) {
+                  var row = $('<tr>');
+                  
+                  row.append('<td>' + item.product_id + '</td>');
+                  row.append('<td>' + item.product_prices + '</td>');
+                  row.append('<td>' + item.names + '</td>');
+                  row.append('<td>' + item.product_price + '</td>');
+                  row.append('<td>' + item.product_quanty + '</td>');
 
-    error: function(error) {
-     // Handle errors
-     console.error('Error:', error);
-    }
-   });
+                  // Add more columns as needed
+                  // Append the row to the table body
+                  tableBody.append(row);
+                });
 
+              // price detals
+              jQuery('#Zwischensumme').val(data[0].sub_total+'€');
+              jQuery('#Versand').val(data[0].shipping_amt+'€');
+              jQuery('#Steuer').val(data[0].tax_amt+'€');
+              jQuery('#Auftragssumme').val(data[0].order_total+'€');
 
-
-
-  });
-
-
-  function deleteOperation(productId) {
-   // Make a DELETE request using AJAX
-   console.log(productId);
-   $.ajax({
-    url: '/api/deleteProduct/' + productId,
-    method: 'get',
-    success: function(data) {
-
-     if (data.success) {
-
-
-
-      $('#success_msg').text(data.success);
-
-      // Delay the page reload for 2 seconds (2000 milliseconds)
-      setTimeout(function() {
-       location.reload(true);
-      }, 1000);
-
-
-
-
-      console.log('Product deleted successfully:', data.success);
-      // Perform any additional actions after deletion
-     } else {
-      console.log('Product not deleted successfully:', data.message);
-     }
-
-    },
-    error: function(error) {
-     console.error('Error deleting product:', error.responseJSON.error);
-    }
-   });
-  }
+              // transaction id
+              jQuery('#Transaktions-ID').text(data[0].transaction_id);
+            }
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
   </script>
-
-
-
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
