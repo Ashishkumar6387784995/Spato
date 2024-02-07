@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserProfile;
 use App\Models\Payment;
+use App\Models\Order;
 use DB;
 
 class PaymentController extends Controller
@@ -31,6 +32,7 @@ class PaymentController extends Controller
         // dd($request->all(), $request->user['id']);
         $userId = $request->user['id'];
         $order_id = $this->generateOrderID();
+        $order_idConst = $order_id;
 
         // Begin a transaction
         DB::beginTransaction();
@@ -50,6 +52,7 @@ class PaymentController extends Controller
 
                 // Save projects sub details
                 for ($x = 0; $x < $count; $x++){
+                    // save data in payments table for use bulk data
                     $data = new Payment();
 
                     $data->order_id         = $order_id;
@@ -64,10 +67,28 @@ class PaymentController extends Controller
                     $data->tax_amt          = $request->tax_amt;
                     $data->order_total      = $request->order_total;
                     $data->save();
+
+                    
+                    // save data in order table 
+                    $order = new Order();
+
+                    $order->order_id         = $order_idConst;
+                    $order->user_id          = $userId;
+                    $order->delv_address     = $request->delv_address;
+                    $order->product_id       = $request->product_id[$x];
+                    $order->product_price    = $request->product_price[$x];
+                    $order->product_quanty   = $request->product_quanty[$x];
+                    $order->apply_disc_code  = $request->apply_disc_code;
+                    $order->sub_total        = $request->sub_total;
+                    $order->shipping_amt     = $request->shipping_amt;
+                    $order->tax_amt          = $request->tax_amt;
+                    $order->order_total      = $request->order_total;
+                    $order->transaction_id   = 'TRN001';
+                    $order->save();
                 }
                 // Commit the transaction
                 DB::commit();
-                return response()->json(['status' => '1', 'message' => 'Please add minimum 1 item into cart for checkout']);
+                return response()->json(['status' => '1', 'message' => 'Ordered Successfully']);
             }
         }else {
             return response()->json(['status' => '0', 'message' => 'Please add minimum 1 item into cart for checkout']);
