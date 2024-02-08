@@ -186,31 +186,13 @@
      </div>
       <table id="dataTable">
         <tr>
-        <th>Gutscheincode</th>
-        <th>Gültig ab</th>
-        <th>Bis gültig</th>
-        <th>Typ</th>
-        <th>Mindestbetrag</th>
-        <th>Gutscheinstatus</th>
-        <th></th>
-        </tr>
-        <tr>
-         <td>CU-54521</td>
-         <td>15-02-2024</td>
-         <td>23-03-2024</td>
-         <td>€</td>
-         <td>200€</td>
-         <td><span class="f-status" style="color:#02B222;">Active</span></td>
-         <td><a class="edit btn" data-order-id="'+item.order_id+'">Löschen</a></td>
-        </tr>
-        <tr>
-         <td>CU-79154</td>
-         <td>08-02-2024</td>
-         <td>16-03-2024</td>
-         <td>%</td>
-         <td>13%</td>
-         <td><span class="f-status" style="color:#B20202;">Inactive</span></td>
-         <td><a class="edit btn" data-order-id="'+item.order_id+'">Löschen</a></td>
+          <th>Gutscheincode</th>
+          <th>Gültig ab</th>
+          <th>Bis gültig</th>
+          <th>Typ</th>
+          <th>Mindestbetrag</th>
+          <th>Gutscheinstatus</th>
+          <th></th>
         </tr>
       </table>
     </div>
@@ -239,20 +221,20 @@
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-  <!-- <script>
+  <script>
     // Execute the code when the document is ready
     $(document).ready(function() {
       // Make a GET request using AJAX
       $.ajax({
-        url: '/api/orderListingApi', // Replace with the actual endpoint URL
+        url: '/api/couponListingApi', // Replace with the actual endpoint URL
         method: 'GET',
         success: function(data) {
           // Handle the successful response
-          if (data.ordersList) {
-            console.log('Data received:', data.ordersList);
+          if (data.couponsList) {
+            console.log('Data received:', data.couponsList);
 
             // Call the function to populate the table with the initial data
-            populateTable(data.ordersList);
+            populateTable(data.couponsList);
 
             function populateTable(data) {
             var tableBody = $('#dataTable');
@@ -264,20 +246,20 @@
             $.each(data, function(index, item) {
               var row = $('<tr>');
               
-              row.append('<td>' + item.order_id + '</td>');
-              row.append('<td>' + item.created_at + '</td>');
-              row.append('<td>' + item.payment_status + '</td>');
-              row.append('<td>' + item.name + '</td>');
-              row.append('<td><a class="edit btn getOrdersDetails" data-order-id="'+item.order_id+'" data-bs-toggle="modal" data-bs-target="#viewModal">Details anzeigen</a></td>');
+              row.append('<td>' + item.Gutscheincode + '</td>');
+              row.append('<td>' + item.Gültig_ab + '</td>');
+              row.append('<td>' + item.Bis_gültig + '</td>');
+              row.append('<td>' + item.Typ + '</td>');
+              row.append('<td>' + item.Rate + '</td>');
               
               // check if role is not Normal or b2c
-              if (item.final_status == 'Complete') {
-                var finalStatus = '<span class="f-status" style="color:#02B222;">Complete </span> <i style="color:#02B222;" class="fa-solid fa-check"></i>';
+              if (item.Gutscheinstatus == 'Active') {
+                var finalStatus = '<span class="f-status" style="color:#02B222;">Active</span>';
               }else{
-                var finalStatus = '<span class="f-status" style="color:#B20202;">Incomplete </span> <i style="color:#B20202;" class=" fa-solid fa-xmark"></i>';
+                var finalStatus = '<span class="f-status" style="color:#B20202;">Inactive</span>';
               }
 
-              row.append('<td id="finalStatus_'+item.order_id+'">' + finalStatus + '</td></tr>');
+              row.append('<td>' + finalStatus + '</td></tr>');
 
               // Add more columns as needed
               // Append the row to the table body
@@ -294,116 +276,7 @@
         }
       });
     });
-
-
-    // function for find get orders details by order id
-    jQuery(document).on('click', '.getOrdersDetails', function () {
-      var order_id = $(this).data('order-id');
-
-      // Make a GET request using AJAX
-      $.ajax({
-        url: '/api/getOrdersDetailsApi', // Replace with the actual endpoint URL
-        method: 'GET',
-        data: { order_id: order_id },
-        success: function(data) {
-          // Handle the successful response
-          if (data.ordersDtl) {
-            console.log('Orders Details:', data.ordersDtl);
-
-            // Call the function to populate the table with the initial data
-            populateOrderDtl(data.ordersDtl);
-
-            function populateOrderDtl(data) {
-
-              // customer details
-              jQuery('#Auftragsnummer').text(data[0].order_id);
-              jQuery('#Kundennummer').text(data[0].user_id);
-              jQuery('#Kundenname').text(data[0].name);
-              jQuery('#Rechnungsdatum').text(data[0].created_at);
-              jQuery('#Rechnungsadresse').text(data[0].delv_address);
-              jQuery('#Lieferanschrift').text(data[0].delv_address);
-
-
-              // items details
-                var tableBody = $('#productDetailsTD');
-                // Clear existing table rows
-                tableBody.empty();
-
-                // Iterate through the data and add rows to the table
-                $.each(data, function(index, item) {
-                  var row = $('<tr>');
-                  
-                  row.append('<td>' + item.product_id + '</td>');
-                  row.append('<td>' + item.Artikelname + '</td>');
-                  row.append('<td>' + item.Hersteller + '</td>');
-                  row.append('<td>' + item.product_price + '</td>');
-                  row.append('<td>' + item.product_quanty + '</td>');
-
-                  // Add more columns as needed
-                  // Append the row to the table body
-                  tableBody.append(row);
-                });
-
-              // price detals
-              jQuery('#Zwischensumme').val(data[0].sub_total+'€');
-              jQuery('#Versand').val(data[0].shipping_amt+'€');
-              jQuery('#Steuer').val(data[0].tax_amt+'€');
-              jQuery('#Auftragssumme').val(data[0].order_total+'€');
-
-              // transaction id
-              jQuery('#Transaktions-ID').text(data[0].transaction_id);
-
-              // mark as complete button
-              jQuery('#markCompleteOrder, #completedOrder').hide();
-              jQuery('#markCompleteOrder').attr('data-order-id', '');
-              if (data[0].final_status=='Complete') {
-                jQuery('#completedOrder').show();
-              }
-              else{
-                jQuery('#markCompleteOrder').attr('data-order-id', data[0].order_id).show();
-              }
-            }
-          } else {
-            console.log('Data received:', data.errors);
-          }
-        },
-        error: function(error) {
-        // Handle errors
-        console.error('Error:', error);
-        }
-      });
-    })
-
-
-    // function for update final status by order id
-    jQuery(document).on('click', '#markCompleteOrder', function () {
-      var order_id = $(this).attr('data-order-id');
-
-      // alert(order_id);
-      // Make a GET request using AJAX
-      $.ajax({
-        url: '/api/updateOrderFinalStatusApi', // Replace with the actual endpoint URL
-        method: 'GET',
-        data: { order_id: order_id },
-        success: function(data) {
-          // Handle the successful response
-          console.log('Response :', data);
-          if (data.message) {
-            // change final status of 
-            jQuery('#markCompleteOrder').hide();
-            jQuery('#completedOrder').show();
-            jQuery('#finalStatus_'+order_id).html('<span class="f-status" style="color:#02B222;">Complete </span> <i style="color:#02B222;" class="fa-solid fa-check"></i>');
-          } else {
-            console.log('Data received:', data.errors);
-          }
-        },
-        error: function(error) {
-        // Handle errors
-        console.error('Error:', error);
-        }
-      });
-    })
-  </script> -->
+  </script>
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
