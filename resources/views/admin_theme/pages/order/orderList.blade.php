@@ -304,7 +304,8 @@
      </div>
      <div class="modal-footer d-flex justify-content-between">
       <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
-      <button type="button" class="edit">Mark As Complete</button>
+      <button type="button" class="edit"  id="markCompleteOrder" data-order-id="" style="display:none">Mark As Complete</button>
+      <button type="button" class="btn btn-primary" id="completedOrder" disabled style="display:none">Order Completed</button>
      </div>
     </div>
    </div>
@@ -351,7 +352,7 @@
                 var finalStatus = '<span class="f-status" style="color:#B20202;">Incomplete </span> <i style="color:#B20202;" class=" fa-solid fa-xmark"></i>';
               }
 
-              row.append('<td><span class="f-status">' + finalStatus + '</td></tr>');
+              row.append('<td id="finalStatus_'+item.order_id+'">' + finalStatus + '</td></tr>');
 
               // Add more columns as needed
               // Append the row to the table body
@@ -426,6 +427,16 @@
 
               // transaction id
               jQuery('#Transaktions-ID').text(data[0].transaction_id);
+
+              // mark as complete button
+              jQuery('#markCompleteOrder, #completedOrder').hide();
+              jQuery('#markCompleteOrder').attr('data-order-id', '');
+              if (data[0].final_status=='Complete') {
+                jQuery('#completedOrder').show();
+              }
+              else{
+                jQuery('#markCompleteOrder').attr('data-order-id', data[0].order_id).show();
+              }
             }
           } else {
             console.log('Data received:', data.errors);

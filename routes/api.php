@@ -27,6 +27,7 @@ use App\Http\Controllers\api\StatisticsController;
 use App\Http\Controllers\api\categoriesController;
 use App\Http\Controllers\api\quatationController;
 use App\Http\Controllers\api\PaymentController;
+use App\Http\Controllers\api\CouponMngController;
 
 /*
 |--------------------------------------------------------------------------
@@ -250,12 +251,12 @@ Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
   Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
   Route::get('editorder/{role}/{id}', [OrderMngController::class, 'editOrder']);
 
-// Order Management for Admin
-  // Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);
-  // Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
-  // Route::get('addorder/{role}', [OrderMngController::class, 'addOrder']);
-  // Route::post('addorderApi', [OrderMngController::class, 'addOrderApi']);
-  // Route::get('editorder', [OrderMngController::class, 'editOrder']);
+// Coupon Management for Admin
+  Route::get('couponListingApi', [CouponMngController::class, 'couponListingApi']);
+  Route::view('couponListing/{role}', 'admin_theme/pages/coupon/couponList');
+  Route::get('addcoupon/{role}', [CouponMngController::class, 'addCoupon']);
+  Route::post('addcouponApi', [CouponMngController::class, 'addCouponApi']);
+  Route::get('editcoupon', [CouponMngController::class, 'editCoupon']);
 
 // Statistics for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
