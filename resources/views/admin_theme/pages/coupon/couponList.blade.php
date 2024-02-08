@@ -189,6 +189,7 @@
         <th>Gutscheinname</th>
         <th>Gültig ab</th>
         <th>Bis gültig</th>
+        <th>Typ</th>
         <th>Mindestbetrag</th>
         <th>Gutscheinstatus</th>
         <th></th>
@@ -197,7 +198,8 @@
          <td>CU-54521</td>
          <td>15-02-2024</td>
          <td>23-03-2024</td>
-         <td>200</td>
+         <td>€</td>
+         <td>200€</td>
          <td><span class="f-status" style="color:#02B222;">Active</span></td>
          <td><a class="edit btn" data-order-id="'+item.order_id+'">Löschen</a></td>
         </tr>
@@ -205,6 +207,7 @@
          <td>CU-79154</td>
          <td>08-02-2024</td>
          <td>16-03-2024</td>
+         <td>%</td>
          <td>13%</td>
          <td><span class="f-status" style="color:#B20202;">Inactive</span></td>
          <td><a class="edit btn" data-order-id="'+item.order_id+'">Löschen</a></td>
