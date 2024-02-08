@@ -52,8 +52,8 @@
   }
 
   .customer-img img {
-   width: 130px;
-   height: 130px;
+   width: 180px;
+   height: 180px;
   }
 
   .btn {
@@ -219,7 +219,7 @@
       <div class="row pt-3">
 
        <div class="col-md-4">
-        <div class="customer-img"><img src="{{url('assets/frontEnd/web/images/profile.png')}}" alt="" srcset=""
+        <div class="customer-img"><img src="{{url('assets/frontEnd/web/images/Gutscheincodes.png')}}" alt="" srcset=""
           id="profileImage">
         </div>
 
@@ -230,17 +230,30 @@
        <div class="col-md-6">
         <div class="details">
          <div class="field">
-          <p>Kundennummer</p>
+          <p>Gutscheincode</p>
          </div>
          <div class="inputs">
           <input class="dynamic-field" type="text" placeholder='#' id="Lieferschein_Nr" name="Lieferschein_Nr"
-           value="" /></p>
+           value="" readonly/></p>
          </div>
         </div>
 
         <div class="details">
          <div class="field">
-          <p>Beitrittsdatum</p>
+          <p>Gültig ab</p>
+         </div>
+         <div class="inputs">
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum" value="" />
+           <br>
+           <span id="Lieferdatum_err" style="color:red;  font-size:13px;"></span>
+          </p>
+         </div>
+        </div>
+
+
+       <div class="details">
+         <div class="field">
+          <p>Bis gültig</p>
          </div>
          <div class="inputs">
           <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum" value="" />
@@ -250,10 +263,6 @@
          </div>
         </div>
        </div>
-
-
-
-
       </div>
 
       <div class="row pt-3">
@@ -288,20 +297,19 @@
          <thead>
           <tr>
            <th>
-            Kundennummer
+           Gutscheincode
            </th>
            <th>
+           Typ (€ / %)
+           </th>
+           <th>
+           Rate
+           </th>
+           <th>
+           Mindestbetrag
+           </th>
 
-            Kundenname
-           </th>
-           <th>
-            Gesamtbestellungen
-           </th>
-           <th>
-            Kundenrolle
-           </th>
-
-           <th></th>
+           <th>Gutscheinstatus</th>
 
           </tr>
 
@@ -315,35 +323,36 @@
           <tr class="hidden">
            <td>
 
-            <input type="text" name='inputs[0][POS]' value="" id="customer_sno" /><br>
+            <input type="text" placeholder="#" name='inputs[0][POS]' value="" id="customer_sno" /><br>
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Produkt]' value="" id="customer_name" />
-            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+           <select name="typ" id="typ">
+             <option value="Art auswählen">Art auswählen</option>
+             <option value="€">€</option>
+             <option value="%">%</option>
+            </select>
 
            </td>
 
 
            <td>
 
-            <input type="text" name='inputs[0][Beschreibung]' value="" id="order_id" />
+            <input type="text" placeholder="#" name='inputs[0][Beschreibung]' value="" id="order_id" />
             <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
-            <select name="customerRole" id="customerRole">
-             <option value="Normal">B2C</option>
-             <option value="b2b">B2B</option>
-             <option value="supplier">Vendor/Supplier</option>
-             <option value="Admin">Admin</option>
-            </select>
-            <br>
+           <input type="text" placeholder="#" name='inputs[0][Produkt]' value="" id="customer_name" />
+            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
            </td>
 
            <td>
-            <button class="btn updateCustomerButton" type="button" name="saveFormType"
-             value="saveRole">Speichern</button>
+             <select name="couponRole" id="couponRole">
+             <option value="Status definieren">Status definieren</option>
+             <option value="Active">Active</option>
+             <option value="Inactive">Inactive</option>
+            </select>
            </td>
          </tbody>
         </table>
@@ -359,61 +368,7 @@
       <hr style="border: 1px solid #54606c;" />
 
 
-      <h3>Andere Informationen</h3>
-      <div class="row p-2 m-3">
-       <table class="customer-details">
-        <tbody>
-         <tr>
-          <th>Kundenname </th>
-          <td>-</td>
-          <td>
-           <input type="text" value="" name="Kundenname" id="userName" readonly />
-          </td>
-         </tr>
-         <tr>
-          <th>Handynummer</th>
-          <td>-</td>
-          <td>
-           <input type="text" value="" name="Handynummer" id="userMobile" readonly />
-          </td>
-         </tr>
-         <tr>
-          <th>fester Wohnsitz</th>
-          <td>-</td>
-          <td>
-           <input type="text" value="" name="fester-Wohnsitz" id="delv_address" readonly />
-          </td>
-         </tr>
-         <tr>
-          <th>
-           Kunden-eMail</th>
-          <td>-</td>
-          <td>
-           <input type="text" value="" name="Kunden-eMail" id="userMail" readonly />
-          </td>
-         </tr>
-         <tr>
-          <th>
-           <h4> Passwort </h4>
-          </th>
-         </tr>
-         <tr>
-          <th>Neues Kennwort </th>
-          <td>- <input type="hidden" name="saveLieferschein_Nr" id="saveLieferschein_Nr"></td>
-          <td>
-           <input class="password" type="password" name="password" value="">
-           <span id="password_err" style="color:red;"></span>
-          </td>
-         </tr>
-         <tr>
-          <th>Bestätige das Passwort </th>
-          <td>-</td>
-          <td><input class="password" type="password" name="confirm_password" value=""></td>
-         </tr>
-        </tbody>
-       </table>
-      </div>
-
+     
       <div class="row pt-3">
 
        <div class="col stretch-card">
