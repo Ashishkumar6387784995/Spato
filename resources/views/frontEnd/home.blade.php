@@ -196,7 +196,7 @@
 
    <img id="myImage" src="{{ asset('assets/frontEnd/web/images/light-background.png')}} "
     style="width:100%; height:100%;" alt="" srcset="">
-   <img class="product" src="{{ asset('assets/frontEnd/web/images/product-2.png')}} " alt="" srcset="">
+   <img class="product" src="{{ asset('assets/frontEnd/web/images/robot-2.png')}} " alt="" srcset="">
    <div class="hero-heading-container dark-mode-text">
     <h1 class="hero-heading">Specialist</h1>
     <p class="hero-details">Wholesaller for</p>
