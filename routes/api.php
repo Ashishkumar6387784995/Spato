@@ -257,7 +257,7 @@ Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
   Route::view('couponListing/{role}', 'admin_theme/pages/coupon/couponList');
   Route::get('addcoupon/{role}', [CouponMngController::class, 'addCoupon']);
   Route::post('addcouponApi', [CouponMngController::class, 'addCouponApi']);
-  Route::get('editcoupon', [CouponMngController::class, 'editCoupon']);
+  // Route::get('editcoupon', [CouponMngController::class, 'editCoupon']);
 
 // Statistics for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);

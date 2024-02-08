@@ -207,15 +207,15 @@
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="updateCustomerForm">
+     <form id="saveCouponForm">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
-        <button class="btn updateCustomerButton" type="button" name="saveFormType" value="saveAll">Save</button>
+        <button class="btn saveCouponButton" type="button" name="saveFormType" value="saveAll">Save</button>
        </div>
 
       </div>
-      <span id="success_msg" style="color:Green"></span>
+      <span class="hideErrors" id="success_msg" style="color:Green"></span>
       <div class="row pt-3">
 
        <div class="col-md-4">
@@ -233,8 +233,7 @@
           <p>Gutscheincode</p>
          </div>
          <div class="inputs">
-          <input class="dynamic-field" type="text" placeholder='#' id="Lieferschein_Nr" name="Lieferschein_Nr"
-           value="" readonly/></p>
+          <input class="dynamic-field" type="text" value="{{$couponCode}}"  placeholder='#' id="Gutscheincode" name="Gutscheincode" value="" readonly/></p>
          </div>
         </div>
 
@@ -243,9 +242,9 @@
           <p>Gültig ab</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum" value="" />
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Gültig_ab" name="Gültig_ab" value="" />
            <br>
-           <span id="Lieferdatum_err" style="color:red;  font-size:13px;"></span>
+           <span class="hideErrors" id="Gültig_ab_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
         </div>
@@ -256,9 +255,9 @@
           <p>Bis gültig</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Lieferdatum" name="Lieferdatum" value="" />
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Bis_gültig" name="Bis_gültig" value="" />
            <br>
-           <span id="Lieferdatum_err" style="color:red;  font-size:13px;"></span>
+           <span class="hideErrors" id="Bis_gültig_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
         </div>
@@ -322,37 +321,34 @@
 
           <tr class="hidden">
            <td>
-
-            <input type="text" placeholder="#" name='inputs[0][POS]' value="" id="customer_sno" /><br>
-
+            <input type="text" placeholder="#" name='Gutscheincode' value="{{$couponCode}}" readonly/><br>
            </td>
+
            <td>
-           <select name="typ" id="typ">
-             <option value="Art auswählen">Art auswählen</option>
+           <select name="Typ" id="Typ">
              <option value="€">€</option>
              <option value="%">%</option>
             </select>
-
            </td>
 
 
            <td>
-
-            <input type="text" placeholder="#" name='inputs[0][Beschreibung]' value="" id="order_id" />
-            <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
-
-           </td>
-           <td>
-           <input type="text" placeholder="#" name='inputs[0][Produkt]' value="" id="customer_name" />
-            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+            <input type="text" placeholder="#" name='Rate' value="" />
+            <br><span class="hideErrors" id="Rate_err" style="color:red;  font-size:13px;"></span>
            </td>
 
            <td>
-             <select name="couponRole" id="couponRole">
-             <option value="Status definieren">Status definieren</option>
-             <option value="Active">Active</option>
-             <option value="Inactive">Inactive</option>
-            </select>
+            <input type="text" placeholder="#" name='Mindestbetrag' value="" />
+            <br><span class="hideErrors" id="Mindestbetrag_err" style="color:red; font-size:13px;"></span>
+           </td>
+
+           <td>
+              <select name="Gutscheinstatus" id="Gutscheinstatus">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+
+              <br><span class="hideErrors" id="Gutscheinstatus_err" style="color:red;  font-size:13px;"></span>
            </td>
          </tbody>
         </table>
@@ -417,84 +413,69 @@
   <!-- Dynamic table update ends-->
 
   <script>
-  $('.updateCustomerButton').click(function(e) {
-   e.preventDefault(); // Prevent the form from submitting normally
-   $('#success_msg').text('');
-   $('#password_err').text('');
+  $('.saveCouponButton').click(function(e) {
+    e.preventDefault(); // Prevent the form from submitting normally
+    $('.hideErrors').text('');
 
-   var formData = {
-    saveLieferschein_Nr: $('#updateCustomerForm input[name="saveLieferschein_Nr"]').val(),
-    customerRole: $('#updateCustomerForm select[name="customerRole"]').val(),
-    password: $('#updateCustomerForm input[name="password"]').val(),
-    password_confirmation: $('#updateCustomerForm input[name="confirm_password"]').val(),
-    saveFormType: jQuery(this).val(),
-    inputs: []
-   };
+    var formData = new FormData(document.getElementById('saveCouponForm'));
+    console.log(formData);
 
-   console.log(formData);
-
-   // Make AJAX request
-   $.ajax({
+    // Make AJAX request
+    $.ajax({
     type: 'POST',
-    url: '/api/updatecustomer',
+    url: '/api/addcouponApi',
     data: formData,
+    cache:false,
+    contentType: false,
+    processData: false,
     dataType: 'json',
     success: function(response) {
-     // Handle success response
-     if (response.success) {
-      console.log(response.success);
-      $('#updateCustomerForm input[name="password"], #updateCustomerForm input[name="confirm_password').val(''),
-       $('#success_msg').text(response.success);
-     } else if (response.errors) {
-      // Display validation errors in the console
-      console.log(response.errors);
-      displayValidationErrors(response.errors);
-
-      // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
-
-      // You can also update your HTML to show errors in a specific element
-      // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
-     }
+      // Handle success response
+      if (response.success) {
+        console.log(response.success);
+        $('#success_msg').text(response.success);
+        
+        // Delay the page reload for 2 seconds (2000 milliseconds)
+        setTimeout(function() {
+          location.reload(true);
+        }, 2000);
+      } else if (response.ValidationError) {
+        // Display validation errors in the console
+        console.log(response.ValidationError);
+        displayValidationErrors(response.ValidationError);
+      }
     },
     error: function(xhr, status, error) {
-     // Handle error response
-     var errors = xhr.responseJSON.errors;
-     if (errors) {
-      // Display errors in your frontend
-      // For example, you can loop through errors and append them to a specific element
-      $.each(errors, function(field, messages) {
-       // Append error messages to your HTML
-       $('#' + field + '_error').text(messages[0]);
-      });
-     }
+      console.log(response.error);
     }
    });
 
    function displayValidationErrors(errors) {
-    // Display validation errors next to the respective form fields
-    if (errors.password) {
-     $('#password_err').text(errors.password[0]);
+    // Display errors in your frontend
+      // For example, you can loop through errors and append them to a specific element
+      $.each(errors, function(field, messages) {
+       // Append error messages to your HTML
+       $('#' + field + '_err').text(messages[0]);
+      });
     }
-   }
   });
   </script>
 
 
 
   <script>
-  $(document).ready(function() {
-   // Get the token from localStorage
-   var token = localStorage.getItem('authToken');
-   console.log(token);
+    $(document).ready(function() {
+      // Get the token from localStorage
+      var token = localStorage.getItem('authToken');
+      console.log(token);
 
-   // Check if the token exists
-   if (!token) {
-    console.error('Token not found in localStorage');
-    window.location.href = '/api/home';
-    return; // Stop further execution if the token is missing
-   }
-
-  });
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        return; // Stop further execution if the token is missing
+      }
+    });
   </script>
 
 
