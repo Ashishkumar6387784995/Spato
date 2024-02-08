@@ -794,17 +794,18 @@
      // Use jQuery to append the address and a button to the container
      addressModalBody.append('<div class="row mt-2"><div class="col"><p class="address">' + addressString +
       '</p></div> <div class="col" style="display:flex; justify-content:flex-end;">' +
-      '<button style="height:50px;" class="mt-0 change-btn" type="submit" data-bs-dismiss="modal" data-address="' +
+      '<button style="height:50px;" class="mt-0 change-btn change-address-btn" type="submit" data-bs-dismiss="modal" data-address="' +
       addressString + '">Add +</button></div></div>');
      //  addressModalBody.append('');
     });
 
     // Click event handler for the "Add +" button
-    $('.change-btn').on('click', function() {
+    $('.change-address-btn').on('click', function() {
      // Get the address data from the data-address attribute
      var selectedAddress = $(this).data('address');
 
      // Update the #develivery_address element with the selected address
+     $('#delv_address').val(selectedAddress);
      $('#develivery_address').text(selectedAddress);
     });
    }

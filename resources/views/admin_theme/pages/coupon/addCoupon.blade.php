@@ -539,59 +539,6 @@
     return; // Stop further execution if the token is missing
    }
 
-   // Make a GET request using AJAX
-   $.ajax({
-    url: '/api/profileViewByIdApi/{{$id}}', // Replace with the actual endpoint URL
-    method: 'GET',
-    headers: {
-     'Authorization': 'Bearer ' + token,
-    },
-    success: function(data) {
-     // Handle the successful response
-     if (data.status) {
-      // var join_date = new Date(data.user.created_at);
-      // alert(join_date.getTime());
-      // alert(data.user.created_at);
-      console.log('Data received:', data.user);
-
-      // Update DOM elements with user data
-      $('#Lieferschein_Nr, #customer_sno, #saveLieferschein_Nr').val(data.user.id); // customer ID
-      $('#userName, #customer_name').val(data.user.name);
-      $('#customerRole').trigger('change');
-      $('#updateCustomerForm option[value=' + data.user.role + ']').attr('selected',
-      'selected'); // for customer role
-      $('#userMobile').val(data.user.mobile);
-      $('#delv_address').val(data.user.permanent_address ?? '' + ',' + data.user.zipCode ?? '' + ',' + data.user
-       .country ?? '');
-      $('#userMail').val(data.user.email);
-      $('#order_id').val('Order id : 201, 350');
-
-      // Assuming 'profile_picture' is the path to the image file
-      var imagePath = data.user.profile_picture;
-
-      if (data.user.profile_picture != '') {
-       $('#profileImage').attr('src', imagePath ? '{{ asset("storage/") }}' + '/' +
-        imagePath : '{{ asset("assets/frontEnd/web/images/profile.png") }}');
-      }
-
-      // for date of joining
-      var dateFormat = new Date(data.user.created_at);
-      $('#Lieferdatum').val(dateFormat.getFullYear() + '-0' + dateFormat.getMonth() + '-0' + dateFormat
-     .getDate()); // Date Of Joining
-     } else {
-      console.log('Data received:', data.errors);
-     }
-    },
-
-    error: function(xhr, status, error) {
-     // Handle specific errors
-     if (xhr.status === 401) {
-      console.error('Unauthorized: Please check your authentication token.');
-     } else {
-      console.error('Error:', error);
-     }
-    }
-   });
   });
   </script>
 

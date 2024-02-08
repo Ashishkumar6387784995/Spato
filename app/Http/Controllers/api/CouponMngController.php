@@ -53,8 +53,8 @@ class CouponMngController extends Controller
 
 
     // function for add Coupon
-    public function addCoupon(){
-        return view('admin_theme/pages/coupon/addCoupon');
+    public function addCoupon($role){
+        return view('admin_theme/pages/coupon/addCoupon', compact('role'));
     }
 
 
