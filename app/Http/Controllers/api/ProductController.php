@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 use App\Imports\ProductsImport;
@@ -24,6 +25,13 @@ class ProductController extends Controller
     {
 
         return view('admin_theme/pages/products/addProduct')->with(compact('role'));
+    }
+
+
+    // function for fetch all product category
+    public function getProductCategory(){
+        $allProducts = ProductCategory::where('status', 'ACTIVE')->get();
+        return response()->json(['allProductsCat' => $allProducts]);
     }
 
     public function addproductList(Request $request)

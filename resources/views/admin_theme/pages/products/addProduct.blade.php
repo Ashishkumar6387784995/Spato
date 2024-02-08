@@ -271,10 +271,6 @@
          <div class="col-8">
           <select name="Kategorie_1" id="Kategorie_1" class="form-control">
            <option value="">Select Kategorie</option>
-           <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
-           <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
-           <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
-           <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
           </select>
           <span id="Kategorie_1_err" style="color:red"></span>
           <!-- <input type="text" class="form-control" name="Kategorie" id="kategorie">
@@ -319,10 +315,6 @@
          <div class="col-8">
           <select name="Kategorie_2" id="Kategorie_2" class="form-control">
            <option value="">Select Kategorie</option>
-           <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
-           <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
-           <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
-           <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
           </select>
          </div>
         </div>
@@ -331,12 +323,8 @@
         <div class="row mb-2">
          <div class="col-4">Kategorie 3</div>
          <div class="col-8">
-          <select naname="Kategorie_3" id="Kategorie_3" class="form-control">
+          <select name="Kategorie_3" id="Kategorie_3" class="form-control">
            <option value="">Select Kategorie</option>
-           <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
-           <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
-           <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
-           <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
           </select>
          </div>
         </div>
@@ -347,10 +335,6 @@
          <div class="col-8">
           <select name="Kategorie_4" id="Kategorie_4" class="form-control">
            <option value="">Select Kategorie</option>
-           <option value="Pool Installation & Maintanence_1">Pool Installation & Maintanence_1</option>
-           <option value="Pool Installation & Maintanence_2">Pool Installation & Maintanence_2</option>
-           <option value="Pool Installation & Maintanence_3">Pool Installation & Maintanence_3</option>
-           <option value="Pool Installation & Maintanence_4">Pool Installation & Maintanence_4</option>
           </select>
          </div>
         </div>
@@ -360,10 +344,6 @@
          <div class="col-8">
           <select name="Kategorie_5" id="Kategorie_5" class="form-control">
            <option value="">Select Kategorie</option>
-           <option value="Kategorie1">Pool Installation & Maintanence_1</option>
-           <option value="Kategorie2">Pool Installation & Maintanence_2</option>
-           <option value="Kategorie3">Pool Installation & Maintanence_3</option>
-           <option value="Kategorie4">Pool Installation & Maintanence_4</option>
           </select>
          </div>
         </div>
@@ -823,7 +803,8 @@
 
 
   $(document).ready(function() {
-   $('#productImportButton').on('click', function() {
+    getProductCategory ();
+    $('#productImportButton').on('click', function() {
     $('#import_success_message').text('');
     $('#ProductsImportFile-err').text('');
     $('#ProductsImageFile-err').text('');
@@ -915,7 +896,24 @@
 
 
   });
-  </script>
+
+
+  // function for fetch all product category
+  function getProductCategory(){
+    $.ajax({
+      type: 'GET',
+      url: '/api/getProductCategoryAPI',
+      success: function(response) {
+      // Handle the success response from the server
+        console.log('Products Categories:', response.allProductsCat);
+        $.each(response.allProductsCat, function(index, item) {
+          var options = '<option value="' + item.Kategorie_Name + '">' + item.Kategorie_Name + '</option>';
+          jQuery('#Kategorie_1, #Kategorie_2, #Kategorie_3, #Kategorie_4, #Kategorie_5').append(options);
+        });
+      },
+    });
+  }
+</script>
 
 
 
