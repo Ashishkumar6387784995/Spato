@@ -134,7 +134,7 @@
     
     <li class="nav-item">
      <a class="nav-link" href="{{url('/api/couponListing/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Coupon</span>
+      <span class="menu-title">Gutscheine</span>
      </a>
     </li>
 
