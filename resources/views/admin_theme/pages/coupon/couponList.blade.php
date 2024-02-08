@@ -159,7 +159,7 @@
      <div class="row pt-3">
 
 <div class="col-10 stretch-card grid-margin">
-<button class="edit btn" style="padding: -2rem 0px;">Gutschein hinzufügen</button>
+<button class="edit btn" style="padding: -2rem 0px;">Gutschein hinzufügen +</button>
 </div>
 </div>
 
@@ -186,7 +186,7 @@
      </div>
       <table id="dataTable">
         <tr>
-        <th>Gutscheinname</th>
+        <th>Gutscheincode</th>
         <th>Gültig ab</th>
         <th>Bis gültig</th>
         <th>Typ</th>
