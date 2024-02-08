@@ -131,6 +131,12 @@
       <span class="menu-title">Lieferanten</span>
      </a>
     </li>
+    
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/couponListing/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Coupon</span>
+     </a>
+    </li>
 
     <li class="nav-item">
      <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">

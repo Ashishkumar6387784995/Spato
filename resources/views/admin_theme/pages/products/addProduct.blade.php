@@ -624,35 +624,13 @@
       <div class="modal-body">
        <span class="m-1 pb-2" id="import_success_message"
         style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
-       <div class="d-flex">
-        <div class="mb-3">
-         <label for="formFile" class="form-label">Import CSV/XLSX file</label>
-         <span class="d-flex"><input style="width:80%;" class="form-control" type="file" name="ProductsImportFile"
-           id="ProductsImportFile"><i style="position: absolute; left: 30%; top: 26%;"
-           class="fa-solid fa-file-excel"></i></span>
-         <span id="ProductsImportFile-err" style="color:red"></span>
-        </div>
-        <div class="mb-3">
-         <label for="formFile" class="form-label">Import Images file</label>
-
-         <span class="d-flex">
-          <input style="width:80%;" class="form-control" type="file" name="ProductsImageFile[]" id="ProductsImageFile"
-           multiple>
-
-          <i style="position: absolute; left: 78%; top: 26%;" class="fa-solid fa-image"></i></span>
-         <span id="roductsImageFile-err" style="color:red"></span>
-        </div>
+       
+         <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
+        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="ProductsImportFile"
+           id="ProductsImportFile"><i style="font-size:20px; position: relative; left: -40px; top: 15px;"
+           class="fa-solid fa-file-excel"></i></span></p>
+         <p id="ProductsImportFile-err" style="margin-top:1rem; color:red"></p>
        </div>
-       <div class="d-flex">
-        <div class="mb-3">
-         <label for="formFile" class="form-label">Import PDF file</label>
-         <span class="d-flex"><input style="width:63%;" class="form-control" type="file" name="ProductsPdfFile[]"
-           id="ProductsPdfFile" multiple><i style="position: absolute; left: 30%; top: 70%;"
-           class="fa-solid fa-file-pdf"></i></span>
-         <span id="ProductsPdfFile-err" style="color:red"></span>
-        </div>
-       </div>
-      </div>
       <div class="modal-footer d-flex justify-content-between">
        <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
        <button type="button" class="btn" id="productImportButton">Import</button>
