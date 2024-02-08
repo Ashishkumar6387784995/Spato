@@ -159,7 +159,7 @@
      <div class="row pt-3">
 
 <div class="col-10 stretch-card grid-margin">
-<button class="edit btn" style="padding: -2rem 0px;">Gutschein hinzufügen +</button>
+<a class="edit btn" href="{{url('/api/addcoupon/'.$role)}}">Gutschein hinzufügen +</a>
 </div>
 </div>
 
