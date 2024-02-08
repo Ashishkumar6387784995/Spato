@@ -408,8 +408,8 @@
                   var row = $('<tr>');
                   
                   row.append('<td>' + item.product_id + '</td>');
-                  row.append('<td>' + item.product_prices + '</td>');
-                  row.append('<td>' + item.names + '</td>');
+                  row.append('<td>' + item.Artikelname + '</td>');
+                  row.append('<td>' + item.Hersteller + '</td>');
                   row.append('<td>' + item.product_price + '</td>');
                   row.append('<td>' + item.product_quanty + '</td>');
 
