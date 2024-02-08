@@ -56,4 +56,20 @@ class OrderMngController extends Controller
     {
         return view('admin_theme/pages/order/editOrder', compact('role', 'id'));
     }
+    
+    // function for find orders details by his order id
+    public function updateOrderFinalStatusApi(Request $request)
+    {
+        $orderItem = Order::where('order_id', $request->order_id)
+                    ->update([
+                        'final_status' => 'Complete',
+                    ]);
+
+        if ($orderItem) {
+            return response()->json(['message' => 'Final Status Updated successfully']);
+        } else {
+
+            return response()->json(['erors' => 'Final Status Not Updated']);
+        }
+    }
 }

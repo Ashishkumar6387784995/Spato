@@ -448,6 +448,36 @@
         }
       });
     })
+
+
+    // function for update final status by order id
+    jQuery(document).on('click', '#markCompleteOrder', function () {
+      var order_id = $(this).attr('data-order-id');
+
+      // alert(order_id);
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/updateOrderFinalStatusApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { order_id: order_id },
+        success: function(data) {
+          // Handle the successful response
+          console.log('Response :', data);
+          if (data.message) {
+            // change final status of 
+            jQuery('#markCompleteOrder').hide();
+            jQuery('#completedOrder').show();
+            jQuery('#finalStatus_'+order_id).html('<span class="f-status" style="color:#02B222;">Complete </span> <i style="color:#02B222;" class="fa-solid fa-check"></i>');
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
   </script>
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>

@@ -250,6 +250,7 @@ Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
   Route::get('getOrdersDetailsApi', [OrderMngController::class, 'getOrdersDetailsApi']);
   Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
   Route::get('editorder/{role}/{id}', [OrderMngController::class, 'editOrder']);
+  Route::get('updateOrderFinalStatusApi', [OrderMngController::class, 'updateOrderFinalStatusApi']);
 
 // Coupon Management for Admin
   Route::get('couponListingApi', [CouponMngController::class, 'couponListingApi']);
