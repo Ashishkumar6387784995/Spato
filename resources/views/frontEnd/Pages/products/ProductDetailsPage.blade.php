@@ -139,7 +139,14 @@
    .product-details {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
    }
+   .product-desc {
+   margin-top: 0rem !important;
+   width: 100% !important;
+  }
 
+  .related-products .row{
+    display:block;
+  }
    /* footer .footer-container {
     width: 96%;
   } */
@@ -185,7 +192,9 @@
    padding: 10px 15px;
    width: 100%;
    background-color: #fff;
-   border:;
+   border-radius:5px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   margin-top:-2rem;
   }
 
   .thumbnail img {
@@ -308,7 +317,21 @@
    color: var(--blue);
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
+.pdf{
+  margin-top:2rem;
+  text-align:right;
+  
+}
 
+.pdf .pdf-heading{
+  font-weight:600;
+}
+.pdf .pdf-heading i{
+  color:red;
+}
+.pdf .pdf-lists p a{
+  color:var(--black);
+}
   .product-particular-detail {
    text-align: right;
   }
@@ -324,7 +347,7 @@
   }
 
   .product-desc {
-   margin-top: 1rem;
+   margin-top: -12rem;
    width: 70%;
   }
   .product-desc p{
@@ -363,7 +386,7 @@
   .related-products .card {
    height: 400px;
    padding: 0;
-   margin: 0px 5px;
+   margin: 10px 5px;
   }
 
   .related-products li {
@@ -427,7 +450,7 @@
       <div class="">
        <div class="product">
         <div class="row">
-         <div class="col-md-4">
+         <div class="col-md-5">
           <div class="images ">
 
 
@@ -448,15 +471,15 @@
            </div> -->
           </div>
          </div>
-         <div class="brand-details col-md-4">
+         <div class="brand-details col-md-3">
           <h1>{{$product[0]->Artikelname}}</h1>
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
+            <li class="item-list"><span>KW</span> <span>0,56</span></li>
+            <li class="item-list"><span>Volt/Voltage</span> <span>0,56</span></li>
+            <li class="item-list"><span>Einheit/Unit</span> <span>0,56</span></li>
+            <li class="item-list"><span>VE/VPE Packaging Unit</span> <span>0,56</span></li>
            </ul>
            <div class="button-counter">
 
@@ -491,6 +514,14 @@
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
             <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
+           </div>
+           <div class="pdf">
+            <p class="pdf-heading"><i class="fa-regular fa-file-pdf"></i> Downloads + Informationen</p>
+            <div class="pdf-lists">
+              <p><a href="">Anleitung / Tech Info 1</a></p>
+              <p><a href="">Anleitung / Tech Info 2</a></p>
+              <p><a href="">Anleitung / Tech Info 3</a></p>
+            </div>
            </div>
           </div>
          </div>
