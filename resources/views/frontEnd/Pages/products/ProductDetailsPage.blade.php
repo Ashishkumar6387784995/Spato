@@ -212,7 +212,7 @@
 
   .brand-details .list ul li {
    list-style-type: none;
-   width: 50%;
+   width: 63%;
    display: flex;
    padding: 2px 8px;
    justify-content: space-between;
@@ -236,7 +236,7 @@
    background-color: #656565;
    color: #fff;
    font-weight: 600;
-   width: 55%;
+   width: 70%;
   }
 
   .brand-details h1 {
