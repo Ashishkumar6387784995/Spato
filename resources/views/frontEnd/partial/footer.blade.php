@@ -55,5 +55,5 @@
 </footer>
 
 <!-- Cart script starts -->
-<script type="text/javascript" src="{{ asset('js/web/cart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/web/Cart.js') }}"></script>
 <!-- Cart script ends -->
