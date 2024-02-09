@@ -107,7 +107,7 @@
    margin-bottom: -10rem;
    padding-bottom: 10rem;
 
-   clip-path: polygon(0% 1.5%, 100% 0%, 100% 100%, 0% 100%);
+   clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
   }
 
 
@@ -137,7 +137,7 @@
 
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .product-details {
-    clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0.5%, 100% 0%, 100% 100%, 0% 100%);
    }
    .product-desc {
    margin-top: 0rem !important;
@@ -212,7 +212,7 @@
 
   .brand-details .list ul li {
    list-style-type: none;
-   width: 50%;
+   width: 63%;
    display: flex;
    padding: 2px 8px;
    justify-content: space-between;
@@ -236,7 +236,7 @@
    background-color: #656565;
    color: #fff;
    font-weight: 600;
-   width: 55%;
+   width: 70%;
   }
 
   .brand-details h1 {
@@ -347,7 +347,7 @@
   }
 
   .product-desc {
-   margin-top: -12rem;
+   margin-top: -8rem;
    width: 70%;
   }
   .product-desc p{
@@ -450,7 +450,7 @@
       <div class="">
        <div class="product">
         <div class="row">
-         <div class="col-md-5">
+         <div class="col-md-4">
           <div class="images ">
 
 
@@ -471,19 +471,19 @@
            </div> -->
           </div>
          </div>
-         <div class="brand-details col-md-3">
+         <div class="brand-details col-md-4">
           <h1>{{$product[0]->Artikelname}}</h1>
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
-            <li class="item-list"><span>KW</span> <span>0,56</span></li>
-            <li class="item-list"><span>Volt/Voltage</span> <span>0,56</span></li>
-            <li class="item-list"><span>Einheit/Unit</span> <span>0,56</span></li>
-            <li class="item-list"><span>VE/VPE Packaging Unit</span> <span>0,56</span></li>
+            <li class="item-list"><span>KW</span> <span> 0,56</span></li>
+            <li class="item-list"><span>Volt/Voltage</span> <span> 0,56</span></li>
+            <li class="item-list"><span>Einheit/Unit</span> <span> 0,56</span></li>
+            <li class="item-list"><span>VE/VPE</span> <span> 0,56</span></li>
            </ul>
            <div class="button-counter">
 
-            <button class="btn">Estashiboneoe</button>
+            <button class="btn" id="quoteButton">Erasatzteilanfrage</button>
 
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
@@ -513,7 +513,6 @@
             <a href="#" class="btn" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')" ;
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
-            <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
            </div>
            <div class="pdf">
             <p class="pdf-heading"><i class="fa-regular fa-file-pdf"></i> Downloads + Informationen</p>
