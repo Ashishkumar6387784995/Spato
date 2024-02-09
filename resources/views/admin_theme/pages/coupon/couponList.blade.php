@@ -205,7 +205,7 @@
           <th>Gutscheincode</th>
           <th>Gültig ab</th>
           <th>Bis gültig</th>
-          <th>Typ</th>
+          <th>Rate(%/€)</th>
           <th>Mindestbetrag</th>
           <th>Gutscheinstatus</th>
           <th></th>
@@ -265,8 +265,8 @@
               row.append('<td>' + item.Gutscheincode + '</td>');
               row.append('<td>' + item.Gültig_ab + '</td>');
               row.append('<td>' + item.Bis_gültig + '</td>');
-              row.append('<td>' + item.Typ + '</td>');
-              row.append('<td>' + item.Rate + '</td>');
+              row.append('<td>'+ item.Rate + item.Typ + '</td>');
+              row.append('<td>' + item.Mindestbetrag + '</td>');
               
               // check if status is active or inactive
               if (item.Gutscheinstatus == 'Active') {
