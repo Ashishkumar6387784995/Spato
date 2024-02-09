@@ -77,7 +77,7 @@
    <div class="collapse navbar-collapse ms-auto" id="navbarScroll">
     <ul class="navbar-nav ms-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
      <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{{url('api/home')}}">Home</a>
+      <a class="nav-link" aria-current="page" href="{{url('api/home')}}">Home</a>
      </li>
      <!-- <li class="nav-item">
           <a class="nav-link pools" href="#">Pools</a></li> -->
@@ -90,29 +90,42 @@
         <div class="row">
          <div class="col">
           <h6 class="ml-3 ">EPS Pools</h6>
-          <a class="dropdown-item" href="#">EPS stone P40</a>
-          <a class="dropdown-item" href="#">EPS stone P80</a>
-          <a class="dropdown-item" href="#">EPS stone round arch</a>
+          <a class="dropdown-item" href="#">EPS Stein P40</a>
+          <a class="dropdown-item" href="#">EPS Stein P80</a>
+          <a class="dropdown-item" href="#">EPS Stein P40 Gigant
+</a>
           <a class="dropdown-item" href="#">EPS stone P40 Giant</a>
-          <a class="dropdown-item" href="#">EPS stone round arch giant</a>
-          <a class="dropdown-item" href="#">EPS stone overflow channel P100</a>
-          <a class="dropdown-item" href="#">EPS stairs</a>
-          <a class="dropdown-item" href="#">Accesories</a>
-          <h6 class="ml-3">Overflow Channels</h6>
-          <a class="dropdown-item" href="#">Concrete overflow channel</a>
-          <a class="dropdown-item" href="#">EPS stone overflow channel P100</a>
-          <a class="dropdown-item" href="#">Overflow gutters grates</a>
-          <a class="dropdown-item" href="#">Accesories</a>
+          <a class="dropdown-item" href="#">EPS Stein Rundbogen Gigant
+</a>
+          <a class="dropdown-item" href="#">EPS Stein Überlaufrinne P100
+</a>
+          <a class="dropdown-item" href="#">EPS Treppen
+</a>
+          <a class="dropdown-item" href="#">Zubehör
+</a>
+          <h6 class="ml-3">Überlaufrinnen
+</h6>
+          <a class="dropdown-item" href="#">Beton Überlaufrinne
+</a>
+          <a class="dropdown-item" href="#">EPS Stein Überlaufrinne P100
+</a>
+          <a class="dropdown-item" href="#">Überlaufrinnen Roste
+</a>
+          <a class="dropdown-item" href="#">Zubehör
+</a>
 
          </div>
          <div class="col">
-          <h6 class="ml-3">Slides</h6>
-          <a class="dropdown-item" href="#">Renolit Alkorplan ></a>
-          <h6 class="ml-3">Handrails</h6>
+          <h6 class="ml-3">Einbauteile
+</h6>
+          <a class="dropdown-item" href="#">Edelstahl BEHNCKE
+</a>
+          <h6 class="ml-3">Folien</h6>
           <a class="dropdown-item" href="#">Grab bars</a>
           <a class="dropdown-item" href="#">Handrails</a>
           <a class="dropdown-item" href="#">Accesories</a>
-          <h6 class="ml-3">Ladders</h6>
+          <h6 class="ml-3">Handläufe
+</h6>
           <a class="dropdown-item" href="#">Head of Marina for Public Pools</a>
           <a class="dropdown-item" href="#">Ladders stainless steel standard</a>
           <a class="dropdown-item" href="#">Ladders stainless steel Muro Slim</a>
@@ -122,7 +135,8 @@
          </div>
 
          <div class="col">
-          <h6 class="ml-3">Built-In Parts</h6>
+          <h6 class="ml-3">Leitern
+</h6>
           <a class="dropdown-item" href="#">Stainless steel BEHNCKE ></a>
           <a class="dropdown-item" href="#">Stainless steel HUGO LAHME ></a>
           <a class="dropdown-item" href="#">Stainless steel FLUIDRA ></a>
@@ -142,7 +156,8 @@
        <li>
         <div class="row">
          <div class="col">
-          <h6 class="ml-3 ">Pump</h6>
+          <h6 class="ml-3 ">Filter
+</h6>
           <a class="dropdown-item" href="#">Swimming pool circulation pumps ></a>
           <a class="dropdown-item" href="#">Jet pumping attractions ></a>
           <h6 class="ml-3">Filter</h6>
@@ -152,13 +167,15 @@
           <a class="dropdown-item" href="#">Filter material ></a>
           <a class="dropdown-item" href="#">Accesories ></a>
 
-          <h6 class="ml-3">Valves</h6>
+          <h6 class="ml-3">Filter
+</h6>
           <a class="dropdown-item" href="#">Rod valves ></a>
           <a class="dropdown-item" href="#">Multi-way valves ></a>
 
          </div>
          <div class="col">
-          <h6 class="ml-3">Accessories For Public Filter Technology</h6>
+          <h6 class="ml-3">Zubehör öffentliche Filtertechnik
+</h6>
           <a class="dropdown-item" href="#">Sand filter public</a>
           <a class="dropdown-item" href="#">Overflow collection container</a>
           <a class="dropdown-item" href="#">Accessories and technology</a>
@@ -166,7 +183,8 @@
          </div>
 
          <div class="col">
-          <h6 class="ml-3">Controls</h6>
+          <h6 class="ml-3">Ventile
+</h6>
           <a class="dropdown-item" href="#">Filter controls</a>
           <a class="dropdown-item" href="#">Heating filter controls</a>
           <a class="dropdown-item" href="#">Level controls ></a>

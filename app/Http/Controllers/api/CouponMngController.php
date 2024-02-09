@@ -65,9 +65,22 @@ class CouponMngController extends Controller
     }
 
 
-    public function editOrder($role, $id)
+    // function for update coupon status by coupon code
+    public function updateCoupon(Request $request)
     {
-        return view('admin_theme/pages/order/editOrder', compact('role', 'id'));
+        $record = Coupon::where('Gutscheincode', $request->coupon_code)->first();
+        $record->update([
+                    'Gutscheinstatus' => $request->status,
+                ]);
+
+        // dd($record);
+
+        if ($record) {
+            return response()->json(['message' => 'Status Updated successfully', 'record'=>$record]);
+        } else {
+
+            return response()->json(['erors' => 'Status Not Updated']);
+        }
     }
 
 

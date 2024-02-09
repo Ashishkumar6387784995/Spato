@@ -55,7 +55,23 @@
    color: #54606c;
    border-radius: 5px;
   }
-
+  .active{
+    background-color: transparent;
+   border: 1px solid #54606c;
+   color: #54606c;
+   border-radius: 5px;
+   padding: 10px 14px;
+   height: 42px;
+   font-weight:600;
+   text-decoration: none;
+   border-radius: 5px;
+   transition: 0.5s ease;
+  }
+  .active:hover{
+    background-color: #54606c;
+   border: 1px solid #54606c;
+   color: #ffff;
+  }
   .close {
    color: #54606c;
   }
@@ -189,7 +205,7 @@
           <th>Gutscheincode</th>
           <th>Gültig ab</th>
           <th>Bis gültig</th>
-          <th>Typ</th>
+          <th>Rate(%/€)</th>
           <th>Mindestbetrag</th>
           <th>Gutscheinstatus</th>
           <th></th>
@@ -249,17 +265,26 @@
               row.append('<td>' + item.Gutscheincode + '</td>');
               row.append('<td>' + item.Gültig_ab + '</td>');
               row.append('<td>' + item.Bis_gültig + '</td>');
-              row.append('<td>' + item.Typ + '</td>');
-              row.append('<td>' + item.Rate + '</td>');
+              row.append('<td>'+ item.Rate + item.Typ + '</td>');
+              row.append('<td>' + item.Mindestbetrag + '</td>');
               
-              // check if role is not Normal or b2c
+              // check if status is active or inactive
               if (item.Gutscheinstatus == 'Active') {
-                var finalStatus = '<span class="f-status" style="color:#02B222;">Active</span>';
+                var finalStatus = '<span class="f-status" style="color:#02B222; font-weight:600;">Active</span>';
+                var actInactBtn  = '<button class="edit btn changeCouponStatus" coupon-code="' + item.Gutscheincode + '" status="Inactive" href="#">Inaktiv</button>';
               }else{
-                var finalStatus = '<span class="f-status" style="color:#B20202;">Inactive</span>';
+                var finalStatus = '<span class="f-status" style="color:#B20202; font-weight:600;">Inactive</span>';
+                var actInactBtn = '<button class="active btn changeCouponStatus" coupon-code="' + item.Gutscheincode + '" status="Active" href="#">aktiv</button>';
               }
 
-              row.append('<td>' + finalStatus + '</td></tr>');
+              // compaire if till date if passed
+              var currntDate = '{{date("Y-m-d")}}';
+              if (item.Bis_gültig <= currntDate) {
+                var actInactBtn  = '<button class="edit btn changeCouponStatus" coupon-code="' + item.Gutscheincode + '" status="Inactive" href="#">Inaktiv</button>';
+              }
+              
+              row.append('<td id="status_' + item.Gutscheincode + '">' + finalStatus + '</td></tr>');
+              row.append('<td>' + actInactBtn + '</td>');
 
               // Add more columns as needed
               // Append the row to the table body
@@ -276,6 +301,47 @@
         }
       });
     });
+  </script>
+
+  <script>
+    // function for update coupon status by coupon code
+    jQuery(document).on('click', '.changeCouponStatus', function () {
+      var btn = $(this);
+      var coupon_code = btn.attr('coupon-code');
+      var status = btn.attr('status');
+      // alert(status+'  '+coupon_code);
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/updateCouponStatusApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { coupon_code: coupon_code,  status:status},
+        success: function(data) {
+          // Handle the successful response
+          console.log('Response :', data);
+          if (data.message) {
+            // change final status of
+
+            if (data.record.Gutscheinstatus == 'Active') {
+              var status = '<span class="f-status" style="color:#02B222; font-weight:600;">Active</span>';
+            }else{
+              var status = '<span class="f-status" style="color:#B20202; font-weight:600;">Inactive</span>';
+            }
+            jQuery('#status_'+coupon_code).html(status);
+            // Delay the page reload for 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+              location.reload(true);
+            }, 2000);
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
   </script>
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>

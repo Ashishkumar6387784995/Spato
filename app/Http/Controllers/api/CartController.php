@@ -143,7 +143,7 @@ class CartController extends Controller
 
     public function quotesForm($product_id)
     {
-        return view('frontEnd/pages/cart/quotesForm')->with(compact('product_id'));
+        return view('frontEnd/Pages/cart/quotesForm')->with(compact('product_id'));
     }
 
 

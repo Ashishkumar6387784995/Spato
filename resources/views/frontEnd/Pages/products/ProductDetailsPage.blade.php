@@ -107,7 +107,7 @@
    margin-bottom: -10rem;
    padding-bottom: 10rem;
 
-   clip-path: polygon(0% 1.5%, 100% 0%, 100% 100%, 0% 100%);
+   clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
   }
 
 
@@ -137,9 +137,16 @@
 
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .product-details {
-    clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0.5%, 100% 0%, 100% 100%, 0% 100%);
    }
+   .product-desc {
+   margin-top: 0rem !important;
+   width: 100% !important;
+  }
 
+  .related-products .row{
+    display:block;
+  }
    /* footer .footer-container {
     width: 96%;
   } */
@@ -182,10 +189,12 @@
   }
 
   #main-image {
-   border: 1px solid var(--blue);
    padding: 10px 15px;
    width: 100%;
    background-color: #fff;
+   border-radius:5px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   margin-top:-2rem;
   }
 
   .thumbnail img {
@@ -308,7 +317,21 @@
    color: var(--blue);
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
+.pdf{
+  margin-top:2rem;
+  text-align:right;
+  
+}
 
+.pdf .pdf-heading{
+  font-weight:600;
+}
+.pdf .pdf-heading i{
+  color:red;
+}
+.pdf .pdf-lists p a{
+  color:var(--black);
+}
   .product-particular-detail {
    text-align: right;
   }
@@ -324,8 +347,11 @@
   }
 
   .product-desc {
-   margin-top: 8rem;
-   width: 85%;
+   margin-top: -8rem;
+   width: 70%;
+  }
+  .product-desc p{
+   text-align:justify;
   }
 
   .product-desc .product-desc-heading {
@@ -360,7 +386,7 @@
   .related-products .card {
    height: 400px;
    padding: 0;
-   margin: 0px 5px;
+   margin: 10px 5px;
   }
 
   .related-products li {
@@ -430,10 +456,10 @@
 
 
            <div class="text-center p-4"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}"
-             width="350" height="300" />
+             width="450" height="300" />
            </div>
 
-           <div class="thumbnail text-center">
+           <!-- <div class="thumbnail text-center">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="70"
              height="70">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_2) }}" width="70"
@@ -442,7 +468,7 @@
              height="70">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_4) }}" width="70"
              height="70">
-           </div>
+           </div> -->
           </div>
          </div>
          <div class="brand-details col-md-4">
@@ -450,14 +476,14 @@
           <p>MSI MPG Trident 3</p>
           <div class="list">
            <ul>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
-            <li class="item-list"><span>lorem</span> <span>0,56</span></li>
+            <li class="item-list"><span>KW</span> <span> 0,56</span></li>
+            <li class="item-list"><span>Volt/Voltage</span> <span> 0,56</span></li>
+            <li class="item-list"><span>Einheit/Unit</span> <span> 0,56</span></li>
+            <li class="item-list"><span>VE/VPE</span> <span> 0,56</span></li>
            </ul>
            <div class="button-counter">
 
-            <button class="btn">Estashiboneoe</button>
+            <button class="btn" id="quoteButton">Erasatzteilanfrage</button>
 
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
@@ -487,7 +513,14 @@
             <a href="#" class="btn" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')" ;
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
-            <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
+           </div>
+           <div class="pdf">
+            <p class="pdf-heading"><i class="fa-regular fa-file-pdf"></i> Downloads + Informationen</p>
+            <div class="pdf-lists">
+              <p><a href="">Anleitung / Tech Info 1</a></p>
+              <p><a href="">Anleitung / Tech Info 2</a></p>
+              <p><a href="">Anleitung / Tech Info 3</a></p>
+            </div>
            </div>
           </div>
          </div>
@@ -496,7 +529,7 @@
       </div>
      </div>
     </div>
-    <form action="">
+    <!-- <form action="">
      <div class=" container availibility">
       <p class="check">Check Delivery Availability</p>
       <div class="search">
@@ -504,7 +537,7 @@
        <button class="btn">SEARCH</button>
       </div>
      </div>
-    </form>
+    </form> -->
 
     <div class="product-desc">
      <h3 class="product-desc-heading">Product Description</h3>
