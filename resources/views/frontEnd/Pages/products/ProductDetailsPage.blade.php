@@ -347,7 +347,7 @@
   }
 
   .product-desc {
-   margin-top: -12rem;
+   margin-top: -8rem;
    width: 70%;
   }
   .product-desc p{
@@ -483,7 +483,7 @@
            </ul>
            <div class="button-counter">
 
-            <button class="btn">Estashiboneoe</button>
+            <button class="btn" id="quoteButton">Erasatzteilanfrage</button>
 
             <div class="counter">
              <button class="counter-btn" id="decrement-btn">-</button>
@@ -513,7 +513,6 @@
             <a href="#" class="btn" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')" ;
              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
              WARENKORB</a>
-            <button class="btn text-uppercase mt-3" id="quoteButton">Fordern Sie ein Angebot an</button>
            </div>
            <div class="pdf">
             <p class="pdf-heading"><i class="fa-regular fa-file-pdf"></i> Downloads + Informationen</p>
