@@ -182,10 +182,10 @@
   }
 
   #main-image {
-   border: 1px solid var(--blue);
    padding: 10px 15px;
    width: 100%;
    background-color: #fff;
+   border:;
   }
 
   .thumbnail img {
@@ -324,8 +324,11 @@
   }
 
   .product-desc {
-   margin-top: 8rem;
-   width: 85%;
+   margin-top: 1rem;
+   width: 70%;
+  }
+  .product-desc p{
+   text-align:justify;
   }
 
   .product-desc .product-desc-heading {
@@ -430,10 +433,10 @@
 
 
            <div class="text-center p-4"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}"
-             width="350" height="300" />
+             width="450" height="300" />
            </div>
 
-           <div class="thumbnail text-center">
+           <!-- <div class="thumbnail text-center">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="70"
              height="70">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_2) }}" width="70"
@@ -442,7 +445,7 @@
              height="70">
             <img onclick="change_image(this)" src="{{ asset('storage/' . $product[0]->Bild_4) }}" width="70"
              height="70">
-           </div>
+           </div> -->
           </div>
          </div>
          <div class="brand-details col-md-4">
@@ -496,7 +499,7 @@
       </div>
      </div>
     </div>
-    <form action="">
+    <!-- <form action="">
      <div class=" container availibility">
       <p class="check">Check Delivery Availability</p>
       <div class="search">
@@ -504,7 +507,7 @@
        <button class="btn">SEARCH</button>
       </div>
      </div>
-    </form>
+    </form> -->
 
     <div class="product-desc">
      <h3 class="product-desc-heading">Product Description</h3>

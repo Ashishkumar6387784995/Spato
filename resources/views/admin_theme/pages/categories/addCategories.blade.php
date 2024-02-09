@@ -265,15 +265,12 @@
            <th>
             Kategorie Nr.
            </th>
-           <th>
-            Kategorie Name
-           </th>
-           <th>
-            Kategorie Beschreibung
-           </th>
-           <th>
-            Kategorie Symbol
-           </th>
+           <th>Kategory 1</th>
+           <th>Kategory 2</th>
+           <th>Kategory 3</th>
+           <th>Kategory 4</th>
+           <th>Kategory 5</th>
+           <th>Kategory 6</th>
            <th></th>
 
           </tr>
@@ -290,6 +287,25 @@
 
            </td>
            <td>
+            <select name="Kategory 1" id="">
+              <option value="Kategory 1">Kategory 1</option>
+              <option value="Pools">Pools</option>
+            </select>
+           </td>
+<td><select name="Kategory 2" id="">
+              <option value="Kategory 2">Kategory 2</option>
+              <option value="EPS Pools">EPS Pools</option>
+            </select></td>
+            <td><select name="Kategory 3" id="">
+              <option value="Kategory 3">Kategory 3</option>
+              <option value="EPS Pools">EPS Pools</option>
+            </select></td>
+           <td>
+            <input type="text" name='Kategorie_Name' id="Kategorie_Name" placeholder='#' />
+            <br><span id="Kategorie_Name_err" style="color:red; font-size:13px;"></span>
+
+           </td>
+           <td>
             <input type="text" name='Kategorie_Name' id="Kategorie_Name" placeholder='#' />
             <br><span id="Kategorie_Name_err" style="color:red; font-size:13px;"></span>
 
@@ -303,10 +319,10 @@
             <br><span id="Kategorie_Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
-           <td>
+           <!-- <td>
 
             <input type="file" id="file" name="imageFile" onchange="validateFileType()" accept=".jpg, .jpeg, .png"/><br>
-           </td>
+           </td> -->
 
            <td>
             <button class="btn" type="button">Zurücksetzen</button>
