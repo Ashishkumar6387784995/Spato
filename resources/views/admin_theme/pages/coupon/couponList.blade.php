@@ -270,9 +270,9 @@
               
               // check if role is not Normal or b2c
               if (item.Gutscheinstatus == 'Active') {
-                var finalStatus = '<span class="f-status" style="color:#02B222;">Active</span>';
+                var finalStatus = '<span class="f-status" style="color:#02B222; font-weight:600;">Active</span>';
               }else{
-                var finalStatus = '<span class="f-status" style="color:#B20202;">Inactive</span>';
+                var finalStatus = '<span class="f-status" style="color:#B20202; font-weight:600;">Inactive</span>';
               }
               
               row.append('<td>' + finalStatus + '</td></tr>');
