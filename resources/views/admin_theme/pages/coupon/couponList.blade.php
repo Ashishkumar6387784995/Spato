@@ -55,7 +55,23 @@
    color: #54606c;
    border-radius: 5px;
   }
-
+  .active{
+    background-color: transparent;
+   border: 1px solid #54606c;
+   color: #54606c;
+   border-radius: 5px;
+   padding: 10px 14px;
+   height: 42px;
+   font-weight:600;
+   text-decoration: none;
+   border-radius: 5px;
+   transition: 0.5s ease;
+  }
+  .active:hover{
+    background-color: #54606c;
+   border: 1px solid #54606c;
+   color: #ffff;
+  }
   .close {
    color: #54606c;
   }
@@ -258,8 +274,10 @@
               }else{
                 var finalStatus = '<span class="f-status" style="color:#B20202;">Inactive</span>';
               }
-
+              
               row.append('<td>' + finalStatus + '</td></tr>');
+              row.append('<td><a class="edit btn" href="">Inaktiv</a>'+ '</td>');
+              row.append('<td><a class="active" href="">aktiv</a>'+ '</td>');
 
               // Add more columns as needed
               // Append the row to the table body
