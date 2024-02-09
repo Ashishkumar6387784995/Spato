@@ -43,7 +43,6 @@
       border: 1px solid #404040;
       color: #ffff;
       padding: 10px 14px;
-      height: 42px;
       text-decoration: none;
       border-radius: 5px;
       transition: 0.5s ease;
@@ -63,6 +62,14 @@
       padding: 10px 14px;
       text-decoration: none;
       border-radius: 5px;
+      transition: 0.5s ease;
+    }
+
+    .btn:hover{
+      background-color: #404040;
+      border: 1px solid #404040;
+      color: #ffff;
+      padding: 10px 14px;
     }
 
     .close {
@@ -230,9 +237,9 @@
 
                 row.append('<td><img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;"></td>');
 
-                row.append(`<td><a href="/api/editCategory/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+                row.append(`<td><a href="/api/editCategory/${item.id}" class="btn" id="editProductBtn">bearbeiten</a></td>`);
 
-                row.append(`<td><button type="button" id="deleteButton">Löschen</button></td>`);
+                row.append(`<td><button type="button" class="btn-del" id="deleteButton">Löschen</button></td>`);
 
 
                 // Add more columns as needed
