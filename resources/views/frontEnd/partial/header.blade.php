@@ -467,7 +467,7 @@
 
      <li class="nav-item list-unstyled pe-3 ps-5 large-s">
       <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-      <a class="cart-count" href="{{url('api/viewCart')}}">0</a>
+      <a class="cart-count" href="{{url('api/viewCart')}}"></a>
      </li>
     </ul>
     <form class="d-flex justify-content-end" role="search">

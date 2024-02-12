@@ -28,6 +28,7 @@ use App\Http\Controllers\api\categoriesController;
 use App\Http\Controllers\api\quatationController;
 use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\api\CouponMngController;
+use App\Http\Controllers\api\WareHouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,34 +107,38 @@ Route::middleware('api.auth')->group(function () {
   Route::get('cart/userAddress', [CartController::class, 'userAddress']);
 
 
-   // Quatation submit
-   Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
+  // Quatation submit
+  Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
 
 
-   // B2C User Profile
-   Route::get('profileViewApi', [webController::class, 'profileViewApi']);
-   Route::post('addPermanentProfileApi', [webController::class, 'addPermanentProfileApi']);
-   Route::post('changePasswordApi', [webController::class, 'changePasswordApi']);
-   Route::post('saveTempAddressApi', [webController::class, 'saveTempAddressApi']);
-   Route::get('showTempAddressApi', [webController::class, 'showTempAddressApi']);
-   Route::get('tempAddressDelete/{id}', [webController::class, 'tempAddressDelete']);
+  // B2C User Profile
+  Route::get('profileViewApi', [webController::class, 'profileViewApi']);
+  Route::post('addPermanentProfileApi', [webController::class, 'addPermanentProfileApi']);
+  Route::post('changePasswordApi', [webController::class, 'changePasswordApi']);
+  Route::post('saveTempAddressApi', [webController::class, 'saveTempAddressApi']);
+  Route::get('showTempAddressApi', [webController::class, 'showTempAddressApi']);
+  Route::get('tempAddressDelete/{id}', [webController::class, 'tempAddressDelete']);
 
   // For get user details by his id
   Route::get('profileViewByIdApi/{id}', [webController::class, 'profileViewByIdApi']);
-   
+
   Route::post('logoutApi', [loginController::class, 'logoutApi']);
   // Route::get('logout',[loginController::class,'logout']);
 
-  
+
   // Payment Checkout
   Route::get('/payment', [PaymentController::class, 'index']);
   Route::post('/cart/addOrder', [PaymentController::class, 'addOrder']);
+
+
 });
 Route::get('/checkout/payment', [PaymentController::class, 'payment']);
 
 Route::get('/productList', [tryController::class, 'productListing']);
 
-
+  // WareHouse Management
+  Route::view('/wareHouseProductList/{role}', '/admin_theme/pages/wareHouse/productsList');
+  Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
 
 
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
@@ -168,7 +173,7 @@ Route::post('addProduct', [productController::class, 'addproductList']);
 Route::post('productImportApi', [productController::class, 'productImport']);
 Route::get('productExport', [productController::class, 'productExport']);
 Route::get('editProduct/{id}', [productController::class, 'editProduct']);
-Route::get('getProductCategoryAPI', [productController::class, 'getProductCategory']); 
+Route::get('getProductCategoryAPI', [productController::class, 'getProductCategory']);
 
 // products for Admin
 Route::get('quatationListingApi', [quatationController::class, 'quatationListingApi']);
@@ -239,25 +244,25 @@ Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
 
 
 // Customer Management for Admin
-  Route::get('customerListingApi', [CustomerMngController::class, 'customerListingApi']);
-  Route::view('customerListing/{role}', 'admin_theme/pages/customer/customerList');
-  Route::get('editcustomer/{role}/{id}', [CustomerMngController::class, 'editCustomer']);
-  Route::post('updatecustomer', [CustomerMngController::class, 'updateCustomer']);
-  Route::get('deletecustomer/{id}', [CustomerMngController::class, 'deleteCustomer']);
+Route::get('customerListingApi', [CustomerMngController::class, 'customerListingApi']);
+Route::view('customerListing/{role}', 'admin_theme/pages/customer/customerList');
+Route::get('editcustomer/{role}/{id}', [CustomerMngController::class, 'editCustomer']);
+Route::post('updatecustomer', [CustomerMngController::class, 'updateCustomer']);
+Route::get('deletecustomer/{id}', [CustomerMngController::class, 'deleteCustomer']);
 
 // Order Management for Admin
-  Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);
-  Route::get('getOrdersDetailsApi', [OrderMngController::class, 'getOrdersDetailsApi']);
-  Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
-  Route::get('editorder/{role}/{id}', [OrderMngController::class, 'editOrder']);
-  Route::get('updateOrderFinalStatusApi', [OrderMngController::class, 'updateOrderFinalStatusApi']);
+Route::get('orderListingApi', [OrderMngController::class, 'orderListingApi']);
+Route::get('getOrdersDetailsApi', [OrderMngController::class, 'getOrdersDetailsApi']);
+Route::view('orderListing/{role}', 'admin_theme/pages/order/orderList');
+Route::get('editorder/{role}/{id}', [OrderMngController::class, 'editOrder']);
+Route::get('updateOrderFinalStatusApi', [OrderMngController::class, 'updateOrderFinalStatusApi']);
 
 // Coupon Management for Admin
-  Route::get('couponListingApi', [CouponMngController::class, 'couponListingApi']);
-  Route::view('couponListing/{role}', 'admin_theme/pages/coupon/couponList');
-  Route::get('addcoupon/{role}', [CouponMngController::class, 'addCoupon']);
-  Route::post('addcouponApi', [CouponMngController::class, 'addCouponApi']);
-  Route::get('updateCouponStatusApi', [CouponMngController::class, 'updateCoupon']);
+Route::get('couponListingApi', [CouponMngController::class, 'couponListingApi']);
+Route::view('couponListing/{role}', 'admin_theme/pages/coupon/couponList');
+Route::get('addcoupon/{role}', [CouponMngController::class, 'addCoupon']);
+Route::post('addcouponApi', [CouponMngController::class, 'addCouponApi']);
+Route::get('updateCouponStatusApi', [CouponMngController::class, 'updateCoupon']);
 
 // Statistics for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
