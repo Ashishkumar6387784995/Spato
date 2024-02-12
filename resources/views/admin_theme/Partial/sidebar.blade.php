@@ -47,7 +47,7 @@
 
 
   <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img
-     src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""></a></span>
+     src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset=""></a></span>
 
 
   <li class="nav-item">
@@ -135,6 +135,12 @@
     <li class="nav-item">
      <a class="nav-link" href="{{url('/api/couponListing/'.$role)}}" onclick="markVisited(this)">
       <span class="menu-title">Gutscheine</span>
+     </a>
+    </li>
+
+    <li class="nav-item">
+     <a class="nav-link" href="{{url('/api/wareHouseProductList/'.$role)}}" onclick="markVisited(this)">
+      <span class="menu-title">Lagerverwaltung</span>
      </a>
     </li>
 
