@@ -309,14 +309,15 @@ form .btn-style:hover {
     font-size: 15px;
 } */
 .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(15.666% - 20px), 1fr));
+    display: flex;
     gap: 20px;
     padding: 10px;
+    justify-content: center !important;
 }
 
 .categories .categories-card {
-    height: 120px;
+    height: 110px;
+    width: 150px;
     border: 1px solid #000;
     padding-top: 16px;
     text-align: center;
@@ -405,7 +406,7 @@ form .btn-style:hover {
     text-decoration: none;
 }
 .categories .categories-card img {
-    width: 30px;
+    width: 60px;
 }
 
 .categories .view-desc {
