@@ -38,9 +38,7 @@ class webController extends Controller
             ->get();
         
         // Fetch the complete details of the all products
-        $allProduct = Product::whereIn('Kategorie_1', $latestProducts->pluck('Kategorie_1'))
-            ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
-            ->orderby('created_at', 'DESC')
+        $allProduct = Product::select()
             ->get();
 
         // Now, $products contains all details of t`he latest products for each category
