@@ -197,7 +197,7 @@
     </div>
     <!-- partial -->
     </div>
-    <!-- main-panel ends -->
+    <!-- main-panel ends -->    
     </div>
     <!-- page-body-wrapper ends -->
     </div>

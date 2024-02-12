@@ -8,7 +8,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Validator;
 use PDF;
-use App\Imports\ProductsImport;
+use App\Imports\productsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExport;
 
@@ -200,7 +200,7 @@ class ProductController extends Controller
     
             // Process the Excel file and import data into the database using the import class
             $excelFilePath = storage_path('app/public/products_import_files') . '/' . $excelFile->getClientOriginalName();
-            Excel::import(new ProductsImport(), $excelFilePath);
+            Excel::import(new productsImport(), $excelFilePath);
     
             // Retrieve the last inserted product ID
             $lastProductId = Product::latest('id')->first()->id;
