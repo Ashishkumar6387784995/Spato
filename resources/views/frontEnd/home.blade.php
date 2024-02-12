@@ -230,11 +230,12 @@
   </section>
   <section class="dark-mode-section2">
    <div class="container pt-5 ">
-    <h5 class="text-center">Subtitle</h5>
+    <!-- <h5 class="text-center">Subtitle</h5> -->
     <h3 class="text-center">Our Products Categories</h3>
-    <div class="categories text-center p-4 m-auto justify-content-evenly">
+    <div class="categories text-center p-4 m-auto">
 
-     @foreach($productCategories as $category)
+    @foreach($productCategories as $category)
+
 
 
      <div class="dark-mode-section1 categories-card">
@@ -245,7 +246,11 @@
 
      </div>
      @endforeach
-    </div>
+
+ 
+
+
+</div>
 
 
    </div>
@@ -262,8 +267,8 @@
 
   <!-- Latest Products starts -->
   <section class="latest-products pt-5 dark-mode-section2">
-   <h5 class="text-center ">Subtitle</h5>
-   <h3 class="text-center ">Latest Products Categories</h3>
+   <!-- <h5 class="text-center ">Subtitle</h5> -->
+   <h3 class="text-center ">Latest Products</h3>
    <div style="display: flex;
   padding: 0 35px;
   align-items: center;

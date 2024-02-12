@@ -179,7 +179,10 @@ class ProductController extends Controller
     
         $validator = Validator::make($request->all(), [
             'ProductsImportFile' => 'required|mimes:csv,xlsx',
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0030c209b00cbfac587265cb2be46b18d69ccdfb
         ]);
     
         if ($validator->fails()) {

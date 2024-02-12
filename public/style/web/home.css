@@ -310,9 +310,10 @@ form .btn-style:hover {
 } */
 .categories {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     padding: 10px;
-    justify-content: center !important;
 }
 
 .categories .categories-card {
@@ -322,6 +323,7 @@ form .btn-style:hover {
     padding-top: 16px;
     text-align: center;
     cursor: pointer;
+    margin: 10px 0px;
 }
 
 .small-s {
@@ -330,11 +332,10 @@ form .btn-style:hover {
 
 /* For tablets (768px and above) */
 @media (min-width: 768px) and (max-width: 991px) {
-    .categories {
-        grid-template-columns: repeat(
-            auto-fill,
-            minmax(calc(33.333% - 20px), 1fr)
-        );
+    .categories .categories-card {
+        height: 120px;
+        width: 150px;
+        padding-top: 12px;
     }
 
     .large-s {
@@ -353,7 +354,13 @@ form .btn-style:hover {
 /* For mobile devices (up to 767px) */
 @media (max-width: 767px) {
     .categories {
-        grid-template-columns: repeat(auto-fill, minmax(calc(50% - 20px), 1fr));
+        padding: 5px;
+        gap: 10px;
+    }
+    .categories .categories-card {
+        height: 100px;
+        width: 150px;
+        padding-top: 8px;
     }
     .large-s {
         display: none;
