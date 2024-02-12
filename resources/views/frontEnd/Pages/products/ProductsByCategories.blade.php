@@ -26,7 +26,7 @@
    margin-bottom: -10rem;
    padding-bottom: 10rem;
 
-   clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
+   clip-path: polygon(0% 0.01%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .product-category nav ol li a {
