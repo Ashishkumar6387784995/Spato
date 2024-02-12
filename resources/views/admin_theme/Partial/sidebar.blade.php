@@ -184,7 +184,7 @@
       <span class="menu-title">Newsletter</span>
      </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
      <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
       aria-controls="general-pages">
       <span class="menu-title">Wallet</span>
@@ -198,7 +198,7 @@
        <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
       </ul>
      </div>
-    </li>
+    </li> -->
     <li class="nav-item">
      <a class="nav-link" href="{{url('/api/settings/'.$role)}}" onclick="markVisited(this)">
       <span class="menu-title">Einstellungen</span>
