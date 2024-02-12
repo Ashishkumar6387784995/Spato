@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\offers;
+
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductCategory;
 
@@ -79,7 +79,7 @@ class categoriesController extends Controller
             'Kategorie_datum' => 'nullable|date',
             'Kategorie_Name' => 'required|string|max:50',
             'Kategorie_Beschreibung' => 'nullable|string',
-            'imageFile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20',
+            // 'imageFile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20',
         ]);
 
         if ($validator->fails()) {
@@ -87,13 +87,13 @@ class categoriesController extends Controller
         }
 
         // Handle image upload
-        $imagePath = null;
-        if ($request->hasFile('imageFile')) {
-            $image = $request->file('imageFile');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
+        // $imagePath = null;
+        // if ($request->hasFile('imageFile')) {
+        //     $image = $request->file('imageFile');
+        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
 
-            $imagePath = $request->file('imageFile')->storeAs('category_icons', $imageName, 'public');
-        }   
+        //     $imagePath = $request->file('imageFile')->storeAs('category_icons', $imageName, 'public');
+        // }   
 
         // Create new ProductCategory instance
         $category = new ProductCategory([
@@ -101,13 +101,14 @@ class categoriesController extends Controller
             'Kategorie_datum' => $request->input('Kategorie_datum'),
             'Kategorie_Name' => $request->input('Kategorie_Name'),
             'Kategorie_Beschreibung' => $request->input('Kategorie_Beschreibung'),
-            'imageFile' => $imagePath,
+            // 'imageFile' => $imagePath,
         ]);
 
         // Save the category to the database
         $category->save();
 
         return response()->json(['success' => "Category Added Successfully"]);
+        
     }
 
 

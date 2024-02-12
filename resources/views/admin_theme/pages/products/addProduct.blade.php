@@ -827,7 +827,7 @@
      return; // exit the function if token is not present
     }
 
-    $('#import_success_message').text("Please Wait It will Take Some Time.");
+
 
     // $('#import_success_message').text("Please Wait While We are Importing Your Data");
 

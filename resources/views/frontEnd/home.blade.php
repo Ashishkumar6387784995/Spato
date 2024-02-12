@@ -239,7 +239,7 @@
 
      <div class="dark-mode-section1 categories-card">
       <a href="{{url('/api/ProductsByCategories/' . $category->Kategorie_Name)}}"> <span class="icon"
-        style="padding-top:10px;"><img src="{{asset('storage/' . $category->imageFile )}}"></span>
+        style="padding-top:10px;"><img src="{{asset('assets/frontEnd/' . $category->imageFile )}}"></span>
        <p class="view-desc">{{ $category->Kategorie_Name }}</p>
       </a>
 
