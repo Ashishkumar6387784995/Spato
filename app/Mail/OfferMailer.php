@@ -38,13 +38,16 @@ class OfferMailer extends Mailable
     public function build()
     {
         // Access the offerId using $this->offerId
-        return $this->subject('Reset Your Password')
+        return $this->subject('spato offers pdf')
             ->view('mail.offerPdfMailer')
-            ->attach(storage_path('app/pdf/' . $this->offerId . '.pdf'), [
+            ->attach(storage_path('app/public/offers_pdf/' . $this->offerId . '.pdf'), [
                 'as' => $this->offerId . '.pdf',  // Use $offerId as the file name
                 'mime' => 'application/pdf', // Set the correct MIME type for a PDF file
             ]);
     }
+    
+
+    
 
     /**
      * Get the message envelope.

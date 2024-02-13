@@ -919,48 +919,47 @@
   </script>
 
 
-  <script>
+<script>
   $('#emailSend').click(function(e) {
-   e.preventDefault();
+    e.preventDefault();
 
-   // Get the values from the form
-   var formData = {
-    Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
+    // Get the values from the form
+    var formData = {
+      Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
+      email: $('#AddOffersForm input[name="customer_email"]').val(),
+    }
 
-    email: $('#AddOffersForm input[name="customer_email"]').val(),
+    console.log(formData);
 
-   }
+    const baseUrl = window.location.origin;
 
-   console.log(formData);
+    $.ajax({
+      type: 'post',
+      url: baseUrl + '/api/sendOfferMailsToB2C',
+      data: formData,
+      success: function(response) {
+        // Handle success response
+        if (response.success) {
+          console.log(response.success);
+          $('#AddOffersForm')[0].reset();
+          $('#success_msg').text(response.success);
+          // Add any additional success handling here
+        }
 
-   const baseUrl = window.location.origin;
-
-   $.ajax({
-    type: 'post',
-    url: baseUrl + '/api/sendOfferMailsToB2C/',
-    data: formData,
-
-    success: function(response) {
-     // Handle success response
-     if (response.success) {
-      console.log(response.success);
-      $('#AddOffersForm')[0].reset();
-      $('#success_msg').text(response.success);
-      // Add any additional success handling here
-     }
-
-     if (response.error) {
-      console.log(response.error);
-      // Add any error handling here
-     }
-    },
-    error: function(xhr, textStatus, errorThrown) {
-     console.error('AJAX Request Failed: ', textStatus, errorThrown);
-     // Handle AJAX errors here
-    },
-   });
+        if (response.error) {
+          console.log(response.error);
+          // Add any error handling here
+        }
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        console.error('AJAX Request Failed: ', textStatus, errorThrown);
+        console.error('Response Text: ', xhr.responseText); // Log the response text for more details
+        // Handle AJAX errors here
+      },
+    });
   });
-  </script>
+</script>
+
 
 
 
