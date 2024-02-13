@@ -182,4 +182,11 @@ class OfferController extends Controller
 
         return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
     }
+
+    public function viewOffersForB2C(){
+
+        return view('admin_theme/pages/offers/viewOffersForB2C');
+
+        
+    }
 }
