@@ -157,7 +157,7 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Technik
       </a>
-      <ul class="dropdown-menu dropdown-element pools-position">
+      <ul class="dropdown-menu dropdown-element technik-position">
        <li>
         <div class="row">
          <div class="col">
@@ -173,6 +173,30 @@
           <h6 class="ml-3">Filter</h6>
           <a class="dropdown-item" href="#">Zubehör
 </a>
+
+
+<h6 class="ml-3">Steuerungen</h6>
+          <a class="dropdown-item" href="#">Filtersteuerungen</a>
+          <a class="dropdown-item" href="#">Heizfiltersteuerungen
+</a>
+          <a class="dropdown-item" href="#">Niveausteuerungen
+</a>
+          <a class="dropdown-item" href="#">Überlauf-Sammelbehälter Steuerungen
+</a>
+          <a class="dropdown-item" href="#">Temperatursteuerungen
+</a>
+          <a class="dropdown-item" href="#">PN Steuerungen
+</a>
+          <a class="dropdown-item" href="#">Piezo Steuerungen
+</a>
+          <a class="dropdown-item" href="#">Rückspülsteuerungen</a>
+          <a class="dropdown-item" href="#">Frequenz-Umformer
+</a>
+          <a class="dropdown-item" href="#">Zubehör
+</a>
+          <a class="dropdown-item" href="#">Stellantriebe
+</a>
+
 
          </div>
          <div class="col">
@@ -207,28 +231,7 @@
           <a class="dropdown-item" href="#">Wärmetauscher</a>
           <a class="dropdown-item" href="#">Elektro Wärmetauscher</a>
           <a class="dropdown-item" href="#">Solarabsorber</a>
-          <h6 class="ml-3">Steuerungen</h6>
-          <a class="dropdown-item" href="#">Filtersteuerungen</a>
-          <a class="dropdown-item" href="#">Heizfiltersteuerungen
-</a>
-          <a class="dropdown-item" href="#">Niveausteuerungen
-</a>
-          <a class="dropdown-item" href="#">Überlauf-Sammelbehälter Steuerungen
-</a>
-          <a class="dropdown-item" href="#">Temperatursteuerungen
-</a>
-          <a class="dropdown-item" href="#">PN Steuerungen
-</a>
-          <a class="dropdown-item" href="#">Piezo Steuerungen
-</a>
-          <a class="dropdown-item" href="#">Rückspülsteuerungen</a>
-          <a class="dropdown-item" href="#">Frequenz-Umformer
-</a>
-          <a class="dropdown-item" href="#">Zubehör
-</a>
-          <a class="dropdown-item" href="#">Stellantriebe
-</a>
-
+         
 <h6 class="ml-3">Luftentfeuchter
 </h6>
           <a class="dropdown-item" href="#">Full Inverter Luftentfeuchter
@@ -247,50 +250,52 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Attraktionen
       </a>
-      <ul class="dropdown-menu dropdown-element pools-position">
+      <ul class="dropdown-menu dropdown-element attraktionen-position">
        <li>
         <div class="row">
          <div class="col">
-          <h6 class="ml-3 ">Pump</h6>
-          <a class="dropdown-item" href="#">Swimming pool circulation pumps ></a>
-          <a class="dropdown-item" href="#">Jet pumping attractions ></a>
-          <h6 class="ml-3">Filter</h6>
-          <a class="dropdown-item" href="#">Sand filter ></a>
-          <a class="dropdown-item" href="#">Cartridge filter ></a>
-          <a class="dropdown-item" href="#">Skim filter ></a>
-          <a class="dropdown-item" href="#">Filter material ></a>
-          <a class="dropdown-item" href="#">Accesories ></a>
+          <h6 class="ml-3 ">Gegenstromanlagen</h6>
+          <a class="dropdown-item" href="#">Edelstahl/Rotguss HUGO LAHME FITSTAR</a>
+          <a class="dropdown-item" href="#">ABS Kunsstoff</a>
+          <a class="dropdown-item" href="#">ABS Kunsstoff SPECK BADU JET
+</a>
+          <h6 class="ml-3">Massageanlagen</h6>
+          <a class="dropdown-item" href="#">Edelstahl/Rotguss HUGO LAHME FITSTAR</a>
+          <a class="dropdown-item" href="#">ABS Kunststoff/Edelstahl</a>
+          <a class="dropdown-item" href="#">Bedufter Modul speziell für Whirlpools
+</a>
+          <a class="dropdown-item" href="#">Lufterwärmung
+</a>
+          <a class="dropdown-item" href="#">Luftgebläse
+</a>
 
-          <h6 class="ml-3">Valves</h6>
-          <a class="dropdown-item" href="#">Rod valves ></a>
-          <a class="dropdown-item" href="#">Multi-way valves ></a>
+          <h6 class="ml-3">Schwallduschen</h6>
+          <a class="dropdown-item" href="#">Edelstahl/Rotguss HUGO LAHME FITSTAR
+</a>
+          <a class="dropdown-item" href="#">Edelstahl/PVC</a>
 
          </div>
          <div class="col">
-          <h6 class="ml-3">Accessories For Public Filter Technology</h6>
-          <a class="dropdown-item" href="#">Sand filter public</a>
-          <a class="dropdown-item" href="#">Overflow collection container</a>
-          <a class="dropdown-item" href="#">Accessories and technology</a>
-          <h6 class="ml-3">Filter Systems</h6>
+          <h6 class="ml-3">Wasserkanonen</h6>
+          <a class="dropdown-item" href="#">Edelstahl/Rotguss HUGO LAHME FITSTAR</a>
+          <h6 class="ml-3">Luftsprudelsitz</h6>
+          <h6 class="ml-3">Wasserfall</h6>
+          <a class="dropdown-item" href="#">Edelstahl/Rotguss HUGO LAHME FITSTAR</a>
          </div>
 
          <div class="col">
-          <h6 class="ml-3">Controls</h6>
-          <a class="dropdown-item" href="#">Filter controls</a>
-          <a class="dropdown-item" href="#">Heating filter controls</a>
-          <a class="dropdown-item" href="#">Level controls ></a>
-          <a class="dropdown-item" href="#">Overflow collection container controls</a>
-          <a class="dropdown-item" href="#">Temperature controls</a>
-          <a class="dropdown-item" href="#">PN controls</a>
-          <a class="dropdown-item" href="#">Piezo controls</a>
-          <a class="dropdown-item" href="#">Backwash controls ></a>
-          <a class="dropdown-item" href="#">Frequency converter ></a>
-          <a class="dropdown-item" href="#">Accesories</a>
-
-          <h6 class="ml-3">Dehumidifier</h6>
+          <h6 class="ml-3">Gartenduschen</h6>
+          <a class="dropdown-item" href="#">Solardusche
+</a>
+          <a class="dropdown-item" href="#">Gartendusche
+</a>
+          <a class="dropdown-item" href="#">Pool Liege
+</a>
+          
+          <!-- <h6 class="ml-3">Dehumidifier</h6>
           <a class="dropdown-item" href="#">Full inverter dehumidifier</a>
           <h6 class="ml-3">Heating Systems</h6>
-          <a class="dropdown-item" href="#">Heat pumps ></a>
+          <a class="dropdown-item" href="#">Heat pumps ></a> -->
          </div>
         </div>
        </li>
@@ -310,65 +315,112 @@
        <li>
         <div class="row">
          <div class="col">
-          <h6 class="ml-3 ">Pipes And Flexible Pipes</h6>
-          <a class="dropdown-item" href="#">PVC pressure pipe ></a>
-          <a class="dropdown-item" href="#">PVC flexible pipe ></a>
-          <a class="dropdown-item" href="#">HDPE protective tube</a>
-          <a class="dropdown-item" href="#">PE 100 pressure pipes, SDR 11, PN 16</a>
-          <a class="dropdown-item" href="#">PE 100 pressure pipes, SDR 11, PN 10</a>
-          <a class="dropdown-item" href="#">PE LDPE pressure pipe, SDR 13.6, PN4</a>
-          <h6 class="ml-3">Fittings And Fittings</h6>
-          <a class="dropdown-item" href="#">PVC flex pipe clamp fittings</a>
-          <a class="dropdown-item" href="#">PVC fittings ></a>
-          <a class="dropdown-item" href="#">PVC container bushings</a>
-          <a class="dropdown-item" href="#">PVC check valves ></a>
-          <a class="dropdown-item" href="#">PVC pipe clamps</a>
-          <a class="dropdown-item" href="#">PVC ball valves and valves ></a>
-          <a class="dropdown-item" href="#">PVC gate valve ></a>
-          <a class="dropdown-item" href="#">PVC 3-way ball valves ></a>
-          <a class="dropdown-item" href="#">PVC inserts for ball valves and valves ></a>
-          <a class="dropdown-item" href="#">PVC flaps ></a>
-          <a class="dropdown-item" href="#">PVC sight glasses and probe holders ></a>
-          <a class="dropdown-item" href="#">flow meter ></a>
+          <h6 class="ml-3 ">Rohre und Flexrohre</h6>
+          <a class="dropdown-item" href="#">PVC Druckrohr
+</a>
+          <a class="dropdown-item" href="#">PVC Flexrohr
+</a>
+          <a class="dropdown-item" href="#">HDPE Schutzrohr
+</a>
+          <a class="dropdown-item" href="#">PE 100 Druckrohre, SDR 11, PN 16
+</a>
+          <a class="dropdown-item" href="#">PE 100 Druckrohre, SDR 11, PN 10
+</a>
+ <h6 class="ml-3">Fittings und Armaturen
+</h6>
+          <a class="dropdown-item" href="#">PVC Flexrohr Klemmfittings
+</a>
+          <a class="dropdown-item" href="#">PVC Fittings
+</a>
+          <a class="dropdown-item" href="#">PVC Behälterdurchführungen
+</a>
+          <a class="dropdown-item" href="#">PVC Rückschlagventile
+</a>
+          <a class="dropdown-item" href="#">PVC Rohrschellen
+</a>
+          <a class="dropdown-item" href="#">PVC Kugelhähne und Ventile
+</a>
+          <a class="dropdown-item" href="#">PVC Absperrschieber
+</a>
+          <a class="dropdown-item" href="#">PVC 3-Wege Kugelhähne
+</a>
+          <a class="dropdown-item" href="#">PVC Einlegeteile für Kugelhähne und Ventile
+</a>
+          <a class="dropdown-item" href="#">PVC Klappen
+</a>
+          <a class="dropdown-item" href="#">PVC Schaugläser und Sondenhalter
+</a>
+          <a class="dropdown-item" href="#">Durchflußmesser
+</a>
 
-          <h6 class="ml-3">PVC Adhesive Fittings Black</h6>
-          <h6 class="ml-3">PVC Adhesive Fittings White</h6>
-          <h6 class="ml-3">PVC Flexfit White</h6>
+          <h6 class="ml-3">PVC Klebefittings schwarz
+</h6>
+          <h6 class="ml-3">PVC Klebefittings weiß
+</h6>
+          <h6 class="ml-3">PVC Flexfit weiß
+</h6>
          </div>
          <div class="col">
           <h6 class="ml-3">
-           PP Clamp Fittings</h6>
-          <a class="dropdown-item" href="#">PP coupling, clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP reducing coupling, clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP end cap, clamp</a>
-          <a class="dropdown-item" href="#">PP angle 90° with wall washer, clamp x IT</a>
-          <a class="dropdown-item" href="#">PP coupling, clamp x IT</a>
-          <a class="dropdown-item" href="#">PP coupling, clamp x male</a>
-          <a class="dropdown-item" href="#">PP coupling with flange, complete set, clamp x flange</a>
-          <a class="dropdown-item" href="#">PP universal coupling, clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP global coupling, clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP angle 90°, clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP angle 90°, clamp x AG</a>
-          <a class="dropdown-item" href="#">PP angle 90°, clamp x IT</a>
-          <a class="dropdown-item" href="#">PP T-piece, clamp x clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP T-piece, clamp x AG x clamp</a>
-          <a class="dropdown-item" href="#">PP reducing T-piece, clamp x clamp x clamp</a>
-          <a class="dropdown-item" href="#">PP T-piece, clamp x female thread x clamp</a>
+          PP Klemmfittings
+</h6>
+          <a class="dropdown-item" href="#">PP Kupplung, Klemm x Klemm 
+</a>
+          <a class="dropdown-item" href="#">PP Reduzierkupplung, Klemm x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP Endkappe, Klemm
+</a>
+          <a class="dropdown-item" href="#">PP Winkel 90° mit Wandscheibe, Klemm x IG
+</a>
+          <a class="dropdown-item" href="#">PP Kupplung, Klemm x IG
+</a>
+          <a class="dropdown-item" href="#">PP Kupplung, Klemm x AG
+</a>
+          <a class="dropdown-item" href="#">PP Kupplung mit Flansch, Komplett-Set, Klemm x Flansch</a>
+          <a class="dropdown-item" href="#">PP Universalkupplung, Klemm x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP Globalkupplung, Klemm x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP Winkel 90°, Klemm x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP Winkel 90°, Klemm x AG
+</a>
+          <a class="dropdown-item" href="#">PP Winkel 90°, Klemm x IG
+</a>
+          <a class="dropdown-item" href="#">PP T-Stück, Klemm x Klemm x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP T-Stück, Klemm x AG x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP Reduzier T-Stück, Klemm x Klemm x Klemm
+</a>
+          <a class="dropdown-item" href="#">PP T-Stück, Klemm x IG x Klemm
+</a>
          </div>
 
          <div class="col">
-          <h6 class="ml-3">PP Tapping Clamps</h6>
-          <a class="dropdown-item" href="#">PP tapping clamp, 2 screws, reinforcement ring, O-ring, clamp x IT</a>
-          <a class="dropdown-item" href="#">PP tapping clamp, 4 screws, reinforcement ring, O-ring, clamp x IT</a>
-          <a class="dropdown-item" href="#">PP tapping clamp, 6 screws, reinforcement ring, O-ring, clamp x IT</a>
-          <a class="dropdown-item" href="#">Temperature controls</a>
-          <h6 class="ml-3">Solenoid Valves</h6>
-          <a class="dropdown-item" href="#">Solenoid valves WKB</a>
-          <a class="dropdown-item" href="#">Bürkert solenoid valves</a>
-          <h6 class="ml-3">Glue</h6>
-          <h6 class="ml-3">Cleanser</h6>
-          <h6 class="ml-3">Teflon</h6>
-          <h6 class="ml-3">Accesories</h6>
+          <h6 class="ml-3">PP Anbohrschellen
+</h6>
+          <a class="dropdown-item" href="#">PP Anbohrschelle, 2 Schrauben, Verstärkungsring, 0- Ring, Schelle x IG
+</a>
+          <a class="dropdown-item" href="#">PP Anbohrschelle, 4 Schrauben, Verstärkungsring, 0- Ring, Schelle x IG
+</a>
+          <a class="dropdown-item" href="#">PP Anbohrschelle, 6 Schrauben, Verstärkungsring, 0- Ring, Schelle x IG
+</a>
+
+          <h6 class="ml-3">Magnetventile 
+</h6>
+          <a class="dropdown-item" href="#">Magnetventile WKB
+</a>
+          <a class="dropdown-item" href="#">Magnetventile Bürkert
+</a>
+          <h6 class="ml-3">Kleber
+</h6>
+          <h6 class="ml-3">Reiniger
+</h6>
+          <h6 class="ml-3">Teflon
+</h6>
+          <h6 class="ml-3">Zubehör
+</h6>
          </div>
         </div>
        </li>
@@ -386,53 +438,105 @@
        <li>
         <div class="row">
          <div class="col">
-          <h6 class="ml-3 ">Measuring And Control Systems</h6>
-          <a class="dropdown-item" href="#">Filter control including pH and redox pH dosing system</a>
-          <a class="dropdown-item" href="#">Chlorine/Redox dosing system</a>
-          <a class="dropdown-item" href="#">Accessories for measuring and control systems, electrolysis</a>
+          <h6 class="ml-3 ">Mess und Regelanlagen
+</h6>
+          <a class="dropdown-item" href="#">Filtersteuerung inkl. pH und Redox
+</a>
+          <a class="dropdown-item" href="#">Dosieranlage pH
+</a>
+          <a class="dropdown-item" href="#">Dosieranlage Chlor/Redox</a>
+          <a class="dropdown-item" href="#">Zubehör für Mess und Regelanlagen, Elektrolyse
+</a>
 
-          <h6 class="ml-3">Electrolysis</h6>
-          <a class="dropdown-item" href="#">Filter control including electrolysis, pH and redox electrolysis</a>
-          <a class="dropdown-item" href="#">BWT pearl water</a>
-          <a class="dropdown-item" href="#">Replacement electrolytic cells</a>
+          <h6 class="ml-3">Elektrolyse
+</h6>
+          <a class="dropdown-item" href="#">Filtersteuerung inkl. Elektrolyse, pH und Redox
+</a>
+          <a class="dropdown-item" href="#">Elektrolyse
+</a>
+          <a class="dropdown-item" href="#">BWT Perlwasser</a>
+          <a class="dropdown-item" href="#">Ersatz-Elektrolysezellen
+</a>
 
-          <h6 class="ml-3">Measurement</h6>
-          <a class="dropdown-item" href="#">electronic salt analyzer</a>
-          <a class="dropdown-item" href="#">electronic pH analyzer</a>
-
+<h6 class="ml-3">
+          UV Anlagen
+</h6>
+          <a class="dropdown-item" href="#">UV-C Ionisator
+</a>
+          <a class="dropdown-item" href="#">UV-C Sterilisator
+</a>
+          <a class="dropdown-item" href="#">UV-C Tech-Sterilisator
+</a>
+          <a class="dropdown-item" href="#">UV-C Duplex
+</a>
+          <a class="dropdown-item" href="#">UV-C Niederdruck PE Gehäuse
+</a>
+          <a class="dropdown-item" href="#">Zubehör für UV-C Anlagen
+</a>
          </div>
          <div class="col">
-          <h6 class="ml-3">
-           UV Systems</h6>
-          <a class="dropdown-item" href="#">UV SystemsUV Systems</a>
-          <a class="dropdown-item" href="#">UV-C sterilizer</a>
-          <a class="dropdown-item" href="#">UV-C Tech sterilizer</a>
-          <a class="dropdown-item" href="#">UV-C duplex</a>
-          <a class="dropdown-item" href="#">UV-C low pressure PE housing</a>
-          <a class="dropdown-item" href="#">Accessories for UV-C systems</a>
+          
 
-          <h6 class="ml-3">Cleaning Robot</h6>
-          <a class="dropdown-item" href="#">Fairland ></a>
-          <a class="dropdown-item" href="#">Maytronics Dolphin ></a>
-          <a class="dropdown-item" href="#">BWT ></a>
-          <a class="dropdown-item" href="#">SMO Robot ></a>
+          <h6 class="ml-3">Reinigungsroboter
+</h6>
+          <a class="dropdown-item" href="#">Fairland X Warrior Ultra Clean
+</a>
+          <a class="dropdown-item" href="#">SMO Robot Tank X11
+</a>
+          <a class="dropdown-item" href="#">Maytronics Professional Smart Scoop Cleaner
+</a>
+          <a class="dropdown-item" href="#">Maytronics Professional Line Scoop Comfort Cleaner mit Smartphonenavigation</a>
+          <a class="dropdown-item" href="#">Maytronics Professional Line Smart ACTIVE Cleaner</a>
+          <a class="dropdown-item" href="#">Maytronics Commercial Line Dolphin WAVE 50
+</a>
+
+          <a class="dropdown-item" href="#">Maytronics Commercial Line Dolphin WAVE 100
+</a>
+          <a class="dropdown-item" href="#">Maytronics Commercial Line Dolphin WAVE 150
+</a>
+          <a class="dropdown-item" href="#">Maytronics Commercial Line Dolphin WAVE 200
+</a>
+          <a class="dropdown-item" href="#">Maytronics Commercial Line Dolphin WAVE 300 XL
+</a>
+          <a class="dropdown-item" href="#">Aquatron Cosmy
+</a>
          </div>
 
          <div class="col">
-          <h6 class="ml-3">Cleaning Accessories</h6>
-          <a class="dropdown-item" href="#">Telescopic poles</a>
-          <a class="dropdown-item" href="#">Cleaning brushes</a>
-          <a class="dropdown-item" href="#">Landing net</a>
-          <a class="dropdown-item" href="#">Dosing float</a>
-          <a class="dropdown-item" href="#">Suction hoses sucker heads</a>
-          <a class="dropdown-item" href="#">Cleaning accessories thermometer</a>
-          <a class="dropdown-item" href="#">Foil repair kits</a>
+          <h6 class="ml-3">Reinigungszubehör
+</h6>
+          <a class="dropdown-item" href="#">Teleskopstangen
+</a>
+          <a class="dropdown-item" href="#">Reinigungsbürsten
+</a>
+          <a class="dropdown-item" href="#">Kescher
+</a>
+          <a class="dropdown-item" href="#">Dosierschwimmer
+</a>
+          <a class="dropdown-item" href="#">Saugschläuche
+</a>
+          <a class="dropdown-item" href="#">Saugerköpfe
+</a>
+          <a class="dropdown-item" href="#">Reinigungsaccesoires</a>
+          <a class="dropdown-item" href="#">Thermometer</a>
+          <a class="dropdown-item" href="#">Folien-Reparatursets</a>
 
-          <h6 class="ml-3">Water Care Products</h6>
-          <a class="dropdown-item" href="#">disinfection ></a>
-          <a class="dropdown-item" href="#">PH value ></a>
-          <a class="dropdown-item" href="#">Algae control and wintering ></a>
-          <a class="dropdown-item" href="#">Care and cleaning ></a>
+          <h6 class="ml-3">Wasserpflegeprodukte</h6>
+          <a class="dropdown-item" href="#">Desinfektion
+</a>
+          <a class="dropdown-item" href="#">pH Wert
+</a>
+          <a class="dropdown-item" href="#">Algenbekämpfung und Überwinterung
+</a>
+          <a class="dropdown-item" href="#">Pflege und Reinigung
+</a>
+
+<h6 class="ml-3">Messung</h6>
+          <a class="dropdown-item" href="#">elektronisches Salz Analysegerät
+
+</a>
+          <a class="dropdown-item" href="#">elektronisches pH Analysegerät
+</a>
          </div>
         </div>
        </li>
@@ -1221,7 +1325,12 @@
   });
  });
  </script>
-
+<script>
+  function changeBackgroundColor() {
+  var button = document.getElementByClassName('.nav-item');
+  button.style.backgroundColor = 'red';
+}
+</script>
 
  <!-- Darkmode script starts -->
  <script type="text/javascript" src="{{ asset('/js/web/dark_theme.js') }}"></script>
