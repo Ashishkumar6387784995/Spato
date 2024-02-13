@@ -4,7 +4,7 @@
  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spato</title>
+  <title>User Profile</title>
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -234,6 +234,19 @@
 
   .add-address {
    font-size: 15px;
+   text-decoration:none;
+   color:var(--blue);
+   font-weight:700;
+   border:2px solid var(--blue);
+   padding:5px 10px;
+   margin-left:0.5rem;
+   border-radius:5px;
+   transition:0.5s ease-in-out;
+  }
+
+  .add-address:hover{
+   background-color:var(--blue);
+   color:var(--white);
   }
 
 
@@ -439,7 +452,7 @@
 
        <div class="other-inforation" style=" margin-top:-1rem;">
         <span id="success_msg" style="color: #44e1d5; font-size:25px; font-weight:700;"></span>
-        <p class="other-information">Other Information</p>
+        <p class="other-information"><b>Other Information</b></p>
 
         <table>
          <tbody>
@@ -481,6 +494,14 @@
            <td> <input type="text" class="form-control" name="country" id="country">
             <span id="country_err" style="color:red"></span>
            </td>
+          </tr>
+          <tr>
+          <td><b>Vat Number</b></td>
+           <td> </td>
+          </tr>
+          <tr>
+            <td>Vat Number</td>
+            <td><input type="text" placeholder="Include Vat Number (Optional)" class="form-control" name="vat-number" id="vat-number"></td>
           </tr>
           <tr>
            <td><button type="submit" class="profile-btn" id="pAddressSubmit">Submit</button></td>
@@ -681,11 +702,18 @@
     <div class="modal-dialog modal-dialog-centered">
      <div class="modal-content">
       <div class="modal-header">
-       <h1 class="modal-title fs-5" id="addaddressLabel">Add Address</h1>
+       <h1 class="modal-title fs-5" id="addaddressLabel">Add Address & Other Information</h1>
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
        <div id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1.5rem;"></div>
+
+
+       <div class="input-group mb-5">
+        <label for="Company name">Company Name</label>
+        <input type="text" class="form-control" name="tempCompanyname" placeholder="Company Name" aria-label="Company Name"
+         aria-describedby="basic-addon1" />
+       </div>
        <div class="input-group mb-3">
         <label for="Address">Address</label>
         <input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address"
