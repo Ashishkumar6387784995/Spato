@@ -149,7 +149,7 @@ Route::get('addOffer/{role}', [OfferController::class, 'addOffer']);
 Route::get('editOffer/{id}{role}', [OfferController::class, 'editOffer']);
 
 Route::get('OffersPdfdownload/{offerId}', [OfferController::class, 'downloadPdf']);
-Route::post('/sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
+Route::post('sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
 
 
 

@@ -7,7 +7,6 @@
 /* Dark mode */
 .body-dark {
     background-color: #050811 !important;
-    color: var(--white);
     /* color: #a5a8ab; */
 }
 .darkMode {
@@ -59,6 +58,13 @@ i {
     padding: 0px 15px;
 }
 
+/* .nav-item:active {
+    background-color: var(--black);
+}
+
+.nav-item::selection {
+    background-color: var(--black);
+} */
 .nav-link {
     padding: 0 !important;
     color: var(--black);
@@ -95,7 +101,7 @@ i {
     top: 25px !important;
 }
 .attraktionen-position {
-    left: -500px !important;
+    left: -400px !important;
     top: 25px !important;
 }
 
