@@ -1242,7 +1242,7 @@
         <ul class="profile-drop dropdown-menu" aria-labelledby="dropdownMenuLink" >
             <p style="text-align:center;"><b style="font-size:16px; text-align:center">Welcome, <span id="userName" style="color:var(--blue);">${response.success['name']}</span></b></p>
            <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
-            <li><a  class="dropdown-item" href="#"><i class="fa-solid fa-chart-line"></i> Activity Log</a></li>
+            <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
             <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
         </ul>
     </li>
