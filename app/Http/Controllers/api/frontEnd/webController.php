@@ -27,12 +27,12 @@ class webController extends Controller
         // dd($productCategories);
 
         // Get the latest products for each category
-        $latestProducts = Product::select('Kategorie_1', DB::raw('MAX(created_at) as latest_created_at'))
-            ->groupBy('Kategorie_1')
+        $latestProducts = Product::select('Kategorie_2', DB::raw('MAX(created_at) as latest_created_at'))
+            ->groupBy('Kategorie_2')
             ->get();
 
         // Fetch the complete details of the latest products
-        $latestProduct = Product::whereIn('Kategorie_1', $latestProducts->pluck('Kategorie_1'))
+        $latestProduct = Product::whereIn('Kategorie_2', $latestProducts->pluck('Kategorie_2'))
             ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
             ->orderby('created_at', 'DESC')
             ->get();
