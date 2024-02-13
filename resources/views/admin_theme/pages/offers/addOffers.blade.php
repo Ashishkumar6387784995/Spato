@@ -285,7 +285,7 @@
          <div class="field">
           <p>Name der Firma</p>
          </div>
-         <div class="inputs">
+         <div class="inputs"> 
          <p><input class="dynamic-field" type="text" placeholder='#' id="customer_email" name="customer_email" />
           </p>
           <br>
