@@ -34,12 +34,12 @@ class webController extends Controller
         // Fetch the complete details of the latest products
         $latestProduct = Product::whereIn('Kategorie_2', $latestProducts->pluck('Kategorie_2'))
             ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
-            ->orderby('created_at', 'DESC')
+            ->orderby('created_at', 'DESC')->take(10)
             ->get();
         
         // Fetch the complete details of the all products
         $allProduct = Product::select()
-            ->get();
+            ->take(10)->get();
 
         // Now, $products contains all details of t`he latest products for each category
         // dd($latestProduct);
