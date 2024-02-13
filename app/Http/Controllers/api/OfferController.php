@@ -187,6 +187,5 @@ class OfferController extends Controller
 
         return view('admin_theme/pages/offers/viewOffersForB2C');
 
-        
     }
 }
