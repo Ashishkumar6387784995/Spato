@@ -152,7 +152,6 @@ Route::get('OffersPdfdownload/{offerId}', [OfferController::class, 'downloadPdf'
 Route::post('sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
 
 //offers for B2C
-
 Route::get('viewOffersForB2C', [OfferController::class, 'viewOffersForB2C']);
 
 
