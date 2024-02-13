@@ -491,7 +491,11 @@
     array (
       'font_dir' => 'C:\\xampp\\htdocs\\Spato\\storage\\fonts',
       'font_cache' => 'C:\\xampp\\htdocs\\Spato\\storage\\fonts',
+<<<<<<< HEAD
       'temp_dir' => 'C:\\Users\\NetTech\\AppData\\Local\\Temp',
+=======
+      'temp_dir' => 'C:\\Users\\Admin\\AppData\\Local\\Temp',
+>>>>>>> 18f07d3cdfc2f59b715c9bf245ee8449eff3157f
       'chroot' => 'C:\\xampp\\htdocs\\Spato',
       'allowed_protocols' => 
       array (
@@ -797,8 +801,13 @@
         'host' => 'smtp.gmail.com',
         'port' => '587',
         'encryption' => 'tls',
+<<<<<<< HEAD
         'username' => 'pratapidevelopers@gmail.com',
         'password' => 'xhbqsldbyglulrfs',
+=======
+        'username' => 'bhaskarpratap2024@gmail.com',
+        'password' => 'asrcrprkipzsptar',
+>>>>>>> 18f07d3cdfc2f59b715c9bf245ee8449eff3157f
         'timeout' => NULL,
         'local_domain' => NULL,
       ),
@@ -840,7 +849,11 @@
     ),
     'from' => 
     array (
+<<<<<<< HEAD
       'address' => 'pratapidevelopers@gmail.com',
+=======
+      'address' => 'bhaskarpratap2024@gmail.com',
+>>>>>>> 18f07d3cdfc2f59b715c9bf245ee8449eff3157f
       'name' => 'Spato',
     ),
     'markdown' => 
