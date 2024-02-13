@@ -151,6 +151,10 @@ Route::get('editOffer/{id}{role}', [OfferController::class, 'editOffer']);
 Route::get('OffersPdfdownload/{offerId}', [OfferController::class, 'downloadPdf']);
 Route::post('sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
 
+//offers for B2C
+
+Route::get('viewOffersForB2C', [OfferController::class, 'addOffer']);
+
 
 
 
@@ -173,7 +177,7 @@ Route::post('addProduct', [productController::class, 'addproductList']);
 Route::post('productImportApi', [productController::class, 'productImport']);
 Route::get('productExport', [productController::class, 'productExport']);
 Route::get('editProduct/{id}', [productController::class, 'editProduct']);
-Route::get('getSpecificProductCategoryAPI', [productController::class, 'getProductCategory']);
+Route::get('getProductCategoryAPI', [productController::class, 'getProductCategory']);
 
 // products for Admin
 Route::get('quatationListingApi', [quatationController::class, 'quatationListingApi']);
