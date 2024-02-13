@@ -2,7 +2,8 @@
 /public/build
 /public/hot
 /public/storage
-/bootstrap/cache
+/bootstrap/cache/config.php
+/bootstrap/cache/routes-v7.php
 /storage/*.key
 /vendor
 .env
