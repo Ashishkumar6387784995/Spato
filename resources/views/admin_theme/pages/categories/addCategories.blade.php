@@ -282,24 +282,25 @@
 
           <tr class="hidden">
            <td>
-
             <input type="text" name='' value="1" id="" placeholder='#' /><br>
-
            </td>
+
            <td>
-            <select name="Kategory 1" id="">
-              <option value="Kategory 1">Kategory 1</option>
-              <option value="Pools">Pools</option>
+            <select onchange="getSpecificProductCategory('categorie_2', 'Kategorie_2', this.value, 'categorie_1', 'htmlBlank_1')"; name="Kategorie_1" id="Kategorie_1">
             </select>
            </td>
-<td><select name="Kategory 2" id="">
-              <option value="Kategory 2">Kategory 2</option>
-              <option value="EPS Pools">EPS Pools</option>
-            </select></td>
-            <td><select name="Kategory 3" id="">
-              <option value="Kategory 3">Kategory 3</option>
-              <option value="EPS Pools">EPS Pools</option>
-            </select></td>
+
+            <td>
+              <select class="htmlBlank_1" onchange="getSpecificProductCategory('categorie_3' ,'Kategorie_3', this.value, 'categorie_2', 'htmlBlank_1_2')"; name="Kategorie_2" id="Kategorie_2">
+
+              </select>
+            </td>
+
+            <td>
+              <select class="htmlBlank_1 htmlBlank_1_2" name="Kategorie_3" id="Kategorie_3">
+
+              </select>
+            </td>
            <td>
             <input type="text" name='Kategorie_Name' id="Kategorie_Name" placeholder='#' />
             <br><span id="Kategorie_Name_err" style="color:red; font-size:13px;"></span>
@@ -381,86 +382,13 @@
   <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-  <!-- plugins:js -->
-
-
-
-  <script>
-  var _URL = window.URL || window.webkitURL;
-
-  $("#file").change(function(e) {
-   var image, file;
-   if ((file = this.files[0])) {
-    image = new Image();
-    image.onload = function() {
-     src = this.src;
-     $("#uploadPreview").html('<img src="' + src + '"></div>');
-     e.preventDefault();
-    };
-   }
-   image.src = _URL.createObjectURL(file);
-  });
-  </script>
-
-
-  <script type="text/javascript">
-  function validateFileType() {
-   var fileName = document.getElementById("file").value;
-   var idxDot = fileName.lastIndexOf(".") + 1;
-   var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-   if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
-    //TO DO
-   } else {
-    document.getElementById("uploadPreview").innerText = 'Only jpg/jpeg and png files are allowed!';
-    error.style.color = 'red';
-   }
-  }
-
-  document.getElementById('file').addEventListener('change', function(event) {
-   const file = event.target.files[0];
-
-   if (!file) {
-    // User canceled file selection
-    return;
-   }
-
-   let img = new Image();
-   img.src = window.URL.createObjectURL(file);
-
-   img.onload = () => {
-    if (img.width <= 200 && img.height <= 200) {
-
-     //  document.getElementById("error").innerText = "Image Upload Succesfully";
-     //  error.style.color = '#44e1d5';
-     // upload logic here
-    } else {
-     document.getElementById("error").innerText = "Please upload only 200 X 200 image";
-     var form = document.getElementById("signupForm");
-     form.reset();
-     document.getElementById("uploadPreview").innerText = 'No image is select';
-     error.style.color = 'red';
-    }
-
-    // Release the object URL resources
-    window.URL.revokeObjectURL(img.src);
-   };
-
-   img.onerror = () => {
-    // Handle image loading error, if any
-    document.getElementById("uploadPreview").innerText = 'Only jpg/jpeg and png files are allowed!';
-    error.style.color = 'red';
-    var form = document.getElementById("signupForm");
-    form.reset();
-   };
-  });
-  </script>
-  <!-- Dynamic table update ends-->
-
-
-
 
 
   <script>
+    jQuery(document).ready(function(){
+      getSpecificProductCategory('categorie_1', 'Kategorie_1', '%', '%', 'htmlBlank_1');
+    });
+
   $('#saveButton').click(function(e) {
    e.preventDefault(); // Prevent the form from submitting normally
    $('#success_msg').text('');
@@ -559,6 +487,28 @@
 
    }
   });
+
+  
+  // function for fetch Specific Category
+  function getSpecificProductCategory(selectColumn, showId, value, matchColumn, htmlBlank){
+    // alert(selectColumn+' '+showId+' '+value+' '+matchColumn);
+    jQuery('.'+htmlBlank).html('');
+    $.ajax({
+      type: 'GET',
+      url: '/api/getSpecificProductCategoryAPI',
+      data: {selectColumn:selectColumn, value:value, matchColumn:matchColumn},
+      success: function(response) {
+      // Handle the success response from the server
+        console.log('Products Categories:', response.allProductsCat);
+        jQuery('#'+showId).append('<option value="">-- Select Kategory --</option>');
+        $.each(response.allProductsCat, function(index, item) {
+          var options = '<option value="' + item[selectColumn] + '">' + item[selectColumn] + '</option>';
+          jQuery('#'+showId).append(options);
+        });
+      },
+    });
+  }
+
   </script>
 
 

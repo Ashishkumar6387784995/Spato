@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\CategorieStatic;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 use App\Imports\productsImport;
@@ -29,8 +30,17 @@ class ProductController extends Controller
 
 
     // function for fetch all product category
-    public function getProductCategory(){
-        $allProducts = ProductCategory::where('status', 'ACTIVE')->get();
+    public function getProductCategory(Request $request){
+
+        // dd($request->all());
+        // $allProducts = ProductCategory::where('status', 'ACTIVE')->get();
+
+        $allProducts = CategorieStatic::get()->unique($request->selectColumn);
+        if ($request->value !='%') {
+            $allProducts = $allProducts->where($request->matchColumn, $request->value);
+        }
+        
+        // dd($allProducts);
         return response()->json(['allProductsCat' => $allProducts]);
     }
 
