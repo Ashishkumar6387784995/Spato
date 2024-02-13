@@ -59,13 +59,13 @@ i {
     padding: 0px 15px;
 }
 
-.nav-item:active {
+/* .nav-item:active {
     background-color: var(--black);
 }
 
 .nav-item::selection {
     background-color: var(--black);
-}
+} */
 .nav-link {
     padding: 0 !important;
     color: var(--black);
