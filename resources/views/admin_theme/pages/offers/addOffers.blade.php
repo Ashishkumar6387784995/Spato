@@ -274,16 +274,20 @@
           <p>Ihre Kundennummer</p>
          </div>
          <div class="inputs">
-          <!-- <select class="form-select showButton" aria-label="Floating label select example" id="Ihre_Kundennummer" name="Ihre_Kundennummer">
-                    <option selected>Select Custumer</option>
-
-
-                  </select> -->
-
           <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton" required>
-           <!-- <option>Select</option> -->
-
           </select>
+          <br>
+          <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+
+         </div>
+        </div>
+        <div class="details">
+         <div class="field">
+          <p>Name der Firma</p>
+         </div>
+         <div class="inputs">
+         <p><input class="dynamic-field" type="text" placeholder='#' id="customer_email" name="customer_email" />
+          </p>
           <br>
           <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
 
@@ -299,6 +303,8 @@
           </p>
          </div>
         </div>
+
+        
 
        </div>
 
