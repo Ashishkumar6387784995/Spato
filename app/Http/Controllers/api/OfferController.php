@@ -44,29 +44,36 @@ class OfferController extends Controller
 
         // $lastOffer = "AB-123456";
         $lastOffer = offers::latest()->first();
-        $lastOffer = $lastOffer->Angebots_Nr;
-        // Assuming $lastOffer is 'AN-12345'
-        // $lastOffer = 'AN-12345';
 
-
-
-        // Split the string into an array based on the dash
-        $parts = explode('-', $lastOffer);
-        $parts = $parts[1];
-
-
-
-
-        // Increment the numeric part
-        $newNumericPart = $parts + 1;
-
-        // Create the new offerNo
-        $newOfferNo = 'AN-' . $newNumericPart;
-        // echo $newOfferNo;
-
-        // $newOfferNo will be 'AN-12346'
-
-
+        if ($lastOffer) {
+            $lastOffer = $lastOffer->Angebots_Nr;
+            // Assuming $lastOffer is 'AN-12345'
+            // $lastOffer = 'AN-12345';
+    
+    
+    
+            // Split the string into an array based on the dash
+            $parts = explode('-', $lastOffer);
+            $parts = $parts[1];
+    
+    
+    
+    
+            // Increment the numeric part
+            $newNumericPart = $parts + 1;
+    
+            // Create the new offerNo
+            $newOfferNo = 'AN-' . $newNumericPart;
+            // echo $newOfferNo;
+    
+            // $newOfferNo will be 'AN-12346'
+    
+    
+          
+        }
+        else{
+            $newOfferNo = 'AN-1234';
+        }
         return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo', 'role'));
     }
 
