@@ -7,7 +7,5 @@ use Illuminate\Http\Request;
 
 class WareHouseController extends Controller
 {
-    public function wareHouseProductList(){
-        return view('admin_theme/pages/wareHouse/productsList');
-    }
+  
 }

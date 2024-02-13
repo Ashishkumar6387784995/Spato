@@ -79,7 +79,7 @@ class loginController extends Controller
 
         if ($user) {
             $token = $user->createToken('auth-token')->plainTextToken;
-            $message = Mail::to($user)->send(new EmailVerification($user, $token));
+            // $message = Mail::to($user)->send(new EmailVerification($user, $token));
 
 
             return response()->json(['success' => 'User registered successfully', 'token' => $token]);

@@ -190,135 +190,24 @@
     </div>
 
 
-   </div>
-  </div>
-  </div>
-  <!-- content-wrapper ends -->
-  <!-- partial:partials/_footer.html -->
-  <!-- <footer class="footer">
-        <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2021</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                    admin template</a> from Bootstrapdash.com</span>
+            </div>
         </div>
-    </footer> -->
-  <!-- partial -->
-  </div>
-  <!-- main-panel ends -->
-  </div>
-  <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script>
-  // Execute the code when the document is ready
-  $(document).ready(function() {
-   // Make a GET request using AJAX
-   $.ajax({
-    url: '/api/customerListingApi', // Replace with the actual endpoint URL
-    method: 'GET',
-    success: function(data) {
-     // Handle the successful response
-     if (data.usersList) {
-      console.log('Data received:', data.usersList);
-
-
-      function populateTable(data) {
-       var tableBody = $('#dataTable');
-
-       // Clear existing table rows
-       // tableBody.empty();
-
-       // Iterate through the data and add rows to the table
-       $.each(data, function(index, item) {
-        var row = $('<tr>');
-
-        // check if role is not Normal or b2c
-        if (item.role != 'Normal') {
-          var roleAction = '<a href="#"  class="edit btn" onclick="deleteOperation(' + item.id +
-         ')">Löschen</a>';
-        }else{
-          var roleAction = '';
-        }
-
-
-        // row.append('<td>' + item.id + '</td>');
-        // row.append('<td>' + item.name + '</td>');
-        // row.append('<td  id="deleteProductTD-' + item.id +'">' + item.role + '</td>');
-        // row.append('<td><a href="/api/editcustomer/{{$role}}/' + item.id +
-        //  '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-        // row.append('<td id="deleteProductBtn-' + item.id +'">' + roleAction +'</td>');
-
-
-        // Add more columns as needed
-
-        // Append the row to the table body
-        tableBody.append(row);
-       });
-      }
-
-      // Call the function to populate the table with the initial data
-      populateTable(data.usersList);
-
-
-
-     } else {
-      console.log('Data received:', data.errors);
-     }
-    }, // Missing comma here
-
-    error: function(error) {
-     // Handle errors
-     console.error('Error:', error);
-    }
-   });
-
-
-
-
-  });
-
-
-  function deleteOperation(customerId) {
-    // Make a DELETE request using AJAX
-    console.log(customerId);
-    $.ajax({
-      url: '/api/deletecustomer/' + customerId,
-      method: 'get',
-      success: function(data) {
-        if (data.success) {
-          $('#success_msg').text(data.success);
-          $('#deleteProductTD-'+customerId).text("Normal");
-          $('#deleteProductBtn-'+customerId).html('<span style="color: red;font-size: 14px;">' + data.success + '</span>');
-          // Delay the page reload for 2 seconds (2000 milliseconds)
-          setTimeout(function() {
-            $('#deleteProductBtn-'+customerId).text('');
-          }, 3000);
-          console.log('Customer deleted successfully:', data.success);
-          // Perform any additional actions after deletion
-        } else {
-          console.log('Customer not deleted successfully:', data.message);
-        }
-      },
-      error: function(error) {
-      console.error('Error deleting Customer:', error.responseJSON.error);
-      }
-    });
-  }
-  </script>
-
-
-
-
-  <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
-  <!-- <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> -->
+    </div>
+    </div>
+    <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> -->
 
   <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>

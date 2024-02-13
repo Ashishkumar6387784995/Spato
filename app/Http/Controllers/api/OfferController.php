@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 class OfferController extends Controller
 {
 
-   
+
 
     public function offerListing()
     {
@@ -137,46 +137,45 @@ class OfferController extends Controller
     }
 
 
-  
+
+
+
 
     public function downloadPdf($offerId)
     {
-
+        // Retrieve the offer
         $offer = offers::where('Angebots_Nr', $offerId)->first();
-        // dd($offers);
-        if($offer){
-            $offers = offers::where('Angebots_Nr', $offerId)->get(); 
-            // dd($offers);  
-            $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
-        
-            // Save the PDF to the storage/app/pdf directory
-            $pdfFilePath = 'pdf/' . $offerId . '.pdf';
-            Storage::put($pdfFilePath, $pdf->output());
-        
-            // Download the saved PDF
-            return response()->download(storage_path('app/' . $pdfFilePath));
-        }
-        else{
-            return back();
-        }
-       
+
+        // Retrieve offers associated with the offer ID
+        $offers = offers::where('Angebots_Nr', $offerId)->get();
+
+        // Generate PDF from the view
+        $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
+
+        // Specify the path for storing the PDF
+        $pdfFilePath = 'public/pdf/' . $offerId . '.pdf';
+
+        dd($pdfFilePath);
+        // Store the PDF in the specified path within the storage folder
+        Storage::put($pdfFilePath, $pdf->output());
+
+        // Download the saved PDF
+        return response()->download(storage_path('app/' . $pdfFilePath));
     }
-    
+
 
     public function sendOfferMailsToB2C(Request $request)
-{
+    {
 
 
 
-    $offerId = $request->input('Angebots_Nr');
-    $email = $request->input('email');
-   
-    // return response()->json(['success' => $email]);
+        $offerId = $request->input('Angebots_Nr');
+        $email = $request->input('email');
 
-    Mail::to($email)->send(new OfferMailer($offerId,));
+        // return response()->json(['success' => $email]);
 
-      return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
-   
-}
+        Mail::to($email)->send(new OfferMailer($offerId,));
 
+        return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
+    }
 }
