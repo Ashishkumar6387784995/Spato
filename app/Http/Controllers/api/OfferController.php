@@ -138,36 +138,40 @@ class OfferController extends Controller
 
 
 
-
-
-
     public function downloadPdf($offerId)
     {
         // Retrieve the offer
         $offer = offers::where('Angebots_Nr', $offerId)->first();
-
-        // Retrieve offers associated with the offer ID
-        $offers = offers::where('Angebots_Nr', $offerId)->get();
-
-        // Generate PDF from the view
-        $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
-
-        // Specify the path for storing the PDF
-        $pdfFilePath = 'public/pdf/' . $offerId . '.pdf';
-
-        dd($pdfFilePath);
-        // Store the PDF in the specified path within the storage folder
-        Storage::put($pdfFilePath, $pdf->output());
-
-        // Download the saved PDF
-        return response()->download(storage_path('app/' . $pdfFilePath));
+    
+        if ($offer) {
+            // Retrieve offers associated with the offer ID
+            $offers = offers::where('Angebots_Nr', $offerId)->get();
+    
+            // Generate PDF from the view
+            $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
+    
+            // Specify the directory path for storing the PDF in the public storage folder
+            $pdfDirectory = 'public/offers_pdf';
+    
+            // Specify the file path for the PDF
+            $pdfFilePath = $offerId . '.pdf';
+    
+            // Save the PDF in the specified path
+            Storage::put($pdfDirectory . '/' . $pdfFilePath, $pdf->output());
+    
+            // Get the public URL of the saved PDF file
+            $pdfUrl = Storage::url($pdfDirectory . '/' . $pdfFilePath);
+    
+            // Download the saved PDF
+            return response()->download(storage_path('app/' . $pdfDirectory . '/' . $pdfFilePath));
+        } else {
+            return back()->with('error', 'Offer not found');
+        }
     }
 
 
     public function sendOfferMailsToB2C(Request $request)
     {
-
-
 
         $offerId = $request->input('Angebots_Nr');
         $email = $request->input('email');
