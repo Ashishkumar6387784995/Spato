@@ -7,9 +7,10 @@
 /* Dark mode */
 .body-dark {
     background-color: #050811 !important;
+    color: var(--white);
     /* color: #a5a8ab; */
 }
-.dark-mode {
+.darkMode {
     background-color: #050811 !important;
     color: #fff;
 }
