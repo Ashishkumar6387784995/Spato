@@ -299,25 +299,25 @@
    width: 100%;
    display: flex;
    flex-wrap: wrap;
-   padding: 10px;
+   padding: 5px;
    gap: 10px;
    justify-content: flex-start;
   }
 
   .product {
-   width: 300px;
-   height:400px;
+   width: 200px;
+   height:250px;
    background-color: #fff;
    display: flex;
    flex-direction: column;
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
    overflow: hidden;
-   margin: 2rem 1.7rem;
+   margin: 2rem 2rem;
    border-radius: 5px;
   }
 
   .product .img {
-   height: 200px;
+   height: 100px;
   }
 
   .product .img img {
@@ -356,26 +356,6 @@
   }
 
 
-  .cart-btn {
-   text-align: center;
-   /* width: 100%; */
-   background-color: var(--blue) !important;
-   color: var(--white) !important;
-   font-weight: 700 !important;
-   text-decoration: none !important;
-   padding: 8px 0px !important;
-   border-radius: 0px 0px 5px 5px !important;
-   border: 1px solid var(--blue);
-   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
-   transition: 0.5s ease-in-out;
-  }
-
-  .cart-btn:hover {
-   background-color: var(--white) !important;
-   color: var(--blue) !important;
-   border: 1px solid var(--blue);
-  }
-
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .product-category {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
@@ -386,6 +366,10 @@
   } */
    .products {
     justify-content: center;
+   }
+
+   .agb-container .container{
+    display:block !important;
    }
 
   }
@@ -443,14 +427,11 @@
         <h5 class="card-title">Robot Alpha 1</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
-         <li>Merkamal 2 - fahurt urail... lorem</li>
         </p>
         <p class="product-price">
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
       <div class="product">
        <div class="img">
@@ -460,15 +441,161 @@
         <h5 class="card-title">Robot Alpha 1</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
-         <li>Merkamal 2 - fahurt urail... lorem</li>
         </p>
         <p class="product-price">
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
 
 
      </div>           
@@ -485,14 +612,11 @@
         <h5 class="card-title">Robot Alpha 1</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
-         <li>Merkamal 2 - fahurt urail... lorem</li>
         </p>
         <p class="product-price">
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
       <div class="product">
        <div class="img">
@@ -502,14 +626,11 @@
         <h5 class="card-title">Robot Alpha 1</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
-         <li>Merkamal 2 - fahurt urail... lorem</li>
         </p>
         <p class="product-price">
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
 
 
@@ -527,14 +648,11 @@
         <h5 class="card-title">Robot Alpha 1</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
-         <li>Merkamal 2 - fahurt urail... lorem</li>
         </p>
         <p class="product-price">
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
       <div class="product">
        <div class="img">
@@ -544,15 +662,45 @@
         <h5 class="card-title">Robot Alpha 1</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
-         <li>Merkamal 2 - fahurt urail... lorem</li>
         </p>
         <p class="product-price">
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+
+
 
 
      </div>           

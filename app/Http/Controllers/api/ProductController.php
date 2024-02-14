@@ -257,7 +257,10 @@ class ProductController extends Controller
     
     
 
-    
+    // function for fetch Product Category
+    public function getProductCategory(){
+        dd('Hi');
+    }
 }
 
 
