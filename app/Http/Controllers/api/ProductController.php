@@ -28,22 +28,6 @@ class ProductController extends Controller
         return view('admin_theme/pages/products/addProduct')->with(compact('role'));
     }
 
-
-    // function for fetch all product category
-    public function getProductCategory(Request $request){
-
-        // dd($request->all());
-        // $allProducts = ProductCategory::where('status', 'ACTIVE')->get();
-
-        $allProducts = CategorieStatic::get()->unique($request->selectColumn);
-        if ($request->value !='%') {
-            $allProducts = $allProducts->where($request->matchColumn, $request->value);
-        }
-        
-        // dd($allProducts);
-        return response()->json(['allProductsCat' => $allProducts]);
-    }
-
     public function addproductList(Request $request)
     {
 

@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
             $table->string('Kategorie_Nr');
-            $table->date('Kategorie_datum')->nullable();
-            $table->string('Kategorie_Name');
-            $table->text('Kategorie_Beschreibung')->nullable();
-            $table->text('imageFile')->nullable();
+            $table->text('Kategorie_1');
+            $table->text('Kategorie_2');
+            $table->text('Kategorie_3');
+            $table->text('Kategorie_4')->nullable();
+            $table->text('Kategorie_5')->nullable();
+            $table->text('Kategorie_6')->nullable(); 
             $table->string('status')->default('active');
             $table->timestamps();
         });
