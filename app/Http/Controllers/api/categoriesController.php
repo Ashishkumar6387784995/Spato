@@ -95,6 +95,16 @@ class categoriesController extends Controller
                 return response()->json(['errors' => $validator->errors()]);
             }
 
+            // new static category
+            $staticCat = CategorieStatic::where('categorie_1', $request->input('Kategorie_1'))->first();
+            $category1 = new CategorieStatic([
+                'categorie_1' => $request->input('Kategorie_1'),
+                'categorie_2' => $request->input('Kategorie_2'),
+                'categorie_3' => $request->input('Kategorie_4'),
+                'imageFile'   => $staticCat->imageFile
+            ]);
+            $category1->save();
+
             // Create new ProductCategory instance
             $category = new ProductCategory([
                 'Kategorie_Nr' => $request->input('Kategorie_Nr'),

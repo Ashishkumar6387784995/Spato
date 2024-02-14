@@ -11,5 +11,5 @@ class CategorieStatic extends Model
 
     
     protected $table = 'categorie_statics';
-    protected $fillable = ['categorie_1', 'categorie_2', 'categorie_3'];
+    protected $fillable = ['categorie_1', 'categorie_2', 'categorie_3', 'imageFile'];
 }
