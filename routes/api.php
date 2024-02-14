@@ -177,6 +177,7 @@ Route::post('addProduct', [productController::class, 'addproductList']);
 Route::post('productImportApi', [productController::class, 'productImport']);
 Route::get('productExport', [productController::class, 'productExport']);
 Route::get('editProduct/{id}', [productController::class, 'editProduct']);
+Route::get('getProductCategoryAPI', [productController::class, 'getProductCategory']);
 
 // products for Admin
 Route::get('quatationListingApi', [quatationController::class, 'quatationListingApi']);
