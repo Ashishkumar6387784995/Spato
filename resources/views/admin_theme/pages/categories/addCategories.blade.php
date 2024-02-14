@@ -204,10 +204,10 @@
       </div>
       <div><span id="success_msg" style="color:#44e1d5; font-size:20px; font-weight:600;"></span></div>
       <div class="row pt-3">
-       <div class="col-md-4">
+       <!-- <div class="col-md-4">
         <div id="uploadPreview"></div>
         <span id="error" style="font-size:15px; font-weight:600;"></span>
-       </div>
+       </div> -->
 
        <div class="col-md-2"></div>
        <div class="col-md-6">
@@ -222,17 +222,7 @@
          </div>
         </div>
 
-        <div class="details">
-         <div class="field">
-          <p>Kategorie datum</p>
-         </div>
-         <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Kategorie_datum" name="Kategorie_datum" />
-           <br>
-           <span id="Angebotsdatum_err" style="color:red;  font-size:13px;"></span>
-          </p>
-         </div>
-        </div>
+       
        </div>
 
       </div>
@@ -288,37 +278,33 @@
            <td>
             <select onchange="getSpecificProductCategory('categorie_2', 'Kategorie_2', this.value, 'categorie_1', 'htmlBlank_1')"; name="Kategorie_1" id="Kategorie_1">
             </select>
+            <br><span id="Kategorie_1_err" class="hideErrors" style="color:red; font-size:13px;"></span>
            </td>
 
             <td>
               <select class="htmlBlank_1" onchange="getSpecificProductCategory('categorie_3' ,'Kategorie_3', this.value, 'categorie_2', 'htmlBlank_1_2')"; name="Kategorie_2" id="Kategorie_2">
-
               </select>
+              <br><span id="Kategorie_2_err" class="hideErrors" style="color:red; font-size:13px;"></span>
             </td>
 
             <td>
               <select class="htmlBlank_1 htmlBlank_1_2" name="Kategorie_3" id="Kategorie_3">
-
               </select>
+              <br><span id="Kategorie_3_err" class="hideErrors" style="color:red; font-size:13px;"></span>
             </td>
            <td>
-            <input type="text" name='Kategorie_Name' id="Kategorie_Name" placeholder='#' />
-            <br><span id="Kategorie_Name_err" style="color:red; font-size:13px;"></span>
-
+            <input type="text" name='Kategorie_4' id="Kategorie_4" placeholder='#' />
+            <br><span id="Kategorie_4_err" class="hideErrors" style="color:red; font-size:13px;"></span>
            </td>
            <td>
-            <input type="text" name='Kategorie_Name' id="Kategorie_Name" placeholder='#' />
-            <br><span id="Kategorie_Name_err" style="color:red; font-size:13px;"></span>
-
+            <input type="text" name='Kategorie_5' id="Kategorie_5" placeholder='#' />
+            <br><span id="Kategorie_5_err" class="hideErrors" style="color:red; font-size:13px;"></span>
            </td>
 
 
            <td>
-
-            <input type="text" accept=".jpg,.jpeg,.png" name='Kategorie_Beschreibung' id="Kategorie_Beschreibung"
-             placeholder='#' />
-            <br><span id="Kategorie_Beschreibung_err" style="color:red;  font-size:13px;"></span>
-
+            <input type="text" name='Kategorie_6' id="Kategorie_6" placeholder='#' />
+            <br><span id="Kategorie_6_err" class="hideErrors" style="color:red; font-size:13px;"></span>
            </td>
            <!-- <td>
 
@@ -326,7 +312,7 @@
            </td> -->
 
            <td>
-            <button class="btn" type="button">Zurücksetzen</button>
+            <button class="btn" type="reset">Zurücksetzen</button>
            </td>
          </tbody>
         </table>
@@ -389,104 +375,67 @@
       getSpecificProductCategory('categorie_1', 'Kategorie_1', '%', '%', 'htmlBlank_1');
     });
 
-  $('#saveButton').click(function(e) {
-   e.preventDefault(); // Prevent the form from submitting normally
-   $('#success_msg').text('');
-   $('#Kategorie_Nr_err').text('');
-   $('#Kategorie_datum_err').text('');
-   $('#Kategorie_Name_err').text('');
-   $('#Kategorie_Beschreibung_err').text('');
+    $('#saveButton').click(function(e) {
+    e.preventDefault(); // Prevent the form from submitting normally
+    $('.hideErrors').text('');
+
+    // Create a FormData object and append form data to it
+    var formData = new FormData(document.getElementById('signupForm'));
+
+    // Log FormData object to the console (for debugging purposes)
+    // console.log("FormData:", formData);
 
 
 
+    var token = localStorage.getItem('authToken');
+    console.log(token);
 
-   // Create a FormData object and append form data to it
-   var formData = new FormData(document.getElementById('signupForm'));
-
-   // Log FormData object to the console (for debugging purposes)
-   // console.log("FormData:", formData);
-
-
-
-   var token = localStorage.getItem('authToken');
-   console.log(token);
-
-   // Check if the token exists
-   if (!token) {
-    console.error('Token not found in localStorage');
-    window.location.href = '/api/home';
-    // return;
-   }
+    // Check if the token exists
+    if (!token) {
+      console.error('Token not found in localStorage');
+      window.location.href = '/api/home';
+      // return;
+    }
 
 
 
-   // Make AJAX request
-   $.ajax({
-    type: 'POST',
-    url: '/api/addCategoriesApi',
-    data: formData,
-    contentType: false,
-    processData: false,
-    headers: {
-     'Authorization': 'Bearer ' + token,
-    },
-    success: function(response) {
-     // Handle success response
-     if (response.success) {
-      console.log(response.success);
-      // $('#AddOffersForm')[0].reset();
-      $('#success_msg').text(response.success);
-      $('#signupForm')[0].reset();
-     } else if (response.errors) {
-      // Display validation errors in the console
-      console.log(response.errors);
-      displayValidationErrors(response.errors);
+    // Make AJAX request
+    $.ajax({
+      type: 'POST',
+      url: '/api/addCategoriesApi',
+      data: formData,
+      contentType: false,
+      processData: false,
+      headers: {
+      'Authorization': 'Bearer ' + token,
+      },
+      success: function(response) {
+      // Handle success response
+      if (response.success) {
+        console.log(response.success);
+        // $('#AddOffersForm')[0].reset();
+        $('#success_msg').text(response.success);
+        $('#signupForm')[0].reset();
+      } else if (response.errors) {
+        // Display validation errors in the console
+        console.log(response.errors);
+        displayValidationErrors(response.errors);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.log(response.error);
+      }
+    });
 
-
-      // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
-
-      // You can also update your HTML to show errors in a specific element
-      // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
-     }
-    },
-    error: function(xhr, status, error) {
-     // Handle error response
-     var errors = xhr.responseJSON.errors;
-     if (errors) {
+    function displayValidationErrors(errors) {
       // Display errors in your frontend
-      // For example, you can loop through errors and append them to a specific element
-      $.each(errors, function(field, messages) {
-       // Append error messages to your HTML
-       $('#' + field + '-error').text(messages[0]);
-      });
-     }
-    }
-   });
-
-   function displayValidationErrors(errors) {
-    // Display validation errors next to the respective form fields
-    if (errors.Kategorie_Name) {
-     $('#Kategorie_Name_err').text(errors.Kategorie_Name[0]);
-    }
-    if (errors.Ihre_Kundennummer) {
-     $('#Ihre_Kundennummer_err').text(errors.Ihre_Kundennummer[0]);
-    }
-    if (errors['inputs.0.Produkt']) {
-     $('#Produkt_err').text('Produkt is Required');
-    }
-    if (errors['inputs.0.Beschreibung']) {
-     $('#Beschreibung_err').text('Beschreibung is Required');
-    }
-    if (errors['inputs.0.Einheit']) {
-     $('#Einheit_err').text('Einheit Is Required');
-    }
-    if (errors['inputs.0.Einzelpreis']) {
-     $('#Einzelpreis_err').text('Einzelpreis is Required');
-    }
-
-
-   }
-  });
+        // For example, you can loop through errors and append them to a specific element
+        $.each(errors, function(field, messages) {
+        // Append error messages to your HTML
+        $('#' + field + '_err').text(messages[0]);
+        });
+      }
+    });
 
   
   // function for fetch Specific Category

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProductCategory;
+use App\Models\CategorieStatic;
 
 class categoriesController extends Controller
 {
@@ -76,33 +77,48 @@ class categoriesController extends Controller
 
         $validator = Validator::make($request->all(), [
             'Kategorie_Nr' => 'required|string',
-            'Kategorie_datum' => 'nullable|date',
-            'Kategorie_Name' => 'required|string|max:50',
-            'Kategorie_Beschreibung' => 'nullable|string',
-            // 'imageFile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20',
+            'Kategorie_1' => 'required|string',
+            'Kategorie_2' => 'required|string',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
         }
 
-        // Handle image upload
-        // $imagePath = null;
-        // if ($request->hasFile('imageFile')) {
-        //     $image = $request->file('imageFile');
-        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+        if($request->input('Kategorie_3')==null){
 
-        //     $imagePath = $request->file('imageFile')->storeAs('category_icons', $imageName, 'public');
-        // }   
+            $validator = Validator::make($request->all(), [
+                'Kategorie_4' => 'required|string',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()]);
+            }
 
-        // Create new ProductCategory instance
-        $category = new ProductCategory([
-            'Kategorie_Nr' => $request->input('Kategorie_Nr'),
-            'Kategorie_datum' => $request->input('Kategorie_datum'),
-            'Kategorie_Name' => $request->input('Kategorie_Name'),
-            'Kategorie_Beschreibung' => $request->input('Kategorie_Beschreibung'),
-            // 'imageFile' => $imagePath,
-        ]);
+            // Create new ProductCategory instance
+            $category = new ProductCategory([
+                'Kategorie_Nr' => $request->input('Kategorie_Nr'),
+                'Kategorie_1' => $request->input('Kategorie_1'),
+                'Kategorie_2' => $request->input('Kategorie_2'),
+                'Kategorie_3' => $request->input('Kategorie_4'),
+                'Kategorie_4' => $request->input('Kategorie_5'),
+                'Kategorie_5' => $request->input('Kategorie_6'),
+            ]);
+        }
+        else {
+            
+            // Create new ProductCategory instance
+            $category = new ProductCategory([
+                'Kategorie_Nr' => $request->input('Kategorie_Nr'),
+                'Kategorie_1' => $request->input('Kategorie_1'),
+                'Kategorie_2' => $request->input('Kategorie_2'),
+                'Kategorie_3' => $request->input('Kategorie_3'),
+                'Kategorie_4' => $request->input('Kategorie_4'),
+                'Kategorie_5' => $request->input('Kategorie_5'),
+                'Kategorie_6' => $request->input('Kategorie_6'),
+            ]);
+        }
+
 
         // Save the category to the database
         $category->save();
@@ -114,7 +130,7 @@ class categoriesController extends Controller
 
     public function deleteCategory($Kategorie_Nr)
     {
-        $productCategory = ProductCategory::where('Kategorie_Nr', $Kategorie_Nr)->first();
+        $productCategory = ProductCategory::where('id', $Kategorie_Nr)->first();
     
         // Check if the product category exists
         if ($productCategory) {
@@ -130,5 +146,21 @@ class categoriesController extends Controller
         }
     }
     
+    
+
+    // function for fetch all product category
+    public function getProductCategory(Request $request){
+
+        // dd($request->all());
+        // $allProducts = ProductCategory::where('status', 'ACTIVE')->get();
+
+        $allProducts = CategorieStatic::get()->unique($request->selectColumn);
+        if ($request->value !='%') {
+            $allProducts = $allProducts->where($request->matchColumn, $request->value);
+        }
+        
+        // dd($allProducts);
+        return response()->json(['allProductsCat' => $allProducts]);
+    }
     
 }
