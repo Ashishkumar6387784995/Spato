@@ -305,8 +305,8 @@
   }
 
   .product {
-   width: 300px;
-   height:400px;
+   width: 250px;
+   height:300px;
    background-color: #fff;
    display: flex;
    flex-direction: column;
@@ -449,8 +449,6 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
       <div class="product">
        <div class="img">
@@ -466,8 +464,6 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
 
 
@@ -491,8 +487,6 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
       <div class="product">
        <div class="img">
@@ -508,8 +502,6 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
 
 
@@ -533,8 +525,6 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
       <div class="product">
        <div class="img">
@@ -550,8 +540,6 @@
          statt - 42,50€ <span class="price">25,30€</span>
         </p>
        </div>
-       <a href="#" class="addToCartButton cart-btn" data-product-id="" data-quantity="1"
-        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN WARENKORB</a>
       </div>
 
 
