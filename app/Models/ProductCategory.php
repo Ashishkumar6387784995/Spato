@@ -13,9 +13,11 @@ class ProductCategory extends Model
 
     protected $fillable = [
         'Kategorie_Nr',
-        'Kategorie_datum',
-        'Kategorie_Name',
-        'Kategorie_Beschreibung',
-        'imageFile',
+        'Kategorie_1',
+        'Kategorie_2',
+        'Kategorie_3',
+        'Kategorie_4',
+        'Kategorie_5',
+        'Kategorie_6',
     ];
 }

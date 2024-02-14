@@ -162,11 +162,13 @@
           <table id="dataTable">
             <tr>
               <th>Id</th>
-
-              <th>Name</th>
-              <th>Datum</th>
-              <th>Beschreibung</th>
-              <th></th>
+              <th>Kategorie 1</th>
+              <th>Kategorie 2</th>
+              <th>Kategorie 3</th>
+              <th>Kategorie 4</th>
+              <th>Kategorie 5</th>
+              <th>Kategorie 6</th>
+              {{--<th></th>--}}
               <th></th>
               <!-- <img src="{{ asset('storage/category_icons/1704977563.png') }}" width="120px" hight="120px" alt=""> -->
               <!-- <img src="{{ asset('storage/category_icons/1704977563.png') }}" alt="Image"> -->
@@ -228,18 +230,17 @@
               $.each(dataList, function(index, item) {
                 var row = $('<tr>');
 
-                row.append(`<td>${item.Kategorie_Nr}</td>`);
-                row.append(`<td>${item.Kategorie_Name}</td>`);
-                row.append(`<td>${item.Kategorie_datum}</td>`);
+                row.append(`<td id="${item.id}">${item.id}</td>`);
+                row.append(`<td>${item.Kategorie_1}</td>`);
+                row.append(`<td>${item.Kategorie_2}</td>`);
+                row.append(`<td>${item.Kategorie_3}</td>`);
+                row.append(`<td>${item.Kategorie_4??''}</td>`);
+                row.append(`<td>${item.Kategorie_5??''}</td>`);
+                row.append(`<td>${item.Kategorie_6??''}</td>`);
 
+                // row.append(`<td><a href="/api/editCategory/${item.id}" class="btn" id="editProductBtn">bearbeiten</a></td>`);
 
-                row.append(`<td>${item.Kategorie_Beschreibung}</td>`);
-
-                row.append('<td><img src="{{ asset("storage/") }}' + '/' + item.imageFile + '" alt="Image" style="height:80px;"></td>');
-
-                row.append(`<td><a href="/api/editCategory/${item.id}" class="btn" id="editProductBtn">bearbeiten</a></td>`);
-
-                row.append(`<td><button type="button" class="btn-del" id="deleteButton">Löschen</button></td>`);
+                row.append(`<td><button type="button" class="btn-del deleteButton">Löschen</button></td>`);
 
 
                 // Add more columns as needed
@@ -267,12 +268,13 @@
       });
 
 
-      $(document).on('click', '#deleteButton', function() {
-
+      $(document).on('click', '.deleteButton', function() {
         // Get the ID or any other data you need from the row
-        var categoryId = $(this).closest('tr').find('td:first').text(); // Assuming ID is in the first column
+        var btn = jQuery(this);
+        var categoryId = btn.closest('tr').find('td:first').text(); // Assuming ID is in the first column
         // console.log(categoryId);
         // Perform the AJAX request
+        
         $.ajax({
           url: '/api/deleteCategory/' + categoryId, // Replace with your actual endpoint URL
           method: 'POST',
@@ -282,14 +284,13 @@
           success: function(response) {
             // Handle success response
             if(response.success){
-
-            $('#success_msg').text(response.success);
-
-            // Delay the page reload for 2 seconds (2000 milliseconds)
-            setTimeout(function() {
-              location.reload(true);
-            }, 1000);
-          }
+              btn.closest('td').html('<span class="f-status" style="color:#02B222;">Deleted </span> <i style="color:#02B222;" class="fa-solid fa-check"></i>');
+              
+              // Delay the page reload for 2 seconds (2000 milliseconds)
+              setTimeout(function() {
+                jQuery('#'+categoryId).closest('tr').remove();
+              }, 1500);
+            }
           },
           error: function(xhr, status, error) {
             // Handle error response
@@ -297,9 +298,6 @@
           }
         });
       });
-
-
-
     });
   </script>
 
