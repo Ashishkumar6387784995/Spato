@@ -286,7 +286,7 @@
           <p>Name der Firma</p>
          </div>
          <div class="inputs"> 
-         <p><input class="dynamic-field" type="text" placeholder='#' id="customer_email" name="customer_email" />
+         <p><input class="dynamic-field" type="text" placeholder='#' id="companyName" name="companyName" />
           </p>
           <br>
           <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
