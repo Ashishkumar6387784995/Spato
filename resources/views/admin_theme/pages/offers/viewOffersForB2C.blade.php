@@ -368,6 +368,10 @@
     justify-content: center;
    }
 
+   .agb-container .container{
+    display:block !important;
+   }
+
   }
   /* Products Card ends*/
   </style>
@@ -591,7 +595,7 @@
         </p>
        </div>
       </div>
-      
+
 
 
      </div>           
