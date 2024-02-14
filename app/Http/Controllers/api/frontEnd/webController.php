@@ -36,7 +36,7 @@ class webController extends Controller
             ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
             ->orderby('created_at', 'DESC')->take(10)
             ->get();
-        
+
         // Fetch the complete details of the all products
         $allProduct = Product::select()
             ->take(10)->get();
@@ -80,7 +80,7 @@ class webController extends Controller
     public function getCountOfThisProductApi(Request $request)
     {
         $guestToken = $request->header('guest-token', Str::uuid());
-        $countProductInCard = Cart::where('guest_token', $guestToken)->where('product_id', $request->product_id)->first()->quantity??1;
+        $countProductInCard = Cart::where('guest_token', $guestToken)->where('product_id', $request->product_id)->first()->quantity ?? 1;
         return response()->json(['message' => $countProductInCard]);
     }
 
@@ -127,7 +127,7 @@ class webController extends Controller
 
     // Function for get user details by his id
     public function profileViewByIdApi($id)
-    {   
+    {
         $user = User::where('id', $id)->first();
         if ($user) {
             $userJoin = DB::table('users')
@@ -142,79 +142,58 @@ class webController extends Controller
             // dd($user);
             return response()->json(['status' => '1', 'user' => $user]);
         }
-        return response()->json(['errors'=>"Customer Not Found"]);
+        return response()->json(['errors' => "Customer Not Found"]);
     }
+
 
 
     public function addPermanentProfileApi(Request $request)
     {
-        $userId = Auth::guard('api')->user()->id;
+        $user = Auth::guard('api')->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated.'],);
+        }
 
-        // Find the user by user_id
-        $userProfile = UserProfile::where('user_id', $userId)
-        ->where('status', 'Permanent')
-        ->first();
+        $userId = $user->id;
 
-        // If user exists, update the details; otherwise, create a new record
+        // Validation
+        $validator = $this->validateUserProfile($request);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], );
+        }
+
+        $data = [
+            'name' => $request->input('RepeatuserName'),
+            'email' => $request->input('userEmail'),
+            'mobile' => $request->input('mobile'),
+            'permanent_address' => $request->input('permanentAddress'),
+            'city' => $request->input('City'),
+            'zipCode' => $request->input('zipCode'),
+            'country' => $request->input('country'),
+            'status' => 'Permanent',
+        ];
+
+        if ($request->hasFile('imageUpload')) {
+            $uploadedImage = $request->file('imageUpload');
+            $fileName = $uploadedImage->getClientOriginalName();
+            $imagePath = $uploadedImage->storeAs('profile_pictures', $fileName, 'public');
+            $data['profile_picture'] = $imagePath;
+        }
+
+        $userProfile = UserProfile::where('user_id', $userId)->where('status', 'Permanent')->first();
         if ($userProfile) {
-            // User exists, update the details
-            $validator = Validator::make($request->all(), [
-                'RepeatuserName' => 'required|string',
-                'userEmail' => 'required|email',
-                'mobile' => 'required|string',
-                'permanentAddress' => 'required|string',
-                'City' => 'required|string',
-                'zipCode' => 'required|string|max:10',
-                'country' => 'required|string',
-                'imageUpload' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()]);
-            }
-
-            if ($request->hasFile('imageUpload')) {
-                $uploadedImage = $request->file('imageUpload');
-
-                // Use a unique filename to prevent overwriting existing files
-                $fileName = uniqid() . '_' . $uploadedImage->getClientOriginalName();
-
-                // Store the file in the 'public/profile_pictures' directory
-                $imagePath = $uploadedImage->storeAs('profile_pictures', $fileName, 'public');
-
-                // Update the user profile with the new details and profile picture
-                $userProfile->update([
-                    'name' => $request->input('RepeatuserName'),
-                    'email' => $request->input('userEmail'),
-                    'mobile' => $request->input('mobile'),
-                    'permanent_address' => $request->input('permanentAddress'),
-                    'city' => $request->input('City'),
-                    'zipCode' => $request->input('zipCode'),
-                    'country' => $request->input('country'),
-                    'status' => 'Permanent',
-                    'profile_picture' => $imagePath ?? null,
-                ]);
-
-                return response()->json(['success' => 'User profile updated successfully']);
-            }
-
-            // If no image is uploaded, update the user profile without changing the existing profile picture
-            $userProfile->update([
-                'name' => $request->input('RepeatuserName'),
-                'email' => $request->input('userEmail'),
-                'mobile' => $request->input('mobile'),
-                'permanent_address' => $request->input('permanentAddress'),
-                'city' => $request->input('City'),
-                'zipCode' => $request->input('zipCode'),
-                'country' => $request->input('country'),
-                'status' => 'Permanent',
-            ]);
-
+            $userProfile->update($data);
             return response()->json(['success' => 'User profile updated successfully']);
         }
 
-        // User not found, create a new record
-        $validator = Validator::make($request->all(), [
+        $data['user_id'] = $userId;
+        UserProfile::create($data);
+        return response()->json(['success' => 'User profile created successfully']);
+    }
+
+    private function validateUserProfile($request)
+    {
+        return Validator::make($request->all(), [
             'RepeatuserName' => 'required|string',
             'userEmail' => 'required|email',
             'mobile' => 'required|string',
@@ -224,36 +203,6 @@ class webController extends Controller
             'country' => 'required|string',
             'imageUpload' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()]);
-        }
-
-        if ($request->hasFile('imageUpload')) {
-            $uploadedImage = $request->file('imageUpload');
-
-            // Use a unique filename to prevent overwriting existing files
-            $fileName = uniqid() . '_' . $uploadedImage->getClientOriginalName();
-
-            // Store the file in the 'public/profile_pictures' directory
-            $imagePath = $uploadedImage->storeAs('profile_pictures', $fileName, 'public');
-        }
-
-        // Create a new user profile
-        UserProfile::create([
-            'name' => $request->input('RepeatuserName'),
-            'email' => $request->input('userEmail'),
-            'mobile' => $request->input('mobile'),
-            'permanent_address' => $request->input('permanentAddress'),
-            'city' => $request->input('City'),
-            'zipCode' => $request->input('zipCode'),
-            'country' => $request->input('country'),
-            'user_id' => $userId,
-            'status' => 'Permanent',
-            'profile_picture' => $imagePath ?? null,
-        ]);
-
-        return response()->json(['success' => 'User profile created successfully']);
     }
 
 
@@ -345,7 +294,8 @@ class webController extends Controller
         }
     }
 
-    public function tempAddressDelete($id){
+    public function tempAddressDelete($id)
+    {
 
 
 
@@ -359,6 +309,5 @@ class webController extends Controller
         }
 
         return response()->json(['message' => 'Address not found']);
-
     }
 }

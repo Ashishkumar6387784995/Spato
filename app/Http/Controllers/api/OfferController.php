@@ -176,7 +176,7 @@ class OfferController extends Controller
         }
     }
 
-
+    
     public function sendOfferMailsToB2C(Request $request)
     {
 
