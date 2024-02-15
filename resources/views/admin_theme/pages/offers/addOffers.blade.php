@@ -153,6 +153,14 @@
     width: 170px;
    }
   }
+
+  #guessCompanyName{
+    max-height: 110px;
+    overflow: auto;
+    /* overflow-x: hidden;
+    overflow-y: scroll; */
+    
+  }
   </style>
  </head>
 
@@ -286,8 +294,13 @@
           <p>Name der Firma</p>
          </div>
          <div class="inputs"> 
-         <p><input class="dynamic-field" type="text" placeholder='#' id="companyName" name="companyName" />
-          </p>
+          <p><input class="dynamic-field" type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction()"></p>
+          
+          <div id="guessCompanyName">
+            <ul>
+
+            </ul>
+            </div>
           <br>
           <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
 
@@ -921,7 +934,55 @@
 
   });
 
-  // console.log("Selected item value:", $(this).val());
+  // fetch B2C User Details by company name
+  function guessCompanyNameFunction() {
+    var baseUrl = window.location.origin;
+    var companyName = jQuery('#companyName').val();
+    if (companyName=='') {
+      $('#guessCompanyName ul').empty();
+    }
+    
+    $("#customer_email").val('');
+    $("#customer_Email").text('');
+    $("#customer_Contact").text('');
+    $("#customer_Name").text('');
+    $.ajax({
+      type: 'get',
+      url: baseUrl + '/api/selectedB2CUserDetailsByCompanyName/' + companyName,
+      dataType: 'json',
+      success: function(response) {
+        // Handle success response
+        if (response.success) {
+
+          console.log(response.success);
+          console.log(response.guessCompanyName);
+
+          
+          var nameList = $('#guessCompanyName ul');
+          nameList.empty();
+          response.guessCompanyName.forEach(function(item, index) {
+            // Create a new product element for each cart item
+            nameList.append('<li class="liCompanyName">'+ item.company_name +'</li>');
+          });
+
+          $("#customer_email").val(response.success[0].email);
+          $("#customer_Email").text(response.success[0].email);
+          $("#customer_Contact").text(response.success[0].mobile);
+          $("#customer_Name").text(response.success[0].name);
+          nameList.empty();
+          // Dynamically set the loop limit based on the array length
+        }
+      },
+    });
+  };
+
+  // function for set li test in companyName input feild
+    $(document).on('click', '.liCompanyName', function() {
+      var clickedCompanyName = jQuery(this).text();
+      // alert(clickedCompanyName);
+      jQuery('#companyName').val(clickedCompanyName).trigger("keyup");
+      jQuery('#guessCompanyName ul').empty();
+    });
   </script>
 
 

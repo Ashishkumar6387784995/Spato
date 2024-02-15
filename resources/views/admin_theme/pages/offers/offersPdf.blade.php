@@ -80,7 +80,10 @@
 <body>
 
     <div class="brand-logo">
+<<<<<<< HEAD
 
+=======
+>>>>>>> a57c8cb7812ce0254d4cd6eb82ea997026bab657
         <img class="logo" src="{{ url('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
     </div>
     <div class="desc">

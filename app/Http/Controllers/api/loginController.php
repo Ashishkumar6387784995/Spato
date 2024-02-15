@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Mews\Captcha\Facades\Captcha;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\UserProfile;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -281,6 +282,23 @@ class loginController extends Controller
         // dd($users);
 
         return response()->json([ 'success' => $users]);
+
+    }
+
+    // 
+    public function selectedB2CUserDetailsByCompanyName($companyName){
+
+        // $users = UserProfile::where('company_name', $companyName)->get();
+        $guessCompanyName = UserProfile::where('company_name', 'LIKE', '%'.$companyName.'%')->get();
+        $users = user::select('users.*', 'user_profiles.company_name', 'user_profiles.user_id')
+            ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+            ->where('user_profiles.company_name', $companyName)
+            ->orderby('user_profiles.company_name', 'ASC')
+            ->get();
+        // dd($users);
+
+
+        return response()->json([ 'success' => $users, 'guessCompanyName'=>$guessCompanyName]);
 
     }
 

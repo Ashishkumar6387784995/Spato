@@ -29,29 +29,36 @@ class AssignmentController extends Controller
 
     public function addAssignment($role){
      
-         // $lastOffer = "AB-123456";
-         $lastOffer = Assignments_list::latest()->first();
-         $lastOffer= $lastOffer->Auftrags_Nr;
-        // Assuming $lastOffer is 'AN-12345'
-        // $lastOffer = 'AN-12345';
+        // $lastOffer = "AB-123456";
+        $lastOffer = Assignments_list::latest()->first();
+
+        if ($lastOffer) {
+            
+            $lastOffer= $lastOffer->Auftrags_Nr;
+            // Assuming $lastOffer is 'AB-12345'
+            // $lastOffer = 'AB-12345';
 
 
-  
-            // Split the string into an array based on the dash
-            $parts = explode('-', $lastOffer);
-            $parts= $parts[1];
-        
-         
- 
-   
-        // Increment the numeric part
-        $newNumericPart = $parts + 1;
+    
+                // Split the string into an array based on the dash
+                $parts = explode('-', $lastOffer);
+                $parts= $parts[1];
+            
+            
+    
+    
+            // Increment the numeric part
+            $newNumericPart = $parts + 1;
 
-        // Create the new offerNo
-        $newAssignmentNo = 'AN-' . $newNumericPart;
-        // echo $newOfferNo;
+            // Create the new offerNo
+            $newAssignmentNo = 'AB-' . $newNumericPart;
+            // echo $newOfferNo;
 
-        // $newOfferNo will be 'AN-12346'
+            // $newOfferNo will be 'AB-12346'
+        }
+        else {
+            $newAssignmentNo = 'AB-12345';
+        }
 
 
         return view('admin_theme/pages/assignments/addAssignments')->with(compact('newAssignmentNo','role'));

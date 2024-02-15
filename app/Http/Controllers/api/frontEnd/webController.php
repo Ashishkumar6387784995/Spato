@@ -170,6 +170,7 @@ class webController extends Controller
             'city' => $request->input('City'),
             'zipCode' => $request->input('zipCode'),
             'country' => $request->input('country'),
+            'vat_number' => $request->input('vat_number'),
             'status' => 'Permanent',
         ];
 
@@ -245,7 +246,7 @@ class webController extends Controller
     public function saveTempAddressApi(Request $request)
     {
 
-
+       
         $userId = Auth::guard('api')->user()->id;
 
         // return response()->json(['success' => $userId]);
@@ -261,6 +262,7 @@ class webController extends Controller
         }
 
         $userProfile = UserProfile::create([
+            'company_name' => $request->input('tempCompanyname'),
             'permanent_address' => $request->input('tempAddress'),
             'city' => $request->input('tempCity'),
             'zipCode' => $request->input('tempZip'),

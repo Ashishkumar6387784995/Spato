@@ -501,7 +501,7 @@
           </tr>
           <tr>
             <td>Vat Number</td>
-            <td><input type="text" placeholder="Include Vat Number (Optional)" class="form-control" name="vat-number" id="vat-number"></td>
+            <td><input type="text" placeholder="Include Vat Number (Optional)" class="form-control" name="vat_number" id="vat_number"></td>
           </tr>
           <tr>
            <td><button type="submit" class="profile-btn" id="pAddressSubmit">Submit</button></td>
@@ -711,7 +711,7 @@
 
        <div class="input-group mb-5">
         <label for="Company name">Company Name</label>
-        <input type="text" class="form-control" name="tempCompanyname" placeholder="Company Name" aria-label="Company Name"
+        <input type="text" class="form-control" name="tempCompanyname"  placeholder="Company Name" aria-label="Company Name"
          aria-describedby="basic-addon1" />
        </div>
        <div class="input-group mb-3">
@@ -1236,6 +1236,7 @@
      } else if (response.permanent && response.temp) {
       // Display validation errors in the console
 
+  
       var permanentAddress = response.permanent[0].permanent_address;
       var zipCode = response.permanent[0].zipCode;
       var country = response.permanent[0].country;
@@ -1256,9 +1257,17 @@
        var newRow = $('<tr>');
 
        // Create a cell for the temporary address
-       var addressCell = $('<td>').html('<p id="tAddressShow">' + tempAddress.permanent_address + ', ' +
+       var addressCell;
+if (tempAddress.company_name) {
+    addressCell = $('<td>').html('<p id="tAddressShow"><b>' + tempAddress.company_name + '</b>,<br>' + tempAddress.permanent_address + ', ' +
         tempAddress.zipCode +
         ', ' + tempAddress.country + '</p>');
+} else {
+    addressCell = $('<td>').html('<p id="tAddressShow">' + tempAddress.permanent_address + ', ' +
+        tempAddress.zipCode +
+        ', ' + tempAddress.country + '</p>');
+}
+
 
        // Assuming 'deleteUrl' is the URL for the delete action
        var deleteUrl = '/api/tempAddressDelete/' + tempAddress.id; // Replace with the actual URL

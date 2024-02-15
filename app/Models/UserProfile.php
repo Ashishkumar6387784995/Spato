@@ -18,7 +18,9 @@ class UserProfile extends Model
         'country',
         'profile_picture',
         'user_id',
-        'status'
+        'status',
+        'company_name',
+        'vat_number'
     ];
     protected $table= 'user_profiles';
 
