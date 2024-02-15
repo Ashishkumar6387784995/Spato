@@ -170,7 +170,7 @@
         <a href="#" class="btn">Lieferschein</a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
-        <a href="#" class="btn">Rechnung</a>
+        <a href="{{url('api/OffersPdfdownload/'.$newAssignmentNo)}}"><button class="btn" type="button">Rechnung</button></a>
        </div>
        <div class="col-md-2 stretch-card grid-margin">
         <a href="#" class="btn">senden</a>
