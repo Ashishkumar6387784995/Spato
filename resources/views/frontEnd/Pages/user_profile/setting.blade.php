@@ -706,20 +706,23 @@
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <div id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1.5rem;"></div>
+       <div class="hideErrors" id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1.5rem;"></div>
 
 
        <div class="input-group mb-5">
         <label for="Company name">Company Name</label>
-        <input type="text" class="form-control" name="tempCompanyname"  placeholder="Company Name" aria-label="Company Name"
+        <input type="text" class="form-control" name="company_name"  placeholder="Company Name" aria-label="Company Name"
          aria-describedby="basic-addon1" />
+        <div style="text-align:right; width:100%;">
+        <span class="hideErrors" id="company_name_err" style="color:red"></span>
+        </div>
        </div>
        <div class="input-group mb-3">
         <label for="Address">Address</label>
         <input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address"
          aria-describedby="basic-addon1" />
         <div style="text-align:right; width:100%;">
-         <span id="tempAddress_err" style="color:red"></span>
+         <span class="hideErrors" id="tempAddress_err" style="color:red"></span>
         </div>
        </div>
        <div class="input-group mb-3">
@@ -727,7 +730,7 @@
         <input type="text" class="form-control" name="tempCity" placeholder="City" aria-label="City"
          aria-describedby="basic-addon1" />
         <div style="text-align:right; width:100%;">
-         <span id="tempCity_err" style="color:red; text-align:right;"></span>
+         <span class="hideErrors" id="tempCity_err" style="color:red; text-align:right;"></span>
         </div>
        </div>
 
@@ -737,7 +740,7 @@
         <input type="text" class="form-control" name="tempZip" placeholder="Zip Code" aria-label="Zip code"
          aria-describedby="basic-addon1" />
         <div style="text-align:right; width:100%;">
-         <span id="tempZip_err" style="color:red"></span>
+         <span class="hideErrors" id="tempZip_err" style="color:red"></span>
         </div>
        </div>
 
@@ -1026,10 +1029,7 @@
   $('#saveTempAddress').click(function(e) {
    // Your code here
    e.preventDefault(); // Prevent the form from submitting normally
-
-   $('#tempZip_err').text('');
-   $('#tempCity_err').text('');
-   $('#tempAddress_err').text('');
+   $('.hideErrors').text('');
 
    var token = localStorage.getItem('authToken');
    console.log(token);
@@ -1069,6 +1069,10 @@
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);
+
+      if (response.errors['company_name']) {
+       $('#company_name_err').text(response.errors['company_name']);
+      }
 
       if (response.errors['tempAddress']) {
        $('#tempAddress_err').text(response.errors['tempAddress']);

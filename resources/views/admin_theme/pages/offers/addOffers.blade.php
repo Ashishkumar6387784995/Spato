@@ -1001,6 +1001,7 @@
     var companyName = jQuery('#companyName').val();
     if (companyName=='') {
       $('#guessCompanyName ul').empty();
+      return false;
     }
     
     $("#customer_email").val('');
