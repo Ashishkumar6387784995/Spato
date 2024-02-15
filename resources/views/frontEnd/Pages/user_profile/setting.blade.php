@@ -1288,7 +1288,7 @@ if (tempAddress.company_name) {
        // Add a click event handler to the delete link using a closure to capture 'deleteUrl'
        deleteCell.find('.delete-link').on('click', function(event) {
         event.preventDefault(); // Prevent the default behavior of the anchor tag
-
+        var btn = jQuery(this);
         var token = localStorage.getItem('authToken');
         console.log(token);
 
@@ -1309,6 +1309,7 @@ if (tempAddress.company_name) {
           // Handle success response
           console.log('Delete request successful:', response.message);
           $('#tempAddrssDelete_msg').text(response.message);
+          btn.closest('tr').remove();
           // setTimeout(function() {
           //   location.reload(true); // true forces a reload from the server and not the cache
           // }, 1000);
