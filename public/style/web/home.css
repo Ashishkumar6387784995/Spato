@@ -453,6 +453,17 @@ form .btn-style:hover {
     font-weight: 600;
     font-family: "Source Sans 3", sans-serif;
 }
+
+.sidebar .offcanvas-body .products-list .products .fa-circle-xmark {
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.sidebar .offcanvas-body .products-list .products .fa-circle-xmark:hover {
+    color: rgb(255, 0, 0);
+    font-weight: 900;
+}
+
 .sidebar .total {
     display: flex;
     justify-content: space-between;

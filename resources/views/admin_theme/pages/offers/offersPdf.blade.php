@@ -81,7 +81,7 @@
 
     <div class="brand-logo">
 
-        <img class="logo" src="{{ public_path('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
+        <img class="logo" src="{{ url('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
     </div>
     <div class="desc">
         <p>SPATO GmbH - Schellberger Weg 34 - 42659 DE - Solingen</p>
