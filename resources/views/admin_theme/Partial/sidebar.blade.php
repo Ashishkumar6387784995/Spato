@@ -1,44 +1,44 @@
 <style>
-.img img {
- width: 200px;
- margin: auto;
- justify-content: center;
- display: block;
- padding-bottom: 2rem;
- border-bottom: 2px solid #44e1d5;
-}
+   .img img {
+      width: 200px;
+      margin: auto;
+      justify-content: center;
+      display: block;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid #44e1d5;
+   }
 
-.nav-item button {
- padding: 5px 15px;
- /* border:none; */
- border: 1px solid #44e1d5;
- background: transparent;
- color: #44e1d5;
- border-radius: 5px;
- font-weight: 800;
- box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
- transition: 0.5s;
- width: 100%;
- margin-top: 1rem;
-}
+   .nav-item button {
+      padding: 5px 15px;
+      /* border:none; */
+      border: 1px solid #44e1d5;
+      background: transparent;
+      color: #44e1d5;
+      border-radius: 5px;
+      font-weight: 800;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      transition: 0.5s;
+      width: 100%;
+      margin-top: 1rem;
+   }
 
-.nav-item button:hover {
- background-color: #44e1d5;
- color: #404040;
- box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+   .nav-item button:hover {
+      background-color: #44e1d5;
+      color: #404040;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   }
 
 
-.nav-link.active {
- background-color: #007bff;
- /* Change the color as needed */
- color: #ffffff;
- /* Change the text color as needed */
-}
+   .nav-link.active {
+      background-color: #007bff;
+      /* Change the color as needed */
+      color: #ffffff;
+      /* Change the text color as needed */
+   }
 </style>
 
 <nav class="sidebar sidebar-offcanvas">
- <ul class="nav">
+   <ul class="nav">
 
 
 
@@ -46,145 +46,229 @@
 
 
 
-  <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img
-     src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset=""></a></span>
-
-
-  <li class="nav-item">
-
-   <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Angebote</span>
-   </a>
-
-  </li>
+      <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset=""></a></span>
 
 
 
-  <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Aufträge</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Lieferscheine</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Rechnungen</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Gutschriften</span>
-   </a>
-  </li>
-  <li class="nav-item">
-
-   <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Claim Manager</span>
-   </a>
-
-  </li>
 
 
-  @if($role=="b2b")
+      @if($role=="b2b")
 
-  <li class="nav-item">
-   <a class="nav-link" href="{{ url('/api/creditsListing1/'.$role) }}" onclick="markVisited(this)">
-    <span class="menu-title">Kundenadress Buch</span>
-   </a>
-  </li>
-  <li class="nav-item">
-   <div class="border-bottom ">
-    <a class="nav-link" href="{{ url('/api/claimsListing1/'.$role) }}" onclick="markVisited(this)">
-     <span class="menu-title">Einstellungen</span>
-    </a>
-   </div>
-  </li>
+      <li class="nav-item">
 
-  @elseif($role=="supplier")
-  <div id="adminSidebar">
-   <li class="nav-item">
-    <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
-     <span class="menu-title">B2C B2B Connection</span>
-    </a>
-   </li>
-   <li class="nav-item">
-    <div class="border-bottom ">
-     <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
-      <span class="menu-title">Einstellungen</span>
-     </a>
-    </div>
-   </li>
+         <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Angebote</span>
+         </a>
 
-   @elseif($role=="admin")
-   <div id="adminSidebar">
-    <li class="nav-item">
-     <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
-      <span class="menu-title">Kontakte</span>
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="nav-link border-bottom" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
-      <span class="menu-title">Lieferanten</span>
-     </a>
-    </li>
-    
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/couponListing/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Gutscheine</span>
-     </a>
-    </li>
+      </li>
 
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/wareHouseProductList/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Lagerverwaltung</span>
-     </a>
-    </li>
 
-    <li class="nav-item">
-     <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Kundenmanagement</span>
-     </a>
-    </li>
 
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/orderListing/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Auftragsverwaltung</span>
-     </a>
-    </li>
+      <li class="nav-item">
+         <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Aufträge</span>
+         </a>
+      </li>
 
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Produkte Kategorie</span>
-     </a>
-    </li>
 
-    <li class="nav-item">
 
-     <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
+      <li class="nav-item">
+         <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Rechnungen</span>
+         </a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Gutschriften</span>
+         </a>
+      </li>
+      <li class="nav-item">
 
-      <span class="menu-title">Produkte</span>
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Statistik</span>
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="nav-link border-bottom" href="{{url('/api/connection/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">B2C B2B Connection</span>
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Newsletter</span>
-     </a>
-    </li>
-    <!-- <li class="nav-item">
+         <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Claim Manager</span>
+         </a>
+
+      </li>
+
+
+
+      <li class="nav-item">
+         <a class="nav-link" href="{{ url('/api/creditsListing1/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Kundenadress Buch</span>
+         </a>
+      </li>
+      <li class="nav-item">
+         <div class="border-bottom ">
+            <a class="nav-link" href="{{ url('/api/claimsListing1/'.$role) }}" onclick="markVisited(this)">
+               <span class="menu-title">Einstellungen</span>
+            </a>
+         </div>
+      </li>
+
+
+
+      @elseif($role=="supplier")
+
+      <li class="nav-item">
+
+         <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Angebote</span>
+         </a>
+
+      </li>
+
+
+
+      <li class="nav-item">
+         <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Lieferscheine</span>
+         </a>
+      </li>
+
+
+
+      <li class="nav-item">
+
+         <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
+            <span class="menu-title">Claim Manager</span>
+         </a>
+
+      </li>
+
+      <li class="nav-item">
+
+         <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
+
+            <span class="menu-title">Produkte</span>
+         </a>
+      </li>
+
+
+
+      <div id="adminSidebar">
+         <li class="nav-item">
+            <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
+               <span class="menu-title">B2C B2B Connection</span>
+            </a>
+         </li>
+         <li class="nav-item">
+            <div class="border-bottom ">
+               <a class="nav-link" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Einstellungen</span>
+               </a>
+            </div>
+         </li>
+
+         @elseif($role=="admin")
+
+
+         <div id="adminSidebar">
+
+            <li class="nav-item">
+
+               <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Angebote</span>
+               </a>
+
+            </li>
+
+
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Aufträge</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Lieferscheine</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Rechnungen</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Gutschriften</span>
+               </a>
+            </li>
+            <li class="nav-item">
+
+               <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Claim Manager</span>
+               </a>
+
+            </li>
+
+
+            <li class="nav-item">
+               <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Kontakte</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link border-bottom" href="{{ url('/api/SuppliersListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Lieferanten</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/couponListing/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Gutscheine</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/wareHouseProductList/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Lagerverwaltung</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Kundenmanagement</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/orderListing/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Auftragsverwaltung</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/categoriesListing/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Produkte Kategorie</span>
+               </a>
+            </li>
+
+            <li class="nav-item">
+
+               <a class="nav-link" href="{{url('/api/productListing/'.$role)}}" onclick="markVisited(this)">
+
+                  <span class="menu-title">Produkte</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/Statistics/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Statistik</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link border-bottom" href="{{url('/api/connection/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">B2C B2B Connection</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/newsLetter/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Newsletter</span>
+               </a>
+            </li>
+            <!-- <li class="nav-item">
      <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
       aria-controls="general-pages">
       <span class="menu-title">Wallet</span>
@@ -199,26 +283,26 @@
       </ul>
      </div>
     </li> -->
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/settings/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Einstellungen</span>
-     </a>
-    </li>
-    <li class="nav-item">
-     <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}" onclick="markVisited(this)">
-      <span class="menu-title">Angebot</span>
-     </a>
-    </li>
-   </div>
-   @endif
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/settings/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Einstellungen</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/api/quatationListing/'.$role)}}" onclick="markVisited(this)">
+                  <span class="menu-title">Zitate</span>
+               </a>
+            </li>
+         </div>
+         @endif
 
 
-   <li class="nav-item" style="background-color:transparent;">
-    <button type="submit" name="logout" id="logoutButton">Log Out</button>
-    </a>
-   </li>
+         <li class="nav-item" style="background-color:transparent;">
+            <button type="submit" name="logout" id="logoutButton">Log Out</button>
+            </a>
+         </li>
 
- </ul>
+   </ul>
 
 </nav>
 
@@ -226,64 +310,64 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-// public/js/logout.js
+   // public/js/logout.js
 
-// Function to handle the logout API call
-function logout() {
- // Retrieve the token from local storage
- var authToken = localStorage.getItem('authToken');
- console.log("hello");
- var baseUrl = window.location.origin;
- // Make a POST request to the logout endpoint using jQuery
- $.ajax({
-  url: baseUrl + '/api/logoutApi',
-  type: 'POST',
-  headers: {
-   'Authorization': 'Bearer ' + authToken,
-   'Content-Type': 'application/json'
-  },
-  success: function(response) {
+   // Function to handle the logout API call
+   function logout() {
+      // Retrieve the token from local storage
+      var authToken = localStorage.getItem('authToken');
+      console.log("hello");
+      var baseUrl = window.location.origin;
+      // Make a POST request to the logout endpoint using jQuery
+      $.ajax({
+         url: baseUrl + '/api/logoutApi',
+         type: 'POST',
+         headers: {
+            'Authorization': 'Bearer ' + authToken,
+            'Content-Type': 'application/json'
+         },
+         success: function(response) {
 
-   if (response.message) {
+            if (response.message) {
 
-    // Clear the authentication token from local storage
-    localStorage.removeItem('authToken');
-    // Redirect or perform any other necessary actions after logout
-    window.location.href = '/api/home';
+               // Clear the authentication token from local storage
+               localStorage.removeItem('authToken');
+               // Redirect or perform any other necessary actions after logout
+               window.location.href = '/api/home';
+            }
+
+         },
+         error: function(error) {
+            // Handle errors
+            console.error('Error:', error);
+         }
+      });
    }
 
-  },
-  error: function(error) {
-   // Handle errors
-   console.error('Error:', error);
-  }
- });
-}
+   // Attach the logout function to the click event of the logout button
 
-// Attach the logout function to the click event of the logout button
-
-$('#logoutButton').on('click', function() {
- logout();
-});
+   $('#logoutButton').on('click', function() {
+      logout();
+   });
 </script>
 
 <script>
-function setActivePage() {
- var currentPage = window.location.pathname;
+   function setActivePage() {
+      var currentPage = window.location.pathname;
 
- // Remove "active" class from all links
- //  var navLinks = document.getElementsByClassName('nav-link');
- //  for (var i = 0; i < navLinks.length; i++) {
- //   navLinks[i].classList.remove('active');
- //  }
+      // Remove "active" class from all links
+      //  var navLinks = document.getElementsByClassName('nav-link');
+      //  for (var i = 0; i < navLinks.length; i++) {
+      //   navLinks[i].classList.remove('active');
+      //  }
 
- // Add "active" class to the link corresponding to the current page
- var activeLink = document.querySelector('a[href="' + currentPage + '"]');
- if (activeLink) {
-  activeLink.classList.add('active');
- }
-}
-console.log('a[href="' + currentPage + '"]');
-// Call the function when the page loads
-window.onload = setActivePage;
+      // Add "active" class to the link corresponding to the current page
+      var activeLink = document.querySelector('a[href="' + currentPage + '"]');
+      if (activeLink) {
+         activeLink.classList.add('active');
+      }
+   }
+   console.log('a[href="' + currentPage + '"]');
+   // Call the function when the page loads
+   window.onload = setActivePage;
 </script>
