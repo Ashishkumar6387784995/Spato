@@ -1,0 +1,85 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+
+class AssignmentMailer extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Public variable to be accessed in the view.
+     *
+     * @var string
+     */
+    public $Auftrags_Nr;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($Auftrags_Nr)
+    {
+        $this->Auftrags_Nr = $Auftrags_Nr;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        // Access the Auftrags_Nr using $this->Auftrags_Nr
+        return $this->subject('Spato Assignment PDF')
+            ->view('mail.assignmentPdfMailer')
+            ->attach(storage_path('app/public/assignments_pdf/' . $this->Auftrags_Nr . '.pdf'), [
+                'as' => $this->Auftrags_Nr . '.pdf',  // Use $Auftrags_Nr as the file name
+                'mime' => 'application/pdf', // Set the correct MIME type for a PDF file
+            ]);
+    }
+    
+
+    
+
+    /**
+     * Get the message envelope.
+     *
+     * @return \Illuminate\Mail\Mailables\Envelope
+     */
+    public function envelope()
+    {
+        return new Envelope(
+            subject: 'Assignment Mailer',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     *
+     * @return \Illuminate\Mail\Mailables\Content
+     */
+    public function content()
+    {
+        return new Content(
+            view: 'mail.assignmentPdfMailer',
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array
+     */
+    public function attachments()
+    {
+        return [];
+    }
+}

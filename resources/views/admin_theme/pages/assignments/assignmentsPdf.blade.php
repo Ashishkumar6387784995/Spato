@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Offer PDF</title>
+    <title>Assignments PDF</title>
     <!-- Include any necessary styles or additional configurations here -->
 
     <style>
@@ -80,7 +80,7 @@
 <body>
 
     <div class="brand-logo">
-        <img class="logo" src="{{ url('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
+        <img class="logo" src="{{ public_path('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
     </div>
     <div class="desc">
         <p>SPATO GmbH - Schellberger Weg 34 - 42659 DE - Solingen</p>
@@ -93,8 +93,8 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>Angebots-Nr.</th>
-                <th>{{$offers[0]->Angebots_Nr}}</th>
+                <th>Auftrags-Nr.</th>
+                <th>{{$assignments[0]->Auftrags_Nr}}</th>
             </tr>
             <tr>
                 <td>SPATO GmbH</td>
@@ -105,7 +105,7 @@
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
                 </td>
                 <td class="details">Datum</td>
-                <td class="details">{{$offers[0]->Angebotsdatum}}</td>
+                <td class="details">{{$assignments[0]->Auftragsdatum}}</td>
             </tr>
             <tr>
 
@@ -117,7 +117,7 @@
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
                 </td>
                 <td class="details">Referenz</td>
-                <td class="details">{{$offers[0]->Referenz}}</td>
+                <td class="details">{{$assignments[0]->Referenz}}</td>
             </tr>
             <tr>
 
@@ -129,7 +129,7 @@
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum </p>
                 </td>
                 <td class="details">Ihre Kundennummer</td>
-                <td class="details">{{$offers[0]->Ihre_Kundennummer}}</td>
+                <td class="details">{{$assignments[0]->Ihre_Kundennummer}}</td>
             </tr>
             <tr>
 
@@ -146,7 +146,7 @@
         </table>
     </div>
     <br /><br /><br />
-    <h3>Angebot {{$offers[0]->Angebots_Nr}}</h3>
+    <h3>Auftrags {{$assignments[0]->Auftrags_Nr}}</h3>
     <table class="offers">
         <thead>
             <tr>
@@ -161,7 +161,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($offers as $data)
+            @foreach ($assignments as $data)
             <tr>
                 <td>{{ $data['POS'] }}</td>
                 <td>{{ $data['Produkt'] }}</td>

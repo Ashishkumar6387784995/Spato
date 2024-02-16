@@ -201,9 +201,9 @@
        $.each(data, function(index, item) {
         var row = $('<tr>');
         row.append('<td>' + 'Offen' + '</td>');
-        row.append('<td>' + item.Angebots_Nr + '</td>');
+        row.append('<td>' + item.Auftrags_Nr + '</td>');
         row.append('<td>' + item.Ihre_Kundennummer + '</td>');
-        row.append('<td>' + item.Angebotsdatum + '</td>');
+        row.append('<td>' + item.Auftragsdatum + '</td>');
         // row.append('<td>' + item.Kategorie + '</td>');
         row.append('<td>' + item.gesamt_netto + '</td>');
         row.append('<td><a href="/api/editOffer/' + item.id +

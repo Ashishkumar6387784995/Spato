@@ -4,8 +4,15 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Assignments_list;
+use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AssignmentMailer;
+use App\Mail\sendResetLinkEmail;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
@@ -66,13 +73,13 @@ class AssignmentController extends Controller
 
     }
 
-    public function addAssignmentsApi(Request $request){
-
-      
+    public function addAssignmentsApi(Request $request)
+    {
+        // dd($request->all());
 
         $validator = Validator::make($request->all(), [
-            // 'Angebots_Nr' => 'required|string',
-            'Angebotsdatum' => 'required|date_format:Y-m-d',
+            'Auftrags_Nr' => 'required|string|unique:assignments_list',
+            'Auftragsdatum' => 'required|date_format:Y-m-d',
             // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',
             'inputs.*.POS' => 'required|numeric',
@@ -89,51 +96,89 @@ class AssignmentController extends Controller
             return response()->json(['errors' => $validator->errors()]);
         }
 
-
- 
-    $offer = new Assignments_list();
-
-    // Set the attributes of the model with the main form data
-   
-
-    // Get the dynamic fields from the request
-    $dynamicFields = $request->input('inputs');
+        // Get the dynamic fields from the request
+        $dynamicFields = $request->input('inputs');
 
 
 
-    // Set dynamic fields on the offer
-    foreach ($dynamicFields as $dynamicField) {
-        $offer = new Assignments_list();
-        $offer->Auftrags_Nr = $request->input('Auftrags_Nr');
-        $offer->Angebotsdatum = $request->input('Angebotsdatum');
-        $offer->Referenz = $request->input('Referenz');
-        $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
-        $offer->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
+        // Set dynamic fields on the offer
+        foreach ($dynamicFields as $dynamicField) {
+            $assignment = new Assignments_list();
+            $assignment->Auftrags_Nr = $request->input('Auftrags_Nr');
+            $assignment->Auftragsdatum = $request->input('Auftragsdatum');
+            $assignment->Referenz = $request->input('Referenz');
+            $assignment->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+            $assignment->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
 
-        $offer->gesamt_netto = $request->input('gesamt_netto');
-        $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
-        $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+            $assignment->gesamt_netto = $request->input('gesamt_netto');
+            $assignment->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+            $assignment->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
 
 
-        $offer->POS = $dynamicField['POS'];
-        $offer->Produkt = $dynamicField['Produkt'];
-        $offer->Beschreibung = $dynamicField['Beschreibung'];
-        $offer->Menge = $dynamicField['Menge'];
-        $offer->Einheit = $dynamicField['Einheit'];
-        $offer->Einzelpreis = $dynamicField['Einzelpreis'];
-        $offer->Rabatt = $dynamicField['Rabatt'];
-        $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
-        $offer->save();
-    }      
+            $assignment->POS = $dynamicField['POS'];
+            $assignment->Produkt = $dynamicField['Produkt'];
+            $assignment->Beschreibung = $dynamicField['Beschreibung'];
+            $assignment->Menge = $dynamicField['Menge'];
+            $assignment->Einheit = $dynamicField['Einheit'];
+            $assignment->Einzelpreis = $dynamicField['Einzelpreis'];
+            $assignment->Rabatt = $dynamicField['Rabatt'];
+            $assignment->Gesamtpreis = $dynamicField['Gesamtpreis'];
+            $assignment->save();
+        }
 
         // Return a success response
         return response()->json(['success' => "Assignment Added SuccessFully"]);
 
       // Return a success response
-
-
     }
 
 
+    // function for download pdf
+    public function downloadPdf($assignmentNo)
+    {
 
+        // Retrieve the offer
+        $assignment = Assignments_list::where('Auftrags_Nr', $assignmentNo)->first();
+    
+        if ($assignment) {
+            // Retrieve Assignments_list associated with the offer ID
+            $assignments = Assignments_list::where('Auftrags_Nr', $assignmentNo)->get();
+            // Generate PDF from the view
+            $pdf = PDF::loadView('admin_theme/pages/assignments/assignmentsPdf', compact('assignments'));
+
+            // code for view pdf
+            // return $pdf->stream('result.pdf');
+
+            // Specify the directory path for storing the PDF in the public storage folder
+            $pdfDirectory = 'public/assignments_pdf';
+    
+            // Specify the file path for the PDF
+            $pdfFilePath = $assignmentNo . '.pdf';
+    
+            // Save the PDF in the specified path
+            Storage::put($pdfDirectory . '/' . $pdfFilePath, $pdf->output());
+    
+            // Get the public URL of the saved PDF file
+            $pdfUrl = Storage::url($pdfDirectory . '/' . $pdfFilePath);
+    
+            // Download the saved PDF
+            return response()->download(storage_path('app/' . $pdfDirectory . '/' . $pdfFilePath));
+        } else {
+            return back()->with('error', 'Offer not found');
+        }
+    }
+
+    
+    // function is used for send Assignment Mail
+    public function sendAssignmentMailsToB2C(Request $request)
+    {
+        $Auftrags_Nr = $request->input('Auftrags_Nr');
+        $email = $request->input('email');
+
+        // return response()->json(['success' => $email]);
+
+        Mail::to($email)->send(new AssignmentMailer($Auftrags_Nr));
+
+        return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
+    }
 }
