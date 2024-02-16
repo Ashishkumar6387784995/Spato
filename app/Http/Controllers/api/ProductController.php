@@ -12,6 +12,7 @@ use PDF;
 use App\Imports\productsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExport;
+use Illuminate\Support\Facades\DB;
 
 
 class ProductController extends Controller
@@ -169,58 +170,58 @@ class ProductController extends Controller
 
     public function productImport(Request $request)
     {
-       
-    
+
+
         $validator = Validator::make($request->all(), [
             'ProductsImportFile' => 'required|mimes:csv,xlsx',
         ]);
-    
+
         if ($validator->fails()) {
             // Validation failed, return the errors as a JSON response
             return response()->json(['ValidationError' => $validator->errors()]);
         }
-        
+
 
         // Check if the file was uploaded successfully
         if ($request->hasFile('ProductsImportFile')) {
             // Get the file from the request
             $excelFile = $request->file('ProductsImportFile');
-    
+
             // Access other form data if needed
             $otherFormData = $request->input('otherFormData');
-    
+
             // Move the Excel file to a specific location
             $excelFile->move(storage_path('app/public/products_import_files'), $excelFile->getClientOriginalName());
-    
+
             // Process the Excel file and import data into the database using the import class
             $excelFilePath = storage_path('app/public/products_import_files') . '/' . $excelFile->getClientOriginalName();
             Excel::import(new productsImport(), $excelFilePath);
-    
+
             // Retrieve the last inserted product ID
             $lastProductId = Product::latest('id')->first()->id;
-    
+
             // Check and handle the ProductsImageFile
             if ($request->hasFile('ProductsImageFile')) {
                 $uploadedImages = $request->file('ProductsImageFile');
                 $imagePaths = [];
-    
+
                 foreach ($uploadedImages as $image) {
                     $imagePath = $image->storeAs('public/products_images', $image->getClientOriginalName());
                     $imagePaths[] = $imagePath;
                 }
             }
-    
+
             // Check and handle the ProductsPdfFile
             if ($request->hasFile('ProductsPdfFile')) {
                 $uploadedFiles = $request->file('ProductsPdfFile');
                 $pdfPaths = [];
-    
+
                 foreach ($uploadedFiles as $file) {
                     $pdfPath = $file->storeAs('public/products_pdf', $file->getClientOriginalName());
                     $pdfPaths[] = $pdfPath;
                 }
             }
-    
+
             // Return a response or perform other actions
             return response()->json(['success' => 'File uploaded and data imported successfully']);
         } else {
@@ -234,7 +235,7 @@ class ProductController extends Controller
         if ($request->ajax()) {
             try {
                 $exportFile = 'users.xlsx';
-    
+
                 return response()->stream(
                     function () use ($exportFile) {
                         Excel::download(new ProductsExport, $exportFile, \Maatwebsite\Excel\Excel::XLSX)
@@ -254,30 +255,23 @@ class ProductController extends Controller
         // Handle non-AJAX requests (if needed)
         return Excel::download(new ProductsExport, 'Products.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
-    
-    
 
-    // function for fetch Product Category
-    public function getProductCategory(){
-        
 
-        
-        // Get the latest products for each category
-        $latestProducts = Product::select('Kategorie_2', DB::raw('MAX(created_at) as latest_created_at'))
-            ->groupBy('Kategorie_2')
-            ->get();
+    public function getProductCategory()
+    {
+        // Fetch all records from table 1 using raw SQL query with alias names
+        $recordsFromTable1 = DB::select(DB::raw(
+            "SELECT categorie_1 AS 'Kategorie_1',
+            categorie_2 AS 'Kategorie_2',
+            categorie_3 AS 'Kategorie_3'
+            FROM categorie_statics"
+        ));
 
-        // Fetch the complete details of the latest products
-        $latestProduct = Product::whereIn('Kategorie_2', $latestProducts->pluck('Kategorie_2'))
-            ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
-            ->orderby('created_at', 'DESC')->take(10)
-            ->get();
+        // Fetch all records from table 2
+        $recordsFromTable2 = DB::select('SELECT Kategorie_1, Kategorie_2, Kategorie_3, Kategorie_4, Kategorie_5, Kategorie_6 FROM product_categories');
 
-            
-        $productCategory= 
+        $mergedCategories = array_merge($recordsFromTable1, $recordsFromTable2);
 
+        dd($mergedCategories);
     }
 }
-
-
-
