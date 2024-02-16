@@ -191,11 +191,11 @@
       console.log(token);
 
       // Check if the token exists
-      // if (!token) {
-      //   console.error('Token not found in localStorage');
-      //   window.location.href = '/api/home';
-      //   // return;
-      // }
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        // return;
+      }
 
       // Make a GET request using AJAX
       $.ajax({
