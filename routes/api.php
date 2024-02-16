@@ -58,6 +58,7 @@ Route::get('/pagenotfound', [loginController::class, 'pagenotfound'])->name('not
 Route::get('userDetails', [loginController::class, 'userDetails']);
 Route::get('B2CUserDetails', [loginController::class, 'B2CUserDetails']);
 Route::get('selectedB2CUserDetails/{id}', [loginController::class, 'selectedB2CUserDetails']);
+Route::get('selectedB2CUserDetailsByCompanyName/{companyName}', [loginController::class, 'selectedB2CUserDetailsByCompanyName']);
 
 
 

@@ -153,6 +153,75 @@
     width: 170px;
    }
   }
+  .slide-in-blurred-top {
+	-webkit-animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.5s both;
+	        animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.5s both;
+}
+
+  #guessCompanyName{
+    max-height: 110px;
+    overflow: auto;
+    transition:0.6s ease-in-out;
+    position:absolute;
+    width: 250px;
+    /* overflow-x: hidden;
+    overflow-y: scroll; */
+  }
+  #guessCompanyName ul{
+    display:contents;
+    transition:0.6s ease-in-out;
+  }
+  #guessCompanyName ul li{
+    background-color:#fff;
+    list-style-type:none;
+    border-radius:3px;
+    margin:3px 0px;
+    padding:0px 10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.6s ease-in-out;
+  }
+  @-webkit-keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+
   </style>
  </head>
 
@@ -286,8 +355,13 @@
           <p>Name der Firma</p>
          </div>
          <div class="inputs"> 
-         <p><input class="dynamic-field" type="text" placeholder='#' id="companyName" name="companyName" />
-          </p>
+          <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction()"></p>
+          
+          <div id="guessCompanyName">
+            <ul>
+
+            </ul>
+            </div>
           <br>
           <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
 
@@ -921,7 +995,56 @@
 
   });
 
-  // console.log("Selected item value:", $(this).val());
+  // fetch B2C User Details by company name
+  function guessCompanyNameFunction() {
+    var baseUrl = window.location.origin;
+    var companyName = jQuery('#companyName').val();
+    if (companyName=='') {
+      $('#guessCompanyName ul').empty();
+      return false;
+    }
+    
+    $("#customer_email").val('');
+    $("#customer_Email").text('');
+    $("#customer_Contact").text('');
+    $("#customer_Name").text('');
+    $.ajax({
+      type: 'get',
+      url: baseUrl + '/api/selectedB2CUserDetailsByCompanyName/' + companyName,
+      dataType: 'json',
+      success: function(response) {
+        // Handle success response
+        if (response.success) {
+
+          console.log(response.success);
+          console.log(response.guessCompanyName);
+
+          
+          var nameList = $('#guessCompanyName ul');
+          nameList.empty();
+          response.guessCompanyName.forEach(function(item, index) {
+            // Create a new product element for each cart item
+            nameList.append('<li class="liCompanyName slide-in-blurred-top">'+ item.company_name +'</li>');
+          });
+
+          $("#customer_email").val(response.success[0].email);
+          $("#customer_Email").text(response.success[0].email);
+          $("#customer_Contact").text(response.success[0].mobile);
+          $("#customer_Name").text(response.success[0].name);
+          nameList.empty();
+          // Dynamically set the loop limit based on the array length
+        }
+      },
+    });
+  };
+
+  // function for set li test in companyName input feild
+    $(document).on('click', '.liCompanyName', function() {
+      var clickedCompanyName = jQuery(this).text();
+      // alert(clickedCompanyName);
+      jQuery('#companyName').val(clickedCompanyName).trigger("keyup");
+      jQuery('#guessCompanyName ul').empty();
+    });
   </script>
 
 

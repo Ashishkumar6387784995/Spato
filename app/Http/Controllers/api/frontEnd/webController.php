@@ -251,6 +251,7 @@ class webController extends Controller
 
         // return response()->json(['success' => $userId]);
         $validator = Validator::make($request->all(), [
+            'company_name' => 'required|string||unique:user_profiles',
             'tempAddress' => 'required|string',
             'tempCity' => 'required',
             'tempZip' => 'required|string',
@@ -262,7 +263,7 @@ class webController extends Controller
         }
 
         $userProfile = UserProfile::create([
-            'company_name' => $request->input('tempCompanyname'),
+            'company_name' => $request->input('company_name'),
             'permanent_address' => $request->input('tempAddress'),
             'city' => $request->input('tempCity'),
             'zipCode' => $request->input('tempZip'),
