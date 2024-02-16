@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('assignments_list', function (Blueprint $table) {
             $table->id();
             $table->string('Auftrags_Nr');
-            $table->date('Angebotsdatum')->nullable();
+            $table->date('Auftragsdatum')->nullable();
             $table->string('Referenz')->nullable();
             $table->string('Ihre_Kundennummer')->nullable();
             $table->string('Ihre_Ust_ID')->nullable();

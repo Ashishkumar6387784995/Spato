@@ -294,14 +294,14 @@
         <button id="emailSend" class="btn">senden</button>
        </div>
       </div>
-      <span id="success_msg" style="color:Green; font-size:20px;"></span>
+      <span class="msg_err" id="success_msg" style="color:Green; font-size:20px;"></span>
       <div class="row pt-3">
 
        <div class="col-md-4">
         <div class="contact-show">
-         <p><b>Name</b> -> <span id="customer_Name"><span></p>
-         <p><b>Conatact</b> -> <span id="customer_Contact"><span></p>
-         <p><b>Email</b> -> <span id="customer_Email"><span></p>
+         <p><b>Name</b> -> <span class="customer_dtl" id="customer_Name"><span></p>
+         <p><b>Conatact</b> -> <span class="customer_dtl" id="customer_Contact"><span></p>
+         <p><b>Email</b> -> <span class="customer_dtl" id="customer_Email"><span></p>
 
         </div>
        </div>
@@ -324,7 +324,7 @@
          <div class="inputs">
           <p><input class="dynamic-field" type="date" placeholder='#' id="Angebotsdatum" name="Angebotsdatum"
             value="{{ now()->format('d-m-Y') }}" /> <br>
-           <span id="Angebotsdatum_err" style="color:red;  font-size:13px;"></span>
+           <span class="msg_err" id="Angebotsdatum_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
         </div>
@@ -346,7 +346,7 @@
           <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton" required>
           </select>
           <br>
-          <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+          <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
 
          </div>
         </div>
@@ -363,7 +363,7 @@
             </ul>
             </div>
           <br>
-          <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+          <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
 
          </div>
         </div>
@@ -372,7 +372,7 @@
           <p style="display:none">Email</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="text" placeholder='#' id="customer_email" name="customer_email"
+          <p><input class="dynamic-field" type="text" placeholder='#' class="customer_dtl" id="customer_email" name="customer_email"
             style="display:none" />
           </p>
          </div>
@@ -458,7 +458,7 @@
            </td>
            <td>
             <input type="text" name='inputs[0][Produkt]' placeholder='#' />
-            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+            <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
 
            </td>
 
@@ -466,7 +466,7 @@
            <td>
 
             <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
-            <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+            <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
@@ -475,13 +475,13 @@
            </td>
            <td>
             <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
-            <br><span id="Einheit_err" style="color:red;  font-size:13px;"></span>
+            <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
 
             <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
-            <br><span id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
+            <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
 
            </td>
            <td>
@@ -815,13 +815,7 @@
   $('#saveButton').click(function(e) {
    e.preventDefault(); // Prevent the form from submitting normally
 
-   $('#Angebotsdatum_err').text('');
-   $('#Ihre_Kundennummer_err').text('');
-   $('#Produkt_err').text('');
-   $('#Beschreibung_err').text('');
-
-   $('#Einheit_err').text('');
-   $('#Einzelpreis_err').text('');
+   $('.msg_err').text('');
 
    var formData = {
     Angebots_Nr: $('#AddOffersForm input[name="Angebots_Nr"]').val(),
@@ -931,123 +925,6 @@
   });
   </script>
 
-
-
-  <script>
-  $(document).one('click', '.showButton', function() {
-   var baseUrl = window.location.origin;
-   $.ajax({
-    type: 'get',
-    url: baseUrl + '/api/B2CUserDetails',
-    dataType: 'json',
-    success: function(response) {
-     // Handle success response
-     if (response.success) {
-      var ddl = $("#Ihre_Kundennummer");
-      ddl.empty(); // Consider whether you want to keep this line or not
-      var dataArray = response.success;
-
-      // Dynamically set the loop limit based on the array length
-      for (var i = 0; i < dataArray.length; i++) {
-       ddl.append($("<option></option>").val(dataArray[i].id).text(dataArray[i].id));
-      }
-
-      // Attach a change event handler to the dropdown
-      ddl.on('change', function() {
-
-       var selectedUser = $(this).val();
-       // Log the value of the selected item when it changes
-       console.log("Selected item value:", selectedUser);
-
-
-
-
-       $.ajax({
-        type: 'get',
-        url: baseUrl + '/api/selectedB2CUserDetails/' + selectedUser,
-        dataType: 'json',
-        success: function(response) {
-         // Handle success response
-         if (response.success) {
-
-          console.log(response.success[0].email);
-          $("#customer_email").val(response.success[0].email);
-          $("#customer_Email").text(response.success[0].email);
-          $("#customer_Contact").text(response.success[0].mobile);
-          $("#customer_Name").text(response.success[0].name);
-
-
-
-          // Dynamically set the loop limit based on the array length
-
-         }
-        },
-       });
-
-
-
-
-      });
-     }
-    },
-   });
-
-
-  });
-
-  // fetch B2C User Details by company name
-  function guessCompanyNameFunction() {
-    var baseUrl = window.location.origin;
-    var companyName = jQuery('#companyName').val();
-    if (companyName=='') {
-      $('#guessCompanyName ul').empty();
-      return false;
-    }
-    
-    $("#customer_email").val('');
-    $("#customer_Email").text('');
-    $("#customer_Contact").text('');
-    $("#customer_Name").text('');
-    $.ajax({
-      type: 'get',
-      url: baseUrl + '/api/selectedB2CUserDetailsByCompanyName/' + companyName,
-      dataType: 'json',
-      success: function(response) {
-        // Handle success response
-        if (response.success) {
-
-          console.log(response.success);
-          console.log(response.guessCompanyName);
-
-          
-          var nameList = $('#guessCompanyName ul');
-          nameList.empty();
-          response.guessCompanyName.forEach(function(item, index) {
-            // Create a new product element for each cart item
-            nameList.append('<li class="liCompanyName slide-in-blurred-top">'+ item.company_name +'</li>');
-          });
-
-          $("#customer_email").val(response.success[0].email);
-          $("#customer_Email").text(response.success[0].email);
-          $("#customer_Contact").text(response.success[0].mobile);
-          $("#customer_Name").text(response.success[0].name);
-          nameList.empty();
-          // Dynamically set the loop limit based on the array length
-        }
-      },
-    });
-  };
-
-  // function for set li test in companyName input feild
-    $(document).on('click', '.liCompanyName', function() {
-      var clickedCompanyName = jQuery(this).text();
-      // alert(clickedCompanyName);
-      jQuery('#companyName').val(clickedCompanyName).trigger("keyup");
-      jQuery('#guessCompanyName ul').empty();
-    });
-  </script>
-
-
 <script>
   $('#emailSend').click(function(e) {
     e.preventDefault();
@@ -1095,6 +972,7 @@
 
 
 
+  <script type="text/javascript" src="{{ asset('js/admin/common.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>

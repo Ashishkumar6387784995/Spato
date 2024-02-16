@@ -13,7 +13,7 @@ class Assignments_list extends Model
 
     protected $fillable = [
         'Auftrags_Nr',
-        'Angebotsdatum',
+        'Assignments_list',
         'Referenz',
         'Ihre_Kundennummer',
         'Ihre_Ust_ID',

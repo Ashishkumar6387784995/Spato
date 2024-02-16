@@ -201,6 +201,8 @@ Route::get('addAssignment/{role}', [AssignmentController::class, 'addAssignment'
 Route::post('addAssignmentsApi', [AssignmentController::class, 'addAssignmentsApi']);
 Route::get('editAssignment/{id}', [AssignmentController::class, 'editAssignment']);
 
+Route::get('assignmentPdfdownload/{assignmentNo}', [AssignmentController::class, 'downloadPdf']);
+Route::post('sendAssignmentMailsToB2C', [AssignmentController::class, 'sendAssignmentMailsToB2C']);
 
 
 
