@@ -19,7 +19,7 @@ use App\Http\Controllers\api\billsController;
 use App\Http\Controllers\api\creditsController;
 use App\Http\Controllers\api\claims_manager_Controller;
 use App\Http\Controllers\api\SuppliersController;
-use App\Http\Controllers\api\ContactController;
+use App\Http\Controllers\api\contactController;
 use App\Http\Controllers\api\ConnectionsController;
 use App\Http\Controllers\api\CustomerMngController;
 use App\Http\Controllers\api\OrderMngController;
@@ -218,7 +218,7 @@ Route::get('addbills/{role}', [billsController::class, 'addbills']);
 Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
 Route::get('editbills', [billsController::class, 'editbills']);
 
-
+  
 // Credits for Admin
 Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
 Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
@@ -237,13 +237,13 @@ Route::get('editClaims', [claims_manager_Controller::class, 'editCliams']);
 // Contact for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
 Route::view('contactListing/{role}', 'admin_theme/pages/contacts/ContactsList');
-Route::get('addcontact/{role}', [ContactController::class, 'addContacts']);
+Route::get('addcontact/{role}', [contactController::class, 'addContacts']);
 // Route::get('editClaims',[claims_manager_Controller::class,'editCliams']);
 
 
 // Suppliers for Admin
 // Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
-Route::view('SuppliersListing/{role}', 'admin_theme/pages/suppliers/SuppliersList');
+Route::view('SuppliersListing/{role}', 'admin_theme/pages/suppliers/suppliersList');
 Route::get('addSuppliers/{role}', [SuppliersController::class, 'addSuppliers']);
 
 

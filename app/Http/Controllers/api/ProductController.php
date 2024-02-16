@@ -259,7 +259,23 @@ class ProductController extends Controller
 
     // function for fetch Product Category
     public function getProductCategory(){
-        dd('Hi');
+        
+
+        
+        // Get the latest products for each category
+        $latestProducts = Product::select('Kategorie_2', DB::raw('MAX(created_at) as latest_created_at'))
+            ->groupBy('Kategorie_2')
+            ->get();
+
+        // Fetch the complete details of the latest products
+        $latestProduct = Product::whereIn('Kategorie_2', $latestProducts->pluck('Kategorie_2'))
+            ->whereIn('created_at', $latestProducts->pluck('latest_created_at'))
+            ->orderby('created_at', 'DESC')->take(10)
+            ->get();
+
+            
+        $productCategory= 
+
     }
 }
 
