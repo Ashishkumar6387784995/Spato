@@ -415,7 +415,7 @@
         console.log(response.success);
         // $('#AddOffersForm')[0].reset();
         $('#success_msg').text(response.success);
-        $('#signupForm')[0].reset();
+        // $('#signupForm')[0].reset();
       } else if (response.errors) {
         // Display validation errors in the console
         console.log(response.errors);

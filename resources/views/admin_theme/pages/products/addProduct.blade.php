@@ -269,9 +269,9 @@
         <div class="row mb-2">
          <div class="col-4">Kategorie 1 </div>
          <div class="col-8">
-          <select name="Kategorie_1" id="Kategorie_1" class="form-control">
-           <option value="">Select Kategorie</option>
-          </select>
+          <select name="Kategorie_1" id="Kategorie_1" class="form-control" onchange="getSpecificProductCategory('Kategorie_2', 'Kategorie_2', this.value, 'Kategorie_1', 'htmlBlank_2_3_4_5_6')";>
+
+        </select>
           <span id="Kategorie_1_err" style="color:red"></span>
           <!-- <input type="text" class="form-control" name="Kategorie" id="kategorie">
           <span id="kategorie_err" style="color:red"></span> -->
@@ -313,9 +313,9 @@
         <div class="row mb-2">
          <div class="col-4">Kategorie 2</div>
          <div class="col-8">
-          <select name="Kategorie_2" id="Kategorie_2" class="form-control">
-           <option value="">Select Kategorie</option>
-          </select>
+          <select name="Kategorie_2" id="Kategorie_2" class="form-control htmlBlank_2_3_4_5_6"  onchange="getSpecificProductCategory('Kategorie_3', 'Kategorie_3', this.value, 'Kategorie_2', 'htmlBlank_3_4_5_6')";>
+
+        </select>
          </div>
         </div>
 
@@ -323,9 +323,9 @@
         <div class="row mb-2">
          <div class="col-4">Kategorie 3</div>
          <div class="col-8">
-          <select name="Kategorie_3" id="Kategorie_3" class="form-control">
-           <option value="">Select Kategorie</option>
-          </select>
+          <select name="Kategorie_3" id="Kategorie_3" class="form-control htmlBlank_2_3_4_5_6 htmlBlank_3_4_5_6"  onchange="getSpecificProductCategory('Kategorie_4', 'Kategorie_4', this.value, 'Kategorie_3', 'htmlBlank_4_5_6')";>
+
+        </select>
          </div>
         </div>
 
@@ -333,19 +333,28 @@
         <div class="row mb-2">
          <div class="col-4">Kategorie 4</div>
          <div class="col-8">
-          <select name="Kategorie_4" id="Kategorie_4" class="form-control">
-           <option value="">Select Kategorie</option>
-          </select>
+          <select name="Kategorie_4" id="Kategorie_4" class="form-control htmlBlank_2_3_4_5_6 htmlBlank_3_4_5_6 htmlBlank_4_5_6" onchange="getSpecificProductCategory('Kategorie_5', 'Kategorie_5', this.value, 'Kategorie_4', 'htmlBlank_5_6')";>
+
+        </select>
          </div>
         </div>
 
         <div class="row mb-2">
          <div class="col-4">Kategorie 5</div>
          <div class="col-8">
-          <select name="Kategorie_5" id="Kategorie_5" class="form-control">
-           <option value="">Select Kategorie</option>
-          </select>
+          <select name="Kategorie_5" id="Kategorie_5" class="form-control htmlBlank_2_3_4_5_6 htmlBlank_3_4_5_6 htmlBlank_4_5_6 htmlBlank_5_6" onchange="getSpecificProductCategory('Kategorie_6', 'Kategorie_6', this.value, 'Kategorie_5', 'htmlBlank_6')";>
+
+        </select>
          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-4">Kategorie 6</div>
+          <div class="col-8">
+            <select name="Kategorie_6" id="Kategorie_6" class="form-control htmlBlank_2_3_4_5_6 htmlBlank_3_4_5_6 htmlBlank_4_5_6 htmlBlank_6">
+
+            </select>
+          </div>
         </div>
 
 
@@ -644,82 +653,81 @@
 
   <script>
   $(document).ready(function() {
-   // Event listener for Save button
-   $('#saveBtn').on('click', function() {
-    // Collect form data
+    jQuery(document).ready(function(){
+      getSpecificProductCategory('Kategorie_1', 'Kategorie_1', '%', '%', 'htmlBlank_1');
+    });
 
-    $('#Hersteller_err').text('');
-    $('#Herst_Nr_err').text('');
-    $('#Lief_Art_Nr_err').text('');
-    $('#Hersteller_Artikelnummer_err').text('');
-    $('#Katalog_Art_Nummer_err').text('');
-    $('#Kategorie_err').text('');
-    $('#VE_ VPE_err').text('');
-    $('#Einheit_err').text('');
+    // Event listener for Save button
+    $('#saveBtn').on('click', function() {
+      // Collect form data
 
-    $('#Rabattcode_1_err').text('');
-    $('#Rabattcode_2_err').text('');
-    $('#Rabattcode_3_err').text('');
-    $('#Preis_zzgl_MwSt_err').text('');
-    $('#Preis_inkl_MwSt_err').text('');
-    $('#Einkausfpreis_zzgl_MwSt_err').text('');
-    $('#Einkaufsrabatt_err').text('');
-    $('#Artikelname_err').text('');
-    $('#Beschreibung_kurz_err').text('');
-    $('#Beschreibung_lang_err').text('');
-    $('#Kategorie_1_err').text('');
+      $('#Hersteller_err').text('');
+      $('#Herst_Nr_err').text('');
+      $('#Lief_Art_Nr_err').text('');
+      $('#Hersteller_Artikelnummer_err').text('');
+      $('#Katalog_Art_Nummer_err').text('');
+      $('#Kategorie_err').text('');
+      $('#VE_ VPE_err').text('');
+      $('#Einheit_err').text('');
 
-
-    // if (!$('#type').val()) {
-    //   $('#type_err').text('Please select Product type.');
-    //   return;
-    // }
+      $('#Rabattcode_1_err').text('');
+      $('#Rabattcode_2_err').text('');
+      $('#Rabattcode_3_err').text('');
+      $('#Preis_zzgl_MwSt_err').text('');
+      $('#Preis_inkl_MwSt_err').text('');
+      $('#Einkausfpreis_zzgl_MwSt_err').text('');
+      $('#Einkaufsrabatt_err').text('');
+      $('#Artikelname_err').text('');
+      $('#Beschreibung_kurz_err').text('');
+      $('#Beschreibung_lang_err').text('');
+      $('#Kategorie_1_err').text('');
 
 
-    if (!$('#Hersteller').val()) {
-     $('#Hersteller_err').text('Please enter Hersteller.');
-     return;
+      // if (!$('#type').val()) {
+      //   $('#type_err').text('Please select Product type.');
+      //   return;
+      // }
+
+
+      if (!$('#Hersteller').val()) {
+      $('#Hersteller_err').text('Please enter Hersteller.');
+      return;
+      }
+
+      if (!$('#Artikelname').val()) {
+      $('#Artikelname_err').text('Please enter Artikelname.');
+      return;
+      }
+
+      var formData = collectFormData();
+
+      // Log form data to the console (for testing)
+
+
+      // Send the formData to the server using AJAX
+      sendDataToServer(formData);
+    });
+
+    // Function to collect form data
+    function collectFormData() {
+      var formData = new FormData($('#addProductform')[0]);
+
+      return formData;
+
     }
 
-    if (!$('#Artikelname').val()) {
-     $('#Artikelname_err').text('Please enter Artikelname.');
-     return;
-    }
+    // Function to send data to the server using AJAX
+    function sendDataToServer(formData) {
 
 
+      var token = localStorage.getItem('authToken');
+      console.log(token);
 
-
-
-
-    var formData = collectFormData();
-
-    // Log form data to the console (for testing)
-
-
-    // Send the formData to the server using AJAX
-    sendDataToServer(formData);
-   });
-
-   // Function to collect form data
-   function collectFormData() {
-    var formData = new FormData($('#addProductform')[0]);
-
-    return formData;
-
-   }
-
-   // Function to send data to the server using AJAX
-   function sendDataToServer(formData) {
-
-
-    var token = localStorage.getItem('authToken');
-    console.log(token);
-
-    // Check if the token exists
-    if (!token) {
-     console.error('Token not found in localStorage');
-     window.location.href = '/api/home';
-     // return;
+      // Check if the token exists
+      if (!token) {
+      console.error('Token not found in localStorage');
+      window.location.href = '/api/home';
+      // return;
     }
 
 
@@ -876,17 +884,39 @@
   });
 
 
-  // function for fetch all product category
-  function getProductCategory(){
+  // // function for fetch all product category
+  // function getProductCategory(){
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/api/getProductCategoryAPI',
+  //     success: function(response) {
+  //     // Handle the success response from the server
+  //       console.log('Products Categories:', response.allProductsCat);
+  //       $.each(response.allProductsCat, function(index, item) {
+  //         var options = '<option value="' + item.Kategorie_Name + '">' + item.Kategorie_Name + '</option>';
+  //         jQuery('#Kategorie_1, #Kategorie_2, #Kategorie_3, #Kategorie_4, #Kategorie_5').append(options);
+  //       });
+  //     },
+  //   });
+  // }
+
+  // function for fetch Specific Category
+  function getSpecificProductCategory(selectColumn, showId, value, matchColumn, htmlBlank){
+    // alert(selectColumn+' '+showId+' '+value+' '+matchColumn);
+    jQuery('.'+htmlBlank).html('');
     $.ajax({
       type: 'GET',
       url: '/api/getProductCategoryAPI',
+      data: {selectColumn:selectColumn, value:value, matchColumn:matchColumn},
       success: function(response) {
       // Handle the success response from the server
         console.log('Products Categories:', response.allProductsCat);
+        jQuery('#'+showId).append('<option value="">-- Select Kategory --</option>');
         $.each(response.allProductsCat, function(index, item) {
-          var options = '<option value="' + item.Kategorie_Name + '">' + item.Kategorie_Name + '</option>';
-          jQuery('#Kategorie_1, #Kategorie_2, #Kategorie_3, #Kategorie_4, #Kategorie_5').append(options);
+          if (item[selectColumn]) {
+            var options = '<option value="' + item[selectColumn] + '">' + item[selectColumn] + '</option>';
+          }
+          jQuery('#'+showId).append(options);
         });
       },
     });

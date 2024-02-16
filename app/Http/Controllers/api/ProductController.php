@@ -257,17 +257,25 @@ class ProductController extends Controller
     }
 
 
-    public function getProductCategory()
+    public function getProductCategory(Request $request)
     {
         // Fetch all records from table 1 using Eloquent ORM
         $recordsFromTable1 = CategorieStatic::select('categorie_1 as Kategorie_1', 'categorie_2 as Kategorie_2', 'categorie_3 as Kategorie_3')->get()->toArray();
-    
+
         // Fetch all records from table 2 using Eloquent ORM
         $recordsFromTable2 = ProductCategory::select('Kategorie_1', 'Kategorie_2', 'Kategorie_3', 'Kategorie_4', 'Kategorie_5', 'Kategorie_6')->get()->toArray();
     
         // Merge records into a single array
-        $mergedCategories = array_merge($recordsFromTable1, $recordsFromTable2);
-    
-        dd($mergedCategories);
+        $allProducts = array_merge($recordsFromTable1, $recordsFromTable2);
+        $allProducts = collect($allProducts)->unique($request->selectColumn);
+        // dd($allProducts);
+
+        // filter according parameters
+
+        if ($request->value !='%') {
+            $allProducts = $allProducts->where($request->matchColumn, $request->value);
+        }
+        
+        return response()->json(['allProductsCat' => $allProducts]);
     }
 }
