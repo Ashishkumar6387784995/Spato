@@ -102,6 +102,11 @@ Route::middleware('api.auth')->group(function () {
   Route::get('offerListingApi', [OfferController::class, 'offerListing']);
   Route::post('addOfferApi', [OfferController::class, 'addOfferApi']);
 
+  //Asignments for Admin
+
+  Route::post('addAssignmentsApi', [AssignmentController::class, 'addAssignmentsApi']);
+  Route::get('assignmentListingApi', [AssignmentController::class, 'AssignmentListing']);
+
 
   // items for checkout with auth.
   Route::get('cart/checkoutItemsApiAuthentic', [CartController::class, 'getCartItems']);
@@ -195,10 +200,10 @@ Route::get('quatationListing/{role}', [quatationController::class, 'quatationLis
 
 
 // Assignment for Admin
-Route::get('assignmentListingApi', [AssignmentController::class, 'AssignmentListing']);
+
 Route::view('assignmentListing/{role}', 'admin_theme/pages/assignments/assignmentList');
 Route::get('addAssignment/{role}', [AssignmentController::class, 'addAssignment']);
-Route::post('addAssignmentsApi', [AssignmentController::class, 'addAssignmentsApi']);
+
 Route::get('editAssignment/{id}', [AssignmentController::class, 'editAssignment']);
 
 Route::get('assignmentPdfdownload/{assignmentNo}', [AssignmentController::class, 'downloadPdf']);

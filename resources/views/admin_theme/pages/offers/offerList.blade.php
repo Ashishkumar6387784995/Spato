@@ -226,26 +226,31 @@
                 row.append(`<td>${item.Angebotsdatum}</td>`);
                 // row.append(`<td>${item.Kategorie}</td>`); // Uncomment if needed
                 row.append(`<td>${item.gesamt_netto}</td>`);
-                row.append(
-                  `<td><a href="/api/editOffer/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+
+                if (data.user.role === 'Admin') {
+                  row.append(`<td><a href="/api/editOffer/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+                } else if (data.user.role === 'b2b') {
+                  row.append(`<td><a href="/api/editOff/${item.id}" class="edit" id="editProductBtn">bestätigen</a></td>`);
+                }
 
                 // Add more columns as needed
 
                 // Append the row to the table body
                 tableBody.append(row);
               });
+
             }
 
             // Call the function to populate the table with the initial data
             populateTable(data.offersList);
           }
 
-          if(data.error){
+          if (data.error) {
             window.location.href = '/api/home';
           }
         },
 
-    
+
 
         error: function(xhr, status, error) {
           // Handle specific errors

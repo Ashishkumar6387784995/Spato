@@ -109,13 +109,12 @@
 
       @elseif($role=="supplier")
 
+   
       <li class="nav-item">
-
-         <a class="nav-link" href="{{ url('/api/offerListing/'.$role) }}" onclick="markVisited(this)">
-            <span class="menu-title">Angebote</span>
-         </a>
-
-      </li>
+               <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
+                  <span class="menu-title">Aufträge</span>
+               </a>
+            </li>
 
 
 

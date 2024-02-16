@@ -19,10 +19,24 @@ class AssignmentController extends Controller
   
     public function AssignmentListing()
     {
+
+        $user = Auth::guard('api')->user();
+        
+        if ($user->role == 'Admin') {
         $assignments = Assignments_list::orderBy('created_at', 'desc')->get();
+        }
+        elseif ($user->role == 'b2b') {
+            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get(); 
+        }
+        elseif ($user->role == 'supplier') {
+            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();   
+        }else{
+            $offers = 'offer not found';
+        }
+
 
         if ($assignments){
-            return response()->json(['assignments'=>$assignments]);
+            return response()->json(['assignments'=>$assignments, 'user' => $user]);
         }
      
             return response()->json(['errors'=>"Assignments Not Found"]);
