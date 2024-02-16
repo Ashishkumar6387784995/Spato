@@ -259,19 +259,15 @@ class ProductController extends Controller
 
     public function getProductCategory()
     {
-        // Fetch all records from table 1 using raw SQL query with alias names
-        $recordsFromTable1 = DB::select(DB::raw(
-            "SELECT categorie_1 AS 'Kategorie_1',
-            categorie_2 AS 'Kategorie_2',
-            categorie_3 AS 'Kategorie_3'
-            FROM categorie_statics"
-        ));
-
-        // Fetch all records from table 2
-        $recordsFromTable2 = DB::select('SELECT Kategorie_1, Kategorie_2, Kategorie_3, Kategorie_4, Kategorie_5, Kategorie_6 FROM product_categories');
-
+        // Fetch all records from table 1 using Eloquent ORM
+        $recordsFromTable1 = CategorieStatic::select('categorie_1 as Kategorie_1', 'categorie_2 as Kategorie_2', 'categorie_3 as Kategorie_3')->get()->toArray();
+    
+        // Fetch all records from table 2 using Eloquent ORM
+        $recordsFromTable2 = ProductCategory::select('Kategorie_1', 'Kategorie_2', 'Kategorie_3', 'Kategorie_4', 'Kategorie_5', 'Kategorie_6')->get()->toArray();
+    
+        // Merge records into a single array
         $mergedCategories = array_merge($recordsFromTable1, $recordsFromTable2);
-
+    
         dd($mergedCategories);
     }
 }
