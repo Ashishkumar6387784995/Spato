@@ -23,7 +23,14 @@ class OfferController extends Controller
     public function offerListing()
     {
         $user = Auth::guard('api')->user();
-        $offers = Offers::orderBy('created_at', 'desc')->get();
+
+        if ($user->role == 'Admin') {
+            $offers = Offers::orderBy('created_at', 'desc')->get();
+        } elseif ($user->role == 'b2b') {
+            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+        } else {
+            $offers = 'offer not found';
+        }
 
         if ($offers) {
             return response()->json(['offersList' => $offers, 'user' => $user]);
@@ -49,29 +56,28 @@ class OfferController extends Controller
             $lastOffer = $lastOffer->Angebots_Nr;
             // Assuming $lastOffer is 'AN-12345'
             // $lastOffer = 'AN-12345';
-    
-    
-    
+
+
+
             // Split the string into an array based on the dash
             $parts = explode('-', $lastOffer);
             $parts = $parts[1];
-    
-    
-    
-    
+
+
+
+
             // Increment the numeric part
             $newNumericPart = $parts + 1;
-    
+
             // Create the new offerNo
             $newOfferNo = 'AN-' . $newNumericPart;
             // echo $newOfferNo;
-    
+
             // $newOfferNo will be 'AN-12346'
-    
-    
-          
-        }
-        else{
+
+
+
+        } else {
             $newOfferNo = 'AN-1234';
         }
         return view('admin_theme/pages/offers/addOffers')->with(compact('newOfferNo', 'role'));
@@ -149,26 +155,26 @@ class OfferController extends Controller
     {
         // Retrieve the offer
         $offer = offers::where('Angebots_Nr', $offerId)->first();
-    
+
         if ($offer) {
             // Retrieve offers associated with the offer ID
             $offers = offers::where('Angebots_Nr', $offerId)->get();
-    
+
             // Generate PDF from the view
             $pdf = PDF::loadView('admin_theme/pages/offers/offersPdf', compact('offers'));
-    
+
             // Specify the directory path for storing the PDF in the public storage folder
             $pdfDirectory = 'public/offers_pdf';
-    
+
             // Specify the file path for the PDF
             $pdfFilePath = $offerId . '.pdf';
-    
+
             // Save the PDF in the specified path
             Storage::put($pdfDirectory . '/' . $pdfFilePath, $pdf->output());
-    
+
             // Get the public URL of the saved PDF file
             $pdfUrl = Storage::url($pdfDirectory . '/' . $pdfFilePath);
-    
+
             // Download the saved PDF
             return response()->download(storage_path('app/' . $pdfDirectory . '/' . $pdfFilePath));
         } else {
@@ -176,7 +182,7 @@ class OfferController extends Controller
         }
     }
 
-    
+
     public function sendOfferMailsToB2C(Request $request)
     {
 
@@ -190,9 +196,9 @@ class OfferController extends Controller
         return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
     }
 
-    public function viewOffersForB2C(){
+    public function viewOffersForB2C()
+    {
 
         return view('admin_theme/pages/offers/viewOffersForB2C');
-
     }
 }

@@ -289,7 +289,7 @@ class loginController extends Controller
     public function selectedB2CUserDetailsByCompanyName($companyName){
 
         // $users = UserProfile::where('company_name', $companyName)->get();
-        $guessCompanyName = UserProfile::where('company_name', 'LIKE', '%'.$companyName.'%')->get();
+        $guessCompanyName = UserProfile::where('company_name', 'LIKE', '%'.$companyName.'%')->orderby('company_name', 'ASC')->get();
         $users = user::select('users.*', 'user_profiles.company_name', 'user_profiles.user_id')
             ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
             ->where('user_profiles.company_name', $companyName)

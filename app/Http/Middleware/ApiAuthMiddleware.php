@@ -19,8 +19,8 @@ class ApiAuthMiddleware
     {
         // Check if the request has a valid API token
         if (!$request->bearerToken()) {
-            return redirect('api/home');
-            return response()->json(['error' => 'Unauthorized. Missing API token.'], 401);
+        
+            return response()->json(['error' => 'Unauthorized. Missing API token.']);
         }
 
         // Attempt to authenticate the user using the API token
@@ -28,8 +28,8 @@ class ApiAuthMiddleware
 
         // Check if the user is authenticated
         if (!$user) {
-            return redirect('api/home');
-            return response()->json(['error' => 'Unauthorized. Invalid API token.'], 401);
+      
+            return response()->json(['error' => 'Unauthorized. Invalid API token.']);
         }
 
         // Share the authenticated user with the request
