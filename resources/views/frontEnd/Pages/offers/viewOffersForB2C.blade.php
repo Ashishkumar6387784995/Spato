@@ -440,76 +440,24 @@
             var angebotsList = document.getElementById('angebotsList');
 
             response.offersGroupBy.forEach(function(offer) {
-                
+
               var li = document.createElement('li');
               li.setAttribute('class', 'menu');
-              li.setAttribute('data-content', 'page1');
+              li.setAttribute('data-content', offer.Angebots_Nr);
               li.className = 'menu';
               li.dataset.content = offer.Angebots_Nr;
-              li.textContent =  offer.Angebots_Nr; // Adjust text content as needed
+              li.textContent = offer.Angebots_Nr; // Adjust text content as needed
               angebotsList.appendChild(li);
-            });
 
-
-
-
-
-          } else {
-            console.log('data errros', data.errors);
-            window.location.href = '/api/home';
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error('Error:', error);
-        }
-
-
-        // success: function(data) {
-        //   console.log('data success', data.offersList);   
-        //   // if (data.user) {
-        //   //   console.log('Data received:', data.user);
-
-
-
-        //     // // Function to populate the table with data
-        //     // function populateTable(dataList) {
-        //     //   var tableBody = $('.dataTable');
-
-        //     //   // Clear existing table rows
-        //     //   tableBody.find("tr:gt(0)").remove();
-
-        //     //   // Iterate through the data and add rows to the table
-        //     //   $.each(dataList, function(index, item) {
-
-        //     //     row.append(`<td>${item.Angebots_Nr}</td>`);
-
-        //     //   });
-
-        //     // }
-
-        //     // // Call the function to populate the table with the initial data
-        //     // populateTable(data.offersList);
-        //   // }
-
-
-        //   if (data.errors) {
-        //     console.log('data errros' , data.errors);
-        //     window.location.href = '/api/home';
-        //   }
-        // },
-      });
-    });
-  </script>
-  <script>
-    // Function to update content based on selected page
-    function updateContent(page) {
-      var contentDiv = document.getElementById("content");
-      // Clear existing content
-      contentDiv.innerHTML = "";
+              function updateContent(page) {
+                var contentDiv = document.getElementById("content");
+                // Clear existing content
+                contentDiv.innerHTML = "";
 
                 // Update content based on selected page
-                if (page === "page1") {
-                  contentDiv.innerHTML =
+                if (page === li.dataset.content) {
+                  if (li.dataset.content === li.dataset.content ) {
+                    contentDiv.innerHTML =
                     `<h2>Welcome to Page 1</h2>
             <div class="products">
       <div class="product">
@@ -693,7 +641,10 @@
 
      </div>           
             `;
-                } else if (page === "page2") {
+                  }
+
+
+                } else if (page === li.dataset.content ) {
                   contentDiv.innerHTML =
                     `<h2>Welcome to Page 2</h2>
             <div class="products">
@@ -729,9 +680,9 @@
 
      </div>           
             `;
-      } else if (page === "page3") {
-        contentDiv.innerHTML =
-          `<h2>Welcome to Page 3</h2>
+                } else if (page === "page3") {
+                  contentDiv.innerHTML =
+                    `<h2>Welcome to Page 3</h2>
             <div class="products">
       <div class="product">
        <div class="img">
@@ -798,19 +749,41 @@
 
      </div>           
             `;
-      }
-    }
+                }
+              }
 
-    // Add click event listeners to menu links
-    var menuLinks = document.querySelectorAll(".menu");
-    menuLinks.forEach(function(link) {
-      link.addEventListener("click", function() {
-        // Get the data-content attribute value
-        var page = this.getAttribute("data-content");
-        // Update content based on selected page
-        updateContent(page);
+              // Add click event listeners to menu links
+              var menuLinks = document.querySelectorAll(".menu");
+              menuLinks.forEach(function(link) {
+                link.addEventListener("click", function() {
+                  // Get the data-content attribute value
+                  var page = this.getAttribute("data-content");
+                  // Update content based on selected page
+                  updateContent(page);
+                });
+              });
+            });
+
+
+
+
+
+          } else {
+            console.log('data errros', data.errors);
+            window.location.href = '/api/home';
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+        }
+
+
+
       });
     });
+  </script>
+  <script>
+    // Function to update content based on selected page
   </script>
 
 
