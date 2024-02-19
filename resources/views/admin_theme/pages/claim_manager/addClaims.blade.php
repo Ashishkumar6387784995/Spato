@@ -97,6 +97,53 @@
             background-color:#fff;
             border:1px solid #000;
         }
+
+
+
+
+
+        .profile {
+   background-color: #eaebef;
+   margin-top: -1rem;
+   padding-top: -10rem !important;
+   margin-bottom: -10rem;
+   padding-bottom: 10rem;
+   clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+
+
+  #imageUpload {
+   display: none;
+  }
+
+  #profileImage {
+   cursor: pointer;
+  }
+
+  #profile-container {
+   width: 250px;
+   height: 200px;
+   overflow: hidden;
+   border: 1px solid black;
+   background-color: #ffffff;
+  }
+
+  #profile-container img {
+   width: 250px;
+   height: 200px;
+   margin: auto;
+  }
+
+  .upmsg{
+    color: cyan;
+    position:absolute;
+    /* top:10px; */
+    margin-top:80px;
+    margin-left:65px;
+    font-weight:900;
+  }
+
     </style>
 </head>
 
@@ -154,6 +201,7 @@
                     <a href="#"   class="btn">an KD 123456 senden</a>
                     </div>
                 </div>
+                
                 <div class="row pt-3">
                     
                     <div class="col-md-4" >
@@ -164,23 +212,23 @@
                     </div>
                     <div class="col-md-2 " >
                     </div>
-                    <div class="col-md-1 " >
-                    </div>
                     <div class="col-md-3" >
-                   <p>Claim-Nr.</p><br>
-                   <p>Claimdatum</p><br>
-                   <p>Referenz</p><br>
-                   <p>Ihre Kundennummer</p> <br>
-                   <p>Ihre Ust. ID</p> <br>
+                   <p>Claim-Nr.</p>
+                   <p>Claimdatum</p>
+                   <p>Referenz</p>
+                   <p>Ihre Kundennummer</p> 
+                   <p>Ihre Ust. ID</p> 
                     </div>
+                    
                     <div class="col-md-2" >
-                    <p><input type="text" name="Claim_Nr" id=""></p><br>
-                    <p><input type="text" name="Claimdatum" id=""></p><br>
-                    <p><input type="text" name="Referenz" id=""></p><br>
-                    <p><input type="text" name="Ihre_Kundennummer" id=""></p><br>
-                    <p><input type="text" name="Ihre_Ust_ID" id=""></p><br>
+                    <p><input type="text" name="Claim_Nr" id=""></p>
+                    <p><input type="text" name="Claimdatum" id=""></p>
+                    <p><input type="text" name="Referenz" id=""></p>
+                    <p><input type="text" name="Ihre_Kundennummer" id=""></p>
+                    <p><input type="text" name="Ihre_Ust_ID" id=""></p>
                     </div>
                 </div>
+                
 
                 <div class="row pt-3">
                     
@@ -197,7 +245,7 @@
                     <div class="col-md-2 " ><a href="#"   class="btn">Artikelnr.</a></div>
                     <div class="col-md-2 " ><a href="#"   class="btn">Zeitraum</a></div>
                     <div class="col-md-2 " ><a href="#"   class="btn">Freitext suche</a></div>
-                    
+                
                 </div>
                 <div class="mb-3">
                 aus <a href="#">RE-12345</a> erstellt aus <a href="">AB-12345</a> erstellt aus <a href=""> LI-12345 erstellt</a>
@@ -242,8 +290,15 @@
                 <div class="row pt-3">
                     
                     <div class="col-3" >
-                        <img class="product-image" src="{{ asset('assets/frontEnd/web/images/product 1.png') }}" alt="" srcset="">
-                    </div>
+                    <div id="profile-container">
+                       <p class="upmsg"> Upload Image</p>
+          <img id="profileImage">
+        </div>
+         <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
+         class="product-image"
+          capture>
+
+        </div> 
                     
                     <div class="col-9"  >
                     <p>Fehlerbeschreibung: </p>
@@ -280,7 +335,25 @@
     <!-- plugins:js -->
 
 
+<script>
+    $("#profile-container").click(function(e) {
+       $("#imageUpload").click();
+      });
 
+      function fasterPreview(uploader) {
+       if (uploader.files && uploader.files[0]) {
+        $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+       }
+      }
+
+      $("#imageUpload").change(function() {
+       fasterPreview(this);
+      });
+
+      document.getElementById('imageUpload').addEventListener('click', function() {
+    document.querySelector('.upmsg').style.display = 'none';
+});
+</script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>

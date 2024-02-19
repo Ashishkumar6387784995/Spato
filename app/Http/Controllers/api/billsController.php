@@ -118,7 +118,7 @@ class billsController extends Controller
     }      
 
         // Return a success response
-        return response()->json(['success' => "Offer Is Added SuccessFully"]);
+        return response()->json(['success' => "Bills Are Added SuccessFully"]);
 
     // Return a success response
 
