@@ -878,12 +878,15 @@
       console.log(response.errors);
       
       displayValidationErrors(response.errors);
-      $('#success_msg').text(response.error);
+ 
 
       // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
 
       // You can also update your HTML to show errors in a specific element
       // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+     }
+     else if (response.error){
+      $('#success_msg').text(response.error);
      }
     },
     error: function(xhr, status, error) {
