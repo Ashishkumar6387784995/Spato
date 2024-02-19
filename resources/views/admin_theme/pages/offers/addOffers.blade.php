@@ -586,7 +586,7 @@
         zzgl. Umsatzsteuer 19 %
        </div>
        <div class="col-2 stretch-card ">
-        <input type="text" name="tax" id="tax" placeholder='#' style="background:transparent; border:none;" />
+        <input type="text" name="zzgl_Umsatzsteuer" id="tax" placeholder='#' style="background:transparent; border:none;" />
        </div>
 
       </div>

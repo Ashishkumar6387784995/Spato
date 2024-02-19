@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\credits;
+use App\Mail\CreditsMailer;
+use Illuminate\Support\Facades\Mail;
+
 
 class creditsController extends Controller
 {
@@ -30,29 +33,28 @@ class creditsController extends Controller
     public function addCredits($role)
     {
 
-        // $lastOffer = "AB-123456";
-        // $lastOffer = offers::latest()->first();
-        //  $lastOffer= $lastOffer->Angebots_Nr;
-        // Assuming $lastOffer is 'AN-12345'
-        $lastOffer = 'AN-12345';
-
-
-  
+        $lastOffer = credits::latest()->first();
+        if ($lastOffer) {
+            
+            $lastOffer= $lastOffer->Gutschrifts_Nr;
+            // Assuming $lastOffer is 'AN-12345'
+            // $lastOffer = 'GS-12345';
+    
             // Split the string into an array based on the dash
             $parts = explode('-', $lastOffer);
             $parts= $parts[1];
-        
-         
- 
-   
-        // Increment the numeric part
-        $newNumericPart = $parts + 1;
-
-        // Create the new offerNo
-        $CreditNo = 'Gs-' . $newNumericPart;
-        // echo $newOfferNo;
-
-        // $newOfferNo will be 'AN-12346'
+            
+            // Increment the numeric part
+            $newNumericPart = $parts + 1;
+    
+            // Create the new offerNo
+            $CreditNo = 'GS-' . $newNumericPart;
+            // echo $newOfferNo;
+    
+            // $newOfferNo will be 'AN-12346'
+        }else {
+            $CreditNo = 'GS-12345';
+        }
 
 
         return view('admin_theme/pages/credits/addCredits')->with(compact('CreditNo', 'role'));
@@ -62,7 +64,7 @@ class creditsController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            // 'Angebots_Nr' => 'required|string',
+            'Gutschrifts_Nr' => 'required|string|unique:credits_list',
             'Gutschriftsdatum' => 'required|date_format:Y-m-d',
             // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',
@@ -97,6 +99,7 @@ class creditsController extends Controller
         $offer->Gutschriftsdatum = $request->input('Gutschriftsdatum');
         $offer->Referenz = $request->input('Referenz');
         $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+        $offer->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
 
         $offer->gesamt_netto = $request->input('gesamt_netto');
         $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
@@ -115,10 +118,21 @@ class creditsController extends Controller
     }      
 
         // Return a success response
-        return response()->json(['success' => "Offer Is Added SuccessFully"]);
+        return response()->json(['success' => "Credits Is Added SuccessFully"]);
+    }
 
-    // Return a success response
 
+    
+    // function is used for send Delivery Notes Mail
+    public function sendCredistMailsToB2C(Request $request)
+    {
+        $Gutschrifts_Nr = $request->input('Gutschrifts_Nr');
+        $email = $request->input('email');
 
+        // return response()->json(['success' => $email]);
+
+        Mail::to($email)->send(new CreditsMailer($Gutschrifts_Nr));
+
+        return response()->json(['success' => "Credits Mail Send SuccessFully"]);
     }
 }

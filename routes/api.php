@@ -238,6 +238,7 @@ Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
 Route::get('addCredits/{role}', [creditsController::class, 'addCredits']);
 Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
 Route::get('editCredits', [creditsController::class, 'editCredits']);
+Route::post('sendCredistMailsToB2C', [creditsController::class, 'sendCredistMailsToB2C']);
 
 
 // Claim Manger for Admin
