@@ -32,7 +32,7 @@ class billsController extends Controller
         if ($lastOffer) {
             $lastOffer = $lastOffer->Rechnungs_Nr;
             // Assuming $lastOffer is 'RE-12345'
-            $lastOffer = 'RE-12345';
+            // $lastOffer = 'RE-12345';
 
 
 
