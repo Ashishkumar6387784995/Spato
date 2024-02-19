@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Profile</title>
+  <title>Offers Listing</title>
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -19,7 +19,7 @@
 
   <style>
     /* Imports */
-    .o{
+    .offer-lists{
       background-color: #eaebef;
       /* margin-top: -10rem;*/
       padding-top: 5rem;
@@ -31,14 +31,15 @@
 
     
 
-  .agb-container .content h6 {
+  .offer-lists .content h6 {
    font-weight: 600;
    margin-top: 2rem;
    margin-bottom: 2rem;
    font-size: 22px;
+   text-align:center;
   }
 
-  .agb-container .content .details {
+  .offer-lists .content .details {
    margin: 2rem 0rem;
    text-align: justify;
   } 
@@ -372,18 +373,16 @@
 <body oncontextmenu="return false" class="snippet-body">
   @include('frontEnd/partial/header')
 
-  <section class="agb-container">
-    <div class="container d-flex">
-      <div id="sidebar" class="sidebar">
-        <h4>Offers Lists</h4>
-        <!-- Menu links -->
-        <ul id="angebotsList">
-          <!-- <li class="menu" data-content="page1" >Robot Offer 1</li>
-          <li class="menu" data-content="page2">Robot Offer 2</li>
-          <li class="menu" data-content="page3">Robot Offer 3</li> -->
-        </ul>
+  <section class="offer-lists">
+    <div class="container content">
+              <h6 class="text-center">Offers Lists</h6>
+      
+        <div class="details">
+          <div class="offer">
+            <h5></h5>
+          </div>
+        </div>
       </div>
-    </div>
   </section>
   @include('frontEnd/partial/footer')
 

@@ -220,7 +220,7 @@
                    <p>Ihre Ust. ID</p> 
                     </div>
                     
-                    <div class="col-md-2" >
+                    <div class="col-md-3" >
                     <p><input type="text" name="Claim_Nr" id=""></p>
                     <p><input type="text" name="Claimdatum" id=""></p>
                     <p><input type="text" name="Referenz" id=""></p>
