@@ -876,8 +876,9 @@
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);
+      
       displayValidationErrors(response.errors);
-
+      $('#success_msg').text(response.error);
 
       // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
 
