@@ -263,11 +263,11 @@
                         <td>
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
 </td>
-                        <td>1.</td>
-                        <td>80.2103281138</td>
-                        <td>BADU® Delta Eco VS</td>
-                        <td>1</td>
-                        <td>Stück</td>
+                        <td><input placeholder="#" type="text" name="1" id="1" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
                     </tr>
                 </table>
 
