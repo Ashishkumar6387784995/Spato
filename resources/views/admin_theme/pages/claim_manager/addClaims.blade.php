@@ -213,19 +213,19 @@
                     <div class="col-md-2 " >
                     </div>
                     <div class="col-md-3" >
-                   <p>Claim-Nr.</p><br>
-                   <p>Claimdatum</p><br>
-                   <p>Referenz</p><br>
-                   <p>Ihre Kundennummer</p> <br>
-                   <p>Ihre Ust. ID</p> <br>
+                   <p>Claim-Nr.</p>
+                   <p>Claimdatum</p>
+                   <p>Referenz</p>
+                   <p>Ihre Kundennummer</p> 
+                   <p>Ihre Ust. ID</p> 
                     </div>
                     
                     <div class="col-md-2" >
-                    <p><input type="text" name="Claim_Nr" id=""></p><br>
-                    <p><input type="text" name="Claimdatum" id=""></p><br>
-                    <p><input type="text" name="Referenz" id=""></p><br>
-                    <p><input type="text" name="Ihre_Kundennummer" id=""></p><br>
-                    <p><input type="text" name="Ihre_Ust_ID" id=""></p><br>
+                    <p><input type="text" name="Claim_Nr" id=""></p>
+                    <p><input type="text" name="Claimdatum" id=""></p>
+                    <p><input type="text" name="Referenz" id=""></p>
+                    <p><input type="text" name="Ihre_Kundennummer" id=""></p>
+                    <p><input type="text" name="Ihre_Ust_ID" id=""></p>
                     </div>
                 </div>
                 
