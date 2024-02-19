@@ -19,9 +19,32 @@
 
   <style>
     /* Imports */
+    .o{
+      background-color: #eaebef;
+      /* margin-top: -10rem;*/
+      padding-top: 5rem;
+      margin-bottom: -10rem;
+      padding-bottom: 10rem;
+
+      clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    
+
+  .agb-container .content h6 {
+   font-weight: 600;
+   margin-top: 2rem;
+   margin-bottom: 2rem;
+   font-size: 22px;
+  }
+
+  .agb-container .content .details {
+   margin: 2rem 0rem;
+   text-align: justify;
+  } 
 
 
-    .sidebar {
+    /* .sidebar {
       width: 300px;
       height: 200px;
       background-color: #fff;
@@ -54,19 +77,15 @@
       border-top: 1px solid #000;
     }
 
-    /* Container for all Pages */
     .allpage {
       display: flex;
     }
 
-    /* Container for single page */
     .page {
       width: 100%;
-      /* padding: 50px; */
       animation: fadein 0.3s 1 ease-out;
     }
 
-    /* Style for permalinks */
     a {
       color: var(--main-col);
     }
@@ -90,7 +109,6 @@
       color: var(--blue);
     }
 
-    /* Fade in animation */
     @keyframes fadein {
       from {
         transform: translateY(20px);
@@ -102,17 +120,16 @@
       }
     }
 
-    /* Add margin to every element in a page */
     /* .page * {
    margin: 10px;
-  } */
+  } 
 
     .menu * {
       transform: translateX(0px);
       transition-duration: 0.3s;
     }
 
-    /* Translate the menu text to the right on hover */
+    /* Translate the menu text to the right on hover 
     .menu:hover>* {
       cursor: pointer;
     }
@@ -123,38 +140,12 @@
     /* Translate the arrow logo right on click */
     /* .menu:active>* {
    color: #44e1d5 !important;
-  } */
+  } 
 
 
 
 
-    .agb-container {
-      background-color: #eaebef;
-      /* margin-top: -10rem; */
-      padding-top: 5rem;
-      margin-bottom: -10rem;
-      padding-bottom: 10rem;
-
-      clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
-    }
-
-    /* .agb-container nav .home {
-   color: var(--black) !important;
-   text-decoration: none !important;
-  }
-
-  .agb-container .content h6 {
-   font-weight: 600;
-   margin-top: 2rem;
-   margin-bottom: 2rem;
-   font-size: 22px;
-  }
-
-  .agb-container .content .details {
-   margin: 2rem 0rem;
-   text-align: justify;
-  } */
-
+    
     @media screen and (max-device-width: 480px) and (orientation: portrait) {
       .agb-container {
         clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
@@ -162,7 +153,7 @@
 
       /* footer .footer-container {
     width: 96%;
-  } */
+  } 
     }
 
     .profile {
@@ -209,7 +200,7 @@
       border: 1px solid #000;
     }
 
-    /* Manage Address starts */
+    /* Manage Address starts
 
 
     .address table tr td i {
@@ -260,7 +251,7 @@
 
     /* Manage Address ends */
 
-    /* For mobile */
+    /* For mobile
 
     @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
       .allpage {
@@ -270,7 +261,7 @@
 
     }
 
-    /* For Mobile Portrait View */
+    /* For Mobile Portrait View 
     @media screen and (max-device-width: 480px) and (orientation: portrait) {
       .allpage {
         display: block;
@@ -294,7 +285,7 @@
       }
     }
 
-    /* Products Card start*/
+    /* Products Card start
     .products {
       width: 100%;
       display: flex;
@@ -363,7 +354,7 @@
 
       /* footer .footer-container {
     width: 96%;
-  } */
+  } 
       .products {
         justify-content: center;
       }
@@ -372,7 +363,7 @@
         display: block !important;
       }
 
-    }
+    } */
 
     /* Products Card ends*/
   </style>
@@ -392,25 +383,12 @@
           <li class="menu" data-content="page3">Robot Offer 3</li> -->
         </ul>
       </div>
-
-      <div id="profile" class="page container">
-        <form id="profileForm" method="post" enctype="multipart/form-data">
-          <!-- Content area -->
-          <div class="content" id="content">
-            <!-- Initial content -->
-            <h2>Offers Page</h2>
-            <p>
-              All The Offers are listed here please click on the links on your left side.
-            </p>
-          </div>
-        </form>
-      </div>
     </div>
   </section>
   @include('frontEnd/partial/footer')
 
 
-  <script>
+  <!-- <script>
     // Execute the code when the document is ready
     $(document).ready(function() {
       // Get the token from localStorage
@@ -781,7 +759,7 @@
 
       });
     });
-  </script>
+  </script> -->
   <script>
     // Function to update content based on selected page
   </script>
