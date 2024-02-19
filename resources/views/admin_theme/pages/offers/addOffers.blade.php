@@ -886,7 +886,8 @@
       // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
      }
      else if (response.error){
-      $('#success_msg').text(response.error);
+      window.location.href = '/api/home';
+
      }
     },
     error: function(xhr, status, error) {
