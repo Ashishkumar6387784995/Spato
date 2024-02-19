@@ -442,6 +442,8 @@
             response.offersGroupBy.forEach(function(offer) {
                 
               var li = document.createElement('li');
+              li.setAttribute('class', 'menu');
+              li.setAttribute('data-content', 'page1');
               li.className = 'menu';
               li.dataset.content = offer.Angebots_Nr;
               li.textContent =  offer.Angebots_Nr; // Adjust text content as needed
@@ -505,10 +507,10 @@
       // Clear existing content
       contentDiv.innerHTML = "";
 
-      // Update content based on selected page
-      if (page === "page1") {
-        contentDiv.innerHTML =
-          `<h2>Welcome to Page 1</h2>
+                // Update content based on selected page
+                if (page === "page1") {
+                  contentDiv.innerHTML =
+                    `<h2>Welcome to Page 1</h2>
             <div class="products">
       <div class="product">
        <div class="img">
@@ -691,9 +693,9 @@
 
      </div>           
             `;
-      } else if (page === "page2") {
-        contentDiv.innerHTML =
-          `<h2>Welcome to Page 2</h2>
+                } else if (page === "page2") {
+                  contentDiv.innerHTML =
+                    `<h2>Welcome to Page 2</h2>
             <div class="products">
       <div class="product">
        <div class="img">
