@@ -8,19 +8,31 @@ use App\Models\Delivery_notes;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\DeliveryNotesMailer;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class DeliveryNotesController extends Controller
 {
 
     public function DeliveryNotesListingApi()
     {
+        $user = Auth::guard('api')->user();
+        if ($user->role == 'Admin') {
         $delivery_notes = Delivery_notes::orderBy('created_at', 'desc')->get();
+        }
+        elseif ($user->role == 'supplier') {
+            $delivery_notes = Delivery_notes::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+        }  else {
+            $offers = 'offer not found';
+        }
 
         if ($delivery_notes){
             return response()->json(['delivery_notes'=>$delivery_notes]);
         }
+        else {
+            return response()->json(['errors' => 'Deleivery Notes Not Found']);
+        }
      
-        return response()->json(['errors'=>"Offer Not Found"]);
+       
     }
 
 

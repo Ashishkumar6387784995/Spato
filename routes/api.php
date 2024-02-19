@@ -107,6 +107,17 @@ Route::middleware('api.auth')->group(function () {
   Route::post('addAssignmentsApi', [AssignmentController::class, 'addAssignmentsApi']);
   Route::get('assignmentListingApi', [AssignmentController::class, 'AssignmentListing']);
 
+  // Delivery Notes for Admin
+  Route::post('addDeliveryNotesApi', [DeliveryNotesController::class, 'addDeliveryNotesApi']);
+  Route::get('deliveryNotesListingApi', [DeliveryNotesController::class, 'DeliveryNotesListingApi']);
+
+
+
+  // Bills for Admin
+  Route::get('addbills/{role}', [billsController::class, 'addbills']);
+  Route::get('billsListingApi', [billsController::class, 'billsListingApi']);
+
+  
 
   // items for checkout with auth.
   Route::get('cart/checkoutItemsApiAuthentic', [CartController::class, 'getCartItems']);
@@ -135,8 +146,6 @@ Route::middleware('api.auth')->group(function () {
   // Payment Checkout
   Route::get('/payment', [PaymentController::class, 'index']);
   Route::post('/cart/addOrder', [PaymentController::class, 'addOrder']);
-
-
 });
 
 
@@ -145,9 +154,9 @@ Route::get('/checkout/payment', [PaymentController::class, 'payment']);
 
 Route::get('/productList', [tryController::class, 'productListing']);
 
-  // WareHouse Management
-  Route::view('/wareHouseProductList/{role}', '/admin_theme/pages/wareHouse/productsList');
-  Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
+// WareHouse Management
+Route::view('/wareHouseProductList/{role}', '/admin_theme/pages/wareHouse/productsList');
+Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
 
 
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
@@ -215,10 +224,10 @@ Route::post('sendAssignmentMailsToB2C', [AssignmentController::class, 'sendAssig
 
 
 // Delivery Notes for Admin
-Route::get('deliveryNotesListingApi', [DeliveryNotesController::class, 'DeliveryNotesListingApi']);
+
 Route::view('deliveryNotesListing/{role}', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
 Route::get('addDeliveryNotes/{role}', [DeliveryNotesController::class, 'addDeliveryNotes']);
-Route::post('addDeliveryNotesApi', [DeliveryNotesController::class, 'addDeliveryNotesApi']);
+
 Route::get('editDeliveryNotes', [DeliveryNotesController::class, 'editDeliveryNotes']);
 Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sendDeliveryNotesMailsToB2C']);
 
@@ -231,7 +240,7 @@ Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
 Route::get('editbills', [billsController::class, 'editbills']);
 Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB2C']);
 
-  
+
 // Credits for Admin
 Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
 Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
@@ -242,7 +251,7 @@ Route::post('sendCredistMailsToB2C', [creditsController::class, 'sendCredistMail
 
 
 // Claim Manger for Admin
-Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::get('claimsListingApi', [claims_manager_Controller::class, 'claimsListing']);
 Route::view('claimsListing/{role}', 'admin_theme/pages/claim_manager/claimsList');
 Route::get('addClaims/{role}', [claims_manager_Controller::class, 'addCliams']);
 Route::get('editClaims', [claims_manager_Controller::class, 'editCliams']);

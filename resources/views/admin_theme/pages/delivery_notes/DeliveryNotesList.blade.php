@@ -182,10 +182,25 @@
   <script>
   // Execute the code when the document is ready
   $(document).ready(function() {
+
+    var token = localStorage.getItem('authToken');
+      console.log(token);
+
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        // return;
+      }
+
+
    // Make a GET request using AJAX
    $.ajax({
     url: '/api/deliveryNotesListingApi', // Replace with the actual endpoint URL
     method: 'GET',
+    headers: {
+          'Authorization': 'Bearer ' + token,
+        },
     success: function(data) {
      // Handle the successful response
      if (data.delivery_notes) {
@@ -208,8 +223,7 @@
         row.append('<td>' + item.gesamt_netto + '</td>');
         row.append('<td><a href="/api/editOffer/' + item.id +
          '" class="btn edit" id="editProductBtn">bearbeiten</a></td>');
-         row.append('<td><a href="/api/editOffer/' + item.id +
-         '" class="btn edit" id="editProductBtn">berechnen</a></td>');
+        
 
         // Add more columns as needed
 
