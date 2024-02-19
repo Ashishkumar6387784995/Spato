@@ -207,9 +207,9 @@
         // row.append('<td>' + item.Kategorie + '</td>');
         row.append('<td>' + item.gesamt_netto + '</td>');
         row.append('<td><a href="/api/editOffer/' + item.id +
-         '" class="edit" id="editProductBtn">bearbeiten</a></td>');
+         '" class="btn edit" id="editProductBtn">bearbeiten</a></td>');
          row.append('<td><a href="/api/editOffer/' + item.id +
-         '" class="edit" id="editProductBtn">berechnen</a></td>');
+         '" class="btn edit" id="editProductBtn">berechnen</a></td>');
 
         // Add more columns as needed
 
