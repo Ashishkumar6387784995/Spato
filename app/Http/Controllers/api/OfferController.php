@@ -119,6 +119,9 @@ class OfferController extends Controller
 
 
 
+        $user = Auth::guard('api')->user();
+
+        if ($user->role == 'Admin') {
 
         // Set the attributes of the model with the main form data
 
@@ -148,10 +151,17 @@ class OfferController extends Controller
             $offer->Rabatt = $dynamicField['Rabatt'];
             $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
             $offer->save();
+            
         }
-
         // Return a success response
         return response()->json(['success' => "Offer Is Added SuccessFully", 'dynamicFields' => $dynamicFields]);
+        }
+        else{
+              // Return a success response
+        return response()->json(['error' => "Offer Is not Added SuccessFully",]); 
+        }
+
+
 
         // Return a success response
 

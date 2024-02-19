@@ -876,13 +876,18 @@
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);
+      
       displayValidationErrors(response.errors);
-
+ 
 
       // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
 
       // You can also update your HTML to show errors in a specific element
       // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+     }
+     else if (response.error){
+      window.location.href = '/api/home';
+
      }
     },
     error: function(xhr, status, error) {

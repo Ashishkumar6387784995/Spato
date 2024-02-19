@@ -443,7 +443,7 @@
 
               var li = document.createElement('li');
               li.setAttribute('class', 'menu');
-              li.setAttribute('data-content', 'page1');
+              li.setAttribute('data-content', offer.Angebots_Nr);
               li.className = 'menu';
               li.dataset.content = offer.Angebots_Nr;
               li.textContent = offer.Angebots_Nr; // Adjust text content as needed
@@ -455,8 +455,9 @@
                 contentDiv.innerHTML = "";
 
                 // Update content based on selected page
-                if (page === "page1") {
-                  contentDiv.innerHTML =
+                if (page === li.dataset.content) {
+                  if (li.dataset.content === li.dataset.content ) {
+                    contentDiv.innerHTML =
                     `<h2>Welcome to Page 1</h2>
             <div class="products">
       <div class="product">
@@ -640,7 +641,10 @@
 
      </div>           
             `;
-                } else if (page === "page2") {
+                  }
+
+
+                } else if (page === li.dataset.content ) {
                   contentDiv.innerHTML =
                     `<h2>Welcome to Page 2</h2>
             <div class="products">
