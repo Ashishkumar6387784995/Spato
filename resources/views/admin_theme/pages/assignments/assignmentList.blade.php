@@ -123,12 +123,22 @@
         <div class="row pt-3">
 
           <div class="col-md-4 stretch-card grid-margin">
-            <a class="edit btn" href="{{url('/api/addAssignment/'.$role)}}">+ neuer Auftrag</a>
+            <a class="edit btn" href="{{url('/api/addAssignmen/'.$role)}}">+ neuer Auftrag zum Shop</a>
           </div>
           <div class="col-md-4 stretch-card grid-margin">
             Filter
           </div>
         </div>
+        elseif($role=="b2b")
+        <div class="row pt-3">
+
+<div class="col-md-4 stretch-card grid-margin">
+  <a class="edit btn" href="{{url('/api/addAssignment/'.$role)}}">+ neuer Auftrag</a>
+</div>
+<div class="col-md-4 stretch-card grid-margin">
+  Filter
+</div>
+</div>
         @endif
         <div class="row pt-3">
 

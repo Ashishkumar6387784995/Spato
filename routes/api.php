@@ -138,6 +138,9 @@ Route::middleware('api.auth')->group(function () {
 
 
 });
+
+
+
 Route::get('/checkout/payment', [PaymentController::class, 'payment']);
 
 Route::get('/productList', [tryController::class, 'productListing']);

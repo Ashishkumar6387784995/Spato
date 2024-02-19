@@ -40,7 +40,7 @@ function updateCartItemsList() {
             "guest-token": getGuestToken(),
         },
         success: function (response) {
-            console.log(response.cartItems);
+            // console.log(response.cartItems);
             displayCartItems(response.cartItems);
             // alert(response.cartItems.length);
             jQuery(".nav-item .cart-count").text(response.cartItems.length);
@@ -54,7 +54,7 @@ function updateCartItemsList() {
 // Function to get or generate guest token
 function getGuestToken() {
     var guestToken = localStorage.getItem("guestToken");
-    console.log(guestToken);
+    // console.log(guestToken);
     if (!guestToken) {
         guestToken = generateGuestToken();
         localStorage.setItem("guestToken", guestToken);
@@ -69,7 +69,7 @@ function generateGuestToken() {
 
 // Display Cart Items in the right sidebar
 function displayCartItems(cartItems) {
-    console.log(cartItems);
+    // console.log(cartItems);
     var baseUrl = jQuery("#baseUrl").val();
     var cartItemsList = $("#cart-items-list");
     cartItemsList.empty();

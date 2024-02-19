@@ -13,30 +13,39 @@ use App\Mail\sendResetLinkEmail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class OfferController extends Controller
 {
 
-
-
     public function offerListing()
     {
+
+
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
             $offers = Offers::orderBy('created_at', 'desc')->get();
         } elseif ($user->role == 'b2b') {
             $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+        } elseif ($user->role == 'Normal') {
+            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $offersGroupBy = Offers::select('Angebots_Nr', DB::raw('MAX(Angebotsdatum) as max_angebotsdatum'))
+            ->where('Ihre_Kundennummer', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->groupBy('Angebots_Nr')
+            ->get();
+            return response()->json(['offersList' => $offers, 'user' => $user, 'offersGroupBy' => $offersGroupBy]);
         } else {
             $offers = 'offer not found';
         }
 
         if ($offers) {
             return response()->json(['offersList' => $offers, 'user' => $user]);
+        } else {
+            return response()->json(['errors' => 'Offer Not Found']);
         }
-
-        return response()->json(['errors' => 'Offer Not Found'], 404);
     }
 
 
@@ -199,6 +208,6 @@ class OfferController extends Controller
     public function viewOffersForB2C()
     {
 
-        return view('admin_theme/pages/offers/viewOffersForB2C');
+        return view('frontEnd/Pages/offers/viewOffersForB2C');
     }
 }
