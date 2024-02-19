@@ -9,6 +9,7 @@ $(document).one('click', '.showButton', function() {
             if (response.success) {
                 var ddl = $("#Ihre_Kundennummer");
                 ddl.empty(); // Consider whether you want to keep this line or not
+                ddl.append('<option selected style="display:none"></option>');
                 var dataArray = response.success;
 
                 // Dynamically set the loop limit based on the array length
@@ -18,7 +19,7 @@ $(document).one('click', '.showButton', function() {
 
                 // Attach a change event handler to the dropdown
                 ddl.on('change', function() {
-
+                    $("#companyName").val('');
                     var selectedUser = $(this).val();
                     // Log the value of the selected item when it changes
                     console.log("Selected item value:", selectedUser);
@@ -60,6 +61,7 @@ function guessCompanyNameFunction() {
   }
   
   $(".customer_dtl").text('');
+  $("#Ihre_Kundennummer").html('');
   $("#customer_email, #Ihre_Ust_ID").val('');
   $.ajax({
     type: 'get',
@@ -84,6 +86,7 @@ function guessCompanyNameFunction() {
         $("#customer_Email").text(response.success[0].email);
         $("#customer_Contact").text(response.success[0].mobile);
         $("#customer_Name").text(response.success[0].name);
+        $("#Ihre_Kundennummer").html('').html('<option value="'+ response.success[0].id +'" selected>'+ response.success[0].id +'</option>');
         $("#Ihre_Ust_ID").val(response.success[0].vatNo);
         nameList.empty();
         // Dynamically set the loop limit based on the array length

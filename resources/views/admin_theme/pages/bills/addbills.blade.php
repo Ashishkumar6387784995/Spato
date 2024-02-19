@@ -1,133 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add Offers</title>
-    <!-- plugins:css -->
+ <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Add Rechnungen</title>
+  <!-- plugins:css -->
 
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-    <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
-    <!-- Fonts -->
+  <!-- Fonts -->
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/e1528f4468.js" crossorigin="anonymous"></script>
+  <!-- Fonts -->
 
-    <link rel="stylesheet" href="{{ asset('theme/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <style>
-        .transform-hover {
-            height: 150px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            /* You can adjust the scale value for the desired zoom effect */
-
-        }
-
-        .transform-hover:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-        }
+  <link rel="stylesheet" href="{{ asset('theme/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('theme/assets/vendors/css/vendor.bundle.base.css') }}">
+  <link rel="stylesheet" href="{{ asset('theme/assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('theme/assets/images/favicon.ico') }}">
 
 
-        .btn {
-            /* background-color: #54606c; */
-            border: 1px solid #404040;
-            color: #404040;
-            padding: 10px 14px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-        .btn:hover {
-            background-color: #404040;
-            color: #fff;
-        }
 
-        .close {
-            color: #404040;
-        }
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        .stretch-card {
-            font-size: 13px;
-        }
+  <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
 
-        .table thead tr th {
-            width: 200px;
-            background-color: #404040;
-            color: #fff;
-            border: none;
-            padding: 2px;
-        }
+  .contact-show {
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
+   border: 0.5px solid #000;
+   padding: 10px 10px;
+  }
 
-        table tr td {
-            padding: 10px 2px;
-            width: 200px;
-            font-size: 14px;
-        }
+  .transform-hover {
+   height: 150px;
+   object-fit: cover;
+   transition: transform 0.3s ease;
+   /* You can adjust the scale value for the desired zoom effect */
 
-        table tr td input {
-            width: 100%;
-            border: none;
-            background-color: transparent;
-        }
+  }
 
-        table tr td a {
-            color: #404040;
-        }
+  .transform-hover:hover {
+   transform: scale(1.1);
+   cursor: pointer;
+  }
 
-        .dynamic-field {
-            width: 100%;
-            background: transparent;
-            border: 1px solid #8F8C8C;
-            border-radius: 5px;
-        }
 
-        a {
-            color: #54606c;
-        }
+  .btn {
+   /* background-color: #54606c; */
+   border: 1px solid #404040;
+   color: #404040;
+   padding: 10px 14px;
+   text-decoration: none;
+   border-radius: 5px;
 
-        .table th,
-        .table td {
-            font-size: 0.85rem;
-            padding: -0.0625rem;
-        }
 
-        .details {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-        }
+  }
 
-        .details input {
-            width: 250px;
-        }
+  .btn:hover {
+   background-color: #404040;
+   color: #fff;
+  }
 
-        @media (min-width: 481px) and (max-width: 767px) {
-            .details input {
-                width: 170px;
-            }
-        }
-    </style>
-</head>
+  .close {
+   color: #404040;
+  }
 
-<body>
-    <div class="container-scroller">
-        <div class="row p-0 m-0 proBanner" id="proBanner">
-            <div class="col-md-12 p-0 m-0">
-                {{-- <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+  .stretch-card {
+   font-size: 13px;
+  }
+
+  .table thead tr th {
+   width: 200px;
+   background-color: #404040;
+   color: #fff;
+   border: none;
+   padding: 2px;
+  }
+
+  table tr td {
+   padding: 10px 2px;
+   width: 200px;
+   font-size: 14px;
+  }
+
+  table tr td input {
+   width: 100%;
+   border: none;
+   background-color: transparent;
+  }
+
+  table tr td a {
+   color: #404040;
+  }
+
+  .dynamic-field {
+   width: 100%;
+   background: transparent;
+   border: 1px solid #8F8C8C;
+   border-radius: 5px;
+  }
+
+  .showButton {
+   width: 250px;
+   background: transparent;
+   border: 1px solid #8F8C8C;
+   border-radius: 5px;
+  }
+
+  a {
+   color: #54606c;
+  }
+
+  .table th,
+  .table td {
+   font-size: 0.85rem;
+   padding: -0.0625rem;
+  }
+
+  .details {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+  }
+
+  .details input {
+   width: 250px;
+  }
+
+  .details input select {
+   width: 250px !important;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+   .details input {
+    width: 170px;
+   }
+  }
+  .slide-in-blurred-top {
+	-webkit-animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.5s both;
+	        animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.5s both;
+}
+
+  #guessCompanyName{
+    max-height: 110px;
+    overflow: auto;
+    transition:0.6s ease-in-out;
+    position:absolute;
+    width: 250px;
+    /* overflow-x: hidden;
+    overflow-y: scroll; */
+  }
+  #guessCompanyName ul{
+    display:contents;
+    transition:0.6s ease-in-out;
+  }
+  #guessCompanyName ul li{
+    background-color:#fff;
+    list-style-type:none;
+    border-radius:3px;
+    margin:3px 0px;
+    padding:0px 10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.6s ease-in-out;
+  }
+  @-webkit-keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+
+  </style>
+ </head>
+
+ <body>
+  <div class="container-scroller">
+   <div class="row p-0 m-0 proBanner" id="proBanner">
+    <div class="col-md-12 p-0 m-0">
+     {{-- <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
               <div class="d-flex align-items-center justify-content-between">
                 <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
@@ -140,141 +242,170 @@
                 <i class="mdi mdi-close text-white me-0"></i>
               </button>
             </div> --}}
+    </div>
+   </div>
+  </div>
+
+
+
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+
+
+   @include('admin_theme/Partial/sidebar')
+
+
+
+   <!-- partial -->
+   <div class="main-panel">
+    <div class="content-wrapper">
+     <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
+      <h2>Admin Dashboard</h2>
+      <p>{{ now()->format('l, F j, Y') }}</p>
+
+      <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+       <span class="mdi mdi-menu"></span>
+      </button>
+     </div>
+     <form id="AddRechnungsForm" method="post">
+      <div class="row pt-3">
+
+       <div class="col-md-2 stretch-card grid-margin">
+        <button class="btn" type="button" id="saveButton">Save</button>
+
+       </div>
+
+       <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
+        <a href="#" class="btn">Lieferschein</a>
+       </div>
+       {{--<div class="col-md-2 stretch-card grid-margin">
+        <a href="{{url('api/assignmentPdfdownload/'.$newBillNo)}}"><button class="btn" type="button">Rechnung</button></a>
+       </div>--}}
+       <div class="col-md-2 stretch-card grid-margin">
+
+       </div>
+       <div class="col-md-2 stretch-card grid-margin">
+        <!-- <a href="#" class="btn">senden</a> -->
+
+        <button id="emailSend" type="button" class="btn">senden</button>
+       </div>
+      </div>
+      <span class="msg_err" id="success_msg" style="color:Green; font-size:20px;"></span>
+      <div class="row pt-3">
+
+        <div class="col-md-4">
+            <div class="contact-show">
+                <p><b>Name</b> -> <span class="customer_dtl" id="customer_Name"><span></p>
+                <p><b>Conatact</b> -> <span class="customer_dtl" id="customer_Contact"><span></p>
+                <p><b>Email</b> -> <span class="customer_dtl" id="customer_Email"><span></p>
             </div>
         </div>
-    </div>
 
-
-
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-
-
-        @include('admin_theme/Partial/sidebar')
-
-
-
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
-                    <h2>Admin Dashboard</h2>
-                    <p>{{ now()->format('l, F j, Y') }}</p>
-
-                    <button class="navbar-toggler" type="button" data-toggle="offcanvas">
-                        <span class="mdi mdi-menu"></span>
-                    </button>
+        <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <div class="details">
+                    <div class="field">
+                        <p>Rechnungs-Nr.</p>
+                    </div>
+                    <div class="inputs">
+                        <p>
+                            <input class="dynamic-field" type="text" placeholder='#' id="Rechnungs_Nr" name="Rechnungs_Nr" value="{{$newBillNo}}" /> <br>
+                            <span class="msg_err" id="Rechnungs_Nr_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
                 </div>
-                <form id="AddOffersForm" method="post" >
-                    <div class="row pt-3">
 
-                        <div class="col-md-2 stretch-card grid-margin">
-                            <button class="btn" type="button" id="saveButton">Save</button>
-                        </div>
-
-                        <div class="col-md-2 stretch-card grid-margin">
-
-                        </div>
-                        <div class="col-md-2 stretch-card grid-margin">
-                            <a href="#" class="btn">Auftrag</a>
-                        </div>
-                        <div class="col-md-2 stretch-card grid-margin">
-                            <a href="#" class="btn">Lieferschein</a>
-                        </div>
-                        <div class="col-md-2 stretch-card grid-margin">
-                            <a href="#" class="btn">Rechnung</a>
-                        </div>
-                        <div class="col-md-2 stretch-card grid-margin">
-                            <a href="#" class="btn">senden</a>
-                        </div>
+                <div class="details">
+                    <div class="field">
+                        <p>Rechnungsdatum</p>
                     </div>
-                    <span id="success_msg" style="color:Green"></span>
-                    <div class="row pt-3">
-
-                        <div class="col-md-4">
-
-
-                            <textarea name="text" id="" cols="35" rows="10"></textarea>
-
-                        </div>
-                        <div class="col-md-2"></div>
-
-
-                        <div class="col-md-6">
-                            <div class="details">
-                                <div class="field">
-                                    <p>Rechnungs-Nr.</p>
-                                </div>
-                                <div class="inputs">
-                                    <input class="dynamic-field" type="text" placeholder='#' id="Rechnungs_Nr" name="Rechnungs_Nr" value="{{$newBillNo}}" /></p>
-                                </div>
-                            </div>
-
-                            <div class="details">
-                                <div class="field">
-                                    <p>Rechnungsdatum</p>
-                                </div>
-                                <div class="inputs">
-                                    <p><input class="dynamic-field" type="date" placeholder='#' id="Rechnungsdatum" name="Rechnungsdatum" value="{{ now()->format('d-m-Y') }}" /> <br>
-                                        <span id="Rechnungsdatum_err" style="color:red;  font-size:13px;"></span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="details">
-                                <div class="field">
-                                    <p>Referenz</p>
-                                </div>
-                                <div class="inputs">
-                                    <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
-                                </div>
-                            </div>
-
-                            <div class="details">
-                                <div class="field">
-                                    <p>Ihre Kundennummer</p>
-                                </div>
-                                <div class="inputs">
-                                    <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Kundennummer" name="Ihre_Kundennummer" /><br>
-                                        <span id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="details">
-                                <div class="field">
-                                    <p>Ihre Ust. ID</p>
-                                </div>
-                                <div class="inputs">
-                                    <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>
-                                        <span id="Ihre_Ust_ID_err" style="color:red;  font-size:13px;"></span>
-                                    </p>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-
-
-
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="date" placeholder='#' id="Rechnungsdatum" name="Rechnungsdatum" value="{{ now()->format('d-m-Y') }}" /> <br>
+                            <span class="msg_err" id="Rechnungsdatum_err" style="color:red;  font-size:13px;"></span>
+                        </p>
                     </div>
+                </div>
 
-                    <div class="row pt-3">
+                
+                <div class="details">
+                <div class="field">
+                <p>Referenz</p>
+                </div>
+                <div class="inputs">
+                <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
+                </div>
+                </div>
 
-                        <div class="col-md-4">
-                            <h4>Rechnungs-Nr. <a href="#">{{$newBillNo}}</a></h4>
-                        </div>
-                        <div class="col-md-3 stretch-card grid-margin">
-                            <a href="#" class="btn">Kopfzeile Standard</a>
-                        </div>
-                        <div class="col-md-2 stretch-card grid-margin">
-                            <a href="#" class="btn">Kopfzeile neu</a>
-                        </div>
-                        <!-- <div class="col-md-2 " > </div> -->
-                        <div class="col-md-2 "> </div>
+                <div class="details">
+                <div class="field">
+                <p>Ihre Kundennummer</p>
+                </div>
+                <div class="inputs">
+                <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton" required>
+                </select>
+                <br>
+                <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
 
+                </div>
+                </div>
+                
+                <div class="details">
+                <div class="field">
+                <p>Name der Firma</p>
+                </div>
+                <div class="inputs"> 
+                <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction()"></p>
+                
+                <div id="guessCompanyName">
+                    <ul>
+
+                    </ul>
                     </div>
+                <br>
+
+                </div>
+                </div>
+
+                
+                <div class="details">
+                <div class="field">
+                <p>Ihre Ust. ID</p>
+                </div>
+                <div class="inputs">
+                <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>
+                <span class="msg_err" id="Ihre_Ust_ID_err" style="color:red;  font-size:13px;"></span>
+                </p>
+                </div>
+                </div>
+
+                
+                <div class="details">
+                <div class="field">
+                <p style="display:none">Email</p>
+                </div>
+                <div class="inputs">
+                <p><input class="dynamic-field" type="text" placeholder='#' class="customer_dtl" id="customer_email" name="customer_email"
+                    style="display:none" />
+                </p>
+                </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-md-4">
+                <h4>Rechnungs-Nr. <a href="#">{{$newBillNo}}</a></h4>
+            </div>
+            <div class="col-md-3 stretch-card grid-margin">
+                <a href="#" class="btn">Kopfzeile Standard</a>
+            </div>
+            <div class="col-md-2 stretch-card grid-margin">
+                <a href="#" class="btn">Kopfzeile neu</a>
+            </div>
+            <!-- <div class="col-md-2 " > </div> -->
+            <div class="col-md-2 "> </div>
+        </div>
 
 
 
@@ -330,7 +461,7 @@
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Produkt]' placeholder='#' />
-                                            <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+                                            <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
 
                                         </td>
 
@@ -338,7 +469,7 @@
                                         <td>
 
                                             <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
-                                            <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+                                            <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
                                         </td>
                                         <td>
@@ -347,13 +478,13 @@
                                         </td>
                                         <td>
                                             <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
-                                            <br><span id="Einheit_err" style="color:red;  font-size:13px;"></span>
+                                            <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
                                         </td>
                                         <td>
 
                                             <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
-                                            <br><span id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
+                                            <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
 
                                         </td>
                                         <td>
@@ -457,7 +588,7 @@
                             zzgl. Umsatzsteuer 19 %
                         </div>
                         <div class="col-2 stretch-card ">
-                            <p id="tax"></p>
+                            <input type="text" name="zzgl_Umsatzsteuer" id="tax" placeholder='#' style="background:transparent; border:none;" />
                         </div>
 
                     </div>
@@ -674,7 +805,7 @@
                 document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
                 document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
                 document.getElementById('Total').value = adjustedTotal.toFixed(2);
-                document.getElementById("tax").innerHTML = igstAmount.toFixed(2);
+                document.getElementById("tax").value = igstAmount.toFixed(2);
             }
         });
     </script>
@@ -685,23 +816,17 @@
         $('#saveButton').click(function(e) {
             e.preventDefault(); // Prevent the form from submitting normally
 
-            $('#Rechnungsdatum_err').text('');
-            $('#Ihre_Kundennummer_err').text('');
-            $('#Produkt_err').text('');
-            $('#Beschreibung_err').text('');
-
-            $('#Einheit_err').text('');
-            $('#Einzelpreis_err').text('');
+            $('.msg_err').text('');
 
             var formData = {
-                Rechnungs_Nr: $('#AddOffersForm input[name="Rechnungs_Nr"]').val(),
-                Rechnungsdatum: $('#AddOffersForm input[name="Rechnungsdatum"]').val(),
-                Referenz: $('#AddOffersForm input[name="Referenz"]').val(),
-                Ihre_Kundennummer: $('#AddOffersForm input[name="Ihre_Kundennummer"]').val(),
-                Ihre_Ust_ID: $('#AddOffersForm input[name="Ihre_Ust_ID"]').val(),
-                gesamt_netto: $('#AddOffersForm input[name="gesamt_netto"]').val(),
-                zzgl_Umsatzsteuer: $('#AddOffersForm input[name="zzgl_Umsatzsteuer"]').val(),
-                Gesamtbetrag_brutto: $('#AddOffersForm input[name="Gesamtbetrag_brutto"]').val(),
+                Rechnungs_Nr: $('#AddRechnungsForm input[name="Rechnungs_Nr"]').val(),
+                Rechnungsdatum: $('#AddRechnungsForm input[name="Rechnungsdatum"]').val(),
+                Referenz: $('#AddRechnungsForm input[name="Referenz"]').val(),
+                Ihre_Kundennummer: $('#AddRechnungsForm select[name="Ihre_Kundennummer"]').val(),
+                Ihre_Ust_ID: $('#AddRechnungsForm input[name="Ihre_Ust_ID"]').val(),
+                gesamt_netto: $('#AddRechnungsForm input[name="gesamt_netto"]').val(),
+                zzgl_Umsatzsteuer: $('#AddRechnungsForm input[name="zzgl_Umsatzsteuer"]').val(),
+                Gesamtbetrag_brutto: $('#AddRechnungsForm input[name="Gesamtbetrag_brutto"]').val(),
                 inputs: []
             };
 
@@ -731,7 +856,7 @@
                     // Handle success response
                     if (response.success) {
                         console.log(response.success);
-                        $('#AddOffersForm')[0].reset();
+                        // $('#AddRechnungsForm')[0].reset();
                         $('#success_msg').text(response.success);
                     } else if (response.errors) {
                         // Display validation errors in the console
@@ -763,12 +888,12 @@
 
             function displayValidationErrors(errors) {
                 // Display validation errors next to the respective form fields
-                if (errors.Rechnungsdatum) {
-                    $('#Rechnungsdatum_err').text(errors.Rechnungsdatum[0]);
-                }
-                if (errors.Ihre_Kundennummer) {
-                    $('#Ihre_Kundennummer_err').text(errors.Ihre_Kundennummer[0]);
-                }
+                $.each(errors, function(field, messages) {
+                    // Append error messages to your HTML
+                    $('#' + field + '_err').text(messages[0]);
+                });
+
+
                 if (errors['inputs.0.Produkt']) {
                     $('#Produkt_err').text('Produkt is Required');
                 }
@@ -781,27 +906,51 @@
                 if (errors['inputs.0.Einzelpreis']) {
                     $('#Einzelpreis_err').text('Einzelpreis is Required');
                 }
-
-
             }
+        });
+
+
+        
+        $('#emailSend').click(function(e) {
+            e.preventDefault();
+
+            // Get the values from the form
+            var formData = {
+                Auftrags_Nr: $('#AddRechnungsForm input[name="Auftrags_Nr"]').val(),
+                email: $('#AddRechnungsForm input[name="customer_email"]').val(),
+            }
+
+            console.log(formData);
+            const baseUrl = window.location.origin;
+
+            $.ajax({
+                type: 'post',
+                url: baseUrl + '/api/sendBillstMailsToB2C',
+                data: formData,
+                success: function(response) {
+                    // Handle success response
+                    if (response.success) {
+                    console.log(response.success);
+                    $('#AddRechnungsForm')[0].reset();
+                    $('#success_msg').text(response.success);
+                    // Add any additional success handling here
+                    }
+
+                    if (response.error) {
+                    console.log(response.error);
+                    // Add any error handling here
+                    }
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.error('AJAX Request Failed: ', textStatus, errorThrown);
+                    console.error('Response Text: ', xhr.responseText); // Log the response text for more details
+                    // Handle AJAX errors here
+                },
+            });
         });
     </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <script type="text/javascript" src="{{ asset('js/admin/common.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
@@ -812,6 +961,32 @@
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
     </script>
+
+    
+    <!-- lieferschein Modal -->
+        <div class="modal fade" id="lieferschein" tabindex="-1" aria-labelledby="lieferscheinLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="modal-title fs-5" id="lieferscheinLabel">Write note</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-floating">
+                        <textarea class="form-control" placeholder="Write note" id="Lieferschein" name="Lieferschein"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Modals -->
+
 </body>
 
 </html>

@@ -275,10 +275,6 @@
 
        </div>
 
-
-       {{--<div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
-        <a href="#" class="btn">Auftrag</a>
-       </div>--}}
        <div class="col-md-2 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
         <a href="#" class="btn">Lieferschein</a>
        </div>
@@ -505,7 +501,7 @@
                 <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
             </td>
             <td>
-                <button class="btn">Delete</button>
+              <button class="btn btn-sm">Delete</button>
             </td>
             </tbody>
             </table>
@@ -994,26 +990,6 @@
   <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
   </script>
 
-
-  <!-- auftrag Modal -->
-  <div class="modal fade" id="auftrag" tabindex="-1" aria-labelledby="auftragLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="auftragLabel">Order </h1>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-     </div>
-     <div class="modal-body">
-      <input type="text" id="Auftrag" name="Auftrag" />
-     </div>
-     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-     </div>
-    </div>
-   </div>
-  </div>
-  <!-- Modals -->
 
   <!-- lieferschein Modal -->
   <div class="modal fade" id="lieferschein" tabindex="-1" aria-labelledby="lieferscheinLabel" aria-hidden="true">

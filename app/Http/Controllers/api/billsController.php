@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\bills;
+use App\Mail\BillsMailer;
+use Illuminate\Support\Facades\Mail;
 
 class billsController extends Controller
 {
@@ -19,37 +21,39 @@ class billsController extends Controller
             return response()->json(['billsNo'=>$billsNo]);
         }
      
-            return response()->json(['errors'=>"Offer Not Found"]);
+        return response()->json(['errors'=>"Offer Not Found"]);
     }
 
 
 
     public function addbills($role)
     {
-
-        // $lastOffer = "AB-123456";
-        // $lastOffer = offers::latest()->first();
-        // $lastOffer = $lastOffer->Angebots_Nr;
-        // Assuming $lastOffer is 'AN-12345'
-        $lastOffer = 'RE-12345';
-
-
-
-        // Split the string into an array based on the dash
-        $parts = explode('-', $lastOffer);
-        $parts = $parts[1];
+        $lastOffer = bills::latest()->first();
+        if ($lastOffer) {
+            $lastOffer = $lastOffer->Rechnungs_Nr;
+            // Assuming $lastOffer is 'RE-12345'
+            $lastOffer = 'RE-12345';
 
 
 
+            // Split the string into an array based on the dash
+            $parts = explode('-', $lastOffer);
+            $parts = $parts[1];
 
-        // Increment the numeric part
-        $newNumericPart = $parts + 1;
 
-        // Create the new offerNo
-        $newBillNo = 'AN-' . $newNumericPart;
-        // echo $newOfferNo;
 
-        // $newOfferNo will be 'AN-12346'
+
+            // Increment the numeric part
+            $newNumericPart = $parts + 1;
+
+            // Create the new offerNo
+            $newBillNo = 'RE-' . $newNumericPart;
+            // echo $newOfferNo;
+
+            // $newOfferNo will be 'RE-12346'
+        }else {
+            $newBillNo = 'RE-12345';
+        }
 
 
         return view('admin_theme/pages/bills/addbills')->with(compact('newBillNo','role'));
@@ -60,7 +64,7 @@ class billsController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            // 'Angebots_Nr' => 'required|string',
+            'Rechnungs_Nr' => 'required|string|unique:bills_list',
             'Rechnungsdatum' => 'required|date_format:Y-m-d',
             // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',
@@ -105,7 +109,7 @@ class billsController extends Controller
         $offer->POS = $dynamicField['POS'];
         $offer->Produkt = $dynamicField['Produkt'];
         $offer->Beschreibung = $dynamicField['Beschreibung'];
-        // $offer->Menge = $dynamicField['Menge'];
+        $offer->Menge = $dynamicField['Menge'];
         $offer->Einheit = $dynamicField['Einheit'];
         $offer->Einzelpreis = $dynamicField['Einzelpreis'];
         $offer->Rabatt = $dynamicField['Rabatt'];
@@ -126,5 +130,20 @@ class billsController extends Controller
     {
 
         return view('admin_theme/pages/bills/editbills');
+    }
+
+    
+    
+    // function is used for send Assignment Mail
+    public function sendBillstMailsToB2C(Request $request)
+    {
+        $Rechnungs_Nr = $request->input('Rechnungs_Nr');
+        $email = $request->input('email');
+
+        // return response()->json(['success' => $email]);
+
+        Mail::to($email)->send(new BillsMailer($Rechnungs_Nr));
+
+        return response()->json(['success' => "Bill Mail Send SuccessFully"]);
     }
 }

@@ -220,6 +220,7 @@ Route::view('deliveryNotesListing/{role}', 'admin_theme/pages/delivery_notes/Del
 Route::get('addDeliveryNotes/{role}', [DeliveryNotesController::class, 'addDeliveryNotes']);
 Route::post('addDeliveryNotesApi', [DeliveryNotesController::class, 'addDeliveryNotesApi']);
 Route::get('editDeliveryNotes', [DeliveryNotesController::class, 'editDeliveryNotes']);
+Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sendDeliveryNotesMailsToB2C']);
 
 
 // Bills for Admin
@@ -228,6 +229,7 @@ Route::view('billsListing/{role}', 'admin_theme/pages/bills/billsList');
 Route::get('addbills/{role}', [billsController::class, 'addbills']);
 Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
 Route::get('editbills', [billsController::class, 'editbills']);
+Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB2C']);
 
   
 // Credits for Admin
