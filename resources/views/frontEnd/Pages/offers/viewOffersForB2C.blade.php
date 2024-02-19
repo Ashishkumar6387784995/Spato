@@ -440,324 +440,12 @@
             var angebotsList = document.getElementById('angebotsList');
 
             response.offersGroupBy.forEach(function(offer) {
-
+                
               var li = document.createElement('li');
-              li.setAttribute('class', 'menu');
-              li.setAttribute('data-content', 'page1');
               li.className = 'menu';
               li.dataset.content = offer.Angebots_Nr;
-              li.textContent = offer.Angebots_Nr; // Adjust text content as needed
+              li.textContent =  offer.Angebots_Nr; // Adjust text content as needed
               angebotsList.appendChild(li);
-
-              function updateContent(page) {
-                var contentDiv = document.getElementById("content");
-                // Clear existing content
-                contentDiv.innerHTML = "";
-
-                // Update content based on selected page
-                if (page === "page1") {
-                  contentDiv.innerHTML =
-                    `<h2>Welcome to Page 1</h2>
-            <div class="products">
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-
-
-     </div>           
-            `;
-                } else if (page === "page2") {
-                  contentDiv.innerHTML =
-                    `<h2>Welcome to Page 2</h2>
-            <div class="products">
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-
-     </div>           
-            `;
-                } else if (page === "page3") {
-                  contentDiv.innerHTML =
-                    `<h2>Welcome to Page 3</h2>
-            <div class="products">
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-      <div class="product">
-       <div class="img">
-        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
-       </div>
-       <div class="product-details">
-        <h5 class="card-title">Robot Alpha 1</h5>
-        <p class="card-text">
-         <li>Merkamal 1 - lauft fluffig</li>
-        </p>
-        <p class="product-price">
-         statt - 42,50€ <span class="price">25,30€</span>
-        </p>
-       </div>
-      </div>
-
-
-
-
-
-     </div>           
-            `;
-                }
-              }
-
-              // Add click event listeners to menu links
-              var menuLinks = document.querySelectorAll(".menu");
-              menuLinks.forEach(function(link) {
-                link.addEventListener("click", function() {
-                  // Get the data-content attribute value
-                  var page = this.getAttribute("data-content");
-                  // Update content based on selected page
-                  updateContent(page);
-                });
-              });
             });
 
 
@@ -774,12 +462,353 @@
         }
 
 
+        // success: function(data) {
+        //   console.log('data success', data.offersList);   
+        //   // if (data.user) {
+        //   //   console.log('Data received:', data.user);
 
+
+
+        //     // // Function to populate the table with data
+        //     // function populateTable(dataList) {
+        //     //   var tableBody = $('.dataTable');
+
+        //     //   // Clear existing table rows
+        //     //   tableBody.find("tr:gt(0)").remove();
+
+        //     //   // Iterate through the data and add rows to the table
+        //     //   $.each(dataList, function(index, item) {
+
+        //     //     row.append(`<td>${item.Angebots_Nr}</td>`);
+
+        //     //   });
+
+        //     // }
+
+        //     // // Call the function to populate the table with the initial data
+        //     // populateTable(data.offersList);
+        //   // }
+
+
+        //   if (data.errors) {
+        //     console.log('data errros' , data.errors);
+        //     window.location.href = '/api/home';
+        //   }
+        // },
       });
     });
   </script>
   <script>
     // Function to update content based on selected page
+    function updateContent(page) {
+      var contentDiv = document.getElementById("content");
+      // Clear existing content
+      contentDiv.innerHTML = "";
+
+      // Update content based on selected page
+      if (page === "page1") {
+        contentDiv.innerHTML =
+          `<h2>Welcome to Page 1</h2>
+            <div class="products">
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+
+
+     </div>           
+            `;
+      } else if (page === "page2") {
+        contentDiv.innerHTML =
+          `<h2>Welcome to Page 2</h2>
+            <div class="products">
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+
+     </div>           
+            `;
+      } else if (page === "page3") {
+        contentDiv.innerHTML =
+          `<h2>Welcome to Page 3</h2>
+            <div class="products">
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+      <div class="product">
+       <div class="img">
+        <img src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="Image">
+       </div>
+       <div class="product-details">
+        <h5 class="card-title">Robot Alpha 1</h5>
+        <p class="card-text">
+         <li>Merkamal 1 - lauft fluffig</li>
+        </p>
+        <p class="product-price">
+         statt - 42,50€ <span class="price">25,30€</span>
+        </p>
+       </div>
+      </div>
+
+
+
+
+
+     </div>           
+            `;
+      }
+    }
+
+    // Add click event listeners to menu links
+    var menuLinks = document.querySelectorAll(".menu");
+    menuLinks.forEach(function(link) {
+      link.addEventListener("click", function() {
+        // Get the data-content attribute value
+        var page = this.getAttribute("data-content");
+        // Update content based on selected page
+        updateContent(page);
+      });
+    });
   </script>
 
 
