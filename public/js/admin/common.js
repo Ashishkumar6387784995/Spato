@@ -1,8 +1,10 @@
 $(document).one('click', '.showButton', function() {
     var baseUrl = window.location.origin;
+    var  role_filter = jQuery(this).attr('role-filter')
+    console.log(role_filter);
     $.ajax({
         type: 'get',
-        url: baseUrl + '/api/B2CUserDetails',
+        url: baseUrl + '/api/B2CUserDetails/' + role_filter,
         dataType: 'json',
         success: function(response) {
         // Handle success response
@@ -52,9 +54,10 @@ $(document).one('click', '.showButton', function() {
 
 
 // fetch B2C User Details by company name
-function guessCompanyNameFunction() {
+function guessCompanyNameFunction(role_filter) {
   var baseUrl = window.location.origin;
   var companyName = jQuery('#companyName').val();
+  console.log(role_filter);
   if (companyName=='') {
     $('#guessCompanyName ul').empty();
     return false;
@@ -65,7 +68,7 @@ function guessCompanyNameFunction() {
   $("#customer_email, #Ihre_Ust_ID").val('');
   $.ajax({
     type: 'get',
-    url: baseUrl + '/api/selectedB2CUserDetailsByCompanyName/' + companyName,
+    url: baseUrl + '/api/selectedB2CUserDetailsByCompanyName/' + companyName+ '/'+ role_filter,
     dataType: 'json',
     success: function(response) {
       // Handle success response

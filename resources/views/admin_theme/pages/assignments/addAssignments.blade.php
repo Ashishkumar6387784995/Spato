@@ -343,7 +343,7 @@
           <p>Ihre Kundennummer</p>
          </div>
          <div class="inputs">
-          <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton" required>
+          <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton" role-filter="Assignments" required>
           </select>
           <br>
           <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
@@ -356,7 +356,7 @@
           <p>Name der Firma</p>
          </div>
          <div class="inputs"> 
-          <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction()"></p>
+          <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction('Assignments')"></p>
           
           <div id="guessCompanyName">
             <ul>
