@@ -94,9 +94,9 @@ class billsController extends Controller
         }
 
         
-        $user = Auth::guard('api')->user();
+        // $user = Auth::guard('api')->user();
 
-        if ($user->role == 'Admin') {
+        // if ($user->role == 'Admin') {
 
 
         $offer = new bills();
@@ -135,11 +135,11 @@ class billsController extends Controller
         // Return a success response
         return response()->json(['success' => "Bills Are Added SuccessFully"]);
 
-    }
-    else{
-          // Return a success response
-    return response()->json(['error' => "Bills Is not Added SuccessFully",]); 
-    }
+    // }
+    // else{
+    //       // Return a success response
+    // return response()->json(['error' => "Bills Is not Added SuccessFully",]); 
+    // }
         // Return a success response
 
 

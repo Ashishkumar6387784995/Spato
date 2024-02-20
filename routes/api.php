@@ -114,7 +114,10 @@ Route::middleware('api.auth')->group(function () {
 
 
   // Bills for Admin
-  Route::get('billsListingApi', [billsController::class, 'billsListingApi']);Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
+  Route::get('billsListingApi', [billsController::class, 'billsListingApi']);
+  Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
+
+
   // Credits for Admin
   Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
   Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
@@ -245,10 +248,10 @@ Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB
 
 
 // Credits for Admin
-Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
+
 Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
 Route::get('addCredits/{role}', [creditsController::class, 'addCredits']);
-Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
+
 Route::get('editCredits', [creditsController::class, 'editCredits']);
 Route::post('sendCredistMailsToB2C', [creditsController::class, 'sendCredistMailsToB2C']);
 
