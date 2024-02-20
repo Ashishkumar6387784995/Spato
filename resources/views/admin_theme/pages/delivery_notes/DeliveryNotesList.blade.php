@@ -117,6 +117,7 @@
                     <h2>Admin Dashboard</h2>
                     <p>Monday, January 12, 2024</p>
                 </div>
+                @if($role=="admin")
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
@@ -126,6 +127,7 @@
                         Filter
                     </div>
                 </div>
+                @endif
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
@@ -236,6 +238,7 @@
       populateTable(data.delivery_notes);
      } else {
       console.log('Data received:', data.errors);
+      window.location.href = '/api/home';
      }
     },
 

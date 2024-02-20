@@ -310,7 +310,7 @@
          <div class="inputs">
             <p>
                 <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr"
-                value="{{$newAssignmentNo}}" /> 
+                value="{{$newAssignmentNo}}" readonly /> 
                 <br>
                 <span class="msg_err" id="Auftrags_Nr_err" style="color:red;  font-size:13px;"></span>
             </p>
