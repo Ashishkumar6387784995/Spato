@@ -111,7 +111,7 @@
     color:var(--blue);
   }
   .modal .modal-content{
-    width: 150%;
+    width: 250%;
   }
   .modal .modal-body table th, td{
     width:170px;
@@ -129,6 +129,13 @@
     outline:none;
     margin:0px 5px;
     font-weight:600;
+  }
+
+  @media (min-width: 576px){
+.modal-dialog {
+    max-width: 829px !important;
+    margin: 1.75rem auto;
+}
   }
     /* .sidebar {
       width: 300px;
