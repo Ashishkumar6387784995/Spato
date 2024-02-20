@@ -4,7 +4,7 @@ namespace App\Http\Controllers\api\frontEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ProductCategory;
+use App\Models\CategorieStatic;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +21,7 @@ class webController extends Controller
     public function home()
     {
 
-        $productCategories = ProductCategory::where('status', 'active')->get();
+        $productCategories = CategorieStatic::get()->unique('categorie_1');
 
         // dd(auth()->user());
         // dd($productCategories);
