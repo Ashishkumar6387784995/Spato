@@ -17,9 +17,9 @@ class DeliveryNotesController extends Controller
     {
         $user = Auth::guard('api')->user();
         if ($user->role == 'Admin') {
-            $delivery_notes = Delivery_notes::orderBy('created_at', 'desc')->get();
+            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->groupBy('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->get();
         } elseif ($user->role == 'supplier') {
-            $delivery_notes = Delivery_notes::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->groupBy('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->get();
         } else {
             $offers = 'offer not found';
         }

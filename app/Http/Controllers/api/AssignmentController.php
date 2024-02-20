@@ -13,6 +13,8 @@ use App\Mail\sendResetLinkEmail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class AssignmentController extends Controller
 {
@@ -23,11 +25,15 @@ class AssignmentController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $assignments = Assignments_list::orderBy('created_at', 'desc')->get();
+            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')
+            ->orderBy('created_at', 'desc')
+            ->groupBy('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')
+            ->get();
+        
         } elseif ($user->role == 'b2b') {
-            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)  ->groupBy('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->get();
         } elseif ($user->role == 'supplier') {
-            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)  ->groupBy('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->get();
         } else {
             $offers = 'offer not found';
         }
