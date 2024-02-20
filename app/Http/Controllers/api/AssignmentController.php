@@ -16,58 +16,58 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-  
+
     public function AssignmentListing()
     {
 
         $user = Auth::guard('api')->user();
-        
+
         if ($user->role == 'Admin') {
-        $assignments = Assignments_list::orderBy('created_at', 'desc')->get();
-        }
-        elseif ($user->role == 'b2b') {
-            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get(); 
-        }
-        elseif ($user->role == 'supplier') {
-            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();   
-        }else{
+            $assignments = Assignments_list::orderBy('created_at', 'desc')->get();
+        } elseif ($user->role == 'b2b') {
+            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+        } elseif ($user->role == 'supplier') {
+            $assignments = Assignments_list::orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+        } else {
             $offers = 'offer not found';
         }
 
 
-        if ($assignments){
-            return response()->json(['assignments'=>$assignments, 'user' => $user]);
+        if ($assignments) {
+            return response()->json(['assignments' => $assignments, 'user' => $user]);
         }
-     
-            return response()->json(['errors'=>"Assignments Not Found"]);
+
+        return response()->json(['errors' => "Assignments Not Found"]);
     }
 
 
-    public function editAssignment($role){
-     
+    public function editAssignment($role)
+    {
+
         return view('admin_theme/pages/assignments/editAssignments')->with(compact('role'));
     }
 
-    public function addAssignment($role){
-     
+    public function addAssignment($role)
+    {
+
         // $lastOffer = "AB-123456";
         $lastOffer = Assignments_list::latest()->first();
 
         if ($lastOffer) {
-            
-            $lastOffer= $lastOffer->Auftrags_Nr;
+
+            $lastOffer = $lastOffer->Auftrags_Nr;
             // Assuming $lastOffer is 'AB-12345'
             // $lastOffer = 'AB-12345';
 
 
-    
-                // Split the string into an array based on the dash
-                $parts = explode('-', $lastOffer);
-                $parts= $parts[1];
-            
-            
-    
-    
+
+            // Split the string into an array based on the dash
+            $parts = explode('-', $lastOffer);
+            $parts = $parts[1];
+
+
+
+
             // Increment the numeric part
             $newNumericPart = $parts + 1;
 
@@ -76,15 +76,12 @@ class AssignmentController extends Controller
             // echo $newOfferNo;
 
             // $newOfferNo will be 'AB-12346'
-        }
-        else {
+        } else {
             $newAssignmentNo = 'AB-12345';
         }
 
 
-        return view('admin_theme/pages/assignments/addAssignments')->with(compact('newAssignmentNo','role'));
-
-
+        return view('admin_theme/pages/assignments/addAssignments')->with(compact('newAssignmentNo', 'role'));
     }
 
     public function addAssignmentsApi(Request $request)
@@ -110,40 +107,49 @@ class AssignmentController extends Controller
             return response()->json(['errors' => $validator->errors()]);
         }
 
-        // Get the dynamic fields from the request
-        $dynamicFields = $request->input('inputs');
+
+        $user = Auth::guard('api')->user();
+
+        if ($user->role == 'Admin') {
+
+            // Get the dynamic fields from the request
+            $dynamicFields = $request->input('inputs');
 
 
 
-        // Set dynamic fields on the offer
-        foreach ($dynamicFields as $dynamicField) {
-            $assignment = new Assignments_list();
-            $assignment->Auftrags_Nr = $request->input('Auftrags_Nr');
-            $assignment->Auftragsdatum = $request->input('Auftragsdatum');
-            $assignment->Referenz = $request->input('Referenz');
-            $assignment->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
-            $assignment->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
+            // Set dynamic fields on the offer
+            foreach ($dynamicFields as $dynamicField) {
+                $assignment = new Assignments_list();
+                $assignment->Auftrags_Nr = $request->input('Auftrags_Nr');
+                $assignment->Auftragsdatum = $request->input('Auftragsdatum');
+                $assignment->Referenz = $request->input('Referenz');
+                $assignment->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+                $assignment->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
 
-            $assignment->gesamt_netto = $request->input('gesamt_netto');
-            $assignment->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
-            $assignment->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+                $assignment->gesamt_netto = $request->input('gesamt_netto');
+                $assignment->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+                $assignment->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
 
 
-            $assignment->POS = $dynamicField['POS'];
-            $assignment->Produkt = $dynamicField['Produkt'];
-            $assignment->Beschreibung = $dynamicField['Beschreibung'];
-            $assignment->Menge = $dynamicField['Menge'];
-            $assignment->Einheit = $dynamicField['Einheit'];
-            $assignment->Einzelpreis = $dynamicField['Einzelpreis'];
-            $assignment->Rabatt = $dynamicField['Rabatt'];
-            $assignment->Gesamtpreis = $dynamicField['Gesamtpreis'];
-            $assignment->save();
+                $assignment->POS = $dynamicField['POS'];
+                $assignment->Produkt = $dynamicField['Produkt'];
+                $assignment->Beschreibung = $dynamicField['Beschreibung'];
+                $assignment->Menge = $dynamicField['Menge'];
+                $assignment->Einheit = $dynamicField['Einheit'];
+                $assignment->Einzelpreis = $dynamicField['Einzelpreis'];
+                $assignment->Rabatt = $dynamicField['Rabatt'];
+                $assignment->Gesamtpreis = $dynamicField['Gesamtpreis'];
+                $assignment->save();
+            }
+
+            // Return a success response
+            return response()->json(['success' => "Assignment Added SuccessFully"]);
+        } else {
+            // Return a success response
+            return response()->json(['error' => "Offer Is not Added SuccessFully",]);
         }
 
         // Return a success response
-        return response()->json(['success' => "Assignment Added SuccessFully"]);
-
-      // Return a success response
     }
 
 
@@ -153,7 +159,7 @@ class AssignmentController extends Controller
 
         // Retrieve the offer
         $assignment = Assignments_list::where('Auftrags_Nr', $assignmentNo)->first();
-    
+
         if ($assignment) {
             // Retrieve Assignments_list associated with the offer ID
             $assignments = Assignments_list::where('Auftrags_Nr', $assignmentNo)->get();
@@ -165,16 +171,16 @@ class AssignmentController extends Controller
 
             // Specify the directory path for storing the PDF in the public storage folder
             $pdfDirectory = 'public/assignments_pdf';
-    
+
             // Specify the file path for the PDF
             $pdfFilePath = $assignmentNo . '.pdf';
-    
+
             // Save the PDF in the specified path
             Storage::put($pdfDirectory . '/' . $pdfFilePath, $pdf->output());
-    
+
             // Get the public URL of the saved PDF file
             $pdfUrl = Storage::url($pdfDirectory . '/' . $pdfFilePath);
-    
+
             // Download the saved PDF
             return response()->download(storage_path('app/' . $pdfDirectory . '/' . $pdfFilePath));
         } else {
@@ -182,7 +188,7 @@ class AssignmentController extends Controller
         }
     }
 
-    
+
     // function is used for send Assignment Mail
     public function sendAssignmentMailsToB2C(Request $request)
     {

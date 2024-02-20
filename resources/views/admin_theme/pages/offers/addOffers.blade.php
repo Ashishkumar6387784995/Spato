@@ -313,7 +313,7 @@
          </div>
          <div class="inputs">
           <input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr"
-           value="{{$newOfferNo}}" /></p>
+           value="{{$newOfferNo}}"  readonly /></p>
          </div>
         </div>
 

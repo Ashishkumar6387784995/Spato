@@ -8,19 +8,31 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\credits;
 use App\Mail\CreditsMailer;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 
 class creditsController extends Controller
 {
     public function creditListingApi()
     {
+        $user = Auth::guard('api')->user();
+        
+        if ($user->role == 'Admin') {
         $credits = credits::orderBy('created_at', 'desc')->get();
+        }elseif ($user->role == 'b2b') {
+            $credits = credits::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+        }else {
+            $credits = 'offer not found';
+        }
 
         if ($credits){
             return response()->json(['creditList'=>$credits]);
         }
+        else {
+            return response()->json(['errors' => 'Credits Not Found']);
+        }
      
-            return response()->json(['errors'=>"Offer Not Found"]);
+        
     }
 
 

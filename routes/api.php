@@ -117,7 +117,11 @@ Route::middleware('api.auth')->group(function () {
   Route::get('addbills/{role}', [billsController::class, 'addbills']);
   Route::get('billsListingApi', [billsController::class, 'billsListingApi']);
 
-  
+  // Credits for Admin
+  Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
+  Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
+
+
 
   // items for checkout with auth.
   Route::get('cart/checkoutItemsApiAuthentic', [CartController::class, 'getCartItems']);

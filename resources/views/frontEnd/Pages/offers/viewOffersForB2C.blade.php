@@ -45,6 +45,91 @@
   } 
 
 
+  .offer{
+    background-color:var(--white);
+    padding:15px;
+    border-radius:5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
+  .offer .offer-details p{
+    margin:10px;
+  }
+
+  .offer .offer-details .deu-date{
+    color:var(--blue);
+    font-weight:700;
+  }
+  .offer .offer-details .deu-date span{
+    color:var(--black);
+  }
+
+  .offer .offer-details button{
+    padding:5px 15px;
+    font-weight:700;
+    border:1px solid;
+    margin:2px 10px;
+    border-radius:5px;
+    color:var(--white);
+    transition:0.3s ease-in-out;
+  }
+
+  .offer .offer-details button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
+
+  .modal button{
+    padding:5px 15px;
+    font-weight:700;
+    border:1px solid;
+    margin:2px 10px;
+    border-radius:5px;
+    color:var(--white);
+    transition:0.3s ease-in-out;
+  }
+  .modal button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
+
+  .offer .offer-details .view{
+    background-color:var(--black);
+  }
+
+  .offer .offer-details .view:hover{
+    background-color:transparent;
+    border:1px solid var(--black);
+    color:var(--black);
+  }
+
+  .claim{
+    background-color:var(--blue);
+  }
+
+  .offer .offer-details .claim:hover{
+    background-color:transparent;
+    border:1px solid var(--blue);
+    color:var(--blue);
+  }
+  .modal .modal-content{
+    width: 150%;
+  }
+  .modal .modal-body table th, td{
+    width:170px;
+    padding:10px;
+  }
+
+  .modal .modal-body{
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .modal-footer input{
+    width:100px;
+    border:none;
+    outline:none;
+    margin:0px 5px;
+    font-weight:600;
+  }
     /* .sidebar {
       width: 300px;
       height: 200px;
@@ -379,14 +464,61 @@
       
         <div class="details">
           <div class="offer">
-            <h5></h5>
+            <h5 class="px-2">This is the offer heading for users</h5>
+            <div class="offer-details d-flex">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, amet?</p>
+              <p class="deu-date">Active till :- <span>25/02/2024</span></p>
+              <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
+              <button type="button" class="claim">Claim Offer</button>
+            </div>
           </div>
         </div>
       </div>
   </section>
   @include('frontEnd/partial/footer')
 
-
+<!-- Modal -->
+<div class="modal fade" id="offerview" tabindex="-1" aria-labelledby="offerviewLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="offerviewLabel">Your offers are Below</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table>
+          <thead>
+          <th>Product Name</th>
+          <th>Menge</th>
+          <th>Einheit</th>
+          <th>Einzelpreis</th>
+          <th>Rabatt</th>
+          <th>Gesamtpreis</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Badu Alpha 6</td>
+              <td>12</td>
+              <td>344</td>
+              <td>12</td>
+              <td>10%</td>
+              <td>1052€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+<p>Gesamt netto <input type="text" name="total" id="" value="1258"></p><br>
+<p>zzgl. Umsatzsteuer 19 % <input type="text" name="total" id="" value="1258"></p><br>
+<p>Gesamtbetrag brutto <input type="text" name="total" id="" value="1258"></p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button type="button" class="claim">Claim offers</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- <script>
     // Execute the code when the document is ready
     $(document).ready(function() {
