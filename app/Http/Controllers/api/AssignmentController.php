@@ -146,10 +146,9 @@ class AssignmentController extends Controller
             return response()->json(['success' => "Assignment Added SuccessFully"]);
         } else {
             // Return a success response
-            return response()->json(['error' => "Offer Is not Added SuccessFully",]);
+            return response()->json(['error' => "Assignment Is not Added SuccessFully",]);
         }
 
-        // Return a success response
     }
 
 

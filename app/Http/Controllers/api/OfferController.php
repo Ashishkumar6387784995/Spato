@@ -163,8 +163,6 @@ class OfferController extends Controller
 
 
 
-        // Return a success response
-
 
     }
 
