@@ -271,7 +271,7 @@ class loginController extends Controller
 
         // for offers
             if ($role_filter=='Offers') {
-                $users = User::where('role', 'b2b')->orWhere('role', 'b2c')->get();
+                $users = User::where('role', 'b2b')->orWhere('role', 'Normal')->get();
             }
 
         // for Assignments
@@ -328,13 +328,13 @@ class loginController extends Controller
                 $users = $users
                         ->where(function($query) {
                             $query->where('users.role', 'b2b')
-                            ->orWhere('users.role', 'b2c');
+                            ->orWhere('users.role', 'Normal');
                         })->get();
 
                 $guessCompanyName = $guessCompanyName
                                 ->where(function($query) {
                                     $query->where('users.role', 'b2b')
-                                    ->orWhere('users.role', 'b2c');
+                                    ->orWhere('users.role', 'Normal');
                                 })->get();
             }
 
