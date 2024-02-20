@@ -20,9 +20,9 @@ class billsController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $billsNo = bills::orderBy('created_at', 'desc')->get();
+            $billsNo = bills::select('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->orderBy('created_at', 'desc')->groupBy('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->get();
         } elseif ($user->role == 'b2b') {
-            $billsNo = bills::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $billsNo = bills::select('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->groupBy('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->get();
         } else {
             $billsNo = 'offer not found';
         }

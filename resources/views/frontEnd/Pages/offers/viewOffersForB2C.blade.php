@@ -51,7 +51,9 @@
     border-radius:5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
-
+  .offer .offer-details{
+    display:flex;
+  }
   .offer .offer-details p{
     margin:10px;
   }
@@ -110,9 +112,9 @@
     border:1px solid var(--blue);
     color:var(--blue);
   }
-  .modal .modal-content{
-    width: 150%;
-  }
+  /* .modal .modal-content{
+    width: 250%;
+  } */
   .modal .modal-body table th, td{
     width:170px;
     padding:10px;
@@ -130,6 +132,19 @@
     margin:0px 5px;
     font-weight:600;
   }
+
+  @media (min-width: 576px){
+.modal-dialog {
+    max-width: 829px !important;
+    margin: 1.75rem auto;
+}
+  }
+
+  @media screen and (max-device-width: 480px) and (orientation: portrait) {
+    .offer .offer-details{
+    display:block;
+  }
+    }
     /* .sidebar {
       width: 300px;
       height: 200px;
@@ -465,7 +480,7 @@
         <div class="details">
           <div class="offer">
             <h5 class="px-2">This is the offer heading for users</h5>
-            <div class="offer-details d-flex">
+            <div class="offer-details">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, amet?</p>
               <p class="deu-date">Active till :- <span>25/02/2024</span></p>
               <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>

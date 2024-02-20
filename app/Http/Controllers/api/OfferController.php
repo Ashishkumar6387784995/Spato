@@ -26,16 +26,16 @@ class OfferController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $offers = Offers::orderBy('created_at', 'desc')->get();
+            $offers = Offers::select('Angebots_Nr', )->orderBy('created_at', 'desc')->groupBy('Angebots_Nr')->get();
         } elseif ($user->role == 'b2b') {
             $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
         } elseif ($user->role == 'Normal') {
             $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
             $offersGroupBy = Offers::select('Angebots_Nr', DB::raw('MAX(Angebotsdatum) as max_angebotsdatum'))
-            ->where('Ihre_Kundennummer', $user->id)
-            ->orderBy('created_at', 'desc')
-            ->groupBy('Angebots_Nr')
-            ->get();
+                ->where('Ihre_Kundennummer', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->groupBy('Angebots_Nr')
+                ->get();
             return response()->json(['offersList' => $offers, 'user' => $user, 'offersGroupBy' => $offersGroupBy]);
         } else {
             $offers = 'offer not found';
@@ -123,47 +123,41 @@ class OfferController extends Controller
 
         if ($user->role == 'Admin') {
 
-        // Set the attributes of the model with the main form data
+            // Set the attributes of the model with the main form data
 
 
-        // Get the dynamic fields from the request
-        $dynamicFields = $request->input('inputs');
+            // Get the dynamic fields from the request
+            $dynamicFields = $request->input('inputs');
 
-        // Set dynamic fields on the offer
-        foreach ($dynamicFields as $dynamicField) {
-            $offer = new offers();
-            $offer->Angebots_Nr = $request->input('Angebots_Nr');
-            $offer->Angebotsdatum = $request->input('Angebotsdatum');
-            $offer->Referenz = $request->input('Referenz');
-            $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+            // Set dynamic fields on the offer
+            foreach ($dynamicFields as $dynamicField) {
+                $offer = new offers();
+                $offer->Angebots_Nr = $request->input('Angebots_Nr');
+                $offer->Angebotsdatum = $request->input('Angebotsdatum');
+                $offer->Referenz = $request->input('Referenz');
+                $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
 
-            $offer->gesamt_netto = $request->input('gesamt_netto');
-            $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
-            $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+                $offer->gesamt_netto = $request->input('gesamt_netto');
+                $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+                $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
 
 
-            $offer->POS = $dynamicField['POS'];
-            $offer->Produkt = $dynamicField['Produkt'];
-            $offer->Beschreibung = $dynamicField['Beschreibung'];
-            $offer->Menge = $dynamicField['Menge'];
-            $offer->Einheit = $dynamicField['Einheit'];
-            $offer->Einzelpreis = $dynamicField['Einzelpreis'];
-            $offer->Rabatt = $dynamicField['Rabatt'];
-            $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
-            $offer->save();
-            
+                $offer->POS = $dynamicField['POS'];
+                $offer->Produkt = $dynamicField['Produkt'];
+                $offer->Beschreibung = $dynamicField['Beschreibung'];
+                $offer->Menge = $dynamicField['Menge'];
+                $offer->Einheit = $dynamicField['Einheit'];
+                $offer->Einzelpreis = $dynamicField['Einzelpreis'];
+                $offer->Rabatt = $dynamicField['Rabatt'];
+                $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
+                $offer->save();
+            }
+            // Return a success response
+            return response()->json(['success' => "Offer Is Added SuccessFully", 'dynamicFields' => $dynamicFields]);
+        } else {
+            // Return a success response
+            return response()->json(['error' => "Offer Is not Added SuccessFully",]);
         }
-        // Return a success response
-        return response()->json(['success' => "Offer Is Added SuccessFully", 'dynamicFields' => $dynamicFields]);
-        }
-        else{
-              // Return a success response
-        return response()->json(['error' => "Offer Is not Added SuccessFully",]); 
-        }
-
-
-
-
     }
 
 
