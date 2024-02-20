@@ -119,7 +119,7 @@
           <h2>Admin Dashboard</h2>
           <p>Monday, January 12, 2024</p>
         </div>
-        @if($role=="admin")
+        @if($role=="b2b")
         <div class="row pt-3">
 
           <div class="col-md-4 stretch-card grid-margin">
@@ -129,16 +129,18 @@
             Filter
           </div>
         </div>
-        elseif($role=="b2b")
+        @endif
+        @if($role=="admin")
         <div class="row pt-3">
 
-<div class="col-md-4 stretch-card grid-margin">
-  <a class="edit btn" href="{{url('/api/addAssignment/'.$role)}}">+ neuer Auftrag</a>
-</div>
-<div class="col-md-4 stretch-card grid-margin">
-  Filter
-</div>
-</div>
+          <div class="col-md-4 stretch-card grid-margin">
+            <a class="edit btn" href="{{url('/api/addAssignment/'.$role)}}">+ neuer Auftrag</a>
+          </div>
+          <div class="col-md-4 stretch-card grid-margin">
+            Filter
+          </div>
+        </div>
+        
         @endif
         <div class="row pt-3">
 
@@ -218,8 +220,8 @@
             function populateTable(dataList) {
               var tableBody = $('#dataTable');
 
-                // Clear existing table rows
-                tableBody.find("tr:gt(0)").remove();
+              // Clear existing table rows
+              tableBody.find("tr:gt(0)").remove();
 
               // Iterate through the data and add rows to the table
               $.each(dataList, function(index, item) {

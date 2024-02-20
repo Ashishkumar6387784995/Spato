@@ -290,7 +290,7 @@
         <button id="emailSend" class="btn">senden</button>
        </div>
       </div>
-      <span class="msg_err" id="success_msg" style="color:Green; font-size:20px;"></span>
+      <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
       <div class="row pt-3">
 
        <div class="col-md-4">
@@ -310,7 +310,7 @@
          <div class="inputs">
             <p>
                 <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr"
-                value="{{$newAssignmentNo}}" /> 
+                value="{{$newAssignmentNo}}" readonly /> 
                 <br>
                 <span class="msg_err" id="Auftrags_Nr_err" style="color:red;  font-size:13px;"></span>
             </p>
@@ -890,6 +890,10 @@
 
       // You can also update your HTML to show errors in a specific element
       // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+     }
+     else if (response.error){
+      window.location.href = '/api/home';
+
      }
     },
     error: function(xhr, status, error) {

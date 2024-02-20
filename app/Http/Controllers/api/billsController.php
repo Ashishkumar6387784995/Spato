@@ -8,20 +8,30 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\bills;
 use App\Mail\BillsMailer;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
 
 class billsController extends Controller
 {
- 
+
 
     public function billsListingApi()
     {
-        $billsNo = bills::orderBy('created_at', 'desc')->get();
+        $user = Auth::guard('api')->user();
 
-        if ($billsNo){
-            return response()->json(['billsNo'=>$billsNo]);
+        if ($user->role == 'Admin') {
+            $billsNo = bills::select('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->orderBy('created_at', 'desc')->groupBy('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->get();
+        } elseif ($user->role == 'b2b') {
+            $billsNo = bills::select('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->groupBy('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->get();
+        } else {
+            $billsNo = 'offer not found';
         }
-     
-        return response()->json(['errors'=>"Offer Not Found"]);
+
+        if ($billsNo) {
+            return response()->json(['billsNo' => $billsNo]);
+        } else {
+            return response()->json(['errors' => 'Bills Not Found']);
+        }
     }
 
 
@@ -51,16 +61,17 @@ class billsController extends Controller
             // echo $newOfferNo;
 
             // $newOfferNo will be 'RE-12346'
-        }else {
+        } else {
             $newBillNo = 'RE-12345';
         }
 
 
-        return view('admin_theme/pages/bills/addbills')->with(compact('newBillNo','role'));
+        return view('admin_theme/pages/bills/addbills')->with(compact('newBillNo', 'role'));
     }
 
-    
-    public function addbillsApi(Request $request){
+
+    public function addbillsApi(Request $request)
+    {
 
 
         $validator = Validator::make($request->all(), [
@@ -82,45 +93,54 @@ class billsController extends Controller
             return response()->json(['errors' => $validator->errors()]); // 422 Unprocessable Entity
         }
 
+        
+        // $user = Auth::guard('api')->user();
 
- 
-    $offer = new bills();
+        // if ($user->role == 'Admin') {
 
-    // Set the attributes of the model with the main form data
-   
 
-    // Get the dynamic fields from the request
-    $dynamicFields = $request->input('inputs');
-
-    // Set dynamic fields on the offer
-    foreach ($dynamicFields as $dynamicField) {
         $offer = new bills();
-        $offer->Rechnungs_Nr = $request->input('Rechnungs_Nr');
-        $offer->Rechnungsdatum = $request->input('Rechnungsdatum');
-        $offer->Referenz = $request->input('Referenz');
-        $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
-        $offer->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
 
-        $offer->gesamt_netto = $request->input('gesamt_netto');
-        $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
-        $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+        // Set the attributes of the model with the main form data
 
 
-        $offer->POS = $dynamicField['POS'];
-        $offer->Produkt = $dynamicField['Produkt'];
-        $offer->Beschreibung = $dynamicField['Beschreibung'];
-        $offer->Menge = $dynamicField['Menge'];
-        $offer->Einheit = $dynamicField['Einheit'];
-        $offer->Einzelpreis = $dynamicField['Einzelpreis'];
-        $offer->Rabatt = $dynamicField['Rabatt'];
-        $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
-        $offer->save();
-    }      
+        // Get the dynamic fields from the request
+        $dynamicFields = $request->input('inputs');
+
+        // Set dynamic fields on the offer
+        foreach ($dynamicFields as $dynamicField) {
+            $offer = new bills();
+            $offer->Rechnungs_Nr = $request->input('Rechnungs_Nr');
+            $offer->Rechnungsdatum = $request->input('Rechnungsdatum');
+            $offer->Referenz = $request->input('Referenz');
+            $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+            $offer->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
+
+            $offer->gesamt_netto = $request->input('gesamt_netto');
+            $offer->zzgl_Umsatzsteuer = $request->input('zzgl_Umsatzsteuer');
+            $offer->Gesamtbetrag_brutto = $request->input('Gesamtbetrag_brutto');
+
+
+            $offer->POS = $dynamicField['POS'];
+            $offer->Produkt = $dynamicField['Produkt'];
+            $offer->Beschreibung = $dynamicField['Beschreibung'];
+            $offer->Menge = $dynamicField['Menge'];
+            $offer->Einheit = $dynamicField['Einheit'];
+            $offer->Einzelpreis = $dynamicField['Einzelpreis'];
+            $offer->Rabatt = $dynamicField['Rabatt'];
+            $offer->Gesamtpreis = $dynamicField['Gesamtpreis'];
+            $offer->save();
+        }
 
         // Return a success response
         return response()->json(['success' => "Bills Are Added SuccessFully"]);
 
-    // Return a success response
+    // }
+    // else{
+    //       // Return a success response
+    // return response()->json(['error' => "Bills Is not Added SuccessFully",]); 
+    // }
+        // Return a success response
 
 
     }
@@ -132,8 +152,8 @@ class billsController extends Controller
         return view('admin_theme/pages/bills/editbills');
     }
 
-    
-    
+
+
     // function is used for send Assignment Mail
     public function sendBillstMailsToB2C(Request $request)
     {

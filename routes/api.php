@@ -114,10 +114,15 @@ Route::middleware('api.auth')->group(function () {
 
 
   // Bills for Admin
-  Route::get('addbills/{role}', [billsController::class, 'addbills']);
   Route::get('billsListingApi', [billsController::class, 'billsListingApi']);
+  Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
 
-  
+
+  // Credits for Admin
+  Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
+  Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
+
+
 
   // items for checkout with auth.
   Route::get('cart/checkoutItemsApiAuthentic', [CartController::class, 'getCartItems']);
@@ -233,19 +238,20 @@ Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sen
 
 
 // Bills for Admin
-Route::get('billsListingApi', [billsController::class, 'billsListingApi']);
+
+
 Route::view('billsListing/{role}', 'admin_theme/pages/bills/billsList');
 Route::get('addbills/{role}', [billsController::class, 'addbills']);
-Route::POST('addbillsApi', [billsController::class, 'addbillsApi']);
+
 Route::get('editbills', [billsController::class, 'editbills']);
 Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB2C']);
 
 
 // Credits for Admin
-Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
+
 Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
 Route::get('addCredits/{role}', [creditsController::class, 'addCredits']);
-Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
+
 Route::get('editCredits', [creditsController::class, 'editCredits']);
 Route::post('sendCredistMailsToB2C', [creditsController::class, 'sendCredistMailsToB2C']);
 

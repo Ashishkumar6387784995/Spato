@@ -294,7 +294,7 @@
         <button id="emailSend" class="btn">senden</button>
        </div>
       </div>
-      <span class="msg_err" id="success_msg" style="color:Green; font-size:20px;"></span>
+      <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
       <div class="row pt-3">
 
        <div class="col-md-4">
@@ -313,7 +313,7 @@
          </div>
          <div class="inputs">
           <input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr"
-           value="{{$newOfferNo}}" /></p>
+           value="{{$newOfferNo}}"  readonly /></p>
          </div>
         </div>
 
