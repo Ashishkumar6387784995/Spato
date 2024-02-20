@@ -290,7 +290,7 @@
         <button id="emailSend" type="button" class="btn">senden</button>
        </div>
       </div>
-      <span class="msg_err" id="success_msg" style="color:Green; font-size:20px;"></span>
+      <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
       <div class="row pt-3">
 
         <div class="col-md-4">
