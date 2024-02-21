@@ -21,32 +21,29 @@
     pointer-events: none; /* To make sure the click goes through the marker to the image */
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.3.0/dist/tesseract.min.js"></script>
 </head>
 <body>
 
 <div id="image-container">
-<img src="{{asset('assets/125.png')}}" >
+<img src="assets/125.png" id="image">
 </div>
 
+<div id="result"></div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  var image = document.getElementById("image");
-  var container = document.getElementById("image-container");
-
-  // Listen for clicks on the image
-  container.addEventListener("click", function(event) {
-    var rect = image.getBoundingClientRect(); // Get the position of the image relative to the viewport
-    var x = event.clientX - rect.left; // Calculate the x-coordinate relative to the image
-    var y = event.clientY - rect.top; // Calculate the y-coordinate relative to the image
-
-    // Display the clicked coordinates (for demonstration purposes)
-    console.log("Clicked at:", x, y);
-
-    // Here you would map the clicked coordinates to the number on the image
-    // and perform any necessary logic based on that mapping
-    // For example, you might divide the image into regions and determine
-    // which number corresponds to the clicked region.
-  });
+$(document).ready(function() {
+    $('#image').on('click', function() {
+        var image = $(this)[0]; // Get the raw DOM element
+        Tesseract.recognize(
+            image,
+            'eng',
+            { logger: m => console.log(m) }
+        ).then(({ data: { text } }) => {
+            $('#result').text(text);
+        });
+    });
 });
 </script>
 
