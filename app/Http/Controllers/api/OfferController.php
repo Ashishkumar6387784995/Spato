@@ -26,12 +26,12 @@ class OfferController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto')->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
+            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'b2b') {
-            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
+            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'Normal') {
             $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
-            $offersGroupBy = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto')
+            $offersGroupBy = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')
                 ->where('Ihre_Kundennummer', $user->id)
                 ->orderBy('created_at', 'desc')
                 ->get()->unique('Angebots_Nr');
@@ -210,5 +210,19 @@ class OfferController extends Controller
     {
 
         return view('frontEnd/Pages/offers/viewOffersForB2C');
+    }
+
+
+    // function for update offer status by offer code
+    public function updateOfferB2B(Request $request)
+    {
+        $record = Offers::where('Angebots_Nr', $request->offer_code)->update(['status' => 'Bestätigt']);
+        // dd($record);
+
+        if ($record) {
+            return response()->json(['message' => 'Status Updated successfully', 'record'=>$record]);
+        } else {
+            return response()->json(['erors' => 'Status Not Updated']);
+        }
     }
 }

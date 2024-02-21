@@ -494,7 +494,7 @@
             <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
            </td>
            <td>
-            <button class="btn">Delete</button>
+            <button type="button" class="btn">Delete</button>
            </td>
          </tbody>
         </table>

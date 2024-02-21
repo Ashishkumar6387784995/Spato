@@ -153,6 +153,9 @@
             Alle Angebote
           </div>
         </div>
+  
+        <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
+
         <div class="row pt-3 container">
           <table id="dataTable">
             <tr id="headings">
@@ -220,7 +223,7 @@
               // Iterate through the data and add rows to the table
               $.each(dataList, function(index, item) {
                 var row = $('<tr>');
-                row.append(`<td>Offen</td>`);
+                row.append(`<td id="status_${item.Angebots_Nr}">${item.status}</td>`);
                 row.append(`<td>${item.Angebots_Nr}</td>`);
                 row.append(`<td>${item.Ihre_Kundennummer}</td>`);
                 row.append(`<td>${item.Angebotsdatum}</td>`);
@@ -230,7 +233,9 @@
                 if (data.user.role === 'Admin') {
                   row.append(`<td><a href="/api/editOffer/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
                 } else if (data.user.role === 'b2b') {
-                  row.append(`<td><a href="/api/editOff/${item.id}" class="edit" id="editProductBtn">bestätigen</a></td>`);
+                  if (item.status=='Offen') {
+                    row.append(`<td><button type="button" class="edit  changeOfferStatus" offer-code="${item.Angebots_Nr}">bestätigen</button></td>`);
+                  }
                 }
 
                 // Add more columns as needed
@@ -264,6 +269,44 @@
     });
   </script>
 
+
+
+  <script>
+    // function for update offer status by offer code
+    jQuery(document).on('click', '.changeOfferStatus', function () {
+      var btn = $(this);
+      var offer_code = btn.attr('offer-code');
+      jQuery('#success_msg').html('');
+      // alert(offer_code);
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/updateOfferStatusB2BApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { offer_code: offer_code,  status:status},
+        success: function(data) {
+          // Handle the successful response
+          console.log('Response :', data);
+          if (data.message) {
+            // change final status of
+            jQuery('#success_msg').html('Angebote Nr - '+ offer_code+' Bestätigt Successfully');
+            jQuery('#status_'+offer_code).html('Bestätigt');
+            btn.closest('td').html('');
+            // Delay the page reload for 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+              jQuery('#success_msg').html('');
+            }, 2000);
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
+  </script>
 
 
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
