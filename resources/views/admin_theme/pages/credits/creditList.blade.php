@@ -150,6 +150,9 @@
             Alle Angebote
           </div>
         </div>
+
+        <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
+
         <div class="row pt-3 container">
           <table id="dataTable">
             <tr>
@@ -158,6 +161,7 @@
               <th>Kunde u. Betreff</th>
               <th>Datum</th>
               <th>Betrag netto</th>
+              <th></th>
               <th></th>
             </tr>
 
@@ -207,23 +211,28 @@
           if (data.creditList) {
             console.log('Data received:', data.creditList);
 
-            function populateTable(data) {
+            function populateTable(dataList) {
               var tableBody = $('#dataTable');
 
               // Clear existing table rows
               // tableBody.empty();
 
               // Iterate through the data and add rows to the table
-              $.each(data, function(index, item) {
+              $.each(dataList, function(index, item) {
                 var row = $('<tr>');
-                row.append('<td>' + 'Offen' + '</td>');
+                row.append('<td id="status_'+item.Gutschrifts_Nr+'">' + item.status + '</td>');
                 row.append('<td>' + item.Gutschrifts_Nr + '</td>');
                 row.append('<td>' + item.Ihre_Kundennummer + '</td>');
                 row.append('<td>' + item.Gutschriftsdatum + '</td>');
                 // row.append('<td>' + item.Kategorie + '</td>');
-                row.append('<td>' + item.gesamt_netto + '</td>');
-                row.append('<td><a href="/api/editOffer/' + item.id +
-                  '" class="edit" id="editProductBtn">bearbeiten</a></td>');
+                row.append('<td>' + item.gesamt_netto + '</td>'); 
+
+                if (data.user.role === 'Admin') {
+                    row.append('<td><a href="/api/editCredits/' + item.id + '" class="edit">bearbeiten<a></td>');
+                    if (item.status=='Offen') {
+                        row.append('<td><button type="button" class="edit  changeCreditStatus" credit-code="'+item.Gutschrifts_Nr+'">buchen</button></td>');
+                    }
+                }
 
                 // Add more columns as needed
 
@@ -250,7 +259,42 @@
     });
   </script>
 
+  <script>
+    // function for update credit status by credit code
+    jQuery(document).on('click', '.changeCreditStatus', function () {
+      var btn = $(this);
+      var credit_code = btn.attr('credit-code');
+      jQuery('#success_msg').html('');
+      // alert(credit_code);
 
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/updateCreditStatusApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { credit_code: credit_code,  status:status},
+        success: function(data) {
+        // Handle the successful response
+        console.log('Response :', data);
+        if (data.message) {
+            // change final status of
+            jQuery('#success_msg').html('Rechnung Nr - '+ credit_code+' Bezahlt Successfully');
+            jQuery('#status_'+credit_code).html('Bezahlt');
+            btn.closest('td').html('');
+            // Delay the page reload for 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+            jQuery('#success_msg').html('');
+            }, 2000);
+        } else {
+            console.log('Data received:', data.errors);
+        }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
+  </script>
 
 
 

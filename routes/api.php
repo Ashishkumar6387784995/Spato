@@ -252,6 +252,7 @@ Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB
 // Credits for Admin
 
 Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
+Route::get('updateCreditStatusApi', [creditsController::class, 'updateCredits']);
 Route::get('addCredits/{role}', [creditsController::class, 'addCredits']);
 
 Route::get('editCredits', [creditsController::class, 'editCredits']);
