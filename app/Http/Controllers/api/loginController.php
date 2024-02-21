@@ -271,7 +271,7 @@ class loginController extends Controller
 
         // for offers
             if ($role_filter=='Offers') {
-                $users = User::where('role', 'b2b')->orWhere('role', 'b2c')->get();
+                $users = User::where('role', 'b2b')->orWhere('role', 'Normal')->get();
             }
 
         // for Assignments
@@ -315,65 +315,60 @@ class loginController extends Controller
         // $guessCompanyName = UserProfile::where('company_name', 'LIKE', '%'.$companyName.'%')->orderby('company_name', 'ASC')->get();
         $guessCompanyName = user::select('users.id', 'user_profiles.company_name', 'user_profiles.user_id')
                             ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+                            ->where('user_profiles.company_name', 'LIKE', '%'.$companyName.'%')
                             ->orderby('user_profiles.company_name', 'ASC');
 
         $users = user::select('users.*', 'user_profiles.company_name', 'user_profiles.user_id')
                 ->join('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+                ->where('user_profiles.company_name', $companyName)
                 ->orderby('user_profiles.company_name', 'ASC');
 
         // for offers
             if ($role_filter=='Offers') {
-                $users = $users->where('users.role', 'b2b')->orWhere('users.role', 'b2c')
-                        ->where('user_profiles.company_name', $companyName)
-                        ->get();
+                $users = $users
+                        ->where(function($query) {
+                            $query->where('users.role', 'b2b')
+                            ->orWhere('users.role', 'Normal');
+                        })->get();
 
-                $guessCompanyName = $guessCompanyName->where('users.role', 'b2b')->orWhere('users.role', 'b2c')
-                            ->where('user_profiles.company_name', 'LIKE', '%'.$companyName.'%')
-                            ->get();
+                $guessCompanyName = $guessCompanyName
+                                ->where(function($query) {
+                                    $query->where('users.role', 'b2b')
+                                    ->orWhere('users.role', 'Normal');
+                                })->get();
             }
 
         // for Assignments
             if ($role_filter=='Assignments') {
-                $users = $users->where('users.role', 'b2b')->orWhere('users.role', 'supplier')
-                        ->where('user_profiles.company_name', $companyName)
-                        ->get();
+                $users = $users
+                        ->where(function($query) {
+                            $query->where('users.role', 'b2b')
+                            ->orWhere('users.role', 'supplier');
+                        })->get();
 
-                $guessCompanyName = $guessCompanyName->where('users.role', 'b2b')->orWhere('users.role', 'supplier')
-                            ->where('user_profiles.company_name', 'LIKE', '%'.$companyName.'%')
-                            ->get();
+                $guessCompanyName = $guessCompanyName
+                            ->where(function($query) {
+                                $query->where('users.role', 'b2b')
+                                    ->orWhere('users.role', 'supplier');
+                            })->get();
             }
 
         // for DeliverNotes
             if ($role_filter=='DeliverNotes') {
-                $users = $users->where('users.role', 'supplier')
-                        ->where('user_profiles.company_name', $companyName)
-                        ->get();
-
-                $guessCompanyName = $guessCompanyName->where('users.role', 'supplier')
-                            ->where('user_profiles.company_name', 'LIKE', '%'.$companyName.'%')
-                            ->get();
+                $users = $users->where('users.role', 'supplier')->get();
+                $guessCompanyName = $guessCompanyName->where('users.role', 'supplier')->get();
             }
 
         // for Credits
             if ($role_filter=='Credits') {
-                $users = $users->where('users.role', 'b2b')
-                        ->where('user_profiles.company_name', $companyName)
-                        ->get();
-
-                $guessCompanyName = $guessCompanyName->where('users.role', 'b2b')
-                            ->where('user_profiles.company_name', 'LIKE', '%'.$companyName.'%')
-                            ->get();
+                $users = $users->where('users.role', 'b2b')->get();
+                $guessCompanyName = $guessCompanyName->where('users.role', 'b2b')->get();
             }
             
         // for Bills
             if ($role_filter=='Bills') {
-                $users = $users->where('users.role', 'b2b')
-                        ->where('user_profiles.company_name', $companyName)
-                        ->get();
-
-                $guessCompanyName = $guessCompanyName->where('users.role', 'b2b')
-                            ->where('user_profiles.company_name', 'LIKE', '%'.$companyName.'%')
-                            ->get();
+                $users = $users->where('users.role', 'b2b')->get();
+                $guessCompanyName = $guessCompanyName->where('users.role', 'b2b')->get();
             }
 
         // dd($users);
