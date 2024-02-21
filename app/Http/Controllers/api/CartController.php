@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use App\Models\Quote_requests;
 use Illuminate\Support\Facades\Validator;
 use App\Models\UserProfile;
+use App\Models\Coupon;
 
 
 class CartController extends Controller
@@ -358,5 +359,35 @@ class CartController extends Controller
     {
 
         return view('frontEnd/Pages/cart/cartView');
+    }
+
+
+    // function is used for check valid coupon code
+    public function applyDiscCode(Request $request){
+
+        // dd($request->all());
+        $Gutscheincode = $request->apply_disc_code;
+        $Mindestbetrag = $request->orderSummaryTotal;
+
+        // check is apply_disc_code is empty
+        // check is apply_disc_code is incorrect
+        $existCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Gutscheinstatus', 'Active')->first();
+        if ($Gutscheincode==null || !$existCode) {
+            return response()->json(['errors'=> 'Please apply a valid discount code']);
+        }
+
+
+        // check is apply_disc_code is expired
+        $expiredCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Bis_gültig', '<', date('Y-m-d'))->first();
+        if ($expiredCode) {
+            return response()->json(['errors'=> 'Sorry! this discount code is expired']);
+        }
+
+        // check is apply_disc_code is fullfilling minimum order value
+        $minPrice = Coupon::where('Gutscheincode', $Gutscheincode)->where('Mindestbetrag', '>', $Mindestbetrag)->first();
+        if ($minPrice) {
+            return response()->json(['errors'=> 'This code is applicable only on orders with item worth €'. $existCode->Mindestbetrag. ' and more']);
+        }
+
     }
 }

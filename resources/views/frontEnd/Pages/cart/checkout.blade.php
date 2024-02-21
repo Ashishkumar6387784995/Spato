@@ -344,12 +344,13 @@
                          </button>
                        </h2>
                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                         <div class="accordion-body">
-                           <div class="mb-3 d-flex">
-                             <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
-                             <button type="submit" class="btn ms-2" style="width:30%;">Apply</button>
-                           </div>
-                         </div>
+                        <div class="accordion-body">
+                          <div class="mb-3 d-flex">
+                            <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
+                            <button type="button" class="btn ms-2" style="width:30%;" id="apply_disc_btn" onclick="applyDiscCode()">Apply</button>
+                          </div>
+                          <span class="hideErrors" id="apply_disc_err" style="color:red;  font-size:13px;"></span>
+                        </div>
                        </div>
                      </div>
                      <hr />
@@ -868,6 +869,51 @@
 
 
      });
+   </script>
+
+   <script>
+    // function for apply coupon code
+
+    function applyDiscCode(){
+      jQuery('.hideErrors').html('');
+      var btn = jQuery('#apply_disc_btn');
+      var apply_disc_code = jQuery('#apply_disc_code').val();
+      var orderSummaryTotal = jQuery('#orderSummaryTotal').val();
+      btn.text('Applying');
+      // alert(apply_disc_code+' '+orderSummaryTotal);
+      
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/applyDiscCode', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { apply_disc_code: apply_disc_code,  orderSummaryTotal:orderSummaryTotal},
+        success: function(data) {
+          // Handle the successful response
+          console.log('Response :', data);
+          if (data.message) {
+              // change final status of
+              btn.html('Apply');
+              jQuery('#success_msg').html('Rechnung Nr - '+ bill_code+' Bezahlt Successfully');
+              jQuery('#status_'+bill_code).html('Bezahlt');
+              btn.closest('td').html('');
+              // Delay the page reload for 2 seconds (2000 milliseconds)
+              setTimeout(function() {
+              jQuery('#success_msg').html('');
+              }, 2000);
+          } else {
+            console.log('Data received:', data.errors);
+            btn.html('Apply');
+            jQuery('#apply_disc_err').html(data.errors);
+          }
+        },
+        error: function(error) {
+          // Handle errors
+          console.error('Error:', error);
+          btn.html('Apply');
+          jQuery('#apply_disc_err').html('Sorry! we are facing some internal errors.');
+        }
+      });
+    }
    </script>
 
  </body>
