@@ -26,11 +26,11 @@ class OfferController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $offers = Offers::select('Angebots_Nr', )->orderBy('created_at', 'desc')->groupBy('Angebots_Nr')->get();
+            $offers = Offers::select()->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'b2b') {
-            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'Normal') {
-            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
             $offersGroupBy = Offers::select('Angebots_Nr', DB::raw('MAX(Angebotsdatum) as max_angebotsdatum'))
                 ->where('Ihre_Kundennummer', $user->id)
                 ->orderBy('created_at', 'desc')
@@ -211,5 +211,19 @@ class OfferController extends Controller
     {
 
         return view('frontEnd/Pages/offers/viewOffersForB2C');
+    }
+
+
+    // function for update offer status by offer code
+    public function updateOfferB2B(Request $request)
+    {
+        $record = Offers::where('Angebots_Nr', $request->offer_code)->update(['status' => 'Bestätigt']);
+        // dd($record);
+
+        if ($record) {
+            return response()->json(['message' => 'Status Updated successfully', 'record'=>$record]);
+        } else {
+            return response()->json(['erors' => 'Status Not Updated']);
+        }
     }
 }

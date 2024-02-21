@@ -168,6 +168,7 @@ Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashbo
 
 // Offers for Admin
 Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
+Route::get('updateOfferStatusB2BApi', [OfferController::class, 'updateOfferB2B']);
 Route::get('addOffer/{role}', [OfferController::class, 'addOffer']);
 Route::get('editOffer/{id}{role}', [OfferController::class, 'editOffer']);
 
