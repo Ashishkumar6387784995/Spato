@@ -17,9 +17,9 @@ class DeliveryNotesController extends Controller
     {
         $user = Auth::guard('api')->user();
         if ($user->role == 'Admin') {
-            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->groupBy('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->get();
+            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');;
         } elseif ($user->role == 'supplier') {
-            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->groupBy('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->get();
+            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');
         } else {
             $offers = 'offer not found';
         }
@@ -30,7 +30,6 @@ class DeliveryNotesController extends Controller
             return response()->json(['errors' => 'Deleivery Notes Not Found']);
         }
     }
-
 
 
     public function editDeliveryNotes()

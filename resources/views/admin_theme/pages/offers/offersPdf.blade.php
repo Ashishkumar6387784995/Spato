@@ -80,7 +80,7 @@
 <body>
 
     <div class="brand-logo">
-        <img class="logo" src="{{ url('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
+        <img class="logo" src="{{ public_path('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
     </div>
     <div class="desc">
         <p>SPATO GmbH - Schellberger Weg 34 - 42659 DE - Solingen</p>
@@ -177,7 +177,7 @@
     </table>
 
     <!-- Add any additional content or styling as needed -->
-    <!-- <div class="footer" style=" ">
+   <div class="footer">
         <table>
             <tbody>
                 <tr>
@@ -273,12 +273,12 @@
                 </tr>
             </tbody>
         </table>
-        <div class="page_break"></div>
+   
 
-        <div class="hello">
+        <!-- <div class="hello">
             <h1>Hello</h1>
-        </div>
-    </div> -->
+        </div> -->
+    </div> 
 </body>
 
 </html>
