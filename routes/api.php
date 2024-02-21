@@ -242,6 +242,7 @@ Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sen
 
 
 Route::view('billsListing/{role}', 'admin_theme/pages/bills/billsList');
+Route::get('updateBillStatusApi', [billsController::class, 'updateBills']);
 Route::get('addbills/{role}', [billsController::class, 'addbills']);
 
 Route::get('editbills', [billsController::class, 'editbills']);

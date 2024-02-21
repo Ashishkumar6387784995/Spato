@@ -20,15 +20,15 @@ class billsController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $billsNo = bills::select('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->orderBy('created_at', 'desc')->get()->unique('Rechnungs_Nr');;
+            $billsNo = bills::select('Rechnungs_Nr','Rechnungsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->orderBy('created_at', 'desc')->get()->unique('Rechnungs_Nr');;
         } elseif ($user->role == 'b2b') {
-            $billsNo = bills::select('Rechnungs_Nr','Rechnungs_Nr','Ihre_Kundennummer','gesamt_netto')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Rechnungs_Nr');
+            $billsNo = bills::select('Rechnungs_Nr','Rechnungsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Rechnungs_Nr');
         } else {
             $billsNo = 'offer not found';
         }
 
         if ($billsNo) {
-            return response()->json(['billsNo' => $billsNo]);
+            return response()->json(['billsNo' => $billsNo, 'user' => $user]);
         } else {
             return response()->json(['errors' => 'Bills Not Found']);
         }
@@ -166,5 +166,19 @@ class billsController extends Controller
         Mail::to($email)->send(new BillsMailer($Rechnungs_Nr));
 
         return response()->json(['success' => "Bill Mail Send SuccessFully"]);
+    }
+
+    
+    // function for update bill status by bill code
+    public function updateBills(Request $request)
+    {
+        $record = bills::where('Rechnungs_Nr', $request->bill_code)->update(['status' => 'Bezahlt']);
+        // dd($record);
+
+        if ($record) {
+            return response()->json(['message' => 'Status Updated successfully', 'record'=>$record]);
+        } else {
+            return response()->json(['erors' => 'Status Not Updated']);
+        }
     }
 }

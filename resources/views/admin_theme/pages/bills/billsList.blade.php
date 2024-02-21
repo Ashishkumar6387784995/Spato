@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Offer Rechnungen</title>
+    <title>Rechnungen</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -42,7 +42,7 @@
             background-color: #404040;
             border: 1px solid #404040;
             color: #ffff;
-            padding: 10px 14px;
+            padding: 8px 14px;
             height: 42px;
             text-decoration: none;
             border-radius: 5px;
@@ -133,11 +133,13 @@
                 </div>
                 @endif
                 <div class="row pt-3">
-
                     <div class="col-md-4 stretch-card grid-margin">
                         Alle Rechnungen
                     </div>
                 </div>
+
+                <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
+
                 <div class="row pt-3 container">
                     <table id="dataTable">
                         <tr>
@@ -146,6 +148,7 @@
                             <th>Kunde u. Betreff</th>
                             <th>Datum</th>
                             <th>Betrag netto</th>
+                            <th></th>
                             <th></th>
                         </tr>
 
@@ -195,27 +198,30 @@
                     // Handle the successful response
                     if (data.billsNo) {
                         console.log('Data received:', data.billsNo);
+                        console.log('User received:', data.user);
 
-                        function populateTable(data) {
+                        function populateTable(dataList) {
                             var tableBody = $('#dataTable');
 
                             // Clear existing table rows
                             // tableBody.empty();
 
-                            // Iterate through the data and add rows to the table
-                            $.each(data, function(index, item) {
+                            // Iterate through the dataList and add rows to the table
+                            $.each(dataList, function(index, item) {
                                 var row = $('<tr>');
-                                row.append('<td>' + 'Offen' + '</td>');
+                                row.append('<td id="status_'+item.Rechnungs_Nr+'">' + item.status + '</td>');
                                 row.append('<td>' + item.Rechnungs_Nr + '</td>');
                                 row.append('<td>' + item.Ihre_Kundennummer + '</td>');
                                 row.append('<td>' + item.Rechnungsdatum + '</td>');
                                 // row.append('<td>' + item.Kategorie + '</td>');
                                 row.append('<td>' + item.gesamt_netto + '</td>');
-                                row.append('<td><a href="/api/editOffer/' + item.id +
-                                    '" class="edit" id="editProductBtn">Änderung anfragen</a></td>');
+
+                                if (data.user.role === 'Admin') {
+                                    row.append('<td><a href="/api/editBills/' + item.id + '" class="edit">bearbeiten<a></td>');
+                                    row.append('<td><button type="button" class="edit  changeBillStatus" bill-code="'+item.Rechnungs_Nr+'">buchen</button></td>');
+                                }
 
                                 // Add more columns as needed
-
                                 // Append the row to the table body
                                 tableBody.append(row);
                             });
@@ -235,14 +241,45 @@
                     console.error('Error:', error);
                 }
             });
-
-
-
-
         });
     </script>
 
+    <script>
+        // function for update bill status by bill code
+        jQuery(document).on('click', '.changeBillStatus', function () {
+        var btn = $(this);
+        var bill_code = btn.attr('bill-code');
+        jQuery('#success_msg').html('');
+        // alert(bill_code);
 
+        // Make a GET request using AJAX
+        $.ajax({
+            url: '/api/updateBillStatusApi', // Replace with the actual endpoint URL
+            method: 'GET',
+            data: { bill_code: bill_code,  status:status},
+            success: function(data) {
+            // Handle the successful response
+            console.log('Response :', data);
+            if (data.message) {
+                // change final status of
+                jQuery('#success_msg').html('Rechnung Nr - '+ bill_code+' Bezahlt Successfully');
+                jQuery('#status_'+bill_code).html('Bezahlt');
+                btn.closest('td').html('');
+                // Delay the page reload for 2 seconds (2000 milliseconds)
+                setTimeout(function() {
+                jQuery('#success_msg').html('');
+                }, 2000);
+            } else {
+                console.log('Data received:', data.errors);
+            }
+            },
+            error: function(error) {
+            // Handle errors
+            console.error('Error:', error);
+            }
+        });
+        })
+    </script>
 
 
 

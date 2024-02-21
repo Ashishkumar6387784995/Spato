@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('gesamt_netto')->nullable();
             $table->string('zzgl_Umsatzsteuer')->nullable();
             $table->string('Gesamtbetrag_brutto')->nullable();
+            $table->string('status')->default('Offen');
 
             $table->timestamps();
         });
