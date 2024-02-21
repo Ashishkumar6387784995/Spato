@@ -218,7 +218,9 @@
 
                                 if (data.user.role === 'Admin') {
                                     row.append('<td><a href="/api/editBills/' + item.id + '" class="edit">bearbeiten<a></td>');
-                                    row.append('<td><button type="button" class="edit  changeBillStatus" bill-code="'+item.Rechnungs_Nr+'">buchen</button></td>');
+                                    if (item.status=='Offen') {
+                                        row.append('<td><button type="button" class="edit  changeBillStatus" bill-code="'+item.Rechnungs_Nr+'">buchen</button></td>');
+                                    }
                                 }
 
                                 // Add more columns as needed
