@@ -319,15 +319,15 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td colspan="2" style="text-align:right;">54.818,89 EUR</td>
+                <td colspan="2" style="text-align:right;">{{ $data['gesamt_netto'] }} EUR</td>
             </tr>
             <tr>
                 <td></td>
                 <td colspan="2" style="width:250px;">zzgl. Umsatzsteuer 19%</td>
+                <td></td> 
                 <td></td>
                 <td></td>
-                <td></td>
-                <td colspan="2" style="text-align:right;">10.415,59 EUR</td>
+                <td colspan="2" style="text-align:right;">{{ $data['zzgl_Umsatzsteuer'] }} EUR</td>
             </tr>
             <tr>
                 <td></td>
@@ -335,7 +335,7 @@
                 <td></td>
                 <td></td>   
                 <td></td>
-                <td colspan="2" style="text-align:right; font-size:16px; font-weight:900;">65.234,48 EUR</td>
+                <td colspan="2" style="text-align:right; font-size:16px; font-weight:900;">{{ $data['Gesamtbetrag_brutto'] }} EUR</td>
             </tr>
         </tbody>
     </table>
