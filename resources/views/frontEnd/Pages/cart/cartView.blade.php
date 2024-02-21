@@ -271,12 +271,12 @@
          <div class="accordion" id="accordionExample">
           <div class="accordion-item">
            <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
              Estimate Shipping and Tax
             </button>
-           </h2>
-           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+           </h2> -->
+           <!-- <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
              <div class="mb-3">
@@ -284,10 +284,10 @@
                placeholder="Enter your destination to get a shipping estimate." rows="3"></textarea>
              </div>
             </div>
-           </div>
+           </div> -->
           </div>
 
-          <div class="accordion-item">
+          <!-- <div class="accordion-item">
            <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -303,8 +303,8 @@
              </div>
             </div>
            </div>
-          </div>
-          <hr />
+          </div> -->
+          <!-- <hr /> -->
           <div class="details d-flex justify-content-between">
            <p class="input-field">Subtotal</p>
            <span><input type="text" class="input-field" name="" id="allSubTotalDisplay" value="00.00"

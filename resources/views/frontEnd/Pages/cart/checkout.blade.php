@@ -68,7 +68,7 @@
        font-size: 15px;
      }
 
-     /* .checkout-container .btn {
+     .checkout-container .btn {
    background-color: #44e1d5;
    border: 1px solid #44e1d5;
    width: 90%;
@@ -83,7 +83,7 @@
   .checkout-container .btn:hover {
    border: 1px solid #44e1d5;
    color: var(--blue);
-  } */
+  }
 
 
      .icon i {
@@ -349,6 +349,10 @@
                             <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
                             <button type="button" class="btn ms-2" style="width:30%;" id="apply_disc_btn" onclick="applyDiscCode()">Apply</button>
                           </div>
+                          <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> Code applied successfully
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
                           <span class="hideErrors" id="apply_disc_err" style="color:red;  font-size:13px;"></span>
                         </div>
                        </div>
