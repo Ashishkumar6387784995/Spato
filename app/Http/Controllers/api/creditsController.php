@@ -18,9 +18,9 @@ class creditsController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->groupBy('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->get();
+            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->get()->unique('Gutschrifts_Nr');
         } elseif ($user->role == 'b2b') {
-            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->groupBy('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->get();
+            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Gutschrifts_Nr');
         } else {
             $credits = 'offer not found';
         }

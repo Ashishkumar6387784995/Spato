@@ -26,16 +26,15 @@ class OfferController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $offers = Offers::select('Angebots_Nr', )->orderBy('created_at', 'desc')->groupBy('Angebots_Nr')->get();
+            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto')->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'b2b') {
-            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'Normal') {
             $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
-            $offersGroupBy = Offers::select('Angebots_Nr', DB::raw('MAX(Angebotsdatum) as max_angebotsdatum'))
+            $offersGroupBy = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto')
                 ->where('Ihre_Kundennummer', $user->id)
                 ->orderBy('created_at', 'desc')
-                ->groupBy('Angebots_Nr')
-                ->get();
+                ->get()->unique('Angebots_Nr');
             return response()->json(['offersList' => $offers, 'user' => $user, 'offersGroupBy' => $offersGroupBy]);
         } else {
             $offers = 'offer not found';

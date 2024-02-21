@@ -11,11 +11,11 @@
             font-size: 12px;
         }
 
-        @page {
+        /* @page {
 
             size: A4;
 
-        }
+        } */
 
         .brand-logo {
             display: flex;
@@ -177,7 +177,7 @@
     </table>
 
     <!-- Add any additional content or styling as needed -->
-    <!-- <div class="footer" style=" ">
+    <div class="footer" style=" ">
         <table>
             <tbody>
                 <tr>
@@ -273,12 +273,10 @@
                 </tr>
             </tbody>
         </table>
-        <div class="page_break"></div>
+       
 
-        <div class="hello">
-            <h1>Hello</h1>
-        </div>
-    </div> -->
+        
+    </div>
 </body>
 
 </html>

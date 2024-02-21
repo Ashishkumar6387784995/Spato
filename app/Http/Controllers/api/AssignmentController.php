@@ -27,13 +27,13 @@ class AssignmentController extends Controller
         if ($user->role == 'Admin') {
             $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')
             ->orderBy('created_at', 'desc')
-            ->groupBy('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')
-            ->get();
+            
+            ->get()->unique('Auftrags_Nr');
         
         } elseif ($user->role == 'b2b') {
-            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)  ->groupBy('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->get();
+            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->get()->unique('Auftrags_Nr');
         } elseif ($user->role == 'supplier') {
-            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)  ->groupBy('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->get();
+            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->get()->unique('Auftrags_Nr');
         } else {
             $offers = 'offer not found';
         }
