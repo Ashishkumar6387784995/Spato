@@ -27,5 +27,6 @@ class offers extends Model
         'gesamt_netto',
         'zzgl_Umsatzsteuer',
         'Gesamtbetrag_brutto',
+        'status',
     ];
 }

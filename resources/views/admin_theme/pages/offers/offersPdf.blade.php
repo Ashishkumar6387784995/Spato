@@ -37,13 +37,14 @@
         }
 
         .offers tr th {
-            background-color: #54606c;
+            background-color: #404040;
             color: #ffffff;
             padding: 2px 6px;
+            margin:0;
         }
 
         .offers tr td {
-            border-bottom: 0.2px solid #000;
+           border:none;
         }
 
         .hidden {
@@ -71,14 +72,17 @@
             font-size: 10px;
         }
 
-        .page_break {
-            page-break-before: always;
-        }
+        .page-break {
+  page-break-before: always;
+}
+.pagenum:before {
+        content: counter(page);
+    }
     </style>
 </head>
 
 <body>
-
+<div class="offerpdf">
     <div class="brand-logo">
         <img class="logo" src="{{ public_path('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset="">
     </div>
@@ -165,7 +169,7 @@
             <tr>
                 <td>{{ $data['POS'] }}</td>
                 <td>{{ $data['Produkt'] }}</td>
-                <td style="width:300px;">{{ $data['Beschreibung'] }}</td>
+                <td style="width:250px;">{{ $data['Beschreibung'] }}</td>
                 <td>{{ $data['Menge'] }}</td>
                 <td>{{ $data['Einheit'] }}</td>
                 <td>{{ $data['Einzelpreis'] }}</td>
@@ -175,11 +179,28 @@
             @endforeach
         </tbody>
     </table>
-
+</div>
     <!-- Add any additional content or styling as needed -->
    <div class="footer">
         <table>
             <tbody>
+                <tr>
+                <td><p class="hidden">Lo</p></td>
+                    <td>
+                        <p class="hidden">Lo</p>
+                    </td>
+                    <td><p class="hidden">Lo</p></td>
+                    <td>
+                        <p class="hidden">Lo</p>
+                    </td>
+                    <td><p class="hidden">Lo</p></td>
+                    <td>
+                        <p class="hidden">Lo</p>
+                    </td>
+                    <td style="text-align:right;">
+                    <p>Seite <span class="pagenum" style="text-align:right;"></span> von 2</p>
+                    </td>
+                </tr>
                 <tr>
                     <td>SPATO GmbH</td>
                     <td>
@@ -273,12 +294,65 @@
                 </tr>
             </tbody>
         </table>
-   
+</div>
+        <div class="page-break"></div>
 
-        <!-- <div class="hello">
-            <h1>Hello</h1>
-        </div> -->
-    </div> 
+        <div class="Intotal-calculation">
+        
+    <table class="offers">
+        <thead>
+            <tr>
+                <th>POS</th>
+                <th>Produkt</th>
+                <th style="width:250px;">Beschreibung</th>
+                <th>Menge</th>
+                <th>Einheit</th>
+                <th>Einzelpreis</th>
+                <th>Rabatt</th>
+                <th>Gesamtpreis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td colspan="2" style="width:250px;">Gesamtbetrag netto</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="text-align:right;">54.818,89 EUR</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" style="width:250px;">zzgl. Umsatzsteuer 19%</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="text-align:right;">10.415,59 EUR</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" style="width:250px; font-size:16px; font-weight:900;">Gesamtbetrag brutto</td>
+                <td></td>
+                <td></td>   
+                <td></td>
+                <td colspan="2" style="text-align:right; font-size:16px; font-weight:900;">65.234,48 EUR</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="intotal-text">
+        <p style="font-size:15px;">Lieferbedingungen: zzgl. Frachtkosten <br>
+Zahlungsbedingungen: nach Vereinbarung
+</p>
+<p>Wir behalten uns vor, Preise aufgrund der weltweiten Pandemie und Rohstoffknappheit anzupassen. Es gelten für alle geschäftlichen Vorgänge ausschließlich unsere
+AGB. An dieses Angebot halten wir uns 10 Werktage gebunden. Mit der Erteilung eines Auftrages setzen wir voraus, dass Sie unsere AGB zur Kenntnis genommen haben.
+Sollten Ihnen unsere aktuellen AGB nicht vorliegen, fordern Sie diese bitte unter info@spato.de an.
+</p>
+<p>We reserve the right to adjust prices due to the global pandemic and shortage of raw materials. Our General Terms and Conditions apply exclusively to all business
+transactions.We are bound to this offer for 10 working days. By placing an order, we assume that you have taken note of our terms and conditions. If you do not have our
+current terms and conditions, please request them from info@spato.de.</p>
+    </div>
+        </div>
+    </div>
 </body>
 
 </html>

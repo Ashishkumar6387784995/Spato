@@ -350,6 +350,8 @@
    </div>
   </section>
 
+  <section></section>
+
   <script>
   const wrapper = document.querySelector(".wrapper");
   const carousel = document.querySelector(".carousel");
