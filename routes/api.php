@@ -372,5 +372,6 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 // Notification Well
 
 Route::get('/productListingNew', [tryController::class, 'productListing']);
+Route::get('/image', [tryController::class, 'image']);
 
 // routes/web.php

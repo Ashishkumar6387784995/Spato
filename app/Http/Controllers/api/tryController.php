@@ -13,4 +13,8 @@ class tryController extends Controller
         return view('frontEnd/Pages/products/productListing');
 
     }
+
+    public function image(){
+        return view('frontEnd/Pages/products/images');
+    }
 }
