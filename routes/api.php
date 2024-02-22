@@ -162,7 +162,7 @@ Route::get('/productList', [tryController::class, 'productListing']);
 
 // WareHouse Management
 Route::view('/wareHouseProductList/{role}', '/admin_theme/pages/wareHouse/productsList');
-Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
+// Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
 
 
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
