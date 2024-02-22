@@ -369,25 +369,30 @@ class CartController extends Controller
         $Gutscheincode = $request->apply_disc_code;
         $Mindestbetrag = $request->orderSummaryTotal;
 
-        // check is apply_disc_code is empty
-        // check is apply_disc_code is incorrect
-        $existCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Gutscheinstatus', 'Active')->first();
-        if ($Gutscheincode==null || !$existCode) {
-            return response()->json(['errors'=> 'Please apply a valid discount code']);
-        }
+        // check for validation
+            // check is apply_disc_code is empty
+            // check is apply_disc_code is incorrect
+            $existCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Gutscheinstatus', 'Active')->first();
+            if ($Gutscheincode==null || !$existCode) {
+                return response()->json(['errors'=> 'Please apply a valid discount code']);
+            }
 
 
-        // check is apply_disc_code is expired
-        $expiredCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Bis_gültig', '<', date('Y-m-d'))->first();
-        if ($expiredCode) {
-            return response()->json(['errors'=> 'Sorry! this discount code is expired']);
-        }
+            // check is apply_disc_code is expired
+            $expiredCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Bis_gültig', '<', date('Y-m-d'))->first();
+            if ($expiredCode) {
+                return response()->json(['errors'=> 'Sorry! this discount code is expired']);
+            }
 
-        // check is apply_disc_code is fullfilling minimum order value
-        $minPrice = Coupon::where('Gutscheincode', $Gutscheincode)->where('Mindestbetrag', '>', $Mindestbetrag)->first();
-        if ($minPrice) {
-            return response()->json(['errors'=> 'This code is applicable only on orders with item worth €'. $existCode->Mindestbetrag. ' and more']);
-        }
+            // check is apply_disc_code is fullfilling minimum order value
+            $minPrice = Coupon::where('Gutscheincode', $Gutscheincode)->where('Mindestbetrag', '>', $Mindestbetrag)->first();
+            // dd($minPrice);
+            if ($minPrice) {
+                return response()->json(['removeDiscountCode'=> 'This code is applicable only on orders with item worth €'. $existCode->Mindestbetrag. ' and more']);
+            }
+        
+        // if validation fullfilled
+            return response()->json(['message'=> "It's a valid discount code", 'coupon'=>$existCode]);
 
     }
 }
