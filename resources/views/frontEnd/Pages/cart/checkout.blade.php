@@ -246,7 +246,38 @@
      .counter i {
        font-size: 10px;
      }
+     .accordion .alert{
+      background-color:var(--white);
+      border:1px solid var(--blue);
+      height: 100px;
+     }
+     .accordion .alert-content{
+      display:flex;
+      justify-content:space-between;
+     }
 
+     .accordion .alert p i{
+      color:var(--blue);
+     }
+
+     .accordion .alert-content p span{
+      color:var(--blue);
+     }
+     .accordion .alert-content button{
+      background-color:var(--white);
+      border:1px solid red;
+      height:30px;
+      width:75px;
+      margin:0px -35px;
+      border-radius:3px;
+      font-weight:600;
+      color:red;
+      transition:0.5s ease-in-out;
+     }
+     .accordion .alert-content button:hover{
+      background-color:red;
+      color:var(--white);
+     }
      /* .modal-content {
    width: 100% !important;
   } */
@@ -349,9 +380,12 @@
                             <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
                             <button type="button" class="btn ms-2" style="width:30%;" id="apply_disc_btn" onclick="applyDiscCode()">Apply</button>
                           </div>
-                          <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> Code applied successfully
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          <div class="alert alert-dismissible fade show" role="alert">
+                            <p><i class="fa-solid fa-circle-check"></i> <b>Get 30% off</b></p>
+                            <div class="alert-content">
+  <p><span><strong>GU-1275</strong></span> Applied</p>
+  <button type="button" data-bs-dismiss="alert">Remove</button>
+  </div>
 </div>
                           <span class="hideErrors" id="apply_disc_err" style="color:red;  font-size:13px;"></span>
                         </div>
