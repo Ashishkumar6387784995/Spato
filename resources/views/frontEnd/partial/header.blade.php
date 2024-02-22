@@ -50,6 +50,17 @@
    text-decoration: none;
    background-color: var(--white);
   }
+
+  .dashboard a{
+    font-size:15px !important;
+    text-align:center;
+    font-weight:700 !important;
+    color:var(--blue) !important;
+  }
+  .dashboard{
+    padding-top:5px;
+    /* background-color:var(--white); */
+  }
   </style>
  </head>
 
@@ -1244,6 +1255,7 @@
            <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
             <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
             <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
+            <li class="dashboard"><a  class=" dropdown-item" href="{{url('api/admin_dashboard/admin')}}">Visit Dashboard</a></li>
         </ul>
     </li>
 

@@ -7,6 +7,10 @@
       padding-bottom: 2rem;
       border-bottom: 2px solid #44e1d5;
    }
+   .img{
+      padding-bottom:15px;
+      border-bottom: 2px solid #44e1d5;
+   }
 
    .nav-item button {
       padding: 5px 15px;
@@ -46,10 +50,14 @@
 
 
 
-      <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset=""></a></span>
+      <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset=""></a>
 
 
-
+      <li class="nav-item" style="background-color:transparent;">
+            <a href="/api/home"><button type="submit" name="logout">Visit Site</button></a>
+            
+         </li>
+         </span>
 
 
       @if($role=="b2b")
@@ -298,7 +306,7 @@
 
          <li class="nav-item" style="background-color:transparent;">
             <button type="submit" name="logout" id="logoutButton">Log Out</button>
-            </a>
+            
          </li>
 
    </ul>
