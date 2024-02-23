@@ -196,6 +196,7 @@ Route::get('getSpecificProductCategoryAPI', [categoriesController::class, 'getPr
 
 // products for Admin
 Route::get('productListingApi', [productController::class, 'productListing']);
+Route::get('addSpareParts/{role}', [productController::class, 'addSpareParts']);
 Route::view('productListing/{role}', 'admin_theme/pages/products/productsList');
 Route::get('addProduct/{role}', [productController::class, 'addProduct']);
 Route::post('addProduct', [productController::class, 'addproductList']);

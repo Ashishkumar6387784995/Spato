@@ -278,4 +278,11 @@ class ProductController extends Controller
         
         return response()->json(['allProductsCat' => $allProducts]);
     }
+
+    
+    // function for view addSpareParts blade
+    public function addSpareParts($role)
+    {
+        return view('admin_theme/pages/products/addSpareParts')->with(compact('role'));
+    }
 }
