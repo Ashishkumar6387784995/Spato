@@ -336,14 +336,20 @@
    text-align: left;
   }
 
-  .order-history .t-price .pdf {
-   font-size: 15px;
+  .pdf a{
+   font-size: 17px;
+   text-decoration:none !important;
+   font-weight:600;
+   color:var(--blue) !important;
   }
 
-  .order-history .t-price .pdf i {
+  .pdf i {
    color: red;
   }
-
+.order-history table thead th{
+  width:80px;
+  border-spacing:none;
+}
   .order-history .t-price .total-price {
    font-size: 18px;
    font-weight: 700;
@@ -351,8 +357,18 @@
   }
 
   .order-product-img {
-   width: 100px;
-   height: 100px;
+   width: 130px;
+   height: 80px;
+  }
+
+
+  .accordion-content tr{
+    border-bottom:0.5px solid #D0D3D4;
+  }
+  .accordion-content td .price{
+    color:var(--blue);
+    font-weight:700;
+    font-size:18px;
   }
 
   /* .accordion {
@@ -557,10 +573,11 @@
        <thead>
         <tr>
          <th>MONTH</th>
-         <th></th>
          <th>ORDER NUMBER</th>
-         <th>COST</th>
          <th>DATE</th>
+         <th></th>
+         <th></th>
+         <!-- <th>COST</th> -->
         </tr>
        </thead>
       </table>
@@ -572,11 +589,11 @@
          <table>
           <tbody>
            <tr>
-            <td>Alex</td>
-            <td></td>
+            <td><b>Alex</b></td>
             <td>#2564</td>
-            <td>$452</td>
             <td>23/04/2024</td>
+            <td class="pdf"><a href="#"><i class="fa-solid fa-file-pdf"></i> Download Invoice</a></td>
+          <td style="width:100px; text-align:right;"><i class="fa-solid fa-chevron-down"></i></td>
            </tr>
           </tbody>
          </table>
@@ -586,11 +603,25 @@
          <table>
           <tbody>
            <tr>
-            <td><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/p-1.png') }}" alt="" srcset="">
+            <td style="width:150px;"><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="" srcset="">
             </td>
-
-            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi quos ipsam facilis quas quidem
-             dicta ea reiciendis et dignissimos.</td>
+            <td ><h5>Badu Aplha Delta Eco...</h5>
+          <p>Price - <span class="price">2520€</span></p>
+          </td>
+            <td style="width:130px;"><p><b>GU - 12348</b></p></td>
+            <td>
+             <p>East Streets 14, Word No. 04, Road
+              No. 13/x, House no. 1320/C, Flat No.
+              5D, Berlin - 1200, Germany</p>
+            </td>
+           </tr>
+           <tr>
+            <td style="width:150px;"><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="" srcset="">
+            </td>
+            <td ><h5>Badu Aplha Delta Eco...</h5>
+          <p>Price - <span class="price">2520€</span></p>
+          </td>
+            <td style="width:130px;"><p><b>GU - 12348</b></p></td>
             <td>
              <p>East Streets 14, Word No. 04, Road
               No. 13/x, House no. 1320/C, Flat No.
@@ -638,10 +669,8 @@
 
        </div>
        <div class="t-price row">
-        <div class="pdf col"><a href="#"><i class="fa-solid fa-file-pdf"></i> Download The
-          Invoice</a></div>
-        <div class="total-price col">Total Amount : 2543.00 €</div>
-       </div>
+        <!-- <div class="col"></div> -->
+        
       </div>
 
 
