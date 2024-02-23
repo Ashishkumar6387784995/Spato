@@ -87,6 +87,12 @@ Route::get('cancelationPolicy', [staticPageController::class, 'cancelationPolicy
 Route::get('Impressum', [staticPageController::class, 'Impressum']);
 Route::get('lieferbedingungen', [staticPageController::class, 'lieferbedingungen']);
 
+// cms static pages update
+
+Route::post('/agb_save_content', [cmsController::class, 'agb_save_content']);
+Route::post('/lieferbedingungen_save_content', [cmsController::class, 'lieferbedingungen_save_content']);
+Route::post('/Impressum_save_content', [cmsController::class, 'Impressum_save_content']);
+
 
 // Pool Builder For Front End
 Route::get('poolBuilderRegister', [PoolBuilder::class, 'poolBuilderRegister']);
@@ -173,6 +179,7 @@ Route::view('/wareHouseProductList/{role}', '/admin_theme/pages/wareHouse/produc
 
 
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
+
 
 // Offers for Admin
 Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
@@ -344,11 +351,7 @@ Route::view('customerAddressbook{role}', 'admin_theme/pages/customerAddressbook/
 
 
 
-// cms
 
-Route::post('/agb_save_content', [cmsController::class, 'agb_save_content']);
-Route::post('/lieferbedingungen_save_content', [cmsController::class, 'lieferbedingungen_save_content']);
-Route::post('/Impressum_save_content', [cmsController::class, 'Impressum_save_content']);
 
 
 //  Account Setting for B2C users
