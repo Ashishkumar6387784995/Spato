@@ -311,6 +311,10 @@
      .mt-0 {
        margin-top: 0rem;
      }
+     .wait{
+      filter: blur(1px);
+      pointer-events: none;
+     }
    </style>
  </head>
 
@@ -922,6 +926,7 @@
     // function for apply coupon code
 
     function applyDiscCode(){
+      jQuery('.checkout-container .content .address .contact-details').addClass('wait');
       jQuery('.hideErrors').html('&nbsp;');
       var btn = jQuery('#apply_disc_btn');
       var apply_disc_code = jQuery('#apply_disc_code').val();
@@ -935,7 +940,9 @@
         method: 'GET',
         data: { apply_disc_code: apply_disc_code,  orderSummaryTotal:originalSummaryTotal},
         success: function(data) {
+
           // Handle the successful response
+          jQuery('.checkout-container .content .address .contact-details').removeClass('wait');
           btn.html('Apply');
           console.log('Response :', data);
           if (data.message) {
@@ -957,8 +964,7 @@
               
 
               
-              jQuery('#apply_disc_div').html('');   // Make blank apply_disc_div
-              jQuery('#headingThree').append(`<input type="hidden" id="apply_disc_code" value="${apply_disc_code}" name="apply_disc_code">`); // Making a duplicate apply_disc_code for function use 
+              jQuery('#apply_disc_div').html(`<input type="hidden" id="apply_disc_code" value="${apply_disc_code}" name="apply_disc_code">`); // Making a duplicate apply_disc_code for function use 
               jQuery('#apply_disc_offMesage_div').html(`
                 <div class="alert alert-dismissible fade show" role="alert">
                   <p><i class="fa-solid fa-circle-check"></i> <b id="apply_disc_offMesage">${discMessage}</b></p>
@@ -988,6 +994,7 @@
           // Handle errors
           console.error('Error:', error);
           btn.html('Apply');
+          jQuery('.checkout-container .content .address .contact-details').removeClass('wait');
           jQuery('#apply_disc_err').html('Sorry! we are facing some internal errors.');
         }
       });
@@ -995,13 +1002,12 @@
 
     // function for show apply_disc_div while removing coupon code
     function removeDiscountCode(originalSummaryTotal){
-      jQuery('#apply_disc_code').remove();          // remove duplicate apply_disc_code
       jQuery('#apply_disc_offMesage_div').html(''); // blank apply_disc_offMesage_div
       jQuery('#apply_disc_div').html(`              
         <div class="mb-3 d-flex">
           <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
           <button type="button" class="btn ms-2" style="width:30%;" id="apply_disc_btn" onclick="applyDiscCode()">Apply</button>
-        </div>`);
+        </div>`); // remove duplicate apply_disc_code
       jQuery('#originalSummaryTotal').hide();  // hide orginal price without discount
       jQuery('#orderSummaryTotal').val(originalSummaryTotal); // put original price in orderSummaryTotal
     }
