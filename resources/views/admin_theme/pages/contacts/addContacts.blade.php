@@ -91,7 +91,7 @@
         a{
             color:#54606c;
             font-size:15px;
-            font-weight:600;
+            /* font-weight:600; */
         }
     </style>
 </head>
@@ -154,12 +154,12 @@
                 <div class="row">
                     <div class="col">
                         <div class="row">
-                            <div class="col">Typ</div>
-                            <div class="col">
+                            <div class="col-2">Typ</div>
+                            <div class="col-4" style="width:100px;">
                                 B2B <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                 B2C <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                             </div>
-                            <div class="col stretch-card">
+                            <div class="col-6 stretch-card">
                                 Kundennummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
                         </div>
                         </div>
@@ -288,10 +288,10 @@
                         <div class="col">
                        <div class="row">
                        <div class="col-4">
-                       <!-- Straße -->
+                      Mobile
                         </div>
                         <div class="col-8">
-                       <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;"> -->
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -312,10 +312,10 @@
                         <div class="col">
                        <div class="row">
                        <div class="col-4">
-                       Mobile
+                       Password
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -372,7 +372,7 @@
                         <!--  -->
                         <div class="row">
                         <div class="col stretch-card pt-3">
-                        Newsletter <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Ja <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Nein  Mail  <span style="padding:0 15px;">Newsletter</span>  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:200px;">
+                        Newsletter <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Ja <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Nein  <span style="padding:0 15px;">Mail Newsletter</span>  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:30px; border:1px solid black; width:200px;">
                         </div>
                         </div>
                         

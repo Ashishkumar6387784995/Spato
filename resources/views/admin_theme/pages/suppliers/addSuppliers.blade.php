@@ -91,7 +91,7 @@
         a{
             color:#54606c;
             font-size:15px;
-            font-weight:600;
+            /* font-weight:600; */
         }
     </style>
 </head>
@@ -150,24 +150,23 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        
                         <div class="row">
-                            <div class="col">Typ</div>
-                            <div class="col">
-                                B2B <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                B2C <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            </div>
-                            <div class="col stretch-card">
-                                Kundennummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
+                        <div class="col stretch-card pt-3">
+                        Herstellernummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        </div>
+                        <div class="col stretch-card pt-3">
+                        Lieferantennummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col stretch-card pt-3">
-                                Firmenname <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        Firmenname <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col stretch-card pt-3">
-                        Ansprechpartner <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Frau <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Herr <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
+                        Ansprechpartner <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Frau <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Herr <input type="text" class="form-control mx-2" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
                         </div>
                         </div>
                         <div class="row pt-3">
@@ -285,10 +284,10 @@
                         <div class="col">
                        <div class="row">
                        <div class="col-4">
-                       <!-- Straße -->
+                       Mobile
                         </div>
                         <div class="col-8">
-                       <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;"> -->
+                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -309,10 +308,10 @@
                         <div class="col">
                        <div class="row">
                        <div class="col-4">
-                       Mobile
+                       Password
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>

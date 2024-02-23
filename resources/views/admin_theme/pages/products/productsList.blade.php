@@ -139,9 +139,12 @@
      <div class="row pt-3">
 
       <div class="col-md-3 stretch-card grid-margin">
-       <a class="edit btn" href="{{url('/api/addProduct/'.$role)}}">+ neues Produkt</a>
+       <a class="edit btn" href="{{url('/api/addProduct/'.$role)}}">+ Neues Produkt</a>
       </div>
-      <div class="col-2 stretch-card grid-margin">
+      <div class="col-md-3 stretch-card grid-margin">
+       <a class="edit btn" href="{{url('/api/addSpareParts/'.$role)}}">+ Neue Ersatzteile</a>
+      </div>
+      <div class="col-1  stretch-card grid-margin">
 
       </div>
       <div class="col-4 stretch-card grid-margin">
