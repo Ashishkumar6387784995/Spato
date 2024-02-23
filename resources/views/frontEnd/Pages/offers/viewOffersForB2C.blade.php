@@ -36,7 +36,6 @@
    margin-top: 2rem;
    margin-bottom: 2rem;
    font-size: 22px;
-   margin-left:9.5rem;
   }
 
   .offer-lists .content .details {
@@ -171,10 +170,10 @@
 
   <section class="offer-lists">
     <div class="container content">
-              <h6>Offers Lists</h6>
       
-              <div class="details">
-                <div>
+      <div class="details">
+        <div>
+                  <h6>Offers Lists</h6>
           <!-- Offer starts -->
           <div class="offer">
             <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
