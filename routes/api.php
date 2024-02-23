@@ -29,6 +29,7 @@ use App\Http\Controllers\api\quatationController;
 use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\api\CouponMngController;
 use App\Http\Controllers\api\WareHouseController;
+use App\Http\Controllers\api\cmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,6 +152,12 @@ Route::middleware('api.auth')->group(function () {
   // Payment Checkout
   Route::get('/payment', [PaymentController::class, 'index']);
   Route::post('/cart/addOrder', [PaymentController::class, 'addOrder']);
+
+  // cms api for static pages
+
+  Route::get('/CmsUserRole', [cmsController::class, 'CmsUserRole']);
+
+
 });
 
 
@@ -170,7 +177,7 @@ Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashbo
 Route::view('offerListing/{role}', 'admin_theme/pages/offers/offerList');
 Route::get('updateOfferStatusB2BApi', [OfferController::class, 'updateOfferB2B']);
 Route::get('addOffer/{role}', [OfferController::class, 'addOffer']);
-Route::get('editOffer/{id}{role}', [OfferController::class, 'editOffer']);
+Route::get('editOffer/{role}/{id}', [OfferController::class, 'editOffer']);
 
 Route::get('OffersPdfdownload/{offerId}', [OfferController::class, 'downloadPdf']);
 Route::post('sendOfferMailsToB2C', [OfferController::class, 'sendOfferMailsToB2C']);
@@ -202,6 +209,10 @@ Route::post('productImportApi', [productController::class, 'productImport']);
 Route::get('productExport', [productController::class, 'productExport']);
 Route::get('editProduct/{id}', [productController::class, 'editProduct']);
 Route::get('getProductCategoryAPI', [productController::class, 'getProductCategory']);
+Route::get('deleteProduct/{id}', [productController::class, 'deleteProduct']);
+
+
+
 
 // products for Admin
 Route::get('quatationListingApi', [quatationController::class, 'quatationListingApi']);
@@ -222,7 +233,7 @@ Route::get('quatationListing/{role}', [quatationController::class, 'quatationLis
 Route::view('assignmentListing/{role}', 'admin_theme/pages/assignments/assignmentList');
 Route::get('addAssignment/{role}', [AssignmentController::class, 'addAssignment']);
 
-Route::get('editAssignment/{id}', [AssignmentController::class, 'editAssignment']);
+Route::get('editAssignment/{role}/{id}', [AssignmentController::class, 'editAssignment']);
 
 Route::get('assignmentPdfdownload/{assignmentNo}', [AssignmentController::class, 'downloadPdf']);
 Route::post('sendAssignmentMailsToB2C', [AssignmentController::class, 'sendAssignmentMailsToB2C']);
@@ -330,9 +341,11 @@ Route::view('customerAddressbook{role}', 'admin_theme/pages/customerAddressbook/
 
 
 
+// cms
 
-
-
+Route::post('/agb_save_content', [cmsController::class, 'agb_save_content']);
+Route::post('/lieferbedingungen_save_content', [cmsController::class, 'lieferbedingungen_save_content']);
+Route::post('/Impressum_save_content', [cmsController::class, 'Impressum_save_content']);
 
 
 //  Account Setting for B2C users

@@ -231,7 +231,7 @@
                 row.append(`<td>${item.gesamt_netto}</td>`);
 
                 if (data.user.role === 'Admin') {
-                  row.append(`<td><a href="/api/editOffer/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+                  row.append(`<td><a href="/api/editOffer/admin/${item.Angebots_Nr}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
                 } else if (data.user.role === 'b2b') {
                   if (item.status=='Offen') {
                     row.append(`<td><button type="button" class="edit  changeOfferStatus" offer-code="${item.Angebots_Nr}">bestätigen</button></td>`);

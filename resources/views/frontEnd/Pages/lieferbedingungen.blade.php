@@ -65,6 +65,13 @@
      </ol>
     </nav>
 
+    <div class="showSaveBtn"></div>
+
+<div id="editor">
+  
+  
+  <section id="editable_content">
+
     <h1 class="text-center">Allgemeine Lieferbedingungen der SPATO GmbH</h1>
 
     <div class="content">
@@ -149,12 +156,119 @@
       Sämtliche Abbildungen sind Symbolbilder.
      </p>
     </div>
+</section>
 
    </div>
   </section>
 
 
-  @include('frontEnd/partial/footer')
+  @include('frontEnd/partial/footer');
+
+  <script>
+  $(document).ready(function() {
+    // Get the token from localStorage
+    var token = localStorage.getItem('authToken');
+    console.log(token);
+
+    // Check if the token exists
+    if (token) {
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/CmsUserRole', // Replace with the actual endpoint URL
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        success: function(data) {
+          // Handle the successful response
+          if (data.success) {
+            console.log(data.success);
+            jQuery('.showSaveBtn').prepend(`<button id="save-btn" class="btn btn-success">Save</button>`);
+            jQuery('#editor').addClass('editor');
+
+            // Initialize CKEditor after the DOM content has loaded
+           $editor= document.querySelector('#editor')
+           $save =  document.querySelector('#save-btn')
+           $text_center= document.querySelector('#text-center')
+
+            ClassicEditor
+              .create(document.querySelector('.editor'), {
+                fullPage: true // Enable fullPage mode
+              })
+              .then(editor => {
+                console.log('Editor loaded successfully');
+
+                // Load initial content on page load
+                loadContent();
+
+                function loadContent() {
+                  // Fetch the content from the server
+                  fetch('/api/get_content')
+                    .then(response => response.json())
+                    .then(data => {
+                      // Set the content of the editor with the fetched content
+                      updateContent(data.content);
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+
+                function saveContent(content) {
+                  // Send the content to the server using AJAX
+                  fetch('/api/agb_save_content', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                      },
+                      body: JSON.stringify({
+                        content: content
+                      })
+                    })
+                    .then(response => {
+                      if (response.ok) {
+                        alert('Content updated successfully');
+                        console.log('Content updated successfully');
+                        // Handle success, if needed
+                      } else {
+                        console.error('Failed to update content');
+                        // Handle error, if needed
+                      }
+                    })
+                    .catch(error => {
+                      console.error('Error:', error);
+                      // Handle error, if needed
+                    });
+                }
+
+                // Save button click event
+                document.getElementById('save-btn').addEventListener('click', () => {
+                  // Get the editor's content
+                  const content = editor.getData();
+
+                  // Send the content to the server for saving using AJAX
+                  saveContent(content);
+                });
+
+                // Update content with new data
+                function updateContent(newContent) {
+                  editor.setData(newContent);
+                }
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+          // Handle error, if needed
+        }
+      });
+    }
+  });
+</script>
+
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
  </body>
 
 </html>

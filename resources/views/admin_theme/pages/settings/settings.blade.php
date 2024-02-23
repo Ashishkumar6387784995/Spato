@@ -144,11 +144,12 @@
                     </div>
                 </div>
                 <div class="container ps-5">
-                 <p class="list"><a href="#">AGB</a></p>
+                 <p class="list"><a href="{{url('/api/agb')}}">AGB</a></p>
                  <p class="list"><a href="#">Datenschutz</a></p>
-                 <p class="list"><a href="#">Lieferbedingungen</a></p>
+                 <p class="list"><a href="{{url('/api/lieferbedingungen')}}">Lieferbedingungen</a></p>
                  <p class="list"><a href="#">Hintergrund Bild Startseite Shop</a></p>
                  <p class="list"><a href="#">Text Startseite Shop</a></p>
+                 <p class="list"><a href="{{url('/api/Impressum')}}">Impressum</a></p>
                 </div>
                 <div class="row pt-3">
                     <div class="col-md-4 stretch-card grid-margin">

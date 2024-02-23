@@ -51,7 +51,9 @@ class staticPageController extends Controller
     }
 
     public function agb(){
-        return view('/frontEnd/Pages/agb');
+       
+            return view('/frontEnd/Pages/agb'); 
+       
     }
 
     public function cancelationPolicy(){

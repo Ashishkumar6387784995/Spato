@@ -234,13 +234,13 @@
                 row.append('<td>' + item.gesamt_netto + '</td>');
 
                 if (data.user.role === 'Admin') {
-                  row.append('<td><a href="/api/editAssignments/' + item.id +
+                  row.append('<td><a href="/api/editAssignment/admin/' + item.Auftrags_Nr +
                     '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
                 } else if (data.user.role === 'b2b') {
-                  row.append('<td><a href="/api/editAssignments/' + item.id +
+                  row.append('<td><a href="/api/editAssignments/b2b/' + item.Auftrags_Nr +
                     '" class="edit btn" id="editProductBtn">Änderung anfragen</a></td>');
                 } else if (data.user.role === 'supplier') {
-                  row.append('<td><a href="/api/editAssignments/' + item.id +
+                  row.append('<td><a href="/api/editAssignments/supplier/' + item.Auftrags_Nr +
                     '" class="edit btn" id="editProductBtn">ansehen</a></td>');
                 }
 
