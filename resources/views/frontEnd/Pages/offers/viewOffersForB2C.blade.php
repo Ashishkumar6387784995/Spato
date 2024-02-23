@@ -36,29 +36,25 @@
    margin-top: 2rem;
    margin-bottom: 2rem;
    font-size: 22px;
-   text-align:center;
   }
 
   .offer-lists .content .details {
-   margin: 2rem 0rem;
-   text-align: justify;
+   margin:auto;
+  justify-content:center;
+  display:flex;
   } 
 
-.details{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-}
   .offer{
     background-color:var(--white);
     padding:15px;
     margin:20px 0px;
     border-radius:5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    width:46%;
+    width:800px;
   }
   .offer .offer-details{
     display:flex;
+    justify-content:space-between;
   }
   .offer .offer-details p{
     margin:10px;
@@ -174,12 +170,10 @@
 
   <section class="offer-lists">
     <div class="container content">
-              <h6 class="text-center">Offers Lists</h6>
+              <h6>Offers Lists</h6>
       
               <div class="details">
-
-
-
+                <div>
           <!-- Offer starts -->
           <div class="offer">
             <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
@@ -216,21 +210,7 @@
             </div>
           </div>
           <!-- Offer ends-->
-          <!-- Offer starts -->
-          <div class="offer">
-            <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
-            <div class="offer-details">
-              <p class="deu-date">Active till :- <span>25/02/2024</span></p>
-              <div class="buttons">
-              <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
-              <button type="button" class="claim">Claim Offer</button>
-              </div>
-            </div>
-          </div>
-          <!-- Offer ends-->
-
-
-
+        </div>
 
 
 
