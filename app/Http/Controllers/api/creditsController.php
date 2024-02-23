@@ -18,15 +18,15 @@ class creditsController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->get()->unique('Gutschrifts_Nr');
+            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->orderBy('created_at', 'desc')->get()->unique('Gutschrifts_Nr');
         } elseif ($user->role == 'b2b') {
-            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Gutschrifts_Nr');
+            $credits = credits::select('Gutschrifts_Nr','Gutschriftsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Gutschrifts_Nr');
         } else {
             $credits = 'offer not found';
         }
 
         if ($credits) {
-            return response()->json(['creditList' => $credits]);
+            return response()->json(['creditList' => $credits, 'user' => $user]);
         } else {
             return response()->json(['errors' => 'Credits Not Found']);
         }
@@ -150,5 +150,20 @@ class creditsController extends Controller
         Mail::to($email)->send(new CreditsMailer($Gutschrifts_Nr));
 
         return response()->json(['success' => "Credits Mail Send SuccessFully"]);
+    }
+
+
+    
+    // function for update credit status by credit code
+    public function updateCredits(Request $request)
+    {
+        $record = credits::where('Gutschrifts_Nr', $request->credit_code)->update(['status' => 'Bezahlt']);
+        // dd($record);
+
+        if ($record) {
+            return response()->json(['message' => 'Status Updated successfully', 'record'=>$record]);
+        } else {
+            return response()->json(['erors' => 'Status Not Updated']);
+        }
     }
 }

@@ -68,7 +68,7 @@
        font-size: 15px;
      }
 
-     /* .checkout-container .btn {
+     .checkout-container #apply_disc_btn {
    background-color: #44e1d5;
    border: 1px solid #44e1d5;
    width: 90%;
@@ -80,10 +80,11 @@
    text-align: center;
   }
 
-  .checkout-container .btn:hover {
+  .checkout-container #apply_disc_btn:hover {
    border: 1px solid #44e1d5;
    color: var(--blue);
-  } */
+   background-color: var(--white);
+  }
 
 
      .icon i {
@@ -246,7 +247,41 @@
      .counter i {
        font-size: 10px;
      }
+     .accordion .alert{
+      background-color:var(--white);
+      border:1px solid var(--blue);
+      height: 100px;
+     }
+     .accordion .alert-content{
+      display:flex;
+      justify-content:space-between;
+     }
 
+     .accordion .alert p i{
+      color:var(--blue);
+     }
+
+     .accordion .alert-content p span{
+      color:var(--blue);
+     }
+     .accordion .alert-content button{
+      background-color:var(--white);
+      border:1px solid red;
+      height:30px;
+      width:75px;
+      margin:0px -35px;
+      border-radius:3px;
+      font-weight:600;
+      color:red;
+      transition:0.5s ease-in-out;
+     }
+     .accordion .alert-content button:hover{
+      background-color:red;
+      color:var(--white);
+     }
+     #originalSummaryTotal{
+      text-decoration:line-through;
+     }
      /* .modal-content {
    width: 100% !important;
   } */
@@ -275,6 +310,10 @@
 
      .mt-0 {
        margin-top: 0rem;
+     }
+     .wait{
+      filter: blur(1px);
+      pointer-events: none;
      }
    </style>
  </head>
@@ -344,12 +383,19 @@
                          </button>
                        </h2>
                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                         <div class="accordion-body">
-                           <div class="mb-3 d-flex">
-                             <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
-                             <button type="submit" class="btn ms-2" style="width:30%;">Apply</button>
-                           </div>
-                         </div>
+                        <div class="accordion-body">
+                          <div  id="apply_disc_div">
+                            <div class="mb-3 d-flex">
+                              <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
+                              <button type="button" class="btn ms-2" style="width:30%;" id="apply_disc_btn" onclick="applyDiscCode()">Apply</button>
+                            </div>
+                          </div>
+
+                          <div id="apply_disc_offMesage_div">
+                            
+                          </div>
+                          <span class="hideErrors" id="apply_disc_err" style="color:red;  font-size:13px;">&nbsp;</span>
+                        </div>
                        </div>
                      </div>
                      <hr />
@@ -370,6 +416,10 @@
 
                      <div class="details d-flex justify-content-between">
                        <p class="input-field">Order Total</p>
+
+                       <div id="originalSummaryTotal" style="display:none;">
+                         <span ></span>€
+                       </div>
                        <span><input type="text" class="input-field total" name="order_total" id="orderSummaryTotal" value="00.00" style="width:150px; border:none; text-align:right;" readonly="readonly"><span class="input-field total">€</span></span>
                      </div>
 
@@ -603,7 +653,9 @@
 
        // Display Order Summary total
        var orderSummaryTotal = calculateOrderSummaryTotal(cartItems);
+       $('#originalSummaryTotal span').text(orderSummaryTotal);
        $('#orderSummaryTotal').val(orderSummaryTotal);
+       applyDiscCode();
      }
 
      function displayAddress(Permanent_address) {
@@ -868,6 +920,97 @@
 
 
      });
+   </script>
+
+   <script>
+    // function for apply coupon code
+
+    function applyDiscCode(){
+      jQuery('.checkout-container .content .address .contact-details').addClass('wait');
+      jQuery('.hideErrors').html('&nbsp;');
+      var btn = jQuery('#apply_disc_btn');
+      var apply_disc_code = jQuery('#apply_disc_code').val();
+      var originalSummaryTotal = parseFloat(jQuery('#originalSummaryTotal span').text());
+      btn.html('Applying');
+      // alert(apply_disc_code+' '+originalSummaryTotal);
+      
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/applyDiscCode', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { apply_disc_code: apply_disc_code,  orderSummaryTotal:originalSummaryTotal},
+        success: function(data) {
+
+          // Handle the successful response
+          jQuery('.checkout-container .content .address .contact-details').removeClass('wait');
+          btn.html('Apply');
+          console.log('Response :', data);
+          if (data.message) {
+              // change final status of
+              var discMessage = '';
+              var priceAfterDisc = '00.00';
+
+              // for coupon type
+                if (data.coupon.Typ=='%') {
+                  discMessage = `Get ${data.coupon.Rate}% off`;
+                  priceAfterDisc = (originalSummaryTotal-((originalSummaryTotal*data.coupon.Rate)/100)).toFixed(2);
+
+                }
+                else if(data.coupon.Typ=='€') {
+                  discMessage = `Get Flat ${data.coupon.Rate}€ off`;
+                  priceAfterDisc = (originalSummaryTotal-data.coupon.Rate).toFixed(2);
+                }
+                // alert(discMessage);
+              
+
+              
+              jQuery('#apply_disc_div').html(`<input type="hidden" id="apply_disc_code" value="${apply_disc_code}" name="apply_disc_code">`); // Making a duplicate apply_disc_code for function use 
+              jQuery('#apply_disc_offMesage_div').html(`
+                <div class="alert alert-dismissible fade show" role="alert">
+                  <p><i class="fa-solid fa-circle-check"></i> <b id="apply_disc_offMesage">${discMessage}</b></p>
+                  <div class="alert-content">
+                    <p><span><strong>${apply_disc_code}</strong></span> Applied</p>
+                    <button type="button" data-bs-dismiss="alert" onclick="removeDiscountCode('${originalSummaryTotal}')">Remove</button>
+                  </div>
+                </div>`);
+
+              jQuery('#originalSummaryTotal').show();  // show orginal price without discount
+
+              // calculate orderSummaryTotal after applying discount code
+              $('#orderSummaryTotal').val(priceAfterDisc);
+
+          } else if(data.errors) {
+            console.log('Data received:', data.errors);
+            // removeDiscountCode();
+            jQuery('#apply_disc_err').html(data.errors);
+
+          }else if (data.removeDiscountCode) {
+            console.log('Data received:', data.removeDiscountCode);
+            removeDiscountCode(originalSummaryTotal);
+            jQuery('#apply_disc_err').html(data.removeDiscountCode);
+          }
+        },
+        error: function(error) {
+          // Handle errors
+          console.error('Error:', error);
+          btn.html('Apply');
+          jQuery('.checkout-container .content .address .contact-details').removeClass('wait');
+          jQuery('#apply_disc_err').html('Sorry! we are facing some internal errors.');
+        }
+      });
+    }
+
+    // function for show apply_disc_div while removing coupon code
+    function removeDiscountCode(originalSummaryTotal){
+      jQuery('#apply_disc_offMesage_div').html(''); // blank apply_disc_offMesage_div
+      jQuery('#apply_disc_div').html(`              
+        <div class="mb-3 d-flex">
+          <input type="text" class="form-control" id="apply_disc_code" name="apply_disc_code" placeholder="Enter your discount coupon">
+          <button type="button" class="btn ms-2" style="width:30%;" id="apply_disc_btn" onclick="applyDiscCode()">Apply</button>
+        </div>`); // remove duplicate apply_disc_code
+      jQuery('#originalSummaryTotal').hide();  // hide orginal price without discount
+      jQuery('#orderSummaryTotal').val(originalSummaryTotal); // put original price in orderSummaryTotal
+    }
    </script>
 
  </body>

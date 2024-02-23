@@ -305,7 +305,8 @@
      <div class="modal-footer d-flex justify-content-between">
       <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
       <button type="button" class="edit"  id="markCompleteOrder" data-order-id="" style="display:none">Mark As Complete</button>
-      <button type="button" class="btn btn-primary" id="completedOrder" disabled style="display:none">Order Completed</button>
+      <p type="button" class="" id="completedOrder" disabled style="display:none; color: green;
+    font-weight: 800;">Order Completed</p>
      </div>
     </div>
    </div>

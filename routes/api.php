@@ -72,6 +72,7 @@ Route::post('/cart/updateQuanityApi', [CartController::class, 'updateQuantityOfI
 Route::delete('/cart/deleteCartProductsApi/{product_id}', [CartController::class, 'deleteCartProducts']);
 Route::get('/viewCart', [CartController::class, 'viewCart']);
 Route::get('checkout', [CartController::class, 'checkout']);
+Route::get('applyDiscCode', [CartController::class, 'applyDiscCode']);
 Route::get('quotes/{product_id}', [CartController::class, 'quotesForm']);
 Route::post('submitQuotes', [CartController::class, 'SubmitQuotes']);
 
@@ -168,7 +169,7 @@ Route::get('/productList', [tryController::class, 'productListing']);
 
 // WareHouse Management
 Route::view('/wareHouseProductList/{role}', '/admin_theme/pages/wareHouse/productsList');
-Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
+// Route::post('/cart/addOrder', [WareHouseController::class, 'addOrder']);
 
 
 Route::get('/admin_dashboard/{role}', [dashboardController::class, 'admin_Dashboard']);
@@ -202,6 +203,7 @@ Route::get('getSpecificProductCategoryAPI', [categoriesController::class, 'getPr
 
 // products for Admin
 Route::get('productListingApi', [productController::class, 'productListing']);
+Route::get('addSpareParts/{role}', [productController::class, 'addSpareParts']);
 Route::view('productListing/{role}', 'admin_theme/pages/products/productsList');
 Route::get('addProduct/{role}', [productController::class, 'addProduct']);
 Route::post('addProduct', [productController::class, 'addproductList']);
@@ -263,6 +265,7 @@ Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB
 // Credits for Admin
 
 Route::view('creditsListing/{role}', 'admin_theme/pages/credits/creditList');
+Route::get('updateCreditStatusApi', [creditsController::class, 'updateCredits']);
 Route::get('addCredits/{role}', [creditsController::class, 'addCredits']);
 
 Route::get('editCredits', [creditsController::class, 'editCredits']);
