@@ -100,12 +100,13 @@
             font-size: 15px;
             /* font-weight:600; */
         }
-        .kontakte-page a{
+
+        .kontakte-page a {
             color: #44e1d5 !important;
-  border: 1px solid #fcfcfc !important;
-  border-radius:5px;
-  margin-top:10px;
-  text-align:center;
+            border: 1px solid #fcfcfc !important;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -154,6 +155,7 @@
                         <a href="#" class="mt-2">laufende Aufträge 18.054,09 €</a>
                     </div>
                 </div>
+                <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -162,19 +164,21 @@
                                 B2B <input class="form-check-input" type="radio" name="typ" value="b2b">
                                 B2C <input class="form-check-input" type="radio" name="typ" value="Normal">
                             </div>
+                            <span class="msg_err" id="typ_err" style="color:red;  font-size:13px;"></span>
                             <div class="col-6 stretch-card">
-                                Kundennummer <input type="text" class="form-control" name="kunden_no"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
+                                Kundennummer <input type="text" class="form-control" name="kunden_no" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col stretch-card pt-3">
-                                Firmenname <input type="text" class="form-control" name="firm_name"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                                Firmenname <input type="text" class="form-control" name="firm_name" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col stretch-card pt-3">
-                                Ansprechpartner <input class="form-check-input" type="radio" name="Ansprechpartner" style="margin:0px 10px;" value="Frau"> Frau <input class="form-check-input" type="radio" name="Ansprechpartner" style="margin:0px 10px;" value="Herr"> Herr <input type="text" class="form-control"  aria-describedby="emailHelp" name=" " style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
+                                Ansprechpartner <input class="form-check-input" type="radio" name="" style="margin:0px 10px;" value="Frau"> Frau <input class="form-check-input" type="radio" name="" style="margin:0px 10px;" value="Herr"> Herr <input type="text" class="form-control" aria-describedby="emailHelp" name="Ansprechpartner" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
                             </div>
+                            <span class="msg_err" id="Ansprechpartner_err" style="color:red;  font-size:13px;"></span>
                         </div>
                         <div class="row pt-3">
                             <div class="col">
@@ -191,8 +195,9 @@
                                         Straße
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="Straße"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="Straße" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
+                                    <span class="msg_err" id="Straße_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -201,8 +206,9 @@
                                         Straße
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="d_Straße"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="d_Straße" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -213,8 +219,9 @@
                                         Ort
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="Ort"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="Ort" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
+                                    <span class="msg_err" id="Ort_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -223,7 +230,7 @@
                                         Ort
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="d_Ort"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="d_Ort" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
                                 </div>
                             </div>
@@ -236,8 +243,9 @@
                                         PLZ
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="PLZ"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="PLZ" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
+                                    <span class="msg_err" id="PLZ_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -246,7 +254,7 @@
                                         PLZ
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="d_PLZ"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="d_PLZ" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
                                 </div>
                             </div>
@@ -260,8 +268,9 @@
                                         Land
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="Land"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="Land" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
+                                    <span class="msg_err" id="Land_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -270,7 +279,7 @@
                                         Land
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="d_Land"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                                        <input type="text" class="form-control" name="d_Land" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
                                 </div>
                             </div>
@@ -284,8 +293,9 @@
                                         VAT ID
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="vat_id">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="vat_id">
                                     </div>
+                                    <span class="msg_err" id="vat_id_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -294,8 +304,9 @@
                                         Mobile
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="mobile">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="mobile">
                                     </div>
+                                    <span class="msg_err" id="mobile_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +319,7 @@
                                         Telefon
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="Telefon">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="Telefon">
                                     </div>
                                 </div>
                             </div>
@@ -318,8 +329,9 @@
                                         Password
                                     </div>
                                     <div class="col-8">
-                                        <input type="password" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="password">
+                                        <input type="password" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="password">
                                     </div>
+                                    <span class="msg_err" id="password_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                         </div>
@@ -332,8 +344,9 @@
                                         Mail
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="mail">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="mail">
                                     </div>
+                                    <span class="msg_err" id="mail_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -343,7 +356,7 @@
 
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="r_mail">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="r_mail">
                                     </div>
                                 </div>
                             </div>
@@ -357,7 +370,7 @@
                                         WWW
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="www">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="www">
                                     </div>
                                 </div>
                             </div>
@@ -375,8 +388,9 @@
                         <!--  -->
                         <div class="row">
                             <div class="col stretch-card pt-3">
-                                Newsletter <input class="form-check-input" type="radio" name="Newsletter" style="margin:0px 10px;" value="Yes"> Ja <input class="form-check-input" type="radio" name="Newsletter" style="margin:0px 10px;" value="No"> Nein <span style="padding:0 15px;">Mail Newsletter</span> <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:30px; border:1px solid black; width:200px;" name="Mail_Newsletter">  
+                                Newsletter <input class="form-check-input" type="radio" name="Newsletter" style="margin:0px 10px;" value="Yes"> Ja <input class="form-check-input" type="radio" name="Newsletter" style="margin:0px 10px;" value="No"> Nein <span style="padding:0 15px;">Mail Newsletter</span> <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:30px; border:1px solid black; width:200px;" name="Mail_Newsletter">
                             </div>
+                            <span class="msg_err" id="Newsletter_err" style="color:red;  font-size:13px;"></span>
                         </div>
 
                     </div>
@@ -393,18 +407,21 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="no"> <span>1</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="1"> <span>2</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" value="2" style="margin:0px 10px;"> <span>3</span> <span>Zahlung</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal</span> <span>MwSt. Satz</span> <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:2px;" value="PayPal_MwSt_Satz">
+                        <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="no"> <span>1</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="1"> <span>2</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" value="2" style="margin:0px 10px;"> <span>3</span> <span>Zahlung</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal</span> <span>MwSt. Satz</span> <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:2px;" value="PayPal_MwSt_Satz">
                     </div>
+                    <span class="msg_err" id="rabatt_Gruppe_err" style="color:red;  font-size:13px;"></span>
                 </div>
                 <div class="row">
                     <div class="col">
                         <span>Shop / APP sperren</span> <input class="form-check-input" type="radio" name="Shop_APP" value="ja" style="margin:0px 10px;"> <span>ja</span> <input class="form-check-input" type="radio" name="Shop_APP" style="margin:0px 10px;" value="Zugangsdaten_Shop"> <span>Nein</span> <span>Zugangsdaten Shop / APP ändern</span>
                     </div>
+                    <span class="msg_err" id="Shop_APP_err" style="color:red;  font-size:13px;"></span>
                 </div>
                 <div class="row pt-3">
                     <div class="col">
-                        <span>Premium B2B – B2C connection</span> <input class="form-check-input" type="radio" name="Premium_connection" value="ja" style="margin:0px 10px;"> <span>ja</span> <input class="form-check-input" type="radio" name="Shop_APP" style="margin:0px 10px;" value="Nein"> <span>Nein</span>
+                        <span>Premium B2B – B2C connection</span> <input class="form-check-input" type="radio" name="Premium_connection" value="ja" style="margin:0px 10px;"> <span>ja</span> <input class="form-check-input" type="radio" name="Premium_connection" style="margin:0px 10px;" value="Nein"> <span>Nein</span>
                     </div>
+                    <span class="msg_err" id="Premium_connection_err" style="color:red;  font-size:13px;"></span>
                 </div>
             </div>
             </form>
@@ -412,53 +429,107 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            // Function to handle form submission
-            $('#contactSaveButton').click(function(e) {
-                e.preventDefault(); // Prevent the default form submission
+    $(document).ready(function() {
+        // Function to handle form submission
+        $('#contactSaveButton').click(function(e) {
+            e.preventDefault(); // Prevent the default form submission
 
-                // Serialize the form data
-                var formData = $('form').serialize();
+            // Serialize the form data
+            var formData = $('form').serialize();
 
-                var token = localStorage.getItem('authToken');
-                console.log(token);
+            var token = localStorage.getItem('authToken');
+            console.log(token);
 
-                // Check if the token exists
-                if (!token) {
-                    console.error('Token not found in localStorage');
-                    window.location.href = '/api/home';
-                    // return;
-                }
+            // Check if the token exists
+            if (!token) {
+                console.error('Token not found in localStorage');
+                window.location.href = '/api/home';
+                // return;
+            }
 
+            // Send AJAX request
+            $.ajax({
+                url: '/api/addContactsApi', // Replace with your endpoint URL
+                method: 'POST',
+                data: formData,
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                },
+                success: function(response) {
+                    // Handle success response
+                    if (response.success) {
+                        console.log(response.success);
+                        console.log(response.dynamicFields);
+                        // $('#AddOffersForm')[0].reset();
+                        $('#success_msg').text(response.success);
+                    } else if (response.errors) {
+                        // Display validation errors in the console
+                        console.log(response.errors);
 
-                // Send AJAX request
-                $.ajax({
-                    url: '/api/addContactsApi', // Replace with your endpoint URL
-                    method: 'POST',
-                    data: formData,
-                    headers: {
-                        'Authorization': 'Bearer ' + token,
-                    },
-                    success: function(response) {
-                        // Handle success response
-                        if( response.success){
-                            console.log('Data saved successfully:', response.success);
-                        // Optionally, show a success message to the user
-                        }
-                        elseif(response.error){
-                            console.log('Data not saved successfully:', response.error);
-                        }
-                      
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle error response
-                        console.error('Error saving data:', error);
-                        // Optionally, show an error message to the user
+                        displayValidationErrors(response.errors);
+
+                        // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
+
+                        // You can also update your HTML to show errors in a specific element
+                        // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+                    } else if (response.error) {
+                        window.location.href = '/api/home';
                     }
-                });
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    console.error('Error saving data:', error);
+                    // Optionally, show an error message to the user
+                }
             });
         });
-    </script>
+
+        function displayValidationErrors(errors) {
+            // Display validation errors next to the respective form fields
+            if (errors.typ) {
+                $('#typ_err').text(errors.typ[0]);
+            }
+            if (errors.Ansprechpartner) {
+                $('#Ansprechpartner_err').text(errors.Ansprechpartner[0]);
+            }
+            if (errors.Straße) {
+                $('#Straße_err').text(errors.Straße[0]);
+            }
+            if (errors.Ort) {
+                $('#Ort_err').text('Ort is Required');
+            }
+            if (errors.Land) {
+                $('#Land_err').text('Land Is Required');
+            }
+            if (errors.vat_id) {
+                $('#vat_id_err').text('vat_id is Required');
+            }
+            if (errors.mobile) {
+                $('#mobile_err').text(errors.mobile[0]);
+            }
+            if (errors.password) {
+                $('#password_err').text('password is Required');
+            }
+            if (errors.mail) {
+                $('#mail_err').text('mail Is Required');
+            }
+            if (errors.Newsletter) {
+                $('#Newsletter_err').text('Newsletter is Required');
+            }
+            if (errors.rabatt_Gruppe) {
+                $('#rabatt_Gruppe_err').text('rabatt_Gruppe is Required');
+            }
+            if (errors.Shop_APP) {
+                $('#Shop_APP_err').text('Shop_APP Is Required');
+            }
+            if (errors.Premium_connection) {
+                $('#Premium_connection_err').text('Premium_connection is Required');
+            }
+        }
+    });
+</script>
+
 
 
 
