@@ -13,7 +13,7 @@ use App\Mail\sendResetLinkEmail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 
 class OfferController extends Controller
@@ -30,11 +30,13 @@ class OfferController extends Controller
         } elseif ($user->role == 'b2b') {
             $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'Normal') {
-            $offers = Offers::select()->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
-            $offersGroupBy = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')
-                ->where('Ihre_Kundennummer', $user->id)
-                ->orderBy('created_at', 'desc')
-                ->get()->unique('Angebots_Nr');
+            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','Produkt','Beschreibung','Menge','Einheit','Einzelpreis','Rabatt','Gesamtpreis','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $offersGroupBy = Offers::select('Angebots_Nr', 'Angebotsdatum', 'Ihre_Kundennummer', 'gesamt_netto', 'status')
+            ->where('Ihre_Kundennummer', $user->id)
+            ->orderByDesc('created_at')
+            ->get()
+            ->unique('Angebots_Nr');
+
             return response()->json(['offersList' => $offers, 'user' => $user, 'offersGroupBy' => $offersGroupBy]);
         } else {
             $offers = 'offer not found';

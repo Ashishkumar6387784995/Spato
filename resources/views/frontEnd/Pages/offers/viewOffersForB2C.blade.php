@@ -184,44 +184,11 @@
         <div>
           <h6>Offers Lists</h6>
           <!-- Offer starts -->
-          <div class="offer">
-            <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
-            <div class="offer-details">
-              <p class="deu-date">Offer Number :- <span>AN - 25116</span></p>
-              <p class="deu-date">Active till :- <span>25/02/2024</span></p>
-              <div class="buttons">
-                <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
-                <button type="button" class="claim">Claim Offer</button>
-              </div>
-            </div>
+          <div class="offer" id="offersList">
+           
           </div>
           <!-- Offer ends-->
-          <!-- Offer starts -->
-          <div class="offer">
-            <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
-            <div class="offer-details">
-              <p class="deu-date">Offer Number :- <span>AN - 25116</span></p>
-              <p class="deu-date">Active till :- <span>25/02/2024</span></p>
-              <div class="buttons">
-                <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
-                <button type="button" class="claim">Claim Offer</button>
-              </div>
-            </div>
-          </div>
-          <!-- Offer ends-->
-          <!-- Offer starts -->
-          <div class="offer">
-            <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
-            <div class="offer-details">
-              <p class="deu-date">Offer Number :- <span>AN - 25116</span></p>
-              <p class="deu-date">Active till :- <span>25/02/2024</span></p>
-              <div class="buttons">
-                <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
-                <button type="button" class="claim">Claim Offer</button>
-              </div>
-            </div>
-          </div>
-          <!-- Offer ends-->
+
         </div>
 
 
@@ -276,44 +243,62 @@
 
   <script>
     $(document).ready(function() {
-      // Get the token from localStorage
-      var token = localStorage.getItem('authToken');
-      console.log(token);
+        // Get the token from localStorage
+        var token = localStorage.getItem('authToken');
+        console.log(token);
 
-      // Check if the token exists
-      if (!token) {
-        console.error('Token not found in localStorage');
-        window.location.href = '/api/home';
-        // return;
-      }
+        // Check if the token exists
+        if (!token) {
+            console.error('Token not found in localStorage');
+            window.location.href = '/api/home';
+            // return;
+        }
 
-      // Check if the token exists
-      if (token) {
         // Make a GET request using AJAX
         $.ajax({
-          url: '/api/offerListingApi', // Replace with the actual endpoint URL
-          method: 'GET',
-          headers: {
-            'Authorization': 'Bearer ' + token,
-          },
-          success: function(data) {
-            // Handle the successful response
-            if (data.offersList) {
-              console.log(data.offersList);
-              console.log(data.offersGroupBy);
-          
+            url: '/api/offerListingApi', // Replace with the actual endpoint URL
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            },
+            success: function(data) {
+                // Handle the successful response
+                if (data.offersList) {
+                    console.log(data.offersList);
+                    console.log(data.offersGroupBy);
 
+                    // Select the offer container
+                    var offerContainer = $('#offersList');
 
+                    // Loop through each offer in the data object
+                    Object.keys(data.offersGroupBy).forEach(function (key) {
+                        var offer = data.offersGroupBy[key];
+                        // Generate HTML for the offer
+                        var offerHTML = `
+                            <div class="offer">
+                                <h5 class="px-2">Offer Number: ${offer.Angebots_Nr}</h5>
+                                <div class="offer-details">
+                                    <p class="deu-date">Active till: ${offer.Angebotsdatum}</p>
+                                   
+                                    <p class="deu-date">Status: ${offer.status}</p>
+                                    <div class="buttons">
+                                        <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
+                                        <button type="button" class="claim">Claim Offer</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        // Append the generated HTML to the offer container
+                        offerContainer.append(offerHTML);
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                // Handle error, if needed
             }
-          },
-          error: function(xhr, status, error) {
-            console.error('Error:', error);
-            // Handle error, if needed
-          }
         });
-      }
     });
-  </script>
+</script>
 
 
 </body>
