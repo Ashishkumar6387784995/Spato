@@ -8,7 +8,7 @@
   </div>
   <div class="row text-center">
    <div class="col">
-    <p class="footer-desc"><a href="{{url('api/agb')}}">AGB</a></p>
+    <p class="footer-desc agb-page"><a href="{{url('api/agb')}}">AGB</a></p>
     <p class="footer-desc"><a href="#">Versand & Lieferung</a></p>
     <p class="footer-desc"><a href="#">Zahlungsten</a></p>
     <p class="footer-desc"><a href="{{url('api/lieferbedingungen')}}">lieferbedingungen</a></p>
@@ -53,6 +53,7 @@
   </div>
  </div>
 </footer>
+
 
 <!-- Cart script starts -->
 <script type="text/javascript" src="{{ asset('js/web/Cart.js') }}"></script>

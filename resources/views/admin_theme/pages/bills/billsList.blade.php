@@ -86,6 +86,14 @@
         table tr td a {
             color: #54606c;
         }
+
+        .rechnungen-page a{
+            color: #44e1d5 !important;
+  border: 1px solid #fcfcfc !important;
+  border-radius:5px;
+  margin-top:10px;
+  text-align:center;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>

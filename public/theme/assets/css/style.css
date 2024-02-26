@@ -19430,12 +19430,12 @@ dl li {
 .sidebar .nav .nav-item.active > .nav-link i {
     color: #b66dff;
 }
-.sidebar .nav .nav-item:hover {
+/* .sidebar .nav .nav-item:hover {
     background: #fcfcfc;
-}
-.sidebar .nav .nav-item:active {
+} */
+/* .sidebar .nav .nav-item:active {
     background: #fcfcfc;
-}
+} */
 .sidebar .nav .nav-item:active > .nav-link {
     /* border: 1px solid white; */
     border-radius: 10px;

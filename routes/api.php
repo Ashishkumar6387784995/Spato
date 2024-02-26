@@ -130,6 +130,11 @@ Route::middleware('api.auth')->group(function () {
   Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
   Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
 
+    // Contacts for Admin
+    Route::get('contactsListingApi', [contactController::class, 'contactsListingApi']);
+    Route::POST('addContactsApi', [contactController::class, 'addContactsApi']);
+  
+
 
 
   // items for checkout with auth.

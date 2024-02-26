@@ -66,6 +66,10 @@
     width: 96%;
   } */
     }
+
+    .agb-page a{
+      color:var(--blue) !important;
+    }
   </style>
 </head>
 
@@ -197,7 +201,6 @@
     }
   });
 </script>
-
   <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 </body>
 
