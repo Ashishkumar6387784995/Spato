@@ -67,14 +67,19 @@
 
         table tr th {
             width: 200px;
+            padding: 0px 10px;
         }
 
         table tr td {
-            padding: 10px 2px;
+            padding: 0px 10px;
             width: 200px;
         }
         table tr td a{
             color:#54606c;
+        }
+
+        .table-responsive{
+            overflow:auto;
         }
 
         .zitate-page a{
@@ -128,9 +133,9 @@
                 </div>
                 <div class="row pt-3">
 
-                    <div class="col-md-4 stretch-card grid-margin">
+                    <!-- <div class="col-md-4 stretch-card grid-margin">
                         <a class="edit btn" href="#">+ neuer Auftrag</a>
-                    </div>
+                    </div> -->
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
                     </div>
@@ -138,7 +143,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        Alle Produkte
+                        Alle Zitate
                     </div>
                 </div>
 
@@ -147,7 +152,7 @@
                 <span id="success_msg" style="color:green"></span>
                 <br>  <br> 
 
-
+                <div class="table-responsive">
                 <table >
                     <tr>
                         <th>product_id</th>
@@ -167,7 +172,7 @@
 
                     
                 </table>
-
+                </div>
             </div>
 
 
