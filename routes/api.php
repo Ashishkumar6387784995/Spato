@@ -153,6 +153,7 @@ Route::middleware('api.auth')->group(function () {
   Route::post('saveTempAddressApi', [webController::class, 'saveTempAddressApi']);
   Route::get('showTempAddressApi', [webController::class, 'showTempAddressApi']);
   Route::get('tempAddressDelete/{id}', [webController::class, 'tempAddressDelete']);
+  Route::get('showOrderHistoryApi', [webController::class, 'showOrderHistoryApi']);
 
   // For get user details by his id
   Route::get('profileViewByIdApi/{id}', [webController::class, 'profileViewByIdApi']);

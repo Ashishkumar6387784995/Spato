@@ -847,8 +847,7 @@
          // Click event handler for the "Add +" button
          $('.change-address-btn').on('click', function() {
            // Get the address data from the data-address attribute
-           var selectedAddress = $(this).data('address');
-
+           var selectedAddress = $(this).closest('.row').find('.address').text();
            // Update the #develivery_address element with the selected address
            $('#delv_address').val(selectedAddress);
            $('#develivery_address').html(selectedAddress);
