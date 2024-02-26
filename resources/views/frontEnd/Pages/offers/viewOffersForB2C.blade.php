@@ -187,6 +187,7 @@
           <div class="offer">
             <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
             <div class="offer-details">
+              <p class="deu-date">Offer Number :- <span>AC - 25116</span></p>
               <p class="deu-date">Active till :- <span>25/02/2024</span></p>
               <div class="buttons">
                 <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
@@ -199,6 +200,7 @@
           <div class="offer">
             <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
             <div class="offer-details">
+              <p class="deu-date">Offer Number :- <span>AC - 25116</span></p>
               <p class="deu-date">Active till :- <span>25/02/2024</span></p>
               <div class="buttons">
                 <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
@@ -211,6 +213,7 @@
           <div class="offer">
             <h5 class="px-2">Get Flat 300€ off on Shopping these products</h5>
             <div class="offer-details">
+              <p class="deu-date">Offer Number :- <span>AC - 25116</span></p>
               <p class="deu-date">Active till :- <span>25/02/2024</span></p>
               <div class="buttons">
                 <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
