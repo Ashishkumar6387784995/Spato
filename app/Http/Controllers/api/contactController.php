@@ -45,20 +45,20 @@ class contactController extends Controller
 
         $validator = Validator::make($request->all(), [
 
-            // 'typ' => 'required',
-            // 'Ansprechpartner' => 'required',
-            // 'Straße' => 'required',
-            // 'Ort' => 'required',
-            // 'PLZ' => 'required|numeric',
-            // 'Land' => 'required|string',
-            // 'vat_id' => 'required|string',
-            // 'mobile' => 'required|integer|min:8|',
-            // 'password' => 'required|min:8',
-            // 'mail' => 'required|email|unique:users',
-            // 'Newsletter' => 'required|string',
-            // 'rabatt_Gruppe' => 'required|string',
-            // 'Shop_APP' => 'required|string',
-            // 'Shop_APP' => 'required|string',
+            'typ' => 'required',
+            'Ansprechpartner' => 'required',
+            'Straße' => 'required',
+            'Ort' => 'required',
+            'PLZ' => 'required|numeric',
+            'Land' => 'required|string',
+            'vat_id' => 'required|string',
+            'mobile' => 'required|integer|min:8|',
+            'password' => 'required|min:8',
+            'mail' => 'required|email|unique:users',
+            'Newsletter' => 'required|string',
+            'rabatt_Gruppe' => 'required|string',
+            'Shop_APP' => 'required|string',
+            'Premium_connection' => 'required|string',
         ]);
 
         if ($validator->fails()) {
