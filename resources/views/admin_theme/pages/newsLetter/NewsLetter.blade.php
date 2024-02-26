@@ -92,6 +92,13 @@
          color:#54606c;
          font-weight:600;
         }
+        .newsletter-page a{
+            color: #44e1d5 !important;
+  border: 1px solid #fcfcfc !important;
+  border-radius:5px;
+  margin-top:10px;
+  text-align:center;
+        }
     </style>
 </head>
 

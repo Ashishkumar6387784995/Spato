@@ -91,6 +91,13 @@
    color: red;
   }
 
+  .produkte-page a{
+    color: #44e1d5 !important;
+  border: 1px solid #fcfcfc !important;
+  border-radius:5px;
+  margin-top:10px;
+  text-align:center;
+  }
   /* select:hover {
    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   } */
