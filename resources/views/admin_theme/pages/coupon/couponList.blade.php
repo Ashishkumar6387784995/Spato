@@ -122,7 +122,7 @@
    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
-  .gutscheine.page a{
+  .gutscheine-page a{
       color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;

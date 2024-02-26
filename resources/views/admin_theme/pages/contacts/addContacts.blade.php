@@ -160,7 +160,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-2">typ</div>
-                            <div class="col-4" style="width:100px;">
+                            <div class="col-4" style="width:100px; display:flex;">
                                 B2B <input class="form-check-input" type="radio" name="typ" value="b2b">
                                 B2C <input class="form-check-input" type="radio" name="typ" value="Normal">
                             </div>

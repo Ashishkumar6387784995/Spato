@@ -210,7 +210,7 @@
                </a>
             </li>
 
-            <li class="nav-item gutscheine.page">
+            <li class="nav-item gutscheine-page">
                <a class="nav-link" href="{{url('/api/couponListing/'.$role)}}" onclick="markVisited(this)">
                   <span class="menu-title">Gutscheine</span>
                </a>
