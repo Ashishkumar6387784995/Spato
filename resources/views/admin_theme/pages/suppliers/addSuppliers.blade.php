@@ -146,7 +146,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-2 stretch-card grid-margin" >
-                   <a href="#" id="supplierSaveButton" class="btn">Save</a>
+                   <button type="button" id="supplierSaveButton" class="btn">Save</button>
                     </div>
                     
                     <div class="col-md-2 stretch-card grid-margin" >
@@ -447,7 +447,7 @@
                 e.preventDefault(); // Prevent the default form submission
 
                 
-            $('#typ_err').text('');
+      
             $('#firm_name_err').text('');
             $('#Straße_err').text('');
             $('#Ort_err').text('');
@@ -458,9 +458,8 @@
             $('#password_err').text('');
             $('#email_err').text('');
             $('#Newsletter_err').text('');
-            $('#rabatt_Gruppe_err').text('');
             $('#Shop_APP_err').text('');
-            $('#Premium_connection_err').text('');
+            $('#Zahlung').text('');
 
                 // Serialize the form data
                 var formData = $('form').serialize();
@@ -477,7 +476,7 @@
 
                 // Send AJAX request
                 $.ajax({
-                    url: '/api/addContactsApi', // Replace with your endpoint URL
+                    url: '/api/addSuppliersApi', // Replace with your endpoint URL
                     method: 'POST',
                     data: formData,
                     dataType: 'json',
@@ -546,14 +545,11 @@
                 if (errors.Newsletter) {
                     $('#Newsletter_err').text('Newsletter is Required');
                 }
-                if (errors.rabatt_Gruppe) {
-                    $('#rabatt_Gruppe_err').text('rabatt_Gruppe is Required');
-                }
                 if (errors.Shop_APP) {
                     $('#Shop_APP_err').text('Shop_APP Is Required');
                 }
-                if (errors.Premium_connection) {
-                    $('#Premium_connection_err').text('Premium_connection is Required');
+                if (errors.Zahlung) {
+                    $('#Zahlung_err').text(errors.Zahlung[0]);
                 }
             }   
             });
