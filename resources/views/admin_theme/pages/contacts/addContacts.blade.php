@@ -141,7 +141,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-2 stretch-card grid-margin">
-                        <a href="#" id="contactSaveButton" class="btn">Save</a>
+                        <button type="button" id="contactSaveButton" class="btn">Save</button>
                     </div>
 
                     <div class="col-md-2 stretch-card grid-margin">
@@ -173,12 +173,13 @@
                             <div class="col stretch-card pt-3">
                                 Firmenname <input type="text" class="form-control" name="firm_name" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                             </div>
+                            <span class="msg_err" id="firm_name_err" style="color:red;  font-size:13px;"></span>
                         </div>
                         <div class="row">
                             <div class="col stretch-card pt-3">
-                                Ansprechpartner <input class="form-check-input" type="radio" name="" style="margin:0px 10px;" value="Frau"> Frau <input class="form-check-input" type="radio" name="" style="margin:0px 10px;" value="Herr"> Herr <input type="text" class="form-control" aria-describedby="emailHelp" name="Ansprechpartner" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
+                                Ansprechpartner <input class="form-check-input" type="radio" name="name_title" style="margin:0px 10px;" value="Frau"> Frau <input class="form-check-input" type="radio" name="name_title" style="margin:0px 10px;" value="Herr"> Herr <input type="text" class="form-control" name="Ansprechpartner" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
                             </div>
-                            <span class="msg_err" id="Ansprechpartner_err" style="color:red;  font-size:13px;"></span>
+
                         </div>
                         <div class="row pt-3">
                             <div class="col">
@@ -329,7 +330,7 @@
                                         Password
                                     </div>
                                     <div class="col-8">
-                                        <input type="password" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="password">
+                                        <input type="password" name="password" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                                     </div>
                                     <span class="msg_err" id="password_err" style="color:red;  font-size:13px;"></span>
                                 </div>
@@ -344,9 +345,9 @@
                                         Mail
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="mail">
+                                        <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;" name="email">
                                     </div>
-                                    <span class="msg_err" id="mail_err" style="color:red;  font-size:13px;"></span>
+                                    <span class="msg_err" id="email_err" style="color:red;  font-size:13px;"></span>
                                 </div>
                             </div>
                             <div class="col">
@@ -429,106 +430,130 @@
     </div>
 
     <script>
-    $(document).ready(function() {
-        // Function to handle form submission
-        $('#contactSaveButton').click(function(e) {
-            e.preventDefault(); // Prevent the default form submission
+        $(document).ready(function() {
+            // Function to handle form submission
 
-            // Serialize the form data
-            var formData = $('form').serialize();
 
-            var token = localStorage.getItem('authToken');
-            console.log(token);
 
-            // Check if the token exists
-            if (!token) {
-                console.error('Token not found in localStorage');
-                window.location.href = '/api/home';
-                // return;
-            }
 
-            // Send AJAX request
-            $.ajax({
-                url: '/api/addContactsApi', // Replace with your endpoint URL
-                method: 'POST',
-                data: formData,
-                dataType: 'json',
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                },
-                success: function(response) {
-                    // Handle success response
-                    if (response.success) {
-                        console.log(response.success);
-                        console.log(response.dynamicFields);
-                        // $('#AddOffersForm')[0].reset();
-                        $('#success_msg').text(response.success);
-                    } else if (response.errors) {
-                        // Display validation errors in the console
-                        console.log(response.errors);
+            $('#contactSaveButton').click(function(e) {
+                e.preventDefault(); // Prevent the default form submission
 
-                        displayValidationErrors(response.errors);
+                
+            $('#typ_err').text('');
+            $('#firm_name_err').text('');
+            $('#Straße_err').text('');
+            $('#Ort_err').text('');
+            $('#PLZ_err').text('');
+            $('#Land_err').text('');
+            $('#vat_id_err').text('');
+            $('#mobile_err').text('');
+            $('#password_err').text('');
+            $('#email_err').text('');
+            $('#Newsletter_err').text('');
+            $('#rabatt_Gruppe_err').text('');
+            $('#Shop_APP_err').text('');
+            $('#Premium_connection_err').text('');
 
-                        // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
+                // Serialize the form data
+                var formData = $('form').serialize();
 
-                        // You can also update your HTML to show errors in a specific element
-                        // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
-                    } else if (response.error) {
-                        window.location.href = '/api/home';
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Handle error response
-                    console.error('Error saving data:', error);
-                    // Optionally, show an error message to the user
+                var token = localStorage.getItem('authToken');
+                console.log(token);
+
+                // Check if the token exists
+                if (!token) {
+                    console.error('Token not found in localStorage');
+                    window.location.href = '/api/home';
+                    // return;
                 }
-            });
-        });
 
-        function displayValidationErrors(errors) {
-            // Display validation errors next to the respective form fields
-            if (errors.typ) {
-                $('#typ_err').text(errors.typ[0]);
-            }
-            if (errors.Ansprechpartner) {
-                $('#Ansprechpartner_err').text(errors.Ansprechpartner[0]);
-            }
-            if (errors.Straße) {
-                $('#Straße_err').text(errors.Straße[0]);
-            }
-            if (errors.Ort) {
-                $('#Ort_err').text('Ort is Required');
-            }
-            if (errors.Land) {
-                $('#Land_err').text('Land Is Required');
-            }
-            if (errors.vat_id) {
-                $('#vat_id_err').text('vat_id is Required');
-            }
-            if (errors.mobile) {
-                $('#mobile_err').text(errors.mobile[0]);
-            }
-            if (errors.password) {
-                $('#password_err').text('password is Required');
-            }
-            if (errors.mail) {
-                $('#mail_err').text('mail Is Required');
-            }
-            if (errors.Newsletter) {
-                $('#Newsletter_err').text('Newsletter is Required');
-            }
-            if (errors.rabatt_Gruppe) {
-                $('#rabatt_Gruppe_err').text('rabatt_Gruppe is Required');
-            }
-            if (errors.Shop_APP) {
-                $('#Shop_APP_err').text('Shop_APP Is Required');
-            }
-            if (errors.Premium_connection) {
-                $('#Premium_connection_err').text('Premium_connection is Required');
-            }
-        }
-    });
-</script>
+                // Send AJAX request
+                $.ajax({
+                    url: '/api/addContactsApi', // Replace with your endpoint URL
+                    method: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                    },
+                    success: function(response) {
+                        // Handle success response
+                        if (response.success) {
+                            console.log(response.success);
+
+                            // $('#AddOffersForm')[0].reset();
+                            $('#success_msg').text(response.success);
+                        } else if (response.ValidationError) {
+                            // Display validation errors in the console
+                            console.log(response.ValidationError);
+
+                            displayValidationErrors(response.ValidationError);
+
+                            // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
+
+                            // You can also update your HTML to show errors in a specific element
+                            // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+                        } else if (response.error) {
+                            window.location.href = '/api/home';
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response
+                        console.error('Error saving data:', error);
+                        // Optionally, show an error message to the user
+                    }
+                });
+                function displayValidationErrors(errors) {
+                // Display validation errors next to the respective form fields
+                if (errors.typ) {
+                    $('#typ_err').text(errors.typ[0]);
+                }
+                if (errors.firm_name) {
+                    $('#firm_name_err').text(errors.firm_name[0]);
+                }
+                if (errors.Straße) {
+                    $('#Straße_err').text(errors.Straße[0]);
+                }
+                if (errors.Ort) {
+                    $('#Ort_err').text(errors.Ort[0]);
+                }
+                if (errors.PLZ) {
+                    $('#PLZ_err').text(errors.PLZ[0]);
+                }
+                if (errors.Land) {
+                    $('#Land_err').text(errors.Land[0]);
+                }
+                if (errors.vat_id) {
+                    $('#vat_id_err').text(errors.vat_id[0]);
+                }
+                if (errors.mobile) {
+                    $('#mobile_err').text(errors.mobile[0]);
+                }
+                if (errors.password) {
+                    $('#password_err').text(errors.password[0]);
+                }
+                if (errors.email) {
+                    $('#email_err').text(errors.email[0]);
+                }
+                if (errors.Newsletter) {
+                    $('#Newsletter_err').text('Newsletter is Required');
+                }
+                if (errors.rabatt_Gruppe) {
+                    $('#rabatt_Gruppe_err').text('rabatt_Gruppe is Required');
+                }
+                if (errors.Shop_APP) {
+                    $('#Shop_APP_err').text('Shop_APP Is Required');
+                }
+                if (errors.Premium_connection) {
+                    $('#Premium_connection_err').text('Premium_connection is Required');
+                }
+            }   
+            });
+
+          
+        });
+    </script>
 
 
 
