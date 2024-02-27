@@ -49,7 +49,7 @@ class SuppliersController extends Controller
 
         $validator = Validator::make($request->all(), [
 
-            'typ' => 'required',
+          
             'firm_name' => 'required',
             'Straße' => 'required',
             'Ort' => 'required',
@@ -60,9 +60,9 @@ class SuppliersController extends Controller
             'password' => 'required|min:8|',
             'email' => 'required|email|unique:users',
             'Newsletter' => 'required|string',
-            'rabatt_Gruppe' => 'required|string',
+            'Zahlung' => 'required|string',
             'Shop_APP' => 'required|string',
-            'Premium_connection' => 'required|string',
+           
         ]);
 
         if ($validator->fails()) {
@@ -72,8 +72,6 @@ class SuppliersController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-
-
 
             $user = new User();
             $user->name = $request->input('firm_name');
@@ -86,9 +84,9 @@ class SuppliersController extends Controller
             $user->address = $request->input('Straße') . ' ' . $request->input('Ort') . ' ' . $request->input('Land');
             $user->zipCode = $request->input('PLZ');
             $user->vatNo = $request->input('vat_id');
-            $user->rabatt_Gruppe = $request->input('rabatt_Gruppe');
+            $user->Zahlung = $request->input('Zahlung');
             $user->Shop_APP = $request->input('Shop_APP');
-            $user->Premium_connection = $request->input('Premium_connection');
+           
 
             $user->save();
 
