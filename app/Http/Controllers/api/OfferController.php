@@ -227,4 +227,36 @@ class OfferController extends Controller
             return response()->json(['erors' => 'Status Not Updated']);
         }
     }
+
+
+    // function for update bill status by bill code
+    public function updateOfferStatus(Request $request)
+    {
+        $user = Auth::guard('api')->user();
+
+        if (Offers::where('Angebots_Nr', $request->Angebots_Nr)->where('Ihre_Kundennummer', $user->id)->where('Angebotsdatum', '<', date('Y-m-d'))->first()) {
+            return response()->json(['status'=>'0', 'message' => 'Offer No. '. $request->Angebots_Nr.' Expired']);
+        }
+        $record = Offers::where('Angebots_Nr', $request->Angebots_Nr)->where('Ihre_Kundennummer', $user->id)->update(['status' => 'schließen']);
+        // dd($record);
+
+        if ($record) {
+            return response()->json(['status'=>'1', 'message' => 'Offer No. '. $request->Angebots_Nr.' Status Updated successfully', 'record'=>$record]);
+        } else {
+            return response()->json(['erors' => 'Status Not Updated']);
+        }
+    }
+
+
+    // function for get offers details by his Angebots_Nr
+    public function getOfferDetails(Request $request){
+        $user = Auth::guard('api')->user();
+        $offers = Offers::where('Ihre_Kundennummer', $user->id)->where('Angebots_Nr', $request->Angebots_Nr)->orderBy('created_at', 'desc')->get();
+        if (count($offers)) {
+            return response()->json(['status'=>'1' ,'offersList' => $offers]);
+        }
+        else {
+            return response()->json(['status'=>'0' ,'message' => 'No offer Found']);
+        }
+    }
 }

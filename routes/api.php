@@ -109,6 +109,8 @@ Route::middleware('api.auth')->group(function () {
   // Offers for Admin
   Route::get('offerListingApi', [OfferController::class, 'offerListing']);
   Route::post('addOfferApi', [OfferController::class, 'addOfferApi']);
+  Route::get('updateOfferStatusApi', [OfferController::class, 'updateOfferStatus']);
+  Route::get('getOfferDetailsApi', [OfferController::class, 'getOfferDetails']);
 
   //Asignments for Admin
 

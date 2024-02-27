@@ -217,25 +217,18 @@
               <th>Gesamtpreis</th>
             </thead>
             <tbody>
-              <tr>
-                <td>Badu Alpha 6</td>
-                <td>12</td>
-                <td>344</td>
-                <td>12</td>
-                <td>10%</td>
-                <td>1052€</td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          <p>Gesamt netto <input type="text" name="total"></p><br>
-          <p>zzgl. Umsatzsteuer 19 % <input type="text" name="total"></p><br>
-          <p>Gesamtbetrag brutto <input type="text" name="total"></p>
+          <p>Gesamt netto <input type="text" id="gesamt_netto" readonly></p><br>
+          <p>zzgl. Umsatzsteuer 19 % <input type="text" id="zzgl_Umsatzsteuer" readonly></p><br>
+          <p>Gesamtbetrag brutto <input type="text" id="Gesamtbetrag_brutto" readonly></p>
         </div>
-        <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-          <button type="button" class="claim">Claim offers</button>
+
+        <div class="modal-footer footer-btn">
+
         </div>
       </div>
     </div>
@@ -269,21 +262,49 @@
 
                     // Select the offer container
                     var offerContainer = $('#offersList');
+                    var currentDate = new Date();
+                    var year = currentDate.getFullYear();
+                    var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+                    var day = ("0" + currentDate.getDate()).slice(-2);
+                    var formattedDate = year + "-" + month + "-" + day;
+                    
 
                     // Loop through each offer in the data object
                     Object.keys(data.offersGroupBy).forEach(function (key) {
                         var offer = data.offersGroupBy[key];
+
+                        var btn ='';
+                        var status ='<span style="color:red;">Expired</span>';
+                        if (offer.Angebotsdatum > formattedDate) {
+
+                          // for status
+                            if (offer.status=='Offen') {
+                              var status = 'Offen';
+                            }else{
+                              var status = 'schließen';
+                            }
+
+                          // for buuton
+                            if (offer.status=='Offen') {
+                              var btn = `<button type="button" class="claim" id="btn_${offer.Angebots_Nr}" onclick="changeOfferStatus('${offer.Angebots_Nr}')">Claim Offer</button>`;
+                            }else{
+                              var btn = `<button type="button" class="btn btn-danger">Claimed</button>`;
+                            }
+                        }
                         // Generate HTML for the offer
                         var offerHTML = `
                             <div class="offer">
                                 <h5 class="px-2">Offer Number: ${offer.Angebots_Nr}</h5>
+                                <span class="msg_err" id="success_msg_${offer.Angebots_Nr}" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
                                 <div class="offer-details">
                                     <p class="deu-date">Active till: ${offer.Angebotsdatum}</p>
                                    
-                                    <p class="deu-date">Status: ${offer.status}</p>
-                                    <div class="buttons">
-                                        <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview">View Offer</button>
-                                        <button type="button" class="claim">Claim Offer</button>
+                                    <p class="deu-date" id="status_${offer.Angebots_Nr}">Status: ${status}</p>
+                                    <div style="display: -webkit-box;">
+                                      <button type="button" class="btn view" data-bs-toggle="modal" data-bs-target="#offerview"  onclick="getOfferDetails('${offer.Angebots_Nr}')">View Offer</button>
+                                      <div>
+                                        ${btn}
+                                      </div>
                                     </div>
                                 </div>
                             </div>`;
@@ -298,6 +319,132 @@
             }
         });
     });
+
+    function changeOfferStatus(Angebots_Nr)
+    {
+      jQuery('.msg_err').html('');
+      // alert(Angebots_Nr);
+
+      var token = localStorage.getItem('authToken');
+      console.log(token);
+
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        // return;
+      }
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/updateOfferStatusApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        data: { Angebots_Nr: Angebots_Nr},
+        success: function(data) {
+          // Handle the successful response
+          console.log('Response :', data);
+          if (data.status=='1') {
+            // change final status of
+            jQuery('#success_msg_'+Angebots_Nr).html(data.message).css('color','#44e1d5');;
+            jQuery('#status_'+Angebots_Nr).html('Status: schließen');
+            jQuery('#btn_'+Angebots_Nr).closest('div').html(`<button type="button" class="btn btn-danger">Claimed</button>`);
+            // Delay the page reload for 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+              jQuery('#success_msg_'+Angebots_Nr).html('');
+            }, 2000);
+          } else {
+            jQuery('#success_msg_'+Angebots_Nr).html(data.message).css('color','red');
+          }
+        },
+        error: function(error) {
+          // Handle errors
+          jQuery('#success_msg_'+Angebots_Nr).html('Sorry! we are facing some internal errors.').css('color','red');
+          console.error('Error:', error);
+        }
+      });
+    }
+
+
+    // function for find Offer Details by his Angebots_Nr
+    function getOfferDetails(Angebots_Nr){
+      jQuery('.modal-body tbody').html('');
+      jQuery('#gesamt_netto, #zzgl_Umsatzsteuer, #Gesamtbetrag_brutto').val('');
+      // Get the token from localStorage
+      var token = localStorage.getItem('authToken');
+      console.log(token);
+
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        // return;
+      }
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/getOfferDetailsApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        data: { Angebots_Nr: Angebots_Nr},
+        success: function(data) {
+          // Handle the successful response
+          console.log('Response :', data);
+          if (data.status=='1') {
+            // change final status of
+            $.each(data.offersList, function(index, item) {
+              jQuery('.modal-body tbody').append(`
+                <tr>
+                  <td>${item.Produkt}</td>
+                  <td>${item.Menge}</td>
+                  <td>${item.Einheit}</td>
+                  <td>${item.Einzelpreis}</td>
+                  <td>${item.Rabatt}%</td>
+                  <td>${item.Gesamtpreis}€</td>
+                </tr>
+              `);
+            });
+
+            // pull calculated data
+            jQuery('#gesamt_netto').val(data.offersList[0].gesamt_netto);
+            jQuery('#zzgl_Umsatzsteuer').val(data.offersList[0].zzgl_Umsatzsteuer);
+            jQuery('#Gesamtbetrag_brutto').val(data.offersList[0].Gesamtbetrag_brutto);
+
+            // status of offer
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+            var day = ("0" + currentDate.getDate()).slice(-2);
+            var formattedDate = year + "-" + month + "-" + day;
+            
+
+            if (data.offersList[0].Angebotsdatum > formattedDate) {
+              if (data.offersList[0].status=='Offen') {
+                var btn = `<button type="button" class="claim" id="btn_${data.offersList[0].Angebots_Nr}" onclick="changeOfferStatus('${data.offersList[0].Angebots_Nr}')"  data-bs-dismiss="modal">Claim Offer</button>`;
+              }else{
+                var btn = `<button type="button" class="btn btn-danger">Claimed</button>`;
+              }
+            }else{
+              var btn ='<b><span style="color:red;">Expired</span></b>';
+            }
+
+            // button
+            jQuery('.footer-btn').html(btn);
+          } else {
+            jQuery('#success_msg_'+Angebots_Nr).html(data.message).css('color','red');
+          }
+        },
+        error: function(error) {
+          // Handle errors
+          jQuery('#success_msg_'+Angebots_Nr).html('Sorry! we are facing some internal errors.').css('color','red');
+          console.error('Error:', error);
+        }
+      });
+    }
 </script>
 
 
