@@ -797,7 +797,7 @@
 
 
   $(document).ready(function() {
-    getProductCategory ();
+    // getProductCategory ();
     $('#productImportButton').on('click', function() {
     $('#import_success_message').text('');
     $('#ProductsImportFile-err').text('');
@@ -824,12 +824,12 @@
     if (errors.ProductsImportFile) {
      $('#ProductsImportFile-err').text(errors.ProductsImportFile[0]);
     }
-    if (errors.ProductsImageFile) {
-     $('#ProductsImageFile-err').text(errors.ProductsImageFile[0]);
-    }
-    if (errors.ProductsPdfFile) {
-     $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
-    }
+    // if (errors.ProductsImageFile) {
+    //  $('#ProductsImageFile-err').text(errors.ProductsImageFile[0]);
+    // }
+    // if (errors.ProductsPdfFile) {
+    //  $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
+    // }
    }
 
    function sendDataToServer(formData) {
@@ -860,7 +860,7 @@
       // Handle the success response from the server
       if (response.success) {
        $('#import_success_message').text(response.success);
-       console.log('Server Response:', response);
+       console.log('Server Response:', response); 
        $('#productsImportForm')[0].reset();
       }
 

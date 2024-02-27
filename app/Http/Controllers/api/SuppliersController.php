@@ -26,7 +26,7 @@ class SuppliersController extends Controller
                 ->get()
                 ->unique('id');
         } else {
-            $users = 'offer not found';
+            $users = 'Users not found';
         }
 
         if ($users) {
@@ -49,7 +49,7 @@ class SuppliersController extends Controller
 
         $validator = Validator::make($request->all(), [
 
-          
+            'Lieferantennummer' => 'required|unique:users',
             'firm_name' => 'required',
             'Straße' => 'required',
             'Ort' => 'required',
@@ -59,7 +59,7 @@ class SuppliersController extends Controller
             'mobile' => 'required|integer|min:8|',
             'password' => 'required|min:8|',
             'email' => 'required|email|unique:users',
-            'Newsletter' => 'required|string',
+        
             'Zahlung' => 'required|string',
             'Shop_APP' => 'required|string',
            
@@ -74,27 +74,28 @@ class SuppliersController extends Controller
         if ($user->role == 'Admin') {
 
             $user = new User();
+            $user->Lieferantennummer = $request->input('Lieferantennummer');
             $user->name = $request->input('firm_name');
             $user->email  = $request->input('email');
             $user->password = Hash::make($request->input('password'));
             $user->mobile = $request->input('mobile');
 
-            $user->action = $request->input('Newsletter');
-            $user->role = $request->input('typ');
+
+            $user->role = "supplier";
             $user->address = $request->input('Straße') . ' ' . $request->input('Ort') . ' ' . $request->input('Land');
             $user->zipCode = $request->input('PLZ');
             $user->vatNo = $request->input('vat_id');
-            $user->Zahlung = $request->input('Zahlung');
+            // $user->Zahlung = $request->input('Zahlung');
             $user->Shop_APP = $request->input('Shop_APP');
            
 
             $user->save();
 
             // Return a success response
-            return response()->json(['success' => "User Is Added Successfully",]);
+            return response()->json(['success' => "Supplier Is Added Successfully",]);
         } else {
             // Return a success response
-            return response()->json(['error' => "User Is not Added SuccessFully",]);
+            return response()->json(['error' => "Supplier Is not Added SuccessFully",]);
         }
     }
 }

@@ -108,6 +108,7 @@
 <body>
     <div class="container-scroller">
         <div class="row p-0 m-0 proBanner" id="proBanner">
+        <form>
             <div class="col-md-12 p-0 m-0">
                 {{-- <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
@@ -157,6 +158,13 @@
                     <button class="edit" type="button" data-bs-toggle="modal" data-bs-target="#supplierModal">Import supplier's CSV</button>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
+                    </div>
+                </div>
+                
                 <div class="row">
                     <div class="col">
                         
@@ -167,17 +175,20 @@
                         <div class="col stretch-card pt-3">
                         Lieferantennummer <input type="text" class="form-control"  aria-describedby="emailHelp" name="Lieferantennummer" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                         </div>
+                        <span class="msg_err" id="Lieferantennummer_err" style="color:red;  font-size:13px;"></span>
                         
                         </div>
                         <div class="row">
                         <div class="col stretch-card pt-3">
-                        Firmenname <input type="text" class="form-control" name="Firmenname"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        Firmenname <input type="text" class="form-control" name="firm_name"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                         </div>
+                        <span class="msg_err" id="firm_name_err" style="color:red;  font-size:13px;"></span>
                         </div>
                         <div class="row">
                         <div class="col stretch-card pt-3">
                         Ansprechpartner <input class="form-check-input" name="Ansprechpartner" type="radio" style="margin:0px 10px;"> Frau <input class="form-check-input" type="radio"  style="margin:0px 10px;"> Herr <input type="text" class="form-control mx-2"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
                         </div>
+                        <span class="msg_err" id="Ansprechpartner_err" style="color:red;  font-size:13px;"></span>
                         </div>
                         <div class="row pt-3">
                         <div class="col">
@@ -196,6 +207,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="Straße"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="Straße_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         <div class="col">
@@ -218,6 +230,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="Ort"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="Ort_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         <div class="col">
@@ -241,6 +254,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="PLZ"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="PLZ_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         <div class="col">
@@ -265,6 +279,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="Land"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="Land_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         <div class="col">
@@ -289,6 +304,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="vat_id" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="vat_id_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         <div class="col">
@@ -299,6 +315,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="mobile"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="mobile_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         </div>
@@ -321,8 +338,9 @@
                        Password
                         </div>
                         <div class="col-8">
-                       <input type="password" class="form-control" name="passowrd"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="password" class="form-control" name="password"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="password_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         </div>
@@ -337,6 +355,7 @@
                         <div class="col-8">
                        <input type="text" class="form-control" name="email"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
+                        <span class="msg_err" id="email_err" style="color:red;  font-size:13px;"></span>
                        </div>
                         </div>
                         <div class="col">
@@ -394,12 +413,14 @@
             <div class="col">
             <span>Zahlung</span> <input class="form-check-input" name="Zahlung" type="radio" style="margin:0px 10px;" value="Vorkasse"> <span>Vorkasse</span> <input class="form-check-input" name="Zahlung" type="radio" style="margin:0px 10px;" value="14 Tage netto nach Erhalt der Rechnung"> <span>14 Tage netto nach Erhalt der Rechnung</span> <input class="form-check-input" name="Zahlung" type="radio" style="margin:0px 10px;" value="PayPal"> <span>PayPal</span>
             </div>  
+            <span class="msg_err" id="Zahlung_err" style="color:red;  font-size:13px;"></span>
           </div>  
           <div class="row pt-3">
             <div class="col">
             <span>Shop / APP sperren</span> <input class="form-check-input" type="radio" style="margin:0px 10px;" name="Shop_APP" value="ja"> <span>ja</span> <input class="form-check-input" type="radio" name="Shop_APP" style="margin:0px 10px;" value="Nein Zugangsdaten Shop / APP ändern"> <span>Nein</span> <span>Zugangsdaten Shop / APP ändern</span>
             </div>
           </div>  
+          <span class="msg_err" id="Shop_APP_err" style="color:red;  font-size:13px;"></span>
     </div>
     </div>  
     </div>
@@ -444,7 +465,7 @@
                 e.preventDefault(); // Prevent the default form submission
 
                 
-      
+                $('#Lieferantennummer_err').text('');
             $('#firm_name_err').text('');
             $('#Straße_err').text('');
             $('#Ort_err').text('');
@@ -509,8 +530,8 @@
                 });
                 function displayValidationErrors(errors) {
                 // Display validation errors next to the respective form fields
-                if (errors.typ) {
-                    $('#typ_err').text(errors.typ[0]);
+                if (errors.Lieferantennummer) {
+                    $('#Lieferantennummer_err').text(errors.Lieferantennummer[0]);
                 }
                 if (errors.firm_name) {
                     $('#firm_name_err').text(errors.firm_name[0]);

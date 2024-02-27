@@ -27,9 +27,11 @@ return new class extends Migration
             $table->string('zipCode')->nullable();
             $table->string('vatNo')->nullable();
             $table->string('rabatt_Gruppe')->nullable();
+            $table->string('Zahlung')->nullable();
+            $table->string('MwSt_Satz')->nullable();
             $table->string('Shop_APP')->nullable();
             $table->string('Premium_connection')->nullable();
-            $table->string('supplier_code')->nullable();
+            $table->string('Lieferantennummer')->nullable();
 
             $table->timestamps();
         });

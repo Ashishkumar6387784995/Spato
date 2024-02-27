@@ -60,6 +60,8 @@ class contactController extends Controller
             'email' => 'required|email|unique:users',
             'Newsletter' => 'required|string',
             'rabatt_Gruppe' => 'required|string',
+            // 'Zahlung' => 'required|string',
+            // 'MwSt_Satz' => 'required|string',
             'Shop_APP' => 'required|string',
             'Premium_connection' => 'required|string',
         ]);
@@ -86,6 +88,10 @@ class contactController extends Controller
             $user->zipCode = $request->input('PLZ');
             $user->vatNo = $request->input('vat_id');
             $user->rabatt_Gruppe = $request->input('rabatt_Gruppe');
+            $user->Zahlung = $request->input('Zahlung'); 
+            $user->MwSt_Satz = $request->input('MwSt_Satz');
+
+
             $user->Shop_APP = $request->input('Shop_APP');
             $user->Premium_connection = $request->input('Premium_connection');
 
