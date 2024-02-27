@@ -150,7 +150,7 @@
                 <table id="dataTable">
                     <tr>
                         <th>Nr</th>
-                        <th>B2B / B2C</th>
+                        <th>B2B / Normal</th>
                         <th>Kunde</th>
                         <th>PLZ - Ort</th>
                         <th></th>
@@ -198,16 +198,7 @@
         </div>
     </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <!-- <footer class="footer">
-        <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2021</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                    admin template</a> from Bootstrapdash.com</span>
-        </div>
-    </footer> -->
+  
     <!-- partial -->
     </div>
     <!-- main-panel ends -->
@@ -217,103 +208,76 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        // Execute the code when the document is ready
-        $(document).ready(function() {
-            // Make a GET request using AJAX
-            $.ajax({
-                url: '/api/productListingApi', // Replace with the actual endpoint URL
-                method: 'GET',
-                success: function(data) {
-                    // Handle the successful response
-                    if (data.productList) {
-                        console.log('Data received:', data.productList);
+    // Execute the code when the document is ready
+    $(document).ready(function() {
+        // Get the token from localStorage
+        var token = localStorage.getItem('authToken');
+        console.log(token);
+
+        // Check if the token exists
+        if (!token) {
+            console.error('Token not found in localStorage');
+            window.location.href = '/api/home';
+            // return;
+        }
+
+        // Make a GET request using AJAX
+        $.ajax({
+            url: '/api/contactsListingApi', // Replace with the actual endpoint URL
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            },
+            success: function(data) {
+                // Handle the successful response
+               
+                if (data.users) {
+                    console.log('Data received:', data.users);
 
 
-                        function populateTable(data) {
-                            var tableBody = $('#dataTable');
+                    // Function to populate the table with data
+                    function populateTable(dataList) {
+                        var tableBody = $('#dataTable');
 
-                            // Clear existing table rows
-                            // tableBody.empty();
+                        // Clear existing table rows
+              tableBody.find("tr:gt(0)").remove();
 
-                            // Iterate through the data and add rows to the table
-                            $.each(data, function(index, item) {
-                                var row = $('<tr>');
-                                row.append('<td>' + item.Hersteller + '</td>');
-                                row.append('<td>' + item.Herst_Nr + '</td>');
-                                row.append('<td>' + item.id + '</td>');
-                                row.append('<td>' + item.Artikelname + '</td>');
-                                row.append('<td>' + item.Kategorie + '</td>');
-                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
-                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
-
-
-                                // Add more columns as needed
-
-                                // Append the row to the table body
-                                tableBody.append(row);
-                            });
-                        }
-
-                        // Call the function to populate the table with the initial data
-                        populateTable(data.productList);
-
-
-
-                    } else {
-                        console.log('Data received:', data.errors);
+                        // Iterate through the data and add rows to the table
+                        $.each(dataList, function(index, item) {
+                            var row = $('<tr>');
+                            row.append(`<td>${item.id}</td>`);
+                            row.append(`<td>${item.role}</td>`);
+                            row.append(`<td>${item.name}</td>`);
+                            row.append(`<td>${item.zipCode} , ${item.address}</td>`);
+                            // Check if the user role is Admin to add edit link
+                            if (data.responseTo === 'Admin') {
+                                row.append(`<td><a href="/api/editContacts/admin/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+                            }
+                            // Append the row to the table body
+                            tableBody.append(row);
+                        });
                     }
-                }, // Missing comma here
 
-                error: function(error) {
-                    // Handle errors
+                    // Call the function to populate the table with the initial data
+                    populateTable(data.users);
+                }
+
+                if (data.error) {
+                    window.location.href = '/api/home';
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle specific errors
+                if (xhr.status === 401) {
+                    console.error('Unauthorized: Please check your authentication token.');
+                } else {
                     console.error('Error:', error);
                 }
-            });
-
-
-
-
+            }
         });
-
-
-        function deleteOperation(productId) {
-            // Make a DELETE request using AJAX
-            console.log(productId);
-            $.ajax({
-                url: '/api/deleteProduct/' + productId,
-                method: 'get',
-                success: function(data) {
-
-                    if (data.success) {
-
-
-
-                        $('#success_msg').text(data.success);
-
-                        // Delay the page reload for 2 seconds (2000 milliseconds)
-                            setTimeout(function() {
-                                location.reload(true);
-                            }, 1000);
-
-                        
-
-
-                        console.log('Product deleted successfully:', data.success);
-                        // Perform any additional actions after deletion
-                    } else {
-                        console.log('Product not deleted successfully:', data.message);
-                    }
-
-                },
-                error: function(error) {
-                    console.error('Error deleting product:', error.responseJSON.error);
-                }
-            });
-        }
-    </script> -->
+    });
+</script>
 
 
 

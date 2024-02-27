@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('zipCode')->nullable();
             $table->string('vatNo')->nullable();
+            $table->string('rabatt_Gruppe')->nullable();
+            $table->string('Shop_APP')->nullable();
+            $table->string('Premium_connection')->nullable();
 
             $table->timestamps();
         });

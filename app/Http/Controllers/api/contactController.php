@@ -19,15 +19,20 @@ class contactController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $offers = User::select('Angebots_Nr', 'Angebotsdatum', 'Ihre_Kundennummer', 'gesamt_netto', 'status')->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
+            $users = User::select('id', 'name', 'role', 'zipCode', 'address')
+            ->whereIn('role', ["b2b", "Normal"])
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->unique('id');
+
         } else {
-            $offers = 'offer not found';
+            $users = 'offer not found';
         }
 
-        if ($offers) {
-            return response()->json(['offersList' => $offers, 'user' => $user]);
+        if ($users) {
+            return response()->json(['users' => $users, 'responseTo' => 'Admin']);
         } else {
-            return response()->json(['errors' => 'Offer Not Found']);
+            return response()->json(['errors' => 'Users Not Found']);
         }
     }
 
@@ -41,20 +46,18 @@ class contactController extends Controller
     public function addContactsApi(Request $request)
     {
 
-
-
         $validator = Validator::make($request->all(), [
 
             'typ' => 'required',
-            'Ansprechpartner' => 'required',
+            'firm_name' => 'required',
             'Straße' => 'required',
             'Ort' => 'required',
             'PLZ' => 'required|numeric',
             'Land' => 'required|string',
             'vat_id' => 'required|string',
             'mobile' => 'required|integer|min:8|',
-            'password' => 'required|min:8',
-            'mail' => 'required|email|unique:users',
+            'password' => 'required|min:8|',
+            'email' => 'required|email|unique:users',
             'Newsletter' => 'required|string',
             'rabatt_Gruppe' => 'required|string',
             'Shop_APP' => 'required|string',
@@ -62,20 +65,18 @@ class contactController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()]);
+            return response()->json(['ValidationError' => $validator->errors()]);
         }
 
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
 
-            $dynamicFields = $request->input('inputs');
 
-            // Set dynamic fields on the offer
 
             $user = new User();
-            $user->name = $request->input('Ansprechpartner');
-            $user->email  = $request->input('mail');
+            $user->name = $request->input('firm_name');
+            $user->email  = $request->input('email');
             $user->password = Hash::make($request->input('password'));
             $user->mobile = $request->input('mobile');
 
@@ -84,14 +85,17 @@ class contactController extends Controller
             $user->address = $request->input('Straße') . ' ' . $request->input('Ort') . ' ' . $request->input('Land');
             $user->zipCode = $request->input('PLZ');
             $user->vatNo = $request->input('vat_id');
+            $user->rabatt_Gruppe = $request->input('rabatt_Gruppe');
+            $user->Shop_APP = $request->input('Shop_APP');
+            $user->Premium_connection = $request->input('Premium_connection');
 
             $user->save();
 
             // Return a success response
-            return response()->json(['success' => "Offer Is Added SuccessFully",]);
+            return response()->json(['success' => "User Is Added Successfully",]);
         } else {
             // Return a success response
-            return response()->json(['error' => "Offer Is not Added SuccessFully",]);
+            return response()->json(['error' => "User Is not Added SuccessFully",]);
         }
     }
 }
