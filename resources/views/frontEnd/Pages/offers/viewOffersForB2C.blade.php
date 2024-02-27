@@ -275,7 +275,7 @@
 
                         var btn ='';
                         var status ='<span style="color:red;">Expired</span>';
-                        if (offer.Angebotsdatum > formattedDate) {
+                        if (offer.Angebotsdatum >= formattedDate) {
 
                           // for status
                             if (offer.status=='Offen') {
@@ -422,7 +422,7 @@
             var formattedDate = year + "-" + month + "-" + day;
             
 
-            if (data.offersList[0].Angebotsdatum > formattedDate) {
+            if (data.offersList[0].Angebotsdatum >= formattedDate) {
               if (data.offersList[0].status=='Offen') {
                 var btn = `<button type="button" class="claim" id="btn_${data.offersList[0].Angebots_Nr}" onclick="changeOfferStatus('${data.offersList[0].Angebots_Nr}')"  data-bs-dismiss="modal">Claim Offer</button>`;
               }else{
