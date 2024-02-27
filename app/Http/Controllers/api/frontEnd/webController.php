@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -312,5 +313,25 @@ class webController extends Controller
         }
 
         return response()->json(['message' => 'Address not found']);
+    }
+
+    // function for fetch Order History
+    public function showOrderHistoryApi()
+    {
+        $userId = Auth::guard('api')->user()->id;
+        $orders = Order::where('user_id', $userId)->get();
+        $orders = Order::
+                select('orders.*', 'users.name', 'products.Artikelname', 'products.Hersteller')
+                ->join('users', 'users.id', '=', 'orders.user_id')
+                ->join('products', 'products.id', '=', 'orders.product_id')
+                // ->where('orders.user_id', $userId)
+                ->orderby('orders.created_at', 'DESC')
+                ->get()->groupBy('order_id');
+
+        if (count($orders)) {
+            return response()->json(['message' => '1', 'orders'=> $orders]);
+        }
+
+        return response()->json(['error' => 'No order found.']);
     }
 }

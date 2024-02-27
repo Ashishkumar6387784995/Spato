@@ -216,11 +216,11 @@
                </a>
             </li>
 
-            <li class="nav-item lagerverwaltung-page">
+            <!-- <li class="nav-item lagerverwaltung-page">
                <a class="nav-link" href="{{url('/api/wareHouseProductList/'.$role)}}" onclick="markVisited(this)">
                   <span class="menu-title">Lagerverwaltung</span>
                </a>
-            </li>
+            </li> -->
 
             <li class="nav-item kundenmanagement-page">
                <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">

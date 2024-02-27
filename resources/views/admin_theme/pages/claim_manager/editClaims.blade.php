@@ -91,7 +91,7 @@
         a{
             color:#54606c;
         }
-        .claimmanager-page{
+        .claimmanager-page a{
             color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;

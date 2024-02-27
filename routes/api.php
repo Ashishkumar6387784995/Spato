@@ -109,6 +109,8 @@ Route::middleware('api.auth')->group(function () {
   // Offers for Admin
   Route::get('offerListingApi', [OfferController::class, 'offerListing']);
   Route::post('addOfferApi', [OfferController::class, 'addOfferApi']);
+  Route::get('updateOfferStatusApi', [OfferController::class, 'updateOfferStatus']);
+  Route::get('getOfferDetailsApi', [OfferController::class, 'getOfferDetails']);
 
   //Asignments for Admin
 
@@ -153,6 +155,7 @@ Route::middleware('api.auth')->group(function () {
   Route::post('saveTempAddressApi', [webController::class, 'saveTempAddressApi']);
   Route::get('showTempAddressApi', [webController::class, 'showTempAddressApi']);
   Route::get('tempAddressDelete/{id}', [webController::class, 'tempAddressDelete']);
+  Route::get('showOrderHistoryApi', [webController::class, 'showOrderHistoryApi']);
 
   // For get user details by his id
   Route::get('profileViewByIdApi/{id}', [webController::class, 'profileViewByIdApi']);

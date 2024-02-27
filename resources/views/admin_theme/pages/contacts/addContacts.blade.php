@@ -165,6 +165,7 @@
                                 B2C <input class="form-check-input" type="radio" name="typ" value="Normal">
                             </div>
                             <span class="msg_err" id="typ_err" style="color:red;  font-size:13px;"></span>
+                            <br>
                             <div class="col-6 stretch-card">
                                 Kundennummer <input type="text" class="form-control" name="kunden_no" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
                             </div>

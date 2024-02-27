@@ -47,6 +47,7 @@
             text-decoration:none;
             border-radius:5px;
             transition:0.5s ease;
+            font-weight:600;
         }
         .edit:hover{
             background-color:transparent;
@@ -144,7 +145,7 @@
                 </div>
                 <div class="row pt-3">
                     
-                    <div class="col-md-4 stretch-card grid-margin" >
+                    <div class="col-md-2 stretch-card grid-margin" >
                    <a href="#"  class="btn">Save</a>
                     </div>
                     
@@ -154,6 +155,9 @@
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
                     <a href="#"  class="mt-2">laufende Aufträge 18.054,09 €</a>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin" >
+                    <button class="edit" type="button" data-bs-toggle="modal" data-bs-target="#supplierModal">Import supplier's CSV</button>
                     </div>
                 </div>
                 <div class="row">
@@ -402,7 +406,37 @@
     </div>  
     </div>
   
-  
+  <!-- Import Bulk Suppliers starts -->
+  <div class="modal fade" id="supplierModal" tabindex="-1" aria-labelledby="supplierModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+
+
+    <form id="productsImportForm" method="post" enctype="multipart/form-data">
+     <div class="modal-content">
+
+      <div class="modal-header" style="border-bottom: 2px solid #44e1d5;">
+       <h1 class="modal-title fs-5" id="supplierModalLabel">Import Files file</h1>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <span class="m-1 pb-2" id="import_success_message"
+        style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
+       
+         <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
+        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="ProductsImportFile"
+           id="ProductsImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;"
+           class="fa-solid fa-file-excel"></i></span></p>
+         <p id="ProductsImportFile-err" style="margin-top:1rem; color:red"></p>
+       </div>
+      <div class="modal-footer d-flex justify-content-between">
+       <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+       <button type="button" class="btn" id="productImportButton">Import</button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+  <!-- Import Bulk Suppliers ends -->
   
     <!-- plugins:js -->
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
