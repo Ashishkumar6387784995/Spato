@@ -322,7 +322,7 @@ class webController extends Controller
         $orders = Order::select('orders.*', 'users.name', 'products.Artikelname', 'products.Hersteller')
                 ->join('users', 'users.id', '=', 'orders.user_id')
                 ->join('products', 'products.id', '=', 'orders.product_id')
-                // ->where('orders.user_id', $userId)
+                ->where('orders.user_id', $userId)
                 ->orderby('orders.created_at', 'DESC')
                 ->get()->unique('order_id');
 

@@ -584,101 +584,8 @@
 
       <p>February 2024</p>
       <div class="order-history order-history-list">
-        <div class="accordion">
-          <div class="accordion-heading" onclick="toggleAccordion('accordion1')">
-            <table>
-              <tbody>
-                <tr>
-                  <td><b>Alex</b></td>
-                  <td>#2564</td>
-                  <td>23/04/2024</td>
-                  <td class="pdf"><a href="#"><i class="fa-solid fa-file-pdf"></i> Download Invoice</a></td>
-                  <td style="width:100px; text-align:right;"><i class="fa-solid fa-chevron-down"></i></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="accordion-content" id="accordion1">
-            <table>
-              <tbody>
-                <tr>
-                  <td style="width:150px;"><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="" srcset="">
-                  </td>
-                  <td>
-                    <h5>Badu Aplha Delta Eco...</h5>
-                    <p>Price - <span class="price">2520€</span></p>
-                  </td>
-
-                  <td style="width:130px;">
-                    <p><b>GU - 12348</b></p>
-                  </td>
-                  <td>
-                  <p>East Streets 14, Word No. 04, Road
-                    No. 13/x, House no. 1320/C, Flat No.
-                    5D, Berlin - 1200, Germany</p>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="width:150px;">
-                    <img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="" srcset="">
-                  </td>
-                  <td >
-                    <h5>Badu Aplha Delta Eco...</h5>
-                    <p>Price - <span class="price">2520€</span></p>
-                  </td>
-                  <td style="width:130px;">
-                    <p><b>GU - 12348</b></p>
-                  </td>
-                  <td>
-                  <p>East Streets 14, Word No. 04, Road
-                    No. 13/x, House no. 1320/C, Flat No.
-                    5D, Berlin - 1200, Germany</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-       <div class="accordion">
-        <div class="accordion-heading" onclick="toggleAccordion('accordion2')">
-         <table>
-          <tbody>
-           <tr>
-            <td>Alex</td>
-            <td></td>
-            <td>#2564</td>
-            <td>$452</td>
-            <td>23/04/2024</td>
-           </tr>
-          </tbody>
-         </table>
-         <!-- <span>&#9660;</span> -->
-        </div>
-        <div class="accordion-content" id="accordion2">
-         <table>
-          <tbody>
-           <tr>
-            <td><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/p-1.png') }}" alt="" srcset="">
-            </td>
-
-            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste commodi quos ipsam facilis quas quidem
-             dicta ea reiciendis et dignissimos.</td>
-            <td>
-             <p>East Streets 14, Word No. 04, Road
-              No. 13/x, House no. 1320/C, Flat No.
-              5D, Berlin - 1200, Germany</p>
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
-
-       </div>
-       <div class="t-price row">
-        <!-- <div class="col"></div> -->
         
+        </div>
       </div>
 
 
@@ -1443,7 +1350,7 @@ if (tempAddress.company_name) {
 
       var token = localStorage.getItem('authToken');
       console.log(token);
-
+      jQuery('.accordion').remove();
       // Check if the token exists
       if (!token) {
         console.error('Token not found in localStorage');
