@@ -174,6 +174,116 @@
     grid-auto-columns: 110%;
    }
   }
+
+ /* Second slider */
+
+ #cCarousel {
+        position: relative;
+        max-width: 100%;
+        margin: auto;
+      }
+
+      #cCarousel .arrow {
+        position: absolute;
+        top: 50%;
+        left:98%;
+        display: flex;
+        width: 45px;
+        height: 45px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        z-index: 1;
+        font-size: 26px;
+        background-color: var(--blue);
+        cursor: pointer;
+      }
+      #cCarousel .arrow i{
+        color: var(--white);
+      }
+
+      #cCarousel #prev {
+        left: 0px;
+      }
+
+      #cCarousel #next {
+        right: 0px;
+      }
+
+      #carousel-vp {
+        width: 1161px !important;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+      }
+
+      @media (max-width: 770px) {
+        #carousel-vp {
+          width: 510px;
+        }
+      }
+
+      @media (max-width: 510px) {
+        #carousel-vp {
+          width: 250px;
+        }
+      }
+
+      #cCarousel #cCarousel-inner {
+        display: flex;
+        position: absolute;
+        transition: 0.3s ease-in-out;
+        gap: 10px;
+        left: 0px;
+      }
+
+      .cCarousel-item {
+        width: 380px;
+        height: 400px;
+        border: 2px solid white;
+        background-color:var(--white);
+        border-radius: 5px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .cCarousel-item .img{
+        height:300px;
+        margin:auto;
+      }
+      .cCarousel-item img {
+        width: 250px;
+        margin:auto;
+        padding:15px 0px;
+        object-fit: cover;
+        color: white;
+      }
+
+      .cCarousel-item .infos {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding:0px 15px;
+        justify-content: space-around;
+        background: white;
+        color: black;
+      }
+
+      .cCarousel-item .btn {
+        text-align: center;
+   width: 100%;
+   background-color: var(--blue) !important;
+   color: var(--white) !important;
+   font-weight: 700 !important;
+   text-decoration: none !important;
+   padding: 8px 0px !important;
+   border: 1px solid var(--blue);
+   border-radius: 0px 0px 5px 5px !important;
+   transition: 0.5s ease-in-out;
+      }
   </style>
  </head>
 
@@ -317,36 +427,40 @@
   padding: 0 35px;
   align-items: center;
   justify-content: center;">
-    <div class="wrapper">
-     <i id="left" class="fa-solid fa-angle-left"></i>
-     <ul class="carousel">
-      @foreach ($allProduct as $product)
-        <li class="card">
-          <a href="{{ url('api/ProductdetailPage/' . $product->id . '/' . $product->Kategorie_1) }}">
-            <div class="img">
-            <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image">
-            </div>
-          </a>
+    <div id="cCarousel">
+        <!-- <div class="arrow" id="prev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div> -->
+        <div class="arrow" id="next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
 
-          <div class="card-body">
-            <h5 class="card-title">{{ $product->Artikelname }}</h5>
-            <p class="card-text">
-              <p title="{{ $product->Beschreibung_lang }}">Merkamal - {{ substr($product->Beschreibung_lang, 0,  35) }} @if(strlen($product->Beschreibung_lang)>35) .... @endif</p>
-            </p>
-            <p class="product-price">
-            statt - <span class="price">{{ $product->Preis_zzgl_MwSt }}€</span>
-            </p>
+        <div id="carousel-vp">
+          <div id="cCarousel-inner">
+          @foreach ($latestProduct as $product)
+            <article class="cCarousel-item">
+              <div class="img">
+              <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image">
+              </div>
+              <div class="infos">
+              <h5 class="card-title">{{ $product->Artikelname }}</h5>
+        <p class="card-text">
+          <p title="{{ $product->Beschreibung_lang }}">Merkamal - {{ substr($product->Beschreibung_lang, 0,  35) }} @if(strlen($product->Beschreibung_lang)>35) .... @endif</p>
+        </p>
+        <p class="product-price">
+         statt - <span class="price">{{ $product->Preis_zzgl_MwSt }}€</span>
+        </p>
+        </div>
+        <a href="#" class="btn addToCartButton" data-product-id="{{ $product->id }}" data-quantity="1"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        IN DEN WARENKORB
+       </a>
+              
+            </article>
+            @endforeach
           </div>
-
-          <a href="#" class="btn addToCartButton" data-product-id="{{ $product->id }}" data-quantity="1"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            IN DEN WARENKORB
-          </a>
-        </li>
-        @endforeach
-     </ul>
-     <i id="right-2" class="fa-solid fa-angle-right"></i>
-    </div>
+        </div>
+      </div>
    </div>
   </section>
 
@@ -451,14 +565,102 @@
    }
   });
   </script>
+
+  <script>
+ const prev = document.querySelector("#prev");
+      const next = document.querySelector("#next");
+
+      let carouselVp = document.querySelector("#carousel-vp");
+
+      let cCarouselInner = document.querySelector("#cCarousel-inner");
+      let carouselInnerWidth = cCarouselInner.getBoundingClientRect().width;
+
+      let leftValue = 0;
+
+      // Variable used to set the carousel movement value (card's width + gap)
+      const totalMovementSize =
+        parseFloat(
+          document.querySelector(".cCarousel-item").getBoundingClientRect()
+            .width,
+          10
+        ) +
+        parseFloat(
+          window.getComputedStyle(cCarouselInner).getPropertyValue("gap"),
+          10
+        );
+
+      prev.addEventListener("click", () => {
+        if (!leftValue == 0) {
+          leftValue -= -totalMovementSize;
+          cCarouselInner.style.left = leftValue + "px";
+        }
+      });
+
+      next.addEventListener("click", () => {
+        const carouselVpWidth = carouselVp.getBoundingClientRect().width;
+        if (carouselInnerWidth - Math.abs(leftValue) > carouselVpWidth) {
+          leftValue -= totalMovementSize;
+          cCarouselInner.style.left = leftValue + "px";
+        } else {
+          // Restart slider if products end
+          leftValue = 0;
+          cCarouselInner.style.left = leftValue + "px";
+        }
+      });
+
+      const mediaQuery510 = window.matchMedia("(max-width: 510px)");
+      const mediaQuery770 = window.matchMedia("(max-width: 770px)");
+
+      mediaQuery510.addEventListener("change", mediaManagement);
+      mediaQuery770.addEventListener("change", mediaManagement);
+
+      let oldViewportWidth = window.innerWidth;
+
+      function mediaManagement() {
+        const newViewportWidth = window.innerWidth;
+
+        if (
+          leftValue <= -totalMovementSize &&
+          oldViewportWidth < newViewportWidth
+        ) {
+          leftValue += totalMovementSize;
+          cCarouselInner.style.left = leftValue + "px";
+          oldViewportWidth = newViewportWidth;
+        } else if (
+          leftValue <= -totalMovementSize &&
+          oldViewportWidth > newViewportWidth
+        ) {
+          leftValue -= totalMovementSize;
+          cCarouselInner.style.left = leftValue + "px";
+          oldViewportWidth = newViewportWidth;
+        }
+      }
+
+      // Autoplay functionality
+      let autoplayInterval;
+
+      function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+          next.click();
+        },3000);  // Adjust the autoplay interval as needed (e.g., 3000 milliseconds = 3 seconds)
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
+
+      // Start autoplay on page load
+      startAutoplay();
+
+      // Pause autoplay when hovering over the carousel
+      carouselVp.addEventListener("mouseenter", stopAutoplay);
+      carouselVp.addEventListener("mouseleave", startAutoplay);
+  </script>
   
 
 
 
   @include('frontEnd/partial/rightSidebar')
-
-
-
   @include('frontEnd/partial/footer')
 
  </body>
