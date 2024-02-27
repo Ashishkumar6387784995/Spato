@@ -319,14 +319,12 @@ class webController extends Controller
     public function showOrderHistoryApi()
     {
         $userId = Auth::guard('api')->user()->id;
-        $orders = Order::where('user_id', $userId)->get();
-        $orders = Order::
-                select('orders.*', 'users.name', 'products.Artikelname', 'products.Hersteller')
+        $orders = Order::select('orders.*', 'users.name', 'products.Artikelname', 'products.Hersteller')
                 ->join('users', 'users.id', '=', 'orders.user_id')
                 ->join('products', 'products.id', '=', 'orders.product_id')
-                // ->where('orders.user_id', $userId)
+                ->where('orders.user_id', $userId)
                 ->orderby('orders.created_at', 'DESC')
-                ->get()->groupBy('order_id');
+                ->get()->unique('order_id');
 
         if (count($orders)) {
             return response()->json(['message' => '1', 'orders'=> $orders]);

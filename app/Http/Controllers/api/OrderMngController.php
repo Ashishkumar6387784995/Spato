@@ -35,7 +35,7 @@ class OrderMngController extends Controller
     public function getOrdersDetailsApi(Request $request)
     {
         $orders = DB::table('orders')
-                ->select('orders.*', 'users.name', 'products.Artikelname', 'products.Hersteller')
+                ->select('orders.*', 'users.name', 'products.Artikelname', 'products.Hersteller', 'products.Bild_1')
                 ->join('users', 'users.id', '=', 'orders.user_id')
                 ->join('products', 'products.id', '=', 'orders.product_id')
                 ->where('orders.order_id', $request->order_id)
