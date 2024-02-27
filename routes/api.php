@@ -137,8 +137,8 @@ Route::middleware('api.auth')->group(function () {
   Route::POST('addContactsApi', [contactController::class, 'addContactsApi']);
 
   // Suppliers for Admin
-  Route::get('suppliersListingApi', [contactController::class, 'suppliersListingApi']);
-  Route::POST('addSuppliersApi', [contactController::class, 'addSuppliersApi']);
+  Route::get('suppliersListingApi', [SuppliersController::class, 'suppliersListingApi']);
+  Route::POST('addSuppliersApi', [SuppliersController::class, 'addSuppliersApi']);
 
 
 

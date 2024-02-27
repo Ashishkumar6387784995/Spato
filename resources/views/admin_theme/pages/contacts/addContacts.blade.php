@@ -422,9 +422,13 @@
                 </div>
                 <div class="row">
                     <div class="col mt-3 d-flex">
-                    <span>Zahlung</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal </span> <p style="display:flex; margin:0px 30px; "><span> MwSt. Satz</span><span style="border:1px solid #000; margin-left:10px; display:flex;"><input type="text" class="form-control" style="background-color:transparent; width:30px; padding:5px;" name="" id=""><span>%</span></span> </p>
+
+                    <span>Zahlung</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal </span> <p style="display:flex; margin:0px 30px;"><span> MwSt. Satz</span> <input type="text" class="form-control" name="MwSt_Satz" style="background-color:transparent; width:30px; padding:5px; margin-left:10px; border:1px solid #000;" name="" id=""><span>%</span></p>
+
+                   
+
                     </div>
-                    <span class="msg_err" id="rabatt_Gruppe_err" style="color:red;  font-size:13px;"></span>
+                    <span class="msg_err" id="Zahlung_err" style="color:red;  font-size:13px;"></span>
                 </div>
                 <div class="row">
                     <div class="col">
