@@ -139,10 +139,7 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
-                  <h2>Admin Dashboard</h2>
-                  <p>Monday, January 12, 2024</p>
-                </div>
+            @include('admin_theme/partial/admin_header')
                 <div class="row pt-3">
                     
                     <div class="col-md-2 stretch-card grid-margin" >
