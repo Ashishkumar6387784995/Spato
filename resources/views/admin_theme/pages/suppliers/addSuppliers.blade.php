@@ -139,14 +139,11 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
-                  <h2>Admin Dashboard</h2>
-                  <p>Monday, January 12, 2024</p>
-                </div>
+            @include('admin_theme/partial/admin_header')
                 <div class="row pt-3">
                     
                     <div class="col-md-2 stretch-card grid-margin" >
-                   <a href="#"  class="btn">Save</a>
+                   <button type="button" id="supplierSaveButton" class="btn">Save</button>
                     </div>
                     
                     <div class="col-md-2 stretch-card grid-margin" >
@@ -164,21 +161,22 @@
                     <div class="col">
                         
                         <div class="row">
+                        <!-- <div class="col stretch-card pt-3">
+                        Herstellernummer <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        </div> -->
                         <div class="col stretch-card pt-3">
-                        Herstellernummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        Lieferantennummer <input type="text" class="form-control"  aria-describedby="emailHelp" name="Lieferantennummer" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                         </div>
+                        
+                        </div>
+                        <div class="row">
                         <div class="col stretch-card pt-3">
-                        Lieferantennummer <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
+                        Firmenname <input type="text" class="form-control" name="Firmenname"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col stretch-card pt-3">
-                        Firmenname <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:25px;">
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col stretch-card pt-3">
-                        Ansprechpartner <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> Frau <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  style="margin:0px 10px;"> Herr <input type="text" class="form-control mx-2" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
+                        Ansprechpartner <input class="form-check-input" name="Ansprechpartner" type="radio" style="margin:0px 10px;"> Frau <input class="form-check-input" type="radio"  style="margin:0px 10px;"> Herr <input type="text" class="form-control mx-2"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:300px;">
                         </div>
                         </div>
                         <div class="row pt-3">
@@ -196,7 +194,7 @@
                        Straße
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="Straße"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -206,7 +204,7 @@
                        Straße
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="d_Straße"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -218,7 +216,7 @@
                        Ort
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="Ort"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -228,7 +226,7 @@
                        Ort
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="d_Ort"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -241,7 +239,7 @@
                        PLZ
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="PLZ"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -251,7 +249,7 @@
                        PLZ
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="d_PLZ"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -265,7 +263,7 @@
                        Land
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="Land"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -275,7 +273,7 @@
                        Land
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="d_Land" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -289,7 +287,7 @@
                        VAT ID
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="vat_id" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -299,7 +297,7 @@
                        Mobile
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="mobile"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -313,7 +311,7 @@
                        Telefon
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="telephone"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -323,7 +321,7 @@
                        Password
                         </div>
                         <div class="col-8">
-                       <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="password" class="form-control" name="passowrd"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -337,7 +335,7 @@
                        Mail 
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="email"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -348,7 +346,7 @@
 
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="re_email"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -362,7 +360,7 @@
                        WWW
                         </div>
                         <div class="col-8">
-                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
+                       <input type="text" class="form-control" name="www"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;">
                         </div>
                        </div>
                         </div>
@@ -372,7 +370,7 @@
                        <!-- Straße -->
                         </div>
                         <div class="col-8">
-                       <!-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;"> -->
+                       <!-- <input type="text" class="form-control"  aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black;"> -->
                         </div>
                        </div>
                         </div>
@@ -394,12 +392,12 @@
                 </div>      
                 <div class="row pt-3">
             <div class="col">
-            <span>Zahlung</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>14 Tage netto nach Erhalt der Rechnung</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>PayPal</span>
-            </div>
+            <span>Zahlung</span> <input class="form-check-input" name="Zahlung" type="radio" style="margin:0px 10px;" value="Vorkasse"> <span>Vorkasse</span> <input class="form-check-input" name="Zahlung" type="radio" style="margin:0px 10px;" value="14 Tage netto nach Erhalt der Rechnung"> <span>14 Tage netto nach Erhalt der Rechnung</span> <input class="form-check-input" name="Zahlung" type="radio" style="margin:0px 10px;" value="PayPal"> <span>PayPal</span>
+            </div>  
           </div>  
           <div class="row pt-3">
             <div class="col">
-            <span>Shop / APP sperren</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>ja</span> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="margin:0px 10px;"> <span>Nein</span> <span>Zugangsdaten Shop / APP ändern</span>
+            <span>Shop / APP sperren</span> <input class="form-check-input" type="radio" style="margin:0px 10px;" name="Shop_APP" value="ja"> <span>ja</span> <input class="form-check-input" type="radio" name="Shop_APP" style="margin:0px 10px;" value="Nein Zugangsdaten Shop / APP ändern"> <span>Nein</span> <span>Zugangsdaten Shop / APP ändern</span>
             </div>
           </div>  
     </div>
@@ -437,6 +435,125 @@
    </div>
   </div>
   <!-- Import Bulk Suppliers ends -->
+
+  <script>
+        $(document).ready(function() {
+            // Function to handle form submission
+
+            $('#supplierSaveButton').click(function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                
+      
+            $('#firm_name_err').text('');
+            $('#Straße_err').text('');
+            $('#Ort_err').text('');
+            $('#PLZ_err').text('');
+            $('#Land_err').text('');
+            $('#vat_id_err').text('');
+            $('#mobile_err').text('');
+            $('#password_err').text('');
+            $('#email_err').text('');
+            $('#Newsletter_err').text('');
+            $('#Shop_APP_err').text('');
+            $('#Zahlung').text('');
+
+                // Serialize the form data
+                var formData = $('form').serialize();
+
+                var token = localStorage.getItem('authToken');
+                console.log(token);
+
+                // Check if the token exists
+                if (!token) {
+                    console.error('Token not found in localStorage');
+                    window.location.href = '/api/home';
+                    // return;
+                }
+
+                // Send AJAX request
+                $.ajax({
+                    url: '/api/addSuppliersApi', // Replace with your endpoint URL
+                    method: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                    },
+                    success: function(response) {
+                        // Handle success response
+                        if (response.success) {
+                            console.log(response.success);
+
+                            // $('#AddOffersForm')[0].reset();
+                            $('#success_msg').text(response.success);
+                        } else if (response.ValidationError) {
+                            // Display validation errors in the console
+                            console.log(response.ValidationError);
+
+                            displayValidationErrors(response.ValidationError);
+
+                            // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
+
+                            // You can also update your HTML to show errors in a specific element
+                            // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
+                        } else if (response.error) {
+                            window.location.href = '/api/home';
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response
+                        console.error('Error saving data:', error);
+                        // Optionally, show an error message to the user
+                    }
+                });
+                function displayValidationErrors(errors) {
+                // Display validation errors next to the respective form fields
+                if (errors.typ) {
+                    $('#typ_err').text(errors.typ[0]);
+                }
+                if (errors.firm_name) {
+                    $('#firm_name_err').text(errors.firm_name[0]);
+                }
+                if (errors.Straße) {
+                    $('#Straße_err').text(errors.Straße[0]);
+                }
+                if (errors.Ort) {
+                    $('#Ort_err').text(errors.Ort[0]);
+                }
+                if (errors.PLZ) {
+                    $('#PLZ_err').text(errors.PLZ[0]);
+                }
+                if (errors.Land) {
+                    $('#Land_err').text(errors.Land[0]);
+                }
+                if (errors.vat_id) {
+                    $('#vat_id_err').text(errors.vat_id[0]);
+                }
+                if (errors.mobile) {
+                    $('#mobile_err').text(errors.mobile[0]);
+                }
+                if (errors.password) {
+                    $('#password_err').text(errors.password[0]);
+                }
+                if (errors.email) {
+                    $('#email_err').text(errors.email[0]);
+                }
+                if (errors.Newsletter) {
+                    $('#Newsletter_err').text('Newsletter is Required');
+                }
+                if (errors.Shop_APP) {
+                    $('#Shop_APP_err').text('Shop_APP Is Required');
+                }
+                if (errors.Zahlung) {
+                    $('#Zahlung_err').text(errors.Zahlung[0]);
+                }
+            }   
+            });
+
+          
+        });
+    </script>
   
     <!-- plugins:js -->
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>

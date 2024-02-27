@@ -132,10 +132,14 @@ Route::middleware('api.auth')->group(function () {
   Route::get('creditsListingApi', [creditsController::class, 'creditListingApi']);
   Route::post('addCreditsApi', [creditsController::class, 'addCreditsApi']);
 
-    // Contacts for Admin
-    Route::get('contactsListingApi', [contactController::class, 'contactsListingApi']);
-    Route::POST('addContactsApi', [contactController::class, 'addContactsApi']);
-  
+  // Contacts for Admin
+  Route::get('contactsListingApi', [contactController::class, 'contactsListingApi']);
+  Route::POST('addContactsApi', [contactController::class, 'addContactsApi']);
+
+  // Suppliers for Admin
+  Route::get('suppliersListingApi', [contactController::class, 'suppliersListingApi']);
+  Route::POST('addSuppliersApi', [contactController::class, 'addSuppliersApi']);
+
 
 
 
@@ -171,8 +175,6 @@ Route::middleware('api.auth')->group(function () {
   // cms api for static pages
 
   Route::get('/CmsUserRole', [cmsController::class, 'CmsUserRole']);
-
-
 });
 
 
