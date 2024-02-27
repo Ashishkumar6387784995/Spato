@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('rabatt_Gruppe')->nullable();
             $table->string('Shop_APP')->nullable();
             $table->string('Premium_connection')->nullable();
+            $table->string('supplier_code')->nullable();
 
             $table->timestamps();
         });
