@@ -1478,22 +1478,55 @@ if (tempAddress.company_name) {
               $.each(data, function(index, item) {
                 jQuery('.order-history-list').append(`
                   <div class="accordion">
-                    <div class="accordion-heading" onclick="getOrdersDetails('${item.order_id}')">
+                    <div class="accordion-heading" onclick="toggleAccordion('${index}')">
                       <table>
                         <tbody>
                           <tr>
-                            <td><b>${item.name}</b></td>
-                            <td>${item.order_id}</td>
-                            <td>${item.created_at}</td>
-                            <td class="pdf"><a href="${baseURL}/api/orders/invoice/${item.order_id}"><i class="fa-solid fa-file-pdf"></i> Download Invoice</a></td>
+                            <td><b>${item['0'].name}</b></td>
+                            <td>${item['0'].order_id}</td>
+                            <td>${item['0'].created_at}</td>
+                            <td class="pdf"><a href="${baseURL}/api/orders/invoice/${item['0'].order_id}"><i class="fa-solid fa-file-pdf"></i> Download Invoice</a></td>
                             <td style="width:100px; text-align:right;"><i class="fa-solid fa-chevron-down"></i></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
-
-                    <div id="${item.order_id}"></div>
                 `);
+
+                // function for populate orders details 
+                populateOrderList(item);
+
+                function populateOrderList(dataList) {
+                  
+                  var baseURL = window.location.origin;
+                  // Iterate through the dataList and add rows to the table
+                  var row = $(`
+                            <div class="accordion-content" id='${index}'>
+                              <table>
+                                <tbody>`);
+                  $.each(dataList, function(indexList, itemList) {
+                    row.append(`
+                      <tr>
+                        <td style="width:150px;"><img class="order-product-img" src="{{ asset('assets/frontEnd/web/images/robot-2.png') }}" alt="" srcset="">
+                        </td>
+                        <td>
+                          <h5>Badu Aplha Delta Eco...</h5>
+                          <p>Price - <span class="price">2520€</span></p>
+                        </td>
+
+                        <td style="width:130px;">
+                          <p><b>GU - 12348</b></p>
+                        </td>
+                        <td>
+                        <p>East Streets 14, Word No. 04, Road
+                          No. 13/x, House no. 1320/C, Flat No.
+                          5D, Berlin - 1200, Germany</p>
+                        </td>
+                      </tr>`);
+                  });
+                  row.append(`</div></tbody></table>`);
+                  jQuery('.order-history-list .accordion').append(row);
+                };
               });
             }
           }
@@ -1504,63 +1537,6 @@ if (tempAddress.company_name) {
         }
       });
     });
-
-
-    // function for find get orders details by order id
-    function getOrdersDetails(order_id) {
-
-      jQuery('.order-content').remove();
-      // Make a GET request using AJAX
-      $.ajax({
-        url: '/api/getOrdersDetailsApi', // Replace with the actual endpoint URL
-        method: 'GET',
-        data: { order_id: order_id },
-        success: function(data) {
-          // Handle the successful response
-          if (data.ordersDtl) {
-            console.log('Orders Details:', data.ordersDtl);
-
-            // Call the function to populate the table with the initial data
-            populateOrderDtl(data.ordersDtl);
-
-            function populateOrderDtl(dataList) {
-              
-              var baseURL = window.location.origin;
-              // Iterate through the dataList and add rows to the table
-              var row = $(`
-                        <div class="order-content">
-                          <table>
-                            <tbody>`);
-              $.each(dataList, function(indexList, itemList) {
-                row.append(`
-                  <tr>
-                    <td style="width:150px;"><img class="order-product-img" src="${baseURL}/storage/${itemList.Bild_1}" alt="" srcset="">
-                    </td>
-                    <td>
-                      <h5>${itemList.Artikelname}</h5>
-                      <p>Price - <span class="price">${itemList.product_price}€</span></p>
-                    </td>
-
-                    <td style="width:130px;">
-                      <p><b>${itemList.apply_disc_code??''}</b></p>
-                    </td>
-                    <td><p>${itemList.delv_address}</p></td>
-                  </tr>`
-                );
-              });
-              row.append(`</div></tbody></table>`);
-              jQuery('#'+order_id).append(row);
-            };
-          } else {
-            console.log('Data received:', data.errors);
-          }
-        },
-        error: function(error) {
-        // Handle errors
-        console.error('Error:', error);
-        }
-      });
-    };
   </script>
  </body>
 </html>
