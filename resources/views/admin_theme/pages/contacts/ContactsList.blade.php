@@ -72,16 +72,17 @@
             padding: 10px 2px;
             width: 200px;
         }
-        table tr td a{
-            color:#54606c;
+
+        table tr td a {
+            color: #54606c;
         }
 
-        .kontakte-page a{
+        .kontakte-page a {
             color: #44e1d5 !important;
-  border: 1px solid #fcfcfc !important;
-  border-radius:5px;
-  margin-top:10px;
-  text-align:center;
+            border: 1px solid #fcfcfc !important;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -137,14 +138,14 @@
                 <div class="row">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                    Alle Kunden
+                        Alle Kunden
                     </div>
                 </div>
 
 
 
                 <span id="success_msg" style="color:green"></span>
-                <br>  <br> 
+                <br> <br>
 
 
                 <table id="dataTable">
@@ -155,41 +156,8 @@
                         <th>PLZ - Ort</th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>1256</td>
-                        <td>B2B</td>
-                        <td>Pool Bau Profi</td>
-                        <td>46578 Wesel</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>1256</td>
-                        <td>B2B</td>
-                        <td>Pool Bau Profi</td>
-                        <td>46578 Wesel</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>1256</td>
-                        <td>B2B</td>
-                        <td>Pool Bau Profi</td>
-                        <td>56478 Flammersfeld</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>1256</td>
-                        <td>B2B</td>
-                        <td>Pool Bau Profi</td>
-                        <td>46578 Wesel</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>1256</td>
-                        <td>B2B</td>
-                        <td>Pool Bau Profi</td>
-                        <td>46578 Wesel</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
+
+
                 </table>
 
             </div>
@@ -198,7 +166,7 @@
         </div>
     </div>
     </div>
-  
+
     <!-- partial -->
     </div>
     <!-- main-panel ends -->
@@ -209,75 +177,75 @@
     <!-- plugins:js -->
 
     <script>
-    // Execute the code when the document is ready
-    $(document).ready(function() {
-        // Get the token from localStorage
-        var token = localStorage.getItem('authToken');
-        console.log(token);
+        // Execute the code when the document is ready
+        $(document).ready(function() {
+            // Get the token from localStorage
+            var token = localStorage.getItem('authToken');
+            console.log(token);
 
-        // Check if the token exists
-        if (!token) {
-            console.error('Token not found in localStorage');
-            window.location.href = '/api/home';
-            // return;
-        }
+            // Check if the token exists
+            if (!token) {
+                console.error('Token not found in localStorage');
+                window.location.href = '/api/home';
+                // return;
+            }
 
-        // Make a GET request using AJAX
-        $.ajax({
-            url: '/api/contactsListingApi', // Replace with the actual endpoint URL
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + token,
-            },
-            success: function(data) {
-                // Handle the successful response
-               
-                if (data.users) {
-                    console.log('Data received:', data.users);
+            // Make a GET request using AJAX
+            $.ajax({
+                url: '/api/contactsListingApi', // Replace with the actual endpoint URL
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                },
+                success: function(data) {
+                    // Handle the successful response
+
+                    if (data.users) {
+                        console.log('Data received:', data.users);
 
 
-                    // Function to populate the table with data
-                    function populateTable(dataList) {
-                        var tableBody = $('#dataTable');
+                        // Function to populate the table with data
+                        function populateTable(dataList) {
+                            var tableBody = $('#dataTable');
 
-                        // Clear existing table rows
-              tableBody.find("tr:gt(0)").remove();
+                            // Clear existing table rows
+                            tableBody.find("tr:gt(0)").remove();
 
-                        // Iterate through the data and add rows to the table
-                        $.each(dataList, function(index, item) {
-                            var row = $('<tr>');
-                            row.append(`<td>${item.id}</td>`);
-                            row.append(`<td>${item.role}</td>`);
-                            row.append(`<td>${item.name}</td>`);
-                            row.append(`<td>${item.zipCode} , ${item.address}</td>`);
-                            // Check if the user role is Admin to add edit link
-                            if (data.responseTo === 'Admin') {
-                                row.append(`<td><a href="/api/editContacts/admin/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
-                            }
-                            // Append the row to the table body
-                            tableBody.append(row);
-                        });
+                            // Iterate through the data and add rows to the table
+                            $.each(dataList, function(index, item) {
+                                var row = $('<tr>');
+                                row.append(`<td>${item.id}</td>`);
+                                row.append(`<td>${item.role}</td>`);
+                                row.append(`<td>${item.name}</td>`);
+                                row.append(`<td>${item.zipCode} , ${item.address}</td>`);
+                                // Check if the user role is Admin to add edit link
+                                if (data.responseTo === 'Admin') {
+                                    row.append(`<td><a href="/api/editContacts/admin/${item.id}" class="edit" id="editProductBtn">bearbeiten</a></td>`);
+                                }
+                                // Append the row to the table body
+                                tableBody.append(row);
+                            });
+                        }
+
+                        // Call the function to populate the table with the initial data
+                        populateTable(data.users);
                     }
 
-                    // Call the function to populate the table with the initial data
-                    populateTable(data.users);
+                    if (data.error) {
+                        window.location.href = '/api/home';
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle specific errors
+                    if (xhr.status === 401) {
+                        console.error('Unauthorized: Please check your authentication token.');
+                    } else {
+                        console.error('Error:', error);
+                    }
                 }
-
-                if (data.error) {
-                    window.location.href = '/api/home';
-                }
-            },
-            error: function(xhr, status, error) {
-                // Handle specific errors
-                if (xhr.status === 401) {
-                    console.error('Unauthorized: Please check your authentication token.');
-                } else {
-                    console.error('Error:', error);
-                }
-            }
+            });
         });
-    });
-</script>
+    </script>
 
 
 
