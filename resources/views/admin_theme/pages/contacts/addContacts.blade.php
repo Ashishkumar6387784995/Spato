@@ -46,6 +46,7 @@
             height: 42px;
             text-decoration: none;
             border-radius: 5px;
+            font-weight:600;
             transition: 0.5s ease;
         }
 
@@ -148,14 +149,21 @@
 
                         <a href="#" class="mt-2">Umsatz 25.067,90 €</a>
                     </div>
-                    <div class="col-md-4 stretch-card grid-margin">
+                    <div class="col-md-2 stretch-card grid-margin">
                         <a href="#" class="mt-2">offene Rechnungen 5.007,90 € l</a>
                     </div>
-                    <div class="col-md-4 stretch-card grid-margin">
+                    <div class="col-md-2 stretch-card grid-margin">
                         <a href="#" class="mt-2">laufende Aufträge 18.054,09 €</a>
                     </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                    <button class="edit" type="button" data-bs-toggle="modal" data-bs-target="#customerModal">Import customer's CSV</button>
+                    </div>
                 </div>
-                <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
+                <div class="row">
+                    <div class="col">
+                        <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -409,7 +417,13 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="no"> <span>1</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="1"> <span>2</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" value="2" style="margin:0px 10px;"> <span>3</span> <span>Zahlung</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal</span> <span>MwSt. Satz</span> <input type="text" class="form-control" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; width:2px;" value="PayPal_MwSt_Satz">
+                        <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="no"> <span>1</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="1"> <span>2</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" value="2" style="margin:0px 10px;"> <span>3</span> 
+                    </div>
+                    <span class="msg_err" id="rabatt_Gruppe_err" style="color:red;  font-size:13px;"></span>
+                </div>
+                <div class="row">
+                    <div class="col mt-3 d-flex">
+                    <span>Zahlung</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal </span> <p style="display:flex; margin:0px 20px;"><span> MwSt. Satz</span> <input type="text" class="form-control" style="background-color:transparent; width:30px; padding:5px; margin-left:10px; border:1px solid #000;" name="" id=""><span>%</span></p>
                     </div>
                     <span class="msg_err" id="rabatt_Gruppe_err" style="color:red;  font-size:13px;"></span>
                 </div>
@@ -429,7 +443,37 @@
             </form>
         </div>
     </div>
+ <!-- Import Bulk Customer starts -->
+ <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
 
+
+    <form id="productsImportForm" method="post" enctype="multipart/form-data">
+     <div class="modal-content">
+
+      <div class="modal-header" style="border-bottom: 2px solid #44e1d5;">
+       <h1 class="modal-title fs-5" id="customerModalLabel">Import Files file</h1>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <span class="m-1 pb-2" id="import_success_message"
+        style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
+       
+         <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
+        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="ProductsImportFile"
+           id="ProductsImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;"
+           class="fa-solid fa-file-excel"></i></span></p>
+         <p id="ProductsImportFile-err" style="margin-top:1rem; color:red"></p>
+       </div>
+      <div class="modal-footer d-flex justify-content-between">
+       <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+       <button type="button" class="btn" id="productImportButton">Import</button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+  <!-- Import Bulk Customer ends -->
     <script>
         $(document).ready(function() {
             // Function to handle form submission
