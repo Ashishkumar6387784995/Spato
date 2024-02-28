@@ -281,7 +281,7 @@
                         </select>
                         <br>
                         <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
-                    </div><br>
+                    </div>
                     <div class="inputs"> 
           <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction('Offers')"></p>
           
