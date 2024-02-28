@@ -33,7 +33,7 @@ class ContactsImport implements ToCollection
                 'Zahlung' => $row[19],
                 'MwSt_Satz' => $row[21],
                 'Shop_APP' => $row[20],
-                'Premium_connection/h' => $row[22],
+                'Premium_connection' => $row[22],
             ]);
 
             // Save the user to the database

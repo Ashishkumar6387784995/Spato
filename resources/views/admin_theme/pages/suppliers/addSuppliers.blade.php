@@ -655,7 +655,7 @@
                     error: function(xhr, textStatus, errorThrown) {
                         try {
                             var errors = JSON.parse(xhr.responseText);
-
+                            $('#import_success_message').text("Not Imported ! Email Address already Taken").css("color", "red");
                             console.error('Validation Errors:', errors);
                         } catch (e) {
                             console.error('Non-JSON response:', xhr.responseText);

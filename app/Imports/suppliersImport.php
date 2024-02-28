@@ -21,19 +21,16 @@ class suppliersImport implements ToCollection
             // Create a new User model instance and fill it with data
             $user = new User([
                 'name' => $row[1],
-                // 'email' => $row[9],
-                // 'password' => Hash::make($row[15]),
-                // 'mobile' => $row[14],
-                // 'action' => $row[17],
-                // 'role' => $row[23],
-                // 'address' => $row[3] . '.' . $row[4]. '.' . $row[6],
-                // 'zipCode' => $row[5],
-                // 'vatNo' => $row[7],
-                // 'rabatt_Gruppe' => $row[18],
-                // 'Zahlung' => $row[19],
-                // 'MwSt_Satz' => $row[21],
-                // 'Shop_APP' => $row[20],
-                // 'Premium_connection/h' => $row[22],
+                'email' => $row[9],
+                'password' => Hash::make($row[15]),
+                'mobile' => $row[14],
+                'role' => $row[19],
+                'address' => $row[3] . '.' . $row[4]. '.' . $row[6],
+                'zipCode' => $row[5],
+                'vatNo' => $row[7],
+                'Zahlung' => $row[17],
+                'Shop_APP' => $row[19],
+                'Lieferantennummer' => $row[0],
             ]);
 
             // Save the user to the database
