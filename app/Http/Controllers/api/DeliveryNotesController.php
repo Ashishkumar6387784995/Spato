@@ -138,7 +138,7 @@ class DeliveryNotesController extends Controller
 
     public function editDeliveryNotesForSuppliers($role){
 
-        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers');
+        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role'));
 
     }
 }
