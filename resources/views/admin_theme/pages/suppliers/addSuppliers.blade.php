@@ -658,7 +658,8 @@
                             console.error('Validation Errors:', errors);
                         } catch (e) {
                             console.error('Non-JSON response:', xhr.responseText);
-                            $('#import_success_message').text("File Size is Too Large.");
+                            $('#import_success_message').text("File Size is Too Large.").css("color", "red");
+
                         }
                     }
                 });
