@@ -228,10 +228,10 @@
                     
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
-                    <a href="#"   class="btn">an L-1234 senden</a>
+                    <a href="#"   class="btn">An Lieferanten senden</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
-                    <a href="#"   class="btn">an KD 123456 senden</a>
+                    <a href="#"   class="btn">An den Kunden senden</a>
                     </div>
                 </div>
                 
