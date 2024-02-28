@@ -14,9 +14,14 @@ class claims_manager_Controller extends Controller
     }
 
 
-    public function editClaims(){
+    public function editClaims($role, $id){
      
-        return view('admin_theme/pages/claim_manager/editClaims');
+        return view('admin_theme/pages/claim_manager/editClaims')->with(compact('role', 'id'));
+    }
+
+
+    public function editSupplierClaims($id){
+        return view('admin_theme/pages/claim_manager/editSupplierClaims')->with(compact('id'));
     }
 
     public function addCliams($role){

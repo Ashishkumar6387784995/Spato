@@ -257,16 +257,16 @@
                     <div class="col-md-3" >
                     <div class="inputs">
                         <p>
-                            <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr" value="{{$newAssignmentNo}}" readonly /> 
+                            <input class="dynamic-field" type="text" placeholder='#' id="Claim_Nr" name="Claim_Nr" value="{{$newAssignmentNo}}" readonly /> 
                             <br>
-                            <span class="msg_err" id="Auftrags_Nr_err" style="color:red;  font-size:13px;"></span>
+                            <span class="msg_err" id="Claim_Nr_err" style="color:red;  font-size:13px;"></span>
                         </p>
                     </div>
 
                     <div class="inputs">
-                        <p><input class="dynamic-field" type="date" placeholder='#' id="Auftragsdatum" name="Auftragsdatum"
+                        <p><input class="dynamic-field" type="date" placeholder='#' id="Claimdatum" name="Claimdatum"
                             value="{{ now()->format('d-m-Y') }}" /> <br>
-                        <span class="msg_err" id="Auftragsdatum_err" style="color:red;  font-size:13px;"></span>
+                        <span class="msg_err" id="Claimdatum_err" style="color:red;  font-size:13px;"></span>
                         </p>
                     </div>
                     
@@ -331,9 +331,9 @@
                     </tr>
                     <tr>
                         <td>
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-</td>
-                        <td><input placeholder="#" type="text" name="1" id="1" value=""></td>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        </td>
+                        <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
                         <td><input placeholder="#" type="text" name="" id="" value=""></td>
                         <td><input placeholder="#" type="text" name="" id="" value=""></td>
                         <td><input placeholder="#" type="text" name="" id="" value=""></td>
