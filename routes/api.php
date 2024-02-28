@@ -269,6 +269,7 @@ Route::get('addDeliveryNotes/{role}', [DeliveryNotesController::class, 'addDeliv
 
 Route::get('editDeliveryNotes', [DeliveryNotesController::class, 'editDeliveryNotes']);
 Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sendDeliveryNotesMailsToB2C']);
+Route::get('editDeliveryNotesForSuppliers/{role}', [DeliveryNotesController::class, 'editDeliveryNotesForSuppliers']);
 
 
 // Bills for Admin

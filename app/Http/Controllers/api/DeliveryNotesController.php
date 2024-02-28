@@ -135,4 +135,10 @@ class DeliveryNotesController extends Controller
 
         return response()->json(['success' => "Delivery Notes Mail Send SuccessFully"]);
     }
+
+    public function editDeliveryNotesForSuppliers($role){
+
+        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers');
+
+    }
 }
