@@ -430,7 +430,7 @@
    <div class="modal-dialog">
 
 
-    <form id="productsImportForm" method="post" enctype="multipart/form-data">
+    <form id="suppliersImportForm" method="post" enctype="multipart/form-data">
      <div class="modal-content">
 
       <div class="modal-header" style="border-bottom: 2px solid #44e1d5;">
@@ -442,14 +442,13 @@
         style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
        
          <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
-        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="ProductsImportFile"
-           id="ProductsImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;"
+        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="suppliersImportFile" id="suppliersImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;"
            class="fa-solid fa-file-excel"></i></span></p>
-         <p id="ProductsImportFile-err" style="margin-top:1rem; color:red"></p>
+         <p id="suppliersImportFile-err" style="margin-top:1rem; color:red"></p>
        </div>
       <div class="modal-footer d-flex justify-content-between">
        <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
-       <button type="button" class="btn" id="productImportButton">Import</button>
+       <button type="button" class="btn" id="suppliersImportButton">Import</button>
       </div>
      </div>
     </form>
@@ -571,6 +570,99 @@
                 }
             }   
             });
+
+
+               // getProductCategory ();
+               $('#suppliersImportButton').on('click', function() {
+                $('#import_success_message').text('');
+                $('#suppliersImportFile-err').text('');
+                // $('#ProductsImageFile-err').text('');
+                // $('#ProductsPdfFile-err').text('');
+                
+                var formData = collectFormData();
+                
+                // Log form data to the console (for testing)
+                console.log('Form Data:', formData);
+                
+                // Send the formData to the server using AJAX
+                sendDataToServer(formData);
+            });
+            
+            // Function to collect form data
+            function collectFormData() {
+                var formData = new FormData($('#suppliersImportForm')[0]);
+                return formData;
+            }
+            
+            // Function to display validation errors
+            function displayValidationErrors(errors) {
+                if (errors.suppliersImportFile) {
+                    $('#suppliersImportFile-err').text(errors.suppliersImportFile[0]);
+                }
+                // if (errors.ProductsImageFile) {
+                    //  $('#ProductsImageFile-err').text(errors.ProductsImageFile[0]);
+                    // }
+                    // if (errors.ProductsPdfFile) {
+                        //  $('#ProductsPdfFile-err').text(errors.ProductsPdfFile[0]);
+                        // }
+                    }
+                    
+                    function sendDataToServer(formData) {
+                        var token = localStorage.getItem('authToken');
+                        console.log(token);
+                        console.log('hello');
+                        
+                        // Check if the token exists
+                        if (!token) {
+                            console.error('Token not found in localStorage');
+                            window.location.href = '/api/home';
+                            return; // exit the function if token is not present
+                }
+
+
+
+                // $('#import_success_message').text("Please Wait While We are Importing Your Data");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/suppliersImportApi',
+                    data: formData,
+                    processData: false, 
+                    contentType: false,
+                    headers: {
+                        'Authorization': 'Bearer ' + token, // include the token in the headers
+                    },
+                    success: function(response) {
+                        // Handle the success response from the server
+                        if (response.success) {
+                            $('#import_success_message').text(response.success);
+                            console.log('Server Response:', response.success);
+                            $('#productsImportForm')[0].reset();
+                        }
+
+                        if (response.error) {
+                            // Display validation errors next to the respective form fields
+                            console.log(response.error);
+                        }
+
+                        if (response.ValidationError) {
+                            // Display validation errors next to the respective form fields
+                            console.log(response.ValidationError);
+                            displayValidationErrors(response.ValidationError);
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        try {
+                            var errors = JSON.parse(xhr.responseText);
+
+                            console.error('Validation Errors:', errors);
+                        } catch (e) {
+                            console.error('Non-JSON response:', xhr.responseText);
+                            $('#import_success_message').text("File Size is Too Large.");
+                        }
+                    }
+                });
+            }
 
           
         });

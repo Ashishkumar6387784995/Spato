@@ -46,7 +46,7 @@
             height: 42px;
             text-decoration: none;
             border-radius: 5px;
-            font-weight:600;
+            font-weight: 600;
             transition: 0.5s ease;
         }
 
@@ -136,7 +136,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-            @include('admin_theme/partial/admin_header')
+                @include('admin_theme/partial/admin_header')
 
                 <div class="row pt-3">
 
@@ -155,7 +155,7 @@
                         <a href="#" class="mt-2">laufende Aufträge 18.054,09 €</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin">
-                    <button class="edit" type="button" data-bs-toggle="modal" data-bs-target="#customerModal">Import customer's CSV</button>
+                        <button class="edit" type="button" data-bs-toggle="modal" data-bs-target="#customerModal">Import customer's CSV</button>
                     </div>
                 </div>
                 <div class="row">
@@ -416,16 +416,17 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="no"> <span>1</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="1"> <span>2</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" value="2" style="margin:0px 10px;"> <span>3</span> 
+                        <span>Rabatt-Gruppe</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;"> <span>No</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="no"> <span>1</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" style="margin:0px 10px;" value="1"> <span>2</span> <input class="form-check-input" type="radio" name="rabatt_Gruppe" value="2" style="margin:0px 10px;"> <span>3</span>
                     </div>
                     <span class="msg_err" id="rabatt_Gruppe_err" style="color:red;  font-size:13px;"></span>
                 </div>
                 <div class="row">
                     <div class="col mt-3 d-flex">
 
-                    <span>Zahlung</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal </span> <p style="display:flex; margin:0px 30px;"><span> MwSt. Satz</span> <input type="text" class="form-control" name="MwSt_Satz" style="background-color:transparent; width:30px; padding:5px; margin-left:10px; border:1px solid #000;" name="" id=""><span>%</span></p>
+                        <span>Zahlung</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;" value="3"> <span>Vorkasse</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;"> <span>14</span> <span>Tage netto n. Erhalt der RE</span> <input class="form-check-input" type="radio" name="Zahlung" style="margin:0px 10px;" value="14 Tage netto n. Erhalt der RE"> <span>PayPal </span>
+                        <p style="display:flex; margin:0px 30px;"><span> MwSt. Satz</span> <input type="text" class="form-control" name="MwSt_Satz" style="background-color:transparent; width:30px; padding:5px; margin-left:10px; border:1px solid #000;" name="" id=""><span>%</span></p>
 
-                   
+
 
                     </div>
                     <span class="msg_err" id="Zahlung_err" style="color:red;  font-size:13px;"></span>
@@ -446,62 +447,56 @@
             </form>
         </div>
     </div>
- <!-- Import Bulk Customer starts -->
- <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
+    <!-- Import Bulk Customer starts -->
+    <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
 
 
-    <form id="productsImportForm" method="post" enctype="multipart/form-data">
-     <div class="modal-content">
+            <form id="contactsImportForm" method="post" enctype="multipart/form-data">
+                <div class="modal-content">
 
-      <div class="modal-header" style="border-bottom: 2px solid #44e1d5;">
-       <h1 class="modal-title fs-5" id="customerModalLabel">Import Files file</h1>
-       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-       <span class="m-1 pb-2" id="import_success_message"
-        style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
-       
-         <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
-        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="ProductsImportFile"
-           id="ProductsImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;"
-           class="fa-solid fa-file-excel"></i></span></p>
-         <p id="ProductsImportFile-err" style="margin-top:1rem; color:red"></p>
-       </div>
-      <div class="modal-footer d-flex justify-content-between">
-       <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
-       <button type="button" class="btn" id="productImportButton">Import</button>
-      </div>
-     </div>
-    </form>
-   </div>
-  </div>
-  <!-- Import Bulk Customer ends -->
+                    <div class="modal-header" style="border-bottom: 2px solid #44e1d5;">
+                        <h1 class="modal-title fs-5" id="customerModalLabel">Import Files file</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <span class="m-1 pb-2" id="import_success_message" style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
+
+                        <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
+                        <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="contactsImportFile" id="contactsImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;" class="fa-solid fa-file-excel"></i></span></p>
+                        <p id="ProductsImportFile-err" style="margin-top:1rem; color:red"></p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn" id="contactsImportButton">Import</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Import Bulk Customer ends -->
     <script>
         $(document).ready(function() {
             // Function to handle form submission
 
-
-
-
             $('#contactSaveButton').click(function(e) {
                 e.preventDefault(); // Prevent the default form submission
 
-                
-            $('#typ_err').text('');
-            $('#firm_name_err').text('');
-            $('#Straße_err').text('');
-            $('#Ort_err').text('');
-            $('#PLZ_err').text('');
-            $('#Land_err').text('');
-            $('#vat_id_err').text('');
-            $('#mobile_err').text('');
-            $('#password_err').text('');
-            $('#email_err').text('');
-            $('#Newsletter_err').text('');
-            $('#rabatt_Gruppe_err').text('');
-            $('#Shop_APP_err').text('');
-            $('#Premium_connection_err').text('');
+
+                $('#typ_err').text('');
+                $('#firm_name_err').text('');
+                $('#Straße_err').text('');
+                $('#Ort_err').text('');
+                $('#PLZ_err').text('');
+                $('#Land_err').text('');
+                $('#vat_id_err').text('');
+                $('#mobile_err').text('');
+                $('#password_err').text('');
+                $('#email_err').text('');
+                $('#Newsletter_err').text('');
+                $('#rabatt_Gruppe_err').text('');
+                $('#Shop_APP_err').text('');
+                $('#Premium_connection_err').text('');
 
                 // Serialize the form data
                 var formData = $('form').serialize();
@@ -552,54 +547,148 @@
                         // Optionally, show an error message to the user
                     }
                 });
+
                 function displayValidationErrors(errors) {
-                // Display validation errors next to the respective form fields
-                if (errors.typ) {
-                    $('#typ_err').text(errors.typ[0]);
+                    // Display validation errors next to the respective form fields
+                    if (errors.typ) {
+                        $('#typ_err').text(errors.typ[0]);
+                    }
+                    if (errors.firm_name) {
+                        $('#firm_name_err').text(errors.firm_name[0]);
+                    }
+                    if (errors.Straße) {
+                        $('#Straße_err').text(errors.Straße[0]);
+                    }
+                    if (errors.Ort) {
+                        $('#Ort_err').text(errors.Ort[0]);
+                    }
+                    if (errors.PLZ) {
+                        $('#PLZ_err').text(errors.PLZ[0]);
+                    }
+                    if (errors.Land) {
+                        $('#Land_err').text(errors.Land[0]);
+                    }
+                    if (errors.vat_id) {
+                        $('#vat_id_err').text(errors.vat_id[0]);
+                    }
+                    if (errors.mobile) {
+                        $('#mobile_err').text(errors.mobile[0]);
+                    }
+                    if (errors.password) {
+                        $('#password_err').text(errors.password[0]);
+                    }
+                    if (errors.email) {
+                        $('#email_err').text(errors.email[0]);
+                    }
+                    if (errors.Newsletter) {
+                        $('#Newsletter_err').text('Newsletter is Required');
+                    }
+                    if (errors.rabatt_Gruppe) {
+                        $('#rabatt_Gruppe_err').text('rabatt_Gruppe is Required');
+                    }
+                    if (errors.Shop_APP) {
+                        $('#Shop_APP_err').text('Shop_APP Is Required');
+                    }
+                    if (errors.Premium_connection) {
+                        $('#Premium_connection_err').text('Premium_connection is Required');
+                    }
                 }
-                if (errors.firm_name) {
-                    $('#firm_name_err').text(errors.firm_name[0]);
-                }
-                if (errors.Straße) {
-                    $('#Straße_err').text(errors.Straße[0]);
-                }
-                if (errors.Ort) {
-                    $('#Ort_err').text(errors.Ort[0]);
-                }
-                if (errors.PLZ) {
-                    $('#PLZ_err').text(errors.PLZ[0]);
-                }
-                if (errors.Land) {
-                    $('#Land_err').text(errors.Land[0]);
-                }
-                if (errors.vat_id) {
-                    $('#vat_id_err').text(errors.vat_id[0]);
-                }
-                if (errors.mobile) {
-                    $('#mobile_err').text(errors.mobile[0]);
-                }
-                if (errors.password) {
-                    $('#password_err').text(errors.password[0]);
-                }
-                if (errors.email) {
-                    $('#email_err').text(errors.email[0]);
-                }
-                if (errors.Newsletter) {
-                    $('#Newsletter_err').text('Newsletter is Required');
-                }
-                if (errors.rabatt_Gruppe) {
-                    $('#rabatt_Gruppe_err').text('rabatt_Gruppe is Required');
-                }
-                if (errors.Shop_APP) {
-                    $('#Shop_APP_err').text('Shop_APP Is Required');
-                }
-                if (errors.Premium_connection) {
-                    $('#Premium_connection_err').text('Premium_connection is Required');
-                }
-            }   
             });
 
-          
+
+            // getProductCategory ();
+            $('#contactsImportButton').on('click', function() {
+                $('#import_success_message').text('');
+                $('#contactImportFile-err').text('');
+                // $('#ProductsImageFile-err').text('');
+                // $('#ProductsPdfFile-err').text('');
+
+                var formData = collectFormData();
+
+                // Log form data to the console (for testing)
+                console.log('Form Data:', formData);
+
+                // Send the formData to the server using AJAX
+                sendDataToServer(formData);
+            });
+
+            // Function to collect form data
+
+
+
+
+            function collectFormData() {
+                var formData = new FormData($('#contactsImportForm')[0]);
+                return formData;
+            }
+
+            // Function to display validation errors
+            function displayValidationErrors(errors) {
+                if (errors.ProductsImportFile) {
+                    $('#ProductsImportFile-err').text(errors.contactsImportFile[0]);
+                }
+
+            }
+
+            function sendDataToServer(formData) {
+                var token = localStorage.getItem('authToken');
+                console.log(token);
+                console.log('hello');
+
+                // Check if the token exists
+                if (!token) {
+                    console.error('Token not found in localStorage');
+                    window.location.href = '/api/home';
+                    return; // exit the function if token is not present
+                }
+
+
+
+                // $('#import_success_message').text("Please Wait While We are Importing Your Data");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/contactsImportApi',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'Authorization': 'Bearer ' + token, // include the token in the headers
+                    },
+                    success: function(response) {
+                        // Handle the success response from the server
+                        if (response.success) {
+                            $('#import_success_message').text(response.success);
+                            console.log('Server Response:', response);
+                            $('#productsImportForm')[0].reset();
+                        }
+
+                        if (response.error) {
+                            // Display validation errors next to the respective form fields
+                            console.log(response.error);
+                        }
+
+                        if (response.ValidationError) {
+                            // Display validation errors next to the respective form fields
+                            console.log(response.ValidationError);
+
+                            displayValidationErrors(response.ValidationError);
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        try {
+                            var errors = JSON.parse(xhr.responseText);
+                            $('#import_success_message').text("Not Imported ! Email Address already Taken");
+                            console.error('Validation Errors:', errors);
+                        } catch (e) {
+                            console.error('Non-JSON response:', xhr.responseText);
+                            $('#import_success_message').text("File Size is Too Large.");
+                        }
+                    }
+                });
+            }
+
+
         });
     </script>
 

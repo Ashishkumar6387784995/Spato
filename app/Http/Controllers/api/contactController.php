@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Imports\contactsImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class contactController extends Controller
 {
@@ -103,5 +106,46 @@ class contactController extends Controller
             // Return a success response
             return response()->json(['error' => "User Is not Added SuccessFully",]);
         }
+    }
+
+    public function contactsImportApi(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'contactsImportFile' => 'required|mimes:csv,xlsx',
+        ]);
+
+        if ($validator->fails()) {
+            // Validation failed, return the errors as a JSON response
+            return response()->json(['ValidationError' => $validator->errors()]);
+        }
+
+           // Check if the file was uploaded successfully
+           if ($request->hasFile('contactsImportFile')) {
+            // Get the file from the request
+            $excelFile = $request->file('contactsImportFile');
+
+            // Access other form data if needed
+            $otherFormData = $request->input('otherFormData');
+
+            // Move the Excel file to a specific location
+            $excelFile->move(storage_path('app/public/contacts_import_files'), $excelFile->getClientOriginalName());
+
+            // Process the Excel file and import data into the database using the import class
+            $excelFilePath = storage_path('app/public/contacts_import_files') . '/' . $excelFile->getClientOriginalName();
+            Excel::import(new contactsImport(), $excelFilePath);
+
+            // Retrieve the last inserted product ID
+            $lastProductId = User::latest('id')->first()->id;
+
+
+            // Return a response or perform other actions
+            return response()->json(['success' => 'Data imported successfully']);
+        } else {
+            // Handle the case where no file was uploaded
+            return response()->json(['error' => 'No file uploaded']);   
+        }
+
+
+
     }
 }
