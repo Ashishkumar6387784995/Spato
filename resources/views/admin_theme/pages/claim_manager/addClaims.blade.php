@@ -335,10 +335,10 @@
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                         </td>
                         <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="Produkt" id="Produkt" value=""></td>
+                        <td><input placeholder="#" type="text" name="Beschreibung" id="Beschreibung" value=""></td>
+                        <td><input placeholder="#" type="text" name="Menge" id="" value="Menge"></td>
+                        <td><input placeholder="#" type="text" name="Einheit" id="" value="Einheit"></td>
                     </tr>
                 </table>
 
