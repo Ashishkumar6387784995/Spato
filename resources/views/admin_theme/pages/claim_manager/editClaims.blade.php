@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Bills</title>
+    <title>Add Claims</title>
     <!-- plugins:css -->
 
     <!-- endinject -->
@@ -31,6 +31,31 @@
             transition: transform 0.3s ease;
             /* You can adjust the scale value for the desired zoom effect */
 
+        }
+
+        
+        .contact-show {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border: 0.5px solid #000;
+            padding: 10px 10px;
+        }
+
+        
+        .showButton {
+            width: 250px;
+            background: transparent;
+            border: 1px solid #8F8C8C;
+            border-radius: 5px;
+        }
+
+        
+        .dynamic-field {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #8F8C8C;
+            border-radius: 5px;
         }
 
         .transform-hover:hover {
@@ -91,13 +116,67 @@
         a{
             color:#54606c;
         }
-        .claimmanager-page a{
+        .product-image{
+            width:250px;
+            padding:15px;
+            background-color:#fff;
+            border:1px solid #000;
+        }
+
+
+
+
+
+        .profile {
+   background-color: #eaebef;
+   margin-top: -1rem;
+   padding-top: -10rem !important;
+   margin-bottom: -10rem;
+   padding-bottom: 10rem;
+   clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+
+
+  #imageUpload {
+   display: none;
+  }
+
+  #profileImage {
+   cursor: pointer;
+  }
+
+  #profile-container {
+   width: 250px;
+   height: 200px;
+   overflow: hidden;
+   border: 1px solid black;
+   background-color: #ffffff;
+  }
+
+  #profile-container img {
+   width: 250px;
+   height: 200px;
+   margin: auto;
+  }
+
+  .upmsg{
+    color: cyan;
+    position:absolute;
+    /* top:10px; */
+    margin-top:80px;
+    margin-left:65px;
+    font-weight:900;
+  }
+
+  .claimmanager-page a{
             color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;
   margin-top:10px;
   text-align:center;
         }
+
     </style>
 </head>
 
@@ -128,8 +207,7 @@
     <div class="container-fluid page-body-wrapper">
 
 
-        @include('admin_theme/Partial/sidebar')
-
+    @include('admin_theme/Partial/sidebar')
 
 
         <!-- partial -->
@@ -141,248 +219,165 @@
                 </div>
                 <div class="row pt-3">
                     
-                    <div class="col-md-2 stretch-card grid-margin" >
+                    <div class="col-md-3 stretch-card grid-margin" >
                    <a href="#"  class="btn">Save</a>
                     </div>
                     
-                    <div class="col-md-2 stretch-card grid-margin" >
                     
+                    <div class="col-md-3 stretch-card grid-margin" >
+                    <a href="#"   class="btn">An Lieferanten senden</a>
                     </div>
                     <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">Lieferschein</a>
+                    <a href="#"   class="btn">Die Rechnung</a>
                     </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                    <a href="#"   class="btn">senden</a>
+                    <div class="col-md-4 stretch-card grid-margin" >
+                    <a href="#"   class="btn">An den Kunden senden</a>
                     </div>
                 </div>
+                
                 <div class="row pt-3">
                     
                     <div class="col-md-4" >
-                   
-                    <form action="">
-                     <textarea name="text" id="" cols="35" rows="10"></textarea>
-                    </form>
+                        <div class="contact-show">
+                            <p><b>Name</b> -> <span class="customer_dtl" id="customer_Name"><span></p>
+                            <p><b>Conatact</b> -> <span class="customer_dtl" id="customer_Contact"><span></p>
+                            <p><b>Email</b> -> <span class="customer_dtl" id="customer_Email"><span></p>
+                        </div>
                     </div>
                     <div class="col-md-2 " >
                     </div>
-                    <div class="col-md-1 " >
-                    </div>
                     <div class="col-md-3" >
-                   <p>Rechnungs-Nr.</p><br>
-                   <p>Rechnungsdatum</p><br>
-                   <p>Referenz</p><br>
-                   <p>Ihre Kundennummer</p> <br>
-                   <p>Ihre Ust. ID</p> <br>
+                   <p>Claim-Nr.</p>
+                   <p>Claimdatum</p>
+                   <p>Referenz</p>
+                   <p>Ihre Kundennummer</p> 
+                   <p>Ihre Ust. ID</p> 
                     </div>
-                    <div class="col-md-2" >
-                    <p><a href="#">AN-12345</a></p><br>
-                    <p><a href="#">15.01.2024</a></p><br>
-                    <p><a href="#">Mrs. Perfect</a></p><br>
-                    <p><a href="#">123456</a></p><br>
-                    <p><a href="#">DE 123456789</a></p><br>
+                    
+                    <div class="col-md-3" >
+                    <div class="inputs">
+                        <p>
+                            <input class="dynamic-field" type="text" placeholder='#' id="Claim_Nr" name="Claim_Nr" value="" readonly /> 
+                            <br>
+                            <span class="msg_err" id="Claim_Nr_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
+
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="date" placeholder='#' id="Claimdatum" name="Claimdatum"
+                            value="" /> <br>
+                        <span class="msg_err" id="Claimdatum_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
+                    
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
+                    </div>
+
+                    <div class="inputs">
+                        <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton dynamic-field" role-filter="Assignments" required>
+                        </select>
+                        <br>
+                        <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+                    </div><br>
+
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>
+                        <span class="msg_err" id="Ihre_Ust_ID_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
+
+                    <div class="details">
+                        <div class="field">
+                            <p style="display:none">Email</p>
+                        </div>
+                        <div class="inputs">
+                            <p><input class="dynamic-field" type="text" placeholder='#' class="customer_dtl" id="customer_email" name="customer_email"
+                                style="display:none" />
+                            </p>
+                        </div>
                     </div>
                 </div>
+                
 
                 <div class="row pt-3">
                     
-                    <div class="col-md-4" >
-                   <h4>Rechnungs-Nr. <a href="#">RE-12345</a></h4>
-                    </div>
-                    <div class="col-md-3 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Kopfzeile Standard</a>
+                    <div class="col-md-2" >
+                   <p>Suche aus </p>
                     </div>
                     <div class="col-md-2 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Kopfzeile neu</a>
+                     <a href="#"   class="btn">RE Nummer</a>
+                    </div>
+                    <div class="col-md-2 stretch-card grid-margin" >
+                     <a href="#"   class="btn">Referenz</a>
                     </div>
                     <!-- <div class="col-md-2 " > </div> -->
-                    <div class="col-md-2 " > </div>
-                    
-                </div>
+                    <div class="col-md-2 " ><a href="#"   class="btn">Artikelnr.</a></div>
+                    <div class="col-md-2 " ><a href="#"   class="btn">Zeitraum</a></div>
+                    <div class="col-md-2 " ><a href="#"   class="btn">Freitext suche</a></div>
                 
-                
-                
-                
-                <form method="post" action="">
-                @csrf
-       
-
-            
-
-            <div class="form-group col-lg-3" style="display:none">
-                <input type="text" name="jobRequestNo" class="form-control" id="firstname" value="" >
-                <label for="firstname">Job Request No</label>
-                </div> 
-
-           
-
-              <div class="">
-                <div class="table-responsive">
-                    <table id="table">
-                        <thead>
-                            <tr >
-                                <th>
-                                POS.
-                                </th>
-                                <th>
-                                Produkt
-                                </th>
-                                <th>
-                                Beschreibung
-                                </th>
-                                <th>
-                                Menge
-                                </th>
-                                <th>
-                                Einheit
-                                </th>
-                                <th>
-                                Einzelpreis
-                                </th>
-                                <th>Rabatt</th>
-                                <th>Gesamtpreis</th>
-                                <th></th>
-                               
-                            </tr>
-                          
-
-                        </thead>
-                        <tbody>
-
-                      
-
-
-                            <tr  class="hidden" >
-                                <td >
-                                    <input type="text" name='inputs[0][SNo]' value="1"  placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][stdValue]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X1]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X2]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X3]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X4]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='inputs[0][X5]' placeholder='#'/>
-                                </td>
-                                <td >
-                                    <input type="text" name='' placeholder='#'/>
-                                </td>
-                                <td >
-                                <a href="">delete</a>
-                                </td>
-                            
-                            </tr>
-
-
-                            <tr  class="hidden1" id="abc" style="display:none;">
-                                <td><b>Expended<br>Uncertainity</b></td>
-                                  <td >
-                                      <input colspan="2" type="text" name='E0StdValue' placeholder='#'/> 
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X1' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X2' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X3' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                      <input type="text" name='E0X4' placeholder='#'/>
-                                  </td>
-                                  <td >
-                                    <input type="text" name='E0X5' placeholder='#'/>
-                                </td>
-                               </tr>
-
-                            
-
-
-                        </tbody>
-                    </table>
-
-                    <table>
-                       
-                    </table>
                 </div>
-            </div><br>
-            <button id="add" type="button" name="add" class="btn">+ neuer Artikel</button><br>
-
-
-            <!-- <button type="submit" class="btn btn-common">Submit</button> -->
-
-        </form>
-
-                <hr style="border: 1px solid #54606c;" />
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card" >
-                    Lieferbedingungen: zzgl. Frachtkosten
-                    </div>
-                   
-                    <div class="col-4 stretch-card "  >
-                    Gesamt netto
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    2.194,61 €
-                    </div>
-                    
+                <div class="mb-3">
+                aus <a href="#">RE-12345</a> erstellt aus <a href="">AB-12345</a> erstellt aus <a href=""> LI-12345 erstellt</a>
                 </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card" >
-                    Zahlungsbedingungen: nach Vereinbarung
-                    </div>
-                   
-                    <div class="col-4 stretch-card "  >
-                    zzgl. Umsatzsteuer 19 %
-                    </div>
-                    <div class="col-2 stretch-card "  >
-                    416,98 €
-                    </div>
-                    
-                </div>
-                <div class="row pt-3">
-                    
-                    <div class="col-6 stretch-card">
-                    
-                    </div>
-                   
-                    <div class="col-4 stretch-card dt">
-                    Gesamtbetrag brutto
-                    </div>
-                    <div class="col-2 stretch-card ">
-                    2.611,59 €
-                    </div>
-                    
-                </div>
+                <table>
+                    <tr>
+                        <th>Auswählen</th>
+                        <th>POS.</th>
+                        <th>Produkt</th>
+                        <th>Beschreibung</th>
+                        <th>Menge</th>
+                        <th>Einheit</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        </td>
+                        <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                    </tr>
+                </table>
+
+              
                 <div class="row pt-3">
                     
                     <div class="col stretch-card" >
-                        
+                        <p>Claim-Bild upload</p>
+                    </div>
+                    
+                    <div class="col stretch-card text-right"  >
+                    <p>Seriennummer: </p>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
                     </div>
                     <div class="col stretch-card"  >
                         
                     </div>
-                    <div class="col stretch-card "  >
-                    <a href="#" class="edit">Fußzeile Standard</a>
-                    </div>
+                </div>
+                
+                <div class="row pt-3">
                     
-                    <div class="col stretch-card" >
-                        <a href="#" class="edit">Fußzeile neu</a>
+                    <div class="col-3" >
+                    <div id="profile-container">
+                       <p class="upmsg"> Upload Image</p>
+          <img id="profileImage">
+        </div>
+         <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
+         class="product-image"
+          capture>
+
+        </div> 
+                    
+                    <div class="col-9"  >
+                    <p>Fehlerbeschreibung: </p>
+  <textarea class="form-control"  placeholder="" id="floatingTextarea" style="height:6rem; border:1px solid #000; background-color:transparent;"></textarea>
+                    <div class="row pt-2">
+                    <div class="col">Bearbeitungsstand </div>
+                    <div class="col">fertig <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
+                    <div class="col">offen <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
                     </div>
-                    <div class="col stretch-card"  >
-                        
                     </div>
                 </div>
            
@@ -410,7 +405,26 @@
     <!-- plugins:js -->
 
 
+<script>
+    $("#profile-container").click(function(e) {
+       $("#imageUpload").click();
+      });
 
+      function fasterPreview(uploader) {
+       if (uploader.files && uploader.files[0]) {
+        $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+       }
+      }
+
+      $("#imageUpload").change(function() {
+       fasterPreview(this);
+      });
+
+      document.getElementById('imageUpload').addEventListener('click', function() {
+    document.querySelector('.upmsg').style.display = 'none';
+});
+</script>
+    <script type="text/javascript" src="{{ asset('js/admin/common.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
@@ -420,63 +434,5 @@
 
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
-
-
-    <script>
-     
-     var i= 0;
-     var No=1;
-     console.log(i);
-     $('#add').click(function(){
-         ++i;
-       
-         ++No;
-         console.log(i);
-   
-         $('#abc').before(
-             `<tr>
-          
-                     <td >
-                                                     <input type="text" value='`+No+`' name='inputs[`+i+`][SNo]'  placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][stdValue]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X1]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X2]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X3]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X4]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X5]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                 <a href="">delete</a>
-                                                 </td>
-                                              
-                                                
-                                
-                         </tr>
-                         `
-            
-         );
-     });
- 
-     $(document).on('click','.remove-table-row', function(){
-         $(this).parents('tr').remove();
- 
-     });
- 
-     </script>
 </body>
 </html>

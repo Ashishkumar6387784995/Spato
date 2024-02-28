@@ -128,9 +128,11 @@
                 </div>
                 <div class="row pt-3">
 
+                @if($role =='admin' || $role =='b2b')
                     <div class="col-md-4 stretch-card grid-margin">
                         <a class="edit btn" href="{{url('/api/addClaims/' .$role)}}">+ neue Reklamation</a>
                     </div>
+                @endif
                     <div class="col-md-4 stretch-card grid-margin">
                         Filter
                     </div>

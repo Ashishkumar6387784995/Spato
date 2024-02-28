@@ -296,7 +296,7 @@ Route::post('sendCredistMailsToB2C', [creditsController::class, 'sendCredistMail
 Route::get('claimsListingApi', [claims_manager_Controller::class, 'claimsListing']);
 Route::view('claimsListing/{role}', 'admin_theme/pages/claim_manager/claimsList');
 Route::get('addClaims/{role}', [claims_manager_Controller::class, 'addCliams']);
-Route::get('editClaims', [claims_manager_Controller::class, 'editCliams']);
+Route::get('editClaims/{role}/{id}', [claims_manager_Controller::class, 'editClaims']);
 
 
 // Contact for Admin

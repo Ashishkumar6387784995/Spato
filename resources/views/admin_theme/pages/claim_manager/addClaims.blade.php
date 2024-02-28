@@ -33,6 +33,31 @@
 
         }
 
+        
+        .contact-show {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border: 0.5px solid #000;
+            padding: 10px 10px;
+        }
+
+        
+        .showButton {
+            width: 250px;
+            background: transparent;
+            border: 1px solid #8F8C8C;
+            border-radius: 5px;
+        }
+
+        
+        .dynamic-field {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #8F8C8C;
+            border-radius: 5px;
+        }
+
         .transform-hover:hover {
             transform: scale(1.1);
             cursor: pointer;
@@ -195,28 +220,30 @@
                 </div>
                 <div class="row pt-3">
                     
-                    <div class="col-md-2 stretch-card grid-margin" >
+                    <div class="col-md-3 stretch-card grid-margin" >
                    <a href="#"  class="btn">Save</a>
                     </div>
                     
-                    <div class="col-md-2 stretch-card grid-margin" >
                     
+                    <div class="col-md-3 stretch-card grid-margin" >
+                    <a href="#"   class="btn">An Lieferanten senden</a>
+                    </div>
+                    <div class="col-md-2 stretch-card grid-margin" >
+                    <a href="#"   class="btn">Die Rechnung</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
-                    <a href="#"   class="btn">an L-1234 senden</a>
-                    </div>
-                    <div class="col-md-4 stretch-card grid-margin" >
-                    <a href="#"   class="btn">an KD 123456 senden</a>
+                    <a href="#"   class="btn">An den Kunden senden</a>
                     </div>
                 </div>
                 
                 <div class="row pt-3">
                     
                     <div class="col-md-4" >
-                   
-                    <form action="">
-                     <textarea name="text" id="" cols="35" rows="10"></textarea>
-                    </form>
+                        <div class="contact-show">
+                            <p><b>Name</b> -> <span class="customer_dtl" id="customer_Name"><span></p>
+                            <p><b>Conatact</b> -> <span class="customer_dtl" id="customer_Contact"><span></p>
+                            <p><b>Email</b> -> <span class="customer_dtl" id="customer_Email"><span></p>
+                        </div>
                     </div>
                     <div class="col-md-2 " >
                     </div>
@@ -229,11 +256,47 @@
                     </div>
                     
                     <div class="col-md-3" >
-                    <p><input type="text" name="Claim_Nr" id=""></p>
-                    <p><input type="text" name="Claimdatum" id=""></p>
-                    <p><input type="text" name="Referenz" id=""></p>
-                    <p><input type="text" name="Ihre_Kundennummer" id=""></p>
-                    <p><input type="text" name="Ihre_Ust_ID" id=""></p>
+                    <div class="inputs">
+                        <p>
+                            <input class="dynamic-field" type="text" placeholder='#' id="Claim_Nr" name="Claim_Nr" value="{{$newAssignmentNo}}" readonly /> 
+                            <br>
+                            <span class="msg_err" id="Claim_Nr_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
+
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="date" placeholder='#' id="Claimdatum" name="Claimdatum"
+                            value="{{ now()->format('d-m-Y') }}" /> <br>
+                        <span class="msg_err" id="Claimdatum_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
+                    
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
+                    </div>
+
+                    <div class="inputs">
+                        <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton dynamic-field" role-filter="Assignments" required>
+                        </select>
+                        <br>
+                        <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+                    </div><br>
+
+                    <div class="inputs">
+                        <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>
+                        <span class="msg_err" id="Ihre_Ust_ID_err" style="color:red;  font-size:13px;"></span>
+                        </p>
+                    </div>
+
+                    <div class="details">
+                        <div class="field">
+                            <p style="display:none">Email</p>
+                        </div>
+                        <div class="inputs">
+                            <p><input class="dynamic-field" type="text" placeholder='#' class="customer_dtl" id="customer_email" name="customer_email"
+                                style="display:none" />
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
@@ -269,13 +332,13 @@
                     </tr>
                     <tr>
                         <td>
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-</td>
-                        <td><input placeholder="#" type="text" name="1" id="1" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        </td>
+                        <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
+                        <td><input placeholder="#" type="text" name="Produkt" id="Produkt" value=""></td>
+                        <td><input placeholder="#" type="text" name="Beschreibung" id="Beschreibung" value=""></td>
+                        <td><input placeholder="#" type="text" name="Menge" id="" value="Menge"></td>
+                        <td><input placeholder="#" type="text" name="Einheit" id="" value="Einheit"></td>
                     </tr>
                 </table>
 
@@ -362,6 +425,7 @@
     document.querySelector('.upmsg').style.display = 'none';
 });
 </script>
+    <script type="text/javascript" src="{{ asset('js/admin/common.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
