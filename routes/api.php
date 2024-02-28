@@ -294,7 +294,6 @@ Route::get('claimsListingApi', [claims_manager_Controller::class, 'claimsListing
 Route::view('claimsListing/{role}', 'admin_theme/pages/claim_manager/claimsList');
 Route::get('addClaims/{role}', [claims_manager_Controller::class, 'addCliams']);
 Route::get('editClaims/{role}/{id}', [claims_manager_Controller::class, 'editClaims']);
-Route::get('editSupplierClaims/{id}', [claims_manager_Controller::class, 'editSupplierClaims']);
 
 
 // Contact for Admin
