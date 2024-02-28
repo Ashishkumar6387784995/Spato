@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('claims__lists', function (Blueprint $table) {
+        Schema::create('claims_lists', function (Blueprint $table) {
             $table->id();
             $table->string('Claim_Nr');
             $table->date('Claimdatum')->nullable();
@@ -47,6 +47,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('claims__lists');
+        Schema::dropIfExists('claims_lists');
     }
 };
