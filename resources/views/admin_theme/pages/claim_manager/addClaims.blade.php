@@ -252,6 +252,7 @@
                    <p>Claimdatum</p>
                    <p>Referenz</p>
                    <p>Ihre Kundennummer</p> 
+                   <p>Ihre Kundenname</p> 
                    <p>Ihre Ust. ID</p> 
                     </div>
                     
@@ -281,6 +282,18 @@
                         <br>
                         <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
                     </div><br>
+                    <div class="inputs"> 
+          <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction('Offers')"></p>
+          
+          <div id="guessCompanyName">
+            <ul>
+
+            </ul>
+            </div>
+          <br>
+          <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+
+         </div>
 
                     <div class="inputs">
                         <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>

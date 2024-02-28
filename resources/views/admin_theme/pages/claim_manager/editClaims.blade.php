@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -224,7 +223,7 @@
                     </div>
                     
                     
-                    <div class="col-md-3 stretch-card grid-margin" >
+                    <!-- <div class="col-md-3 stretch-card grid-margin" >
                     <a href="#"   class="btn">An Lieferanten senden</a>
                     </div>
                     <div class="col-md-2 stretch-card grid-margin" >
@@ -232,7 +231,7 @@
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
                     <a href="#"   class="btn">An den Kunden senden</a>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <div class="row pt-3">
@@ -251,48 +250,41 @@
                    <p>Claimdatum</p>
                    <p>Referenz</p>
                    <p>Ihre Kundennummer</p> 
+                   <p>Ihre Kundenname</p> 
                    <p>Ihre Ust. ID</p> 
                     </div>
                     
                     <div class="col-md-3" >
                     <div class="inputs">
-                        <p>
-                            <input class="dynamic-field" type="text" placeholder='#' id="Claim_Nr" name="Claim_Nr" value="" readonly /> 
-                            <br>
-                            <span class="msg_err" id="Claim_Nr_err" style="color:red;  font-size:13px;"></span>
-                        </p>
+                        <p class="" type="text" placeholder='#' id="Claim_Nr" name="Claim_Nr" value="CL - 14375">CL - 14375</p>                            
                     </div>
 
                     <div class="inputs">
-                        <p><input class="dynamic-field" type="date" placeholder='#' id="Claimdatum" name="Claimdatum"
-                            value="" /> <br>
-                        <span class="msg_err" id="Claimdatum_err" style="color:red;  font-size:13px;"></span>
-                        </p>
+                        <p class="" type="date" placeholder='#' id="Claimdatum" name="Claimdatum"
+                            value="">24/03/2024</p>
                     </div>
                     
                     <div class="inputs">
-                        <p><input class="dynamic-field" type="text" placeholder='#' id="Referenz" name="Referenz" /></p>
+                        <p class="" type="text" placeholder='#' id="Referenz" name="Referenz">User</p>
                     </div>
 
                     <div class="inputs">
-                        <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton dynamic-field" role-filter="Assignments" required>
-                        </select>
-                        <br>
-                        <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
-                    </div><br>
+                        <p id="" name="Ihre_Kundennummer" class=" " role-filter="Assignments" required>Id - 25</p>
+                    </div>
+                    <div class="inputs">
+                        <p id="" name="Ihre_Kundenname" class=" " role-filter="Assignments" required>Alex Driver</p>
+                    </div>
 
                     <div class="inputs">
-                        <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>
-                        <span class="msg_err" id="Ihre_Ust_ID_err" style="color:red;  font-size:13px;"></span>
-                        </p>
-                    </div>
+                    <p class="" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" >684365465465465</p><br>
+                </div>
 
                     <div class="details">
                         <div class="field">
                             <p style="display:none">Email</p>
                         </div>
                         <div class="inputs">
-                            <p><input class="dynamic-field" type="text" placeholder='#' class="customer_dtl" id="customer_email" name="customer_email"
+                            <p><input class="" type="text" placeholder='#' class="customer_dtl" id="customer_email" name="customer_email"
                                 style="display:none" />
                             </p>
                         </div>
@@ -301,28 +293,10 @@
                 
 
                 <div class="row pt-3">
-                    
-                    <div class="col-md-2" >
-                   <p>Suche aus </p>
-                    </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                     <a href="#"   class="btn">RE Nummer</a>
-                    </div>
-                    <div class="col-md-2 stretch-card grid-margin" >
-                     <a href="#"   class="btn">Referenz</a>
-                    </div>
-                    <!-- <div class="col-md-2 " > </div> -->
-                    <div class="col-md-2 " ><a href="#"   class="btn">Artikelnr.</a></div>
-                    <div class="col-md-2 " ><a href="#"   class="btn">Zeitraum</a></div>
-                    <div class="col-md-2 " ><a href="#"   class="btn">Freitext suche</a></div>
-                
-                </div>
-                <div class="mb-3">
-                aus <a href="#">RE-12345</a> erstellt aus <a href="">AB-12345</a> erstellt aus <a href=""> LI-12345 erstellt</a>
+                                   
                 </div>
                 <table>
                     <tr>
-                        <th>Auswählen</th>
                         <th>POS.</th>
                         <th>Produkt</th>
                         <th>Beschreibung</th>
@@ -330,27 +304,21 @@
                         <th>Einheit</th>
                     </tr>
                     <tr>
-                        <td>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        </td>
-                        <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
-                        <td><input placeholder="#" type="text" name="" id="" value=""></td>
+                        <td><p placeholder="#" type="text" name="POS" id="POS" value="">#</p></td>
+                        <td><p placeholder="#" type="text" name="" id="" value="">#</p></td>
+                        <td><p placeholder="#" type="text" name="" id="" value="">#</p></td>
+                        <td><p placeholder="#" type="text" name="" id="" value="">#</p></td>
+                        <td><p placeholder="#" type="text" name="" id="" value="">#</p></td>
                     </tr>
                 </table>
 
               
                 <div class="row pt-3">
                     
-                    <div class="col stretch-card" >
-                        <p>Claim-Bild upload</p>
-                    </div>
-                    
-                    <div class="col stretch-card text-right"  >
-                    <p>Seriennummer: </p>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
+                                      
+                    <div class="col stretch-card text-right d-flex">
+                    <b><p>Seriennummer: </p>
+                    <p type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="margin-left:10px; padding:3px;">845555145145</p></b>
                     </div>
                     <div class="col stretch-card"  >
                         
