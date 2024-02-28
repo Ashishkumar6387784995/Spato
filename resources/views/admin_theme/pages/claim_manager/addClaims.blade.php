@@ -220,15 +220,16 @@
                 </div>
                 <div class="row pt-3">
                     
-                    <div class="col-md-2 stretch-card grid-margin" >
+                    <div class="col-md-3 stretch-card grid-margin" >
                    <a href="#"  class="btn">Save</a>
                     </div>
                     
-                    <div class="col-md-2 stretch-card grid-margin" >
                     
-                    </div>
-                    <div class="col-md-4 stretch-card grid-margin" >
+                    <div class="col-md-3 stretch-card grid-margin" >
                     <a href="#"   class="btn">An Lieferanten senden</a>
+                    </div>
+                    <div class="col-md-2 stretch-card grid-margin" >
+                    <a href="#"   class="btn">Die Rechnung</a>
                     </div>
                     <div class="col-md-4 stretch-card grid-margin" >
                     <a href="#"   class="btn">An den Kunden senden</a>
