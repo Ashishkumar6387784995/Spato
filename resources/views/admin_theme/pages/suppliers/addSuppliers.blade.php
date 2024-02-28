@@ -421,7 +421,8 @@
             </div>
           </div>  
           <span class="msg_err" id="Shop_APP_err" style="color:red;  font-size:13px;"></span>
-    </div>
+        </div>
+        </form>
     </div>  
     </div>
   
