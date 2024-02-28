@@ -28,6 +28,13 @@ class User extends Authenticatable
         'address',
         'zipCode',
         'vatNo',
+        'rabatt_Gruppe',
+        'Zahlung',
+        'MwSt_Satz',
+        'Shop_APP',
+        'Premium_connection',
+        'Lieferantennummer',
+
     ];
 
     /**

@@ -19,7 +19,12 @@ class DeliveryNotesController extends Controller
         if ($user->role == 'Admin') {
             $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');;
         } elseif ($user->role == 'supplier') {
-            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');
+            $delivery_notes = Delivery_notes::select('Lieferschein_Nr', 'Lieferdatum', 'Ihre_Kundennummer', 'Einheit')
+            ->whereRaw('CAST(SUBSTRING_INDEX(Produkt, ".", 1) AS UNSIGNED) = ?', [$user->Lieferantennummer])
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->unique('Lieferschein_Nr');
+        
         } else {
             $offers = 'offer not found';
         }
@@ -134,5 +139,11 @@ class DeliveryNotesController extends Controller
         Mail::to($email)->send(new DeliveryNotesMailer($Lieferschein_Nr));
 
         return response()->json(['success' => "Delivery Notes Mail Send SuccessFully"]);
+    }
+
+    public function editDeliveryNotesForSuppliers($role){
+
+        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role'));
+
     }
 }
