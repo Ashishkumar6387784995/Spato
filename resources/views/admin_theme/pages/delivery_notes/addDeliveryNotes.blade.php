@@ -289,9 +289,9 @@
             {{--<div class="col-md-4 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#auftrag">
         <a href="#" class="btn">Auftrag</a>
        </div>--}}
-            <div class="col-md-3 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
+            <!-- <div class="col-md-3 stretch-card grid-margin" data-bs-toggle="modal" data-bs-target="#lieferschein">
               <a href="#" class="btn">Lieferungen aufteilen</a>
-            </div>
+            </div> -->
             {{--<div class="col-md-2 stretch-card grid-margin">
         <a href="{{url('api/assignmentPdfdownload/'.$newDeliveryNotesNo)}}"><button class="btn" type="button">Rechnung</button></a>
           </div>--}}
