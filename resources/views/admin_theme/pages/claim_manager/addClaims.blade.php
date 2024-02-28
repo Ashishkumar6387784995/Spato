@@ -213,6 +213,7 @@
 
         <!-- partial -->
         <div class="main-panel">
+            <form id="claimsSubmitForm">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
                   <h2>Admin Dashboard</h2>
@@ -221,7 +222,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-md-3 stretch-card grid-margin" >
-                   <a href="#"  class="btn">Save</a>
+                   <a href="#" class="btn" onclick="submitClainForm();">Save</a>
                     </div>
                     
                     
@@ -235,7 +236,7 @@
                     <a href="#"   class="btn">An den Kunden senden</a>
                     </div>
                 </div>
-                
+                <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
                 <div class="row pt-3">
                     
                     <div class="col-md-4" >
@@ -350,8 +351,17 @@
                         <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
                         <td><input placeholder="#" type="text" name="Produkt" id="Produkt" value=""></td>
                         <td><input placeholder="#" type="text" name="Beschreibung" id="Beschreibung" value=""></td>
-                        <td><input placeholder="#" type="text" name="Menge" id="" value="Menge"></td>
-                        <td><input placeholder="#" type="text" name="Einheit" id="" value="Einheit"></td>
+                        <td><input placeholder="#" type="text" name="Menge" id="Menge" value=""></td>
+                        <td><input placeholder="#" type="text" name="Einheit" id="Einheit" value=""></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td><span class="msg_err" id="POS_err" style="color:red;  font-size:13px;"></span></td>
+                        <td><span class="msg_err" id="Produkt_err" style="color:red;  font-size:13px;"></span></td>
+                        <td><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span></td>
+                        <td><span class="msg_err" id="Menge_err" style="color:red;  font-size:13px;"></span></td>
+                        <td><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span></td>
                     </tr>
                 </table>
 
@@ -363,53 +373,43 @@
                     </div>
                     
                     <div class="col stretch-card text-right"  >
-                    <p>Seriennummer: </p>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
+                        <p>Seriennummer: </p>
+                        <input type="text" class="form-control" name="Seriennummer" id="Seriennummer" aria-describedby="emailHelp" style="background-color:transparent; height:5px; border:1px solid black; margin-left:5px;">
                     </div>
                     <div class="col stretch-card"  >
-                        
+                        <span class="msg_err" id="Seriennummer_err" style="color:red;  font-size:13px;"></span>
                     </div>
                 </div>
                 
                 <div class="row pt-3">
                     
                     <div class="col-3" >
-                    <div id="profile-container">
-                       <p class="upmsg"> Upload Image</p>
-          <img id="profileImage">
-        </div>
-         <input id="imageUpload" name="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
-         class="product-image"
-          capture>
+                        <div id="profile-container">
+                        <p class="upmsg"> Upload Image</p>
+                            <img id="profileImage">
+                        </div>
+                        <input id="imageUpload" name="imageUpload" type="file" placeholder="Photo" class="product-image" capture>
+                        <span class="msg_err" id="imageUpload_err" style="color:red;  font-size:13px;"></span>
+                    </div>
 
-        </div> 
                     
                     <div class="col-9"  >
-                    <p>Fehlerbeschreibung: </p>
-  <textarea class="form-control"  placeholder="" id="floatingTextarea" style="height:6rem; border:1px solid #000; background-color:transparent;"></textarea>
-                    <div class="row pt-2">
+                        <p>Fehlerbeschreibung: </p>
+                        <textarea class="form-control" placeholder="" id="Fehlerbeschreibung" name="Fehlerbeschreibung" style="height:6rem; border:1px solid #000; background-color:transparent;"></textarea>
+                        <span class="msg_err" id="Fehlerbeschreibung_err" style="color:red;  font-size:13px;"></span>
+                        <div class="row pt-2">
                     <div class="col">Bearbeitungsstand </div>
-                    <div class="col">fertig <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
-                    <div class="col">offen <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
+                    <div class="col">fertig <input class="form-check-input" type="radio" name="status" value="fertig"></div>
+                    <div class="col">offen <input class="form-check-input" type="radio" name="status" value="offen" checked></div>
                     </div>
                     </div>
                 </div>
            
               
                 </div>
+            </form>
         </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <!-- <footer class="footer">
-        <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2021</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                    admin template</a> from Bootstrapdash.com</span>
-        </div>
-    </footer> -->
-    <!-- partial -->
     </div>
     <!-- main-panel ends -->
     </div>
@@ -421,22 +421,81 @@
 
 <script>
     $("#profile-container").click(function(e) {
-       $("#imageUpload").click();
-      });
+        $("#imageUpload").click();
+    });
 
-      function fasterPreview(uploader) {
-       if (uploader.files && uploader.files[0]) {
-        $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
-       }
-      }
+    function fasterPreview(uploader) {
+        if (uploader.files && uploader.files[0]) {
+            $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+        }
+    }
 
-      $("#imageUpload").change(function() {
-       fasterPreview(this);
-      });
+    $("#imageUpload").change(function() {
+        fasterPreview(this);
+    });
 
-      document.getElementById('imageUpload').addEventListener('click', function() {
-    document.querySelector('.upmsg').style.display = 'none';
-});
+    document.getElementById('imageUpload').addEventListener('click', function() {
+        document.querySelector('.upmsg').style.display = 'none';
+    });
+
+
+    // THIS FUNCTION IS USED FOR SUBMIT FOR
+    function submitClainForm() {
+        $('.msg_err').text('');
+        var token = localStorage.getItem('authToken');
+        console.log(token);
+        console.log('hello');
+
+        // Check if the token exists
+        if (!token) {
+            console.error('Token not found in localStorage');
+            window.location.href = '/api/home';
+            return; // exit the function if token is not present
+        }
+
+        var formData = new FormData($('#claimsSubmitForm')[0]);
+        console.log('Form Data:', formData);
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/addClaimsApi',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'Authorization': 'Bearer ' + token, // include the token in the headers
+            },
+            success: function(response) {
+                // Handle the success response from the server
+                if (response.success) {
+                    $('#success_msg').text(response.success).css('color', '#44e1d5');
+                    console.log('Server Response:', response);
+                }else if (response.errors) {
+                    // Display validation errors in the console
+                    console.log(response.errors);
+                    displayValidationErrors(response.errors);
+                }else if (response.posError) {
+                    jQuery('#POS_err').text(response.posError);
+                }
+            },
+            error: function(error) {
+                // Handle errors
+                console.error('Error:', error);
+                jQuery('#success_msg').html('Sorry! we are facing some internal errors.').css('color', 'red');
+            }
+        });
+    }
+
+
+    
+    function displayValidationErrors(errors) {
+        // Display validation errors next to the respective form fields
+        // For example, you can loop through errors and append them to a specific element
+        $.each(errors, function(field, messages) {
+            // Append error messages to your HTML
+            $('#' + field + '_err').text(messages[0]);
+        });
+    };
 </script>
     <script type="text/javascript" src="{{ asset('js/admin/common.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
