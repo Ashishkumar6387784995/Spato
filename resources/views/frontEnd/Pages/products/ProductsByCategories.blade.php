@@ -175,7 +175,7 @@
        </div>
 </a>
        <div class="product-details">
-        <h5 class="card-title">{{ $product->Artikelname }}</h5>
+        <h5 class="card-title" title="{{$product->Artikelname}}">{{ substr($product->Artikelname, 0,  20) }} @if(strlen($product->Artikelname)>20) .... @endif</h5>
         <p class="card-text">
          <li>Merkamal 1 - lauft fluffig</li>
          <li>Merkamal 2 - fahurt urail... lorem</li>

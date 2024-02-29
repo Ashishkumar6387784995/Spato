@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use App\Models\Cart;
 use App\Models\UserProfile;
 use App\Models\Payment;
 use App\Models\Order;
@@ -86,6 +88,11 @@ class PaymentController extends Controller
                     $order->transaction_id   = 'TRN001';
                     $order->save();
                 }
+
+                // for remove all product after success order
+                    $guestToken = $request->header('guest-token', Str::uuid());
+                    Cart::where('guest_token', $guestToken)->delete();
+
                 // Commit the transaction
                 DB::commit();
                 return response()->json(['status' => '1', 'message' => 'Ordered Successfully']);
