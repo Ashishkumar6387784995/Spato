@@ -377,6 +377,29 @@ class loginController extends Controller
 
     }
 
+
+    // search users by his name
+    public function selectedB2CUserDetailsByUserName($name){
+
+        $usersName = user::where('name', 'LIKE', '%'.$name.'%')
+                    ->orderby('name', 'ASC')
+                    ->where(function($query) {
+                        $query->where('role', 'b2b')
+                        ->orWhere('role', 'Normal');
+                    })->get();
+
+        $users = user::
+                where('name', $name)
+                ->orderby('name', 'ASC')
+                ->where(function($query) {
+                    $query->where('users.role', 'b2b')
+                    ->orWhere('users.role', 'Normal');
+                })->get();
+        // dd($users);
+
+        return response()->json([ 'success' => $users, 'usersName'=>$usersName]);
+    }
+
     public function pagenotfound(){
         return view('frontEnd/Pages/errors/pageNotFound');
     }

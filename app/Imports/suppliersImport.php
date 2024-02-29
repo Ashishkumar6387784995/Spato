@@ -20,6 +20,7 @@ class suppliersImport implements ToCollection
         foreach ($rows as $row) {
             // Create a new User model instance and fill it with data
             $user = new User([
+            
                 'name' => $row[1],
                 'email' => $row[9],
                 'password' => Hash::make($row[15]),
@@ -29,7 +30,7 @@ class suppliersImport implements ToCollection
                 'zipCode' => $row[5],
                 'vatNo' => $row[7],
                 'Zahlung' => $row[17],
-                'Shop_APP' => $row[19],
+                'Shop_APP' => $row[18],
                 'Lieferantennummer' => $row[0],
             ]);
 

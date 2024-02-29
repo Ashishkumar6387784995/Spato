@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('supplier_number')->nullable();
             $table->string('Seriennummer')->nullable();
             $table->string('Fehlerbeschreibung')->nullable();
-            $table->string('image')->nullable();
+            $table->string('imageUpload')->nullable();
             $table->string('document')->nullable();
             $table->string('status')->default('Offen');
 

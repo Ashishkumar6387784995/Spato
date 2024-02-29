@@ -23,7 +23,7 @@ class SuppliersController extends Controller
 
         if ($user->role == 'Admin') {
             $users = User::select('id', 'name', 'role', 'zipCode', 'address')
-                ->whereIn('role', ["b2b", "Normal"])
+                ->whereIn('role', ["supplier"])
                 ->orderBy('created_at', 'desc')
                 ->get()
                 ->unique('id');
