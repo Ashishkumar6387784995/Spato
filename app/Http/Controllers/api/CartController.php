@@ -390,9 +390,8 @@ class CartController extends Controller
             }
 
             // check is apply_disc_code is fullfilling minimum order value
-            $minPrice = Coupon::where('Gutscheincode', $Gutscheincode)->where('Mindestbetrag', '>', $Mindestbetrag)->first();
-            // dd($minPrice);
-            if ($minPrice) {
+            
+            if ($existCode->Mindestbetrag > $Mindestbetrag) {
                 return response()->json(['removeDiscountCode'=> 'This code is applicable only on orders with item worth €'. $existCode->Mindestbetrag. ' and more']);
             }
         
