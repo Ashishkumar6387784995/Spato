@@ -59,7 +59,7 @@
 
 
 
-      <li class="nav-item">
+      <li class="nav-item aufträge-page">
          <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
             <span class="menu-title">Aufträge</span>
          </a>
@@ -67,17 +67,17 @@
 
 
 
-      <li class="nav-item">
+      <li class="nav-item rechnungen-page">
          <a class="nav-link" href="{{ url('/api/billsListing/'.$role) }}" onclick="markVisited(this)">
             <span class="menu-title">Rechnungen</span>
          </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item gutschriften-page">
          <a class="nav-link" href="{{ url('/api/creditsListing/'.$role) }}" onclick="markVisited(this)">
             <span class="menu-title">Gutschriften</span>
          </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item claimmanager-page">
 
          <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
             <span class="menu-title">Claim Manager</span>
@@ -105,7 +105,7 @@
       @elseif($role=="supplier")
 
    
-      <li class="nav-item">
+      <li class="nav-item aufträge-page">
                <a class="nav-link" href="{{ url('/api/assignmentListing/'.$role) }}" onclick="markVisited(this)">
                   <span class="menu-title">Aufträge</span>
                </a>
@@ -113,7 +113,7 @@
 
 
 
-      <li class="nav-item">
+      <li class="nav-item  lieferscheine-page">
          <a class="nav-link" href="{{ url('/api/deliveryNotesListing/'.$role) }}" onclick="markVisited(this)">
             <span class="menu-title">Lieferscheine</span>
          </a>
@@ -121,7 +121,7 @@
 
 
 
-      <li class="nav-item">
+      <li class="nav-item claimmanager-page">
 
          <a class="nav-link border-bottom" href="{{ url('/api/claimsListing/'.$role) }}" onclick="markVisited(this)">
             <span class="menu-title">Claim Manager</span>
@@ -140,7 +140,7 @@
 
 
       <div id="adminSidebar">
-         <li class="nav-item">
+         <li class="nav-item  bconnection-page">
             <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
                <span class="menu-title">B2C B2B Connection</span>
             </a>
