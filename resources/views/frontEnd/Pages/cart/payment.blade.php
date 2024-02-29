@@ -18,7 +18,6 @@
       padding-top: 5rem;
       margin-bottom: -10rem;
       padding-bottom: 10rem;
-      clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
     }
 
     .checkout-container nav ol li a {
@@ -254,9 +253,7 @@
   } */
 
     @media screen and (max-device-width: 480px) and (orientation: portrait) {
-      .checkout-container {
-        clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
-      }
+     
 
       .content {
         display: block !important;
@@ -287,9 +284,17 @@
   <section class="checkout-container">
     <form id="orderForm">
       <div class="container">
-        <h1 class="text-start" style="font-size: 30px; font-weight: 600; color: black;">
-          Next Step
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-2"><img src="{{asset('/assets/frontEnd/web/images/checkmark.gif')}}" alt="" srcset="" style="width:200px; height:200px;"></div>
+          <div class="col-4">
+          <h1 class="mt-5" style="font-size: 30px; font-weight: 600; color: black;">
+          <b>Thank You</b> for ordering.
         </h1>
+        <p  style="font-size: 25px; font-weight: 600; color: black;">Your order is in processing</p>
+          </div>
+        </div>
+        
     </form>
   </section>
 
