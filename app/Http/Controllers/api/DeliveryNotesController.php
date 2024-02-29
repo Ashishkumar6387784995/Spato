@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\DeliveryNotesMailer;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DeliveryNotesController extends Controller
 {
@@ -17,9 +20,9 @@ class DeliveryNotesController extends Controller
     {
         $user = Auth::guard('api')->user();
         if ($user->role == 'Admin') {
-            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit')->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');;
+            $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit','calculate_status')->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');
         } elseif ($user->role == 'supplier') {
-            $delivery_notes = Delivery_notes::select('Lieferschein_Nr', 'Lieferdatum', 'Ihre_Kundennummer', 'Einheit')
+            $delivery_notes = Delivery_notes::select('id','Lieferschein_Nr', 'Lieferdatum', 'Ihre_Kundennummer', 'Einheit','delivery_status')
             ->whereRaw('CAST(SUBSTRING_INDEX(Produkt, ".", 1) AS UNSIGNED) = ?', [$user->Lieferantennummer])
             ->orderBy('created_at', 'desc')
             ->get()
@@ -30,16 +33,21 @@ class DeliveryNotesController extends Controller
         }
 
         if ($delivery_notes) {
-            return response()->json(['delivery_notes' => $delivery_notes]);
+            return response()->json(['delivery_notes' => $delivery_notes, 'user' => $user,]);
         } else {
             return response()->json(['errors' => 'Deleivery Notes Not Found']);
         }
     }
 
 
-    public function editDeliveryNotes()
+    public function editDeliveryNotes($role, $deliveryId)
     {
-        return view('admin_theme/pages/delivery_notes/editDeliveryNotes');
+        $deliveryNotes = Delivery_notes::select()
+        ->where('Lieferschein_Nr', $deliveryId)
+        ->orderBy('created_at', 'desc')
+        ->get();
+    
+        return view('admin_theme/pages/delivery_notes/editDeliveryNotes')->with(compact('role','deliveryNotes'));
     }
 
     public function addDeliveryNotes($role)
@@ -144,6 +152,40 @@ class DeliveryNotesController extends Controller
     public function editDeliveryNotesForSuppliers($role){
 
         return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role'));
+
+    }
+
+    public function downloadDeliveryPdf($deliveryId){
+
+          // Retrieve the offer
+          $notes = Delivery_notes::where('Lieferschein_Nr', $deliveryId)->first();
+
+          if ($notes) {
+              // Retrieve offers associated with the offer ID
+              $offers = Delivery_notes::where('Lieferschein_Nr', $deliveryId)->get();
+  
+              // Generate PDF from the view
+              $pdf = PDF::loadView('admin_theme/pages/delivery_notes/deliveryNotesPdf', compact('notes'));
+  
+              // Specify the directory path for storing the PDF in the public storage folder
+              $pdfDirectory = 'public/deleivery_notes_pdf';
+  
+              // Specify the file path for the PDF
+              $pdfFilePath = $deliveryId . '.pdf';
+  
+              // Save the PDF in the specified path
+              Storage::put($pdfDirectory . '/' . $pdfFilePath, $pdf->output());
+  
+              // Get the public URL of the saved PDF file
+              $pdfUrl = Storage::url($pdfDirectory . '/' . $pdfFilePath);
+  
+              // Download the saved PDF
+              Delivery_notes::where('Lieferschein_Nr', $deliveryId)->update(['calculate_status' => 'Berechnet']);
+
+              return response()->download(storage_path('app/' . $pdfDirectory . '/' . $pdfFilePath));
+          } else {
+              return back()->with('error', 'Offer not found');
+          }
 
     }
 }

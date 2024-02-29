@@ -27,7 +27,8 @@ return new class extends Migration
                 $table->string('Beschreibung')->nullable();
                 $table->string('Menge')->nullable();
                 $table->string('Einheit')->nullable();   
-    
+                $table->string('delivery_status')->default('Offen');
+                $table->string('calculate_status')->default('Offen');
                 $table->timestamps();
 
         });

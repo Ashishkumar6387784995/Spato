@@ -268,9 +268,11 @@ Route::post('sendAssignmentMailsToB2C', [AssignmentController::class, 'sendAssig
 Route::view('deliveryNotesListing/{role}', 'admin_theme/pages/delivery_notes/DeliveryNotesList');
 Route::get('addDeliveryNotes/{role}', [DeliveryNotesController::class, 'addDeliveryNotes']);
 
-Route::get('editDeliveryNotes', [DeliveryNotesController::class, 'editDeliveryNotes']);
+Route::get('editDeliveryNotes/{role}/{deliveryId}', [DeliveryNotesController::class, 'editDeliveryNotes']);
 Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sendDeliveryNotesMailsToB2C']);
-Route::get('editDeliveryNotesForSuppliers/{role}', [DeliveryNotesController::class, 'editDeliveryNotesForSuppliers']);
+Route::get('downloadDeliveryPdf/{deliveryId}', [DeliveryNotesController::class, 'downloadDeliveryPdf']);
+Route::get('editDeliveryNotesForSuppliers/{role}/{deliveryId}', [DeliveryNotesController::class, 'editDeliveryNotesForSuppliers']);
+
 
 
 // Bills for Admin

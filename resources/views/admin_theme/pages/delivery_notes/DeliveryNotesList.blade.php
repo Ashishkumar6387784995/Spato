@@ -72,16 +72,18 @@
             padding: 10px 2px;
             width: 200px;
         }
-        table tr td a{
-            color:#54606c;
+
+        table tr td a {
+            color: #54606c;
         }
-        .lieferscheine-page a{
-      color: #44e1d5 !important;
-  border: 1px solid #fcfcfc !important;
-  border-radius:5px;
-  margin-top:10px;
-  text-align:center;
-    }
+
+        .lieferscheine-page a {
+            color: #44e1d5 !important;
+            border: 1px solid #fcfcfc !important;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -138,14 +140,14 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                    Alle Lieferscheine
+                        Alle Lieferscheine
                     </div>
                 </div>
 
 
 
                 <span id="success_msg" style="color:green"></span>
-                <br>  <br> 
+                <br> <br>
 
 
                 <table id="dataTable">
@@ -158,7 +160,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                   
+
                 </table>
 
             </div>
@@ -187,80 +189,92 @@
     <!-- plugins:js -->
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
-  <script>
-  // Execute the code when the document is ready
-  $(document).ready(function() {
 
-    var token = localStorage.getItem('authToken');
-      console.log(token);
-
-      // Check if the token exists
-      if (!token) {
-        console.error('Token not found in localStorage');
-        window.location.href = '/api/home';
-        // return;
-      }
-
-
-   // Make a GET request using AJAX
-   $.ajax({
-    url: '/api/deliveryNotesListingApi', // Replace with the actual endpoint URL
-    method: 'GET',
-    headers: {
-          'Authorization': 'Bearer ' + token,
-        },
-    success: function(data) {
-     // Handle the successful response
-     if (data.delivery_notes) {
-      console.log('Data received:', data.delivery_notes);
-
-      function populateTable(data) {
-       var tableBody = $('#dataTable');
-
-       // Clear existing table rows
-       // tableBody.empty();
-
-       // Iterate through the data and add rows to the table
-       $.each(data, function(index, item) {
-        var row = $('<tr>');
-        row.append('<td>' + 'Offen' + '</td>');
-        row.append('<td>' + item.Lieferschein_Nr + '</td>');
-        row.append('<td>' + item.Ihre_Kundennummer + '</td>');
-        row.append('<td>' + item.Lieferdatum + '</td>');
-        // row.append('<td>' + item.Kategorie + '</td>');
-        row.append('<td>' + item.gesamt_netto + '</td>');
-        row.append('<td><a href="/api/editOffer/' + item.id +
-         '" class="btn edit" id="editProductBtn">bearbeiten</a></td>');
-        
-
-        // Add more columns as needed
-
-        // Append the row to the table body
-        tableBody.append(row);
-       });
-      }
-
-      // Call the function to populate the table with the initial data
-      populateTable(data.delivery_notes);
-     } else {
-      console.log('Data received:', data.errors);
-      window.location.href = '/api/home';
-     }
-    },
-
-
-    error: function(error) {
-     // Handle errors
-     console.error('Error:', error);
+    <script>
+    // Define the refreshPage function outside of the document ready function
+    function refreshPage() {
+        // You can add some delay if needed to ensure the download starts before the page refreshes
+        setTimeout(function() {
+            location.reload();
+        }, 1000); // Refresh after 1 second (adjust as needed)
     }
-   });
 
+    // Execute the code when the document is ready
+    $(document).ready(function() {
+        var token = localStorage.getItem('authToken');
+        console.log(token);
 
+        // Check if the token exists
+        if (!token) {
+            console.error('Token not found in localStorage');
+            window.location.href = '/api/home';
+            return; // You might want to return here to exit early
+        }
 
+        // Make a GET request using AJAX
+        $.ajax({
+            url: '/api/deliveryNotesListingApi', // Replace with the actual endpoint URL
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            },
+            success: function(data) {
+                // Handle the successful response
+                if (data.delivery_notes) {
+                    console.log('Data received:', data.delivery_notes);
 
-  });
-  </script>
+                    // Function to populate the table with data
+                    function populateTable(delivery_notes) {
+                        var tableBody = $('#dataTable');
+
+                        // Clear existing table rows
+                        // tableBody.empty();
+
+                        // Iterate through the data and add rows to the table
+                        $.each(delivery_notes, function(index, item) {
+                            var row = $('<tr>');
+                            if (data.user.role === 'Admin') {
+                                row.append('<td>' + item.calculate_status + '</td>');
+                            } else if (data.user.role === 'supplier') {
+                                row.append('<td>' + item.delivery_status + '</td>');
+                            }
+                            row.append('<td>' + item.Lieferschein_Nr + '</td>');
+                            row.append('<td>' + item.Ihre_Kundennummer + '</td>');
+                            row.append('<td>' + item.Lieferdatum + '</td>');
+                            // row.append('<td>' + item.Kategorie + '</td>');
+                            row.append('<td>' + item.gesamt_netto + '</td>');
+                            if (data.user.role === 'Admin') {
+                                row.append('<td><a href="/api/editDeliveryNotes/admin/' + item.Lieferschein_Nr +
+                                    '" class="btn edit" >bearbeiten</a></td>');
+                                row.append('<td><a href="/api/downloadDeliveryPdf/' + item.Lieferschein_Nr +
+                                    '" class="btn edit" id="editProductBtn" onclick="refreshPage()">berechnen</a></td>');
+                            } else if (data.user.role === 'supplier') {
+                                row.append('<td><a href="/api/editDeliveryNotesForSuppliers/supplier/' + item.id +
+                                    '" class="btn edit" >bearbeiten</a></td>');
+                            }
+
+                            // Add more columns as needed
+
+                            // Append the row to the table body
+                            tableBody.append(row);
+                        });
+                    }
+
+                    // Call the function to populate the table with the initial data
+                    populateTable(data.delivery_notes);
+                } else {
+                    console.log('Data received:', data.errors);
+                    window.location.href = '/api/home';
+                }
+            },
+            error: function(error) {
+                // Handle errors
+                console.error('Error:', error);
+            }
+        });
+    });
+</script>
+
 
 
 
@@ -272,7 +286,7 @@
     <script type="text/javascript" src="{{ asset('theme/assets/js/jquery.cookie.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/off-canvas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/hoverable-collapse.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('theme/assets/js/misc.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
