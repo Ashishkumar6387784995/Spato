@@ -39,7 +39,7 @@ class webController extends Controller
             ->get();
 
         // Fetch the complete details of the all products
-        $allProduct = Product::select()
+        $allProduct = Product::select()->orderby('created_at', 'ASC')
             ->take(10)->get();
 
         // Now, $products contains all details of t`he latest products for each category

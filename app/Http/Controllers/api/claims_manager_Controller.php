@@ -7,12 +7,33 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Claims_List;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class claims_manager_Controller extends Controller
 {
-    public function billsListing(){
-     
-        return view('admin_theme/pages/claim_manager/assignmentList');
+    public function claimsListing(){
+
+        $user = Auth::guard('api')->user();
+
+        $cliamList = user::select('users.name', 'claims_lists.*')
+                    ->join('claims_lists', 'users.id', '=', 'claims_lists.Ihre_Kundennummer')
+                    ->orderby('claims_lists.created_at', 'ASC');
+
+        // filter by role
+        if ($user->role == 'Admin' || $user->role == 'b2b') {
+            $cliamList = $cliamList->where('claims_lists.created_by', $user->id)->get();
+        } elseif ($user->role == 'supplier') {
+            $cliamList = $cliamList->where('claims_lists.supplier_number', $user->Lieferantennummer)->get();
+        } else {
+            $cliamList = 'Claims not found';
+        }
+
+        if ($cliamList) {
+            return response()->json(['cliamList' => $cliamList, 'user' => $user]);
+        } else {
+            return response()->json(['errors' => 'Claim Not Found']);
+        }
     }
 
 
@@ -57,6 +78,8 @@ class claims_manager_Controller extends Controller
     // function for save record
     public function addClaimsApi(Request $request)
     {
+        $user = Auth::guard('api')->user();
+
         $validator = Validator::make($request->all(), [
             'Claim_Nr' => 'required|string|unique:claims_lists',
             'Claimdatum' => 'required|date_format:Y-m-d',
@@ -99,24 +122,25 @@ class claims_manager_Controller extends Controller
                 // You can also save the full path like $uploadedimages[$image] = $imagePath; if needed.
             }
 
-        $offer = new Claims_List();
-        $offer->Claim_Nr = $request->input('Claim_Nr');
-        $offer->Claimdatum = $request->input('Claimdatum');
-        $offer->Referenz = $request->input('Referenz');
-        $offer->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
-        $offer->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
+        $claim = new Claims_List();
+        $claim->Claim_Nr = $request->input('Claim_Nr');
+        $claim->Claimdatum = $request->input('Claimdatum');
+        $claim->Referenz = $request->input('Referenz');
+        $claim->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
+        $claim->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
 
-        $offer->POS = $request->POS;
-        $offer->Produkt = $request->Produkt;
-        $offer->Beschreibung = $request->Beschreibung;
-        $offer->Menge = $request->Menge;
-        $offer->Einheit = $request->Einheit;
-        $offer->supplier_number = $supplier_number;
-        $offer->Seriennummer = $request->Seriennummer;
-        $offer->Fehlerbeschreibung = $request->Fehlerbeschreibung;
-        $offer->imageUpload = $imagePath;
-        $offer->status = $request->status;
-        $offer->save();
+        $claim->POS = $request->POS;
+        $claim->Produkt = $request->Produkt;
+        $claim->Beschreibung = $request->Beschreibung;
+        $claim->Menge = $request->Menge;
+        $claim->Einheit = $request->Einheit;
+        $claim->supplier_number = $supplier_number;
+        $claim->Seriennummer = $request->Seriennummer;
+        $claim->Fehlerbeschreibung = $request->Fehlerbeschreibung;
+        $claim->imageUpload = $imagePath;
+        $claim->status = $request->status;
+        $claim->created_by = $user->id;
+        $claim->save();
 
         // Return a success response
         return response()->json(['success' => "Claim Is Added SuccessFully"]);

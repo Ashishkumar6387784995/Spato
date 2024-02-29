@@ -211,8 +211,8 @@
       }
 
       #carousel-vp {
-        width: 1161px !important;
-        height: 400px;
+        width: 1080px !important;
+        height: 500px;
         display: flex;
         align-items: center;
         position: relative;
@@ -241,8 +241,8 @@
       }
 
       .cCarousel-item {
-        width: 380px;
-        height: 400px;
+        width: 350px;
+        height: 450px;
         border: 2px solid white;
         background-color:var(--white);
         border-radius: 5px;
@@ -251,11 +251,13 @@
         flex-direction: column;
       }
       .cCarousel-item .img{
-        height:300px;
+        max-width:250px;
+        max-height:250px;
         margin:auto;
       }
       .cCarousel-item img {
-        width: 250px;
+        max-width: 250px;
+        max-height: 250px;
         margin:auto;
         padding:15px 0px;
         object-fit: cover;
@@ -440,7 +442,7 @@
           @foreach ($latestProduct as $product)
             <article class="cCarousel-item">
               <div class="img">
-              <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image">
+              <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image" width="250px" height="200px">
               </div>
               <div class="infos">
               <h5 class="card-title">{{ $product->Artikelname }}</h5>
@@ -454,9 +456,8 @@
         <a href="#" class="btn addToCartButton" data-product-id="{{ $product->id }}" data-quantity="1"
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
         IN DEN WARENKORB
-       </a>
-              
-            </article>
+       </a>        
+</article>
             @endforeach
           </div>
         </div>
@@ -566,97 +567,72 @@
   });
   </script>
 
-  <script>
- const prev = document.querySelector("#prev");
-      const next = document.querySelector("#next");
+<script>
+    const next = document.querySelector("#next");
 
-      let carouselVp = document.querySelector("#carousel-vp");
+    let cCarouselInner = document.querySelector("#cCarousel-inner");
+    let leftValue = 0;
 
-      let cCarouselInner = document.querySelector("#cCarousel-inner");
-      let carouselInnerWidth = cCarouselInner.getBoundingClientRect().width;
+    // Function to calculate total width of each slide plus the gap
+    function calculateTotalMovementSize() {
+        const slideWidth = document.querySelector(".cCarousel-item").getBoundingClientRect().width;
+        const gap = parseFloat(window.getComputedStyle(cCarouselInner).getPropertyValue("gap"));
+        return slideWidth + gap;
+    }
 
-      let leftValue = 0;
-
-      // Variable used to set the carousel movement value (card's width + gap)
-      const totalMovementSize =
-        parseFloat(
-          document.querySelector(".cCarousel-item").getBoundingClientRect()
-            .width,
-          10
-        ) +
-        parseFloat(
-          window.getComputedStyle(cCarouselInner).getPropertyValue("gap"),
-          10
-        );
-
-      prev.addEventListener("click", () => {
-        if (!leftValue == 0) {
-          leftValue -= -totalMovementSize;
-          cCarouselInner.style.left = leftValue + "px";
-        }
-      });
-
-      next.addEventListener("click", () => {
-        const carouselVpWidth = carouselVp.getBoundingClientRect().width;
+    // Event listener for the next button
+    next.addEventListener("click", () => {
+        const totalMovementSize = calculateTotalMovementSize();
+        const carouselVpWidth = document.querySelector("#carousel-vp").getBoundingClientRect().width;
+        const carouselInnerWidth = cCarouselInner.getBoundingClientRect().width;
         if (carouselInnerWidth - Math.abs(leftValue) > carouselVpWidth) {
-          leftValue -= totalMovementSize;
-          cCarouselInner.style.left = leftValue + "px";
+            leftValue -= totalMovementSize;
+            cCarouselInner.style.left = leftValue + "px";
         } else {
-          // Restart slider if products end
-          leftValue = 0;
-          cCarouselInner.style.left = leftValue + "px";
+            // Restart slider if products end
+            leftValue = 0;
+            cCarouselInner.style.left = leftValue + "px";
         }
-      });
+    });
 
-      const mediaQuery510 = window.matchMedia("(max-width: 510px)");
-      const mediaQuery770 = window.matchMedia("(max-width: 770px)");
-
-      mediaQuery510.addEventListener("change", mediaManagement);
-      mediaQuery770.addEventListener("change", mediaManagement);
-
-      let oldViewportWidth = window.innerWidth;
-
-      function mediaManagement() {
+    // Function to handle media queries
+    function mediaManagement() {
+        const mediaQuery510 = window.matchMedia("(max-width: 510px)");
+        const mediaQuery770 = window.matchMedia("(max-width: 770px)");
         const newViewportWidth = window.innerWidth;
 
-        if (
-          leftValue <= -totalMovementSize &&
-          oldViewportWidth < newViewportWidth
-        ) {
-          leftValue += totalMovementSize;
-          cCarouselInner.style.left = leftValue + "px";
-          oldViewportWidth = newViewportWidth;
-        } else if (
-          leftValue <= -totalMovementSize &&
-          oldViewportWidth > newViewportWidth
-        ) {
-          leftValue -= totalMovementSize;
-          cCarouselInner.style.left = leftValue + "px";
-          oldViewportWidth = newViewportWidth;
+        if (mediaQuery510.matches) {
+            // Adjust carousel width for viewport <= 510px
+            document.querySelector("#carousel-vp").style.width = "250px";
+        } else if (mediaQuery770.matches) {
+            // Adjust carousel width for viewport <= 770px
+            document.querySelector("#carousel-vp").style.width = "510px";
         }
-      }
+    }
 
-      // Autoplay functionality
-      let autoplayInterval;
+    // Event listeners for media queries
+    window.addEventListener("resize", mediaManagement);
 
-      function startAutoplay() {
+    // Autoplay functionality
+    let autoplayInterval;
+
+    function startAutoplay() {
         autoplayInterval = setInterval(() => {
-          next.click();
-        },3000);  // Adjust the autoplay interval as needed (e.g., 3000 milliseconds = 3 seconds)
-      }
+            next.click();
+        }, 3000); // Adjust the autoplay interval as needed (e.g., 3000 milliseconds = 3 seconds)
+    }
 
-      function stopAutoplay() {
+    function stopAutoplay() {
         clearInterval(autoplayInterval);
-      }
+    }
 
-      // Start autoplay on page load
-      startAutoplay();
+    // Start autoplay on page load
+    startAutoplay();
 
-      // Pause autoplay when hovering over the carousel
-      carouselVp.addEventListener("mouseenter", stopAutoplay);
-      carouselVp.addEventListener("mouseleave", startAutoplay);
-  </script>
-  
+    // Pause autoplay when hovering over the carousel
+    document.querySelector("#carousel-vp").addEventListener("mouseenter", stopAutoplay);
+    document.querySelector("#carousel-vp").addEventListener("mouseleave", startAutoplay);
+</script> 
 
 
 
