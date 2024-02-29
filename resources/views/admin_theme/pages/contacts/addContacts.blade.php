@@ -460,7 +460,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <span class="m-1 pb-2" id="import_success_message" style="color:#44e1d5; font-size:18px; font-weight:600;"></span>
+                        <p class="m-1 pb-2" id="import_success_message" style="color:#44e1d5; font-size:18px; font-weight:600;"></p>
 
                         <label for="formFile" class="form-label text-center">Import CSV/XLSX file</label>
                         <p> <span class="d-flex"><input style="width:100%; height:50px;" class="form-control" type="file" name="contactsImportFile" id="contactsImportFile" accept=".csv, .xlsx"><i style="font-size:20px; position: relative; left: -40px; top: 15px;" class="fa-solid fa-file-excel"></i></span></p>
