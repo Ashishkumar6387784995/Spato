@@ -657,6 +657,7 @@
       $('#saveBtn').on('click', function() {
         // Collect form data
 
+        $('#type_err').text('');
         $('#Hersteller_err').text('');
         $('#Herst_Nr_err').text('');
         $('#Lief_Art_Nr_err').text('');
