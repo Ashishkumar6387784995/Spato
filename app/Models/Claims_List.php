@@ -28,5 +28,6 @@ class Claims_List extends Model
         'imageUpload',
         'document',
         'status',
+        'created_by',
     ];
 }

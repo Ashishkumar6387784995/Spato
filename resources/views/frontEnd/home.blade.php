@@ -566,7 +566,6 @@
   </script>
 
 <script>
-    const prev = document.querySelector("#prev");
     const next = document.querySelector("#next");
 
     let cCarouselInner = document.querySelector("#cCarousel-inner");
@@ -578,15 +577,6 @@
         const gap = parseFloat(window.getComputedStyle(cCarouselInner).getPropertyValue("gap"));
         return slideWidth + gap;
     }
-
-    // Event listener for the previous button
-    prev.addEventListener("click", () => {
-        const totalMovementSize = calculateTotalMovementSize();
-        if (leftValue < 0) {
-            leftValue += totalMovementSize;
-            cCarouselInner.style.left = leftValue + "px";
-        }
-    });
 
     // Event listener for the next button
     next.addEventListener("click", () => {

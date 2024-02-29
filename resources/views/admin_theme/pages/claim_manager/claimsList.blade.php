@@ -158,42 +158,6 @@
                         <th>Datum</th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td><a href="">bearbeiten</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Offen</td>
-                        <td>AB-2768</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td><a href="">berechnen</a></td>
-                    </tr>
-                    <tr>
-                        <td>Berechnet</td>
-                        <td>AB-2767</td>
-                        <td>Pool Bau Profi BV Meier</td>
-                        <td>26.11.23</td>
-                        <td><a href="">bearbeiten</a></td>
-                        <td></td>
-                    </tr>
                 </table>
 
             </div>
@@ -221,103 +185,77 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         // Execute the code when the document is ready
         $(document).ready(function() {
+
+            var token = localStorage.getItem('authToken');
+            console.log(token);
+
+            // Check if the token exists
+            if (!token) {
+                console.error('Token not found in localStorage');
+                window.location.href = '/api/home';
+                // return;
+            }
+
+
             // Make a GET request using AJAX
             $.ajax({
-                url: '/api/productListingApi', // Replace with the actual endpoint URL
+                url: '/api/claimsListingApi', // Replace with the actual endpoint URL
                 method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                },
                 success: function(data) {
                     // Handle the successful response
-                    if (data.productList) {
-                        console.log('Data received:', data.productList);
+                    if (data.cliamList) {
+                        console.log('Data received:', data.cliamList);
+                        console.log('User received:', data.user);
 
-
-                        function populateTable(data) {
+                        function populateTable(dataList) {
                             var tableBody = $('#dataTable');
 
                             // Clear existing table rows
                             // tableBody.empty();
 
-                            // Iterate through the data and add rows to the table
-                            $.each(data, function(index, item) {
+                            // Iterate through the dataList and add rows to the table
+                            $.each(dataList, function(index, item) {
+                                var baseUrl = window.location.origin;
                                 var row = $('<tr>');
-                                row.append('<td>' + item.Hersteller + '</td>');
-                                row.append('<td>' + item.Herst_Nr + '</td>');
-                                row.append('<td>' + item.id + '</td>');
-                                row.append('<td>' + item.Artikelname + '</td>');
-                                row.append('<td>' + item.Kategorie + '</td>');
-                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
-                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
+                                row.append('<td id="status_'+item.Claim_Nr+'">' + item.status + '</td>');
+                                row.append('<td>' + item.Claim_Nr + '</td>');
+                                row.append('<td>' + item.name + '</td>');
+                                row.append('<td>' + item.Claimdatum + '</td>');
 
+                                if (item.status=='Offen') {
+                                    if (data.user.role === 'Admin') {
+                                        row.append('<td><a class="edit btn" href="'+baseUrl+'/api/editClaims/admin/'+item.Claim_Nr+'">bearbeiten</a></td>');
+                                    }else if (data.user.role === 'supplier') {
+                                        row.append('<td><a class="edit btn" href="'+baseUrl+'/api/editClaims/'+data.user.role+'/'+item.Claim_Nr+'">bearbeiten</a></td>');
+                                    }
+                                }
 
                                 // Add more columns as needed
-
                                 // Append the row to the table body
                                 tableBody.append(row);
                             });
                         }
 
                         // Call the function to populate the table with the initial data
-                        populateTable(data.productList);
-
-
-
+                        populateTable(data.cliamList);
                     } else {
                         console.log('Data received:', data.errors);
+                        window.location.href = '/api/home';
                     }
-                }, // Missing comma here
-
+                },
                 error: function(error) {
                     // Handle errors
                     console.error('Error:', error);
                 }
             });
-
-
-
-
         });
-
-
-        function deleteOperation(productId) {
-            // Make a DELETE request using AJAX
-            console.log(productId);
-            $.ajax({
-                url: '/api/deleteProduct/' + productId,
-                method: 'get',
-                success: function(data) {
-
-                    if (data.success) {
-
-
-
-                        $('#success_msg').text(data.success);
-
-                        // Delay the page reload for 2 seconds (2000 milliseconds)
-                            setTimeout(function() {
-                                location.reload(true);
-                            }, 1000);
-
-                        
-
-
-                        console.log('Product deleted successfully:', data.success);
-                        // Perform any additional actions after deletion
-                    } else {
-                        console.log('Product not deleted successfully:', data.message);
-                    }
-
-                },
-                error: function(error) {
-                    console.error('Error deleting product:', error.responseJSON.error);
-                }
-            });
-        }
-    </script> -->
+    </script>
 
 
 

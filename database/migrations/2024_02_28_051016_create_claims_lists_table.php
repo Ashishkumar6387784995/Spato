@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('imageUpload')->nullable();
             $table->string('document')->nullable();
             $table->string('status')->default('Offen');
+            $table->string('created_by');
 
             $table->timestamps();
         });

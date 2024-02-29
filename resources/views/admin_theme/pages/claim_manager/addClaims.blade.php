@@ -421,8 +421,8 @@
                         <span class="msg_err" id="Fehlerbeschreibung_err" style="color:red;  font-size:13px;"></span>
                         <div class="row pt-2">
                     <div class="col">Bearbeitungsstand </div>
-                    <div class="col">fertig <input class="form-check-input" type="radio" name="status" value="fertig"></div>
-                    <div class="col">offen <input class="form-check-input" type="radio" name="status" value="offen" checked></div>
+                    <div class="col">fertig <input class="form-check-input" type="radio" name="status" value="Fertig"></div>
+                    <div class="col">offen <input class="form-check-input" type="radio" name="status" value="Offen" checked></div>
                     </div>
                     </div>
                 </div>
