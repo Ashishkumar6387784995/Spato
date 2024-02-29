@@ -30,6 +30,7 @@ use App\Http\Controllers\api\PaymentController;
 use App\Http\Controllers\api\CouponMngController;
 use App\Http\Controllers\api\WareHouseController;
 use App\Http\Controllers\api\cmsController;
+use App\Http\Controllers\api\newsLetterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -351,7 +352,7 @@ Route::view('connection/{role}', 'admin_theme/pages/connections/connections');
 
 
 // NewsLetter for Admin
-// Route::get('claimsListingApi',[claims_manager_Controller::class,'claimsListing']);
+Route::get('addNewsLetter/{role}',[newsLetterController::class,'addNewsLetter']);
 Route::view('newsLetter/{role}', 'admin_theme/pages/newsLetter/NewsLetter');
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 

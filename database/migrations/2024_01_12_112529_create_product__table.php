@@ -36,8 +36,8 @@ return new class extends Migration
             $table->string('Einkausfpreis_zzgl_MwSt')->nullable();
             $table->string('Einkaufsrabatt')->nullable();
             $table->string('Artikelname')->nullable();
-            $table->string('Beschreibung_kurz')->nullable();
-            $table->string('Beschreibung_lang')->nullable();
+            $table->string('Beschreibung_kurz', 1000)->nullable();
+            $table->string('Beschreibung_lang', 20000)->nullable();
 
             $table->string('m3/h')->nullable();
             $table->string('Stichmass')->nullable();
