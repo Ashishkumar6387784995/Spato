@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Delivery_notes;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\DeliveryNotesMailer;
 use Illuminate\Support\Facades\Mail;
@@ -155,7 +156,8 @@ class DeliveryNotesController extends Controller
         ->where('id', $Id)
         ->get();
 
-        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role','deliveryNotes'));
+        $user = User::where('id', $deliveryNotes[0]->Ihre_Kundennummer)->first();
+        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role','deliveryNotes', 'user'));
 
     }
 
@@ -211,7 +213,7 @@ class DeliveryNotesController extends Controller
         }
 
         if ($status) {
-            return response()->json(['success' => $status, 'user' => $user]);
+            return response()->json(['success' => 'DeliveryNotes updated successfully', 'user' => $user]);
         } else {
             return response()->json(['errors' => 'Offer Not Found']);
         }

@@ -38,6 +38,15 @@
             cursor: pointer;
         }
 
+        
+        .contact-show {
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          border: 0.5px solid #000;
+          padding: 10px 10px;
+        }
+
         .edit{
             background-color:#54606c;
             border:1px solid #54606c;
@@ -164,14 +173,16 @@
                     <a href="#"   class="btn">senden</a>
                     </div>
                 </div>
+                <span class="msg_err" id="success_msg" style="color:#44e1d5; font-size:20px; font-weight: 700;"></span>
                 <div class="row pt-3">
                 <!-- {{$deliveryNotes}}         -->
-                    <div class="col-md-4" >
-                   
-                    <form action="">
-                     <textarea name="text" id="" cols="35" rows="10"></textarea>
-                    </form>
+                  <div class="col-md-4" >
+                    <div class="contact-show">
+                        <p><b>Name</b> -> <span class="customer_dtl" id="customer_Name">{{$user->name}}<span></p>
+                        <p><b>Conatact</b> -> <span class="customer_dtl" id="customer_Contact">{{$user->mobile}}<span></p>
+                        <p><b>Email</b> -> <span class="customer_dtl" id="customer_Email">{{$user->email}}<span></p>
                     </div>
+                  </div>
                     <div class="col-md-2 " >
                     </div>
                     <div class="col-md-1 " >
@@ -273,20 +284,20 @@
                     <h3 class="mt-5 mb-5">Andere Informationen</h3>
         <div class="row">
             <div class="col-3"><p>Lieferadresse ändern</p></div>
-            <div class="col-9"><textarea type="text" name="changedDeliveryAddress" id="changedDeliveryAddress" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+            <div class="col-9"><textarea type="text" name="changedDeliveryAddress" id="changedDeliveryAddress" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;">{{$deliveryNotes[0]->changedDeliveryAddress}}</textarea></div>
         </div>
         <div class="row mt-3">
             <div class="col-3"><p>Seriennummer hinzufügen</p></div>
-            <div class="col-9"><input type="text" name="serialNo" id="serialNo"  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
+            <div class="col-9"><input type="text" name="serialNo" id="serialNo" value="{{$deliveryNotes[0]->serialNo}}"  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
         </div>
         <div class="row mt-3">
             <div class="col-3"><p>Informationen hinzufügen</p></div>
-            <div class="col-9"><textarea type="text" name="addInformation" id="addInformation" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+            <div class="col-9"><textarea type="text" name="addInformation" id="addInformation" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;">{{$deliveryNotes[0]->addInformation}}</textarea></div>
         </div>
         <div class="row mt-3">
             <div class="col-3"><p>Lieferung bestätigen</p></div>
-            <div class="col-2">Offen<input class="form-check-input" type="radio" name="deliveryStatus" value="Offen"></div>
-                    <div class="col-4">geliefert<input class="form-check-input" type="radio" name="deliveryStatus" value="geliefert"></div></div>
+            <div class="col-2">Offen<input class="form-check-input" type="radio" name="deliveryStatus" value="Offen" @if($deliveryNotes[0]->deliveryStatus=='Offen') {{'checked'}} @endif></div>
+                    <div class="col-4">geliefert<input class="form-check-input" type="radio" name="deliveryStatus" value="geliefert" @if($deliveryNotes[0]->deliveryStatus=='geliefert') {{'checked'}} @endif></div></div>
         </div>
            
                 </div>
@@ -323,8 +334,7 @@
         changedDeliveryAddress: $('#changedDeliveryAddress').val(),
         serialNo: $('#serialNo').val(),
         addInformation: $('#addInformation').val(),
-       deliveryStatus : $('input[name="deliveryStatus"]').val(),
-    
+        deliveryStatus : $('input[name="deliveryStatus"]:checked').val()
       };
 
       console.log(formData);
@@ -345,6 +355,9 @@
   
       // $('#AddOffersForm')[0].reset();
       $('#success_msg').text(response.success);
+      setTimeout(() => {
+        window.location.href = '/api/deliveryNotesListing/{{$role}}';
+      }, 2000);
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);
