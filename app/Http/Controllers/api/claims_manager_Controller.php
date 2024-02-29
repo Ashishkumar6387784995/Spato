@@ -78,14 +78,14 @@ class claims_manager_Controller extends Controller
         }
 
         // find supplier
-            $parts = explode(".", $request->POS);
+            $parts = explode(".", $request->Produkt);
             $supplier_number = $parts[0]; // Get the value after the dot symbol
             // dd($supplier_number);
 
         // check for valid supplier number
             $validSupplier = User::where('Lieferantennummer', $supplier_number)->where('role', 'supplier')->first();
             if (!$validSupplier) {
-                return response()->json(['posError' => "Please enter valid POS Number"]);
+                return response()->json(['productError' => "Please enter valid Product Number"]);
             }
 
         // for images

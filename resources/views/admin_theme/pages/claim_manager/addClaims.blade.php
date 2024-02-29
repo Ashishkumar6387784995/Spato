@@ -177,6 +177,29 @@
   text-align:center;
         }
 
+    #guessCompanyName{
+        max-height: 110px;
+        overflow: auto;
+        transition:0.6s ease-in-out;
+        position:absolute;
+        width: 250px;
+        /* overflow-x: hidden;
+        overflow-y: scroll; */
+    }
+    #guessCompanyName ul{
+        display:contents;
+        transition:0.6s ease-in-out;
+    }
+    #guessCompanyName ul li{
+        background-color:#fff;
+        list-style-type:none;
+        border-radius:3px;
+        margin:3px 0px;
+        padding:0px 10px;
+        cursor:pointer;
+        font-weight:600;
+        transition:0.6s ease-in-out;
+    }
     </style>
 </head>
 
@@ -278,23 +301,22 @@
                     </div>
 
                     <div class="inputs">
-                        <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton dynamic-field" role-filter="Assignments" required>
+                        <select id="Ihre_Kundennummer" name="Ihre_Kundennummer" class="showButton dynamic-field" role-filter="Offers" required>
                         </select>
                         <br>
                         <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
                     </div><br>
                     <div class="inputs"> 
-          <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessCompanyNameFunction('Offers')"></p>
-          
-          <div id="guessCompanyName">
-            <ul>
+                        <p><input class="dynamic-field " type="text" placeholder='#' id="companyName" name="companyName" onkeyup="guessUserNameFunction()"></p>
+                        
+                        <div id="guessCompanyName">
+                            <ul>
 
-            </ul>
-            </div>
-          <br>
-          <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
-
-         </div>
+                            </ul>
+                        </div>
+                        <br>
+                        <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+                    </div>
 
                     <div class="inputs">
                         <p><input class="dynamic-field" type="text" placeholder='#' id="Ihre_Ust_ID" name="Ihre_Ust_ID" /><br>
@@ -348,7 +370,7 @@
                         <td>
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                         </td>
-                        <td><input placeholder="#" type="text" name="POS" id="POS" value=""></td>
+                        <td><input placeholder="#" type="text" name="POS" id="POS" value="1" readonly></td>
                         <td><input placeholder="#" type="text" name="Produkt" id="Produkt" value=""></td>
                         <td><input placeholder="#" type="text" name="Beschreibung" id="Beschreibung" value=""></td>
                         <td><input placeholder="#" type="text" name="Menge" id="Menge" value=""></td>
@@ -474,8 +496,8 @@
                     // Display validation errors in the console
                     console.log(response.errors);
                     displayValidationErrors(response.errors);
-                }else if (response.posError) {
-                    jQuery('#POS_err').text(response.posError);
+                }else if (response.productError) {
+                    jQuery('#Produkt_err').text(response.productError);
                 }
             },
             error: function(error) {

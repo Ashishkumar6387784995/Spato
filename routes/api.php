@@ -60,6 +60,7 @@ Route::get('userDetails', [loginController::class, 'userDetails']);
 Route::get('B2CUserDetails/{role_filter}', [loginController::class, 'B2CUserDetails']);
 Route::get('selectedB2CUserDetails/{id}', [loginController::class, 'selectedB2CUserDetails']);
 Route::get('selectedB2CUserDetailsByCompanyName/{companyName}/{role_filter}', [loginController::class, 'selectedB2CUserDetailsByCompanyName']);
+Route::get('selectedB2CUserDetailsByUserName/{name}', [loginController::class, 'selectedB2CUserDetailsByUserName']);
 
 
 
