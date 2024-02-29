@@ -377,6 +377,11 @@ class CartController extends Controller
                 return response()->json(['errors'=> 'Please apply a valid discount code']);
             }
 
+            // check is apply_disc_code is not open
+            $waitCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Gültig_ab', '>', date('Y-m-d'))->first();
+            if ($waitCode) {
+                return response()->json(['errors'=> 'Sorry! you can use this code from date- '.date('d-m-Y', strtotime($waitCode->Gültig_ab))]);
+            }
 
             // check is apply_disc_code is expired
             $expiredCode = Coupon::where('Gutscheincode', $Gutscheincode)->where('Bis_gültig', '<', date('Y-m-d'))->first();
