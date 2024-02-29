@@ -324,16 +324,10 @@
         serialNo: $('#serialNo').val(),
         addInformation: $('#addInformation').val(),
        deliveryStatus : $('input[name="deliveryStatus"]').val(),
-
-        
-      
+    
       };
 
       console.log(formData);
-
-
-
-
 
       // Make a GET request using AJAX
       $.ajax({
