@@ -120,10 +120,8 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                <div class="" style="padding-bottom:10px; border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
-                    <h2>Admin Dashboard</h2>
-                    <p>{{ now()->format('l, F j, Y') }}</p>
-
+                <div class="" style="padding-bottom:10px;">
+                @include('admin_theme/partial/admin_header')
                     <button class="navbar-toggler" type="button" data-toggle="offcanvas">
                         <span class="mdi mdi-menu"></span>
                     </button>
