@@ -287,11 +287,11 @@
         <div class="row">
           <div class="col-3"></div>
           <div class="col-2"><img src="{{asset('/assets/frontEnd/web/images/checkmark.gif')}}" alt="" srcset="" style="width:200px; height:200px;"></div>
-          <div class="col-4">
-          <h1 class="mt-5" style="font-size: 30px; font-weight: 600; color: black;">
+          <div class="col-6">
+          <h1 class="mt-5 " style="font-size: 30px; font-weight: 600; color: black; margin-left:20px;">
           <b>Thank You</b> for ordering.
         </h1>
-        <p  style="font-size: 25px; font-weight: 600; color: black;">Your order is in processing</p>
+        <p style="font-size: 25px; font-weight: 600; color: black; margin-left:20px;">Your order is in processing</p>
           </div>
         </div>
         
