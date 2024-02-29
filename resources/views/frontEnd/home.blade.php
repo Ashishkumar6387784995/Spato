@@ -251,11 +251,13 @@
         flex-direction: column;
       }
       .cCarousel-item .img{
-        height:300px;
+        max-width:250px;
+        max-height:250px;
         margin:auto;
       }
       .cCarousel-item img {
-        width: 250px;
+        max-width: 250px;
+        max-height: 250px;
         margin:auto;
         padding:15px 0px;
         object-fit: cover;
@@ -440,7 +442,7 @@
           @foreach ($latestProduct as $product)
             <article class="cCarousel-item">
               <div class="img">
-              <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image">
+              <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Product Image" width="250px" height="200px">
               </div>
               <div class="infos">
               <h5 class="card-title">{{ $product->Artikelname }}</h5>
