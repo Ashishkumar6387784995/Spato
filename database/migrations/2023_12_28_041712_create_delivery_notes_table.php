@@ -14,23 +14,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('delivery_notes', function (Blueprint $table) {
-                $table->id();
-                $table->string('Lieferschein_Nr');
-                $table->date('Lieferdatum')->nullable();
-                $table->string('Referenz')->nullable();
-                $table->string('Ihre_Kundennummer')->nullable();
-                $table->string('Ihre_Ust_ID')->nullable();
-    
-                // Dynamic table fields
-                $table->unsignedInteger('POS');
-                $table->string('Produkt')->nullable();
-                $table->string('Beschreibung')->nullable();
-                $table->string('Menge')->nullable();
-                $table->string('Einheit')->nullable();   
-                $table->string('delivery_status')->default('Offen');
-                $table->string('calculate_status')->default('Offen');
-                $table->timestamps();
+            $table->id();
+            $table->string('Lieferschein_Nr');
+            $table->date('Lieferdatum')->nullable();
+            $table->string('Referenz')->nullable();
+            $table->string('Ihre_Kundennummer')->nullable();
+            $table->string('Ihre_Ust_ID')->nullable();
 
+            // Dynamic table fields
+            $table->unsignedInteger('POS');
+            $table->string('Produkt')->nullable();
+            $table->string('Beschreibung')->nullable();
+            $table->string('Menge')->nullable();
+            $table->string('Einheit')->nullable();
+
+            $table->string('calculate_status')->default('Offen');
+            $table->string('changedDeliveryAddress')->default('NULL');
+            $table->string('serialNo')->default('NULL');
+            $table->string('addInformation')->default('NULL');
+            $table->string('deliveryStatus')->default('Offen');
+            $table->timestamps();
         });
     }
 

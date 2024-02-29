@@ -142,10 +142,10 @@
                   <h2>Admin Dashboard</h2>
                   <p>Monday, January 12, 2024</p>
                 </div>
+                <form id="editDeviverynotesForm">
                 <div class="row pt-3">
-                    
                     <div class="col-md-6 stretch-card grid-margin" >
-                   <a href="#"  class="btn">Save</a>
+                   <button type="button" id="editDeviverynotesButton"  class="btn">Save</button>
                     </div>
                     
                     <div class="col-md-2 stretch-card grid-margin" >
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 <div class="row pt-3">
-                    
+                <!-- {{$deliveryNotes}}         -->
                     <div class="col-md-4" >
                    
                     <form action="">
@@ -182,13 +182,15 @@
                    <p>Referenz</p><br>
                    <p>Ihre Kundennummer</p> <br>
                    <p>Ihre Ust. ID</p> <br>
+                   <p style="display:none">id</p> <br>
                     </div>
                     <div class="col-md-2" >
-                    <p><a href="#">LI-12345</a></p><br>
-                    <p><a href="#">15.01.2024</a></p><br>
-                    <p><a href="#">Mrs. Perfect</a></p><br>
-                    <p><a href="#">123456</a></p><br>
-                    <p><a href="#">DE 123456789</a></p><br>
+                    <p><a href="#">{{$deliveryNotes[0]->Lieferschein_Nr}}</a></p><br>
+                    <p><a href="#">{{$deliveryNotes[0]->Lieferdatum}}</a></p><br>
+                    <p><a href="#">{{$deliveryNotes[0]->Referenz}}</a></p><br>
+                    <p><a href="#">{{$deliveryNotes[0]->Ihre_Kundennummer}}</a></p><br>
+                    <p><a href="#">{{$deliveryNotes[0]->Referenz}}</a></p><br>
+                    <p style="display:none"><input type="text" value="{{$deliveryNotes[0]->id}}" name="id" id="id"></p><br>
                     </div>
                 </div>
 
@@ -241,7 +243,7 @@
 
                 </td>
                 <td>
-                  <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+                  <input type="text" name='inputs[0][Produkt]'  value="{{$deliveryNotes[0]->Produkt}}"  />
                   <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
 
                 </td>
@@ -249,18 +251,18 @@
 
                 <td>
 
-                  <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
-                  <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+                  <input type="text" name='inputs[0][Beschreibung]' placeholder='#'  value="{{$deliveryNotes[0]->Produkt}}" />
+                  <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"  value="{{$deliveryNotes[0]->Beschreibung}}"></span>
 
                 </td>
                 <td></td>
                 <td></td>
                 <td>
 
-                  <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+                  <input type="text" name='inputs[0][Menge]' placeholder='#'  value="{{$deliveryNotes[0]->Menge}}"/><br>
                 </td>
                 <td>
-                  <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
+                  <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#'  value="{{$deliveryNotes[0]->Einheit}}"/>
                   <br><span id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
                 </td>
@@ -271,35 +273,27 @@
                     <h3 class="mt-5 mb-5">Andere Informationen</h3>
         <div class="row">
             <div class="col-3"><p>Lieferadresse ändern</p></div>
-            <div class="col-9"><textarea type="text" name="" id="" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+            <div class="col-9"><textarea type="text" name="changedDeliveryAddress" id="changedDeliveryAddress" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
         </div>
         <div class="row mt-3">
             <div class="col-3"><p>Seriennummer hinzufügen</p></div>
-            <div class="col-9"><input type="text" name="" id=""  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
+            <div class="col-9"><input type="text" name="serialNo" id="serialNo"  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
         </div>
         <div class="row mt-3">
             <div class="col-3"><p>Informationen hinzufügen</p></div>
-            <div class="col-9"><textarea type="text" name="" id="" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+            <div class="col-9"><textarea type="text" name="addInformation" id="addInformation" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
         </div>
         <div class="row mt-3">
             <div class="col-3"><p>Lieferung bestätigen</p></div>
-            <div class="col-2">offen<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
-                    <div class="col-4">geliefert<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div></div>
+            <div class="col-2">Offen<input class="form-check-input" type="radio" name="deliveryStatus" value="Offen"></div>
+                    <div class="col-4">geliefert<input class="form-check-input" type="radio" name="deliveryStatus" value="geliefert"></div></div>
         </div>
            
                 </div>
         </div>
+                </form>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <!-- <footer class="footer">
-        <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2021</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                    admin template</a> from Bootstrapdash.com</span>
-        </div>
-    </footer> -->
+  
     <!-- partial -->
     </div>
     <!-- main-panel ends -->
@@ -308,6 +302,108 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+    <script>
+    // Execute the code when the document is ready
+    $('#editDeviverynotesButton').click(function(e) {
+      e.preventDefault(); // 
+      // Get the token from localStorage
+      var token = localStorage.getItem('authToken');
+      console.log(token);
+
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+        // return;
+      }
+
+      var formData = {
+        id: $('#id').val(),
+        changedDeliveryAddress: $('#changedDeliveryAddress').val(),
+        serialNo: $('#serialNo').val(),
+        addInformation: $('#addInformation').val(),
+       deliveryStatus : $('input[name="deliveryStatus"]').val(),
+
+        
+      
+      };
+
+      console.log(formData);
+
+
+
+
+
+      // Make a GET request using AJAX
+      $.ajax({
+        type: 'POST',
+        url: '/api/editDeliveryNotesForSuppliersApi',
+        data: formData,
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+        success: function(response) {
+     // Handle success response
+     if (response.success) {
+      console.log(response.success);
+  
+      // $('#AddOffersForm')[0].reset();
+      $('#success_msg').text(response.success);
+     } else if (response.errors) {
+      // Display validation errors in the console
+      console.log(response.errors);
+      
+      displayValidationErrors(response.errors);
+ 
+
+      
+     }
+     else if (response.error){
+      window.location.href = '/api/home';
+
+     }
+    },
+    error: function(xhr, status, error) {
+     // Handle error response
+     var errors = xhr.responseJSON.errors;
+     if (errors) {
+      // Display errors in your frontend
+      // For example, you can loop through errors and append them to a specific element
+      $.each(errors, function(field, messages) {
+       // Append error messages to your HTML
+       $('#' + field + '-error').text(messages[0]);
+      });
+     }
+    }
+      });
+      function displayValidationErrors(errors) {
+    // Display validation errors next to the respective form fields
+    if (errors.Angebotsdatum) {
+     $('#Angebotsdatum_err').text(errors.Angebotsdatum[0]);
+    }
+    if (errors.Ihre_Kundennummer) {
+     $('#Ihre_Kundennummer_err').text(errors.Ihre_Kundennummer[0]);
+    }
+    if (errors['inputs.0.Produkt']) {
+     $('#Produkt_err').text('Produkt is Required');
+    }
+    if (errors['inputs.0.Beschreibung']) {
+     $('#Beschreibung_err').text('Beschreibung is Required');
+    }
+    if (errors['inputs.0.Einheit']) {
+     $('#Einheit_err').text('Einheit Is Required');
+    }
+    if (errors['inputs.0.Einzelpreis']) {
+     $('#Einzelpreis_err').text('Einzelpreis is Required');
+    }
+
+
+   }
+    });
+  </script>
+
 
 
 

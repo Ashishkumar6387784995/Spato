@@ -22,7 +22,7 @@ class DeliveryNotesController extends Controller
         if ($user->role == 'Admin') {
             $delivery_notes = Delivery_notes::select('Lieferschein_Nr','Lieferdatum','Ihre_Kundennummer','Einheit','calculate_status')->orderBy('created_at', 'desc')->get()->unique('Lieferschein_Nr');
         } elseif ($user->role == 'supplier') {
-            $delivery_notes = Delivery_notes::select('id','Lieferschein_Nr', 'Lieferdatum', 'Ihre_Kundennummer', 'Einheit','delivery_status')
+            $delivery_notes = Delivery_notes::select('id','Lieferschein_Nr', 'Lieferdatum', 'Ihre_Kundennummer', 'Einheit','deliveryStatus')
             ->whereRaw('CAST(SUBSTRING_INDEX(Produkt, ".", 1) AS UNSIGNED) = ?', [$user->Lieferantennummer])
             ->orderBy('created_at', 'desc')
             ->get()
@@ -149,9 +149,13 @@ class DeliveryNotesController extends Controller
         return response()->json(['success' => "Delivery Notes Mail Send SuccessFully"]);
     }
 
-    public function editDeliveryNotesForSuppliers($role){
+    public function editDeliveryNotesForSuppliers($role, $Id){
 
-        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role'));
+        $deliveryNotes = Delivery_notes::select()
+        ->where('id', $Id)
+        ->get();
+
+        return view('admin_theme/pages/delivery_notes/editDeliveryNotesForSuppliers')->with(compact('role','deliveryNotes'));
 
     }
 
@@ -186,6 +190,32 @@ class DeliveryNotesController extends Controller
           } else {
               return back()->with('error', 'Offer not found');
           }
+
+    }
+
+    public function editDeliveryNotesForSuppliersApi(Request $request){
+
+    
+        $user = Auth::guard('api')->user();
+
+        if ($user->role == 'supplier') {
+            $status = Delivery_notes::where('id', $request->id) // Assuming $id is the ID of the record you want to update
+            ->update([
+                'changedDeliveryAddress' => $request->changedDeliveryAddress,
+                'serialNo' => $request->serialNo,
+                'addInformation' => $request->addInformation,
+                'deliveryStatus' => $request->deliveryStatus,
+            ]);
+        }  else {
+            $status = 'DeliveryNotes not found';
+        }
+
+        if ($status) {
+            return response()->json(['success' => $status, 'user' => $user]);
+        } else {
+            return response()->json(['errors' => 'Offer Not Found']);
+        }
+
 
     }
 }

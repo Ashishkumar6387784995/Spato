@@ -121,6 +121,7 @@ Route::middleware('api.auth')->group(function () {
   // Delivery Notes for Admin
   Route::post('addDeliveryNotesApi', [DeliveryNotesController::class, 'addDeliveryNotesApi']);
   Route::get('deliveryNotesListingApi', [DeliveryNotesController::class, 'DeliveryNotesListingApi']);
+  Route::post('editDeliveryNotesForSuppliersApi', [DeliveryNotesController::class, 'editDeliveryNotesForSuppliersApi']);
 
 
 
@@ -271,7 +272,7 @@ Route::get('addDeliveryNotes/{role}', [DeliveryNotesController::class, 'addDeliv
 Route::get('editDeliveryNotes/{role}/{deliveryId}', [DeliveryNotesController::class, 'editDeliveryNotes']);
 Route::post('sendDeliveryNotesMailsToB2C', [DeliveryNotesController::class, 'sendDeliveryNotesMailsToB2C']);
 Route::get('downloadDeliveryPdf/{deliveryId}', [DeliveryNotesController::class, 'downloadDeliveryPdf']);
-Route::get('editDeliveryNotesForSuppliers/{role}/{deliveryId}', [DeliveryNotesController::class, 'editDeliveryNotesForSuppliers']);
+Route::get('editDeliveryNotesForSuppliers/{role}/{Id}', [DeliveryNotesController::class, 'editDeliveryNotesForSuppliers']);
 
 
 
