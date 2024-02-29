@@ -76,12 +76,12 @@
   }
 
   .product .img {
-   height: 200px;
+   height: 180px;
   }
 
   .product .img img {
-   width: 100%;
-   height: 100%;
+   width: 250px;
+   height: 200px;
    object-fit: contain;
    transition: 0.5s;
    transform: scale(0.75);
@@ -169,9 +169,11 @@
       @foreach($products as $product)
 
       <div class="product">
+      <a href="{{ url('api/ProductdetailPage/' . $product->id . '/' . $product->Kategorie_1) }}">
        <div class="img">
         <img src="{{ asset('storage/' . $product->Bild_1) }}" alt="Image">
        </div>
+</a>
        <div class="product-details">
         <h5 class="card-title">{{ $product->Artikelname }}</h5>
         <p class="card-text">
