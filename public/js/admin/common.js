@@ -109,3 +109,48 @@ function guessCompanyNameFunction(role_filter) {
     jQuery('#guessCompanyName ul').empty();
   });
 
+
+// fetch B2C User Details by User name
+function guessUserNameFunction(role_filter) {
+  var baseUrl = window.location.origin;
+  var name = jQuery('#companyName').val();
+  console.log(role_filter);
+  if (name=='') {
+    $('#guessCompanyName ul').empty();
+    return false;
+  }
+  
+  $(".customer_dtl").text('');
+  $("#Ihre_Kundennummer").html('');
+  $("#customer_email, #Ihre_Ust_ID").val('');
+  $.ajax({
+    type: 'get',
+    url: baseUrl + '/api/selectedB2CUserDetailsByUserName/' + name,
+    dataType: 'json',
+    success: function(response) {
+      // Handle success response
+      if (response.success) {
+
+        console.log(response.success);
+        console.log(response.usersName);
+
+        
+        var nameList = $('#guessCompanyName ul');
+        nameList.empty();
+        response.usersName.forEach(function(item, index) {
+          // Create a new product element for each cart item
+          nameList.append('<li class="liCompanyName slide-in-blurred-top">'+ item.name +'</li>');
+        });
+
+        $("#customer_email").val(response.success[0].email);
+        $("#customer_Email").text(response.success[0].email);
+        $("#customer_Contact").text(response.success[0].mobile);
+        $("#customer_Name").text(response.success[0].name);
+        $("#Ihre_Kundennummer").html('').html('<option value="'+ response.success[0].id +'" selected>'+ response.success[0].id +'</option>');
+        $("#Ihre_Ust_ID").val(response.success[0].vatNo);
+        nameList.empty();
+        // Dynamically set the loop limit based on the array length
+      }
+    },
+  });
+};

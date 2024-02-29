@@ -71,8 +71,10 @@
         }
         table tr th {
             width: 200px;
-            background-color:#54606c;
+            height:5px !important;
+            background-color:#54606c !important;
             color:#fff;
+            padding:0;
         }
 
         table tr td {
@@ -205,7 +207,85 @@
                     <div class="col-md-2 " > </div>
                     
                 </div>
-           
+                <div class="table-responsive">
+          <table class="table" id="table">
+            <thead>
+              <tr>
+                <th>
+                  POS.
+                </th>
+                <th>
+                  Produkt
+                </th>
+                <th>
+                  Beschreibung
+                </th>
+                <th></th>
+                <th></th>
+                <th>
+                  Menge
+                </th>
+                <th>
+                  Einheit
+                </th>
+
+              </tr>
+
+
+            </thead>
+            <tbody>
+              <tr class="hidden">
+                <td>
+
+                  <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+
+                </td>
+                <td>
+                  <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+                  <br><span id="Produkt_err" style="color:red; font-size:13px;"></span>
+
+                </td>
+
+
+                <td>
+
+                  <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+                  <br><span id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+
+                  <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+                </td>
+                <td>
+                  <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
+                  <br><span id="Einheit_err" style="color:red;  font-size:13px;"></span>
+
+                </td>
+
+            </tbody>
+          </table>
+        </div>
+                    <h3 class="mt-5 mb-5">Andere Informationen</h3>
+        <div class="row">
+            <div class="col-3"><p>Lieferadresse ändern</p></div>
+            <div class="col-9"><textarea type="text" name="" id="" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3"><p>Seriennummer hinzufügen</p></div>
+            <div class="col-9"><input type="text" name="" id=""  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3"><p>Informationen hinzufügen</p></div>
+            <div class="col-9"><textarea type="text" name="" id="" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3"><p>Lieferung bestätigen</p></div>
+            <div class="col-2">offen<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div>
+                    <div class="col-4">geliefert<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div></div>
+        </div>
            
                 </div>
         </div>
@@ -241,62 +321,5 @@
     <script type="text/javascript" src="{{ asset('theme/assets/js/dashboard.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/js/todolist.js') }}"></script>
 
-
-    <script>
-     
-     var i= 0;
-     var No=1;
-     console.log(i);
-     $('#add').click(function(){
-         ++i;
-       
-         ++No;
-         console.log(i);
-   
-         $('#abc').before(
-             `<tr>
-          
-                     <td >
-                                                     <input type="text" value='`+No+`' name='inputs[`+i+`][SNo]'  placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][stdValue]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X1]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X2]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X3]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X4]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='inputs[`+i+`][X5]' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                     <input type="text" name='' placeholder='#'/>
-                                                 </td>
-                                                 <td >
-                                                 <a href="">delete</a>
-                                                 </td>
-                                              
-                                                
-                                
-                         </tr>
-                         `
-            
-         );
-     });
- 
-     $(document).on('click','.remove-table-row', function(){
-         $(this).parents('tr').remove();
- 
-     });
- 
-     </script>
 </body>
 </html>
