@@ -236,7 +236,7 @@
                             if (data.user.role === 'Admin') {
                                 row.append('<td>' + item.calculate_status + '</td>');
                             } else if (data.user.role === 'supplier') {
-                                row.append('<td>' + item.delivery_status + '</td>');
+                                row.append('<td>' + item.deliveryStatus + '</td>');
                             }
                             row.append('<td>' + item.Lieferschein_Nr + '</td>');
                             row.append('<td>' + item.Ihre_Kundennummer + '</td>');
