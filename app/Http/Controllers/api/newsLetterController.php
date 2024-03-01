@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\NewsLetter;
 use App\Models\User;
+use App\Models\Product;
 
 class newsLetterController extends Controller
 {
@@ -22,6 +23,15 @@ class newsLetterController extends Controller
         $users = $this->getNewsLetterUsers($request->Kunden);
 
         return response()->json(['success'=>'1', 'noOfCustomer'=>count($users)]);
+    }
+
+
+    // function for get Product Details DRP
+    public function getProductDetailsDRP(Request $request){
+        $product  = $request->Produkt;
+        $success  = Product::select('id', 'Katalog_Art_Nummer', 'Artikelname', 'Beschreibung_kurz', 'Bild_1', 'Preis_zzgl_MwSt')->where('Katalog_Art_Nummer', $product)->where('status', 'active')->orderby('Katalog_Art_Nummer', 'ASC')->get();
+        $products = Product::select('id', 'Katalog_Art_Nummer', 'Artikelname', 'Beschreibung_kurz', 'Bild_1', 'Preis_zzgl_MwSt')->where('Katalog_Art_Nummer', 'LIKE', '%'.$product.'%')->where('status', 'active')->orderby('Katalog_Art_Nummer', 'ASC')->get();
+        return response()->json(['status'=> count($success), 'success'=>$success, 'productsList'=>$products]);
     }
 
     // function for generate Newsletter-Nr
