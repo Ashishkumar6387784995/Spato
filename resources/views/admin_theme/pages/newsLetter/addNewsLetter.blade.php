@@ -78,6 +78,24 @@
    color: #fff;
   }
 
+  .edit {
+            background-color: #404040;
+            border: 1px solid #404040;
+            color: #ffff;
+            padding: 5px 14px;
+            height: 42px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.5s ease;
+        }
+
+        .edit:hover {
+            background-color: transparent;
+            border: 1px solid #404040;
+            color: #404040;
+            border-radius: 5px;
+        }
+
   .close {
    color: #404040;
   }
@@ -557,8 +575,10 @@
 
 
 
-      <div class="row pt-3">
-
+      <div class="row mt-5">
+        <div class="col">
+        <button class="edit" type="button" id="saveButton">Vorschau-Newsletter  <i class="fa-regular fa-eye" style="margin-left:0.5rem;"></i></button>
+        </div>
        </div>
       <div class="row pt-3">
 
