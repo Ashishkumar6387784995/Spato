@@ -695,24 +695,19 @@
                         <input type="text"" name='inputs[${i}][Produkt]' placeholder="#"/>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
+                        <input type="text" name='inputs[${i}][Produktname]' placeholder="#"/>
                     </td>
                     <td>
-                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
+                    <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
                        
                     </td>
                     <td>
-                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+                   <img src="" alt=""/>
                     </td>
                     <td>
                         <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
                     </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
-                    </td>
+                    
                     <td>
                         <button class="remove-table-row  btn btn-sm">Delete</button>
                     </td>`;
