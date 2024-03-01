@@ -413,20 +413,19 @@
             <th>
                 Produkt
             </th>
+            
+            <th>
+            Produktname
+            </th>
             <th>
                 Beschreibung
             </th>
             <th>
-                Menge
-            </th>
-            <th>
-                Einheit
+            Produktbild
             </th>
             <th>
                 Einzelpreis
             </th>
-            <th>Rabatt</th>
-            <th>Gesamtpreis</th>
             <th></th>
 
             </tr>
@@ -451,36 +450,32 @@
             </td>
 
 
+           
             <td>
 
-                <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
-                <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+                <input type="text" name='inputs[0][Produktname]' placeholder='#' /><br>
 
             </td>
+
+            
             <td>
 
-                <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+                <input type="text" name='inputs[0][Beschreibung]' placeholder='#' /><br>
             </td>
+
+            <td>
+
+<img src="" alt="">
+<br><span class="msg_err" id="Produktbild_err" style="color:red;  font-size:13px;"></span>
+
+</td>
             <td>
                 <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
                 <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
             </td>
-            <td>
-
-                <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
-                <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
-
-            </td>
-            <td>
-                <p></p>
-                <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
-                C2</span>
-            </td>
-            <td>
-                <p></p>
-                <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
-            </td>
+            
+            
             <td>
               <button class="btn btn-sm">Delete</button>
             </td>
