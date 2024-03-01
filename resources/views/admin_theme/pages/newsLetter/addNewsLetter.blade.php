@@ -319,7 +319,7 @@
 
        <div class="col-md-4">
         <div class="contact-show">
-         <p><b>Gesamtzahl der Mitglieder </b> -> <span class="customer_dtl" id="customer_Name"><span></p>
+         <p><b>Gesamtzahl der Mitglieder </b> -> <span class="customer_dtl" id="noOfCustomer"><span></p>
 
         </div>
        </div>
@@ -331,8 +331,7 @@
          </div>
          <div class="inputs">
             <p>
-                <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr"
-                value="" readonly /> 
+                <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr" value="{{$newsLetter}}" readonly /> 
                 <br>
                 <span class="msg_err" id="Auftrags_Nr_err" style="color:red;  font-size:13px;"></span>
             </p>
@@ -356,15 +355,15 @@
           <p>Kundengruppe auswählen</p>
          </div>
          <div class="inputs">
-          <select id="Ihre_Kundennummer" name="Ihre_Kundennummer"  class="dynamic-field" style="width:250px;" required>
+          <select id="Kunden" name="Kunden" class="dynamic-field" onchange="getTotalNumberOfNewsLetterUsers()" style="width:250px;" required>
            <option value="Kundengruppe auswählen">Kundengruppe auswählen</option>
-           <option value="all">All</option>
-           <option value="B2C">B2C</option>
-           <option value="B2B">B2B</option>
-           <option value="Suppliers">Suppliers</option>
+           <option value="All">All</option>
+           <option value="Normal">B2C</option>
+           <option value="b2b">B2B</option>
+           <option value="supplier">Suppliers</option>
           </select>
           <br>
-          <span class="msg_err" id="Ihre_Kundennummer_err" style="color:red;  font-size:13px;"></span>
+          <span class="msg_err" id="Kunden_err" style="color:red;  font-size:13px;"></span>
 
          </div>
         </div>
@@ -414,20 +413,19 @@
             <th>
                 Produkt
             </th>
+            
+            <th>
+            Produktname
+            </th>
             <th>
                 Beschreibung
             </th>
             <th>
-                Menge
-            </th>
-            <th>
-                Einheit
+            Produktbild
             </th>
             <th>
                 Einzelpreis
             </th>
-            <th>Rabatt</th>
-            <th>Gesamtpreis</th>
             <th></th>
 
             </tr>
@@ -452,36 +450,32 @@
             </td>
 
 
+           
             <td>
 
-                <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
-                <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
+                <input type="text" name='inputs[0][Produktname]' placeholder='#' /><br>
 
             </td>
+
+            
             <td>
 
-                <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+                <input type="text" name='inputs[0][Beschreibung]' placeholder='#' /><br>
             </td>
+
+            <td>
+
+<img src="" alt="">
+<br><span class="msg_err" id="Produktbild_err" style="color:red;  font-size:13px;"></span>
+
+</td>
             <td>
                 <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
                 <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
             </td>
-            <td>
-
-                <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
-                <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
-
-            </td>
-            <td>
-                <p></p>
-                <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
-                C2</span>
-            </td>
-            <td>
-                <p></p>
-                <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
-            </td>
+            
+            
             <td>
               <button class="btn btn-sm">Delete</button>
             </td>
@@ -608,6 +602,34 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
 
+    <script>
+
+      // this is used for get Total Number Of NewsLetter subscribe Users
+      function getTotalNumberOfNewsLetterUsers(){
+        var noOfCustomer = jQuery('#noOfCustomer');
+        noOfCustomer.html('');
+        var Kunden = jQuery('#Kunden').val();
+
+        // Make a GET request using AJAX
+        $.ajax({
+          url: '/api/getTotalNumberOfNewsLetterUsers', // Replace with the actual endpoint URL
+          method: 'GET',
+          data: {Kunden: Kunden},
+          success: function(data) {
+            // Handle the successful response
+            console.log('Response :', data);
+            if (data.success) {
+              noOfCustomer.html(data.noOfCustomer);
+            }
+          },
+          error: function(error) {
+            // Handle errors
+            console.error('Error:', error);
+            noOfCustomer.html('Sorry! we are facing some internal errors.');
+          }
+        });
+      }
+    </script>
 
 
   <script>
@@ -673,24 +695,19 @@
                         <input type="text"" name='inputs[${i}][Produkt]' placeholder="#"/>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
+                        <input type="text" name='inputs[${i}][Produktname]' placeholder="#"/>
                     </td>
                     <td>
-                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
+                    <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
                        
                     </td>
                     <td>
-                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+                   <img src="" alt=""/>
                     </td>
                     <td>
                         <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
                     </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
-                    </td>
+                    
                     <td>
                         <button class="remove-table-row  btn btn-sm">Delete</button>
                     </td>`;
@@ -781,7 +798,7 @@
     Auftrags_Nr: $('#AddAuftragsForm input[name="Auftrags_Nr"]').val(),
     Auftragsdatum: $('#AddAuftragsForm input[name="Auftragsdatum"]').val(),
     Referenz: $('#AddAuftragsForm input[name="Referenz"]').val(),
-    Ihre_Kundennummer: $('#AddAuftragsForm select[name="Ihre_Kundennummer"]').val(),
+    Kunden: $('#AddAuftragsForm select[name="Kunden"]').val(),
     gesamt_netto: $('#AddAuftragsForm input[name="gesamt_netto"]').val(),
     zzgl_Umsatzsteuer: $('#AddAuftragsForm input[name="zzgl_Umsatzsteuer"]').val(),
     Gesamtbetrag_brutto: $('#AddAuftragsForm input[name="Gesamtbetrag_brutto"]').val(),
