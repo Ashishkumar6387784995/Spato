@@ -124,7 +124,7 @@
       <div class="content-wrapper">
 
         <div class="" style="padding-bottom:10px;   margin-top:-1.5rem;">
-        @include('admin_theme/partial/admin_header')
+        @include('admin_theme/Partial/admin_header')
 
 
           <button class="navbar-toggler" type="button" data-toggle="offcanvas">

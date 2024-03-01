@@ -5,39 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spato</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
   <style>
   /* Imports */
 
-
-  .sidebar {
-   height: 100vh;
-   width: 200px;
-   /* background-color:#252627; */
-  }
-
-  .menu {
-   user-select: none;
-   display: flex;
-   justify-content: space-around;
-   width: 100%;
-   /* height: 50px; */
-   display: flex;
-   align-items: center;
-   color: white;
-   transition-duration: 0.3s;
-  }
-
-  /* Container for all Pages */
-  .allpage {
-   display: flex;
-  }
-
-  /* Container for single page */
+ /* Container for single page */
   .page {
    width: 100%;
    /* padding: 50px; */
@@ -45,55 +21,7 @@
   }
 
   /* Style for permalinks */
-  a {
-   color: var(--main-col);
-  }
-
-  /* Fade in animation */
-  @keyframes fadein {
-   from {
-    transform: translateY(20px);
-    opacity: 0;
-   }
-
-   to {
-    transform: translateY(0px);
-   }
-  }
-
-  /* Add margin to every element in a page */
-  .page * {
-   margin: 10px;
-  }
-
-  .menu * {
-   transform: translateX(0px);
-   transition-duration: 0.3s;
-  }
-
-  /* Translate the menu text to the right on hover */
-  .menu:hover>* {
-   transition-duration: 0.3s;
-   transform: translateX(20px);
-  }
-
-  /* Disable and enable arrow on hover */
-  .menu>i {
-   opacity: 0;
-  }
-
-  .menu:hover>i {
-   opacity: 1;
-  }
-
-  /* Translate the arrow logo right on click */
-  .menu:active>i {
-   margin-left: 10px;
-  }
-
-
-
-
+  
   .card img {
    margin: auto;
    justify-content: center;
@@ -207,48 +135,57 @@
    min-height: 1000px;
    display: flex;
   }
-
   .sidebar {
-   flex: 1;
-   background-color: #f5f6fa;
-   padding: 10px;
-   height: 400px;
-  }
+        width: 25%;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
 
-  .logo {
-   font-weight: 800;
-   font-size: 20px;
-   text-transform: uppercase;
-   color: #e74c3c;
-   margin-bottom: 10px;
-  }
+      .sidebar h6{
+        font-weight:600;
+      }
 
-  .sidebar input[type="text"] {
-   padding: 5px 5px;
-   outline: none;
-   width: 100%;
-   margin-bottom: 15px;
-  }
-
-  .sidebar h3 {
-   font-weight: 600;
-   margin-bottom: 10px;
-  }
-
-  .sidebar ul {
-   list-style: none;
-  }
-
-  .sidebar ul li {
-   margin: 5px 0;
-   padding-left: 5px;
-   cursor: pointer;
-  }
-
-  .sidebar ul li:hover {
-   background-color: #dcdde1;
-  }
-
+      .sidebar select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+      .sidebar a {
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+      }
+      .content {
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .product-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: calc(33.33% - 20px);
+      }
+      .product-card img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .product-card h2 {
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      .product-card p {
+        color: #666;
+      }
   .content {
    flex: 4;
   }
@@ -320,35 +257,52 @@
 
   <section class="agb-container">
    <div class="container p-box">
-    <div class="sidebar">
-     <input type="text" id="txtSearch" placeholder="Search Product..." />
-     <ul class="category-list"></ul>
-     <!-- <div class="price">
-      <input type="range" id="priceRange" />
-      <span class="priceValue">500</span>
-     </div> -->
-    </div>
-    <div class="content">
-     <div class="products">
-
-     </div>
-    </div>
-
-
-    <!-- <div class="card d-none d-md-block">
-     <img src="{{ asset('assets/frontEnd/web/images/product 1.png')}}" class="card-img-top" alt="..." />
-     <div class="card-body">
-      
-      <p class="card-text">
-       <li>Merkamal 1 - lauft fluffig</li>
-       <li>Merkamal 2 - fahurt urail... lorem</li>
-      </p>
-      
-
-     </div>
-     <a href="#" class="btn">IN DEN WARENKORB</a>
-    </div> -->
-   </div>
+      <div class="sidebar">
+        <h6 class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Pools</h6>
+        <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+        <h6>Technik</h6>
+        <h6>Attraktionen</h6>
+        <h6>Verrohrung</h6>
+        <h6>Wasserpflege</h6>
+        <h2>Product Categories</h2>
+        <ul id="categoryList">
+          <li><a href="#" onclick="filterProducts('All')">All</a></li>
+          <li>
+            <a href="#" onclick="filterProducts('Category 1')">Category 1</a>
+          </li>
+          <li>
+            <a href="#" onclick="filterProducts('Category 2')">Category 2</a>
+          </li>
+          <li>
+            <a href="#" onclick="filterProducts('Category 3')">Category 3</a>
+          </li>
+          <li>
+            <a href="#" onclick="filterProducts('Category 4')">Category 4</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="productContainer">
+        <div class="product-card" data-category="Category 1">
+          <img src="product1.jpg" alt="Product 1" />
+          <h2>Product 1</h2>
+          <p>Description of Product 1</p>
+        </div>
+        <div class="product-card" data-category="Category 2">
+          <img src="product2.jpg" alt="Product 2" />
+          <h2>Product 2</h2>
+          <p>Description of Product 2</p>
+        </div>
+        <div class="product-card" data-category="Category 3">
+          <img src="product3.jpg" alt="Product 3" />
+          <h2>Product 3</h2>
+          <p>Description of Product 3</p>
+        </div>
+        <!-- More product cards go here -->
+      </div>
    </div>
   </section>
   @include('frontEnd/partial/footer')
@@ -356,182 +310,19 @@
 
 
   <script>
-  const data = [{
-    id: 1,
-    name: "Fire Boltt Ninja 2",
-    img: "{{ asset('assets/frontEnd/web/images/product 1.png')}}",
-    amt: 1599,
-    seller: "Boltt Store",
-    catagory: "Watch",
-   },
+      function filterProducts(category) {
+        const productCards = document.querySelectorAll(".product-card");
 
-   {
-    id: 2,
-    name: "Noise Pulse Go",
-    img: "{{ asset('assets/frontEnd/web/images/product-2.png')}}",
-    amt: 1300,
-    seller: "Noise Store",
-    catagory: "Watch",
-   },
-
-   {
-    id: 3,
-    name: "boAt Xtend Pro",
-    img: "{{ asset('assets/frontEnd/web/images/product-2.png')}}",
-    amt: 2799,
-    seller: "Rajesh Watchs",
-    catagory: "Watch",
-   },
-   {
-    id: 4,
-    name: "Lenovo Tab M8",
-    img: "{{ asset('assets/frontEnd/web/images/product-2.png')}}",
-    amt: 9270,
-    seller: "Stonehenge Retail",
-    catagory: "Tablets",
-   },
-   {
-    id: 5,
-    name: "Honor PAD X8",
-    img: "{{ asset('assets/frontEnd/web/images/product 1.png')}}",
-    amt: 12999,
-    seller: "Honor india",
-    catagory: "Tablets",
-   },
-
-   {
-    id: 6,
-    name: "IKALL N9 ",
-    img: "{{ asset('assets/frontEnd/web/images/product 1.png')}}",
-    amt: 3999,
-    seller: "IKALL Store",
-    catagory: "Tablets",
-   },
-
-   {
-    id: 7,
-    name: "Oppo Pad Air",
-    img: "{{ asset('assets/frontEnd/web/images/product-2.png')}}",
-    amt: 15999,
-    seller: "Oppo Store",
-    catagory: "Tablets",
-   },
-   {
-    id: 8,
-    name: "Acer EK220Q",
-    img: "{{ asset('assets/frontEnd/web/images/product-2.png')}}",
-    amt: 6249,
-    seller: "Accer Store",
-    catagory: "Monitors",
-   },
-   {
-    id: 9,
-    name: "Samsung 24",
-    img: "{{ asset('assets/frontEnd/web/images/product 1.png')}}",
-    amt: 9799,
-    seller: "Samsung Store",
-    catagory: "Monitors",
-   },
-
-   {
-    id: 10,
-    name: "ZEBRONICS AC32FHD ",
-    img: "{{ asset('assets/frontEnd/web/images/product 1.png')}}",
-    amt: 12799,
-    seller: "ZEBRONICS Store",
-    catagory: "Monitors",
-   },
-  ];
-
-  const productsContainer = document.querySelector(".products");
-  const categoryList = document.querySelector(".category-list");
-
-  function displayProducts(products) {
-   if (products.length > 0) {
-    const product_details = products
-     .map(
-      (product) => `
- <div class="product">
- <div class="img">
-   <img src="${product.img}" alt="${product.name}" />
- </div>
- <div class="product-details">
- <h5 class="card-title">Saugrobroter</h5>
- <p class="card-text">
-       <li>Merkamal 1 - lauft fluffig</li>
-       <li>Merkamal 2 - fahurt urail... lorem</li>
-      </p>
-      <p class="product-price">
-       statt - 42,50€ <span class="price">25,30€</span>
-      </p>
- </div>
- <a href="#" class="cart-btn">IN DEN WARENKORB</a>
-</div>`
-     )
-     .join("");
-
-    productsContainer.innerHTML = product_details;
-   } else {
-    productsContainer.innerHTML = "<h3>No Products Available</h3>";
-   }
-  }
-
-  function setCategories() {
-   const allCategories = data.map((product) => product.catagory);
-   //console.log(allCategories);
-   const catagories = [
-    "All",
-    ...allCategories.filter((product, index) => {
-     return allCategories.indexOf(product) === index;
-    }),
-   ];
-   //console.log(catagories);
-   categoryList.innerHTML = catagories
-    .map((catagory) => `<li>${catagory}</li>`)
-    .join("");
-
-   categoryList.addEventListener("click", (e) => {
-    const selectedCatagory = e.target.textContent;
-    selectedCatagory === "All" ?
-     displayProducts(data) :
-     displayProducts(
-      data.filter((product) => product.catagory == selectedCatagory)
-     );
-   });
-  }
-  const priceRange = document.querySelector("#priceRange");
-  const priceValue = document.querySelector(".priceValue");
-
-  function setPrices() {
-   const priceList = data.map((product) => product.amt);
-   const minPrice = Math.min(...priceList);
-   const maxPrice = Math.max(...priceList);
-   priceRange.min = minPrice;
-   priceRange.max = maxPrice;
-   priceValue.textContent = "Rs." + maxPrice;
-
-   priceRange.addEventListener("input", (e) => {
-    priceValue.textContent = "Rs." + e.target.value;
-    displayProducts(data.filter((product) => product.amt <= e.target.value));
-   });
-  }
-
-  const txtSearch = document.querySelector("#txtSearch");
-  txtSearch.addEventListener("keyup", (e) => {
-   const value = e.target.value.toLowerCase().trim();
-   if (value) {
-    displayProducts(
-     data.filter((product) => product.name.toLowerCase().indexOf(value) !== -1)
-    );
-   } else {
-    displayProducts(data);
-   }
-  });
-
-  displayProducts(data);
-  setCategories();
-  setPrices();
-  </script>
+        productCards.forEach((card) => {
+          const cardCategory = card.getAttribute("data-category");
+          if (category === "All" || category === cardCategory) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+    </script>
  </body>
 
 </html>

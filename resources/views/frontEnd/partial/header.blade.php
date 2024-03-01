@@ -1,3 +1,6 @@
+<?php
+    use Illuminate\Support\Facades\Crypt;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -980,11 +983,11 @@
     // // Redirect to the new URL
     // window.location.href = newUrl;
     if (response.role == "Admin") {
-     window.location.href = '/api/admin_dashboard/admin';
+      window.location.href = '/api/admin_dashboard/{{ encrypt('admin') }}';
     } else if (response.role == "b2b") {
-     window.location.href = '/api/admin_dashboard/b2b';
+     window.location.href = '/api/admin_dashboard/{{ encrypt('b2b') }}';
     } else if (response.role == "supplier") {
-     window.location.href = '/api/admin_dashboard/supplier';
+     window.location.href = '/api/admin_dashboard/{{ encrypt('supplier') }}';
     } else {
      window.location.href = '/api/home';
     }
@@ -1214,6 +1217,7 @@
 
  });
  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
  <script>
  // Wait for the DOM to be ready
@@ -1237,10 +1241,18 @@
 
     if (response.success !== null && response.success !== undefined) {
 
+  
+      
+             
+                // console.log(role);
 
+       
      // If success is not null or undefined, hide invalidUser and show validUser
      $("#invalidUser").css("display", "none");
-     $("#validUser").html(`
+
+     if(response.success.role == 'Admin'){
+
+      $("#validUser").html(`
     
     <li class="nav-item list-unstyled pe-3 ps-3">
         <a class="nav-link" href="#">0,00€</a>
@@ -1255,10 +1267,11 @@
            <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
             <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
             <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
-            <li class="dashboard"><a  class=" dropdown-item" href="{{url('api/admin_dashboard/admin')}}">Visit Dashboard</a></li>
+            <li class="dashboard"><a class="dashboard dropdown-item" href="/api/admin_dashboard/{{ encrypt('admin') }}">Visit Dashboard</a>
+</li> 
         </ul>
     </li>
-
+  
     <li class="nav-item list-unstyled pe-3 ps-5 small-s">
       <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
       <a class="cart-count">0</a>
@@ -1270,6 +1283,113 @@
    
 `);
 
+
+     }
+
+     else if(response.success.role == 'b2b'){
+
+      $("#validUser").html(`
+    
+    <li class="nav-item list-unstyled pe-3 ps-3">
+        <a class="nav-link" href="#">0,00€</a>
+    </li>
+
+    <li class="nav-item dropdown" style="list-style-type:none;">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
+        </a>
+        <ul class="profile-drop dropdown-menu" aria-labelledby="dropdownMenuLink" >
+            <p style="text-align:center;"><b style="font-size:16px; text-align:center">Welcome, <span id="userName" style="color:var(--blue);">${response.success['name']}</span></b></p>
+           <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
+            <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
+            <li class="dashboard"><a class="dashboard dropdown-item" href="/api/admin_dashboard/{{ encrypt('b2b') }}">Visit Dashboard</a>
+</li> 
+        </ul>
+    </li>
+  
+    <li class="nav-item list-unstyled pe-3 ps-5 small-s">
+      <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a class="cart-count">0</a>
+     </li>
+`);
+
+     // Append the logout button outside of the string
+     $("#dropmenu").append(`
+   
+`);
+     }
+
+     else if(response.success.role == 'supplier'){
+
+      $("#validUser").html(`
+    
+    <li class="nav-item list-unstyled pe-3 ps-3">
+        <a class="nav-link" href="#">0,00€</a>
+    </li>
+
+    <li class="nav-item dropdown" style="list-style-type:none;">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
+        </a>
+        <ul class="profile-drop dropdown-menu" aria-labelledby="dropdownMenuLink" >
+            <p style="text-align:center;"><b style="font-size:16px; text-align:center">Welcome, <span id="userName" style="color:var(--blue);">${response.success['name']}</span></b></p>
+           <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
+            <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
+            <li class="dashboard"><a class="dashboard dropdown-item" href="/api/admin_dashboard/{{ encrypt('supplier') }}">Visit Dashboard</a>
+</li> 
+        </ul>
+    </li>
+  
+    <li class="nav-item list-unstyled pe-3 ps-5 small-s">
+      <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a class="cart-count">0</a>
+     </li>
+`);
+
+     // Append the logout button outside of the string
+     $("#dropmenu").append(`
+   
+`);
+
+     }
+
+     else{
+
+      $("#validUser").html(`
+    
+    <li class="nav-item list-unstyled pe-3 ps-3">
+        <a class="nav-link" href="#">0,00€</a>
+    </li>
+
+    <li class="nav-item dropdown" style="list-style-type:none;">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ asset('assets/frontEnd/web/images/profile.png') }}" alt="" srcset="" style="width: 30px;" />
+        </a>
+        <ul class="profile-drop dropdown-menu" aria-labelledby="dropdownMenuLink" >
+            <p style="text-align:center;"><b style="font-size:16px; text-align:center">Welcome, <span id="userName" style="color:var(--blue);">${response.success['name']}</span></b></p>
+           <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
+            <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
+            
+</li> 
+        </ul>
+    </li>
+  
+    <li class="nav-item list-unstyled pe-3 ps-5 small-s">
+      <a class="nav-link" href="{{url('api/viewCart')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a class="cart-count">0</a>
+     </li>
+`);
+
+     // Append the logout button outside of the string
+     $("#dropmenu").append(`
+   
+`);
+     }
+    
+    
 
 
 

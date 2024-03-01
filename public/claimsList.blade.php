@@ -123,7 +123,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
-                @include('admin_theme/Partial/admin_header')
+                @include('admin_theme/partial/admin_header')
                 </div>
                 <div class="row pt-3">
 

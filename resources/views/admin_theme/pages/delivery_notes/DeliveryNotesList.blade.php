@@ -110,7 +110,7 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-            @include('admin_theme/partial/admin_header')
+            @include('admin_theme/Partial/admin_header')
                 @if($role=="admin")
                 <div class="row pt-3">
 

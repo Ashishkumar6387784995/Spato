@@ -1,3 +1,6 @@
+<?php
+    use Illuminate\Support\Facades\Crypt;
+?>
 <style>
    .img img {
       width: 200px;
@@ -37,7 +40,11 @@
 
 <nav class="sidebar sidebar-offcanvas">
    <ul class="nav">
-      <span class="img"><a href="{{url('/api/admin_dashboard/'.$role)}}"><img src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset=""></a>
+   <span class="img">
+    <a href="{{ url('/api/admin_dashboard/' . encrypt($role)) }}">
+        <img src="{{ asset('assets/frontEnd/web/images/spato-logo-light.png') }}" alt="" srcset="">
+    </a>
+</span>
 
 
       <li class="nav-item" style="background-color:transparent;">
