@@ -1,3 +1,6 @@
+<?php
+    use Illuminate\Support\Facades\Crypt;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -980,11 +983,11 @@
     // // Redirect to the new URL
     // window.location.href = newUrl;
     if (response.role == "Admin") {
-     window.location.href = '/api/admin_dashboard/admin';
+      window.location.href = '/api/admin_dashboard/{{ encrypt('admin') }}';
     } else if (response.role == "b2b") {
-     window.location.href = '/api/admin_dashboard/b2b';
+     window.location.href = '/api/admin_dashboard/{{ encrypt('b2b') }}';
     } else if (response.role == "supplier") {
-     window.location.href = '/api/admin_dashboard/supplier';
+     window.location.href = '/api/admin_dashboard/{{ encrypt('supplier') }}';
     } else {
      window.location.href = '/api/home';
     }
@@ -1237,6 +1240,10 @@
 
     if (response.success !== null && response.success !== undefined) {
 
+      var role = response.success['role'];
+             
+                console.log(role);
+
 
      // If success is not null or undefined, hide invalidUser and show validUser
      $("#invalidUser").css("display", "none");
@@ -1255,7 +1262,7 @@
            <li> <a  class="dropdown-item" href="{{url('api/accountSetting')}}"><i class="fa-solid fa-user"></i> Profile</a></li>
             <li><a  class="dropdown-item" href="{{url('api/viewOffersForB2C')}}"><i class="fa-solid fa-chart-line"></i> Offers</a></li>
             <li class="dropdown-item" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</li>
-            <li class="dashboard"><a  class=" dropdown-item" href="{{url('api/admin_dashboard/admin')}}">Visit Dashboard</a></li>
+            <li class="dashboard"><a  class=" dropdown-item" href="/api/admin_dashboard/${response.success['role']}">Visit Dashboard</a></li>
         </ul>
     </li>
 

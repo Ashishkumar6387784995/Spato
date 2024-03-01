@@ -131,7 +131,7 @@
         @if($role=="admin")
         <div class="main-panel " id="adminDashboard">
             <div class="content-wrapper">
-            @include('admin_theme/partial/admin_header')
+            @include('admin_theme/Partial/admin_header')
                 <div class="row pt-3">
                     <div class="col-6">
                         <div class="row mb-3">
