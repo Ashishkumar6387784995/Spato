@@ -71,6 +71,8 @@
             color: #fff;
         }        
 
+        
+
         .statistik-page a{
             color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
@@ -122,7 +124,7 @@
                 <div class="row pt-3">
                     
                     <div class="col-2" >
-                        <button type="button"  class="btn">Produkte</button>
+                        <button type="button"  class="btn" data-bs-toggle="modal" data-bs-target="#productsfilter">Produkte</button>
                     </div>
                     <div class="col-2" >
                      <button type="button"  class="btn">Kunden</button>
@@ -134,7 +136,7 @@
                     <button type="button"  class="btn">Umsatz</button>
                     </div>
                     <div class="col-2" >
-                    <button type="button"  class="btn">Claim‘s</button>
+                    <button type="button"  class="btn">Claim's</button>
                     </div>
                     <div class="col-2" >
                     <button type="button"  class="btn">Rechnung</button>
@@ -285,6 +287,65 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
+
+    <!-- Products Modal start -->
+
+    <!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="productsfilter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="productsfilterLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="productsfilterLabel">Products Filter</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <h3>Search Products</h3>
+                <div class="col"><input type="text" name="" id="" placeholder="Search By Product number" value=""  style="width: 100%; height:30px; background:transparent; border:1px solid #000; outline:none;"></div>
+                <div class="col"><input type="text" name="" id="" placeholder="Search By Product name" value=""  style="width: 100%; height:30px; background:transparent; border:1px solid #000; outline:none;"></div>
+            </div>
+            <div class="row mt-4">
+                <div class="col"><h5>Zeitraum : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Kunden : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Lieferanten : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Umsatz : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Claim's : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+
+            <div class="row mt-4">
+                <div class="col"> <button type="button"  class="btn-dark">PDF anzeigen</button></div>
+                <div class="col"> <button type="button"  class="btn-dark">Excel anzeigen</button></div>
+            </div>
+
+        </div>
+      </div>
+      <div class="modal-footer d-flex">
+        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Products Modal ends -->
 
 
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
