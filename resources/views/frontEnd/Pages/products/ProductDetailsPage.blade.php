@@ -434,6 +434,8 @@
  </head>
 
  <body oncontextmenu="return false" class="snippet-body">
+
+ 
   @include('frontEnd/partial/header')
 
 
@@ -501,7 +503,7 @@
 
          <div class="col-md-4">
          <div class="cart mt-4" style="display:flex; justify-content:right; margin-right:25px;">
-            <a href="#" class="btn" style="width:45%;">Seite drucken <i class="fa-solid fa-download"></i></a>
+            <a href="#" class="btn" style="width:45%;" onclick="printPage()">Seite drucken <i class="fa-solid fa-download"></i></a>
            </div>
           <div class="product p-4">
 
@@ -817,7 +819,11 @@
   <!--  Login Form Modal ends -->
 
 
-
+  <script>
+function printPage() {
+    window.print(); // This will open the print dialog
+}
+</script>
 
 
 
