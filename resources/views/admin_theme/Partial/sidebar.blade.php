@@ -37,11 +37,11 @@
    
    /* start for guess search of product */
       .guessProductDtl{
-         max-height: 110px;
+         max-height: 210px;
          overflow: auto;
          transition:0.6s ease-in-out;
          position:absolute;
-         width: 250px;
+         width: 350px;
          /* overflow-x: hidden;
          overflow-y: scroll; */
       }

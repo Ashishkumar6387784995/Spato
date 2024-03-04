@@ -333,8 +333,7 @@ Newsletter versenden
             });
         }
     </script> -->
-
-
+ 
 
 
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
