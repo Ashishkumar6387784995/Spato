@@ -197,7 +197,8 @@ function getProductDetailsDRP(id){
           $('#Produkt_'+id).val(response.success[0].Katalog_Art_Nummer);
           $('#Produktname_'+id).val(response.success[0].Artikelname);
           $('#Beschreibung_'+id).val(response.success[0].Beschreibung_kurz);
-          $('#Produktimage_'+id).attr('src', baseUrl+'/storage/'+response.success[0].Bild_1);
+          $('#ProduktimageView_'+id).attr('src', baseUrl+'/storage/'+response.success[0].Bild_1);
+          $('#Produktimage_'+id).val(response.success[0].Bild_1);
           $('#Rate_'+id).val(response.success[0].Preis_zzgl_MwSt);
           productList.empty();
         }

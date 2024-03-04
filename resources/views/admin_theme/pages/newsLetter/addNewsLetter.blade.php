@@ -356,7 +356,7 @@
          </div>
          <div class="inputs">
           <select id="Kunden" name="Kunden" class="dynamic-field" onchange="getTotalNumberOfNewsLetterUsers()" style="width:250px;" required>
-           <option value="Kundengruppe auswählen">Kundengruppe auswählen</option>
+           <option value="">Kundengruppe auswählen</option>
            <option value="All">All</option>
            <option value="Normal">B2C</option>
            <option value="b2b">B2B</option>
@@ -437,7 +437,7 @@
               <tr class="hidden">
                 <td>
                   <input type="text" name='inputs[0][POS]' value="1" id="POS_0" placeholder='#' />
-                  <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
+                  <br><span class="msg_err" id="POS_err" style="color:red; font-size:13px;"></span>
                 </td>
 
                 <td>
@@ -462,7 +462,8 @@
                 </td>
 
               <td>
-                <img src="" alt="" name='inputs[0][Produktimage]' id="Produktimage_0">
+                <img src="" alt="" id="ProduktimageView_0">
+                <input type="hidden" name='inputs[0][Produktimage]' id="Produktimage_0">
                 <br><span class="msg_err" id="Produktimage_err" style="color:red;  font-size:13px;"></span>
               </td>
 
@@ -718,7 +719,8 @@
                     </td>
 
                     <td>
-                      <img src="" alt="" name='inputs[0][Produktimage]' id="Produktimage_${i}"/>
+                      <img src="" alt="" id='ProduktimageView_${i}' />
+                      <input type="hidden" name='inputs[${i}][Produktimage]' id="Produktimage_${i}">
                     </td>
 
                     <td>
@@ -848,6 +850,18 @@
             // Handle errors
             console.error('Error:', error);
             jQuery('#success_msg').html('Sorry! we are facing some internal errors.').css('color', 'red');
+        }
+      });
+    }
+
+    function displayValidationErrors(errors) {
+      // Display validation errors next to the respective form fields
+      $.each(errors, function(field, messages) {
+        // Append error messages to your HTML
+        $('#' + field + '_err').text(messages[0]);
+
+        if (errors['inputs.0.Produkt']) {
+          $('#Produkt_err').text('Produkt is Required');
         }
       });
     }
