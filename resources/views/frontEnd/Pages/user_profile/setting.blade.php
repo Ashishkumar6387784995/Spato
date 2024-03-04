@@ -653,7 +653,7 @@
        <div class="hideErrors" id="temp_success_msg" style="color: #44e1d5; font-size:18px; font-weight:600; margin-bottom:1.5rem;"></div>
 
 
-       <div class="input-group mb-5">
+       <div class="input-group mb-3">
         <label for="Company name">Company Name</label>
         <input type="text" class="form-control" name="company_name"  placeholder="Company Name" aria-label="Company Name"
          aria-describedby="basic-addon1" />
@@ -661,36 +661,77 @@
         <span class="hideErrors" id="company_name_err" style="color:red"></span>
         </div>
        </div>
-       <div class="input-group mb-3">
-        <label for="Address">Address</label>
-        <input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address"
+       <div class="row">
+
+       <div class="col-6">
+       <div class="input-group mb-2">
+        <label for="Company name">Telephone</label>
+        <input type="text" class="form-control" name="company_name"  placeholder="Company telephone" aria-label="Company Name"
          aria-describedby="basic-addon1" />
         <div style="text-align:right; width:100%;">
-         <span class="hideErrors" id="tempAddress_err" style="color:red"></span>
+        <span class="hideErrors" id="company_name_err" style="color:red"></span>
         </div>
        </div>
+       </div>
+       <div class="col-6">
        <div class="input-group mb-3">
-        <label for="city">City</label>
-        <input type="text" class="form-control" name="tempCity" placeholder="City" aria-label="City"
+        <label for="Company name">Email</label>
+        <input type="text" class="form-control" name="company_name"  placeholder="Company Email" aria-label="Company Name"
          aria-describedby="basic-addon1" />
         <div style="text-align:right; width:100%;">
-         <span class="hideErrors" id="tempCity_err" style="color:red; text-align:right;"></span>
+        <span class="hideErrors" id="company_name_err" style="color:red"></span>
         </div>
+       </div>
+       </div>
        </div>
 
 
-       <div class="input-group mb-3">
-        <label for="Zip code">Zip code</label>
-        <input type="text" class="form-control" name="tempZip" placeholder="Zip Code" aria-label="Zip code"
+
+       <div class="row">
+
+<div class="col-6">
+<div class="input-group mb-2">
+<label for="Address">Address</label>
+<input type="text" class="form-control" name="tempAddress" placeholder="Address" aria-label="Address"
          aria-describedby="basic-addon1" />
-        <div style="text-align:right; width:100%;">
-         <span class="hideErrors" id="tempZip_err" style="color:red"></span>
-        </div>
-       </div>
+ <div style="text-align:right; width:100%;">
+ <span class="hideErrors" id="tempAddress_err" style="color:red"></span>
+ </div>
+</div>
+</div>
+<div class="col-6">
+<div class="input-group mb-3">
+<label for="city">City</label>
+<input type="text" class="form-control" name="tempCity" placeholder="City" aria-label="City"
+         aria-describedby="basic-addon1" />
+ <div style="text-align:right; width:100%;">
+ <span class="hideErrors" id="tempCity_err" style="color:red; text-align:right;"></span>
+ </div>
+</div>
+</div>
+</div>
 
-       <div class="input-group mb-3">
-        <label for="country">Country</label>
-        <select class="form-select" id="floatingSelect" name="tempCountry" aria-label="Floating label select example">
+
+
+
+
+
+<div class="row">
+
+<div class="col-6">
+<div class="input-group mb-2">
+<label for="Zip code">Zip code</label>
+<input type="text" class="form-control" name="tempZip" placeholder="Zip Code" aria-label="Zip code"
+         aria-describedby="basic-addon1" />
+ <div style="text-align:right; width:100%;">
+ <span class="hideErrors" id="tempZip_err" style="color:red"></span>
+ </div>
+</div>
+</div>
+<div class="col-6">
+<div class="input-group mb-3 d-block">
+<label for="country">Country</label>
+<select class="form-select" id="floatingSelect" name="tempCountry" aria-label="Floating label select example" style="width:100%;">
          <option value="Germany">Germany</option>
          <option value="Denmark">Denmark</option>
          <option value="Poland">Poland</option>
@@ -702,9 +743,9 @@
          <option value="Belgium">Belgium</option>
          <option value="Netherlands">Netherlands</option>
         </select>
-       </div>
-
-
+</div>
+</div>
+</div>
       </div>
       <button type="button" class="m-3 profile-btn" id="saveTempAddress">Save Address</button>
      </div>
