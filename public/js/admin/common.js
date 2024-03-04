@@ -185,7 +185,7 @@ function getProductDetailsDRP(id){
         response.productsList.forEach(function(item, index) {
           // Create a new product element for each cart item
           jQuery('#Produkt_'+id).closest('tr').find('.guessProductDtl ul').append(`
-            <li class="liCompanyName slide-in-blurred-top" idNumber="${id}" Art_Nr="${item.Katalog_Art_Nummer}">
+            <li class="liProductDtl slide-in-blurred-top" idNumber="${id}" Art_Nr="${item.Katalog_Art_Nummer}">
               ${item.Beschreibung_kurz}
               <br>Art-Nr. ${item.Katalog_Art_Nummer}
             </li>
@@ -212,7 +212,7 @@ function getProductDetailsDRP(id){
 }
 
 // function for set li test in companyName input feild
-  $(document).on('click', '.liCompanyName', function() {
+  $(document).on('click', '.liProductDtl', function() {
     var id = jQuery(this).attr('idNumber');
     // console.log(id);
     var clickedProductName = jQuery(this).attr('Art_Nr');
