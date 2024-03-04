@@ -16,8 +16,7 @@ class newsLetterController extends Controller
     //
     public function addNewsLetter($role)
     {
-        $newsLetter = 'NW-12345';
-        // $newsLetter = $this->generateNewsletterID();
+        $newsLetter = $this->generateNewsletterID();
         return view('admin_theme/pages/newsLetter/addNewsLetter', compact('role', 'newsLetter'));
     }
 
@@ -48,9 +47,9 @@ class newsLetterController extends Controller
             'Newsletter_Nr' => 'required|string|unique:news_letters',
             'Newsletterdatum' => 'required|date_format:Y-m-d',
             'Kunden' => 'required|string',
-            'POS' => 'required|numeric',
-            'Produkt' => 'required|string',
+            'inputs.*.Produkt' => 'required|string',
 
+            'PDF_Datei' => 'nullable|mimes:pdf',
             'greeting_info' => 'required|string',
         ]);
 
@@ -58,50 +57,45 @@ class newsLetterController extends Controller
             return response()->json(['errors' => $validator->errors()]); // 422 Unprocessable Entity
         }
 
-        // find supplier
-            $parts = explode(".", $request->Produkt);
-            $supplier_number = $parts[0]; // Get the value after the dot symbol
-            // dd($supplier_number);
-
-        // check for valid supplier number
-            $validSupplier = User::where('Lieferantennummer', $supplier_number)->where('role', 'supplier')->first();
-            if (!$validSupplier) {
-                return response()->json(['productError' => "Please enter valid Product Number"]);
-            }
-
         // for images
-            if ($request->hasFile('imageUpload')) {
-                $uploadedImage = $request->file('imageUpload');
-                $uploadedImage->store('public/claims_mng_images');
+            if ($request->hasFile('PDF_Datei')) {
+                $uploadedImage = $request->file('PDF_Datei');
+
+                $uploadedImage->store('public/news_letter_pdf');
 
                 // Save file path in the database
-                $imagePath = '/claims_mng_images/' . $uploadedImage->hashName();
-
-                // You can also save the full path like $uploadedimages[$image] = $imagePath; if needed.
+                $pdfPath = '/news_letter_pdf/' . $uploadedImage->hashName();
+                // You can also save the full path like $uploadedimages[$image] = $pdfPath; if needed.
             }
 
-        $claim = new Claims_List();
-        $claim->Claim_Nr = $request->input('Claim_Nr');
-        $claim->Claimdatum = $request->input('Claimdatum');
-        $claim->Referenz = $request->input('Referenz');
-        $claim->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
-        $claim->Ihre_Ust_ID = $request->input('Ihre_Ust_ID');
+        
 
-        $claim->POS = $request->POS;
-        $claim->Produkt = $request->Produkt;
-        $claim->Beschreibung = $request->Beschreibung;
-        $claim->Menge = $request->Menge;
-        $claim->Einheit = $request->Einheit;
-        $claim->supplier_number = $supplier_number;
-        $claim->Seriennummer = $request->Seriennummer;
-        $claim->Fehlerbeschreibung = $request->Fehlerbeschreibung;
-        $claim->imageUpload = $imagePath;
-        $claim->status = $request->status;
-        $claim->created_by = $user->id;
-        $claim->save();
+        // Get the dynamic fields from the request
+        $dynamicFields = $request->input('inputs');
+
+        // Set dynamic fields on the news
+        foreach ($dynamicFields as $dynamicField) {
+            $news = new Newsletter();
+            $news->Newsletter_Nr = $request->input('Newsletter_Nr');
+            $news->Newsletterdatum = $request->input('Newsletterdatum');
+            $news->Kunden = $request->input('Kunden');
+
+
+            $news->POS = $dynamicField['POS'];
+            $news->Produkt = $dynamicField['Produkt'];
+            $news->Produktname = $dynamicField['Produktname'];
+            $news->Beschreibung = $dynamicField['Beschreibung'];
+            $news->Produktimage = $dynamicField['Produktimage'];
+            $news->Einzelpreis = $dynamicField['Einzelpreis'];
+            $news->PDF_Datei = @$pdfPath;
+            $news->greeting_info = $request->input('greeting_info');
+            $news->sell_info = $request->input('sell_info');
+            $news->free_text = $request->input('free_text');
+            $news->save();
+        }
 
         // Return a success response
-        return response()->json(['success' => "Claim Is Added SuccessFully"]);
+        return response()->json(['success' => "News Letter Is Added SuccessFully"]);
     }
 
 

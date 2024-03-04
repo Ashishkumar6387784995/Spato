@@ -89,7 +89,8 @@ class webController extends Controller
     public function ProductsByCategories($Kategorie_Name)
     {
 
-        $products = Product::where('Kategorie_1', $Kategorie_Name)->get();
+        $products = Product::where('Kategorie_1', $Kategorie_Name)->paginate(18);
+
         // dd($products);
 
         return view('frontEnd/Pages/products/ProductsByCategories')->with(compact('products', 'Kategorie_Name',));
