@@ -303,12 +303,20 @@
    font-weight: 600;
    transition: 0.5s;
   }
+  .cart .btn i{
+    transition: 0.5s;
+   color: var(--white);
+  }
+
 
   .cart .btn:hover {
    background-color: var(--white);
    border: 1px solid var(--blue);
    color: var(--blue);
    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .cart .btn:hover i{
+   color: var(--blue);
   }
 .pdf{
   margin-top:2rem;
@@ -492,6 +500,9 @@
 
 
          <div class="col-md-4">
+         <div class="cart mt-4" style="display:flex; justify-content:right; margin-right:25px;">
+            <a href="#" class="btn" style="width:45%;">Seite drucken <i class="fa-solid fa-download"></i></a>
+           </div>
           <div class="product p-4">
 
            <div class="product-particular-detail mt-4 mb-3">

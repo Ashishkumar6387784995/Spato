@@ -286,6 +286,41 @@
    border-radius: 0px 0px 5px 5px !important;
    transition: 0.5s ease-in-out;
       }
+
+      .spato-home{
+        color:var(--blue) !important;
+      }
+
+      .newsletter-input{
+        width:100%;
+        height:50px;
+        border-radius:5px;
+        background-color:#ECECEC;
+    font-family: "source-sans-pro";
+    font-size:18px;
+    border:1px solid var(--black);
+    outline:none;
+    padding:0px 10px;
+      }
+
+      .newsletter-btn{
+        background-color:var(--black);
+        color:var(--white);
+        font-size:25px;
+        font-weight:600;
+        font-family:"source-sans-pro";
+        height:50px;
+        padding:0px 10px;
+        border-radius:5px;
+        border:1px solid var(--black);
+        outline:none;
+        transition:0.5s ease-in-out;
+      }
+      .newsletter-btn:hover{
+        border:1px solid var(--black);
+        background-color:transparent;
+        color:var(--black);
+      }
   </style>
  </head>
 
@@ -319,6 +354,24 @@
    <img class="exclusive" src="{{ asset('assets/frontEnd/web/images/exclusive-tag.png')}} " alt="" srcset="">
 
   </div>
+
+  <section class="dark-mode-section2" id="view">
+   <div class="container">
+    <div class="row text-center p-4">
+     <div class="col-6 m-auto text-left">
+      <h3>Keinen DEAL Verpassan!</h3>
+      <p style="font-size:18px; font-weight:600; color:var(--black);">Abonniere jetzt unseren Nwesletter.</p>
+     </div>
+     <div class="col-4 d-flex m-auto">
+      <input class="newsletter-input" type="text" placeholder="Gib deine E-Mail heir ein.">
+     </div>
+     <div class="col-2 d-flex m-auto">
+      
+      <button class="newsletter-btn">ABONNIEREN</button>
+     </div>
+    </div>
+   </div>
+  </section>
 
   <section class="services dark-mode-section1" id="view">
    <div class="container">

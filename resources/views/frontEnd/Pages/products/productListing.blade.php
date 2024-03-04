@@ -248,6 +248,37 @@
   }
 
   /* Css for product page */
+
+
+  nav {
+  /* width : 300px; 
+  background: #d9d9d9;
+  margin : 40px auto;  */
+}
+
+span {
+  font-weight:600;
+  font-size : 1em;
+  cursor : pointer;
+  display: block;
+}
+
+.slide {
+  clear:both;
+  width:100%;
+  height:0px;
+  overflow: hidden;
+  padding-left: 100px;
+  transition: height .4s ease;
+}
+
+
+#touch {position: absolute; opacity: 0; height: 0px;}    
+
+#touch:checked + .slide {
+  height: 100%;
+  transition:0.5s ease-in-out;
+} 
   </style>
  </head>
 
@@ -264,7 +295,20 @@
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
   </ul>
-        <h6>Technik</h6>
+        <!-- <h6></h6> -->
+        <nav>
+
+  <label for="touch"><span>Technik</span></label>               
+  <input type="checkbox" id="touch"> 
+
+  <ul class="slide">
+    <li><a href="#">Lorem Ipsum</a></li> 
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+    <li><a href="#">Lorem Ipsum</a></li>
+  </ul>
+
+</nav> 
         <h6>Attraktionen</h6>
         <h6>Verrohrung</h6>
         <h6>Wasserpflege</h6>
