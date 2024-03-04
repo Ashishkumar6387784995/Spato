@@ -467,7 +467,7 @@
               </td>
 
               <td>
-                <input type="text" name='inputs[0][Einzelpreis]' id="Einzelpreis_0" placeholder='#' />
+                <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
                 <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
               </td>
       
@@ -636,69 +636,7 @@
         });
       }
 
-      // function for get Product Details Drop Down
-      function getProductDetailsDRP(id){
-        var baseUrl = window.location.origin;
-        var Produkt = jQuery('#Produkt_'+id).val();
-        // console.log(Produkt);
-        var productList = $('.guessProductDtl ul');
-        productList.empty();  // make empty listing
-        if (Produkt=='') {
-          $('#Produktname_'+id).val('');
-          $('#Beschreibung_'+id).val('');
-          $('#Produktimage_'+id).attr('src', '');
-          $('#Einzelpreis_'+id).val('');
-          return false;       // stop if Produkt is null
-        }
-
-        // Make a GET request using AJAX
-        $.ajax({
-          url: '/api/getProductDetailsDRP', // Replace with the actual endpoint URL
-          method: 'GET',
-          data: {Produkt: Produkt},
-          success: function(response) {
-            // Handle the successful response
-            console.log('Response :', response);
-            if (response.success) {
-              console.log(response.productsList);
-
-              response.productsList.forEach(function(item, index) {
-                // Create a new product element for each cart item
-                jQuery('#Produkt_'+id).closest('tr').find('.guessProductDtl ul').append(`
-                  <li class="liCompanyName slide-in-blurred-top" idNumber="${id}" Art_Nr="${item.Katalog_Art_Nummer}">
-                    ${item.Beschreibung_kurz}
-                    <br>Art-Nr. ${item.Katalog_Art_Nummer}
-                  </li>
-                `);
-              });
-
-              // set values
-              if (response.status) {
-                $('#Produkt_'+id).val(response.success[0].Katalog_Art_Nummer);
-                $('#Produktname_'+id).val(response.success[0].Artikelname);
-                $('#Beschreibung_'+id).val(response.success[0].Beschreibung_kurz);
-                $('#Produktimage_'+id).attr('src', baseUrl+'/storage/'+response.success[0].Bild_1);
-                $('#Einzelpreis_'+id).val(response.success[0].Preis_zzgl_MwSt);
-                productList.empty();
-              }
-            }
-          },
-          error: function(error) {
-            // Handle errors
-            console.error('Error:', error);
-            noOfCustomer.html('Sorry! we are facing some internal errors.');
-          }
-        });
-      }
-
-    // function for set li test in companyName input feild
-      $(document).on('click', '.liCompanyName', function() {
-        var id = jQuery(this).attr('idNumber');
-        // console.log(id);
-        var clickedProductName = jQuery(this).attr('Art_Nr');
-        jQuery('#Produkt_'+id).val(clickedProductName).trigger("keyup");
-        jQuery('.guessCompanyName ul').empty();
-      });
+      
     </script>
 
 
@@ -784,7 +722,7 @@
                     </td>
 
                     <td>
-                      <input type="text" name='inputs[${i}][Einzelpreis]' id="Einzelpreis_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+                      <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
                     </td>
                     
                     <td>

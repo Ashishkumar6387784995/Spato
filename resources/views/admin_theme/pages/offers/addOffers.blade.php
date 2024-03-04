@@ -460,19 +460,24 @@
           <tr class="hidden">
            <td>
 
-            <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+            <input type="text" name='inputs[0][POS]' value="1" id="POS_0" placeholder='#' /><br>
 
            </td>
            <td>
-            <input type="text" name='inputs[0][Produkt]' placeholder='#' />
+            <input type="text" name='inputs[0][Produkt]' id="Produkt_0" onkeyup="getProductDetailsDRP('0');" placeholder='#' />
+            <br>
+            <div class="guessProductDtl">
+              <ul>
+
+              </ul>
+            </div>
             <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
-
            </td>
 
 
            <td>
 
-            <input type="text" name='inputs[0][Beschreibung]' placeholder='#' />
+            <input type="text" name='inputs[0][Beschreibung]' id="Beschreibung_0" placeholder='#' />
             <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
            </td>
@@ -714,13 +719,19 @@
 
     newRow.innerHTML = `
                     <td>
-                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
+                        <input type="text" value='${No}' name='inputs[${i}][POS]' id="POS_${i}"  placeholder='#' />
                     </td>
                     <td>
-                        <input type="text"" name='inputs[${i}][Produkt]' placeholder="#"/>
+                      <input type="text"" name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
+                      <br>
+                      <div class="guessProductDtl">
+                        <ul>
+
+                        </ul>
+                      </div>
                     </td>
                     <td>
-                        <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
+                        <input type="text" name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
                     </td>
                     <td>
                     <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>

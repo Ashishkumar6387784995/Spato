@@ -34,7 +34,32 @@
       color: #404040;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
    }
-
+   
+   /* start for guess search of product */
+      .guessProductDtl{
+         max-height: 110px;
+         overflow: auto;
+         transition:0.6s ease-in-out;
+         position:absolute;
+         width: 250px;
+         /* overflow-x: hidden;
+         overflow-y: scroll; */
+      }
+      .guessProductDtl ul{
+         display:contents;
+         transition:0.6s ease-in-out;
+      }
+      .guessProductDtl ul li{
+         background-color:#fff;
+         list-style-type:none;
+         border-radius:3px;
+         margin:3px 0px;
+         padding:0px 10px;
+         cursor:pointer;
+         font-weight:600;
+         transition:0.6s ease-in-out;
+      }
+   /* end for guess search of product */
 
 </style>
 
