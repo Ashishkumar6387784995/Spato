@@ -371,8 +371,16 @@
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                         </td>
                         <td><input placeholder="#" type="text" name="POS" id="POS" value="1" readonly></td>
-                        <td><input placeholder="#" type="text" name="Produkt" id="Produkt" value=""></td>
-                        <td><input placeholder="#" type="text" name="Beschreibung" id="Beschreibung" value=""></td>
+                        <td>
+                            <input placeholder="#" type="text" name="Produkt" id="Produkt_0" onkeyup="getProductDetailsDRP('0');" value="">
+                            <br>
+                            <div class="guessProductDtl">
+                                <ul>
+
+                                </ul>
+                            </div>
+                        </td>
+                        <td><input placeholder="#" type="text" name="Beschreibung" id="Beschreibung_0" value=""></td>
                         <td><input placeholder="#" type="text" name="Menge" id="Menge" value=""></td>
                         <td><input placeholder="#" type="text" name="Einheit" id="Einheit" value=""></td>
                     </tr>

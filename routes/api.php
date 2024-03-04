@@ -354,7 +354,9 @@ Route::view('connection/{role}', 'admin_theme/pages/connections/connections');
 // NewsLetter for Admin
 Route::view('newsLetter/{role}', 'admin_theme/pages/newsLetter/NewsLetter');
 Route::get('addNewsLetter/{role}',[newsLetterController::class,'addNewsLetter']);
+Route::post('addNewsLetterApi',[newsLetterController::class,'addNewsLetterApi']);
 Route::get('getTotalNumberOfNewsLetterUsers',[newsLetterController::class,'getTotalNumberOfNewsLetterUsers']);
+Route::get('getProductDetailsDRP',[newsLetterController::class,'getProductDetailsDRP']);
 // Route::get('addSuppliers',[SuppliersController::class,'addSuppliers']);
 
 // Settings for Admin

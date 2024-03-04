@@ -15,6 +15,24 @@ return new class extends Migration
     {
         Schema::create('news_letters', function (Blueprint $table) {
             $table->id();
+            $table->string('Newsletter_Nr');
+            $table->date('Newsletterdatum');
+            $table->string('Kunden');
+            
+            // Dynamic table fields
+            $table->unsignedInteger('POS');
+            $table->string('Produkt');
+            $table->string('Produktname')->nullable();
+            $table->string('Beschreibung')->nullable();
+            $table->string('Produktimage')->nullable();
+            $table->string('Einzelpreis')->nullable();
+
+            // more info
+            $table->string('PDF_Datei')->nullable();
+            $table->string('greeting_info', 1000)->nullable();
+            $table->string('sell_info', 1000)->nullable();
+            $table->string('free_text', 1000)->nullable();
+
             $table->timestamps();
         });
     }

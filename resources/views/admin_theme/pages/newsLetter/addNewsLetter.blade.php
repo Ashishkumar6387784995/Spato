@@ -176,7 +176,7 @@
 	        animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.5s both;
 }
 
-  #guessCompanyName{
+  .guessProductDtl{
     max-height: 110px;
     overflow: auto;
     transition:0.6s ease-in-out;
@@ -185,11 +185,11 @@
     /* overflow-x: hidden;
     overflow-y: scroll; */
   }
-  #guessCompanyName ul{
+  .guessProductDtl ul{
     display:contents;
     transition:0.6s ease-in-out;
   }
-  #guessCompanyName ul li{
+  .guessProductDtl ul li{
     background-color:#fff;
     list-style-type:none;
     border-radius:3px;
@@ -285,17 +285,17 @@
     <div class="content-wrapper">
      <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
       <h2>Admin Dashboard</h2>
-      <p>{{ now()->format('l, F j, Y') }}</p>
+      <p>{{ now()->format('D, F j, Y') }}</p>
 
       <button class="navbar-toggler" type="button" data-toggle="offcanvas">
        <span class="mdi mdi-menu"></span>
       </button>
      </div>
-     <form id="AddAuftragsForm" method="post">
+     <form id="newsLetterForm" method="post">
       <div class="row pt-3">
 
        <div class="col-md-2 stretch-card grid-margin">
-        <button class="btn" type="button" id="saveButton">Save</button>
+        <button class="btn" type="button" id="saveButton" onclick="submitNewsLetterForm();">Save</button>
 
        </div>
 
@@ -331,9 +331,9 @@
          </div>
          <div class="inputs">
             <p>
-                <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr" value="{{$newsLetter}}" readonly /> 
+                <input class="dynamic-field" type="text" placeholder='#' id="Newsletter_Nr" name="Newsletter_Nr" value="{{$newsLetter}}" readonly /> 
                 <br>
-                <span class="msg_err" id="Auftrags_Nr_err" style="color:red;  font-size:13px;"></span>
+                <span class="msg_err" id="Newsletter_Nr_err" style="color:red;  font-size:13px;"></span>
             </p>
          </div>
         </div>
@@ -343,9 +343,9 @@
           <p>Newsletter-Datum</p>
          </div>
          <div class="inputs">
-          <p><input class="dynamic-field" type="date" placeholder='#' id="Auftragsdatum" name="Auftragsdatum"
+          <p><input class="dynamic-field" type="date" placeholder='#' id="Newsletterdatum" name="Newsletterdatum"
             value="{{ now()->format('d-m-Y') }}" /> <br>
-           <span class="msg_err" id="Auftragsdatum_err" style="color:red;  font-size:13px;"></span>
+           <span class="msg_err" id="Newsletterdatum_err" style="color:red;  font-size:13px;"></span>
           </p>
          </div>
         </div>
@@ -432,55 +432,51 @@
 
 
             </thead>
+
             <tbody>
+              <tr class="hidden">
+                <td>
+                  <input type="text" name='inputs[0][POS]' value="1" id="POS_0" placeholder='#' />
+                  <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
+                </td>
 
+                <td>
+                  <input type="text" name='inputs[0][Produkt]' id="Produkt_0" onkeyup="getProductDetailsDRP('0');" placeholder='#'/>
+                  <br>
+                  <div class="guessProductDtl">
+                    <ul>
 
+                    </ul>
+                  </div>
+                  <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
+                </td>
 
+                <td>
+                  <input type="text" name='inputs[0][Produktname]' id="Produktname_0" placeholder='#' />
+                  <br><span class="msg_err" id="Produktname_err" style="color:red; font-size:13px;"></span>
+                </td>
 
-            <tr class="hidden">
-            <td>
+                <td>
+                  <input type="text" name='inputs[0][Beschreibung]' id="Beschreibung_0" placeholder='#' />
+                  <br><span class="msg_err" id="Beschreibung_err" style="color:red; font-size:13px;"></span>
+                </td>
 
-                <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+              <td>
+                <img src="" alt="" name='inputs[0][Produktimage]' id="Produktimage_0">
+                <br><span class="msg_err" id="Produktimage_err" style="color:red;  font-size:13px;"></span>
+              </td>
 
-            </td>
-            <td>
-                <input type="text" name='inputs[0][Produkt]' placeholder='#' />
-                <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
-
-            </td>
-
-
-           
-            <td>
-
-                <input type="text" name='inputs[0][Produktname]' placeholder='#' /><br>
-
-            </td>
-
-            
-            <td>
-
-                <input type="text" name='inputs[0][Beschreibung]' placeholder='#' /><br>
-            </td>
-
-            <td>
-
-<img src="" alt="">
-<br><span class="msg_err" id="Produktbild_err" style="color:red;  font-size:13px;"></span>
-
-</td>
-            <td>
-                <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
-                <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
-
-            </td>
-            
-            
-            <td>
-              <button class="btn btn-sm">Delete</button>
-            </td>
-            </tbody>
-            </table>
+              <td>
+                <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
+                <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
+              </td>
+      
+              <td>
+                <button type="button" class="btn btn-sm">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
 
         </div>
@@ -546,25 +542,35 @@
        <div class="row">
         <h6>Wählen Sie eine PDF-Datei für den Newsletter </h6>
         <div class="col-4">
-         <input type="file" name="" id="" class="dynamic-field">
+         <input type="file" name="PDF_Datei" id="PDF-Datei" class="dynamic-field">
+         <br><span class="msg_err" id="PDF_Datei_err" style="color:red;  font-size:13px;"></span>
         </div>
        </div>
        <hr style="border: 1px solid #54606c;" />
 
 
       <div class="row pt-3">
-       <div class="col-4">Schreiben Sie eine Begrüßung und eine kurze Einleitung : </div>
-       <div class="col-8"><textarea type="text" name="" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea></div>
+        <div class="col-4">Schreiben Sie eine Begrüßung und eine kurze Einleitung : </div>
+        <div class="col-8">
+          <textarea type="text" name="greeting_info" id="greeting_info" style="width: 70%; height:70px; background:transparent; border:1px solid #000; outline:none;"></textarea>
+          <br><span class="msg_err" id="greeting_info_err" style="color:red;  font-size:13px;"></span>
+        </div>
       </div>
 
       <div class="row pt-3">
-       <div class="col-4">Informationen verkaufen : </div>
-       <div class="col-8"><input type="text" name="" id="" value=""  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
+        <div class="col-4">Informationen verkaufen : </div>
+        <div class="col-8">
+          <input type="text" name="sell_info" id="sell_info" value=""  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;">
+          <br><span class="msg_err" id="sell_info_err" style="color:red;  font-size:13px;"></span>
+        </div>
       </div>
 
       <div class="row pt-3">
-       <div class="col-4">Freier Text : </div>
-       <div class="col-8"><input type="text" name="" id="" value=""  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;"></div>
+        <div class="col-4">Freier Text : </div>
+        <div class="col-8">
+          <input type="text" name="free_text" id="free_text" value=""  style="width: 70%; height:40px; background:transparent; border:1px solid #000; outline:none;">
+          <br><span class="msg_err" id="free_text_err" style="color:red;  font-size:13px;"></span>
+        </div>
       </div>
 
 
@@ -629,6 +635,8 @@
           }
         });
       }
+
+      
     </script>
 
 
@@ -689,27 +697,36 @@
 
     newRow.innerHTML = `
                     <td>
-                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
+                      <input type="text" value='${No}' name='inputs[${i}][POS]' id="POS_${i}" placeholder='#' />
+                    </td>
+
+                    <td>
+                      <input type="text"" name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
+                      <br>
+                      <div class="guessProductDtl">
+                        <ul>
+
+                        </ul>
+                      </div>
                     </td>
                     <td>
-                        <input type="text"" name='inputs[${i}][Produkt]' placeholder="#"/>
+                      <input type="text" name='inputs[${i}][Produktname]' id="Produktname_${i}" placeholder="#"/>
                     </td>
+
                     <td>
-                        <input type="text" name='inputs[${i}][Produktname]' placeholder="#"/>
+                      <input type="text" name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
                     </td>
+
                     <td>
-                    <input type="text" name='inputs[${i}][Beschreibung]' placeholder="#"/>
-                       
+                      <img src="" alt="" name='inputs[0][Produktimage]' id="Produktimage_${i}"/>
                     </td>
+
                     <td>
-                   <img src="" alt=""/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+                      <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
                     </td>
                     
                     <td>
-                        <button class="remove-table-row  btn btn-sm">Delete</button>
+                      <button class="remove-table-row  btn btn-sm">Delete</button>
                     </td>`;
 
     // Call the setupInputListeners function after adding a new row
@@ -789,120 +806,51 @@
   <!-- Dynamic table update ends-->
 
   <script>
-  $('#saveButton').click(function(e) {
-   e.preventDefault(); // Prevent the form from submitting normally
+    // THIS FUNCTION IS USED FOR SUBMIT FOR
+    function submitNewsLetterForm() {
+      $('.msg_err').text('');
+      var token = localStorage.getItem('authToken');
+      console.log(token);
 
-   $('.msg_err').text('');
+      // Check if the token exists
+      if (!token) {
+          console.error('Token not found in localStorage');
+          window.location.href = '/api/home';
+          return; // exit the function if token is not present
+      }
 
-   var formData = {
-    Auftrags_Nr: $('#AddAuftragsForm input[name="Auftrags_Nr"]').val(),
-    Auftragsdatum: $('#AddAuftragsForm input[name="Auftragsdatum"]').val(),
-    Referenz: $('#AddAuftragsForm input[name="Referenz"]').val(),
-    Kunden: $('#AddAuftragsForm select[name="Kunden"]').val(),
-    gesamt_netto: $('#AddAuftragsForm input[name="gesamt_netto"]').val(),
-    zzgl_Umsatzsteuer: $('#AddAuftragsForm input[name="zzgl_Umsatzsteuer"]').val(),
-    Gesamtbetrag_brutto: $('#AddAuftragsForm input[name="Gesamtbetrag_brutto"]').val(),
-    inputs: []
-   };
+      var formData = new FormData($('#newsLetterForm')[0]);
+      console.log('Form Data:', formData);
 
-   $('#table tbody tr').each(function(index) {
-    console.log("Processing row " + index);
-    var inputRow = {
-     POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
-     Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
-     Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
-     Menge: $(this).find('input[name^="inputs[' + index + '][Menge]"]').val(),
-     Einheit: $(this).find('input[name^="inputs[' + index + '][Einheit]"]').val(),
-     Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
-     Rabatt: $(this).find('input[name^="inputs[' + index + '][Rabatt]"]').val(),
-     Gesamtpreis: $(this).find('input[name^="inputs[' + index + '][Gesamtpreis]"]').val(),
-    };
-    formData.inputs.push(inputRow);
-   });
-
-   console.log(formData);
-
-   var token = localStorage.getItem('authToken');
-   console.log(token);
-
-   // Check if the token exists
-   if (!token) {
-    console.error('Token not found in localStorage');
-    window.location.href = '/api/home';
-    // return;
-   }
-
-
-
-   // Make AJAX request
-   $.ajax({
-    type: 'POST',
-    url: '/api/addAssignmentsApi',
-    data: formData,
-    dataType: 'json',
-    headers: {
-     'Authorization': 'Bearer ' + token,
-    },
-    success: function(response) {
-     // Handle success response
-     if (response.success) {
-      console.log(response.success);
-      console.log(response.dynamicFields);
-      // $('#AddAuftragsForm')[0].reset();
-      $('#success_msg').text(response.success);
-     } else if (response.errors) {
-      // Display validation errors in the console
-      console.log(response.errors);
-      displayValidationErrors(response.errors);
-
-
-      // $('#error_msg').text('Error: ' + JSON.stringify(response.errors)).css('color', 'red');
-
-      // You can also update your HTML to show errors in a specific element
-      // $('#error_msg').text('Error: ' + response.errors).css('color', 'red');
-     }
-     else if (response.error){
-      window.location.href = '/api/home';
-
-     }
-    },
-    error: function(xhr, status, error) {
-     // Handle error response
-     var errors = xhr.responseJSON.errors;
-     if (errors) {
-      // Display errors in your frontend
-      // For example, you can loop through errors and append them to a specific element
-      $.each(errors, function(field, messages) {
-       // Append error messages to your HTML
-       $('#' + field + '_err').text(messages[0]);
+      $.ajax({
+        type: 'POST',
+        url: '/api/addNewsLetterApi',
+        data: formData,
+        processData: false,
+        contentType: false,
+        headers: {
+            'Authorization': 'Bearer ' + token, // include the token in the headers
+        },
+        success: function(response) {
+            // Handle the success response from the server
+            if (response.success) {
+                $('#success_msg').text(response.success).css('color', '#44e1d5');
+                console.log('Server Response:', response);
+            }else if (response.errors) {
+                // Display validation errors in the console
+                console.log(response.errors);
+                displayValidationErrors(response.errors);
+            }else if (response.productError) {
+                jQuery('#Produkt_err').text(response.productError);
+            }
+        },
+        error: function(error) {
+            // Handle errors
+            console.error('Error:', error);
+            jQuery('#success_msg').html('Sorry! we are facing some internal errors.').css('color', 'red');
+        }
       });
-     }
     }
-   });
-
-   function displayValidationErrors(errors) {
-    // Display validation errors next to the respective form fields
-    $.each(errors, function(field, messages) {
-       // Append error messages to your HTML
-       $('#' + field + '_err').text(messages[0]);
-    });
-
-    if (errors['inputs.0.Produkt']) {
-     $('#Produkt_err').text('Produkt is Required');
-    }
-    if (errors['inputs.0.Beschreibung']) {
-     $('#Beschreibung_err').text('Beschreibung is Required');
-    }
-    if (errors['inputs.0.Einheit']) {
-     $('#Einheit_err').text('Einheit Is Required');
-    }
-    if (errors['inputs.0.Einzelpreis']) {
-     $('#Einzelpreis_err').text('Einzelpreis is Required');
-    }
-
-
-   }
-  });
   </script>
 
 <script>
