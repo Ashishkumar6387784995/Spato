@@ -578,7 +578,7 @@
 
       <div class="row mt-5">
         <div class="col">
-        <button class="edit" type="button" id="saveButton">Vorschau-Newsletter  <i class="fa-regular fa-eye" style="margin-left:0.5rem;"></i></button>
+        <button class="edit" type="button" id="saveButton"  data-bs-toggle="modal" data-bs-target="#newsletterModal">Vorschau-Newsletter  <i class="fa-regular fa-eye" style="margin-left:0.5rem;"></i></button>
         </div>
        </div>
       <div class="row pt-3">
@@ -608,6 +608,28 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
+   
+<!-- Modal -->
+<div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="newsletterModalLabel">Newsletter</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="introduction"></p>
+        <table></table>
+        <p class="selling-information"></p>
+        <p class="free-text"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <script>
 
