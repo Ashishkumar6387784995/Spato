@@ -664,7 +664,12 @@
 
               response.productsList.forEach(function(item, index) {
                 // Create a new product element for each cart item
-                jQuery('#Produkt_'+id).closest('tr').find('.guessProductDtl ul').append(`<li class="liCompanyName slide-in-blurred-top" idNumber="${id}">${item.Katalog_Art_Nummer}</li>`);
+                jQuery('#Produkt_'+id).closest('tr').find('.guessProductDtl ul').append(`
+                  <li class="liCompanyName slide-in-blurred-top" idNumber="${id}" Art_Nr="${item.Katalog_Art_Nummer}">
+                    ${item.Beschreibung_kurz}
+                    <br>Art-Nr. ${item.Katalog_Art_Nummer}
+                  </li>
+                `);
               });
 
               // set values
@@ -690,7 +695,7 @@
       $(document).on('click', '.liCompanyName', function() {
         var id = jQuery(this).attr('idNumber');
         // console.log(id);
-        var clickedProductName = jQuery(this).text();
+        var clickedProductName = jQuery(this).attr('Art_Nr');
         jQuery('#Produkt_'+id).val(clickedProductName).trigger("keyup");
         jQuery('.guessCompanyName ul').empty();
       });
