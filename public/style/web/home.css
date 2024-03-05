@@ -714,3 +714,19 @@ footer .footer-container .space-for-phone {
     align-content: center;
     cursor: pointer;
 } */
+.nav-item select {
+    border: 1.5px solid var(--blue);
+    border-radius: 5px;
+    color: var(--blue);
+    font-weight: 600;
+}
+.nav-item select option:checked,
+option:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+/* .nav-item select option:hover {
+    background-color: var(--white);
+    color: var(--blue);
+} */
