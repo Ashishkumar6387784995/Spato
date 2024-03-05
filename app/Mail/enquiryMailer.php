@@ -23,8 +23,6 @@ class enquiryMailer extends Mailable
      public $phone;
      public $textarea;
     public function __construct($name, $email, $phone, $textarea)
-
-
     {
         $this->name = $name;
         $this->email = $email;
