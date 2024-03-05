@@ -243,11 +243,21 @@ Newsletter versenden
 
                             // Iterate through the dataList and add rows to the table
                             $.each(dataList, function(index, item) {
+                                var Kunden = '';
+                                if (item.Kunden=='All') {
+                                    Kunden = 'All';
+                                }   else if (item.Kunden=='Normal') {
+                                    Kunden = 'B2C';
+                                }  else if (item.Kunden=='b2b') {
+                                    Kunden = 'B2B';
+                                }  else if (item.Kunden=='supplier') {
+                                    Kunden = 'Supplier';
+                                }
                                 $('#dataTable').append(`
                                     <tr>
                                         <td>${item.Newsletter_Nr}</td>
                                         <td>${item.Newsletterdatum}</td>
-                                        <td>${item.Kunden}</td>
+                                        <td>${Kunden}</td>
                                     </tr>
                                 `);
                             });
