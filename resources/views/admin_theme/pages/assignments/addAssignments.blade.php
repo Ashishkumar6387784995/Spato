@@ -343,11 +343,9 @@
          <div class="inputs">
             <p> 
               <!-- findGeneratedProductDtl('SELECT_COLUMN') -->
-              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebote-Nr" onkeyup="findGeneratedProductDtl('Offer', 'Angebots_Nr')" value=""/> 
-              <br>
-              <div class="guessProductDtl">
+              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebote-Nr" onkeyup="findGeneratedProductDtl('Offer')" value=""/>
+              <div id="generatedNoList">
                 <ul>
-
                 </ul>
               </div>
             </p>
@@ -481,7 +479,7 @@
 
 
 
-            <tr class="hidden">
+            <tr class="weNeedRemove">
             <td>
 
                 <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
@@ -1013,6 +1011,113 @@
 </script>
 
 
+  <script>
+    // function for find Generated No
+      function findGeneratedProductDtl(page_name){
+
+      // alert(page_name);
+      var baseUrl = window.location.origin;
+      var generatedNo = jQuery('#generatedNo').val();
+      // console.log(generatedNo);
+
+      var generatedNoList = jQuery('#generatedNoList ul');
+      var tableTbody = jQuery('#table tbody');
+      tableTbody.find('.weNeedRemove').empty();  // make empty listing
+      generatedNoList.empty();
+      if (generatedNo=='') {
+        return false;       // stop if generatedNo is null
+      }
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/getGeneratedProductDtlApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: {page_name:page_name, generatedNo: generatedNo},
+        success: function(response) {
+          // Handle the successful response
+          console.log('Response :', response);
+          if (response.success) {
+            console.log(response.productsList);
+
+            // for Angebots_Nr list
+            $.each(response.productsList, function(index, item) {
+              // Create a new product element for each cart item
+              generatedNoList.append(`
+                <li class="liGenerateNoDtl slide-in-blurred-top" generatedNo="${item.Angebots_Nr}">
+                  ${item.Angebots_Nr}
+                </li>
+              `);
+            });
+
+            // show product in table
+            if (response.status) {
+              $.each(response.success, function(i, tableItem) {
+                // Create a new product element for each cart tableItem
+                tableTbody.append(`
+                  <tr class="weNeedRemove">
+                    <td>
+                      <input type="text" value='${++i}' name='inputs[${i}][POS]' placeholder='#' />
+                    </td>
+
+                    <td>
+                      <input type="text" value='${tableItem.Produkt}' name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
+                      <br>
+                      <div class="guessProductDtl">
+                        <ul>
+
+                        </ul>
+                      </div>
+                    </td>
+
+                    <td>
+                      <input type="text" value='${tableItem.Beschreibung}' name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
+                    </td>
+
+                    <td>
+                      <input type="text" value='${tableItem.Menge}' name='inputs[${i}][Menge]' placeholder="#"/>
+                    </td>
+
+                    <td>
+                      <input type="text" value='${tableItem.Einheit}' name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+                    </td>
+
+                    <td>
+                      <input type="text" value='${tableItem.Einzelpreis}' name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+                    </td>
+                    
+                    <td>
+                      <input type="text" value='${tableItem.Rabatt}' name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
+                    </td>
+
+                    <td>
+                      <input type="text" value='${tableItem.Gesamtpreis}' name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
+                    </td>
+
+                    <td>
+                      <button class="remove-table-row  btn btn-sm">Delete</button>
+                    </td>
+                  </tr>
+                `);
+              });
+              generatedNoList.empty();
+            }
+          }
+        },
+        error: function(error) {
+          // Handle errors
+          console.error('Error:', error);
+          tableTbody.append('<tr class="weNeedRemove"><th  colspan="8" style="text-align:center;">Sorry! we are facing some internal errors.</th></tr>');
+        }
+      });
+    }
+
+    // function for set li test in companyName input feild
+    $(document).on('click', '.liGenerateNoDtl', function() {
+      var clickedGeneratedNo = jQuery(this).attr('generatedNo');
+      jQuery('#generatedNo').val(clickedGeneratedNo).trigger("keyup");
+      jQuery('#generatedNoList ul').empty();
+    });
+  </script>
 
 
 

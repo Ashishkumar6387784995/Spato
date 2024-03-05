@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('POS');
             $table->string('Produkt');
             $table->string('Produktname')->nullable();
-            $table->string('Beschreibung')->nullable();
+            $table->string('Beschreibung', '2000')->nullable();
             $table->string('Produktimage')->nullable();
             $table->string('Einzelpreis')->nullable();
 

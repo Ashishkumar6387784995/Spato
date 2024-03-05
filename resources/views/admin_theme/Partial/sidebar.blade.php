@@ -61,6 +61,32 @@
       }
    /* end for guess search of product */
 
+   /* start for guess search of generated No */
+      #generatedNoList{
+         max-height: 210px;
+         overflow: auto;
+         transition:0.6s ease-in-out;
+         position:absolute;
+         width: 250px;
+         /* overflow-x: hidden;
+         overflow-y: scroll; */
+      }
+      #generatedNoList ul{
+         display:contents;
+         transition:0.6s ease-in-out;
+      }
+      #generatedNoList ul li{
+         background-color:#fff;
+         list-style-type:none;
+         border-radius:3px;
+         margin:3px 0px;
+         padding:0px 10px;
+         cursor:pointer;
+         font-weight:600;
+         transition:0.6s ease-in-out;
+      }
+   /* end for guess search of generated No */
+
 </style>
 
 <nav class="sidebar sidebar-offcanvas">

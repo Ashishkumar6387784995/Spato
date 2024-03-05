@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\offers;
+use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
@@ -258,5 +259,20 @@ class OfferController extends Controller
         else {
             return response()->json(['status'=>'0' ,'message' => 'No offer Found']);
         }
+    }
+
+
+    // function for get Generated Product Dtl Api
+    public function getGeneratedProductDtlApi(Request $request){
+
+        $page_name = $request->page_name;
+        $generatedNo = $request->generatedNo;
+
+        if ($page_name=='Offer') {
+            $products = offers::select('Angebots_Nr')->where('Angebots_Nr', 'LIKE', '%'.$generatedNo.'%')->where('status', 'Bestätigt')->orderby('Angebots_Nr', 'ASC')->get()->unique('Angebots_Nr');
+            $success  = offers::select('Produkt', 'Beschreibung', 'Menge', 'Einheit', 'Einzelpreis', 'Rabatt', 'Gesamtpreis')->where('Angebots_Nr', $generatedNo)->where('status', 'Bestätigt')->orderby('Produkt', 'ASC')->get();
+        }
+        
+        return response()->json(['status'=> count($success), 'success'=>$success, 'productsList'=>$products]);
     }
 }

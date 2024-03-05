@@ -24,7 +24,7 @@ return new class extends Migration
             // Dynamic table fields
             $table->unsignedInteger('POS');
             $table->string('Produkt')->nullable();
-            $table->string('Beschreibung')->nullable();
+            $table->string('Beschreibung', '2000')->nullable();
             $table->string('Menge')->nullable();
             $table->string('Einheit')->nullable();
 

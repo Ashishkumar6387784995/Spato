@@ -222,66 +222,114 @@ function getProductDetailsDRP(id){
   });
 
 
-// function for find Generated No
-  function findGeneratedProductDtl(page_name,select_column){
-    // alert(page_name+' '+select_column);
-    var baseUrl = window.location.origin;
-    var generatedNo = jQuery('#generatedNo').val();
-    // console.log(generatedNo);
 
-    var generatedNoList = $('.guessGeneratedNoDtl ul');
-    var tableTbody = jQuery('#table tbody');
-    tableTbody.find('.weNeedRemove').empty();  // make empty listing
-    if (generatedNo=='') {
-      return false;       // stop if generatedNo is null
-    }
+
+
+
+
+
+// // function for find Generated No
+//   function findGeneratedProductDtl(page_name){
+
+//     // alert(page_name);
+//     var baseUrl = window.location.origin;
+//     var generatedNo = jQuery('#generatedNo').val();
+//     // console.log(generatedNo);
+
+//     var generatedNoList = jQuery('#generatedNoList ul');
+//     var tableTbody = jQuery('#table tbody');
+//     tableTbody.find('.weNeedRemove').empty();  // make empty listing
+//     generatedNoList.empty();
+//     if (generatedNo=='') {
+//       return false;       // stop if generatedNo is null
+//     }
   
-    // Make a GET request using AJAX
-    $.ajax({
-      url: '/api/getGeneratedProductDtl', // Replace with the actual endpoint URL
-      method: 'GET',
-      data: {generatedNo: generatedNo, select_column:select_column},
-      success: function(response) {
-        // Handle the successful response
-        console.log('Response :', response);
-        if (response.success) {
-          console.log(response.productsList);
+//     // Make a GET request using AJAX
+//     $.ajax({
+//       url: '/api/getGeneratedProductDtlApi', // Replace with the actual endpoint URL
+//       method: 'GET',
+//       data: {page_name:page_name, generatedNo: generatedNo},
+//       success: function(response) {
+//         // Handle the successful response
+//         console.log('Response :', response);
+//         if (response.success) {
+//           console.log(response.productsList);
   
-          response.productsList.forEach(function(item, index) {
-            // Create a new product element for each cart item
-            jQuery('#generatedNo').closest('p').find('.guessProductDtl ul').append(`
-              <li class="liProductDtl slide-in-blurred-top" idNumber="${id}" Art_Nr="${item.Katalog_Art_Nummer}">
-                ${item.Beschreibung_kurz}
-                <br>Art-Nr. ${item.Katalog_Art_Nummer}
-              </li>
-            `);
-          });
+//           // for Angebots_Nr list
+//           $.each(response.productsList, function(index, item) {
+//             // Create a new product element for each cart item
+//             generatedNoList.append(`
+//               <li class="liGenerateNoDtl slide-in-blurred-top" generatedNo="${item.Angebots_Nr}">
+//                 ${item.Angebots_Nr}
+//               </li>
+//             `);
+//           });
   
-          // set values
-          if (response.status) {
-            $('#Produkt_'+id).val(response.success[0].Katalog_Art_Nummer);
-            $('#Produktname_'+id).val(response.success[0].Artikelname);
-            $('#Beschreibung_'+id).val(response.success[0].Beschreibung_kurz);
-            $('#ProduktimageView_'+id).attr('src', baseUrl+'/storage/'+response.success[0].Bild_1);
-            $('#Produktimage_'+id).val(response.success[0].Bild_1);
-            $('#Rate_'+id).val(response.success[0].Preis_zzgl_MwSt);
-            productList.empty();
-          }
-        }
-      },
-      error: function(error) {
-        // Handle errors
-        console.error('Error:', error);
-        tableTbody.append('<tr class="weNeedRemove"><th  colspan="8" style="text-align:center;">Sorry! we are facing some internal errors.</td></tr>');
-      }
-    });
-  }
+//           // show product in table
+//           if (response.status) {
+//             $.each(response.success, function(i, tableItem) {
+//               // Create a new product element for each cart tableItem
+//               tableTbody.append(`
+//                 <tr class="weNeedRemove">
+//                   <td>
+//                     <input type="text" value='${++i}' name='inputs[${i}][POS]' placeholder='#' />
+//                   </td>
+
+//                   <td>
+//                     <input type="text" value='${tableItem.Produkt}' name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
+//                     <br>
+//                     <div class="guessProductDtl">
+//                       <ul>
+
+//                       </ul>
+//                     </div>
+//                   </td>
+
+//                   <td>
+//                     <input type="text" value='${tableItem.Beschreibung}' name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
+//                   </td>
+
+//                   <td>
+//                     <input type="text" value='${tableItem.Menge}' name='inputs[${i}][Menge]' placeholder="#"/>
+//                   </td>
+
+//                   <td>
+//                     <input type="text" value='${tableItem.Einheit}' name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+//                   </td>
+
+//                   <td>
+//                     <input type="text" value='${tableItem.Einzelpreis}' name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+//                   </td>
+                  
+//                   <td>
+//                     <input type="text" value='${tableItem.Rabatt}' name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
+//                   </td>
+
+//                   <td>
+//                     <input type="text" value='${tableItem.Gesamtpreis}' name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
+//                   </td>
+
+//                   <td>
+//                     <button class="remove-table-row  btn btn-sm">Delete</button>
+//                   </td>
+//                 </tr>
+//               `);
+//             });
+//             generatedNoList.empty();
+//           }
+//         }
+//       },
+//       error: function(error) {
+//         // Handle errors
+//         console.error('Error:', error);
+//         tableTbody.append('<tr class="weNeedRemove"><th  colspan="8" style="text-align:center;">Sorry! we are facing some internal errors.</th></tr>');
+//       }
+//     });
+//   }
   
-  // function for set li test in companyName input feild
-    $(document).on('click', '.liProductDtl', function() {
-      var id = jQuery(this).attr('idNumber');
-      // console.log(id);
-      var clickedProductName = jQuery(this).attr('Art_Nr');
-      jQuery('#Produkt_'+id).val(clickedProductName).trigger("keyup");
-      jQuery('.guessCompanyName ul').empty();
-    });
+//   // function for set li test in companyName input feild
+//     $(document).on('click', '.liGenerateNoDtl', function() {
+//       var clickedGeneratedNo = jQuery(this).attr('generatedNo');
+//       jQuery('#generatedNo').val(clickedGeneratedNo).trigger("keyup");
+//       jQuery('#generatedNoList ul').empty();
+//     });
