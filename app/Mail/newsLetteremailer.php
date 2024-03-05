@@ -6,15 +6,15 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendEmail extends Mailable
+class newsLetteremailer extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $name;
-    public $email;
+    // public $name;
+    // public $email;
     
-    public $subject;
-    public $content;
+    // public $subject;
+    // public $content;
 
     /**
      * Create a new message instance.
@@ -23,12 +23,9 @@ class SendEmail extends Mailable
      * @param string $content
      * @return void
      */
-    public function __construct($name, $email, $subject, $content)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->subject = $subject;
-        $this->content = $content;
+
     }
 
     /**
@@ -39,8 +36,8 @@ class SendEmail extends Mailable
 
      public function build()
      {
-         return $this->subject('Reset Your Password')
-                     ->view('mail.enquiryMail')
+         return $this->subject('Spato NewsLetter')
+                     ->view('mail.newsletterMail')
                      ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
                          'as' => 'logo.png',
                          'mime' => 'image/png',

@@ -875,8 +875,9 @@
         },
         success: function(response) {
           // Handle the success response from the server
+          var baseUrl = window.location.origin;
           if (response.success) {
-            $('#success_msg').text(response.success).css('color', '#44e1d5');
+            $('#success_msg').html('<img src="' + baseUrl + '/assets/frontEnd/web/images/checkmark.gif" alt="Success Image" width="50px" height="50px">' + response.success);
             console.log('Server Response:', response);
           } else if (response.errors) {
             // Display validation errors in the console
@@ -911,8 +912,13 @@
     $('#NewsletteremailSend, #NewsletteremailSendAfterPreview').click(function(e) {
       e.preventDefault();
 
+      var formData = {
+        Newsletter_Nr: $('#newsLetterForm input[name="Newsletter_Nr"]').val(),
+ 
+   };
+
       // Get the values from the form
-      var formData = {}; // You need to define formData or retrieve it from somewhere
+     console.log(formData); // You need to define formData or retrieve it from somewhere
       var token = localStorage.getItem('authToken');
       console.log(token);
 
@@ -923,7 +929,7 @@
         // return;
       }
 
-      console.log('hello');
+    
 
       $.ajax({
         type: 'post',
@@ -937,14 +943,15 @@
           // Handle success response
           if (response.success) {
             console.log(response.success);
-            $('#AddAuftragsForm')[0].reset();
+            // $('#AddAuftragsForm')[0].reset();
             $('#success_msg').text(response.success);
             // Add any additional success handling here
-          }
-
-          if (response.error) {
+          } else if (response.error) {
             console.log(response.error);
             // Add any error handling here
+          } else if (response.error) {
+            window.location.href = '/api/home';
+
           }
         },
         error: function(xhr, textStatus, errorThrown) {
