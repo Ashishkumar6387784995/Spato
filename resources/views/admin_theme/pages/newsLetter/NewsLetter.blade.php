@@ -103,44 +103,23 @@
 </head>
 
 <body>
-    <div class="container-scroller">
-        <div class="row p-0 m-0 proBanner" id="proBanner">
-            <div class="col-md-12 p-0 m-0">
-                {{-- <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-            <div class="ps-lg-1">
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
-                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
-              </div>
-            </div>
-            <div class="d-flex align-items-center justify-content-between">
-              <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
-              <button id="bannerClose" class="btn border-0 p-0">
-                <i class="mdi mdi-close text-white me-0"></i>
-              </button>
-            </div> --}}
-            </div>
-        </div>
-    </div>
-
-
-
-
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
 
 
         @include('admin_theme/Partial/sidebar')
 
-
-
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="" style="border-bottom: 2px solid #44e1d5; margin-top:-1.5rem;">
-                    <h2>Admin Dashboard</h2>
-                    <p>Monday, January 12, 2024</p>
+
+                <div class="" style="padding-bottom:10px;">
+                    @include('admin_theme/Partial/admin_header')
+                    <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
                 </div>
+
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
@@ -159,26 +138,34 @@
 
                 <table id="dataTable">
                     <tr>
-                        <th>Hersteller</th>
-                        <th>Herst. Nr.</th>
-                        <th>Artikel Nr.</th>
-                        <th>Artikel Name</th>
-                        <th>Kategorie 1</th>
-                        <th>Preis netto</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>MAITEC</td>
-                        <td>50</td>
-                        <td>0020260M</td>
-                        <td> PE - Schwallwasser Behälter, 1000 ltr.</td>
-                        <td>Technik</td>
-                        <td> 1.164,00 €</td>
-                        <td><a href="">auswählen</a></td>
+                        <th>Newsletter Nr</th>
+                        <th>Newsletterdatum</th>
+                        <th>Kunden</th>
                     </tr>
                 </table>
 
 
+{{--
+<table id="dataTable">
+    <tr>
+        <th>Hersteller</th>
+        <th>Herst. Nr.</th>
+        <th>Artikel Nr.</th>
+        <th>Artikel Name</th>
+        <th>Kategorie 1</th>
+        <th>Preis netto</th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>MAITEC</td>
+        <td>50</td>
+        <td>0020260M</td>
+        <td> PE - Schwallwasser Behälter, 1000 ltr.</td>
+        <td>Technik</td>
+        <td> 1.164,00 €</td>
+        <td><a href="">auswählen</a></td>
+    </tr>
+</table>
 <div class="pt-5">
     <p><a class="" href="#">Freitext editieren</a> (Preis, Lieferbedingungen, Transportkosten etc.)ausgewählt AN-2768</p>
     <p><a class="" href="#">PDF hinzufügen</a></p>
@@ -214,20 +201,9 @@ Newsletter versenden
             </div>
 
 
-        </div>
+        </div>--}}
     </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <!-- <footer class="footer">
-        <div class="container-fluid d-flex justify-content-between">
-            <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©
-                bootstrapdash.com 2021</span>
-            <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
-                    admin template</a> from Bootstrapdash.com</span>
-        </div>
-    </footer> -->
-    <!-- partial -->
     </div>
     <!-- main-panel ends -->
     </div>
@@ -236,104 +212,72 @@ Newsletter versenden
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         // Execute the code when the document is ready
         $(document).ready(function() {
+
+            var token = localStorage.getItem('authToken');
+            console.log(token);
+
+            // Check if the token exists
+            if (!token) {
+                console.error('Token not found in localStorage');
+                window.location.href = '/api/home';
+                // return;
+            }
+
             // Make a GET request using AJAX
             $.ajax({
-                url: '/api/productListingApi', // Replace with the actual endpoint URL
+                url: '/api/newsLetterListingApi', // Replace with the actual endpoint URL
                 method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                },
                 success: function(data) {
                     // Handle the successful response
-                    if (data.productList) {
-                        console.log('Data received:', data.productList);
+                    if (data.newsLetterNo) {
+                        console.log('Data received:', data.newsLetterNo);
+                        console.log('User received:', data.user);
 
+                        function populateTable(dataList) {
 
-                        function populateTable(data) {
-                            var tableBody = $('#dataTable');
-
-                            // Clear existing table rows
-                            // tableBody.empty();
-
-                            // Iterate through the data and add rows to the table
-                            $.each(data, function(index, item) {
-                                var row = $('<tr>');
-                                row.append('<td>' + item.Hersteller + '</td>');
-                                row.append('<td>' + item.Herst_Nr + '</td>');
-                                row.append('<td>' + item.id + '</td>');
-                                row.append('<td>' + item.Artikelname + '</td>');
-                                row.append('<td>' + item.Kategorie + '</td>');
-                                row.append('<td>' + item.Einkausfpreis_zzgl_MwSt + '</td>');
-                                row.append('<td><a href="/api/editProduct/' + item.id + '" class="edit btn" id="editProductBtn">bearbeiten</a></td>');
-                                row.append('<td><a href="#" onclick="deleteOperation(' + item.id + ')" id="deleteProductBtn"><i class="fa-regular fa-circle-xmark close"></i></a></td>');
-
-
-                                // Add more columns as needed
-
-                                // Append the row to the table body
-                                tableBody.append(row);
+                            // Iterate through the dataList and add rows to the table
+                            $.each(dataList, function(index, item) {
+                                var Kunden = '';
+                                if (item.Kunden=='All') {
+                                    Kunden = 'All';
+                                }   else if (item.Kunden=='Normal') {
+                                    Kunden = 'B2C';
+                                }  else if (item.Kunden=='b2b') {
+                                    Kunden = 'B2B';
+                                }  else if (item.Kunden=='supplier') {
+                                    Kunden = 'Supplier';
+                                }
+                                $('#dataTable').append(`
+                                    <tr>
+                                        <td>${item.Newsletter_Nr}</td>
+                                        <td>${item.Newsletterdatum}</td>
+                                        <td>${Kunden}</td>
+                                    </tr>
+                                `);
                             });
                         }
 
                         // Call the function to populate the table with the initial data
-                        populateTable(data.productList);
-
-
-
+                        populateTable(data.newsLetterNo);
                     } else {
                         console.log('Data received:', data.errors);
+                        window.location.href = '/api/home';
                     }
-                }, // Missing comma here
+                },
 
                 error: function(error) {
                     // Handle errors
                     console.error('Error:', error);
                 }
             });
-
-
-
-
         });
-
-
-        function deleteOperation(productId) {
-            // Make a DELETE request using AJAX
-            console.log(productId);
-            $.ajax({
-                url: '/api/deleteProduct/' + productId,
-                method: 'get',
-                success: function(data) {
-
-                    if (data.success) {
-
-
-
-                        $('#success_msg').text(data.success);
-
-                        // Delay the page reload for 2 seconds (2000 milliseconds)
-                            setTimeout(function() {
-                                location.reload(true);
-                            }, 1000);
-
-                        
-
-
-                        console.log('Product deleted successfully:', data.success);
-                        // Perform any additional actions after deletion
-                    } else {
-                        console.log('Product not deleted successfully:', data.message);
-                    }
-
-                },
-                error: function(error) {
-                    console.error('Error deleting product:', error.responseJSON.error);
-                }
-            });
-        }
-    </script> -->
- 
+    </script>
 
 
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>

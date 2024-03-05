@@ -146,7 +146,8 @@ Route::middleware('api.auth')->group(function () {
   Route::POST('suppliersImportApi', [SuppliersController::class, 'suppliersImportApi']);
 
 
-
+  // newsLetter for Admin
+  Route::get('newsLetterListingApi', [newsLetterController::class, 'newsLetterListingApi']);
 
 
   // items for checkout with auth.
