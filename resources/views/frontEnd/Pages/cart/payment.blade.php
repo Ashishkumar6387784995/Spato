@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
   <style>
     .checkout-container {
-      background-color: #eaebef;
+      /* background-color: #eaebef; */
       /* margin-top: -10rem; */
       padding-top: 5rem;
       margin-bottom: -10rem;
@@ -285,15 +285,13 @@
       <div class="container">
         <div class="row">
           <div class="col-3"></div>
-          <div class="col-1"><img src="{{asset('/assets/frontEnd/web/images/checkmark.gif')}}" alt="" srcset="" style="width:100px; height:100px; margin-top:2.5rem;"></div>
-          <div class="col-6">
-          <h1 class="mt-5 " style="font-size: 30px; font-weight: 600; color: black; margin-left:10px;">
+          <div class="col-1"><img src="{{asset('/assets/frontEnd/web/images/checkmark.gif')}}" alt="" srcset="" style="width:120px; height:120px; margin-top:2rem;"></div>
+          <div class="col-6" style="margin-left:4rem !important;">
+          <h1 class="mt-5 " style="font-size: 30px; font-weight: 600; color: black;">
           <b>Thank You</b> for ordering.
         </h1>
         <p style="font-size: 25px; font-weight: 600; color: black; margin-left:20px;">Your order is in processing</p>
-        <div>
-        <button>Continue Shopping</button>
-        </div>
+       
           </div>
         </div>
         
