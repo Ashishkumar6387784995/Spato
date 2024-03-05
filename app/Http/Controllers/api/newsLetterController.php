@@ -13,6 +13,24 @@ use Illuminate\Support\Facades\Auth;
 
 class newsLetterController extends Controller
 {
+
+    public function newsLetterListingApi()
+    {
+        $user = Auth::guard('api')->user();
+
+        if ($user->role == 'Admin') {
+            $newsLetterNo = NewsLetter::select('Newsletter_Nr','Newsletterdatum','Kunden')->orderBy('created_at', 'desc')->get()->unique('Newsletter_Nr');
+        } else {
+            $newsLetterNo = 'NewsLetter not found';
+        }
+
+        if ($newsLetterNo) {
+            return response()->json(['newsLetterNo' => $newsLetterNo, 'user' => $user]);
+        } else {
+            return response()->json(['errors' => 'newsLetter Not Found']);
+        }
+    }
+
     //
     public function addNewsLetter($role)
     {
