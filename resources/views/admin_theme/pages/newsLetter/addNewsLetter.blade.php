@@ -578,7 +578,7 @@
 
       <div class="row mt-5">
         <div class="col">
-        <button class="edit" type="button" id="saveButton"  data-bs-toggle="modal" data-bs-target="#newsletterModal">Vorschau-Newsletter  <i class="fa-regular fa-eye" style="margin-left:0.5rem;"></i></button>
+        <button class="edit" type="button" id="newsletterButton"  data-bs-toggle="modal" data-bs-target="#newsletterModal" onclick="overviewNewsLetter()">Vorschau-Newsletter  <i class="fa-regular fa-eye" style="margin-left:0.5rem;"></i></button>
         </div>
        </div>
       <div class="row pt-3">
@@ -618,10 +618,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="introduction"></p>
-        <table></table>
-        <p class="selling-information"></p>
-        <p class="free-text"></p>
+        <pre id="overview_introduction"></pre>
+        <table id="showOverViewTable"></table>
+        <pre id="overview_selling_information"></pre>
+        <pre id="overview_free_text"></pre>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -928,6 +928,62 @@
       },
     });
   });
+
+
+  // function for overview News Letter
+  function overviewNewsLetter(){
+
+    
+    var overview_introduction = jQuery('#greeting_info').val();
+    var overview_selling_information = jQuery('#sell_info').val();
+    var overview_free_text = jQuery('#free_text').val();
+    jQuery('#overview_introduction').text(overview_introduction);
+    jQuery('#overview_selling_information').text(overview_selling_information);
+    jQuery('#overview_free_text').text(overview_free_text);
+
+    var formData = {
+      productDtl: []
+    };
+
+    $('#table tbody tr').each(function(index) {
+      jQuery('#showOverViewTable').html('');
+      // console.log("Processing row " + index);
+      var inputRow = {
+        POS: $(this).find('input[name^="inputs[' + index + '][POS]"]').val(),
+        Produkt: $(this).find('input[name^="inputs[' + index + '][Produkt]"]').val(),
+        Beschreibung: $(this).find('input[name^="inputs[' + index + '][Beschreibung]"]').val(),
+        Produktname: $(this).find('input[name^="inputs[' + index + '][Produktname]"]').val(),
+        Produktimage: $(this).find('input[name^="inputs[' + index + '][Produktimage]"]').val(),
+        Einzelpreis: $(this).find('input[name^="inputs[' + index + '][Einzelpreis]"]').val(),
+      };
+      formData.productDtl.push(inputRow);
+    });
+
+    console.log('Form Data:', formData);
+    var baseURL = window.location.origin;
+    // Iterate through the data and add rows to the table
+    $.each(formData.productDtl, function(index, item) {
+      jQuery('#showOverViewTable').append(`
+        <div class="accordion">
+          <div class="accordion-heading" onclick="getOrdersDetails('${item.order_id}')">
+            <table>
+              <tbody>
+                <tr>
+                  <td>${item.POS}</td>
+                  <td>${item.Produkt}</td>
+                  <td>${item.Beschreibung}</td>
+                  <td>${item.Produktname}</td>
+                  <td><img src="${baseURL}/storage/${item.Produktimage}" style="width:70px; height:70px;" alt=""/></td>
+                  <td>${item.Einzelpreis}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="${item.order_id}"></div>
+      `);
+    });
+  }
 </script>
 
 
@@ -935,6 +991,7 @@
 
 
 
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
   <script type="text/javascript" src="{{ asset('js/admin/common.js') }}"></script>
   <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
