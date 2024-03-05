@@ -340,6 +340,19 @@
 
                     <div class="details">
                         <div class="field">
+                            <p>Auftrags-Nr.</p>
+                        </div>
+                        <div class="inputs">
+                            <p>
+                                <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr" value="" /> 
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="details">
+                        <div class="field">
                             <p>Referenz</p>
                         </div>
                         <div class="inputs">
@@ -372,8 +385,6 @@
 
                                 </ul>
                             </div>
-                            <br>
-
                         </div>
                     </div>
 

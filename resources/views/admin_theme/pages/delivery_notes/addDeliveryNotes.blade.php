@@ -339,6 +339,19 @@
             </div>
           </div>
 
+
+          <div class="details">
+            <div class="field">
+              <p>Angebote-Nr.</p>
+            </div>
+            <div class="inputs">
+              <p>
+                <input class="dynamic-field" type="text" placeholder='#' id="Angebote-Nr" name="Angebote-Nr" value="" />
+                <br>
+              </p>
+            </div>
+          </div>
+
           <div class="details">
             <div class="field">
               <p>Referenz</p>
@@ -373,7 +386,6 @@
 
                 </ul>
               </div>
-              <br>
             </div>
           </div>
 
@@ -404,7 +416,7 @@
 
       <div class="row pt-3">
         <div class="col-md-4">
-          <h4>Angebot-Nr. <a href="#">{{$newDeliveryNotesNo}}</a></h4>
+          <h4>Lieferschein-Nr. <a href="#">{{$newDeliveryNotesNo}}</a></h4>
         </div>
         <div class="col-md-3 stretch-card grid-margin">
           <a href="#" class="btn">Kopfzeile Standard</a>

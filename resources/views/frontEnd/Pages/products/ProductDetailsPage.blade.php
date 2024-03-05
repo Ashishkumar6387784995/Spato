@@ -438,22 +438,57 @@
     input {
       outline: none;
     }
-    
+    #PRINT_VIEW{
+      display: none !important;
+   }
+    </style>
 
-    
-  </style>
+<style type="text/css" media="print">
+
+#SCREEN_VIEW_CONTAINER{
+        display: none !important;
+
+    }
+
+    #PRINT_VIEW{
+      display: flex !important;
+   }
+
+   .product-desc{
+    width:100% !important;
+   }
+
+   /* .product{
+    margin: auto;
+    justify-content: center;
+    display: flex;
+   } */
+
+   .container{
+    max-width: 100% !important;
+}
+
+#main-image{
+  width:400px;
+  height:300px;
+}
+   
+</style>
+
 
 </head>
 
 <body oncontextmenu="return false" class="snippet-body">
-
-
+<div id="SCREEN_VIEW_CONTAINER">
   @include('frontEnd/partial/header')
-
-
+  </div>
+<div id="PRINT_VIEW" style="margin: auto; display: flex; justify-content: center;">
+<img
+     src="{{ asset('assets/frontEnd/web/images/spato-logo.png') }}" alt="" srcset=""  style="width:100px; "/>
+</div>
   <section class="product-details">
     <div class="container">
-      <nav aria-label="breadcrumb">
+      <nav aria-label="breadcrumb" id="SCREEN_VIEW_CONTAINER">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a class="home" href="{{url('api/home')}}">Home</a></li>
           <li class="breadcrumb-item">Pool Products</li>
@@ -470,7 +505,8 @@
 
 
 
-                    <div class="text-center p-4 printable"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="450" height="300" />
+                    <div class="text-center p-4 printable"> 
+                      <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="450" height="300" />
                     </div>
 
                     <!-- <div class="thumbnail text-center">
@@ -495,7 +531,7 @@
                       <li class="item-list"><span>Einheit/Unit</span> <span> 0,56</span></li>
                       <li class="item-list"><span>VE/VPE</span> <span> 0,56</span></li>
                     </ul>
-                    <div class="button-counter">
+                    <div class="button-counter" id="SCREEN_VIEW_CONTAINER">
 
                       <button class="btn" id="quoteButton">Erasatzteilanfrage</button>
 
@@ -513,7 +549,7 @@
 
                 <div class="col-md-4">
                   <div class="cart mt-4" style="display:flex; justify-content:right; margin-right:25px;">
-                    <a href="#" class="btn" style="width:45%;" onclick="printSpecificContent()">Seite drucken <i class="fa-solid fa-download"></i></a>
+                    <a href="#" class="btn" id="SCREEN_VIEW_CONTAINER" style="width:45%;" onclick="printSpecificContent();">Seite drucken <i class="fa-solid fa-download"></i></a>
                   </div>
                   <div class="product p-4">
 
@@ -524,11 +560,11 @@
                         <span class="price">{{$product[0]->Preis_zzgl_MwSt}}€</span> <span style="text-decoration:line-through;">Statt 42,45 €</span>
                       </p>
                     </div>
-                    <div class="cart mt-4 align-items-center">
+                    <div class="cart mt-4 align-items-center" id="SCREEN_VIEW_CONTAINER">
                       <a href="#" class="btn" onclick="updateQuantityOneInDatabase('{{$product[0]->id}}')" ; data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">IN DEN
                         WARENKORB</a>
                     </div>
-                    <div class="pdf">
+                    <div class="pdf" id="SCREEN_VIEW_CONTAINER">
                       <p class="pdf-heading"><i class="fa-regular fa-file-pdf"></i> Downloads + Informationen</p>
                       <div class="pdf-lists">
                         <p><a href="">Anleitung / Tech Info 1</a></p>
@@ -578,7 +614,7 @@
           <li>1.5Hp max flow rate: 286 lpm</li>
         </ul>
       </div>
-      <div class="review mt-5">
+      <div class="review mt-5" id="SCREEN_VIEW_CONTAINER">
         <h3 class="review-heading">Review</h3>
         <div class="ratings mt-3">
           <div class="name">
@@ -623,7 +659,7 @@
 
 
       <!-- Related Product starts -->
-      <section class="related-products pt-5 pb-5 container">
+      <section class="related-products pt-5 pb-5 container " id="SCREEN_VIEW_CONTAINER">
         <h3 class="mb-3">Related Products</h3>
         <div class="row">
           <div class="card col">
@@ -699,7 +735,7 @@
       <!-- Related Product ends -->
 
       <!-- Featured product starts -->
-      <section class="related-products pt-5 pb-5 mb-5 container">
+      <section class="related-products pt-5 pb-5 mb-5 container" id="SCREEN_VIEW_CONTAINER">
         <h3 class="mb-3">Featured product</h3>
         <div class="row">
           <div class="card col">
@@ -778,9 +814,11 @@
 
     </div>
   </section>
-  @include('frontEnd/partial/rightSidebar')
-  @include('frontEnd/partial/footer')
 
+  @include('frontEnd/partial/rightSidebar')
+  <div id="SCREEN_VIEW_CONTAINER">
+  @include('frontEnd/partial/footer')
+  </div>
 
 
   <!-- Login Form Modal starts -->
@@ -1043,6 +1081,9 @@
       });
     }
   </script>
+
+  <script>
+      </script>
 </body>
 
 </html>
