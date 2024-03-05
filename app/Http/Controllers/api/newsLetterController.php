@@ -164,4 +164,6 @@ class newsLetterController extends Controller
         }
         return $users;
     }
+
+   
 }

@@ -99,7 +99,7 @@ class OfferController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            // 'Angebots_Nr' => 'required|string',
+            'Angebots_Nr' => 'required|string|unique:offers_list',
             'Angebotsdatum' => 'required|date_format:Y-m-d',
             // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',

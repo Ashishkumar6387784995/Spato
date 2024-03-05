@@ -899,8 +899,10 @@
                     // Handle success response
                     if (response.success) {
                         console.log(response.success);
+                        var baseUrl = window.location.origin;
                         // $('#AddCreditsForm')[0].reset();
                         $('#success_msg').text(response.success);
+                        $('#success_msg').html('<img src="' + baseUrl + '/assets/frontEnd/web/images/checkmark.gif" alt="Success Image" width="50px" height="50px">' + response.success);
                     } else if (response.errors) {
                         // Display validation errors in the console
                         console.log(response.errors);
