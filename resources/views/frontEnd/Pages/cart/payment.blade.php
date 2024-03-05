@@ -9,7 +9,6 @@
    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
-
   <link rel="stylesheet" href="{{ asset('style/web/home.css') }}">
   <style>
     .checkout-container {
@@ -286,18 +285,20 @@
       <div class="container">
         <div class="row">
           <div class="col-3"></div>
-          <div class="col-2"><img src="{{asset('/assets/frontEnd/web/images/checkmark.gif')}}" alt="" srcset="" style="width:200px; height:200px;"></div>
+          <div class="col-1"><img src="{{asset('/assets/frontEnd/web/images/checkmark.gif')}}" alt="" srcset="" style="width:100px; height:100px; margin-top:2.5rem;"></div>
           <div class="col-6">
-          <h1 class="mt-5 " style="font-size: 30px; font-weight: 600; color: black; margin-left:20px;">
+          <h1 class="mt-5 " style="font-size: 30px; font-weight: 600; color: black; margin-left:10px;">
           <b>Thank You</b> for ordering.
         </h1>
         <p style="font-size: 25px; font-weight: 600; color: black; margin-left:20px;">Your order is in processing</p>
+        <div>
+        <button>Continue Shopping</button>
+        </div>
           </div>
         </div>
         
     </form>
   </section>
-
   @include('frontEnd/partial/footer')
 
 </body>
