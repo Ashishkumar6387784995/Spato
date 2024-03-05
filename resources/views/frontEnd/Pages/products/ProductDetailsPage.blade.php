@@ -596,6 +596,12 @@
           <p>The pool cleaner works perfectly. Highly recommended!</p>
         </div>
 
+
+
+
+
+        
+
         <div class="ratings mt-3">
           <div class="name">
             <p>Lisa Smith</p>
