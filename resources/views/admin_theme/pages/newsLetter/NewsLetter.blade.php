@@ -144,7 +144,7 @@
                 <div class="row pt-3">
 
                     <div class="col-md-4 stretch-card grid-margin">
-                        <a class="btn" href="{{url('/api/addNewsLetter/'.$role)}}">+ neuer Newsletter</a>
+                        <a class="btn" href="{{url('api/addNewsLetter/admin')}}">+ neuer Newsletter</a>
                     </div>
                 </div>
                 <div class="row pt-3">
