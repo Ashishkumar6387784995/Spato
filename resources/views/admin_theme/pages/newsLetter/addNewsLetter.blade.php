@@ -239,13 +239,24 @@
     opacity: 1;
   }
 }
-.aufträge-page a{
-      color: #44e1d5 !important;
+.newsletter-page a{
+            color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;
   margin-top:10px;
   text-align:center;
-    }
+        }
+
+        .modal-body{
+            overflow:auto;
+        }
+        .modal-body table thead tr th{
+          background-color:#404040;
+          color:#fff;
+        }
+        .modal-body table thead tr th, td{
+          padding:0px 15px;
+        }
   </style>
  </head>
 
@@ -619,13 +630,26 @@
       </div>
       <div class="modal-body">
         <pre id="overview_introduction"></pre>
-        <table id="showOverViewTable"></table>
-        <pre id="overview_selling_information"></pre>
-        <pre id="overview_free_text"></pre>
+        <table id="">
+          <thead>
+              <tr>
+              <th>POS</th>
+              <th>Produkt</th>
+              <th>Produktname</th>
+              <th>Beschreibung</th>
+              <th>Produktbild</th>
+              <th>Einzelpreis</th>
+              </tr>
+              </thead>
+
+              <tbody id="showOverViewTable"></tbody>
+        </table>
+        <p id="overview_selling_information"></p>
+        <p id="overview_free_text"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button type="button" class="btn">Senden</button>
       </div>
     </div>
   </div>
@@ -964,23 +988,14 @@
     // Iterate through the data and add rows to the table
     $.each(formData.productDtl, function(index, item) {
       jQuery('#showOverViewTable').append(`
-        <div class="accordion">
-          <div class="accordion-heading" onclick="getOrdersDetails('${item.order_id}')">
-            <table>
-              <tbody>
-                <tr>
-                  <td>${item.POS}</td>
-                  <td>${item.Produkt}</td>
-                  <td>${item.Beschreibung}</td>
-                  <td>${item.Produktname}</td>
-                  <td><img src="${baseURL}/storage/${item.Produktimage}" style="width:70px; height:70px;" alt=""/></td>
-                  <td>${item.Einzelpreis}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div id="${item.order_id}"></div>
+        <tr>
+          <td>${item.POS}</td>
+          <td>${item.Produkt}</td>
+          <td>${item.Beschreibung}</td>
+          <td>${item.Produktname}</td>
+          <td><img src="${baseURL}/storage/${item.Produktimage}" style="width:70px; height:70px;" alt=""/></td>
+          <td>${item.Einzelpreis}</td>
+        </tr>
       `);
     });
   }
