@@ -291,9 +291,7 @@
           <b>Thank You</b> for ordering.
         </h1>
         <p style="font-size: 25px; font-weight: 600; color: black; margin-left:20px;">Your order is in processing</p>
-        <div>
-        <button>Continue Shopping</button>
-        </div>
+       
           </div>
         </div>
         
