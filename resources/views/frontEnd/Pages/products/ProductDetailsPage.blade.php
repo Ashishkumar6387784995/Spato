@@ -441,19 +441,6 @@
     #PRINT_VIEW{
       display: none !important;
    }
-@media print{
-   @page {
-    margin: 2cm;
-
-    @top-center {
-        content: element(pageHeader);
-    }
-
-    @bottom-center {
-        content: element(pageFooter);
-    }
-}
-}
     </style>
 
 <style type="text/css" media="print">
@@ -481,7 +468,10 @@
     max-width: 100% !important;
 }
 
-
+#main-image{
+  width:400px;
+  height:300px;
+}
    
 </style>
 
@@ -515,7 +505,8 @@
 
 
 
-                    <div class="text-center p-4 printable"> <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="450" height="300" />
+                    <div class="text-center p-4 printable"> 
+                      <img id="main-image" src="{{ asset('storage/' . $product[0]->Bild_1) }}" width="450" height="300" />
                     </div>
 
                     <!-- <div class="thumbnail text-center">
