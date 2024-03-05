@@ -341,10 +341,15 @@
           <p>Angebote-Nr.</p>
          </div>
          <div class="inputs">
-            <p>
-                <input class="dynamic-field" type="text" placeholder='#' id="Angebote-Nr" name="Angebote-Nr"
-                value=""/> 
-                <br>
+            <p> 
+              <!-- findGeneratedProductDtl('SELECT_COLUMN') -->
+              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebote-Nr" onkeyup="findGeneratedProductDtl('Offer', 'Angebots_Nr')" value=""/> 
+              <br>
+              <div class="guessProductDtl">
+                <ul>
+
+                </ul>
+              </div>
             </p>
          </div>
         </div>
