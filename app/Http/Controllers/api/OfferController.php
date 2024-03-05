@@ -53,7 +53,7 @@ class OfferController extends Controller
     public function editOffer($role)
     {
 
-        return view('admin_theme/pages/offers/editoffers')->with(compact('role'));
+        return view('admin_theme/pages/offers/editOffers')->with(compact('role'));
     }
 
     public function addOffer($role)
