@@ -202,6 +202,7 @@
                 },
                 success: function(data) {
                     // Handle the successful response
+                    jQuery('#userName').html(data.user.name);
                     if (data.billsNo) {
                         console.log('Data received:', data.billsNo);
                         console.log('User received:', data.user);

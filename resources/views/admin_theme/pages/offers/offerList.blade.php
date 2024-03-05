@@ -208,6 +208,7 @@
           if (data.offersList) {
             console.log('Data received:', data.user);
 
+            jQuery('#userName').html(data.user.name);
 
             // Function to populate the table with data
             function populateTable(dataList) {

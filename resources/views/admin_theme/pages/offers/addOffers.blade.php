@@ -321,8 +321,9 @@
          <div class="inputs">
           <input class="dynamic-field" type="text" placeholder='#' id="Angebots_Nr" name="Angebots_Nr"
            value="{{$newOfferNo}}"  readonly /></p>
+           <span class="msg_err" id="Angebots_Nr_err" style="color:red;  font-size:13px;"></span>
          </div>
-        </div>
+        </div>  
 
         <div class="details">
          <div class="field">
@@ -889,8 +890,10 @@
      if (response.success) {
       console.log(response.success);
       console.log(response.dynamicFields);
+      var baseUrl = window.location.origin;
+
       // $('#AddOffersForm')[0].reset();
-      $('#success_msg').text(response.success);
+      $('#success_msg').html('<img src="' + baseUrl + '/assets/frontEnd/web/images/checkmark.gif" alt="Success Image" width="50px" height="50px">' + response.success);
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);
@@ -924,6 +927,9 @@
 
    function displayValidationErrors(errors) {
     // Display validation errors next to the respective form fields
+    if (errors.Angebots_Nr) {
+     $('#Angebots_Nr_err').text(errors.Angebots_Nr[0]);
+    }
     if (errors.Angebotsdatum) {
      $('#Angebotsdatum_err').text(errors.Angebotsdatum[0]);
     }

@@ -201,6 +201,7 @@
         },
         success: function(data) {
           // Handle the successful response
+          jQuery('#userName').html(data.user.name);
           if (data.creditList) {
             console.log('Data received:', data.creditList);
 

@@ -605,7 +605,10 @@
       </div>
      </li>
      <li class="nav-item border-0 list-unstyled ">
-      <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <select name="language" id="">
+        <option value="DE">DE</option>
+        <option value="ENG">ENG</option>
+      </select>
      </li>
 
 

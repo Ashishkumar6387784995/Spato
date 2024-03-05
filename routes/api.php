@@ -148,6 +148,7 @@ Route::middleware('api.auth')->group(function () {
 
   // newsLetter for Admin
   Route::get('newsLetterListingApi', [newsLetterController::class, 'newsLetterListingApi']);
+  Route::post('sendNewsLetterMailsToB2C', [newsLetterController::class, 'sendNewsLetterMailsToB2C']);
 
 
   // items for checkout with auth.
