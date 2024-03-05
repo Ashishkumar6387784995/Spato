@@ -122,7 +122,9 @@
     <!-- partial -->
     <div class="main-panel">
       <div class="content-wrapper">
-      @include('admin_theme/partial/admin_header')
+      
+      @include('admin_theme/Partial/admin_header')
+      
         @if($role=="b2b")
         <div class="row pt-3">
 
@@ -220,7 +222,7 @@
           // Handle the successful response
           if (data.assignments) {
             console.log('Data received:', data.assignments);
-
+            jQuery('#userName').html(data.user.name);
             function populateTable(dataList) {
               var tableBody = $('#dataTable');
 

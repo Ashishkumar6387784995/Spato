@@ -110,7 +110,9 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
+                <div>
             @include('admin_theme/Partial/admin_header')
+            </div>
                 @if($role=="admin")
                 <div class="row pt-3">
 
@@ -205,6 +207,7 @@
             },
             success: function(data) {
                 // Handle the successful response
+                jQuery('#userName').html(data.user.name);
                 if (data.delivery_notes) {
                     console.log('Data received:', data.delivery_notes);
 

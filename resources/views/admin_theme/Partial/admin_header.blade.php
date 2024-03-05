@@ -17,5 +17,5 @@
      @endif
 
      <p>{{ now()->format('l, F j, Y') }}</p>
-     <p><span>Alex Driver </span> Login as <span> Admin</span></p>
+     <p><span id="userName"></span> 
 </div>
