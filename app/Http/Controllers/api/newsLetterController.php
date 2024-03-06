@@ -10,7 +10,8 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\newsLetteremailer;
+// use App\Mail\newsLetteremailer;
+use App\Jobs\SendNewsletterEmail;
 
 class newsLetterController extends Controller
 {
@@ -166,10 +167,16 @@ class newsLetterController extends Controller
         return $users;
     }
 
-    public function sendNewsLetterMailsToB2C(Request $request) {
+
+
+   
+
+    public function sendNewsLetterMailsToB2C(Request $request)
+    {
         $newsletter = Newsletter::where('Newsletter_Nr', $request->Newsletter_Nr)->first();
     
         if ($newsletter) {
+            // Retrieve emails based on newsletter Kunden value
             if ($newsletter->Kunden == 'All') {
                 $emails = User::select('email')->where('action', 'ja')->get();
             } elseif ($newsletter->Kunden == 'Normal') {
@@ -182,16 +189,20 @@ class newsLetterController extends Controller
                 // Handle unknown Kunden value
                 $emails = [];
             }
+    
+            if ($emails->isEmpty()) {
+                // Handle case where no valid email addresses are found
+                return response()->json(['error' => "No valid email addresses found"]);
+            }
+    
+            // Dispatch the job to send the newsletter email
+            SendNewsletterEmail::dispatch($emails, $newsletter);
+            
+            return response()->json(['success' => "Newsletter sent successfully"]);
         } else {
             // Handle newsletter not found
-            $emails = [];
+            return response()->json(['error' => "Newsletter not found"]);
         }
-
-        Mail::to($emails->pluck('email')->toArray())->send(new newsLetteremailer());
-
-        // dd($emails);
-    
-        return response()->json(['success' => "News Letter Is Sended SuccessFully"]);
     }
     
 
