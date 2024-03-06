@@ -135,6 +135,31 @@
    border: 1px solid var(--blue);
   }
 
+  .pagination-container{
+    display:flex;
+    justify-content:center;
+  }
+  .pagination-container .pagination .page-item{
+    border-radius:5px;
+  }
+  .pagination-container .pagination .page-item a{
+    color:var(--black);
+    font-weight:600;
+    border-radius:5px;
+    margin:0px 2px;
+    font-size:18px;
+  }
+  
+  .pagination-container .pagination .active .page-link{
+    background-color: var(--blue) !important;
+    border:2px solid var(--white);
+    color:var(--white);
+    border-radius:5px;
+    font-size:18px;
+    font-weight:800;
+    margin:0px 2px;
+  }
+
   @media screen and (max-device-width: 480px) and (orientation: portrait) {
    .product-category {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
@@ -148,6 +173,8 @@
    }
 
   }
+
+
   </style>
  </head>
 
@@ -191,7 +218,10 @@
       @endforeach
      </div>
     </div>
+    
+    <div class="pagination-container">
     {{$products->links()}}
+</div>
 
   
 

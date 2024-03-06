@@ -132,7 +132,7 @@
                     <div class="col-2" >
                      <button type="button"  class="btn" data-bs-toggle="modal" data-bs-target="#supplierfilter">Lieferanten</button>
                      </div>
-                    <div class="col-2" >
+                    <div class="col-2"  class="btn" data-bs-toggle="modal" data-bs-target="#svolumefilter">
                     <button type="button"  class="btn">Umsatz</button>
                     </div>
                     <div class="col-2" >
@@ -392,12 +392,15 @@
                 <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
             </div>
 
-            
+           
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="row mt-4 d-block">
+                <div class="col" style="width:470px;"> <button type="button"  class="btn-dark">PDF anzeigen</button></div><br>
+                <div class="col"> <button type="button" class="btn" data-bs-dismiss="modal">Close</button></div>
+            </div>
+        
       </div>
     </div>
   </div>
@@ -411,13 +414,65 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="supplierfilterLabel">Supplier Filter</h1>
+        <h1 class="modal-title fs-5" id="supplierfilterLabel">Lieferanten Filter</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container">
             <div class="row">
-                <h3>Search Supplier Details</h3>
+                <h3>Lieferanten Details</h3>
+                <div class="col"><input type="text" name="" id="" placeholder="Suche nach Kundennummer" value=""  style="width: 110%; height:30px; background:#fff; text-align:center;  border:none; outline:none;"></div>
+                <div class="col"><input type="text" name="" id="" placeholder="Suche nach Kundennamen" value=""  style="width: 105%; height:30px; background:#fff; text-align:center; border:none; outline:none;"></div>
+            </div>
+            <div class="row mt-4">
+                <div class="col"><h5>Zeitraum : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Produkte : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Kunden : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"><h5>Lieferanten : </h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col"> <button type="button"  class="btn-dark">PDF anzeigen</button></div>
+            </div>
+
+        </div>
+      </div>
+      <div class="modal-footer d-flex">
+        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Supplier Modal ends -->
+
+
+
+    
+      <!-- Sales Volume Modal start -->
+<div class="modal fade" id="svolumefilter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="svolumefilterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="svolumefilterLabel">Umsatz filter</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <h3> Umsatz details</h3>
                 <div class="col"><input type="text" name="" id="" placeholder="Suche nach Kundennummer" value=""  style="width: 110%; height:30px; background:#fff; text-align:center;  border:none; outline:none;"></div>
                 <div class="col"><input type="text" name="" id="" placeholder="Suche nach Kundennamen" value=""  style="width: 105%; height:30px; background:#fff; text-align:center; border:none; outline:none;"></div>
             </div>
@@ -445,21 +500,26 @@
                 <div class="col"><h5>Claim's : </h5></div>
                 <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
             </div>
-
-
             <div class="row mt-4">
-                <div class="col"> <button type="button"  class="btn-dark">PDF anzeigen</button></div>
+                <div class="col"><h5>Rechnung :</h5></div>
+                <div class="col"><input type="text" name="" id="" placeholder="#" value=""  style="width: 100%; height:30px; background:transparent; border:none; outline:none;" readonly></div>
             </div>
 
+           
         </div>
       </div>
-      <div class="modal-footer d-flex">
-        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+      <div class="modal-footer">
+      <div class="row mt-4 d-block">
+                <div class="col" style="width:470px;"> <button type="button"  class="btn-dark">PDF anzeigen</button></div><br>
+                <div class="col"> <button type="button" class="btn" data-bs-dismiss="modal">Close</button></div>
+            </div>
+        
       </div>
     </div>
   </div>
 </div>
-    <!-- Supplier Modal ends -->
+    <!-- Sales Volume Modal ends -->
+
 
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script type="text/javascript" src="{{ asset('theme/assets/vendors/chart.js/Chart.min.js') }}"></script>
