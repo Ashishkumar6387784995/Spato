@@ -341,10 +341,15 @@
           <p>Angebote-Nr.</p>
          </div>
          <div class="inputs">
-            <p>
-                <input class="dynamic-field" type="text" placeholder='#' id="Angebote-Nr" name="Angebote-Nr"
-                value=""/> 
-                <br>
+            <p> 
+              <!-- findGeneratedProductDtl('SELECT_COLUMN') -->
+              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebote-Nr" onkeyup="findGeneratedProductDtl('Offer', 'Angebots_Nr')" value=""/> 
+              <br>
+              <div class="guessProductDtl">
+                <ul>
+
+                </ul>
+              </div>
             </p>
          </div>
         </div>
@@ -907,9 +912,10 @@
      // Handle success response
      if (response.success) {
       console.log(response.success);
+      var baseUrl = window.location.origin;
       console.log(response.dynamicFields);
       // $('#AddAuftragsForm')[0].reset();
-      $('#success_msg').text(response.success);
+      $('#success_msg').html('<img src="' + baseUrl + '/assets/frontEnd/web/images/checkmark.gif" alt="Success Image" width="50px" height="50px">' + response.success);
      } else if (response.errors) {
       // Display validation errors in the console
       console.log(response.errors);

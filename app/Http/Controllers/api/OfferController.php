@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OfferMailer;
-use App\Mail\sendResetLinkEmail;
+
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -99,7 +99,7 @@ class OfferController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            // 'Angebots_Nr' => 'required|string',
+            'Angebots_Nr' => 'required|string|unique:offers_list',
             'Angebotsdatum' => 'required|date_format:Y-m-d',
             // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',

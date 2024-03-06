@@ -220,3 +220,68 @@ function getProductDetailsDRP(id){
     jQuery('#Produkt_'+id).val(clickedProductName).trigger("keyup");
     jQuery('.guessCompanyName ul').empty();
   });
+
+
+// function for find Generated No
+  function findGeneratedProductDtl(page_name,select_column){
+    // alert(page_name+' '+select_column);
+    var baseUrl = window.location.origin;
+    var generatedNo = jQuery('#generatedNo').val();
+    // console.log(generatedNo);
+
+    var generatedNoList = $('.guessGeneratedNoDtl ul');
+    var tableTbody = jQuery('#table tbody');
+    tableTbody.find('.weNeedRemove').empty();  // make empty listing
+    if (generatedNo=='') {
+      return false;       // stop if generatedNo is null
+    }
+  
+    // Make a GET request using AJAX
+    $.ajax({
+      url: '/api/getGeneratedProductDtl', // Replace with the actual endpoint URL
+      method: 'GET',
+      data: {generatedNo: generatedNo, select_column:select_column},
+      success: function(response) {
+        // Handle the successful response
+        console.log('Response :', response);
+        if (response.success) {
+          console.log(response.productsList);
+  
+          response.productsList.forEach(function(item, index) {
+            // Create a new product element for each cart item
+            jQuery('#generatedNo').closest('p').find('.guessProductDtl ul').append(`
+              <li class="liProductDtl slide-in-blurred-top" idNumber="${id}" Art_Nr="${item.Katalog_Art_Nummer}">
+                ${item.Beschreibung_kurz}
+                <br>Art-Nr. ${item.Katalog_Art_Nummer}
+              </li>
+            `);
+          });
+  
+          // set values
+          if (response.status) {
+            $('#Produkt_'+id).val(response.success[0].Katalog_Art_Nummer);
+            $('#Produktname_'+id).val(response.success[0].Artikelname);
+            $('#Beschreibung_'+id).val(response.success[0].Beschreibung_kurz);
+            $('#ProduktimageView_'+id).attr('src', baseUrl+'/storage/'+response.success[0].Bild_1);
+            $('#Produktimage_'+id).val(response.success[0].Bild_1);
+            $('#Rate_'+id).val(response.success[0].Preis_zzgl_MwSt);
+            productList.empty();
+          }
+        }
+      },
+      error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        tableTbody.append('<tr class="weNeedRemove"><th  colspan="8" style="text-align:center;">Sorry! we are facing some internal errors.</td></tr>');
+      }
+    });
+  }
+  
+  // function for set li test in companyName input feild
+    $(document).on('click', '.liProductDtl', function() {
+      var id = jQuery(this).attr('idNumber');
+      // console.log(id);
+      var clickedProductName = jQuery(this).attr('Art_Nr');
+      jQuery('#Produkt_'+id).val(clickedProductName).trigger("keyup");
+      jQuery('.guessCompanyName ul').empty();
+    });

@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\newsLetteremailer;
 
 class newsLetterController extends Controller
 {
@@ -164,4 +165,35 @@ class newsLetterController extends Controller
         }
         return $users;
     }
+
+    public function sendNewsLetterMailsToB2C(Request $request) {
+        $newsletter = Newsletter::where('Newsletter_Nr', $request->Newsletter_Nr)->first();
+    
+        if ($newsletter) {
+            if ($newsletter->Kunden == 'All') {
+                $emails = User::select('email')->where('action', 'ja')->get();
+            } elseif ($newsletter->Kunden == 'Normal') {
+                $emails = User::select('email')->where('action', 'ja')->where('role', 'Normal')->get();
+            } elseif ($newsletter->Kunden == 'b2b') {
+                $emails = User::select('email')->where('action', 'ja')->where('role', 'b2b')->get();
+            } elseif ($newsletter->Kunden == 'supplier') {
+                $emails = User::select('email')->where('action', 'ja')->where('role', 'supplier')->get();
+            } else {
+                // Handle unknown Kunden value
+                $emails = [];
+            }
+        } else {
+            // Handle newsletter not found
+            $emails = [];
+        }
+
+        Mail::to($emails->pluck('email')->toArray())->send(new newsLetteremailer());
+
+        // dd($emails);
+    
+        return response()->json(['success' => "News Letter Is Sended SuccessFully"]);
+    }
+    
+
+   
 }
