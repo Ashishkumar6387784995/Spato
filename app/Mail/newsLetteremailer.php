@@ -10,7 +10,7 @@ class newsLetteremailer extends Mailable
 {
     use Queueable, SerializesModels;
 
-    // public $name;
+    public $newsletter;
     // public $email;
     
     // public $subject;
@@ -23,8 +23,10 @@ class newsLetteremailer extends Mailable
      * @param string $content
      * @return void
      */
-    public function __construct()
+    public function __construct($newsletter)
     {
+
+        $this->newsletter = $newsletter;
 
     }
 

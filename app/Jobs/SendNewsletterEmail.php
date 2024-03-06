@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
+
 class SendNewsletterEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -33,6 +34,9 @@ class SendNewsletterEmail implements ShouldQueue
      * @return void
      */
     public function handle()
+
+
+
     {
         Mail::to($this->emails->pluck('email')->toArray())->send(new newsLetteremailer($this->newsletter));
     }
