@@ -10,7 +10,7 @@ use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
-// use App\Mail\newsLetteremailer;
+
 use App\Jobs\SendNewsletterEmail;
 
 class newsLetterController extends Controller
@@ -21,7 +21,7 @@ class newsLetterController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $newsLetterNo = NewsLetter::select('Newsletter_Nr','Newsletterdatum','Kunden')->orderBy('created_at', 'desc')->get()->unique('Newsletter_Nr');
+            $newsLetterNo = NewsLetter::select('Newsletter_Nr', 'Newsletterdatum', 'Kunden')->orderBy('created_at', 'desc')->get()->unique('Newsletter_Nr');
         } else {
             $newsLetterNo = 'NewsLetter not found';
         }
@@ -41,19 +41,21 @@ class newsLetterController extends Controller
     }
 
     // function for get Total Number Of NewsLetter Users
-    public function getTotalNumberOfNewsLetterUsers(Request $request){
+    public function getTotalNumberOfNewsLetterUsers(Request $request)
+    {
         $users = $this->getNewsLetterUsers($request->Kunden);
 
-        return response()->json(['success'=>'1', 'noOfCustomer'=>count($users)]);
+        return response()->json(['success' => '1', 'noOfCustomer' => count($users)]);
     }
 
 
     // function for get Product Details DRP
-    public function getProductDetailsDRP(Request $request){
+    public function getProductDetailsDRP(Request $request)
+    {
         $product  = $request->Produkt;
         $success  = Product::select('id', 'Katalog_Art_Nummer', 'Artikelname', 'Beschreibung_kurz', 'Bild_1', 'Preis_zzgl_MwSt')->where('Katalog_Art_Nummer', $product)->where('status', 'active')->orderby('Katalog_Art_Nummer', 'ASC')->get();
-        $products = Product::select('id', 'Katalog_Art_Nummer', 'Artikelname', 'Beschreibung_kurz', 'Bild_1', 'Preis_zzgl_MwSt')->where('Katalog_Art_Nummer', 'LIKE', '%'.$product.'%')->where('status', 'active')->orderby('Katalog_Art_Nummer', 'ASC')->get();
-        return response()->json(['status'=> count($success), 'success'=>$success, 'productsList'=>$products]);
+        $products = Product::select('id', 'Katalog_Art_Nummer', 'Artikelname', 'Beschreibung_kurz', 'Bild_1', 'Preis_zzgl_MwSt')->where('Katalog_Art_Nummer', 'LIKE', '%' . $product . '%')->where('status', 'active')->orderby('Katalog_Art_Nummer', 'ASC')->get();
+        return response()->json(['status' => count($success), 'success' => $success, 'productsList' => $products]);
     }
 
 
@@ -78,17 +80,17 @@ class newsLetterController extends Controller
         }
 
         // for images
-            if ($request->hasFile('PDF_Datei')) {
-                $uploadedImage = $request->file('PDF_Datei');
+        if ($request->hasFile('PDF_Datei')) {
+            $uploadedImage = $request->file('PDF_Datei');
 
-                $uploadedImage->store('public/news_letter_pdf');
+            $uploadedImage->store('public/news_letter_pdf');
 
-                // Save file path in the database
-                $pdfPath = '/news_letter_pdf/' . $uploadedImage->hashName();
-                // You can also save the full path like $uploadedimages[$image] = $pdfPath; if needed.
-            }
+            // Save file path in the database
+            $pdfPath = '/news_letter_pdf/' . $uploadedImage->hashName();
+            // You can also save the full path like $uploadedimages[$image] = $pdfPath; if needed.
+        }
 
-        
+
 
         // Get the dynamic fields from the request
         $dynamicFields = $request->input('inputs');
@@ -134,7 +136,7 @@ class newsLetterController extends Controller
             $lastNewsletterID = $lastNewsletterID->Newsletter_Nr;
             // $lastNewsletterID = 'NW-12345';
             // Assuming $lastNewsletterID is 'NW-12345'
-        }else {
+        } else {
             $lastNewsletterID = 'NW-12344';
         }
 
@@ -157,11 +159,12 @@ class newsLetterController extends Controller
     }
 
     // function for get News Letter Users
-    public function getNewsLetterUsers($Kunden){
+    public function getNewsLetterUsers($Kunden)
+    {
 
         $users = User::where('action', 'ja')->get();    // all users
 
-        if ($Kunden!='All') {
+        if ($Kunden != 'All') {
             $users = $users->where('role', $Kunden);
         }
         return $users;
@@ -169,12 +172,13 @@ class newsLetterController extends Controller
 
 
 
-   
+
+
 
     public function sendNewsLetterMailsToB2C(Request $request)
     {
         $newsletter = Newsletter::where('Newsletter_Nr', $request->Newsletter_Nr)->first();
-    
+
         if ($newsletter) {
             // Retrieve emails based on newsletter Kunden value
             if ($newsletter->Kunden == 'All') {
@@ -187,24 +191,25 @@ class newsLetterController extends Controller
                 $emails = User::select('email')->where('action', 'ja')->where('role', 'supplier')->get();
             } else {
                 // Handle unknown Kunden value
-                $emails = [];
+                return response()->json(['error' => "Unknown Kunden value"]);
             }
-    
+
             if ($emails->isEmpty()) {
-                // Handle case where no valid email addresses are found
                 return response()->json(['error' => "No valid email addresses found"]);
             }
-    
-            // Dispatch the job to send the newsletter email
-            SendNewsletterEmail::dispatch($emails, $newsletter);
-            
+
+            try {
+
+                // Dispatch the job to send the newsletter email
+                SendNewsletterEmail::dispatch($emails, $newsletter);
+            } catch (\Exception $e) {
+                return response()->json(['error' => $e->getMessage()]);
+            }
+
             return response()->json(['success' => "Newsletter sent successfully"]);
         } else {
             // Handle newsletter not found
             return response()->json(['error' => "Newsletter not found"]);
         }
     }
-    
-
-   
 }
