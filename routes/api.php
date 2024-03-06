@@ -419,5 +419,6 @@ Route::get('/checkOut/{email}', [CartController::class, 'checkOutCartProduct']);
 
 Route::get('/productListingNew', [tryController::class, 'productListing']);
 Route::get('/image', [tryController::class, 'image']);
+Route::view('email', 'mail/newsletterMail');
 
 // routes/web.php
