@@ -4,7 +4,14 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+   *{
+    font-family: "Roboto", sans-serif;
+   }
   .mailer {
    background-color: white;
    border-radius: 10px;
@@ -39,6 +46,18 @@
    color: var(--black);
    margin-top: 2rem;
   }
+  .responsive{
+   display:flex;
+   justify-content:center;
+  }
+  .responsive table tr th{
+   background-color:#404040;
+   color:#fff;
+  }
+  .responsive table tr *{
+   padding:0px 10px;
+   text-align:left;
+  }
   </style>
  </head>
 
@@ -49,7 +68,7 @@
    </div>
    <div class="details">
     <p>
-     Dear Customer,
+     Dear Customer,<br>
      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor consectetur perspiciatis iste, corrupti nisi, officiis mollitia eius non tenetur iure sequi quo quam vero, esse cum voluptates minus! Repellendus temporibus quasi reprehenderit!
     </p>
 
@@ -80,7 +99,7 @@
     </div>
 
     <div class="selling-info">
-     <h5>Selling Information</h5>
+     <h3>Selling Information :</h3>
      <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus molestias quasi vero quis, commodi modi, sequi quae repudiandae, necessitatibus inventore reprehenderit magni recusandae laudantium. Similique animi dolores in cumque voluptatem ab, dolorem eum quibusdam voluptas omnis cum officia excepturi quod? Nemo, porro molestias. Harum consequatur dolorem fuga in, adipisci facilis?
      </p>
