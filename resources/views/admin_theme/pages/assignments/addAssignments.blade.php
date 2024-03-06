@@ -771,6 +771,7 @@
                 `);
               
                 window.i= i;
+                
 
               });
               generatedNoList.empty();
@@ -779,13 +780,13 @@
          
           }
           console.log('i', + i);
-
           // var i = 0;
    var No = 1;
 
    document.getElementById('add').addEventListener('click', function() {
     ++i;
     ++No;
+    console.log('new');
 
     var table = document.getElementById('table');
     var newRow = table.insertRow(table.rows.length);
@@ -832,6 +833,7 @@
     // Recalculate subtotal after adding a new row
     calculateSubTotal();
    });
+          
         },
         error: function(error) {
           // Handle errors
@@ -896,7 +898,60 @@
     });
    }
 
-   
+   var i = 0;
+   var No = 1;
+
+   document.getElementById('add').addEventListener('click', function() {
+    ++i;
+    ++No;
+
+    console.log('old');
+
+    var table = document.getElementById('table');
+    var newRow = table.insertRow(table.rows.length);
+
+    newRow.innerHTML = `
+                    <td>
+                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
+                    </td>
+                    <td>
+                      <input type="text"" name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
+                      <br>
+                      <div class="guessProductDtl">
+                        <ul>
+
+                        </ul>
+                      </div>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
+                    </td>
+                    <td>
+                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
+                       
+                    </td>
+                    <td>
+                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
+                    </td>
+                    <td>
+                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
+                    </td>
+                    <td>
+                        <button class="remove-table-row  btn btn-sm">Delete</button>
+                    </td>`;
+
+    // Call the setupInputListeners function after adding a new row
+    setupInputListeners();
+
+    // Recalculate subtotal after adding a new row
+    calculateSubTotal();
+   });
 
    document.addEventListener('click', function(event) {
     if (event.target.classList.contains('remove-table-row')) {
