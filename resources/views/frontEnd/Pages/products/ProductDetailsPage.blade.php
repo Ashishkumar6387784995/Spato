@@ -472,6 +472,17 @@
   width:400px;
   height:300px;
 }
+
+
+.product-details {
+
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    .product .row{
+      display:flex;
+      justify-content:center;
+    }
    
 </style>
 
