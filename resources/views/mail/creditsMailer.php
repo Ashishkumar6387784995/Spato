@@ -1,1 +1,0 @@
-<h1>Credits Mailer</h1>
