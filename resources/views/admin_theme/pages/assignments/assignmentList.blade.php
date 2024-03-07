@@ -227,26 +227,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="supplier-view-assignment" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div class="row">
+        <div class="row">
           <div class="col"><h4>Auftrags-Nr.</h4></div>
-          <div class="col"><p>#</p></div>
+          <div class="col"><p class="onViewHide" id="show-Auftrags-Nr">#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Angebots-Nr.</div>
+          <div class="col"><p class="onViewHide" id="show-Angebots-Nr">#</p></div>
         </div>
         <div class="row">
           <div class="col">Auftragsdatum</div>
-          <div class="col"><p>#</p></div>
+          <div class="col"><p class="onViewHide" id="show-Auftragsdatum">#</p></div>
         </div>
         <div class="row">
           <div class="col">Referenz</div>
-          <div class="col"><p>#</p></div>
+          <div class="col"><p class="onViewHide" id="show-Referenz">#</p></div>
         </div>
 
         <div class="row">
           <div class="col">Ihre Kundennummer</div>
-          <div class="col"><p>#</p></div>
+          <div class="col"><p class="onViewHide" id="show-Ihre-Kundennummer">#</p></div>
         </div>
         <div class="row">
           <div class="col">Ihre Ust. ID</div>
-          <div class="col"><p>#</p></div>
+          <div class="col"><p class="onViewHide" id="show-Ihre-Ust-ID">#</p></div>
         </div>
         <div class="responsive">
           <table>
@@ -261,7 +265,7 @@
                 <th>Gesamtpreis</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="show-tbody">
               <tr>
                 <td></td>
                 <td></td>
@@ -276,15 +280,15 @@
         <div class="calculation" style="border-top:1px solid #44e1d5; padding-top:50px;">
           <div class="row">
             <div class="col">Gesamt netto</div>
-            <div class="col"><p>#</p></div>
+            <div class="col"><p class="onViewHide" id="show-Gesamt-netto">#</p></div>
           </div>
           <div class="row">
             <div class="col">zzgl. Umsatzsteuer 19 %</div>
-            <div class="col"><p>#</p></div>
+            <div class="col"><p class="onViewHide" id="show-zzgl-Umsatzsteuer">#</p></div>
           </div>
           <div class="row">
             <div class="col">Gesamtbetrag brutto</div>
-            <div class="col"><p>#</p></div>
+            <div class="col"><p class="onViewHide" id="show-Gesamtbetrag-brutto">#</p></div>
           </div>
         </div>
       </div>
@@ -344,7 +348,7 @@
                   row.append('<td><a href="/api/editAssignments/b2b/' + item.Auftrags_Nr +
                     '" class="edit btn" id="editProductBtn">Änderung anfragen</a></td>');
                 } else if (data.user.role === 'supplier') {
-                  row.append('<td><a class="edit btn" data-bs-toggle="modal" data-bs-target="#supplierAssignment">ansehen</a></td>');
+                  row.append('<td><a class="edit btn getAssignmentDetails" data-assignment-no="'+item.Auftrags_Nr+'" data-bs-toggle="modal" data-bs-target="#supplierAssignment">ansehen</a></td>');
                 }
 
                 // Add more columns as needed
@@ -369,11 +373,69 @@
           console.error('Error:', error);
         }
       });
-
-
-
-
     });
+
+
+    // function for find get Assignment details by order id
+    jQuery(document).on('click', '.getAssignmentDetails', function () {
+      var assignment_no = $(this).attr('data-assignment-no');
+      jQuery('.onViewHide').text('#');
+      jQuery('#show-tbody').html('');
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/getAssignmentDetailsApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { assignment_no: assignment_no},
+        success: function(data) {
+          // Handle the successful response
+          if (data.assignmentDtl) {
+            console.log('Assignment Details:', data.assignmentDtl);
+
+            // Call the function to populate the table with the initial data
+            populateOrderDtl(data.assignmentDtl);
+
+            function populateOrderDtl(data) {
+
+              // customer details
+              jQuery('#show-Auftrags-Nr').text(data[0].Auftrags_Nr);
+              jQuery('#show-Angebots-Nr').text(data[0].Angebots_Nr);
+              jQuery('#show-Auftragsdatum').text(data[0].Auftragsdatum);
+              jQuery('#show-Referenz').text(data[0].Referenz);
+              jQuery('#show-Ihre-Kundennummer').text(`${data[0].name} (${data[0].Ihre_Kundennummer})`);
+              jQuery('#show-Ihre-Ust-ID').text(data[0].Ihre_Ust_ID);
+
+              jQuery('#show-Gesamt-netto').text(data[0].gesamt_netto+'€');
+              jQuery('#show-zzgl-Umsatzsteuer').text(data[0].zzgl_Umsatzsteuer+'€');
+              jQuery('#show-Gesamtbetrag-brutto').text(data[0].Gesamtbetrag_brutto+'€');
+
+
+              // items details
+
+                // Iterate through the data and add rows to the table
+                $.each(data, function(index, item) {
+                  jQuery('#show-tbody').append(`
+                    <tr>
+                      <td>${item.Produkt}</td>
+                      <td>${item.Beschreibung}</td>
+                      <td>${item.Menge}</td>
+                      <td>${item.Einheit}</td>
+                      <td>${item.Einzelpreis}</td>
+                      <td>${item.Rabatt}</td>
+                    </tr>
+                  `);
+                });
+            }
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
   </script>
 
 

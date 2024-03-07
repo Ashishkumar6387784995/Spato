@@ -214,4 +214,23 @@ class AssignmentController extends Controller
 
         return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
     }
+
+
+
+    // function for find assignment details by his order id
+    public function getAssignmentDetailsApi(Request $request)
+    {
+        $assignments = DB::table('assignments_list')
+                ->select('assignments_list.*', 'users.name')
+                ->join('users', 'users.id', '=', 'assignments_list.Ihre_Kundennummer')
+                ->where('assignments_list.Auftrags_Nr', $request->assignment_no)
+                ->orderby('assignments_list.created_at', 'DESC')
+                ->get();
+
+        if ($assignments->count()){
+            return response()->json(['assignmentDtl'=>$assignments]);
+        }
+        
+        return response()->json(['errors'=>"Order Not Found"]);
+    }
 }
