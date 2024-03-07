@@ -414,14 +414,33 @@
 
                 // Iterate through the data and add rows to the table
                 $.each(data, function(index, item) {
+
+                  // for big discription length
+                    var wordLimit = 8; // Change this to your desired word limit
+
+                    // Convert JSON object to string
+                    var Beschreibung = item.Beschreibung;
+
+                    // Split the string by whitespace to count words
+                    var words = Beschreibung.split(/\s+/);
+
+                    // If the number of words exceeds the limit, trim the text
+                    if (words.length > wordLimit) {
+                      var trimmedText = words.slice(0, wordLimit).join(' ');
+                      trimmedText = trimmedText + '...';
+                    }else{
+                      var trimmedText = Beschreibung;
+                    }
+
                   jQuery('#show-tbody').append(`
                     <tr>
                       <td>${item.Produkt}</td>
-                      <td>${item.Beschreibung}</td>
+                      <td><span title="${Beschreibung}">${trimmedText}</span></td>
                       <td>${item.Menge}</td>
                       <td>${item.Einheit}</td>
                       <td>${item.Einzelpreis}</td>
                       <td>${item.Rabatt}</td>
+                      <td>${item.Gesamtpreis}</td>
                     </tr>
                   `);
                 });
