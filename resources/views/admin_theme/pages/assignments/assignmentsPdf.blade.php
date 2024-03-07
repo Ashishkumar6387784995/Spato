@@ -340,7 +340,7 @@ Sollten Ihnen unsere aktuellen AGB nicht vorliegen, fordern Sie diese bitte unte
                         <p class="hidden">Lo</p>
                     </td>
                     <td>Geschäftsführung: Oliver Laug</td>
-                    <td>
+                    <td>    
                         <p class="hidden">Lo</p>
                     </td>
                     <td>BIC: SOLSDE33XXX</td>
