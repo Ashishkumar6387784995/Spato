@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Jobs;
 
 use App\Mail\newsLetteremailer;
@@ -10,22 +11,24 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
 
+
 class SendNewsletterEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $emails;
-    protected $newsletter;
+    protected $newslatterProducts;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($emails, $newsletter)
+    public function __construct($emails, $newslatterProducts)
     {
         $this->emails = $emails;
-        $this->newsletter = $newsletter;
+        $this->newslatterProducts = $newslatterProducts;
+        // dd($emails);
     }
 
     /**
@@ -33,11 +36,22 @@ class SendNewsletterEmail implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
 
 
 
-    {
-        Mail::to($this->emails->pluck('email')->toArray())->send(new newsLetteremailer($this->newsletter));
-    }
+     
+
+     public function handle()
+     {
+        
+             foreach ($this->emails as $email) {
+                
+                     Mail::to($email)->send(new newsLetteremailer($this->newslatterProducts));
+              
+                   
+             }
+         
+     }
+     
+    
 }

@@ -933,7 +933,7 @@
 
       $.ajax({
         type: 'post',
-        url: '/api/sendNewsLetterMailsToB2C',
+        url: '/api/sendNewsLetterMails',
         data: formData,
         dataType: 'json',
         headers: {
@@ -947,6 +947,7 @@
             $('#success_msg').text(response.success);
             // Add any additional success handling here
           } else if (response.error) {
+            $('#success_msg').text(response.error);
             console.log(response.error);
             // Add any error handling here
           } else if (response.error) {
