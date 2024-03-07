@@ -61,6 +61,18 @@
       color: #404040;
     }
 
+    .responsive{
+      overflow:auto;
+    }
+
+    .responsive table tr th, td{
+      padding:0px 10px;
+    }
+    .responsive table tr th{
+      background-color:  #404040;
+      padding:5px;
+      color:#fff;
+    }
     .row .col {
       font-size: 14px;
     }
@@ -215,6 +227,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="supplier-view-assignment" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+      <div class="row">
+          <div class="col"><h4>Auftrags-Nr.</h4></div>
+          <div class="col"><p>#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Auftragsdatum</div>
+          <div class="col"><p>#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Referenz</div>
+          <div class="col"><p>#</p></div>
+        </div>
+
+        <div class="row">
+          <div class="col">Ihre Kundennummer</div>
+          <div class="col"><p>#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Ihre Ust. ID</div>
+          <div class="col"><p>#</p></div>
+        </div>
         <div class="responsive">
           <table>
             <thead>
