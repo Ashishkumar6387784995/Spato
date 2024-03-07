@@ -378,6 +378,16 @@
 
     // function for find get Assignment details by order id
     jQuery(document).on('click', '.getAssignmentDetails', function () {
+      
+      var token = localStorage.getItem('authToken');
+      console.log(token);
+
+      // Check if the token exists
+      if (!token) {
+        console.error('Token not found in localStorage');
+        window.location.href = '/api/home';
+      }
+
       var assignment_no = $(this).attr('data-assignment-no');
       jQuery('.onViewHide').text('#');
       jQuery('#show-tbody').html('');
@@ -386,6 +396,9 @@
       $.ajax({
         url: '/api/getAssignmentDetailsApi', // Replace with the actual endpoint URL
         method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
         data: { assignment_no: assignment_no},
         success: function(data) {
           // Handle the successful response

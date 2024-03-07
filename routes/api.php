@@ -118,6 +118,7 @@ Route::middleware('api.auth')->group(function () {
 
   Route::post('addAssignmentsApi', [AssignmentController::class, 'addAssignmentsApi']);
   Route::get('assignmentListingApi', [AssignmentController::class, 'AssignmentListing']);
+  Route::get('getAssignmentDetailsApi', [AssignmentController::class, 'getAssignmentDetailsApi']);
 
   // Delivery Notes for Admin
   Route::post('addDeliveryNotesApi', [DeliveryNotesController::class, 'addDeliveryNotesApi']);
@@ -260,7 +261,6 @@ Route::get('quatationListing/{role}', [quatationController::class, 'quatationLis
 
 // Assignment for Admin
 
-Route::get('getAssignmentDetailsApi', [AssignmentController::class, 'getAssignmentDetailsApi']);
 Route::view('assignmentListing/{role}', 'admin_theme/pages/assignments/assignmentList');
 Route::get('addAssignment/{role}', [AssignmentController::class, 'addAssignment']);
 
