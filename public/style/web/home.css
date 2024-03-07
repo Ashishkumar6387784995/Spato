@@ -696,6 +696,15 @@ footer .footer-container .space-for-phone {
     footer .footer-container .phone {
         text-align: center;
     }
+
+    .newsletter .container .row {
+        display: block !important;
+    }
+
+    .newsletter .container .row * {
+        width: 100%;
+        margin: 10px;
+    }
 }
 
 /* #user-header {
