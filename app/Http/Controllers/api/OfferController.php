@@ -270,7 +270,7 @@ class OfferController extends Controller
 
         if ($page_name=='Offer') {
             $products = offers::select('Angebots_Nr')->where('Angebots_Nr', 'LIKE', '%'.$generatedNo.'%')->where('status', 'Bestätigt')->orderby('Angebots_Nr', 'ASC')->get()->unique('Angebots_Nr');
-            $success  = offers::select('Produkt', 'Beschreibung', 'Menge', 'Einheit', 'Einzelpreis', 'Rabatt', 'Gesamtpreis')->where('Angebots_Nr', $generatedNo)->where('status', 'Bestätigt')->orderby('Produkt', 'ASC')->get();
+            $success  = offers::select('Ihre_Kundennummer', 'Produkt', 'Beschreibung', 'Menge', 'Einheit', 'Einzelpreis', 'Rabatt', 'Gesamtpreis')->where('Angebots_Nr', $generatedNo)->where('status', 'Bestätigt')->orderby('Produkt', 'ASC')->get();
         }
         
         return response()->json(['status'=> count($success), 'success'=>$success, 'productsList'=>$products]);
