@@ -28,12 +28,12 @@ class OfferController extends Controller
         $user = Auth::guard('api')->user();
 
         if ($user->role == 'Admin') {
-            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
+            $offers = offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'b2b') {
-            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
+            $offers = offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get()->unique('Angebots_Nr');
         } elseif ($user->role == 'Normal') {
-            $offers = Offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','Produkt','Beschreibung','Menge','Einheit','Einzelpreis','Rabatt','Gesamtpreis','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
-            $offersGroupBy = Offers::select('Angebots_Nr', 'Angebotsdatum', 'Ihre_Kundennummer', 'gesamt_netto', 'status')
+            $offers = offers::select('Angebots_Nr','Angebotsdatum','Ihre_Kundennummer','Produkt','Beschreibung','Menge','Einheit','Einzelpreis','Rabatt','Gesamtpreis','gesamt_netto', 'status')->where('Ihre_Kundennummer', $user->id)->orderBy('created_at', 'desc')->get();
+            $offersGroupBy = offers::select('Angebots_Nr', 'Angebotsdatum', 'Ihre_Kundennummer', 'gesamt_netto', 'status')
             ->where('Ihre_Kundennummer', $user->id)
             ->orderByDesc('created_at')
             ->get()
@@ -220,7 +220,7 @@ class OfferController extends Controller
     // function for update offer status by offer code
     public function updateOfferB2B(Request $request)
     {
-        $record = Offers::where('Angebots_Nr', $request->offer_code)->update(['status' => 'Bestätigt']);
+        $record = offers::where('Angebots_Nr', $request->offer_code)->update(['status' => 'Bestätigt']);
         // dd($record);
 
         if ($record) {
@@ -236,10 +236,10 @@ class OfferController extends Controller
     {
         $user = Auth::guard('api')->user();
 
-        if (Offers::where('Angebots_Nr', $request->Angebots_Nr)->where('Ihre_Kundennummer', $user->id)->where('Angebotsdatum', '<', date('Y-m-d'))->first()) {
+        if (offers::where('Angebots_Nr', $request->Angebots_Nr)->where('Ihre_Kundennummer', $user->id)->where('Angebotsdatum', '<', date('Y-m-d'))->first()) {
             return response()->json(['status'=>'0', 'message' => 'Offer No. '. $request->Angebots_Nr.' Expired']);
         }
-        $record = Offers::where('Angebots_Nr', $request->Angebots_Nr)->where('Ihre_Kundennummer', $user->id)->update(['status' => 'schließen']);
+        $record = offers::where('Angebots_Nr', $request->Angebots_Nr)->where('Ihre_Kundennummer', $user->id)->update(['status' => 'schließen']);
         // dd($record);
 
         if ($record) {
@@ -253,7 +253,7 @@ class OfferController extends Controller
     // function for get offers details by his Angebots_Nr
     public function getOfferDetails(Request $request){
         $user = Auth::guard('api')->user();
-        $offers = Offers::where('Ihre_Kundennummer', $user->id)->where('Angebots_Nr', $request->Angebots_Nr)->orderBy('created_at', 'desc')->get();
+        $offers = offers::where('Ihre_Kundennummer', $user->id)->where('Angebots_Nr', $request->Angebots_Nr)->orderBy('created_at', 'desc')->get();
         if (count($offers)) {
             return response()->json(['status'=>'1' ,'offersList' => $offers]);
         }
@@ -270,7 +270,7 @@ class OfferController extends Controller
         $generatedNo = $request->generatedNo;
 
         if ($page_name=='Offer') {      // if offer
-            $products = offers::select('Angebots_Nr as guessedGenID')->where('Angebots_Nr', 'LIKE', '%'.$generatedNo.'%')->where('status', 'Bestätigt')->orderby('Angebots_Nr', 'ASC')->get()->unique('guessedGenID');
+            $products = offers::select('Angebots_Nr as guessedGenID')->where('Angebots_Nr', 'LIKE', '%'.$generatedNo.'%')->where('status', 'Bestätigt')->where('assign_status', 'Unassigned')->orderby('Angebots_Nr', 'ASC')->get()->unique('guessedGenID');
             $success  = offers::select('Ihre_Kundennummer', 'Produkt', 'Beschreibung', 'Menge', 'Einheit', 'Einzelpreis', 'Rabatt', 'Gesamtpreis')->where('Angebots_Nr', $generatedNo)->where('status', 'Bestätigt')->orderby('Produkt', 'ASC')->get();
         }
         

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Assignments_list;
+use App\Models\offers;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
@@ -155,6 +156,10 @@ class AssignmentController extends Controller
                 $assignment->Gesamtpreis = $dynamicField['Gesamtpreis'];
                 $assignment->save();
             }
+            
+            // for update deliver status
+            Offers::where('Angebots_Nr', $request->Angebots_Nr)->update(['assign_status' => 'Assigend']);
+
 
             // Return a success response
             return response()->json(['success' => "Assignment Added SuccessFully"]);

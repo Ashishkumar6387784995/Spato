@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('zzgl_Umsatzsteuer')->nullable();
             $table->string('Gesamtbetrag_brutto')->nullable();
             $table->string('status')->default('Offen');
+            $table->string('assign_status')->default('Unassigned');
+            $table->string('deliver_status')->default('Undelivered');
 
             $table->timestamps();
         });

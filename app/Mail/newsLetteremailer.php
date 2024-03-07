@@ -30,14 +30,25 @@ class newsLetteremailer extends Mailable
      */
     public function build()
     {
-        return $this->from('pratapidevelopers111@gmail.com', 'Me')
+        $email = $this->from('pratapidevelopers111@gmail.com', 'Me')
             ->view('mail.newsletterMail')
             ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
                 'as' => 'logo.png',
                 'mime' => 'image/png',
-            ])
-            ->attach(storage_path('app/public/' . $this->newslatterProducts[0]->PDF_Datei));
+            ]);
+    
+        if ($this->newslatterProducts[0]->PDF_Datei) {
+            $pdfPath = storage_path('app/public/' . $this->newslatterProducts[0]->PDF_Datei);
+            if (file_exists($pdfPath)) {
+                $email->attach($pdfPath);
+            } else {
+                // Handle case when PDF file does not exist
+            }
+        }
+    
+        return $email;
     }
+    
     
     
     
