@@ -281,7 +281,7 @@ class loginController extends Controller
 
         // for DeliverNotes
             if ($role_filter=='DeliverNotes') {
-                $users = User::where('role', 'Normal')->get();
+                $users = User::where('role', 'supplier')->get();
             }
 
         // for Credits
@@ -355,8 +355,8 @@ class loginController extends Controller
 
         // for DeliverNotes
             if ($role_filter=='DeliverNotes') {
-                $users = $users->where('users.role', 'Normal')->get();
-                $guessCompanyName = $guessCompanyName->where('users.role', 'Normal')->get();
+                $users = $users->where('users.role', 'supplier')->get();
+                $guessCompanyName = $guessCompanyName->where('users.role', 'supplier')->get();
             }
 
         // for Credits
