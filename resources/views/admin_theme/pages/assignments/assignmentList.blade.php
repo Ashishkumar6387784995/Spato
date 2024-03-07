@@ -81,7 +81,7 @@
       color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;
-  margin-top:10px;
+  /* margin-top:10px; */
   text-align:center;
     }
   </style>
@@ -123,7 +123,12 @@
     <div class="main-panel">
       <div class="content-wrapper">
       
-      @include('admin_theme/Partial/admin_header')
+      <div class="" style="padding-bottom:10px;   margin-top:-1.5rem;">
+        @include('admin_theme/Partial/admin_header')
+          <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
       
         @if($role=="b2b")
         <div class="row pt-3">
@@ -199,6 +204,51 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
 
+
+  <!-- Assignment view page for supplier start -->
+<!-- Modal -->
+<div class="modal fade" id="supplierAssignment" tabindex="-1" aria-labelledby="supplierAssignmentLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="supplier-view-assignmentLabel">Zugeordnete Produkte</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="supplier-view-assignment" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Produkt</th>
+                <th>Beschreibung</th>
+                <th>Menge</th>
+                <th>Einheit</th>
+                <th>Einzelpreis</th>
+                <th>Rabatt</th>
+                <th>Gesamtpreis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Assignment view page for supplier ends -->
+
   <script>
     // Execute the code when the document is ready
     $(document).ready(function() {
@@ -246,8 +296,7 @@
                   row.append('<td><a href="/api/editAssignments/b2b/' + item.Auftrags_Nr +
                     '" class="edit btn" id="editProductBtn">Änderung anfragen</a></td>');
                 } else if (data.user.role === 'supplier') {
-                  row.append('<td><a href="/api/editAssignments/supplier/' + item.Auftrags_Nr +
-                    '" class="edit btn" id="editProductBtn">ansehen</a></td>');
+                  row.append('<td><a class="edit btn" data-bs-toggle="modal" data-bs-target="#supplierAssignment">ansehen</a></td>');
                 }
 
                 // Add more columns as needed
