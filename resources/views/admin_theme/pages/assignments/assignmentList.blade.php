@@ -220,8 +220,8 @@
   <!-- Assignment view page for supplier start -->
 <!-- Modal -->
 <div class="modal fade" id="supplierAssignment" tabindex="-1" aria-labelledby="supplierAssignmentLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content" style="width: 750px;">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="supplier-view-assignmentLabel">Zugeordnete Produkte</h1>
         <button type="button" class="btn-close" data-bs-dismiss="supplier-view-assignment" aria-label="Close"></button>
@@ -271,6 +271,21 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="calculation" style="border-top:1px solid #44e1d5; padding-top:50px;">
+          <div class="row">
+            <div class="col">Gesamt netto</div>
+            <div class="col"><p>#</p></div>
+          </div>
+          <div class="row">
+            <div class="col">zzgl. Umsatzsteuer 19 %</div>
+            <div class="col"><p>#</p></div>
+          </div>
+          <div class="row">
+            <div class="col">Gesamtbetrag brutto</div>
+            <div class="col"><p>#</p></div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
