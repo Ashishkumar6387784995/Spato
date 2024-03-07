@@ -339,7 +339,7 @@
 
           <div class="details">
             <div class="field">
-              <p>Angebote-Nr.</p>
+              <p>Auftrags-Nr.</p>
             </div>
             <div class="inputs">
               <p>
