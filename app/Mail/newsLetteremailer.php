@@ -10,24 +10,17 @@ class newsLetteremailer extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $newsletter;
-    // public $email;
-    
-    // public $subject;
-    // public $content;
-
+    public $newslatterProducts;
+   
     /**
      * Create a new message instance.
      *
-     * @param string $subject
-     * @param string $content
+     * @param mixed $newslatterProducts
      * @return void
      */
-    public function __construct($newsletter)
+    public function __construct($newslatterProducts)
     {
-
-        $this->newsletter = $newsletter;
-
+        $this->newslatterProducts = $newslatterProducts;
     }
 
     /**
@@ -35,14 +28,17 @@ class newsLetteremailer extends Mailable
      *
      * @return $this
      */
-
-     public function build()
-     {
-         return $this->subject('Spato NewsLetter')
-                     ->view('mail.newsletterMail')
-                     ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
-                         'as' => 'logo.png',
-                         'mime' => 'image/png',
-                     ]);
-     }
+    public function build()
+    {
+        return $this->from('pratapidevelopers111@gmail.com', 'Me')
+            ->view('mail.newsletterMail')
+            ->attach(public_path('assets/frontEnd/web/images/spato-logo.png'), [
+                'as' => 'logo.png',
+                'mime' => 'image/png',
+            ])
+            ->attach(storage_path('app/public/' . $this->newslatterProducts[0]->PDF_Datei));
+    }
+    
+    
+    
 }

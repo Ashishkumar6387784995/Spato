@@ -149,7 +149,7 @@ Route::middleware('api.auth')->group(function () {
 
   // newsLetter for Admin
   Route::get('newsLetterListingApi', [newsLetterController::class, 'newsLetterListingApi']);
-  Route::post('sendNewsLetterMailsToB2C', [newsLetterController::class, 'sendNewsLetterMailsToB2C']);
+  Route::post('sendNewsLetterMails', [newsLetterController::class, 'sendNewsLetterMails']);
 
 
   // items for checkout with auth.
@@ -398,15 +398,10 @@ Route::get('/accountSetting', [webController::class, 'accountSetting']);
 Route::view('productPortfolio', 'frontEnd/pages/productPortfolio');
 
 
-
-
-
 // staticPages
 
 // Route::get('contact',[staticPageController::class,'contact']);
 // Route::get('about',[staticPageController::class,'about']);
-
-
 
 
 // Cart

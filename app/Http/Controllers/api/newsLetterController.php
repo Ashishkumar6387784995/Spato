@@ -172,12 +172,12 @@ class newsLetterController extends Controller
 
 
 
-
-
-
-    public function sendNewsLetterMailsToB2C(Request $request)
+    public function sendNewsLetterMails(Request $request)
     {
         $newsletter = Newsletter::where('Newsletter_Nr', $request->Newsletter_Nr)->first();
+        $newslatterProducts=  Newsletter::where('Newsletter_Nr', $request->Newsletter_Nr)->get();
+
+        // dd($newsletter);
 
         if ($newsletter) {
             // Retrieve emails based on newsletter Kunden value
@@ -198,15 +198,19 @@ class newsLetterController extends Controller
                 return response()->json(['error' => "No valid email addresses found"]);
             }
 
-            try {
+            if ($emails){
 
-                // Dispatch the job to send the newsletter email
-                SendNewsletterEmail::dispatch($emails, $newsletter);
-            } catch (\Exception $e) {
-                return response()->json(['error' => $e->getMessage()]);
+               $status = SendNewsletterEmail::dispatchNow($emails, $newslatterProducts);
+
+               return response()->json(['success' => "Newsletter sent successfully"]);
+
+            //    return response()->json(['success' => $status]);
+
+             
             }
 
-            return response()->json(['success' => "Newsletter sent successfully"]);
+
+          
         } else {
             // Handle newsletter not found
             return response()->json(['error' => "Newsletter not found"]);
