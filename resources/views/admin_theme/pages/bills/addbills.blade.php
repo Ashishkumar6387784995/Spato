@@ -341,7 +341,12 @@
                         </div>
                         <div class="inputs">
                             <p>
-                                <input class="dynamic-field" type="text" placeholder='#' id="Auftrags_Nr" name="Auftrags_Nr" value="" /> 
+                                <!-- findGeneratedProductDtl('PAGE_NAME') -->
+                                <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Auftrags_Nr" onkeyup="findGeneratedProductDtl('Assignment')" value=""/>
+                                <div id="generatedNoList">
+                                    <ul>
+                                    </ul>
+                                </div>
                             </p>
                         </div>
                     </div>

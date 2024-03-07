@@ -341,7 +341,7 @@
          </div>
          <div class="inputs">
             <p> 
-              <!-- findGeneratedProductDtl('SELECT_COLUMN') -->
+              <!-- findGeneratedProductDtl('PAGE_NAME') -->
               <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebots_Nr" onkeyup="findGeneratedProductDtl('Offer')" value=""/>
               <div id="generatedNoList">
                 <ul>

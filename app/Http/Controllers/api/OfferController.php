@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\offers;
 use App\Models\Product;
+use App\Models\Assignments_list;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
@@ -268,9 +269,14 @@ class OfferController extends Controller
         $page_name = $request->page_name;
         $generatedNo = $request->generatedNo;
 
-        if ($page_name=='Offer') {
-            $products = offers::select('Angebots_Nr')->where('Angebots_Nr', 'LIKE', '%'.$generatedNo.'%')->where('status', 'Bestätigt')->orderby('Angebots_Nr', 'ASC')->get()->unique('Angebots_Nr');
+        if ($page_name=='Offer') {      // if offer
+            $products = offers::select('Angebots_Nr as guessedGenID')->where('Angebots_Nr', 'LIKE', '%'.$generatedNo.'%')->where('status', 'Bestätigt')->orderby('Angebots_Nr', 'ASC')->get()->unique('guessedGenID');
             $success  = offers::select('Ihre_Kundennummer', 'Produkt', 'Beschreibung', 'Menge', 'Einheit', 'Einzelpreis', 'Rabatt', 'Gesamtpreis')->where('Angebots_Nr', $generatedNo)->where('status', 'Bestätigt')->orderby('Produkt', 'ASC')->get();
+        }
+        
+        if ($page_name=='Assignment') {  // if Assignment
+            $products = Assignments_list::select('Auftrags_Nr as guessedGenID')->where('Auftrags_Nr', 'LIKE', '%'.$generatedNo.'%')->orderby('Auftrags_Nr', 'ASC')->get()->unique('guessedGenID');
+            $success  = Assignments_list::select('Ihre_Kundennummer', 'Produkt', 'Beschreibung', 'Menge', 'Einheit', 'Einzelpreis', 'Rabatt', 'Gesamtpreis')->where('Auftrags_Nr', $generatedNo)->orderby('Produkt', 'ASC')->get();
         }
         
         return response()->json(['status'=> count($success), 'success'=>$success, 'productsList'=>$products]);

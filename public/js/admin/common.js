@@ -16,7 +16,7 @@ $(document).one('click', '.showButton', function() {
 
                 // Dynamically set the loop limit based on the array length
                 for (var i = 0; i < dataArray.length; i++) {
-                    ddl.append($("<option></option>").val(dataArray[i].id).text(dataArray[i].id));
+                    ddl.append($("<option></option>").val(dataArray[i].id).text(`${dataArray[i].name} (${dataArray[i].id})`));
                 }
 
                 // Attach a change event handler to the dropdown
@@ -262,12 +262,12 @@ function getProductDetailsDRP(id){
         if (response.success) {
           console.log(response.productsList);
   
-          // for Angebots_Nr list
+          // for guessedGenID list
           $.each(response.productsList, function(index, item) {
             // Create a new product element for each cart item
             generatedNoList.append(`
-              <li class="liGenerateNoDtl slide-in-blurred-top" generatedNo="${item.Angebots_Nr}">
-                ${item.Angebots_Nr}
+              <li class="liGenerateNoDtl slide-in-blurred-top" generatedNo="${item.guessedGenID}">
+                ${item.guessedGenID}
               </li>
             `);
           });
