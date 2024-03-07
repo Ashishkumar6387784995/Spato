@@ -265,14 +265,13 @@
    <!-- partial -->
    <div class="main-panel">
     <div class="content-wrapper">
-     <div class="" style="border-bottom: 2px solid #44e1d5;  margin-top:-1.5rem;">
-      <h2>Admin Dashboard</h2>
-      <p>{{ now()->format('l, F j, Y') }}</p>
-
-      <button class="navbar-toggler" type="button" data-toggle="offcanvas">
-       <span class="mdi mdi-menu"></span>
-      </button>
-     </div>
+    <div class="" style="padding-bottom:10px;   margin-top:-1.5rem;">
+        @include('admin_theme/Partial/admin_header')
+          <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          
+        </div>
      <form id="AddAuftragsForm" method="post">
       <div class="row pt-3">
 
@@ -342,8 +341,8 @@
          </div>
          <div class="inputs">
             <p> 
-              <!-- findGeneratedProductDtl('SELECT_COLUMN') -->
-              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebote-Nr" onkeyup="findGeneratedProductDtl('Offer')" value=""/>
+              <!-- findGeneratedProductDtl('PAGE_NAME') -->
+              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebots_Nr" onkeyup="findGeneratedProductDtl('Offer')" value=""/>
               <div id="generatedNoList">
                 <ul>
                 </ul>
@@ -475,61 +474,58 @@
 
             </thead>
             <tbody>
+              <tr>
+                <td>
+
+                    <input type="text" class="lastPOS" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+
+                </td>
+                <td>
+                    <input type="text" name='inputs[0][Produkt]' id="Produkt_0" onkeyup="getProductDetailsDRP('0');" placeholder='#' />
+                    <br>
+                    <div class="guessProductDtl">
+                      <ul>
+
+                      </ul>
+                    </div>
+                    <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
+                </td>
 
 
+                <td>
 
+                    <input type="text" name='inputs[0][Beschreibung]' id="Beschreibung_0" placeholder='#' />
+                    <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
 
-            <tr class="weNeedRemove">
-            <td>
+                </td>
+                <td>
 
-                <input type="text" name='inputs[0][POS]' value="1" id="sno" placeholder='#' /><br>
+                    <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
+                </td>
+                <td>
+                    <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
+                    <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
 
-            </td>
-            <td>
-                <input type="text" name='inputs[0][Produkt]' id="Produkt_0" onkeyup="getProductDetailsDRP('0');" placeholder='#' />
-                <br>
-                <div class="guessProductDtl">
-                  <ul>
+                </td>
+                <td>
 
-                  </ul>
-                </div>
-                <br><span class="msg_err" id="Produkt_err" style="color:red; font-size:13px;"></span>
-            </td>
+                    <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
+                    <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
 
-
-            <td>
-
-                <input type="text" name='inputs[0][Beschreibung]' id="Beschreibung_0" placeholder='#' />
-                <br><span class="msg_err" id="Beschreibung_err" style="color:red;  font-size:13px;"></span>
-
-            </td>
-            <td>
-
-                <input type="text" name='inputs[0][Menge]' placeholder='#' /><br>
-            </td>
-            <td>
-                <input type="text" name='inputs[0][Einheit]' id="Quantity_0" placeholder='#' />
-                <br><span class="msg_err" id="Einheit_err" style="color:red;  font-size:13px;"></span>
-
-            </td>
-            <td>
-
-                <input type="text" name='inputs[0][Einzelpreis]' id="Rate_0" placeholder='#' />
-                <br><span class="msg_err" id="Einzelpreis_err" style="color:red;  font-size:13px;"></span>
-
-            </td>
-            <td>
-                <p></p>
-                <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
-                C2</span>
-            </td>
-            <td>
-                <p></p>
-                <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
-            </td>
-            <td>
-              <button class="btn btn-sm">Delete</button>
-            </td>
+                </td>
+                <td>
+                    <p></p>
+                    <input type="text" name='inputs[0][Rabatt]' id="Discount_0" placeholder='#' style="width:30px;" /><span>%
+                    C2</span>
+                </td>
+                <td>
+                    <p></p>
+                    <input type="text" name='inputs[0][Gesamtpreis]' id="Amount_0" placeholder='#' />
+                </td>
+                <td>
+                  <button class="btn btn-sm">Delete</button>
+                </td>
+              </tr>
             </tbody>
             </table>
 
@@ -683,340 +679,168 @@
   <!-- plugins:js -->
 
   <script>
-    // function for find Generated No
-      function findGeneratedProductDtl(page_name){
+  document.addEventListener('DOMContentLoaded', function() {
+    setupInputListeners1();
 
-      // alert(page_name);
-      var baseUrl = window.location.origin;
-      var generatedNo = jQuery('#generatedNo').val();
-      // console.log(generatedNo);
+    function setupInputListeners1() {
+      document.querySelectorAll('input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(input) {
+        input.addEventListener('input', function() {
+          var idParts = this.id.split('_');
+          var index = idParts[1];
 
-      var generatedNoList = jQuery('#generatedNoList ul');
-      var tableTbody = jQuery('#table tbody');
-      tableTbody.find('.weNeedRemove').empty();  // make empty listing
-      generatedNoList.empty();
-      if (generatedNo=='') {
-        return false;       // stop if generatedNo is null
-      }
+          var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
+          var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
+          var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
 
-      // Make a GET request using AJAX
-      $.ajax({
-        url: '/api/getGeneratedProductDtlApi', // Replace with the actual endpoint URL
-        method: 'GET',
-        data: {page_name:page_name, generatedNo: generatedNo},
-        success: function(response) {
-          // Handle the successful response
-          console.log('Response :', response);
-          if (response.success) {
-            console.log(response.productsList);
+          var discountAmount = (rate * discountPercentage) / 100;
+          var discountedRate = rate - discountAmount;
 
-            // for Angebots_Nr list
-            $.each(response.productsList, function(index, item) {
-              // Create a new product element for each cart item
-              generatedNoList.append(`
-                <li class="liGenerateNoDtl slide-in-blurred-top" generatedNo="${item.Angebots_Nr}">
-                  ${item.Angebots_Nr}
-                </li>
-              `);
-            });
+          var amount = quantity * discountedRate;
+          document.getElementById('Amount_' + index).value = amount.toFixed(2);
 
-            // show product in table
-            if (response.status) {
-              $.each(response.success, function(i, tableItem) {
-                // Create a new product element for each cart tableItem
-                tableTbody.append(`
-                  <tr class="weNeedRemove">
-                    <td>
-                      <input type="text" value='${++i}' name='inputs[${i}][POS]' placeholder='#' />
-                    </td>
+          // Recalculate subtotal after each input change
+          calculateSubTotal();
+        });
+      });
 
-                    <td>
-                      <input type="text" value='${tableItem.Produkt}' name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
-                      <br>
-                      <div class="guessProductDtl">
-                        <ul>
+      // Add event listeners for Adjustment, SGST, and CGST fields
+      document.getElementById('Adjustment').addEventListener('input', function() {
+      calculateSubTotal();
+      });
 
-                        </ul>
-                      </div>
-                    </td>
+      document.getElementById('SGST').addEventListener('input', function() {
+      calculateSubTotal();
+      });
 
-                    <td>
-                      <input type="text" value='${tableItem.Beschreibung}' name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
-                    </td>
+      document.getElementById('CGST').addEventListener('input', function() {
+      calculateSubTotal();
+      });
 
-                    <td>
-                      <input type="text" value='${tableItem.Menge}' name='inputs[${i}][Menge]' placeholder="#"/>
-                    </td>
-
-                    <td>
-                      <input type="text" value='${tableItem.Einheit}' name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
-                    </td>
-
-                    <td>
-                      <input type="text" value='${tableItem.Einzelpreis}' name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
-                    </td>
-                    
-                    <td>
-                      <input type="text" value='${tableItem.Rabatt}' name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
-                    </td>
-
-                    <td>
-                      <input type="text" value='${tableItem.Gesamtpreis}' name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
-                    </td>
-
-                    <td>
-                      <button class="remove-table-row  btn btn-sm">Delete</button>
-                    </td>
-                  </tr>
-                `);
-              
-                window.i= i;
-                
-
-              });
-              generatedNoList.empty();
-              
-            }
-         
-          }
-          console.log('i', + i);
-          // var i = 0;
-   var No = 1;
-
-   document.getElementById('add').addEventListener('click', function() {
-    ++i;
-    ++No;
-    console.log('new');
-
-    var table = document.getElementById('table');
-    var newRow = table.insertRow(table.rows.length);
-
-    newRow.innerHTML = `
-                    <td>
-                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
-                    </td>
-                    <td>
-                      <input type="text"" name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
-                      <br>
-                      <div class="guessProductDtl">
-                        <ul>
-
-                        </ul>
-                      </div>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
-                    </td>
-                    <td>
-                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
-                       
-                    </td>
-                    <td>
-                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
-                    </td>
-                    <td>
-                        <button class="remove-table-row  btn btn-sm">Delete</button>
-                    </td>`;
-
-    // Call the setupInputListeners function after adding a new row
-    setupInputListeners();
-
-    // Recalculate subtotal after adding a new row
-    calculateSubTotal();
-   });
-          
-        },
-        error: function(error) {
-          // Handle errors
-          console.error('Error:', error);
-          tableTbody.append('<tr class="weNeedRemove"><th  colspan="8" style="text-align:center;">Sorry! we are facing some internal errors.</th></tr>');
-        }
+      document.getElementById('IGST').addEventListener('input', function() {
+      calculateSubTotal();
       });
     }
 
+    // var i = 0;
+    // var No = 1;
 
-    // function for set li test in companyName input feild
-    $(document).on('click', '.liGenerateNoDtl', function() {
-      var clickedGeneratedNo = jQuery(this).attr('generatedNo');
-      jQuery('#generatedNo').val(clickedGeneratedNo).trigger("keyup");
-      jQuery('#generatedNoList ul').empty();
-    });
-  </script>
+    document.getElementById('add').addEventListener('click', function() {
+      // ++i;
+      // ++No;
+      
+      var No = $('.lastPOS:last').val();
+      var i  = No;
+      ++No;
 
+      jQuery('#table tbody').append(`
+        <tr>
+          <td>
+            <input type="text" class="lastPOS" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
+          </td>
+          <td>
+            <input type="text"" name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
+            <br>
+            <div class="guessProductDtl">
+              <ul>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-   setupInputListeners1();
+              </ul>
+            </div>
+          </td>
+          <td>
+              <input type="text" name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
+          </td>
+          <td>
+          <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
+            
+          </td>
+          <td>
+          <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
+          </td>
+          <td>
+              <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
+          </td>
+          <td>
+              <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
+          </td>
+          <td>
+              <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
+          </td>
+          <td>
+              <button class="remove-table-row  btn btn-sm">Delete</button>
+          </td>
+        </tr>
+      `);
 
-   function setupInputListeners1() {
-    document.querySelectorAll(
-     'input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
-     input) {
-     input.addEventListener('input', function() {
-      var idParts = this.id.split('_');
-      var index = idParts[1];
+      // Call the setupInputListeners function after adding a new row
+      setupInputListeners();
 
-      var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
-      var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
-      var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
-
-      var discountAmount = (rate * discountPercentage) / 100;
-      var discountedRate = rate - discountAmount;
-
-      var amount = quantity * discountedRate;
-      document.getElementById('Amount_' + index).value = amount.toFixed(2);
-
-      // Recalculate subtotal after each input change
+      // Recalculate subtotal after adding a new row
       calculateSubTotal();
-     });
     });
 
-    // Add event listeners for Adjustment, SGST, and CGST fields
-    document.getElementById('Adjustment').addEventListener('input', function() {
-     calculateSubTotal();
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('remove-table-row')) {
+      event.target.closest('tr').remove();
+      // Recalculate subtotal after removing a row
+      calculateSubTotal();
+      }
     });
 
-    document.getElementById('SGST').addEventListener('input', function() {
-     calculateSubTotal();
-    });
+    // Function to set up input event listeners
+    function setupInputListeners() {
+      document.querySelectorAll('input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
+      input) {
+      input.addEventListener('input', function() {
+        var idParts = this.id.split('_');
+        var index = idParts[1];
 
-    document.getElementById('CGST').addEventListener('input', function() {
-     calculateSubTotal();
-    });
+        var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
+        var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
+        var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
 
-    document.getElementById('IGST').addEventListener('input', function() {
-     calculateSubTotal();
-    });
-   }
+        var discountAmount = (rate * discountPercentage) / 100;
+        var discountedRate = rate - discountAmount;
 
-   var i = 0;
-   var No = 1;
+        var amount = quantity * discountedRate;
+        document.getElementById('Amount_' + index).value = amount.toFixed(2);
 
-   document.getElementById('add').addEventListener('click', function() {
-    ++i;
-    ++No;
-
-    console.log('old');
-
-    var table = document.getElementById('table');
-    var newRow = table.insertRow(table.rows.length);
-
-    newRow.innerHTML = `
-                    <td>
-                        <input type="text" value='${No}' name='inputs[${i}][POS]' placeholder='#' />
-                    </td>
-                    <td>
-                      <input type="text"" name='inputs[${i}][Produkt]' id="Produkt_${i}" onkeyup="getProductDetailsDRP('${i}');" placeholder="#"/>
-                      <br>
-                      <div class="guessProductDtl">
-                        <ul>
-
-                        </ul>
-                      </div>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Beschreibung]' id="Beschreibung_${i}" placeholder="#"/>
-                    </td>
-                    <td>
-                    <input type="text" name='inputs[${i}][Menge]' placeholder="#"/>
-                       
-                    </td>
-                    <td>
-                    <input type="text" name='inputs[${i}][Einheit]' id="Quantity_${i}" placeholder='#'  onclick="handleClick('Quantity_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Einzelpreis]' id="Rate_${i}" placeholder='#'  onclick="handleClick('Rate_${i}')"/>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Rabatt]' id="Discount_${i}" placeholder='#'  onclick="handleClick('Discount_${i}')" style="width:30px;"/><span>% C2</span>
-                    </td>
-                    <td>
-                        <input type="text" name='inputs[${i}][Gesamtpreis]' id="Amount_${i}" placeholder='#' />
-                    </td>
-                    <td>
-                        <button class="remove-table-row  btn btn-sm">Delete</button>
-                    </td>`;
-
-    // Call the setupInputListeners function after adding a new row
-    setupInputListeners();
-
-    // Recalculate subtotal after adding a new row
-    calculateSubTotal();
-   });
-
-   document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('remove-table-row')) {
-     event.target.closest('tr').remove();
-     // Recalculate subtotal after removing a row
-     calculateSubTotal();
+        // Recalculate subtotal after each input change
+        calculateSubTotal();
+      });
+      });
     }
-   });
 
-   // Function to set up input event listeners
-   function setupInputListeners() {
-    document.querySelectorAll(
-     'input[id^="Quantity_"], input[id^="Rate_"], input[id^="Discount_"], input[id^="Amount_"]').forEach(function(
-     input) {
-     input.addEventListener('input', function() {
-      var idParts = this.id.split('_');
-      var index = idParts[1];
+    // Function to calculate and update the subtotal
+    function calculateSubTotal() {
+      var subtotal = 0;
+      document.querySelectorAll('input[id^="Amount_"]').forEach(function(amountInput) {
+      subtotal += parseFloat(amountInput.value) || 0;
+      });
 
-      var quantity = parseFloat(document.getElementById('Quantity_' + index).value) || 0;
-      var rate = parseFloat(document.getElementById('Rate_' + index).value) || 0;
-      var discountPercentage = parseFloat(document.getElementById('Discount_' + index).value) || 0;
+      // Update the SubTotal input field
+      document.getElementById('SubTotal').value = subtotal.toFixed(2);
 
-      var discountAmount = (rate * discountPercentage) / 100;
-      var discountedRate = rate - discountAmount;
+      // Subtract the value of Adjustment
+      var adjustment = parseFloat(document.getElementById('Adjustment').value) || 0;
+      var sgstPercentage = parseFloat(document.getElementById('SGST').value) || 0;
+      var cgstPercentage = parseFloat(document.getElementById('CGST').value) || 0;
+      var igstPercentage = (subtotal * 19) / 100;
+      console.log(igstPercentage);
 
-      var amount = quantity * discountedRate;
-      document.getElementById('Amount_' + index).value = amount.toFixed(2);
+      var sgstAmount = (subtotal * sgstPercentage) / 100;
+      var cgstAmount = (subtotal * cgstPercentage) / 100;
+      var igstAmount = (subtotal * 19) / 100;
 
-      // Recalculate subtotal after each input change
-      calculateSubTotal();
-     });
-    });
-   }
+      var adjustedTotal = subtotal - adjustment + sgstAmount + cgstAmount + igstAmount;
 
-   // Function to calculate and update the subtotal
-   function calculateSubTotal() {
-    var subtotal = 0;
-    document.querySelectorAll('input[id^="Amount_"]').forEach(function(amountInput) {
-     subtotal += parseFloat(amountInput.value) || 0;
-    });
-
-    // Update the SubTotal input field
-    document.getElementById('SubTotal').value = subtotal.toFixed(2);
-
-    // Subtract the value of Adjustment
-    var adjustment = parseFloat(document.getElementById('Adjustment').value) || 0;
-    var sgstPercentage = parseFloat(document.getElementById('SGST').value) || 0;
-    var cgstPercentage = parseFloat(document.getElementById('CGST').value) || 0;
-    var igstPercentage = (subtotal * 19) / 100;
-    console.log(igstPercentage);
-
-    var sgstAmount = (subtotal * sgstPercentage) / 100;
-    var cgstAmount = (subtotal * cgstPercentage) / 100;
-    var igstAmount = (subtotal * 19) / 100;
-
-    var adjustedTotal = subtotal - adjustment + sgstAmount + cgstAmount + igstAmount;
-
-    // Update the AdjustmentShow, SGSTShow, CGSTShow, and Total input fields
-    document.getElementById('AdjustmentShow').value = adjustment.toFixed(2);
-    document.getElementById('SGSTShow').value = sgstAmount.toFixed(2);
-    document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
-    document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
-    document.getElementById('Total').value = adjustedTotal.toFixed(2);
-    document.getElementById("tax").value = igstAmount.toFixed(2);
-   }
+      // Update the AdjustmentShow, SGSTShow, CGSTShow, and Total input fields
+      document.getElementById('AdjustmentShow').value = adjustment.toFixed(2);
+      document.getElementById('SGSTShow').value = sgstAmount.toFixed(2);
+      document.getElementById('CGSTShow').value = cgstAmount.toFixed(2);
+      document.getElementById('IGSTShow').value = igstAmount.toFixed(2);
+      document.getElementById('Total').value = adjustedTotal.toFixed(2);
+      document.getElementById("tax").value = igstAmount.toFixed(2);
+    }
   });
   </script>
 
@@ -1030,6 +854,7 @@
 
    var formData = {
     Auftrags_Nr: $('#AddAuftragsForm input[name="Auftrags_Nr"]').val(),
+    Angebots_Nr: $('#AddAuftragsForm input[name="Angebots_Nr"]').val(),
     Auftragsdatum: $('#AddAuftragsForm input[name="Auftragsdatum"]').val(),
     Referenz: $('#AddAuftragsForm input[name="Referenz"]').val(),
     Ihre_Kundennummer: $('#AddAuftragsForm select[name="Ihre_Kundennummer"]').val(),

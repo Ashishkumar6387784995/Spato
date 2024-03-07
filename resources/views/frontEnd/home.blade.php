@@ -228,7 +228,7 @@
 
       @media (max-width: 510px) {
         #carousel-vp {
-          width: 250px;
+          width: 320px !important;
         }
       }
 
@@ -355,12 +355,12 @@
 
   </div>
 
-  <section class="dark-mode-section2" id="view">
+  <section class="dark-mode-section2 newsletter" id="view">
    <div class="container">
     <div class="row text-center p-4">
      <div class="col-6 m-auto text-left">
       <h3>Keinen DEAL Verpassan!</h3>
-      <p style="font-size:18px; font-weight:600; color:var(--black);">Abonniere jetzt unseren Nwesletter.</p>
+      <p style="font-size:18px; font-weight:600; ">Abonniere jetzt unseren Nwesletter.</p>
      </div>
      <div class="col-4 d-flex m-auto">
       <input class="newsletter-input" type="text" placeholder="Gib deine E-Mail heir ein.">

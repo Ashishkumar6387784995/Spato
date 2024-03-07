@@ -199,7 +199,7 @@
 
       <div id="adminSidebar">
          <li class="nav-item  bconnection-page">
-            <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
+            <a class="nav-link" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
                <span class="menu-title">B2C B2B Connection</span>
             </a>
          </li>
@@ -258,7 +258,7 @@
 
 
             <li class="nav-item kontakte-page">
-               <a class="nav-link pt-3" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
+               <a class="nav-link" href="{{ url('/api/contactListing/'.$role) }}" onclick="markVisited(this)">
                   <span class="menu-title">Kontakte</span>
                </a>
             </li>
@@ -281,7 +281,7 @@
             </li> -->
 
             <li class="nav-item kundenmanagement-page">
-               <a class="nav-link pt-3" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
+               <a class="nav-link" href="{{url('/api/customerListing/'.$role)}}" onclick="markVisited(this)">
                   <span class="menu-title">Kundenmanagement</span>
                </a>
             </li>

@@ -91,7 +91,6 @@
             color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;
-  margin-top:10px;
   text-align:center;
         }
     </style>
@@ -120,13 +119,12 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                <div class="" style="padding-bottom:10px;">
-                @include('admin_theme/Partial/admin_header')
-                    <button class="navbar-toggler" type="button" data-toggle="offcanvas">
-                        <span class="mdi mdi-menu"></span>
-                    </button>
-
-                </div>
+            <div class="" style="padding-bottom:10px;   margin-top:-1.5rem;">
+        @include('admin_theme/Partial/admin_header')
+          <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
 
                 @if($role=="admin")
                 <div class="row pt-3">

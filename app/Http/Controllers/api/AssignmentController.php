@@ -33,7 +33,7 @@ class AssignmentController extends Controller
         } elseif ($user->role == 'b2b') {
             $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->get()->unique('Auftrags_Nr');
         } elseif ($user->role == 'supplier') {
-            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Ihre_Kundennummer', $user->id)->get()->unique('Auftrags_Nr');
+            $assignments = Assignments_list::select('Auftrags_Nr', 'Ihre_Kundennummer', 'Auftragsdatum', 'gesamt_netto')->orderBy('created_at', 'desc')->where('Supplier_ID', $user->Lieferantennummer)->get()->unique('Auftrags_Nr');
         } else {
             $offers = 'offer not found';
         }
@@ -125,8 +125,16 @@ class AssignmentController extends Controller
 
             // Set dynamic fields on the offer
             foreach ($dynamicFields as $dynamicField) {
+
+                // for split supplier id
+                
+                $parts = explode(".", $dynamicField['Produkt']);
+                $Supplier_ID = $parts[0]; // Get the value after the dot symbol
+                
                 $assignment = new Assignments_list();
                 $assignment->Auftrags_Nr = $request->input('Auftrags_Nr');
+                $assignment->Angebots_Nr = $request->input('Angebots_Nr');
+                $assignment->Supplier_ID = $Supplier_ID;
                 $assignment->Auftragsdatum = $request->input('Auftragsdatum');
                 $assignment->Referenz = $request->input('Referenz');
                 $assignment->Ihre_Kundennummer = $request->input('Ihre_Kundennummer');
@@ -205,5 +213,24 @@ class AssignmentController extends Controller
         Mail::to($email)->send(new AssignmentMailer($Auftrags_Nr));
 
         return response()->json(['success' => "Pfd File Is Send SuccessFully"]);
+    }
+
+
+
+    // function for find assignment details by his order id
+    public function getAssignmentDetailsApi(Request $request)
+    {
+        $assignments = DB::table('assignments_list')
+                ->select('assignments_list.*', 'users.name')
+                ->join('users', 'users.id', '=', 'assignments_list.Ihre_Kundennummer')
+                ->where('assignments_list.Auftrags_Nr', $request->assignment_no)
+                ->orderby('assignments_list.created_at', 'DESC')
+                ->get();
+
+        if ($assignments->count()){
+            return response()->json(['assignmentDtl'=>$assignments]);
+        }
+        
+        return response()->json(['errors'=>"Order Not Found"]);
     }
 }

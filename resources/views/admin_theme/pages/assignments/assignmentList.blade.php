@@ -61,6 +61,18 @@
       color: #404040;
     }
 
+    .responsive{
+      overflow:auto;
+    }
+
+    .responsive table tr th, td{
+      padding:0px 10px;
+    }
+    .responsive table tr th{
+      background-color:  #404040;
+      padding:5px;
+      color:#fff;
+    }
     .row .col {
       font-size: 14px;
     }
@@ -81,7 +93,7 @@
       color: #44e1d5 !important;
   border: 1px solid #fcfcfc !important;
   border-radius:5px;
-  margin-top:10px;
+  /* margin-top:10px; */
   text-align:center;
     }
   </style>
@@ -123,7 +135,12 @@
     <div class="main-panel">
       <div class="content-wrapper">
       
-      @include('admin_theme/Partial/admin_header')
+      <div class="" style="padding-bottom:10px;   margin-top:-1.5rem;">
+        @include('admin_theme/Partial/admin_header')
+          <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
       
         @if($role=="b2b")
         <div class="row pt-3">
@@ -199,6 +216,91 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
 
+
+  <!-- Assignment view page for supplier start -->
+<!-- Modal -->
+<div class="modal fade" id="supplierAssignment" tabindex="-1" aria-labelledby="supplierAssignmentLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-scrollable">
+    <div class="modal-content" style="width: 750px;">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="supplier-view-assignmentLabel">Zugeordnete Produkte</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="supplier-view-assignment" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col"><h4>Auftrags-Nr.</h4></div>
+          <div class="col"><p class="onViewHide" id="show-Auftrags-Nr">#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Angebots-Nr.</div>
+          <div class="col"><p class="onViewHide" id="show-Angebots-Nr">#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Auftragsdatum</div>
+          <div class="col"><p class="onViewHide" id="show-Auftragsdatum">#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Referenz</div>
+          <div class="col"><p class="onViewHide" id="show-Referenz">#</p></div>
+        </div>
+
+        <div class="row">
+          <div class="col">Ihre Kundennummer</div>
+          <div class="col"><p class="onViewHide" id="show-Ihre-Kundennummer">#</p></div>
+        </div>
+        <div class="row">
+          <div class="col">Ihre Ust. ID</div>
+          <div class="col"><p class="onViewHide" id="show-Ihre-Ust-ID">#</p></div>
+        </div>
+        <div class="responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Produkt</th>
+                <th>Beschreibung</th>
+                <th>Menge</th>
+                <th>Einheit</th>
+                <th>Einzelpreis</th>
+                <th>Rabatt</th>
+                <th>Gesamtpreis</th>
+              </tr>
+            </thead>
+            <tbody id="show-tbody">
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="calculation" style="border-top:1px solid #44e1d5; padding-top:50px;">
+          <div class="row">
+            <div class="col">Gesamt netto</div>
+            <div class="col"><p class="onViewHide" id="show-Gesamt-netto">#</p></div>
+          </div>
+          <div class="row">
+            <div class="col">zzgl. Umsatzsteuer 19 %</div>
+            <div class="col"><p class="onViewHide" id="show-zzgl-Umsatzsteuer">#</p></div>
+          </div>
+          <div class="row">
+            <div class="col">Gesamtbetrag brutto</div>
+            <div class="col"><p class="onViewHide" id="show-Gesamtbetrag-brutto">#</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="edit" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Assignment view page for supplier ends -->
+
   <script>
     // Execute the code when the document is ready
     $(document).ready(function() {
@@ -246,8 +348,7 @@
                   row.append('<td><a href="/api/editAssignments/b2b/' + item.Auftrags_Nr +
                     '" class="edit btn" id="editProductBtn">Änderung anfragen</a></td>');
                 } else if (data.user.role === 'supplier') {
-                  row.append('<td><a href="/api/editAssignments/supplier/' + item.Auftrags_Nr +
-                    '" class="edit btn" id="editProductBtn">ansehen</a></td>');
+                  row.append('<td><a class="edit btn getAssignmentDetails" data-assignment-no="'+item.Auftrags_Nr+'" data-bs-toggle="modal" data-bs-target="#supplierAssignment">ansehen</a></td>');
                 }
 
                 // Add more columns as needed
@@ -272,11 +373,88 @@
           console.error('Error:', error);
         }
       });
-
-
-
-
     });
+
+
+    // function for find get Assignment details by order id
+    jQuery(document).on('click', '.getAssignmentDetails', function () {
+      var assignment_no = $(this).attr('data-assignment-no');
+      jQuery('.onViewHide').text('#');
+      jQuery('#show-tbody').html('');
+
+      // Make a GET request using AJAX
+      $.ajax({
+        url: '/api/getAssignmentDetailsApi', // Replace with the actual endpoint URL
+        method: 'GET',
+        data: { assignment_no: assignment_no},
+        success: function(data) {
+          // Handle the successful response
+          if (data.assignmentDtl) {
+            console.log('Assignment Details:', data.assignmentDtl);
+
+            // Call the function to populate the table with the initial data
+            populateOrderDtl(data.assignmentDtl);
+
+            function populateOrderDtl(data) {
+
+              // customer details
+              jQuery('#show-Auftrags-Nr').text(data[0].Auftrags_Nr);
+              jQuery('#show-Angebots-Nr').text(data[0].Angebots_Nr);
+              jQuery('#show-Auftragsdatum').text(data[0].Auftragsdatum);
+              jQuery('#show-Referenz').text(data[0].Referenz);
+              jQuery('#show-Ihre-Kundennummer').text(`${data[0].name} (${data[0].Ihre_Kundennummer})`);
+              jQuery('#show-Ihre-Ust-ID').text(data[0].Ihre_Ust_ID);
+
+              jQuery('#show-Gesamt-netto').text(data[0].gesamt_netto+'€');
+              jQuery('#show-zzgl-Umsatzsteuer').text(data[0].zzgl_Umsatzsteuer+'€');
+              jQuery('#show-Gesamtbetrag-brutto').text(data[0].Gesamtbetrag_brutto+'€');
+
+
+              // items details
+
+                // Iterate through the data and add rows to the table
+                $.each(data, function(index, item) {
+
+                  // for big discription length
+                    var wordLimit = 8; // Change this to your desired word limit
+
+                    // Convert JSON object to string
+                    var Beschreibung = item.Beschreibung;
+
+                    // Split the string by whitespace to count words
+                    var words = Beschreibung.split(/\s+/);
+
+                    // If the number of words exceeds the limit, trim the text
+                    if (words.length > wordLimit) {
+                      var trimmedText = words.slice(0, wordLimit).join(' ');
+                      trimmedText = trimmedText + '...';
+                    }else{
+                      var trimmedText = Beschreibung;
+                    }
+
+                  jQuery('#show-tbody').append(`
+                    <tr>
+                      <td>${item.Produkt}</td>
+                      <td><span title="${Beschreibung}">${trimmedText}</span></td>
+                      <td>${item.Menge}</td>
+                      <td>${item.Einheit}</td>
+                      <td>${item.Einzelpreis}</td>
+                      <td>${item.Rabatt}</td>
+                      <td>${item.Gesamtpreis}</td>
+                    </tr>
+                  `);
+                });
+            }
+          } else {
+            console.log('Data received:', data.errors);
+          }
+        },
+        error: function(error) {
+        // Handle errors
+        console.error('Error:', error);
+        }
+      });
+    })
   </script>
 
 

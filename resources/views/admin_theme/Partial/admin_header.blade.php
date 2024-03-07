@@ -1,5 +1,5 @@
 ﻿<style>
-     p span {
+     p #username {
           font-weight: 800;
           font-size: 18px;
      }
