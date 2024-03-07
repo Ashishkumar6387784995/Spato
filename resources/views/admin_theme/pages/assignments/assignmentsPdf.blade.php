@@ -184,14 +184,14 @@
         <tbody>
             @foreach ($assignments as $data)
             <tr>
-                <td>{{ $data['POS'] }}</td>
-                <td>{{ $data['Produkt'] }}</td>
+                <td style="height:20px;">{{ $data['POS'] }}</td>
+                <td style="height:20px;">{{ $data['Produkt'] }}</td>
                 <td style="width:200px;">{{ $data['Beschreibung'] }}</td>
-                <td>{{ $data['Menge'] }}</td>
-                <td>{{ $data['Einheit'] }}</td>
-                <td>{{ $data['Einzelpreis'] }}</td>
-                <td>{{ $data['Rabatt'] }}</td>
-                <td>{{ $data['Gesamtpreis'] }}</td>
+                <td style="height:20px;">{{ $data['Menge'] }}</td>
+                <td style="height:20px;">{{ $data['Einheit'] }}</td>
+                <td style="height:20px;">{{ $data['Einzelpreis'] }}</td>
+                <td style="height:20px;">{{ $data['Rabatt'] }}</td>
+                <td style="height:20px;">{{ $data['Gesamtpreis'] }}</td>
             </tr>
             @endforeach
         </tbody>
