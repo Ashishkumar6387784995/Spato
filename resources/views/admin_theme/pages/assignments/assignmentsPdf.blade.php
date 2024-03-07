@@ -11,11 +11,11 @@
             font-size: 12px;
         }
 
-        /* @page {
+        @page {
 
             size: A4;
 
-        } */
+        }
 
         .brand-logo {
             display: flex;
@@ -37,13 +37,14 @@
         }
 
         .offers tr th {
-            background-color: #54606c;
+            background-color: #404040;
             color: #ffffff;
             padding: 2px 6px;
+            margin:0;
         }
 
         .offers tr td {
-            border-bottom: 0.2px solid #000;
+           border:none;
         }
 
         .hidden {
@@ -60,6 +61,7 @@
             width: 100%;
             text-align: center;
             color: #8F8787;
+            margin-top:4rem;
         }
 
         .footer table {
@@ -71,9 +73,12 @@
             font-size: 10px;
         }
 
-        .page_break {
-            page-break-before: always;
-        }
+        .page-break {
+  page-break-before: always;
+}
+.pagenum:before {
+        content: counter(page);
+    }
     </style>
 </head>
 
@@ -93,13 +98,17 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
                 <th>Auftrags-Nr.</th>
                 <th>{{$assignments[0]->Auftrags_Nr}}</th>
             </tr>
             <tr>
                 <td>SPATO GmbH</td>
                 <td>
-                    <p class="hidden">Lorem ipsum dolor sit</p>
+                    <p class="hidden">Lorem ipsum dolor</p>
+                </td>
+                <td>
+                    <p class="hidden">Lorem ipsum</p>
                 </td>
                 <td>
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
@@ -111,7 +120,10 @@
 
                 <td>Schellberger Weg 34</td>
                 <td>
-                    <p class="hidden">Lorem ipsum dolor sit</p>
+                    <p class="hidden">Lorem ipsum dolor</p>
+                </td>
+                <td>
+                    <p class="hidden">Lorem ipsum</p>
                 </td>
                 <td>
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
@@ -123,7 +135,10 @@
 
                 <td>42659 Solingen</td>
                 <td>
-                    <p class="hidden">Lorem ipsum dolor sit</p>
+                    <p class="hidden">Lorem ipsum dolor</p>
+                </td>
+                <td>
+                    <p class="hidden">Lorem ipsum</p>
                 </td>
                 <td>
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum </p>
@@ -135,7 +150,10 @@
 
                 <td>Deutschland</td>
                 <td>
-                    <p class="hidden">Lorem ipsum dolor sit</p>
+                    <p class="hidden">Lorem ipsum dolor</p>
+                </td>
+                <td>
+                    <p class="hidden">Lorem ipsum</p>
                 </td>
                 <td>
                     <p class="hidden">Lorem ipsumLorem ipsumLorem ipsum</p>
@@ -165,7 +183,7 @@
             <tr>
                 <td>{{ $data['POS'] }}</td>
                 <td>{{ $data['Produkt'] }}</td>
-                <td style="width:300px;">{{ $data['Beschreibung'] }}</td>
+                <td style="width:200px;">{{ $data['Beschreibung'] }}</td>
                 <td>{{ $data['Menge'] }}</td>
                 <td>{{ $data['Einheit'] }}</td>
                 <td>{{ $data['Einzelpreis'] }}</td>
@@ -175,9 +193,65 @@
             @endforeach
         </tbody>
     </table>
+    <div class="Intotal-calculation" style="margin-top:2rem;">
+        <hr  style="color:#000;"/>
+    <table class="offers">
+        <thead>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="width:200px;"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" style="width:250px;">Gesamtbetrag netto</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2" style="text-align:right;">{{ $data['gesamt_netto'] }} EUR</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width:250px;">zzgl. Umsatzsteuer 19%</td>
+                <td></td> 
+                <td></td> 
+                <td></td> 
+                <td></td>
+                <td></td>
+                <td colspan="2" style="text-align:right;">{{ $data['zzgl_Umsatzsteuer'] }} EUR</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width:250px; font-size:16px; font-weight:900;">Gesamtbetrag brutto</td>
+                <td></td>
+                <td></td>   
+                <td></td>   
+                <td></td>   
+                <td></td>
+                <td colspan="2" style="text-align:right; font-size:16px; font-weight:900;">{{ $data['Gesamtbetrag_brutto'] }} EUR</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="intotal-text">
+        <p style="font-size:10px;">Lieferbedingungen: zzgl. Frachtkosten <br>
+Zahlungsbedingungen: nach Vereinbarung
+</p>
+<p style="font-size:10px;">Wir behalten uns vor, Preise aufgrund der weltweiten Pandemie und Rohstoffknappheit anzupassen. Es gelten für alle geschäftlichen Vorgänge ausschließlich unsere
+AGB. An dieses Angebot halten wir uns 10 Werktage gebunden. Mit der Erteilung eines Auftrages setzen wir voraus, dass Sie unsere AGB zur Kenntnis genommen haben.
+Sollten Ihnen unsere aktuellen AGB nicht vorliegen, fordern Sie diese bitte unter info@spato.de an.
+</p>
+<p style="font-size:10px;">We reserve the right to adjust prices due to the global pandemic and shortage of raw materials. Our General Terms and Conditions apply exclusively to all business current terms and conditions, please request them from info@spato.de.</p>
+    </div>
+        </div>
 
     <!-- Add any additional content or styling as needed -->
-    <div class="footer" style=" ">
+    <div class="footer" style="font-size:12px;">
         <table>
             <tbody>
                 <tr>
@@ -273,9 +347,7 @@
                 </tr>
             </tbody>
         </table>
-       
-
-        
+        </div>
     </div>
 </body>
 

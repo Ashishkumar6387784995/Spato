@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('MwSt_Satz')->nullable();
             $table->string('Shop_APP')->nullable();
             $table->string('Premium_connection')->nullable();
-            $table->string('Lieferantennummer')->nullable();
+            $table->string('Lieferantennummer')->nullable()->unique();
 
             $table->timestamps();
         });
