@@ -220,10 +220,13 @@ class AssignmentController extends Controller
     // function for find assignment details by his order id
     public function getAssignmentDetailsApi(Request $request)
     {
+        $user = Auth::guard('api')->user();
+
         $assignments = DB::table('assignments_list')
                 ->select('assignments_list.*', 'users.name')
                 ->join('users', 'users.id', '=', 'assignments_list.Ihre_Kundennummer')
                 ->where('assignments_list.Auftrags_Nr', $request->assignment_no)
+                ->where('assignments_list.Supplier_ID', $user->Lieferantennummer)
                 ->orderby('assignments_list.created_at', 'DESC')
                 ->get();
 

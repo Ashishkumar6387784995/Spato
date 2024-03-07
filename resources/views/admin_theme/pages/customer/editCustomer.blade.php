@@ -304,7 +304,6 @@
            <th>
             Kundenrolle
            </th>
-
            <th></th>
 
           </tr>
@@ -344,7 +343,6 @@
             </select>
             <br>
            </td>
-
            <td>
             <button class="btn updateCustomerButton" type="button" name="saveFormType"
              value="saveRole">Speichern</button>

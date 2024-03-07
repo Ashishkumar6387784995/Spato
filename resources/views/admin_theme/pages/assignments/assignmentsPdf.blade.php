@@ -148,7 +148,7 @@
         </table>
     </div>
     <br /><br /><br />
-    <h3>Auftrags {{$assignments[0]->Auftrags_Nr}}</h3>
+    <h3>Auftrags {{$assignments[0]->Auftrags_Nr}}  aus Angebot {{$assignments[0]->Angebot_Nr}}</h3>
     <table class="offers">
         <thead>
             <tr>
