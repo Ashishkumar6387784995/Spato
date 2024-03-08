@@ -167,7 +167,11 @@
         </table>
     </div>
     <br /><br /><br />
-    <h3>Auftrags {{$assignments[0]->Auftrags_Nr}}  aus Angebot {{$assignments[0]->Angebot_Nr}}</h3>
+    @if($assignments[0]->Angebots_Nr)
+    <h3>Auftrags {{$assignments[0]->Auftrags_Nr}}  aus Angebot {{$assignments[0]->Angebots_Nr}}</h3>
+    @else
+    <h3>Auftrags {{$assignments[0]->Auftrags_Nr}} </h3>
+    @endif
     <table class="offers">
         <thead>
             <tr>
