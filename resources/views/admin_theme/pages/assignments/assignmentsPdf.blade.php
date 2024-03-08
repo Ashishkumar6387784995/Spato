@@ -47,7 +47,7 @@
 
         .offers tr td {
            border:none;
-           padding:2rem 0rem !important;
+           padding:0.5rem 0rem !important;
         }
 
         .hidden {
