@@ -97,7 +97,7 @@ class AssignmentController extends Controller
 
         $validator = Validator::make($request->all(), [
             'Auftrags_Nr' => 'required|string|unique:assignments_list',
-            'Angebots_Nr' => 'string|unique:assignments_list',
+            'Angebots_Nr' => 'unique:assignments_list',
             'Auftragsdatum' => 'required|date_format:Y-m-d',
             // 'Referenz' => 'required|string',
             'Ihre_Kundennummer' => 'required|string',
