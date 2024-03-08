@@ -342,7 +342,8 @@
          <div class="inputs">
             <p> 
               <!-- findGeneratedProductDtl('PAGE_NAME') -->
-              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebots_Nr" onkeyup="findGeneratedProductDtl('Offer')" value=""/>
+              <input class="dynamic-field" type="text" placeholder='#' id="generatedNo" name="Angebots_Nr" onkeyup="findGeneratedProductDtl('Offer')" value=""/><br>
+              <span class="msg_err" id="Angebots_Nr_err" style="color:red;  font-size:13px;"></span>
               <div id="generatedNoList">
                 <ul>
                 </ul>
@@ -946,6 +947,8 @@
        // Append error messages to your HTML
        $('#' + field + '_err').text(messages[0]);
     });
+
+ 
 
     if (errors['inputs.0.Produkt']) {
      $('#Produkt_err').text('Produkt is Required');
