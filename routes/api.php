@@ -289,8 +289,9 @@ Route::get('editDeliveryNotesForSuppliers/{role}/{Id}', [DeliveryNotesController
 Route::view('billsListing/{role}', 'admin_theme/pages/bills/billsList');
 Route::get('updateBillStatusApi', [billsController::class, 'updateBills']);
 Route::get('addbills/{role}', [billsController::class, 'addbills']);
-
 Route::get('editbills', [billsController::class, 'editbills']);
+Route::post('sendBillsMailsToB2C', [billsController::class, 'sendBillsMailsToB2C']);
+Route::get('downloadBillsPdf/{deliveryId}', [billsController::class, 'downloadBillsPdf']);
 Route::post('sendBillstMailsToB2C', [billsController::class, 'sendBillstMailsToB2C']);
 
 
@@ -301,6 +302,8 @@ Route::get('updateCreditStatusApi', [creditsController::class, 'updateCredits'])
 Route::get('addCredits/{role}', [creditsController::class, 'addCredits']);
 
 Route::get('editCredits', [creditsController::class, 'editCredits']);
+Route::post('sendCreditsNotesMailsToB2C', [creditsController::class, 'sendCreditsNotesMailsToB2C']);
+Route::get('downloadCreditNotesPdf/{deliveryId}', [creditsController::class, 'downloadCreditsNotesPdf']);
 Route::post('sendCredistMailsToB2C', [creditsController::class, 'sendCredistMailsToB2C']);
 
 

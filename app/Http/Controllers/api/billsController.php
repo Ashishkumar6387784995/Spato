@@ -9,6 +9,9 @@ use App\Models\bills;
 use App\Mail\BillsMailer;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class billsController extends Controller
@@ -151,6 +154,40 @@ class billsController extends Controller
     {
 
         return view('admin_theme/pages/bills/editbills');
+    }
+
+    public function downloadBillsPdf($assignmentNo)
+    {
+
+        // Retrieve the offer
+        $assignment = bills::where('Auftrags_Nr', $assignmentNo)->first();
+
+        if ($assignment) {
+            // Retrieve Assignments_list associated with the offer ID
+            $assignments = bills::where('Auftrags_Nr', $assignmentNo)->get();
+            // Generate PDF from the view
+            $pdf = PDF::loadView('admin_theme/pages/bills/billsPdf', compact('assignments'));
+
+            // code for view pdf
+            // return $pdf->stream('result.pdf');
+
+            // Specify the directory path for storing the PDF in the public storage folder
+            $pdfDirectory = 'public/bills_pdf';
+
+            // Specify the file path for the PDF
+            $pdfFilePath = $assignmentNo . '.pdf';
+
+            // Save the PDF in the specified path
+            Storage::put($pdfDirectory . '/' . $pdfFilePath, $pdf->output());
+
+            // Get the public URL of the saved PDF file
+            $pdfUrl = Storage::url($pdfDirectory . '/' . $pdfFilePath);
+
+            // Download the saved PDF
+            return response()->download(storage_path('app/' . $pdfDirectory . '/' . $pdfFilePath));
+        } else {
+            return back()->with('error', 'Offer not found');
+        }
     }
 
 
